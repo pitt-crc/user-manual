@@ -1,1 +1,18 @@
-site_name: My Docs
+site_name: CRC User Manual
+theme: 
+  name: material
+  logo: _assets/img/pitt_shield_white.png 
+  favicon: _assets/img/pitt-logo-nav_white.png 
+  palette: 
+    primary: custom 
+  font: 
+    text: Roboto 
+    code: Roboto Mono
+nav:
+  - Home: index.md
+  - sub-menu:
+    - something_else.md
+    - something.md
+    - dne.md
+extra_css:
+  - _assets/css/pitt_colors.css
