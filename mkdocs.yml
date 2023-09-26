@@ -1,18 +1,32 @@
 site_name: CRC User Manual
-theme: 
+repo_url: https://github.com/pitt-crc/user-manual
+theme:
   name: material
-  logo: _assets/img/pitt_shield_white.png 
-  favicon: _assets/img/pitt-logo-nav_white.png 
-  palette: 
-    primary: custom 
-  font: 
-    text: Roboto 
+  logo: _assets/img/pitt_shield_white.png
+  favicon: _assets/img/pitt-logo-nav_white.png
+  palette:
+    primary: custom
+  font:
+    text: Roboto
     code: Roboto Mono
-nav:
-  - Home: index.md
-  - sub-menu:
-    - something_else.md
-    - something.md
-    - dne.md
+  features:
+    - content.code.copy
+    - search.suggest
+    # - navigation.tabs
+    # - navigation.sections
+    - content.code.annotate
 extra_css:
   - _assets/css/pitt_colors.css
+plugins:
+  - search
+  - mkdocstrings
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+copyright: Copyright &copy; University of Pittsburgh. All rights reserved.
