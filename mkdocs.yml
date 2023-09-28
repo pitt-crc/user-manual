@@ -27,6 +27,51 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
+  - tables
 nav:
   - Home: index.md
+  - Policies:
+    - policies/job-scheduling-policy.md
+    - policies/hardware-investing-policy.md
+    - policies/resource-descriptions-for-writing-proposals.md
+  - Connecting to Web Portals:
+    - web-portals/open-ondemand.md
+    - web-portals/jupyter-ondemand.md
+    - web-portals/viz.md
+    - web-portals/jupyter-hub.md
+    - web-portals/psych.md
+  - The SLURM Workload Manager:
+    - slurm/slurm-overview.md
+    - slurm/batch-jobs.md
+    - slurm/service-units.md
+    - slurm/interactive-jobs.md
+    - slurm/pbs-slurm.md
+    - slurm/scavenger.md
+    - slurm/job-arrays.md
+    - slurm/vscode.md
+  - Acknowledge CRC Resources and Assistance in Your Papers: acknowledge-crc.md
+  - Data Management:
+    - data-management/box.md
+    - data-management/google-workspace.md
+    - data-management/microsoft-onedrive.md
+    - data-management/globus.md
+    - data-management/globus-microsoft-onedrive.md
+  - Applications:
+    - applications/software-list.md
+    - applications/application-environment.md
+    - applications/basic-commands.md
+    - applications/crc-wrappers.md
+    - applications/compilers.md
+    - applications/python.md
+    - applications/licensed-software.md
+    - applications/r+rstudio.md
+    - applications/singularity.md
+  - Advanced Genomics Support:
+    - advanced-genomics-support/clcbio-genomics-server.md
+    - advanced-genomics-support/ngs-data-analysis.md
+    - advanced-genomics-support/nf-core-genomics-pipelines.md
+    - advanced-genomics-support/genome-browser.md
+  - Supporting Code Optimization: code-optimization.md
+
+
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.
