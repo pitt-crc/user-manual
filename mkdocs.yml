@@ -62,7 +62,7 @@ nav:
     - applications/basic-commands.md
     - applications/crc-wrappers.md
     - applications/compilers.md
-    - applications/python.md
+    - applications/python/index.md
     - applications/licensed-software.md
     - applications/r+rstudio.md
     - applications/singularity.md
