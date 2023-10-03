@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          python-version: '3.x'
 
       - name: Set up Python
         uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install dependencies
-        shell: bash
         run: pip install -r requirements.txt
 
       - name: Build and publish
