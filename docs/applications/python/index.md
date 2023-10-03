@@ -5,6 +5,8 @@ The CRC provides a variety of pre-installed Python versions that can be accessed
 ```
 module spider python
 ```
+![type:video](./media/1.module_spider.mp4)
+
 All available modules are Anaconda distributions of Python that support pip and conda installation commands. Users do not have privileges to install Python packages to the system, so keep these options in mind when you are setting up your environment:
 
 1.  Manage your python package installation environment using a conda virtual environment (recommended). You can create any number of virtual environments for your various projects, and they are great for preventing dependency conflicts when switching between workflows that use different software tools.
@@ -96,7 +98,7 @@ Creating a virtual environment using your customized conda installation:
 2.  For this tutorial we will use the latest miniconda:
    
     ``` 
-    wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     ```
 3.  Execute the installer using:
     
@@ -314,6 +316,7 @@ Type "help", "copyright", "credits" or "license" for more information.
                                    [0.8989, 0.8953, 0.0129]])
 >>>
 ```
+
 Anaconda configuration
 ----------------------
 

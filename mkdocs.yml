@@ -20,7 +20,10 @@ extra_css:
 plugins:
   - search
   - mkdocstrings
-  - mkdocs-video
+  - mkdocs-video:
+      is_video: True
+      video_autoplay: True
+      video_loop: True
 markdown_extensions:
   - admonition
   - pymdownx.superfences
@@ -37,7 +40,7 @@ nav:
     - policies/resource-descriptions-for-writing-proposals.md
   - Connecting to Web Portals:
     - web-portals/open-ondemand.md
-    - web-portals/jupyter-ondemand.md
+    - web-portals/jupyter-ondemand/index.md
     - web-portals/viz.md
     - web-portals/jupyter-hub.md
     - web-portals/psych.md
