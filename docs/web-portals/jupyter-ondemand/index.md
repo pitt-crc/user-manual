@@ -135,3 +135,6 @@ Please refer to this [tutorial](../../applications/python/index.md), for a compl
 1.  To run Jupyter via OnDemand you multiple options of pre-installed modules that you can load and use; however if you want to use your custom environment, you need to create the environment first through one of the methods mentioned earlier and install your required packages into it.
 2.  You must make sure that you install jupyter and jupyterlab packages into your environment so that you can run Jupyter through OnDemand (you can use conda install, mamba install or pip install to install these packages like mentioned earlier in the steps of creating environments).
 3.  If you need other modules (from Lmod) to be loaded during your Jupyter on OnDemand session, you have to install a package called jupyterlmod which adds a part to Jupyter’s interface where you can specify the modules you need to load. Please note that this package can only be installed only through pip.
+
+    ![type:video](./media/7.install_jupyterlmod.mp4)
+    ![type:video](./media/jupyter_ondemand.mp4)
