@@ -19,11 +19,56 @@ Job Size [0,1] – Required Nodes, CPUs, and Memory usage. Larger requests rec
 
 Quality of Service (QOS) [0,1] - Factor based on the Walltime of the job. Normalized to the highest (short QOS). The priority weight for QOS is 2000.
 
-| Name     | Priority | QOS Factor | Max Walltime (D-HH:MM:SS) |
-|----------|----------|------------|---------------------------|
-| `Short`  | 13       | 1.00       | 3-00:00:00                |
-| `Normal` | 12       | 0.92       | 3-00:00:00                |
-| `Long`   | 11       | 0.84       | 6-00:00:00                |
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<table class="display cell-border" id="nTable">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Priority</td>
+            <td>QOS Factor</td>
+            <td>Max Walltime (D-HH:MM:SS)</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>Short</code></td>
+            <td>13</td>
+            <td>1.00</td>
+            <td>3-00:00:00</td>
+        </tr>
+        <tr>
+            <td><code>Normal</code></td>
+            <td>12</td>
+            <td>0.92</td>
+            <td>3-00:00:00</td>
+        </tr>
+        <tr>
+            <td><code>Long</code></td>
+            <td>11</td>
+            <td>0.84</td>
+            <td>6-00:00:00</td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#nTable').DataTable({
+            "paging": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "ordering": false
+        });
+    });
+</script>
 
 Note: Due to the high volume nature of the work done on HTC, it's short, normal, and long QOS have a maximum number of submissions per user set to 6000, 5000, and 4000 respectively.
 
@@ -46,29 +91,117 @@ It is up to the job submitter to determine the demands of their job through some
 Due to the current QOS system, you may have a job that is not restartable, and was originally submitted for 6 days (long QOS), where the only way to keep it going is via extension. Please submit a ticket, providing details about your job and justification for why it should be extended. 
 
 Exceeding Usage Limits will cause Job Pending Status
-After submission, a job can appear with a "status" of "PD" (not running).
+After submission, a job can appear with a "status" of "PD" (not running).
 
 There are various reasons that SLURM will put your job in a pending state. Some common explanations are listed below.
 
-Reasons related to resource availibility and job dependencies:
+Reasons related to resource availability and job dependencies:
 
-| Reason                   | Explanation                                                                                                                          | Resolution                                                                                                                                    |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Resources                | The cluster is busy and no resources are currently available for your job.                                                           | Your job will run as soon as the resources requested become available                                                                         |
-| Priority                 | See section on job priority                                                                                                          | Your job will run as soon as it has reached a high enough priority                                                                            |
-| Dependency               | A job cannot start until another job is finished. This only happens if you included a "--dependency" directive in your SLURM script. | Wait until the job that you have marked as a dependency is finished, then your job will run                                                   |
-| DependencyNeverSatisfied | A job cannot start because another job on which it depends failed                                                                    | Please cancel this job, as it will never be able to run. You will need to resolve the issues in the job that has been marked as a dependency. |
+<table class="display cell-border" id="aTable">
+    <thead>
+        <tr>
+            <td>Reason</td>
+            <td>Explanation</td>
+            <td>Resolution</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Resources</td>
+            <td>The cluster is busy and no resources are currently available for your job.</td>
+            <td>Your job will run as soon as the resources requested become available</td>
+        </tr>
+        <tr>
+            <td>Priority</td>
+            <td>See section on job priority</td>
+            <td>Your job will run as soon as it has reached a high enough priority</td>
+        </tr>
+        <tr>
+            <td>Dependency</td>
+            <td>A job cannot start until another job is finished. This only happens if you included a &quot;--dependency&quot; directive in your SLURM script.</td>
+            <td>Wait until the job that you have marked as a dependency is finished, then your job will run</td>
+        </tr>
+        <tr>
+            <td>DependencyNeverSatisfied</td>
+            <td>A job cannot start because another job on which it depends failed</td>
+            <td>Please cancel this job, as it will never be able to run. You will need to resolve the issues in the job that has been marked as a dependency.</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#aTable').DataTable({
+            "paging": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "ordering": false
+        });
+    });
+</script>
 
-Reasons related to exceeding a usage limit:
+Reasons related to exceeding a usage limit:
 MaxMemoryPerAccount
 The job exceeds the current within-group memory quota. The maximum quota available depends on the cluster and partition. The table below gives the maximum memory (in GB) for each QOS in the clusters/partitions it is defined. 
 
-| Cluster | Partition | Short | Normal | Long |
-|---------|-----------|-------|--------|------|
-| smp     |           |       |        |      |
-|         | smp       | 13247 | 11044  | 9999 |
-|         | legacy    | 620   | 620    | 620  |
-|         | high-mem  | 6512  | 6512   | 6512 |
+<table class="display cell-border" id="bTable">
+    <thead>
+        <tr>
+            <td>Cluster</td>
+            <td>Partition</td>
+            <td>Short</td>
+            <td>Normal</td>
+            <td>Long</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>smp</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>smp</td>
+            <td>13247</td>
+            <td>11044</td>
+            <td>9999</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>legacy</td>
+            <td>620</td>
+            <td>620</td>
+            <td>620</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>high-mem</td>
+            <td>6512</td>
+            <td>6512</td>
+            <td>6512</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#bTable').DataTable({
+            "paging": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "ordering": false
+        });
+    });
+</script>
 
 If you find yourself consistently running into this issue, you can use the 'seff' tool to determine the efficiency of your completed jobs. 
 
@@ -97,19 +230,93 @@ Temporary extension of your current SU allocation my be granted while submitted 
 MaxTRESPerAccount, MaxCpuPerAccount, or MaxGRESPerAccount
 In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length.  If your group requests more CPU/GPUs than in this table you will be forced to wait until your group's jobs finish.
 
-| cluster | partition    | short | normal | long |
-|---------|--------------|-------|--------|------|
-| smp     |              |       |        |      |
-|         | smp          | 2304  | 1613   | 1152 |
-|         | high-mem     | 320   | 224    | 160  |
-| gpu     |              |       |        |      |
-|         | gtx1080      | 32    | 20     | 14   |
-|         | a100         | 16    | 12     | 8    |
-|         | a100_multi   | 32    | 24     | 8    |
-|         | a100_nvlink  | 24    | 16     | 8    |  
-| mpi     |              |       |        |      |
-|         | opa-high-mem | 504   | 353    | 252  |
-|         | mpi          | 3264  | 2285   | 1632 |
-| htc     |              |       |        |      |
-|         | htc          | 1216  | 852    | 608  |
-
+<table class="display cell-border" id="cTable">
+    <thead>
+        <tr>
+            <td>cluster</td>
+            <td>partition</td>
+            <td>short</td>
+            <td>normal</td>
+            <td>long</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>smp</td>
+            <td>smp</td>
+            <td>2304</td>
+            <td>1613</td>
+            <td>1152</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>high-mem</td>
+            <td>320</td>
+            <td>224</td>
+            <td>160</td>
+        </tr>
+        <tr>
+            <td>gpu</td>
+            <td>gtx1080</td>
+            <td>32</td>
+            <td>20</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>a100</td>
+            <td>16</td>
+            <td>12</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>a100_multi</td>
+            <td>32</td>
+            <td>24</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>a100_nvlink</td>
+            <td>24</td>
+            <td>16</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>mpi</td>
+            <td>opa-high-mem</td>
+            <td>504</td>
+            <td>353</td>
+            <td>252</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>mpi</td>
+            <td>3264</td>
+            <td>2285</td>
+            <td>1632</td>
+        </tr>
+        <tr>
+            <td>htc</td>
+            <td>htc</td>
+            <td>1216</td>
+            <td>852</td>
+            <td>608</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#cTable').DataTable({
+            "paging": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "ordering": false
+        });
+    });
+</script>

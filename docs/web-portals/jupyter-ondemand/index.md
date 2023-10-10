@@ -3,21 +3,21 @@ The CRC offers Jupyter on OnDemand services to help users run Python notebooks o
 
 When you visit the OnDemand web portal, you will be prompted to log in with your Pitt account:  
   
-![](/sites/default/files/ondemand_001.png)
+![](media/ondemand_001.png)
 
 Once you log in, you will see the following screen:  
   
-![](/sites/default/files/ondemand_002.png)
+![](media/ondemand_002.png)
 
 Click on the "all available apps" link highlighted in the red box in the previous screen. You will see the following screen that includes all the available applications through OnDemand:  
   
-![](/sites/default/files/ondemand_003.png)
+![](media/ondemand_003.png)
 
 Use the search box to search for "Jupyter", you will see two results for your search as follows:  
   
-![](/sites/default/files/ondemand_004.png)
+![](media/ondemand_004.png)
 
-*   Jupyter: is the portal to lainch Jupyter on the HTC cluster.
+*   Jupyter: is the portal to launch Jupyter on the HTC cluster.
 *   Jupyter on GPU: is the portal to launch Jupyter on the GPU cluster.
 
 Jupyter on HTC
@@ -25,7 +25,7 @@ Jupyter on HTC
 
 Click on the Jupyter link, you will see the following screen:  
   
-![](/sites/default/files/ondemand_006.png)
+![](media/ondemand_006.png)
 
 We offer multiple ready-to-use python environments for Jupyter on HTC where you can choose between:
 
@@ -35,19 +35,19 @@ We offer multiple ready-to-use python environments for Jupyter on HTC where you 
 *   Python 3.7
 *   Python 2.7
 
-![](/sites/default/files/ondemand_005.png)
+![](media/ondemand_005.png)
 
 These are all base conda installtions featuring Jupyter Lab integration, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
   
-![](/sites/default/files/ondemand_007.png)
+![](media/ondemand_007.png)
 
 You can also use a singulairty container to run Jupyter on HTC by providing the path to the container as follows:  
   
-![](/sites/default/files/ondemand_008.png)
+![](media/ondemand_008.png)
 
 Once you select the python environment, you can specify the number of hours you want to run Jupyter for. The default is 1 hour. You can also specify the number of cores you want to use. The default is 1 core. You can also specify the account from which the SUs will be withdrawn if you are affiliated with multiple groups/accounts.
 
-![](/sites/default/files/ondemand_009.png)
+![](media/ondemand_009.png)
 
 Once you choose the appropriate environment and click on the "Launch" button, you will see the following screen:  
   

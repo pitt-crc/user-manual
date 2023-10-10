@@ -10,15 +10,59 @@ maintaining their own hardware, researchers can allocate grant or
 startup funds to the CRC for community hardware purchases and the 
 benefits stated below.
 
-## Benefits of Investing in CRC Resources
-| Benefit                                  | Description                                                                                                                                                                                                                                                                                                      | 
-|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Professional Maintenance and Support     | All hardware is professionally managed by the [Network Operations Center](https://www.technology.pitt.edu/network-operations-center-noc) at no charge to investors, and are administered with state of the art networking and security practices.                                                                |
-| SLURM Allocation Service Units           | Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 85% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure. |
-| Priority Job Submission                  | Investors receive higher priority on jobs submitted to CRC resources.                                                                                                                                                                                                                                            |
-| Bulk Volume Equipment Rates              | Investors can take advantage of lower equipment prices negotiated by CRC based on the large volumes required for our cluster refreshes.                                                                                                                                                                          |
-| Better Utilization and Energy Efficiency | As the pool of resources available to the community increases, security is enhanced, and the energy consumed by the invested equipment is likely to be much lower than if the invested equipment had been hosted in individual labs.                                                                             |
 
+## Benefits of Investing in CRC Resources
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<table class="display cell-border" id="nTable">
+    <thead>
+        <tr>
+            <td>Benefit</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Professional Maintenance and Support</td>
+            <td>All hardware is professionally managed by the [Network Operations Center](https://www.technology.pitt.edu/network-operations-center-noc) at no charge to investors, and are administered with state of the art networking and security practices.</td>
+        </tr>
+        <tr>
+            <td>SLURM Allocation Service Units</td>
+            <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 85% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
+        </tr>
+        <tr>
+            <td>Priority Job Submission</td>
+            <td>Investors receive higher priority on jobs submitted to CRC resources.</td>
+        </tr>
+        <tr>
+            <td>Bulk Volume Equipment Rates</td>
+            <td>Investors can take advantage of lower equipment prices negotiated by CRC based on the large volumes required for our cluster refreshes.</td>
+        </tr>
+        <tr>
+            <td>Better Utilization and Energy Efficiency</td>
+            <td>As the pool of resources available to the community increases, security is enhanced, and the energy consumed by the invested equipment is likely to be much lower than if the invested equipment had been hosted in individual labs.</td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#nTable').DataTable({
+            "paging": false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "searching": false,
+            "ordering": false
+        });
+    });
+</script>
 
 ## How Investment Resources are Made Available to Investors
 
