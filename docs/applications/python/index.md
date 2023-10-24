@@ -5,6 +5,8 @@ The CRC provides a variety of pre-installed Python versions that can be accessed
 ```
 module spider python
 ```
+![type:video](./media/1.modules_info.mp4)
+
 All available modules are Anaconda distributions of Python that support pip and conda installation commands. Users do not have privileges to install Python packages to the system, so keep these options in mind when you are setting up your environment:
 
 1.  Manage your python package installation environment using a conda virtual environment (recommended). You can create any number of virtual environments for your various projects, and they are great for preventing dependency conflicts when switching between workflows that use different software tools.
@@ -20,11 +22,14 @@ Creating a virtual environment after loading Python via the module system:
     *   python/anaconda3.9-2021.11
     *   python/ondemand-jupyter-python3.10
     
+    ![type:video](./media/1.module_spider.mp4)
+    
 2.  Create a virtual environment via the conda command, and please note that Anaconda creates virtual environments in your home directory by default (iHome: ihome/<your group name>/<your username>/.conda/envs/my_env) which is limited in space for all CRC users, so we recommend that you provide a prefix while creating the environment so that Anaconda creates the environment elsewhere where you have more storage available such as IX. You can also specify the Python version you want to provision for the environment using the option python=3.8
     
     ```
     conda create --prefix=/ix/<your group name>/<your user name>/envs/my_env python=3.9
     ```
+    ![type:video](./media/2.create_env.mp4)
 3.  Activate your newly created virtual environment through the following command:
     
     ```
@@ -37,6 +42,7 @@ Creating a virtual environment after loading Python via the module system:
     pip install scipy
     ```
     However, please note that to use , you need to have your virtual environment activated as indicated in step #3
+    ![type:video](./media/3.activate_install.mp4)
     
 5.  Important notes to consider for using this method to create and manage your environment:
     *   Please use source activate to activate your environment instead of conda activate. As the later will prompt you to issue the command conda init, which is not recommended and might cause conflicts.
@@ -96,7 +102,7 @@ Creating a virtual environment using your customized conda installation:
 2.  For this tutorial we will use the latest miniconda:
    
     ``` 
-    wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     ```
 3.  Execute the installer using:
     
@@ -107,7 +113,7 @@ Creating a virtual environment using your customized conda installation:
 5.  By default conda installation is palced in your home directory (iHome) which is not recommended because it can consume your limited home allocation. After accepting the license agreement, the installer will ask you if you want a different installation path other than your home directory and you can enter the path where you have space available (e.g., IX) as follows: /ix/<your group name>/<your user name>/custom_miniconda
 6.  The installer will start unpacking conda files into the specified installation path.
 7.  After finishing unpacking, the installer will prompt you choose if you want to run conda init, which is not recommended as mentioned earlier.
-    
+    ![type:video](./media/4.custom_conda.mp4)
 8.  Sometimes conda environment solution is slow especially for channels such as conda-forge, so here is an extra step that is OPTIONAL but provides a faster environment solution which is fully compatible with conda packages. You can install mamba into conda base environment which will offer a better environment solution by this command:
     
     ```
@@ -130,12 +136,14 @@ Creating a virtual environment using your customized conda installation:
     ```
     source /ix/<your group name>/<your user name>/custom_miniconda/bin/activate my_env
     ```
+    ![type:video](./media/5.custom_conda_install.mp4)
 13.  You can also use pip to install packages into your environment when the requested package is not available through conda/mamba, but you have to make sure that your environment is activated first or to pint to pip executable of the environment as follows:
     
     ```
     pip install package_name
     /ix/<your group name>/<your user name>/custom_miniconda/envs/my_env/bin/pip install package_name
     ```
+    ![type:video](./media/6.custom_conda_install_pip.mp4)
 
 Using custom virtual environments with Jupyter on OnDemand:
 -----------------------------------------------------------
@@ -143,7 +151,8 @@ Using custom virtual environments with Jupyter on OnDemand:
 1.  To run Jupyter via OnDemand you multiple options of pre-installed modules that you can load and use; however if you want to use your custom environment, you need to create the environment first through one of the methods mentioned earlier and install your required packages into it.
 2.  You must make sure that you install jupyter and jupyterlab packages into your environment so that you can run Jupyter through OnDemand (you can use conda install, mamba install or pip install to install these packages like mentioned earlier in the steps of creating environments).
 3.  If you need other modules (from Lmod) to be loaded during your Jupyter on OnDemand session, you have to install a package called jupyterlmod which adds a part to Jupyter’s interface where you can specify the modules you need to load. Please note that this package can only be installed only through pip.
-    
+    ![type:video](./media/7.install_jupyterlmod.mp4)
+    ![type:video](./media/jupyter_ondemand.mp4)
 
 Running SLURM jobs using your virtual environment:
 --------------------------------------------------
@@ -210,6 +219,7 @@ Another way to utilize your custom conda environment, is to create an Lmod modul
     module load custom_miniconda
     which conda 
     ```
+    ![type:video](./media/custom_conda_module.mp4)
 
 Machine/Deep Learning Pipelines
 -------------------------------
@@ -220,8 +230,8 @@ Machine/Deep Learning Pipelines
 2.  Create a virtual environment using any of the methods demonstrated earlier and name it “pytorch_gpu”.
 3.  Choose the version of pytorch you need CPU/GPU along with the necessary packages. For demonstration we chose Pytorch version 2.0.0 for GPU with Pytorch-CUDA version 11.8
 4.  If you will be using this environment with OnDemand, you need to install Jupyter and JupyterLab packages as well.
-5.  You can add more packages into as the environment as needed but be mindful of the version dependencies between packages and use conda install rather than pip install whenever possible.
-    
+5.  You can add more packages into the environment as needed but be mindful of the version dependencies between packages and use conda install rather than pip install whenever possible.
+    ![type:video](./media/pytorch_gpu.mp4)
 
 ### Tensoflow on GPU environment
 
@@ -278,12 +288,13 @@ Machine/Deep Learning Pipelines
     export XLA_FLAGS=--xla_gpu_cuda_data_dir=/path_to_envs/tf_gpu/lib/
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH: /path_to_envs/tf_gpu/lib/
     ```
+    ![type:video](./media/tf_gpu_1.mp4)
 12.  You can test that Tensorflow is really working on GPU by listing the visible GPU devices as follows (first you have to make sure that you are on a machine with GPUs, and that’s why I request an interactive GPU session on the demo video):
     
     ```
     python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
     ```
-    
+    ![type:video](./media/tf_gpu_2.mp4)
 
 Alternate Instructions for Virtual Environments with virtualenvwrapper
 ----------------------------------------------------------------------
@@ -314,6 +325,7 @@ Type "help", "copyright", "credits" or "license" for more information.
                                    [0.8989, 0.8953, 0.0129]])
 >>>
 ```
+
 Anaconda configuration
 ----------------------
 
