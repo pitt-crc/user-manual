@@ -10,7 +10,7 @@ Below you will find brief summaries of each main section:
 | JupyterHub                                                               | VIZ                                                              | Psych                                                                   | Ondemand                                                                             |
 |--------------------------------------------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | [![Jupyterhub](_assets/img/home/CRC_Jhub.png)](https://hub.crc.pitt.edu) | [![viz](_assets/img/home/CRC_VIZ.png)](http://viz.crc.pitt.edu/) | [![psych](_assets/img/home/CRC_Psych.png)](https://psych.crc.pitt.edu/) | [![ondemand](_assets/img/home/CRC_Ondemand.png)](https://ondemand.htc.crc.pitt.edu/) |
-| [Jupyterhub Documentation](web-portals/jupyter-hub.md)                   | [VIZ Documentation](web-portals/viz.md)                          | [Psych Documentation](web-portals/psych.md)                             | [OnDemand Documentation](web-portals/open-ondemand.md)                               |
+| [Jupyterhub Documentation](web-portals/jupyter-hub.md)                   | [VIZ Documentation](web-portals/viz.md)                          | [Psych Documentation](web-portals/psych.md)                             | [OnDemand Documentation](web-portals/open-ondemand/index.md)                         |
     
 ## The SLURM Workload Manager
 
