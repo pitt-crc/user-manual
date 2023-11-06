@@ -4,8 +4,6 @@
 The information below may be of use to you in drafting proposals or other documents calling for descriptions of 
 Pitt CRC computational resources available to researchers.
 
- 
-
 ## Brief Text Description of CRC Resources
 Access to computing hardware, software, and research consulting are provided through the Pitt Center for Research 
 Computing (Pitt CRC). 
@@ -26,8 +24,6 @@ Pitt IT. Pitt IT maintains the critical environmental infrastructure (power, coo
 administers the cluster operating systems and storage backups. CRC interfaces directly with researchers and provides 
 software installation services, training workshops, and personalized consultation on improving software 
 design/performance and computational workflows.
-
- 
 
 ## Technical Support and Funding
 The cluster computes nodes were purchased with funds provided by the University and by faculty researchers, and are 
