@@ -29,7 +29,7 @@ When you run the executable, the window that opens is your Connections window.
 
 In the top right corner, use the plus icon to add a "Web" connection.
 
-![](../_assets/img/web-portals/VizFastXDesktop_1.PNG)
+![](../_assets/img/web-portals/VizFastXDesktop_1.png)
 
 Name: VIZ
 
@@ -41,13 +41,13 @@ Click save.
 
 Double click the new connection in the Connections window, you will be prompted to log in with your Pitt ID and password.
 
-![](../_assets/img/web-portals/VizFastXDesktop__2.PNG)
+![](../_assets/img/web-portals/VizFastXDesktop__2.png)
 
 The new window that opens is your Sessions window. This works similarly to the web portal interface.
 
 You can use the **plus icon** to create a new session, select your desktop interface (MATE is a good default), and click ok.
 
-![](../_assets/img/web-portals/VizFastXDesktop_3.PNG)
+![](../_assets/img/web-portals/VizFastXDesktop_3.png)
 
 Your session will start and you can use this machine similarly to the login nodes for H2P and HTC.
 
