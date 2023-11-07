@@ -41,8 +41,8 @@ nav:
     - policies/hardware-investing-policy.md
     - policies/resource-descriptions-for-writing-proposals.md
   - Connecting to Web Portals:
-    - web-portals/open-ondemand/index.md
-    - web-portals/jupyter-ondemand/index.md
+    - web-portals/open-ondemand.md
+    - web-portals/jupyter-ondemand.md
     - web-portals/viz.md
     - web-portals/jupyter-hub.md
     - web-portals/psych.md
@@ -68,7 +68,7 @@ nav:
     - applications/basic-commands.md
     - applications/crc-wrappers.md
     - applications/compilers.md
-    - applications/python/index.md
+    - applications/python.md
     - applications/licensed-software.md
     - applications/r+rstudio.md
     - applications/singularity.md
