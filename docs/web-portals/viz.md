@@ -5,7 +5,7 @@ Summary
 
 VIZ is a set of nodes with a graphical user interface desktop enabled. In this document, we present all the information you need about VIZ.
 
-[**Log in to VIZ**](http://viz.crc.pitt.edu)
+[**Log in to VIZ**](https://viz.crc.pitt.edu)
 
 You can treat this machine as another login node with extra capability to access to GUI interface. You can also submit jobs to H2P or HTC using the VIZ interface.
 

@@ -15,7 +15,7 @@ For more help, you can view the [extensive documentation for OnDemand](https://w
 **Accessing Open OnDemand**
 ---------------------------
 
-If your computer is not connected to the Pitt network (e.g. you are working from remotely, or you are using Pitt wireless network), or you are working from a laptop that is connected to the UPMC network, make sure you first connect to the [Pitt VPN](https://crc.pitt.edu/node/5986), so that you can communicate with the CRC resources. Note that there are many different VPN roles. **Only Firewall-SAM-USERS-Pulse role** can connect to CRC clusters.
+If your computer is not connected to the Pitt network (e.g. you are working from remotely, or you are using Pitt wireless network), or you are working from a laptop that is connected to the UPMC network, make sure you first connect to the [Pitt VPN](https://www.technology.pitt.edu/services/pittnet-vpn-globalprotect), so that you can communicate with the CRC resources. Note that there are many different VPN roles. **Only Firewall-SAM-USERS-Pulse role** can connect to CRC clusters.
 
 After ensuring a VPN connection, navigate to [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu) in your web browser.
 
@@ -115,7 +115,7 @@ Jupyter notebook/Lab allow for interactive code development. You can run Jupyter
 
 Jupyter Notebook inside OnDemand which runs on a cluster compute node using dedicated resources can be launched by choosing menu _Interactive Apps -> Jupyter Notebook_. A job submission screen appears:
 
-![](../_assets/img/web-portals/Jupyter-101.png)
+![](/sites/default/files/Jupyter-101.png)
 
 Set the job parameters. Unless using numerical libraries like NumPy, which are thread-parallelized, or your jobs require more memory, it is not advisable to choose more than one CPU. Then hit _Launch_ to submit the interactive job. The job gets queued up and when it starts and the Jupyter is provisioned. Click on the _Connect to Jupyter_ button to open a new browser tab with the main Jupyter interface.
 
@@ -124,11 +124,11 @@ Set the job parameters. Unless using numerical libraries like NumPy, which are t
 Use "module load python/ondemand-jupyter-python3.8" to load base ananconda.
 
   
-![](../_assets/img/web-portals/jupyter-0.png)
+![](media/jupyter-0.png)
 
 Select "Terminal"
 
-![](../_assets/img/web-portals/jupyter-1.png)
+![](media/jupyter-1.png)
 
 Generate a Conda environment
 ```
@@ -158,7 +158,7 @@ The conda environment is installed at ~/.conda/envs/scanpy
 
 ****Using the Conda Environment with Jupyter Notebook/Lab:****
 
-![](../_assets/img/web-portals/jupyter-2.png)
+![](media/jupyter-2.png)
 
 If you are using another user's conda environment, use the full path as Name of Custom Conda Environment (i.e., /ihome/fmu/fmu/.conda/envs/scanpy)
 ```
@@ -166,7 +166,7 @@ If you are using another user's conda environment, use the full path as Name of 
 /ihome/fmu/fmu/.conda/envs/scanpy/bin:/ihome/crc/install/python/ondemand-jupyter-python3.8/condabin:/ihome/crc/install/python/ondemand-jupyter-python3.8/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ihome/fmu/fmu/.local/bin:/ihome/fmu/fmu/bin:/ihome/fmu/fmu/.local/bin:/ihome/fmu/fmu/bin
 [fmu@htc-n27 ~]$
 ```
-![](../_assets/img/web-portals/jupyter-3.png)
+![](media/jupyter-3.png)
 
 You can click Terminal and use "conda install <packagename>" to install extra conda packages to your local scanpy conda environment.
 
@@ -188,7 +188,7 @@ PREFIX=/ihome/fmu/fmu/python_env/myenv
 ```
 The full path to this local anaconda installs directory is /ihome/fmu/fmu/python\_env/myenv
 
-![](../_assets/img/web-portals/jupyter-4.png)
+![](media/jupyter-4.png)
 ```
 [fmu@htc-n27 ~]$ echo $PATH
 /ihome/fmu/fmu/python\_env/myenv/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ihome/fmu/fmu/.local/bin:/ihome/fmu/fmu/bin:/ihome/fmu/fmu/.local/bin:/ihome/fmu/fmu/bin
@@ -210,11 +210,11 @@ DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
 ```
 Using the above command, I will now have this conda environment in my Jupyter notebook.
 
-![](../_assets/img/web-portals/jupyter-5.png)
+![](media/jupyter-5.png)
 
 This kernel will successfully launch a kernel out of the scanpy conda environment, but it notably is not activating the environment.
 
-![](../_assets/img/web-portals/jupyter-6.png)
+![](media/jupyter-6.png)
 
 ****Generate Personal Modulefiles:****
 ```
@@ -268,7 +268,7 @@ This Jupyter notebook/Lab allow for interactive code development on GPU cluster.
 
 Jupyter Notebook inside OnDemand which runs on a GPU cluster compute node using dedicated resources can be launched by choosing menu _Interactive Apps -> Jupyter on gpu_. A job submission screen appears:
 
-![](../_assets/img/web-portals/Jupyter_gpu_0.png)
+![](media/Jupyter_gpu_0.png)
 
 Set the job parameters.  Choose tensorflow/2.4.1 or pytorch/1.8.1. Number of cores is the number of cpu cores. Select GPU type. Only one GPU card can be allocated. Then hit _Launch_ to submit the interactive job. The job gets queued up and when it starts and the Jupyter is provisioned. Click on the _Connect to Jupyter_ button to open a new browser tab with the main Jupyter interface.
 
@@ -283,13 +283,13 @@ RStudio Server runs the RStudio interactive development environment inside of a 
 *   Select **Interactive Apps** > **RStudio Server** from the top menu in the **Dashboard** window.
 *   In the screen that opens, specify the R version, time limit.
 
-![](../_assets/img/web-portals/RStudio.png)
+![](media/RStudio.png)
 
 *   Choose the appropriate number of cores, keeping in mind that R can internally thread parallelize vector based data processing, for which more than one CPU can be utilized.
 *   Click the blue **Launch** button to start your RStudio session.  You may have to wait in the queue for resources to be available.
 *    When your session starts, click the blue **Connect to RStudio Server** button.  A new window opens with the RStudio interface.  
 
-![](../_assets/img/web-portals/ondemand_R1.png)
+![](media/ondemand_R1.png)
 
 The R version 3.5.1 loads ```gcc/8.2.0``` and ```r/3.5.1``` module on HTC cluster, and the R version 3.6.0 loads gcc/8.2.0 r/3.6.0 module on HTC cluster. Within each R module, various R packages and bioconductor packages have been installed. Within the R console, load the library to check whether it is already installed. If you need specific R packages, submit a [help ticket](http://crc.pitt.edu/tickets).
 
@@ -334,11 +334,11 @@ matlab-proxy is a Python® package which enables you to launch MATLAB® and acce
 
 To begin a MATLAB session, click on "Interactive Apps" and then "MATLAB" (**not the "MATLAB on htc"**). You will need to choose the "MATLAB version", "Number of hours" and "Number of cores".
 
-![](../_assets/img/web-portals/matlab1.png)
+![](media/matlab1.png)
 
 Click "Launch" and then when your session is ready, click "Connect to MATLAB".
 
-![](../_assets/img/web-portals/matlab2.png)
+![](media/matlab2.png)
 
 Note that this MATLAB is a web application. The MATLAB Proxy is under active development.
 
@@ -358,15 +358,15 @@ cellxgene: This is cellxgene interactive explorer for single-cell transcriptomic
 
 To begin a Shiny App session, click on "Genomics Apps" and then "Shiny Apps". You will need to choose the "Application", "Number of hours" and "Number of cores".
 
-![](../_assets/img/web-portals/shiny-1.png)
+![](media/shiny-1.png)
 
 I have chosen singlecellTK. Click "Launch", and then when your session is ready, click "Connect to Shiny".
 
-![](../_assets/img/web-portals/shiny-2.png)
+![](media/shiny-2.png)
 
 Note: When you click "Connect to \*\*\*\*", and receive “Failed to connect to htc-n\*\*.crc.pitt.edu:<port number>”, do not be panic. This error means that the web server is not fully ready yet. Wait 1-2 minutes, and refresh your web browser.
 
-![](../_assets/img/web-portals/fail_to_connect.png)
+![](media/fail_to_connect.png)
 
 **FAQ**
 -------

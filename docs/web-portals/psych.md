@@ -5,7 +5,7 @@ Summary
 
 The Psychiatry Web Portal is the gateway to CRC compute and storage resources for the Department of Psychiatry.
 
-**[Log in to Psych](http://psych.crc.pitt.edu)**
+**[Log in to Psych](https://psych.crc.pitt.edu)**
 
 To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRC and be a member of the \`psych\` group.
 

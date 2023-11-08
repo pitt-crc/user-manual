@@ -61,7 +61,7 @@ the command line.
 
 ## Open Ondemand
 
-We have implemented&nbsp;<a href="/node/5997">Open Ondemand</a> to run common GUI tools, such as RStudio, 
+We have implemented [Open Ondemand](../web-portals/open-ondemand/index.md) to run common GUI tools, such as RStudio, 
 Jupyter NotebookD, Jupyter Lab and Matlab. This interface is often easier to use if you are unfamiliar with slurm and 
 submitting jobs via the command line. This is also the best method for launching an interactive session with a 
 GUI desktop.
