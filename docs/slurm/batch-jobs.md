@@ -174,7 +174,7 @@ Automate any manipulation of the job's output files at the end of the script.
 ### Q: Where can I find more specific examples of these batch scripts?
 A: Example Jobs utilizing commonly loaded modules can be found in `/ihome/crc/how_to_run`
 For users performing NGS analyses on HTC, see Dr. Fangping Mu's 
-[extensive notes on this page](../advanced-genomics-support/ngs-data-analysis.md). 
+[extensive notes on this page](../advanced-genomics-support/RNASeq-data-analysis.md). 
 
 ### Q: I'm confused by the interaction between nodes, tasks, and cpus-per-task. How does that work?
 A: Slurm is very explicit in how one requests resources. 
