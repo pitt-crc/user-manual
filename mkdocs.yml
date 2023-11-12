@@ -74,11 +74,14 @@ nav:
     - applications/singularity.md
   - Advanced Genomics Support:
     - advanced-genomics-support/clcbio-genomics-server.md
-    - advanced-genomics-support/RNASeq-data-analysis.md
-    - advanced-genomics-support/variant-calling.md
     - advanced-genomics-support/nf-core-genomics-pipelines.md
     - advanced-genomics-support/genome-browser.md
-    - advanced-genomics-support/single-cell-rnaseq.md
+    - NGS Data Analysis:
+      - advanced-genomics-support/RNASeq-data-analysis.md
+      - advanced-genomics-support/variant-calling.md
+      - advanced-genomics-support/single-cell-rnaseq.md
+      - advanced-genomics-support/ChipSeq-data-analysis.md
+
   - Supporting Code Optimization: code-optimization.md
 
 
