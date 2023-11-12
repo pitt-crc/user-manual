@@ -82,6 +82,7 @@ nav:
       - advanced-genomics-support/single-cell-rnaseq.md
       - advanced-genomics-support/ChipSeq-data-analysis.md
       - advanced-genomics-support/cromwell-and-encode.md
+      - advanced-genomics-support/ATACSeq-data-analysis.md
 
   - Supporting Code Optimization: code-optimization.md
 
