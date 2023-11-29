@@ -1,5 +1,6 @@
 site_name: CRC User Manual
 repo_url: https://github.com/pitt-crc/user-manual
+site_url: https://crc-pages.pitt.edu/user-manual/
 theme:
   name: material
   logo: _assets/img/pitt_shield_white.png
