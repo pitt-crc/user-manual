@@ -5,6 +5,7 @@ website is dedicated to helping you better utilize our services.
 
 Below you will find brief summaries of each main section:
 ## General Polices
+This section provides articles on general policies that apply when using the cluster.
 
 ## Web Portals
 | JupyterHub                                                               | VIZ                                                               | Psych                                                                   | Ondemand                                                                             |
@@ -13,13 +14,17 @@ Below you will find brief summaries of each main section:
 | [Jupyterhub Documentation](web-portals/jupyter-hub.md)                   | [VIZ Documentation](web-portals/viz.md)                           | [Psych Documentation](web-portals/psych.md)                             | [OnDemand Documentation](web-portals/open-ondemand.md)                               |
     
 ## The SLURM Workload Manager
+See these pages for instructions on how to interact with SLURM via batch and interactive jobs.
 
 ## Data Management
+These pages detail our filesystem configuration as well as the various methods you can use to 
+move and share files. 
 
 ## Applications
+Search through our list of software we make available on the cluster via the module system, and find
+details about the various applications we've built to more easily extract information from SLURM.
+This section also includes more in-depth pages on setting up python environments and working with 
+licensed software.
 
 ## Genomics Support
-
-## Supporting Code Optimization
-
-## Acknowledging the CRC
+These pages include walk-through tutorials for setting up advanced genomics workflows on the HTC cluster.
