@@ -3,6 +3,12 @@
 This section of the [University of Pittsburgh Center for Research Computing](https://crc.pitt.edu/)  
 website is dedicated to helping you better utilize our services.
 
+Please use the left side drop-down menus to find pages under the main sections, 
+or utilize the search bar functionality at the top of the page for navigating across the site. 
+
+The right side table of contents can be used as an overview of the subsections of a page.
+
+
 Below you will find brief summaries of each main section:
 ## General Polices
 This section provides articles on general policies that apply when using the cluster.
