@@ -16,6 +16,8 @@ theme:
     # - navigation.tabs
     # - navigation.sections
     - content.code.annotate
+extra:
+  homepage: https://crc.pitt.edu
 extra_css:
   - _assets/css/pitt_colors.css
 plugins:
