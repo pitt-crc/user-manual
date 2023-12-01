@@ -38,7 +38,8 @@ markdown_extensions:
       permalink: true
   - tables
 nav:
-  - Home: index.md
+  - Back to crc.pitt.edu: https://crc.pitt.edu
+  - User Manual Home: index.md
   - Policies:
     - policies/job-scheduling-policy.md
     - policies/hardware-investing-policy.md
