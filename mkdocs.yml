@@ -61,6 +61,7 @@ nav:
     - slurm/vscode.md
   - Acknowledge CRC Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
+    - data-management/data-management-overview.md
     - data-management/box.md
     - data-management/google-workspace.md
     - data-management/microsoft-onedrive.md
