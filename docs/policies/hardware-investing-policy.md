@@ -29,7 +29,7 @@ benefits stated below.
         </tr>
         <tr>
             <td>SLURM Allocation Service Units</td>
-            <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 85% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
+            <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 100% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
         </tr>
         <tr>
             <td>Priority Job Submission</td>
@@ -74,7 +74,5 @@ investment. For example, if a faculty member were to set investment funds toward
 **1 can be set aside** specifically for use by that Investor and their user group.
 
 The investor will be guaranteed access to **100 percent of the equivalent in service units** (SUs) of the theoretical
-total CPU hours from the contributed funds for 5 years (the expected lifetime of the system). Each year, the faculty 
-member will be given a new allocation of **1/5 of the 5-year allocation**. Up to half of any unused annual allocation 
-can be carried forward into the next year.
+total CPU hours from the contributed funds for 5 years (the expected lifetime of the hardware that the funds are used to purchase). The SUs will remain available if not expended by the faculty member for an additional 2 years after this 5 year period. The faculty member will be awarded a new allocation containing the full amount of SUs, separate from any existing proposal or standard allocation service units.
 
