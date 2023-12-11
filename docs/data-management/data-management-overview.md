@@ -39,11 +39,15 @@ Group: 'sam'
 
 ## File permissions 
 
-Group shared folders on /ix, /bgfs, /zfs1, or /zfs2 can be requested via ticket. The top level folder is owned by <span style="font-family:courier new,courier,monospace;">root:groupname</span> with 2770 permission. The 2 sets the sticky bit, group members have read + write permission, and&nbsp;<span style="font-family:courier new,courier,monospace;">other</span> users cannot access the folder.
+Group shared folders on /ix, /bgfs, /zfs1, or /zfs2 can be requested via ticket. The top level folder is owned by <span style="font-family:courier new,courier,monospace;">root:groupname</span> with 2770 permission. The 2 sets the sticky bit, group members have read + write permission, and;<span style="font-family:courier new,courier,monospace;">other</span> users cannot access the folder.
+Group shared folders on /ix, /bgfs, /zfs1, or /zfs2 can be requested via ticket. The top level folder is owned by 
+<span style="font-family:courier new,courier,monospace;">root:groupname</span> with 2770 permission. The 2 sets the 
+sticky bit, group members have read + write permission, 
+and&nbsp;<span style="font-family:courier new,courier,monospace;">other</span> users cannot access the folder.
 
 <ul>
-	<li>Access to files by the group members is governed by Unix file permissions.&nbsp;For detailed information on Unix file protections, see the man page for the&nbsp;chmod&nbsp;command.&nbsp;&nbsp;</li>
-	<li>To share files with your group, give the group read and execute access for each directory from your top-level directory down to the directory that contains the files you want to share.&nbsp;</li>
+	<li>Access to files by the group members is governed by Unix file permissions.;For detailed information on Unix file protections, see the man page for the;chmod;command.;;</li>
+	<li>To share files with your group, give the group read and execute access for each directory from your top-level directory down to the directory that contains the files you want to share.;</li>
 	<li>chmod g+rx directory-name</li>
 	<li>Then give the group read and execute access to each file you want to share.</li>
 	<li>chmod g+rx filename</li>
@@ -52,29 +56,30 @@ Group shared folders on /ix, /bgfs, /zfs1, or /zfs2 can be requested via ticket.
 	<li>If you want to share file with other group members or users, submit a help ticket and we can use Access Control Lists (ACLs) – a more fine-grained control than Unix file permissions allow. The command for bgfs is setfacl, and for ZFS is nfs4_setfacl. There are man pages for chmod, setfacl and nfs4_setfacl.</li>
 </ul>
 
-&nbsp;
 
 ## Shared Folders
 
 iX storage locations are only accessible to allocation owners and the users they sponsor (their "user group").
 
-If you are working with collaborators that also have CRC user&nbsp;accounts, but are not in your user group, a shared folder under your iX location can be used to facillitate sharing data between your groups.&nbsp;
+If you are working with collaborators that also have CRC user;accounts, but are not in your user group, a shared folder under your iX location can be used to facillitate sharing data between your groups.;
+If you are working with collaborators that also have CRC user&nbsp;accounts, but are not in your user group, a shared folder 
+under your iX location can be used to facilitate sharing data between your groups.&nbsp;
 
 These should be requested by <a href="https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form">submitting a ticket</a> and providing details about the users that need access.
+These should be requested by 
+<a href="https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form">submitting a ticket</a> and providing details about the users that need access.
 
-This should include Pitt Usernames and&nbsp;specifics about the permssions they will require (read, write, execute, etc).&nbsp;
+This should include Pitt Usernames and;specifics about the permssions they will require (read, write, execute, etc).;
 
-&nbsp;
 
 ## Restoring Accidentally Deleted Files
 
 Both ixSystems and ZFS keep snapshots for up to 7 days.
 
-<a href="https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form">Submit a help ticket</a> with your request to restore data from snapshots.&nbsp;
+[Submit a help ticket](https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form) with your request to restore data from snapshots.
 
-<strong>Snapshots are not available for BGFS.</strong>
+**Snapshots are not available for BGFS.**
 
-&nbsp;
 
 ## Moving Data between your local machine and the CRC Clusters
 
@@ -86,12 +91,12 @@ CyberDuck is a popular open source SFTP client for Windows and Mac.
 Download and install Cyberduck. Open the Cyberduck application. 
 Click the "Open Connection" button on the toolbar.
 
-<img alt="" height="234" src="/sites/default/files/cyberduck.png" width="400" />
+![](../_assets/img/data-management/cyberduck.png)
 
 <ul>
 	<li>Select "SFTP (SSH File Transfer Protocol)" from the drop-down.</li>
-	<li>Enter htc.crc.pitt.edu in the&nbsp;Server&nbsp;box.</li>
-	<li>Enter your Pitt username and password, and click&nbsp;Connect.</li>
+	<li>Enter htc.crc.pitt.edu in the;Server;box.</li>
+	<li>Enter your Pitt username and password, and click;Connect.</li>
 </ul>
 
 Your files on the server will appear in the CyberDuck window. 
@@ -103,33 +108,42 @@ You can now drag-and-drop files to and from the window to upload/download files.
 FileZilla is cross-platform FTP application available for Windows, Linux, and macOS. 
 Download and install FileZilla. Open the FileZilla application.
 
-<img alt="" height="91" src="/sites/default/files/FileZilla.png" width="800" />
+![](../_assets/img/data-management/FileZilla.png)
 
 <ul>
-	<li>Enter sftp://htc.crc.pitt.edu in the Host&nbsp;box.</li>
-	<li>Enter your Pitt username and password, and click&nbsp;QuickConnect.</li>
+	<li>Enter sftp://htc.crc.pitt.edu in the Host;box.</li>
+	<li>Enter your Pitt username and password, and click;QuickConnect.</li>
 </ul>
 
-Your files on the server&nbsp;will appear in the FileZilla window. &nbsp;
+Your files on the server will appear in the FileZilla window. 
 
-<h3>&nbsp;</h3>
+### Ondemand File App
 
-<h3>Web Tools</h3>
+Logon ondemand.htc.crc.pitt.edu, Click Files -> Home Directory, 
+Click Upload and choose File(s) from your computer. Due to limited cache size, DO NOT use Ondemand File App to upload 
+big files ( > 1 GB).
 
-<h3><a id="OOD" name="OOD">Ondemand File App</a></h3>
-
-Logon ondemand.htc.crc.pitt.edu, Click Files -> Home Directory, Click Upload and choose File(s) from your computer. Due to limited cache size, DO NOT use Ondemand File App to upload big files ( > 1 GB).
-
-<img alt="" height="62" src="/sites/default/files/ondemand.png" width="800" />
+![](../_assets/img/data-management/ondemand.png)
 
 ### Globus
 
 For large data sets, consider using [Globus](https://crc.pitt.edu/user-manual/data-management/guide-globus-file-transferring-and-sharing).
 
-An institutional endpoint is<strong> not required</strong> to use Globus; You can set up a personal endpoint on your computer if you need to transfer large amounts of data.
+An institutional endpoint is **not required** to use Globus; You can set up a personal endpoint on your computer if you 
+need to transfer large amounts of data.
 
 
-### Command Line Tools
+
+![](../_assets/img/data-management/ondemand.png)
+
+
+<h3><a id="Globus" name="Globus">Globus</a></h3>
+
+For large data sets, consider 
+using <a href="https://crc.pitt.edu/user-manual/data-management/guide-globus-file-transferring-and-sharing">Globus</a>.
+
+An institutional endpoint is<strong> not required</strong> to use Globus; You can set up a personal endpoint on your 
+computer if you need to transfer large amounts of data.
 
 ### rsync
 
@@ -137,15 +151,15 @@ From a terminal/shell on your computer, you will issue your rsync command.
 
 rsync -aP files fangping@htc.crc.pitt.edu:/bgfs/sam/fangping/
 
-This makes a recursive copy of local directory files on the computer you issued the command on to a folder on the cluster. -P is --partial --progress.<br />
+This makes a recursive copy of local directory files on the computer you issued the command on to a folder on the 
+cluster. -P is --partial --progress.<br />
 rsync -aP fangping@htc.crc.pitt.edu:/bgfs/sam/fangping/files/ .
 
 <br />
 This copies the /bgfs/sam/fangping/files folder on the cluster to the current directory on the computer you issued the command.
 
-<h3>&nbsp;</h3>
 
-<h3>scp</h3>
+### scp
 
 From a terminal/shell on your computer, you will issue your SCP command.
 
@@ -157,9 +171,7 @@ scp -r <a href="mailto:fangping@htc.crc.pitt.edu:/bgfs/sam/fangping/">fangping@h
 
 This copies the /bgfs/sam/fangping/files folder on the cluster to the current directory on the computer you issued the command.
 
-<h3>&nbsp;</h3>
-
-<h3>aspera</h3>
+### aspera
 
 Aspera is IBM's high-performance file transfer software which allows for the transfer large files and data sets with predictable, reliable and secure delivery regardless of file size or transfer distance from a location that has the aspera transfer server running.&nbsp; The NCBI recommend the use of aspera for transfer of data sets from their site.
 
@@ -179,23 +191,19 @@ You can then use aspera to download files. aspera binary is at ~/.aspera/connect
 
 [fangping@login0b aspera]$ ~/.aspera/connect/bin/ascp -QT -l 300m -P33001 -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR949/SRR949627/SRR949627_1.fastq.gz .
 
-<h3>&nbsp;</h3>
+### Pitt OneDrive
 
-<h3><a id="cloud resources" name="cloud resources">Cloud Resources</a></h3>
+You can transfer data between Pitt OneDrive and the cluster. 
+Follow <a href="https://crc.pitt.edu/user-support/resource-documentation/onedrive">these steps</a>.
 
-<h3>Pitt OneDrive</h3>
 
-You can transfer data between Pitt OneDrive and the cluster. Follow <a href="https://crc.pitt.edu/user-support/resource-documentation/onedrive">these steps</a>.
+### Pitt Box
 
-<h3>&nbsp;</h3>
+You can transfer data from and to Pitt box from the cluster. 
+Follow <a href="/accessing-box-cluster">these steps</a>.
 
-<h3>Pitt Box</h3>
 
-You can transfer data from and to Pitt box from the cluster. Follow <a href="/accessing-box-cluster">these steps</a>.
-
-<h3>&nbsp;</h3>
-
-<h3>AWS S3</h3>
+### AWS S3
 
 awscli has been installed as a module. You can transfer data from the cluster to AWS S3.
 
@@ -207,9 +215,8 @@ This will transfer /bgfs/sam/fangping/DataUpload folder to s3://my-s3-bucket/dat
 
 You can submit this command as a job on HTC computational node.
 
-<h3>&nbsp;</h3>
 
-<h3>google bucket</h3>
+### google bucket
 
 You can install and configure gsutil to transfer data from/to gs bucket.
 
@@ -221,18 +228,18 @@ gsutil cp -r gs://gs-bucket-name/ .
 
 This will recursively transfer gs://gs-bucket-name/ folder to the current folder.
 
-<h3>&nbsp;</h3>
 
-<h3>Azure Storage</h3>
+### Azure Storage
 
-<a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10">AzCopy</a> is a command-line tool that moves data into and out of Azure Storage. azcopy has been installed as a module.
+<a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10">AzCopy</a> is a command-line 
+tool that moves data into and out of Azure Storage. azcopy has been installed as a module.
 
 module load azcopy/10.11.0<br />
 azcopy --help
 
 azcopy copy "/bgfs/your/folder/" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&amp;ss=bjqt&amp;srt=sco&amp;sp=rwddgcup&amp;se=2019-05-01T05:01:17Z&amp;st=2019-04-30T21:01:17Z&amp;spr=https&amp;sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 
-This example command recursively copies data from a local directory to a blob container. A fictitious SAS token is appended to the end of the container URL.
+This example command recursively copies data from a local directory to a blob container. A fictitious SAS token is 
+appended to the end of the container URL.
 
-<br />
 You can submit this command as a job on HTC computational node.
