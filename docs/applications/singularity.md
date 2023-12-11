@@ -1,4 +1,4 @@
-Introduction to Singularity
+# Introduction to Singularity
 ---------------------------
 
 Containerization of software runtime environment and processing workloads has become popular, particularly using Docker. However, Docker is not suitable for HPC applications [due to security reasons](#FAQ). There are a couple of alternatives for HPC containers, with Singularity being the one that covers a large set of cases. Singularity can import Docker containers.

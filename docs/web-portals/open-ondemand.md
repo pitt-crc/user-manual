@@ -405,7 +405,7 @@ To begin a MATLAB session, click on "Interactive Apps" and then "MATLAB on htc".
 "MATLAB version", "Number of hours" and "Number of cores". Click "Launch" and then when your session is ready 
 click "Launch MATLAB". 
 
-### **MATLAB**
+### MATLAB
 
 matlab-proxy is a Python® package which enables you to launch MATLAB® and access it from a web browser.
 
