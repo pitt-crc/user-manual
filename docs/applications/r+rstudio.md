@@ -42,7 +42,7 @@ R software can be launched in two different ways; through Rstudio on Open OnDema
 
 ### Rstudio
 
-In order to access Rstudio, please visit [Open Ondemand documentation](/resources/htc-cluster/open-ondemand).
+In order to access Rstudio, please visit [Open Ondemand documentation](../web-portals/open-ondemand.md).
 
 To connect to the HTC cluster via OnDemand, point your browser to https://ondemand.htc.crc.pitt.edu.
 
