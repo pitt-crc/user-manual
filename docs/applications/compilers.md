@@ -3,7 +3,7 @@ GNU compilers are available in your path when you login. Newer GNU compilers are
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
-<table class="display cell-border" id="nTable">
+<table class="display cell-border" id="compTable">
 	<thead>
 		<tr>
 			<th>Compiler</th>
@@ -64,7 +64,7 @@ GNU compilers are available in your path when you login. Newer GNU compilers are
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#nTable').DataTable({
+        $('#compTable').DataTable({
             "paging": false,
             "bPaginate": false,
             "bLengthChange": false,

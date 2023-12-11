@@ -54,7 +54,7 @@ In the screen that opens, specify the R version, time limit.
 
 Click the blue Launch button to start your RStudio session. You may have to wait in the queue for resources to be available.
 
-When your session starts, click the blue Connect to RStudio Server button. A new window opens with the RStudio interface.  
+When your session starts, click the blue Connect to RStudio Server button. A new window opens with the RStudio interface.
 
 ![](../_assets/img/applications/rstudio2.png)
 
@@ -97,7 +97,7 @@ then load the corresponding module. # e.g., ```module load gcc/8.2.0 r/4.0.0```
 Using R
 -------
 
-### Running R interactively on RStudio Server
+### Running R interactively on RStudio Server
 
 This is a typical RStudio interface that should be familiar to most users. Please note the the current working directory of the RStudio session is your home directory. You can use \`setwd(dir)\` to set the working directory to \`dir\`.
 
@@ -220,7 +220,7 @@ Rscript test.R argument1 argument2 argument3
 Installing local R packages
 ---------------------------
 
-R comes with a single library $R\_HOME/library which contains the standard and recommended packages. We also installs popular R packages into the site located at $R\_HOME/library.
+R comes with a single library ```$R_HOME/library``` which contains the standard and recommended packages. We also installs popular R packages into the site located at ```$R_HOME/library```.
 
 ```
 [fangping@login0b ~]$ module load gcc/8.2.0 r/4.0.0
@@ -278,7 +278,7 @@ To compile funcs.cpp only once:
 
 ```
 > library(Rcpp)
-> sourceCpp("funcs.cpp",rebuild = TRUE,cacheDir="~/Rcpp\_lib/mylib/Rcpp\_lib")
+> sourceCpp("funcs.cpp",rebuild = TRUE,cacheDir="~/Rcpp_lib/mylib/Rcpp_lib")
 ```
 To load the compiled cpp library within your R code:
 ```
@@ -341,7 +341,7 @@ job.sbatch
 
 module load gcc/8.2.0 r/4.0.0
 
-echo ${SLURM\_ARRAY\_TASK\_ID}
+echo ${SLURM_ARRAY_TASK_ID}
 
 R CMD BATCH "--args /bgfs/sam/fangping/myproject/bowtie2/${SLURM_ARRAY_TASK_ID}_bowtie2.bam" code.R ${SLURM_ARRAY_TASK_ID}.Rout
 ```
