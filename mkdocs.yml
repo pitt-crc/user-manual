@@ -75,9 +75,18 @@ nav:
     - applications/crc-wrappers.md
     - applications/compilers.md
     - applications/python.md
-    - applications/licensed-software.md
     - applications/r+rstudio.md
     - applications/singularity.md
+    - Licensed Software:
+        - applications/licensed-software/ansys.md
+        - applications/licensed-software/comsol.md
+        - applications/licensed-software/lumerical.md
+        - applications/licensed-software/mathematica.md
+        - applications/licensed-software/vasp.md
+        - MATLAB:
+            - applications/licensed-software/matlab/matlab.md
+            - applications/licensed-software/matlab/matlab-licensing.md
+            - applications/licensed-software/matlab/matlab-remote-job-submission.md
   - Advanced Genomics Support:
     - advanced-genomics-support/clcbio-genomics-server.md
     - advanced-genomics-support/nf-core-genomics-pipelines.md
