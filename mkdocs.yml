@@ -85,7 +85,6 @@ nav:
         - applications/licensed-software/vasp.md
         - MATLAB:
             - applications/licensed-software/matlab/matlab.md
-            - applications/licensed-software/matlab/matlab-licensing.md
             - applications/licensed-software/matlab/matlab-remote-job-submission.md
   - Advanced Genomics Support:
     - advanced-genomics-support/clcbio-genomics-server.md
