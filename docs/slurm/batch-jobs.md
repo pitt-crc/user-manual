@@ -171,6 +171,13 @@ Automate any manipulation of the job's output files at the end of the script.
 
 ## Frequently Asked Questions
 
+### Q: I don't receive any email notifications about my job despite having supplied --mail-type and --mail-user, what gives?
+A: This most frequently due to users providing only their username, and not the following domain in their SBATCH directive.
+You **need** to provide your email as `PITTID@pitt.edu` for emails to be sent correctly. In more rare cases, the queue 
+for emails can be filled by an individual user by submitting many jobs. This should eventually be resolved on its own, 
+but it can be avoided by using proper etiquette when submitting a large quantity of jobs, and removing the email 
+notification directive for all/many of the submissions and monitoring more interactively with `squeue`. 
+
 ### Q: Where can I find more specific examples of these batch scripts?
 A: Example Jobs utilizing commonly loaded modules can be found in `/ihome/crc/how_to_run`
 For users performing NGS analyses on HTC, see Dr. Fangping Mu's 
