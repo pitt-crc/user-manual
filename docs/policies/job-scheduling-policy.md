@@ -245,14 +245,14 @@ your completed jobs:
 #### AssocGrpCPURunMinutesLimit
 There are a few possible reasons for this:
 
-Your group's usage (CPURunMinutes for a user = num jobs * remaining walltime (in minutes) * cores) has 
-surpassed the limit. This should resolve after the time remaining on your groups jobs has gone down, or when 
-they finish.
-Your allocation proposal is expired. Check this with crc-usage. You can submit a new proposal or renew for a standard 
-allocation of 10K service units.
-Your allocation has been spent completely. You will need so submit a request for supplemental service units.
-Temporary extension of your current SU allocation my be granted while submitted proposals are under review, and can be 
-requested by submitting a ticket.
+- Your group's usage (CPURunMinutes for a user = num jobs * remaining walltime (in minutes) * cores) has 
+  surpassed the limit. This should resolve after the time remaining on your group's jobs has gone down, or when 
+  they finish.
+- Your allocation proposal is expired. Check this with crc-usage. You can submit a new proposal or renew for a standard 
+  allocation of 10K service units.
+  Your allocation has been spent completely. You will need so [submit a request for service units](https://crc.pitt.edu/Pitt-CRC-Allocation-Proposal-Guidelines).
+  A temporary extension of your current SU allocation may be granted while submitted proposals are under review, and can be 
+  requested by submitting a ticket.
 
 #### MaxTRESPerAccount, MaxCpuPerAccount, or MaxGRESPerAccount
 In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length. 
