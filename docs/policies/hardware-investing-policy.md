@@ -25,7 +25,7 @@ benefits stated below.
     <tbody>
         <tr>
             <td>Professional Maintenance and Support</td>
-            <td>All hardware is professionally managed by the [Network Operations Center](https://www.technology.pitt.edu/network-operations-center-noc) at no charge to investors, and are administered with state of the art networking and security practices.</td>
+            <td>All hardware is professionally managed by the Network Operations Center (https://www.technology.pitt.edu/network-operations-center-noc) at no charge to investors, and are administered with state of the art networking and security practices.</td>
         </tr>
         <tr>
             <td>SLURM Allocation Service Units</td>
@@ -72,6 +72,10 @@ CRC's policy that exclusive access can be maintained to up to **20 percent** of 
 investment. For example, if a faculty member were to set investment funds towards **5 compute nodes**, 
 **4 of them** will be made available to the community (again, also accessible to them), and 
 **1 can be set aside** specifically for use by that Investor and their user group.
+!!! note
+    Investment hardware that has been made exclusive to a particular faculty member's group is housed and maintained 
+    amongst the hardware that composes the rest of the cluster, and is correspondingly subject to downtime during 
+    cluster-wide quarterly maintenance.
 
 The investor will be guaranteed access to **100 percent of the equivalent in service units** (SUs) of the theoretical
 total CPU hours from the contributed funds for 5 years (the expected lifetime of the hardware that the funds are used to purchase). The SUs will remain available if not expended by the faculty member for an additional 2 years after this 5 year period. The faculty member will be awarded a new allocation containing the full amount of SUs, separate from any existing proposal or standard allocation service units.
