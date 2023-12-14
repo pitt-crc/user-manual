@@ -60,6 +60,12 @@ The priority weight for QOS is 2000.
             <td>0.84</td>
             <td>6-00:00:00</td>
         </tr>
+        <tr>
+            <td><code>Long-long (on SMP and HTC)</code></td>
+            <td>10</td>
+            <td>0.76</td>
+            <td>21-00:00:00</td>
+        </tr>
     </tbody>
 </table>
 
@@ -103,10 +109,6 @@ It is up to the job submitter to determine the demands of their job through some
 perform any necessary code optimization, and to then specify the memory, cpu, and time requirements 
 accordingly. This ensures that the job is queued with respect to FairShare, and that CRC resources utilized by a job 
 are available to other users within a reasonable time frame.
-
-Due to the current QOS system, you may have a job that is not restartable, and was originally submitted for 6 days 
-(long QOS), where the only way to keep it going is via extension. Please submit a ticket, providing details about 
-your job and justification for why it should be extended. 
 
 ## Exceeding Usage Limits will cause Job Pending Status
 After submission, a job can appear with a "status" of "PD" (not running).
@@ -181,13 +183,6 @@ The table below gives the maximum memory (in GB) for each QOS in the clusters/pa
     <tbody>
         <tr>
             <td>smp</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
             <td>smp</td>
             <td>13247</td>
             <td>11044</td>
@@ -249,7 +244,7 @@ There are a few possible reasons for this:
   surpassed the limit. This should resolve after the time remaining on your group's jobs has gone down, or when 
   they finish.
 - Your allocation proposal is expired. Check this with crc-usage. You can submit a new proposal or renew for a standard 
-  allocation of 10K service units.
+  allocation of 25K service units.
   Your allocation has been spent completely. You will need so [submit a request for service units](https://crc.pitt.edu/Pitt-CRC-Allocation-Proposal-Guidelines).
   A temporary extension of your current SU allocation may be granted while submitted proposals are under review, and can be 
   requested by submitting a ticket.
@@ -261,11 +256,12 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
 <table class="display cell-border" id="cTable">
     <thead>
         <tr>
-            <td>cluster</td>
-            <td>partition</td>
-            <td>short</td>
-            <td>normal</td>
-            <td>long</td>
+            <td>Cluster</td>
+            <td>Partition</td>
+            <td>Short QOS (1 Day)</td>
+            <td>Normal QOS (3 Days)</td>
+            <td>Long QOS (6 Days)</td>
+            <td>Long-long QOS (21 Days)</td>
         </tr>
     </thead>
     <tbody>
@@ -275,6 +271,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>2304</td>
             <td>1613</td>
             <td>1152</td>
+            <td>461</td>
         </tr>
         <tr>
             <td></td>
@@ -282,6 +279,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>320</td>
             <td>224</td>
             <td>160</td>
+            <td>64</td>
         </tr>
         <tr>
             <td>gpu</td>
@@ -289,6 +287,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>32</td>
             <td>20</td>
             <td>14</td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
@@ -296,6 +295,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>16</td>
             <td>12</td>
             <td>8</td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
@@ -303,6 +303,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>32</td>
             <td>24</td>
             <td>8</td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
@@ -310,6 +311,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>24</td>
             <td>16</td>
             <td>8</td>
+            <td></td>
         </tr>
         <tr>
             <td>mpi</td>
@@ -317,6 +319,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>504</td>
             <td>353</td>
             <td>252</td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
@@ -324,6 +327,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>3264</td>
             <td>2285</td>
             <td>1632</td>
+            <td></td>
         </tr>
         <tr>
             <td>htc</td>
@@ -331,6 +335,7 @@ If your group requests more CPU/GPUs than in this table you will be forced to wa
             <td>1216</td>
             <td>852</td>
             <td>608</td>
+            <td>307</td>
         </tr>
     </tbody>
 </table>
