@@ -35,7 +35,7 @@ extra:
           data: 0
           note: >- 
             Thanks for your feedback! Help us improve this page by creating an issue in 
-            our <a href="https://github.com/pitt-crc/user-manual/issuesnew/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
+            our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
 extra_css:
   - _assets/css/pitt_colors.css
 plugins:
