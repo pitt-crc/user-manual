@@ -19,6 +19,23 @@ theme:
     - content.code.annotate
 extra:
   homepage: https://crc.pitt.edu
+  analytics:
+    provider: google
+    property: G-MWFR2T3WJJ
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by creating an issue in 
+            our <a href="https://github.com/pitt-crc/user-manual/issuesnew/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
 extra_css:
   - _assets/css/pitt_colors.css
 plugins:
