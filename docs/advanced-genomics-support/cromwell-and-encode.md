@@ -1,5 +1,8 @@
 # Cromwell/WDL and ENCODE Pipelines
 
+https://crc.pitt.edu/content/encode-chip-seq-pipeline-2
+https://crc.pitt.edu/content/encode-atac-seq-pipeline
+
 ## Introduction
 
 The Workflow Description Language, or WDL (pronounced “widdle”), is a technical language developed at the Broad 
