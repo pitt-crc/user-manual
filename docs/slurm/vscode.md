@@ -2,16 +2,16 @@
 
 This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRC computing nodes.
 
-**Prerequisits:**
------------------
+## Prerequisites
 
-*   Latest version of VS Code on your local machine
-*   Latest version of the "Remote Development" extension pack ([here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)) 
+- The latest version of VS Code installed on your local machine
+- Latest version of the ["Remote Development" extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
-**Steps performed only once**
------------------------------
+## Steps performed **only once**
 
-*   Add the following lines to the ssh config file on your local machine (~/.ssh/config) and replace <name> with your username:
+Add the following lines to the ssh config file on your local machine (~/.ssh/config) 
+and replace <name> with your username:
+
 ```
 Host htc  
   ControlMaster auto  
@@ -25,9 +25,9 @@ Host htcx
   User <name>
 ```
 
-*   Connect to the HTC cluster and create the following sbatch file into your home directory (```~/tunnel.sbatch```):
+Connect to the HTC cluster and create the following sbatch file into your home directory (`~/tunnel.sbatch`):
 
-```
+```shell
 #!/bin/bash
 
 #SBATCH --output="tunnel.log"  
@@ -48,49 +48,54 @@ echo "Starting sshd on port $PORT"
 /usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id\_rsa
 ```
 
-*   In the terminal on your local machine, generate an ssh key if you don't have one already using the following:
+In the terminal on your local machine, generate an ssh key if you don't have one already using the following:
 ```
 ssh-keygen -t rsa
 ```
-*   Copy your local public ssh key to the cluster using:
+Copy your local public ssh key to the cluster using:
 ```
 ssh-copy-id htc
 ```
-*   On htc.crc.pitt.edu, run the following commands if you have not done so:
+On `htc.crc.pitt.edu`, run the following commands if you have not done so:
 ```
 ssh-keygen #then follow on screen instructions  
 cd ~/.ssh  
 cp id\_rsa.pub authorized\_keys
 ```
-**Steps performed every time to connect your VS Code to the cluster**
+
+## Steps performed every time to connect your VS Code to the cluster
 ---------------------------------------------------------------------
 
-*   From your local terminal, connect to the cluster using ssh htc  and once logged in, type sbatch tunnel.sbatch to start the remote server. Make sure that your job does run!
-    
+From your local terminal, connect to the cluster using ssh htc and once logged in, 
+type sbatch tunnel.sbatch to start the remote server. Make sure that your job does run!
 
 Sample output:
 
-```[user@login0b ~]$ sbatch tunnel.sbatch  
+```commandline
+[user@login0b ~]$ sbatch tunnel.sbatch  
 Submitted batch job 1383495  
 [user@login0b ~]$ squeue -u user
 
   JOBID      PARTITION      NAME      USER      ST      TIME      NODES      NODELIST(REASON)  
 1383495            htc    tunnel      user       R      0:17          1           htc-1024-n0
 ```
-*   Open VS Code on your local machine and connect to your projects using ```Remote Explorer``` with ```htcx``` as the ssh target.
 
-**Changes you need to do to allocate resources with GPUs**
+Open VS Code on your local machine and connect to your projects using `Remote Explorer` with `htcx` as the ssh target.
+
+## Changes you need to do to allocate resources with GPUs
 ----------------------------------------------------------
 
-*   Add the following host to the ssh config file on your local machine (```~/.ssh/config```) and replace ```<name>``` with your username:
+Add the following host to the ssh config file on your local machine (`~/.ssh/config`) and 
+replace `<name>` with your username:
 ```
 Host gpux  
   ProxyCommand ssh htc "nc \\$(squeue -M gpu --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
-*   Change the contents of the sbatch file in your home directory on HTC (```~/tunnel.sbatch```) to:
-```
+
+Change the contents of the sbatch file in your home directory on HTC (`~/tunnel.sbatch`) to:
+```shell
 #!/bin/bash  
 #SBATCH --output="tunnel.log"  
 #SBATCH --job-name="tunnel"  
