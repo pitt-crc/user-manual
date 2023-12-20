@@ -126,8 +126,8 @@ Good luck with your class and projects!
 !!! note
 
     You can only access the license server directly from a node or portal on the CRC cluster, as described above. 
-    If you need to connect directly from your desktop computer,  please submit a [request](https://pittforms.tfaforms.net/f/PittITServiceRequest) 
-    and **specify in your ticket that the case be transferred to SSOE IT**. You will need to provide the following 
+    If you need to connect directly from your desktop computer,  please submit a [request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=237&RequestorType=Service?) 
+    and **specify in your ticket that the case be transferred to SSOE IT**. You will need to be logged in to your Pitt account and provide the following 
     information in your request:
 
     - Software Name:
