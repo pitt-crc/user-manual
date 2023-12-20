@@ -9,8 +9,8 @@ and can be accessed via the module system with the command "module load lumerica
 
     You can only access the license server directly from a node or portal on the CRC cluster. 
     If you need to connect directly from your desktop computer, please submit 
-    a [request](https://pittforms.tfaforms.net/f/PittITServiceRequest) and **specify in your ticket that 
-    the case be transferred to SSOE IT**. You will need to provide the following information in your request:
+    a [request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=237&RequestorType=Service?) and **specify in your ticket that 
+    the case be transferred to SSOE IT**. You will need to be logged in to your Pitt account and provide the following information in your request:
 
     - Software Name:
     - Request date:
