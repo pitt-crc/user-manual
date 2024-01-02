@@ -36,14 +36,14 @@ Connect to the HTC cluster and create the following sbatch file into your home d
 #SBATCH --cpus-per-task=2 # number of cores  
 #SBATCH --mem-per-cpu=8G # memory per CPU core
 
-\# load the modules  
+# load the modules  
 module load python/ondemand-jupyter-python3.8
 
-\# find open port  
+# find open port  
 PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()\[1\]); s.close()')  
 scontrol update JobId="$SLURM\_JOB\_ID" Comment="$PORT"
 
-\# start sshd server on the available port  
+# start sshd server on the available port  
 echo "Starting sshd on port $PORT"  
 /usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id\_rsa
 ```
@@ -107,11 +107,11 @@ Change the contents of the sbatch file in your home directory on HTC (`~/tunnel.
 
 module load python/ondemand-jupyter-python3.8 # load the modules
 
-\# find open port  
+# find open port  
 PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0));  
 print(s.getsockname()\[1\]); s.close()')  
 scontrol update JobId="$SLURM\_JOB\_ID" Comment="$PORT"  
-\# start sshd server on the available port  
+# start sshd server on the available port  
 echo "Starting sshd on port $PORT"  
 /usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id\_rsa
 ```
