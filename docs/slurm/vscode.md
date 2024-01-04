@@ -20,7 +20,7 @@ Host htc
   User <name>
 
 Host htcx  
-  ProxyCommand ssh htc "nc \\$(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
+  ProxyCommand ssh htc "nc \$(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
@@ -40,12 +40,12 @@ Connect to the HTC cluster and create the following sbatch file into your home d
 module load python/ondemand-jupyter-python3.8
 
 # find open port  
-PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()\[1\]); s.close()')  
-scontrol update JobId="$SLURM\_JOB\_ID" Comment="$PORT"
+PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')  
+scontrol update JobId="$SLURM_JOB_ID" Comment="$PORT"
 
 # start sshd server on the available port  
 echo "Starting sshd on port $PORT"  
-/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id\_rsa
+/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_rsa
 ```
 
 In the terminal on your local machine, generate an ssh key if you don't have one already using the following:
@@ -60,7 +60,7 @@ On `htc.crc.pitt.edu`, run the following commands if you have not done so:
 ```
 ssh-keygen #then follow on screen instructions  
 cd ~/.ssh  
-cp id\_rsa.pub authorized\_keys
+cp id_rsa.pub authorized_keys
 ```
 
 ## Steps performed every time to connect your VS Code to the cluster
@@ -89,7 +89,7 @@ Add the following host to the ssh config file on your local machine (`~/.ssh/con
 replace `<name>` with your username:
 ```
 Host gpux  
-  ProxyCommand ssh htc "nc \\$(squeue -M gpu --me --name=tunnel --states=R -h -O NodeList,Comment)"  
+  ProxyCommand ssh htc "nc \$(squeue -M gpu --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
@@ -109,9 +109,9 @@ module load python/ondemand-jupyter-python3.8 # load the modules
 
 # find open port  
 PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0));  
-print(s.getsockname()\[1\]); s.close()')  
-scontrol update JobId="$SLURM\_JOB\_ID" Comment="$PORT"  
+print(s.getsockname()[1]); s.close()')  
+scontrol update JobId="$SLURM_JOB_ID" Comment="$PORT"  
 # start sshd server on the available port  
 echo "Starting sshd on port $PORT"  
-/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id\_rsa
+/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_rsa
 ```
