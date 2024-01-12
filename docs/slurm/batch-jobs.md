@@ -131,6 +131,24 @@ crc-job-stats.py
 cp <outputs> $SLURM_SUBMIT_DIR 
 ```
 
+
+## GPU Jobs
+
+If you want to submit a GPU job, you only need to make some minor changes to the above script, i.e. changing the cluster and partition names a well as specifying the number of requested GPUs and nodes:
+
+
+```shell
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --time=0-00:01:00
+#SBATCH --ntasks-per-node=<NUMBER OF GPU NODES>
+#SBATCH --gres=gpu:<NUMBER OF GPUs PER NODE>
+#SBATCH --cluster=gpu
+#SBATCH --partition=a100
+
+<USER_SPECIFC COMMAND FOR GPU CODE TO BE EXECUTED>
+```
+
 ### Specify the interpreter
 A shebang (#!) line must be present. The shebang line can call any shell or scripting language available on the cluster.
 For example `#!/bin/bash`, `#!/bin/tcsh`, `#!/bin/env python` or `#!/bin/env perl`.
