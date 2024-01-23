@@ -1,4 +1,4 @@
-# ANSYS Lumerical Photonics Simulation Software
+# Lumerical Photonics Simulation Suite (ANSYS)
 
 ## 1.  Licensing setup on your own laptop or desktop
 
