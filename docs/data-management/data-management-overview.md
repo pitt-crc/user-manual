@@ -17,7 +17,7 @@ There are several distinct file spaces available on clusters, each serving a dif
 	<ul>
 		<li>5 TB provisions for new allocations can be found here.</li>
 		<li>There is no charge for a 5 TB provision on ix.</li>
-		<li>If you do not have a location provisioned, <a href="https://crc.pitt.edu/webforms-and-requests/storage-request-guidelines-and-webform">please let us know with this form</a>.</li>
+		<li>If you do not have a location provisioned, <a href="https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service">please let us know by submitting a ticket</a>.</li>
 		<li>5 TB increments of extra storage are available for purchase at a subsidized rate of $65 per TB per year.</li>
 	</ul>
 	</li>
@@ -69,7 +69,7 @@ their man pages.
 If you are working with collaborators that also have CRC user accounts, but are not in your user group, a shared folder 
 under your `/ix` location can be used to facilitate sharing data between your groups.
 
-These should be requested by [submitting a ticket](https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form) 
+These should be requested by [submitting a ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service) 
 and providing details about the users that need access.
 
 This should include Pitt Usernames and specifics about the permissions they will require (read, write, execute, etc).
@@ -79,7 +79,7 @@ This should include Pitt Usernames and specifics about the permissions they will
 
 `/ix`, `/zfs1`, and `/zfs2` keep snapshots for up to 7 days.
 
-[Submit a help ticket](https://crc.pitt.edu/webforms-and-requests/submitting-help-ticket-guidelines-and-submission-form) 
+[Submit a help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service) 
 with your request to restore data from snapshots.
 
 **Snapshots are not available for `/bgfs` locations**
