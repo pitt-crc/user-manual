@@ -41,7 +41,7 @@ a terminal window by right-clicking on the desktop background and select the "Op
 drop-down menu, or click on the black terminal window symbol at the bottom of your screen. Inside the terminal, type 
 `module load ansys` and hit enter. This will make the ANSYS 2023R1 suite available. To launch your specific ANSYS 
 application, type its name as listed within the brackets above, such as "fluent" or "cfx5" and hit enter. Please 
-be aware that the **capitalization** is important!  To launch the workbench, type "launcher". 
+be aware that the **capitalization** is important!  To launch the workbench, type "runwb2". 
 
 ![](https://crc.pitt.edu/sites/default/files/Screenshot_ANSYS_VIZ.png)
 <!-- TODO: replace with image hosted in assets -->
