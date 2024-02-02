@@ -5,7 +5,7 @@ toolbox to allow you to submit jobs from directly to a remote HPC cluster.
 
 This allows you to take full advantage of the computing power available on the CRC's clusters to perform complex 
 parallelized computations in MATLAB. Parallel jobs can be submitted either from an SBATCH submission on the clusters 
-or on your own computer with custom a set of custom scripts that integrate with SLURM. In fact, you must use the 
+or on your own computer with custom a set of custom scripts that integrate with Slurm. In fact, you must use the 
 MATLAB Parallel Server if you want to run MATLAB jobs that span multiple nodes. 
 
 When you submit a MATLAB Parallel Server job from your MATLAB desktop client, scripts and data are transferred to the 

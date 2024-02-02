@@ -1,6 +1,6 @@
 # CRC Wrappers
 
-The CRC Team provides some wrapper scripts that make interacting with SLURM easier by abstracting away some of the details of common commands. The scripts are written in Python and should accept;<span style="font-family:courier new,courier,monospace;">-h</span>;and;<span style="font-family:courier new,courier,monospace;">--help</span>;to provide help documentation.
+The CRC Team provides some wrapper scripts that make interacting with Slurm easier by abstracting away some of the details of common commands. The scripts are written in Python and should accept;<span style="font-family:courier new,courier,monospace;">-h</span>;and;<span style="font-family:courier new,courier,monospace;">--help</span>;to provide help documentation.
 
 ## What commands are available?
 
@@ -10,7 +10,7 @@ The CRC Team provides some wrapper scripts that make interacting with SLURM easi
 	<thead>
 		<tr>
 			<td>Wrapper Command</td>
-			<td>SLURM Functionality</td>
+			<td>Slurm Functionality</td>
 			<td>Explanation</td>
 		</tr>
 	</thead>

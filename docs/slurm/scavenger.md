@@ -11,15 +11,15 @@ For example, users may have noticed that:
 
 - We no longer add new nodes to the scavenger partitions of other clusters when the hardware is retired.
 
-Our team has made these decisions in the context of a larger conversation around our Allocation Proposal process, and the SLURM workload manager configuration used on the clusters:
+Our team has made these decisions in the context of a larger conversation around our Allocation Proposal process, and the Slurm workload manager configuration used on the clusters:
 
 **There are abundant compute resources are available upon request**
 
 A "Standard Allocation" of 25,000 service units per year is available to all faculty accounts, and is usable on any cluster to benchmark workflows and prepare a larger request for resources. The proposal process is sufficient for nearly all use cases we've encountered previously, and gives us a way to document the changing demands of our diverse user base over time. We will be increasing the standard allocation amount as well to help reduce any inconvenience caused by removing scavenger.
 
-**It simplifies our SLURM configuration related to job priority**
+**It simplifies our Slurm configuration related to job priority**
 
-As they are configured, the scavenger partitions have been found to create situations where jobs charging an account's service units are **not** preempting scavenger jobs due to how their priority factor is established. There are other ways within SLURM to manage priority and avoid this, so our intention is to simplify the configuration and ultimately provide more transparency to our users about how priority is computed.
+As they are configured, the scavenger partitions have been found to create situations where jobs charging an account's service units are **not** preempting scavenger jobs due to how their priority factor is established. There are other ways within Slurm to manage priority and avoid this, so our intention is to simplify the configuration and ultimately provide more transparency to our users about how priority is computed.
 
 Scavenger Partition Overview
 ----------------------------

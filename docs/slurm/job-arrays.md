@@ -12,7 +12,7 @@ Job arrays offer a mechanism for submitting and managing collections of similar 
 
 Job arrays are only supported for batch jobs and the array index values are specified using the --array or -a option of the sbatch command. The option argument can be specific array index values, a range of index values, and an optional step size as shown in the examples below.
 
-Assume that one has a folder with 5 paired end Illumila data set. The file names are ```SRR098333_1.fastq```, ```SRR098333_2.fastq```, ```SRR098334_1.fastq```, ```SRR098334_2.fastq```, …, ```SRR098338_1.fastq```, ```SRR098338_2.fastq```. One would like to perform fastqc on all files. create a SLURM batch file ```fastqc.sbatch```:
+Assume that one has a folder with 5 paired end Illumila data set. The file names are ```SRR098333_1.fastq```, ```SRR098333_2.fastq```, ```SRR098334_1.fastq```, ```SRR098334_2.fastq```, …, ```SRR098338_1.fastq```, ```SRR098338_2.fastq```. One would like to perform fastqc on all files. create a Slurm batch file ```fastqc.sbatch```:
 
 ```commandline
 #!/bin/bash
@@ -171,7 +171,7 @@ Sbatch will wrap the specified command string in a simple "sh" shell script, and
 
 For example, lets say you want to run gzip on all fastq files within this directory. Create a shell script called ```run_gzip.sh```:
 
-loop over all fastq files in the directory, print the filename and submit the gzip jobs to SLURM
+loop over all fastq files in the directory, print the filename and submit the gzip jobs to Slurm
 
 ```commandline
 #!/bin/bash
@@ -181,7 +181,7 @@ for FILE in \*.fastq; do
     sleep 1 # pause to be kind to the scheduler
 done
 ```
-then run script, which will submit a SLURM job for every .fastq file in the directory and gzip it.
+then run script, which will submit a Slurm job for every .fastq file in the directory and gzip it.
 ```commandline
 ./run_gzip.sh
 ```

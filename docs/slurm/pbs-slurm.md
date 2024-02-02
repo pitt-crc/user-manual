@@ -1,6 +1,6 @@
-# PBS to SLURM Commands
+# PBS to Slurm Commands
 
-PBS Torque and SLURM scripts are two frameworks for specifying the resource requirements and settings for the job you want to run. Frank used PBS Torque for specifying the resource requirement. For the most part, there are equivalent settings in each script. The following table lists examples of equivalent options for PBS and SLURM job scripts.
+PBS Torque and Slurm scripts are two frameworks for specifying the resource requirements and settings for the job you want to run. Frank used PBS Torque for specifying the resource requirement. For the most part, there are equivalent settings in each script. The following table lists examples of equivalent options for PBS and Slurm job scripts.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -67,4 +67,4 @@ PBS Torque and SLURM scripts are two frameworks for specifying the resource requ
     });
 </script>
 
-A complete comparison of PBS Torque and SLURM script commands&nbsp;is available.&nbsp; <strong>link to PDF</strong>
+A complete comparison of PBS Torque and Slurm script commands&nbsp;is available.&nbsp; <strong>link to PDF</strong>
