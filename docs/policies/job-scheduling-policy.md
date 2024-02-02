@@ -113,7 +113,7 @@ are available to other users within a reasonable time frame.
 ## Exceeding Usage Limits will cause Job Pending Status
 After submission, a job can appear with a "status" of "PD" (not running).
 
-There are various reasons that SLURM will put your job in a pending state. Some common explanations are listed below.
+There are various reasons that Slurm will put your job in a pending state. Some common explanations are listed below.
 
 ### Reasons related to resource availability and job dependencies:
 
@@ -139,7 +139,7 @@ There are various reasons that SLURM will put your job in a pending state. Some 
         <tr>
             <td>Dependency</td>
             <td>A job cannot start until another job is finished. This only happens if you included a &quot;--dependency&quot; 
-directive in your SLURM script.</td>
+directive in your Slurm script.</td>
             <td>Wait until the job that you have marked as a dependency is finished, then your job will run</td>
         </tr>
         <tr>

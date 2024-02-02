@@ -119,7 +119,7 @@ The ```sbatch``` arguments here are the minimal subset required to accurately sp
 		</tr>
 		<tr>
 			<td>--account</td>
-			<td>Charge resources used by this job to specified account. This is only relevant for users who are in multiple SLURM accounts because he/she is in groups that are collaborating.</td>
+			<td>Charge resources used by this job to specified account. This is only relevant for users who are in multiple Slurm accounts because he/she is in groups that are collaborating.</td>
 		</tr>
 	</tbody>
 </table>

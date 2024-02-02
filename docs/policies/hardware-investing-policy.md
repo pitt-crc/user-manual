@@ -28,7 +28,7 @@ benefits stated below.
             <td>All hardware is professionally managed by the Network Operations Center (https://www.technology.pitt.edu/network-operations-center-noc) at no charge to investors, and are administered with state of the art networking and security practices.</td>
         </tr>
         <tr>
-            <td>SLURM Allocation Service Units</td>
+            <td>Slurm Allocation Service Units</td>
             <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 100% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
         </tr>
         <tr>

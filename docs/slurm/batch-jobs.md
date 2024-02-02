@@ -1,10 +1,10 @@
-# SLURM Batch Jobs
-A brief introduction to SLURM batch jobs and a simple example job can be found in our  
+# Slurm Batch Jobs
+A brief introduction to Slurm batch jobs and a simple example job can be found in our  
 [Getting Started section](https://crc.pitt.edu/getting-started/running-jobs-slurm).
 
-This page will provide lower level details related to SLURM jobs, as well as a more complex example submission script.
+This page will provide lower level details related to Slurm jobs, as well as a more complex example submission script.
 
-## SLURM Batch Job Arguments
+## Slurm Batch Job Arguments
 
 Below are a subset of sbatch arguments that can be used to specify a job on the cluster. You do not need to include 
 them all. 
@@ -77,7 +77,7 @@ Please refer to the [slurm documentation on sbatch](https://slurm.schedmd.com/sb
         </tr>
         <tr>
             <td><code>--cpus-per-task</code></td>
-            <td>Advise the SLURM controller that ensuing job steps will require ncpus number of processors per task.</td>
+            <td>Advise the Slurm controller that ensuing job steps will require ncpus number of processors per task.</td>
             <td> Use this to facillitate multithreading.</td>
         </tr>
         <tr>
@@ -99,7 +99,7 @@ Please refer to the [slurm documentation on sbatch](https://slurm.schedmd.com/sb
 	
 
 
-## A More Complex SLURM Submission Script Example
+## A More Complex Slurm Submission Script Example
 
 Below is a more abstracted example that loads some modules from the module systems, copies inputs and outputs, etc.
 

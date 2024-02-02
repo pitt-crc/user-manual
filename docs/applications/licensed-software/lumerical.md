@@ -99,12 +99,12 @@ To end your MATE session, click on **System** followed by **Shut Down** or **Log
 
 ![](https://crc.pitt.edu/sites/default/files/viz-lumerical-09.png)
 
-## 3. Submitting a SLURM batch job to CRC cluster
+## 3. Submitting a Slurm batch job to CRC cluster
 
 There is a limited number of GUI licenses (3x) but a larger number of compute engine licenses (12x). One strategy to 
 optimize usage of the GUI licenses is to use the Lumerical IDE to set up the simulation system, close the IDE 
 (to free up the license), and then submit jobs to the CRC cluster. You will need a FDTD project file (`.fsp`) and a 
-SLURM job submission script. An example can be found within the following directory on the cluster login node
+Slurm job submission script. An example can be found within the following directory on the cluster login node
 
 ```commandline
 /ihome/crc/how_to_run/lumerical

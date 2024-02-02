@@ -154,10 +154,10 @@ Using custom virtual environments with Jupyter on OnDemand:
     ![type:video](../_assets/img/applications/7.install_jupyterlmod.mp4)
     ![type:video](../_assets/img/applications/jupyter_ondemand.mp4)
 
-Running SLURM jobs using your virtual environment:
+Running Slurm jobs using your virtual environment:
 --------------------------------------------------
 
-Here are sample batch files for creating a SLURM job using your newly installed virtual environment depending on the way you created the environment:
+Here are sample batch files for creating a Slurm job using your newly installed virtual environment depending on the way you created the environment:
 
 1.  If you used an Lmod python module to create your environment, then you must follow the following format (the same python module you used for creating the environment must be used):
     
