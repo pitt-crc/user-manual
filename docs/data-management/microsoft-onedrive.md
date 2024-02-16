@@ -11,7 +11,7 @@ University of Pittsburgh Microsoft OneDrive by visiting the above link and
 logging in.
 - Under the university agreement, University of Pittsburgh faculty, staff 
 and students have access to 5TB in Microsoft OneDrive; the maximum file size 
-is 100GB. Storage limits can be increased up to a max of 25TB. This requires 
+is 250GB. Storage limits can be increased up to a max of 25TB. This requires 
 a ticket to Pitt IT technology help desk to process. After 25TB, additional 
 accounts/sites can be created with another 25TB cap. 
 - Microsoft OneDrive is **not** suitable for storing sensitive data, including 
