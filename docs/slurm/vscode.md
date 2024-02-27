@@ -20,7 +20,7 @@ Host htc
   User <name>
 
 Host htcx  
-  ProxyCommand ssh htc "nc \$(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
+  ProxyCommand ssh htc "nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
@@ -60,7 +60,7 @@ On `htc.crc.pitt.edu`, run the following commands if you have not done so:
 ```
 ssh-keygen #then follow on screen instructions  
 cd ~/.ssh  
-cp id_rsa.pub authorized_keys
+cat id_rsa.pub >> authorized_keys
 ```
 
 ## Steps performed every time to connect your VS Code to the cluster
