@@ -20,7 +20,7 @@ Host htc
   User <name>
 
 Host htcx  
-  ProxyCommand ssh htc "nc \$(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
+  ProxyCommand ssh htc "nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
