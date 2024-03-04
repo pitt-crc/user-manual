@@ -10,7 +10,7 @@ This tutorial outlines how to set up VS Code for interactive/remote development/
 ## Steps performed **only once**
 
 Add the following lines to the ssh config file on your local machine (~/.ssh/config) 
-and replace <name> with your username:
+and replace <name> with your Pitt username:
 
 ```
 Host htc  
@@ -21,6 +21,19 @@ Host htc
 
 Host htcx  
   ProxyCommand ssh htc "nc \$(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
+  StrictHostKeyChecking no  
+  User <name>
+```
+
+For users on a **Windows** machine, the ControlMaster may not be available, so add the following lines instead:
+
+```
+Host htc
+  HostName htc.crc.pitt.edu
+  User <name>
+
+Host htcx  
+  ProxyCommand ssh htc "nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
   StrictHostKeyChecking no  
   User <name>
 ```
