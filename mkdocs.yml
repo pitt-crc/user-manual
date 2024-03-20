@@ -39,12 +39,15 @@ extra:
 extra_css:
   - _assets/css/pitt_colors.css
 plugins:
-  - search
   - mkdocstrings
   - mkdocs-video:
       is_video: True
       video_autoplay: True
       video_loop: True
+  - redirects:
+      redirect_maps:
+        'data-management/globus-microsoft-onedrive.md': 'https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=823'
+  - search
 markdown_extensions:
   - admonition
   - attr_list

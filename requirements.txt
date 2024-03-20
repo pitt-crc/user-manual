@@ -1,3 +1,4 @@
 mkdocstrings
 mkdocs-material
 mkdocs-video
+mkdocs-redirects
