@@ -172,7 +172,7 @@ Here are sample batch files for creating a Slurm job using your newly installed 
     module load python/ondemand-jupyter-python3.10 
       
     #Activate your environment 
-    source activate =/ix/<your group name>/<your user name>/envs/my_env 
+    source activate /ix/<your group name>/<your user name>/envs/my_env 
       
     #Run commands utilizing your loaded Python tool 
     python xyz.py
