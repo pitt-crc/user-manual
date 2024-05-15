@@ -126,7 +126,7 @@ trap run_on_exit EXIT
 
 srun <job executable with parameters>           
 
-crc-job-stats.py                                 
+crc-job-stats                                 
 
 cp <outputs> $SLURM_SUBMIT_DIR 
 ```
@@ -175,7 +175,7 @@ each job step  to change the utilized resources, but they cannot exceed those gi
 
 ### Report Job Statistics 
 
-Add a call to the `crc-job-stats.py` wrapper script to display statistics for your job. 
+Add a call to the `crc-job-stats` wrapper script to display statistics for your job. 
 
 
 ### Output Handling
