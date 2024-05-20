@@ -46,7 +46,7 @@ CLC workbench download link
 ### CLC Genomics Workbench 24.0.1 for clcbio.crc.pitt.edu  
 Version: 24.0.1
 
-*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1.dmg)
+*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_x86_64.dmg)
 *   [Download Linux 64 bit installer - 320.2 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.sh)
 *   [Download Windows 64 bit installer - 279.4 MB (.exe](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.exe))
 
