@@ -43,4 +43,58 @@ intermediate outputs back to the submit directory upon job completion, and then 
 space. Finally, the script copies the output files back to the submit directory. By default, the working directory of 
 your job is the directory from which the batch script was submitted.
 
+
+## Using scratch for multi-node jobs
+
+If your job is running on multiple nodes, then you need to make sure to transfer files to and from the local scratch of all nodes with 'sbcast' and 'sgather'. An example script is shown below:
+
+```shell
+#!/bin/bash
+#SBATCH --output=job.o%j
+#SBATCH --error=job.e%j
+#SBATCH --job-name="TestScratch"
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=48
+#SBATCH --cluster=mpi
+#SBATCH --partition=mpi
+#SBATCH --account=sam
+#SBATCH --time=00:09:30
+
+module purge
+
+RUNDIR=/bgfs/sam/chx33/simulations
+cd $RUNDIR
+
+#echo SLURM_NTASKS $SLURM_NTASKS
+#echo $SLURM_SCRATCH
+
+echo 'Project storage path:'  $PWD >> test.in
+
+sbcast test.file $SLURM_SCRATCH/test.in
+
+srun -n $SLURM_NNODES  -N $SLURM_NNODES bash -c 'echo $(hostname):$SLURM_JOB_ID:$SLURM_TASK_PID Local node scratch:$SLURM_SCRATCH >> $SLURM_SCRATCH/scratch.out'
+srun -n  $SLURM_NNODES -N $SLURM_NNODES bash -c 'cat test.in >> $SLURM_SCRATCH/scratch.out'
+
+sgather $SLURM_SCRATCH/scratch.out $RUNDIR/copy_scratch
+
+files=($(ls $RUNDIR/copy*))
+for file in  ${files[@]} ; do echo "Filename: $file";echo "File content:"; tail $file;  done
+```
+
+The job output is as follows, note that the files copied back from the local node scratch to project storage have the node hostname appended to their original filename:
+
+```shell
+[chx33@login1 simulations]$ sbatch mpiscratch.slurm
+Submitted batch job 2162366 on cluster mpi
+[chx33@login1 simulations]$ tail job.o2162366
+Filename: /bgfs/sam/chx33/simulations/copy_scratch.mpi-n62.crc.pitt.edu
+File content:
+mpi-n62.crc.pitt.edu:2162366:20097 Local node scratch:/scratch/slurm-2162366
+Project storage path: /bgfs/sam/chx33/simulations
+Filename: /bgfs/sam/chx33/simulations/copy_scratch.mpi-n63.crc.pitt.edu
+File content:
+mpi-n63.crc.pitt.edu:2162366:30979 Local node scratch:/scratch/slurm-2162366
+Project storage path: /bgfs/sam/chx33/simulations
+```
+
 ## Using scratch space with Amber jobs
