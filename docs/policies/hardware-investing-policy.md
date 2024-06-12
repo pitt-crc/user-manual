@@ -32,10 +32,6 @@ benefits stated below.
             <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 100% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
         </tr>
         <tr>
-            <td>Priority Job Submission</td>
-            <td>Investors receive higher priority on jobs submitted to CRC resources.</td>
-        </tr>
-        <tr>
             <td>Bulk Volume Equipment Rates</td>
             <td>Investors can take advantage of lower equipment prices negotiated by CRC based on the large volumes required for our cluster refreshes.</td>
         </tr>
