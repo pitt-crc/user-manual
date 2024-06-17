@@ -15,7 +15,7 @@ All available modules are Anaconda distributions of Python that support pip and 
 Creating a virtual environment after loading Python via the module system:
 --------------------------------------------------------------------------
 
-1.  Load a Python module from Lmod, for general use we recommend a latest Anaconda distribution such as:
+1.  Load a Python module from Lmod (using ```module load python/ondemand-jupyter-python3.10``` ), for general use we recommend a latest Anaconda distribution such as:
     
     You can use ```module spider python/ondemand-jupyter-python3.10```  to generate the prerequisite modules needed to load ahead of loading this particular module.
     
