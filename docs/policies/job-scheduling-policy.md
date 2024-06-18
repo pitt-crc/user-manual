@@ -166,6 +166,35 @@ that has been marked as a dependency.</td>
 </script>
 
 ### Reasons related to exceeding a usage limit:
+
+#### JobArrayTaskLimit, QOSMaxJobsPerUserLimit and QOSMaxJobsPerAccountLimit
+One or more of your jobs have exceeded limits in place on the number of jobs you can have in the queue 
+**that are actively accruing priority**. Jobs with this status will remain in the queue, but will not being accruing
+priority until other jobs from the submitting user have completed. 
+
+In most cases the **per-account limit is 500 jobs**, and the **per-user limit is 100 jobs**. You can use 
+`sacctmgr show qos format=Name%20,MaxJobsPA,MaxJobsPU,MaxSubmitJobsPA,MaxSubmitJobsPU,MaxTresPA%20` to view the limits 
+for any given QOS. 
+
+The maximum job array size is 100 on SMP, MPI, and HTC. The array size limits are defined at the cluster configuration level:
+```
+[nlc60@login1 ~] : for cluster in smp mpi gpu htc; do echo $cluster; scontrol -M $cluster show config | grep MaxArraySize; done
+smp
+MaxArraySize            = 100
+mpi
+MaxArraySize            = 100
+gpu
+MaxArraySize            = 1001
+htc
+MaxArraySize            = 100
+```
+
+These limits exist to prevent users who batch submit large quantities of jobs in a loop or job array from having all of 
+their jobs at a higher priority than one-off submissions simply due to having submitted them all at once. 
+
+A hard limit on the maximum number of submitted jobs (including in a job array) is 1000. This separate limit exists to 
+prevent any one user from overwhelming the workload manager with a singular, very large request for resources.
+
 #### MaxMemoryPerAccount
 The job exceeds the current within-group memory quota. The maximum quota available depends on the cluster and partition. 
 The table below gives the maximum memory (in GB) for each QOS in the clusters/partitions it is defined.
@@ -237,12 +266,12 @@ your completed jobs:
     Memory Efficiency: 14.29% of 900.00 GB
 ```
 
-#### AssocGrpBillingRunMinutesLimit
-There are a few possible reasons for this:
-
+#### AssocGrpBillingMinutes
 - Your group's Allocation ("service units") usage has surpassed the limit specified in your active resource Allocation, 
-  or your Allocation has expired. You can double-check this with `crc-usage`. 
+  or your active Allocations have expired. You can double-check this with `crc-usage`. 
   [Please submit a new Resource Allocation Request following our guidelines](https://crc.pitt.edu/Pitt-CRC-Allocation-Proposal-Guidelines).
+
+
 
 #### MaxTRESPerAccount, MaxCpuPerAccount, or MaxGRESPerAccount
 In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length. 
