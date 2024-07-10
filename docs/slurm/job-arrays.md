@@ -53,7 +53,7 @@ Job arrays are easy if the files are named sequentially in the example above. If
 #SBATCH --array=1-6 # job array index
 #SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
 
-module load FastQC/0.11.5
+module load fastqc/0.11.9
 
 # get file name
 file=`ls *_1.fastq | head -n $SLURM_ARRAY_TASK_ID | tail -n 1`
