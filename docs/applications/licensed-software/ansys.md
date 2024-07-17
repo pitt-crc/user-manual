@@ -28,6 +28,10 @@ use under the academic license; the launch command for each application is inclu
 
 - Icepak (icepak)
 
+### Electromagnetics(ANSYSEM)
+
+- Tools like HFSS, Maxwell can all be launched from the unified Ansys Electronics Desktop (ansysedt)
+
 ### HPC interface:
 
 - ANSYS RSM (rsmluancher)
@@ -39,7 +43,7 @@ use under the academic license; the launch command for each application is inclu
 Please read the [documentation](../../web-portals/viz.md) on how to access VIZ. Once you have logged into VIZ, open 
 a terminal window by right-clicking on the desktop background and select the "Open Terminal here" option from the 
 drop-down menu, or click on the black terminal window symbol at the bottom of your screen. Inside the terminal, type 
-`module load ansys` and hit enter. This will make the ANSYS 2023R1 suite available. To launch your specific ANSYS 
+`module load ansys` (or 'module load ansysem' for ANSYS EM Suite) and hit enter. This will make the ANSYS 2023R1 suite (or ANSYS EM suite) available. To launch your specific ANSYS (or ANSYS EM) 
 application, type its name as listed within the brackets above, such as "fluent" or "cfx5" and hit enter. Please 
 be aware that the **capitalization** is important!  To launch the workbench, type "runwb2". 
 
@@ -91,10 +95,10 @@ numcores=$SLURM_NTASKS
 $CFX_EXE -def $DEF_FILE -par-local -partition $numcores
 ```
 Submit the job by running `sbatch smp_ansys_cfx.slurm`. You can check the full status of your job on the cluster by 
-running the wrapper `crc-squeue.py`, as follows:
+running the wrapper `crc-squeue`, as follows:
 
 ```commandline
-[chx33@login1 CFX_example]$ crc-squeue.py
+[chx33@login1 CFX_example]$ crc-squeue
 CLUSTER: gpu
   JOBID PAR                                NAME ST         TIME  NODES CPUS     NODELIST(REASON)
 

@@ -99,6 +99,12 @@ Each of these has a TRES Billing Weight assigned to it in the cluster configurat
 			<td>0</td>
 		</tr>
 		<tr>
+			<td>&nbsp;</td>
+			<td>l40s</td>
+			<td>8</td>
+			<td>0</td>
+		</tr>
+		<tr>
 			<td>HTC</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>

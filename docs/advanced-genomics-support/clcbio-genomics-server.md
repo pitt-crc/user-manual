@@ -9,18 +9,18 @@ Integrating with the CLCbio Genomics Server
 
 We currently maintain two clcbio servers: clcbio.crc.pitt.edu and clcbio-stage.crc.pitt.edu.
 
-*   clcbio.crc.pitt.edu runs CLC Genomics Server 23.0.4.
+*   clcbio.crc.pitt.edu runs CLC Genomics Server 24.0.1.
 *   clcbio-stage.crc.pitt.edu runs perpetual CLC Genomics Server 11.0.3.
 *   CLC Genome Finishing Server Extension and CLC Microbial Genomics Server Extension are enabled on clcbio.crc.pitt.edu.
 *   CLC Assembly Cell 5.0.3 is available on HTC cluster.
 
 The following are the corresponding client applications for CLC Genomics Server 23.0 clcbio.crc.pitt.edu
 
-*   QIAGEN CLC Genomics Workbench 23.0.4
-*   QIAGEN CLC Main Workbench 23.0.4
-*   QIAGEN CLC Command Line Tools 23.0.4
+*   QIAGEN CLC Genomics Workbench 24.0.1
+*   QIAGEN CLC Main Workbench 24.0.1
+*   QIAGEN CLC Command Line Tools 24.0.1
 
-CLC Genomics Server 23.0.4 is compatible with GCE version 23.0.4.
+CLC Genomics Server 24.0.1 is compatible with GCE version 24.0.1.
 
 ### Server plugins (clcbio.crc.pitt.edu)
 
@@ -43,12 +43,12 @@ Additional Alignments Server Plugin
 CLC workbench download link
 ---------------------------
 
-### CLC Genomics Workbench 23.0.4 for clcbio.crc.pitt.edu  
-Version: 23.0.4
+### CLC Genomics Workbench 24.0.1 for clcbio.crc.pitt.edu  
+Version: 24.0.1
 
-*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/23.0.4/CLCGenomicsWorkbench_23_0_4.dmg)
-*   [Download Linux 64 bit installer - 320.2 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/23.0.4/CLCGenomicsWorkbench_23_0_4_64.sh)
-*   [Download Windows 64 bit installer - 279.4 MB (.exe](http://download.clcbio.com/CLCGenomicsWorkbench/23.0.4/CLCGenomicsWorkbench_23_0_4_64.exe))
+*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_x86_64.dmg)
+*   [Download Linux 64 bit installer - 320.2 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.sh)
+*   [Download Windows 64 bit installer - 279.4 MB (.exe](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.exe))
 
 ### CLC Genomics Workbench 12.0.3 for clcbio-stage.crc.pitt.edu  
 Version: 12.0.3 - Release date: 15. Aug 2019

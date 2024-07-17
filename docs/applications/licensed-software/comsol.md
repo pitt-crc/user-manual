@@ -84,7 +84,7 @@ CAD Import Module, Design Module, Matlab/Simulink
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --time=0-01:00:00       # Syntax is DD-HH:MM:SS
-#SBATCH --cluster=smp           # Run crc-sinfo.py to get the cluster and partition details
+#SBATCH --cluster=smp           # Run crc-sinfo to get the cluster and partition details
 #SBATCH --partition=smp
 
 # Load Modules
@@ -336,3 +336,20 @@ squeue -M smp -u jre31 -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %.20R %L"
 
 will show their jobs on that cluster, and providing the `%L` argument to the format of the output of that function 
 shows the `TIME_LEFT (D-HH:MM:SS)` given how long the job has been running and the QOS they defined for the job. 
+
+
+### 3- Connect from your local computer
+
+You can also run COMSOL from your local machine and check out the license from the SSOE server. All you need to do is to specify the license server hostname and port number during step 3 of the COMSOL installation on your machine, as described in the COMSOL [documentation](https://doc.comsol.com/6.2/doc/com.comsol.help.comsol/comsol_installation.02.012.html). The server hostname should be ssoe-vlic-07.engr.pitt.edu, and port number is 4800, just as shown above. You would also need to be connected to Pitt VPN via Global Protect, same way as you would connect to VIZ or other CRC portals. Before you can connect to the server, you need also to submit a [request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=237&RequestorType=Service?) to the SSOE IT team to add your computer to the server.
+*Specify in your ticket that the case be transferred to SSOE IT*. You will need to be logged in to your Pitt account and provide the following information in your request:
+
+    - Software Name:
+    - Request date:
+    - Department:
+    - P.I.:
+    - P.I. Email:
+    - User:
+    - Email:
+    - Computer Name:
+    - IP Address:
+    - in Pitt’s Active Directory (Y/N):
