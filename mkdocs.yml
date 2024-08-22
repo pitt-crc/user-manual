@@ -2,6 +2,8 @@ site_name: CRC User Manual
 repo_url: https://github.com/pitt-crc/user-manual
 site_url: https://crc-pages.pitt.edu/user-manual/
 theme:
+  icon:
+    annotation: material/alert-circle
   name: material
   logo: _assets/img/pitt_shield_white.png
   favicon: _assets/img/pitt-logo-nav_white.png
@@ -53,6 +55,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.superfences
+  - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
@@ -61,6 +64,11 @@ markdown_extensions:
 nav:
   - Back to crc.pitt.edu: https://crc.pitt.edu
   - User Manual Home: index.md
+  - Getting Started:
+    - getting-started/getting-started-overview.md
+    - getting-started/getting-started-step1-account.md
+    - getting-started/getting-started-step2-access.md
+    - getting-started/getting-started-step3-crc-ecosystem.md
   - Policies:
     - policies/job-scheduling-policy.md
     - policies/hardware-investing-policy.md
