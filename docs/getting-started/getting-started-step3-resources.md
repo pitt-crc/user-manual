@@ -7,7 +7,7 @@ allocate resources based on defined policies. CRC supports both interactive work
 
 ## Requesting Computing Resources for Interactive Work
 
-Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../../web-portals/open-ondemand) or through
+Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../web-portals/open-ondemand.md) or through
 the Linux terminal using the helper tool, `crc-interactive`:
 
 ```bash
@@ -83,7 +83,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
     will provide.
 
 !!! example "Architecture of a Slurm job submission script"
-    === "Whole Script"
+    === "Overview: Whole Script"
         ```bash
         #!/usr/bin/env bash
 
@@ -134,7 +134,8 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
         !!! info
             The job script should start the first line with the standard [**shebang**](https://en.wikipedia.org/wiki/Shebang_(Unix)) 
             line, specifying the [**Linux shell**](https://en.wikipedia.org/wiki/Unix_shell).
-    === "Part1: Slurm Directives"
+    
+    === "Section 1: Slurm Directives"
         ```bash
         ## ------------------------------------------------------------------
         ## Slurm directives defining the resource request
@@ -160,23 +161,9 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             treated as comments only. However, if you were to run the above section of text as input to the Slurm `sbatch` command, 
             `sbatch` will treat every instance of `#SBATCH` as a command to it (hence, the term *directive*) and will interpret
             the ` --<variable>=<value>` parameters accordingly. Any other combination of text starting with a `#` sign will 
-            be treated as a comment, such as the `## ` syntax in the example above. 
+            be treated as a comment, such as the `## ` syntax in the example above.
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-    === "Part2: Load Software"
+    === "Section 2: Loading Software"
         ```bash
         ## ---------------------------------------------------------------------
         ## Load software into environment
@@ -191,35 +178,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             expose the installed software to the user environment by updating the `$PATH`, `$LD_LIBRARY_PATH`, and other required
             environmental variables as specified in the package installation instructions.
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-    === "Part3: Run Software"
+    === "Section 3: Software-specific Commands"
         ```bash
         ## ---------------------------------------------------------------------
         ## Setup software execution environment
@@ -252,17 +211,3 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             over the commands that you use when running on your local laptop or desktop, with some modifications. At the most 
             straightforward level, you should be able to translate the setup/commands described in the software user manual to
             work within the CRC Ecosystem.
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-

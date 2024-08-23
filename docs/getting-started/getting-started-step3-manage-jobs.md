@@ -114,7 +114,7 @@ To obtain detailed information about a submitted job, you can use the `scontrol`
 Lastly, if you had submitted a job and realized that you have made a mistake in the submission file, you can 
 use the `scancel` command to delete job identified by the `JobID`:
 
-!!! example "scancel -M &lt;cluster> &lt;JobID>""
+!!! example "scancel -M <cluster> <JobID>""
         
     === "command"
         ```commandline
@@ -133,5 +133,3 @@ use the `scancel` command to delete job identified by the `JobID`:
                      JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
         [kimwong@login1.crc.pitt.edu mocvnhlysm_1L40S.1C]$
         ```
-        
-        
