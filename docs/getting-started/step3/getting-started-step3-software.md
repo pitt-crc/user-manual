@@ -158,7 +158,7 @@ To remove a software package from your environment, use the command `module rm <
         ```
     === "output"
         ```bash
-        [kimwong@login1.crc.pitt.edu ~]$module list
+        {kimwong@login1.crc.pitt.edu ~}$module list
         
         Currently Loaded Modules:
           1) gcc/8.2.0   2) python/anaconda3.10-2022.10
@@ -175,6 +175,7 @@ were to remove the dependency first? Let's load the modules again and try it out
 
 !!! example "module rm &lt;software>"
     === "command"
+
         ```commandline
         module load gcc/8.2.0 python/anaconda3.10-2022.10
         module list
@@ -182,6 +183,7 @@ were to remove the dependency first? Let's load the modules again and try it out
         module list
         ```
     === "output"
+
         ```bash
         [kimwong@login1.crc.pitt.edu ~]$module load gcc/8.2.0 python/anaconda3.10-2022.10
         [kimwong@login1.crc.pitt.edu ~]$module list
@@ -212,6 +214,7 @@ to remove each package individually or is there a single global remove command? 
 
 !!! example "module purge"
     === "command"
+
         ```commandline
         module load gcc/8.2.0 python/anaconda3.10-2022.10 r/3.6.0
         module list
@@ -219,6 +222,7 @@ to remove each package individually or is there a single global remove command? 
         module list
         ```
     === "output"
+
         ```bash
         [kimwong@login1.crc.pitt.edu ~]$module load gcc/8.2.0 python/anaconda3.10-2022.10 r/3.6.0
         [kimwong@login1.crc.pitt.edu ~]$module list
