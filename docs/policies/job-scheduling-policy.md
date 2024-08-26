@@ -87,8 +87,6 @@ The priority weight for QOS is 2000.
     });
 </script>
 
-Note: Due to the high volume nature of the work done on HTC, it's short, normal, and long QOS have a maximum number of 
-submissions per user set to 6000, 5000, and 4000 respectively.
 
 Fair Share [0,1] - A metric for overall usage by allocation that prioritizes jobs from under serviced slurm accounts. 
 Less overall cluster use receives higher priority. The priority weight for fairshare is 3000.

@@ -23,13 +23,13 @@ to show how to load the module.
   r:
 ----------------------------------------------------------------------------
      Versions:
-        r/3.3.2\_genomics
+        r/3.3.2_genomics
         r/3.3.2
         r/3.4.1
         r/3.4.2
         r/3.5.1
-        r/3.5.2\_openmpi\_no-pmi-back
-        r/3.5.2\_openmpi
+        r/3.5.2_openmpi_no-pmi-back
+        r/3.5.2_openmpi
         r/3.5.2
         r/3.5.3
         r/3.6.0
@@ -156,7 +156,7 @@ There are two primary commands to use when submitting R scripts: Rscript and R C
 When utilizing R CMD BATCH all output will be directed to an .Rout file named after your script unless otherwise specified. For example:
 ```
 #!/bin/bash
-#SBATCH --job-name R\_ExampleJob
+#SBATCH --job-name R_ExampleJob
 #SBATCH --nodes=1
 #SBATCH -c 1
 #SBATCH --time=01:00:00
@@ -171,7 +171,7 @@ In the above example, output for the job will be found in the file test.txt. Plo
 To pass arguments to the script, they need to be specified after R CMD BATCH but before the script to be executed, and preferably preceded with --args as follows:
 ```
 #!/bin/bash
-#SBATCH --job-name R\_ExampleJob
+#SBATCH --job-name R_ExampleJob
 #SBATCH --nodes=1
 #SBATCH -c 1
 #SBATCH --time=01:00:00
@@ -183,14 +183,14 @@ R CMD BATCH "--args argument1 argument2 argument3" Rcode.R Rcodeoutput.txt
 In your Rcode.R, use the following code template to accept arguments.
 
 args <- commandArgs(trailingOnly = TRUE)
-argument1 = args\[1\]
-argument2 = args\[2\]
-argument3 = args\[3\]
+argument1 = args[1]
+argument2 = args[2]
+argument3 = args[3]
 ```
 Using Rscript to execute R scripts differs from R CMD BATCH in that all output and errors from the script are directed to STDOUT and STDERR in a manner similar to other programs.
 ```
 #!/bin/bash
-#SBATCH --job-name R\_ExampleJob
+#SBATCH --job-name R_ExampleJob
 #SBATCH --nodes=1
 #SBATCH -c 1
 #SBATCH --time=01:00:00
@@ -206,7 +206,7 @@ In the above example, STDOUT will be directed to the output file TestJob.%J.stdo
 To pass arguments to the script when using Rscript, the arguments will follow the script name as in the example below:
 ```
 #!/bin/bash
-#SBATCH --job-name R\_ExampleJob
+#SBATCH --job-name R_ExampleJob
 #SBATCH --nodes=1
 #SBATCH -c 1
 #SBATCH --time=01:00:00
@@ -236,8 +236,8 @@ R version 4.0.0 (2020-04-24) -- "Arbor Day"
 ...
 
 > .libPaths()
-\[1\] "/ihome/fmu/fmu/R/x86\_64-pc-linux-gnu-library/4.0"
-\[2\] "/ihome/crc/install/gcc-8.2.0/r/4.0.0/lib64/R/library"
+[1] "/ihome/fmu/fmu/R/x86\_64-pc-linux-gnu-library/4.0"
+[2] "/ihome/crc/install/gcc-8.2.0/r/4.0.0/lib64/R/library"
 >
 ```
 ### Cran packages
@@ -300,12 +300,12 @@ Unpacking payload ...
 ### Configuring a Python environment with packages
 ```
 [fmu@login0b ~]$ cd /ihome/fmu/fmu/reticulate/scanpy/bin
-[fmu@login0b bin]$ ./pip install 'scanpy\[leiden\]'
+[fmu@login0b bin]$ ./pip install 'scanpy[leiden]'
 ...
 ```
 ### Using python with reticulate
 ```
-> Sys.setenv(RETICULATE\_PYTHON = "/ihome/fmu/fmu/reticulate/scanpy/bin/python")
+> Sys.setenv(RETICULATE_PYTHON = "/ihome/fmu/fmu/reticulate/scanpy/bin/python")
 > library(reticulate)
 > sc1 <- import("scanpy")
 ```
@@ -321,7 +321,7 @@ Your R script likely reads in data, processes it, and creates a result. You will
 The following is an example R script code.R.
 ```
 args <- commandArgs(trailingOnly = TRUE)
-bamfile = args\[1\] # the first argument is the location of a bam file
+bamfile = args[1] # the first argument is the location of a bam file
 bamfile.labels <- gsub(".bam", "", basename(bamfile))
 pdf(paste(bamfile.labels,".pdf",sep="")) # plots will be directed to this pdf file
 # Your codes to handle bamfile
@@ -336,7 +336,7 @@ job.sbatch
 #SBATCH --job-name=qc
 #SBATCH -c 1
 #SBATCH -t 1-00:00 # Runtime in D-HH:MM
-#SBATCH --output=qc\_%a.out
+#SBATCH --output=qc_%a.out
 #SBATCH --array=0-10 # job array index
 
 module load gcc/8.2.0 r/4.0.0
@@ -383,7 +383,7 @@ nproc
     4
 > 
 ```
-If you are using -n or --tasks-per-node to allocate multiple tasks, you can use as.integer(Sys.getenv("SLURM\_JOB\_CPUS\_PER\_NODE")) to detect the number of allocated CPUs.
+If you are using -n or --tasks-per-node to allocate multiple tasks, you can use as.integer(Sys.getenv("SLURM_JOB_CPUS_PER_NODE")) to detect the number of allocated CPUs.
 ```
 [fangping@login0b ~]$ srun -n 4 --pty bash
 srun: job 207157 queued and waiting for resources
@@ -437,7 +437,7 @@ The number of detected cores can then be used in your codes,
 ```
 ncpus <- future::availableCores()
 ```
-# or ncpus <- as.integer(Sys.getenv("SLURM\_JOB\_CPUS\_PER\_NODE"))
+# or ncpus <- as.integer(Sys.getenv("SLURM_JOB_CPUS_PER_NODE"))
 ```
 options(mc.cores = ncpus)
 mclapply(..., mc.cores = ncpus)

@@ -95,10 +95,10 @@ numcores=$SLURM_NTASKS
 $CFX_EXE -def $DEF_FILE -par-local -partition $numcores
 ```
 Submit the job by running `sbatch smp_ansys_cfx.slurm`. You can check the full status of your job on the cluster by 
-running the wrapper `crc-squeue.py`, as follows:
+running the wrapper `crc-squeue`, as follows:
 
 ```commandline
-[chx33@login1 CFX_example]$ crc-squeue.py
+[chx33@login1 CFX_example]$ crc-squeue
 CLUSTER: gpu
   JOBID PAR                                NAME ST         TIME  NODES CPUS     NODELIST(REASON)
 

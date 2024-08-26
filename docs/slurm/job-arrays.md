@@ -19,18 +19,18 @@ Assume that one has a folder with 5 paired end Illumila data set. The file names
 #
 #SBATCH -N 1 # Ensure that all cores are on one machine
 #SBATCH -t 3-00:00 # Runtime in D-HH:MM
-#SBATCH -J fastqc\_samples
-#SBATCH --output=fastqc-%A\_%a.out
+#SBATCH -J fastqc_samples
+#SBATCH --output=fastqc-%A_%a.out
 #SBATCH --array=3-8 # job array index
  
 #SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
  
-module load FastQC/0.11.5
+module load fastqc/0.11.9
  
-echo "parsing sample: SRR09833"${SLURM\_ARRAY\_TASK\_ID}
+echo "parsing sample: SRR09833"${SLURM_ARRAY_TASK_ID}
  
-fastqc -o ./fastqc\_pretrim/ SRR09833${SLURM\_ARRAY\_TASK\_ID}\_1.fastq
-fastqc -o ./fastqc\_pretrim/ SRR09833${SLURM\_ARRAY\_TASK\_ID}\_2.fastq
+fastqc -o ./fastqc_pretrim/ SRR09833${SLURM_ARRAY_TASK_ID}_1.fastq
+fastqc -o ./fastqc_pretrim/ SRR09833${SLURM_ARRAY_TASK_ID}_2.fastq
 ```
 *   %A in the #SBATCH line becomes the job ID
 *   %a in the #SBATCH line becomes the array index
@@ -49,18 +49,18 @@ Job arrays are easy if the files are named sequentially in the example above. If
 #SBATCH -N 1 # Ensure that all cores are on one machine
 #SBATCH -t 3-00:00 # Runtime in D-HH:MM
 #SBATCH -J fastqc
-#SBATCH --output=fastqc-%A\_%a.out
+#SBATCH --output=fastqc-%A_%a.out
 #SBATCH --array=1-6 # job array index
 #SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
 
-module load FastQC/0.11.5
+module load fastqc/0.11.9
 
 # get file name
-file=\`ls \*\_1.fastq | head -n $SLURM\_ARRAY\_TASK\_ID | tail -n 1\`
+file=`ls *_1.fastq | head -n $SLURM_ARRAY_TASK_ID | tail -n 1`
 
 echo "parsing sample: "$file
 
-fastqc -o ./fastqc\_posttrim/ $file
+fastqc -o ./fastqc_posttrim/ $file
 ```
 ### Bowtie2 examples
 
@@ -89,21 +89,21 @@ Then, you can submit the following jobs array to HTC cluster.
 #SBATCH -N 1
 #SBATCH --cpus-per-task=16 # Request that ncpus be allocated per process.
 #SBATCH -t 1-00:00 # Runtime in D-HH:MM
-#SBATCH --output=bowtie2-%A\_%a.out
+#SBATCH --output=bowtie2-%A_%a.out
 #SBATCH --array=0-5 # job array index
 
-module load bowtie2/2.3.2-gcc5.2.0
+module load bowtie2/2.4.5
 
 names=($(cat jobs))
 
-echo ${names\[${SLURM\_ARRAY\_TASK\_ID}\]}
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
 
-bowtie2 -p 16 -x /bgfs/genomics/refs/GATK\_Resource\_Bundle/b37/human\_g1k\_v37.bowtie2\_index \\
-  -1 ${names\[${SLURM\_ARRAY\_TASK\_ID}\]}\_1.fastq \\
-  -2 ${names\[${SLURM\_ARRAY\_TASK\_ID}\]}\_2.fastq \\
-  -S alignments/${names\[${SLURM\_ARRAY\_TASK\_ID}\]}.bowtie2.sam
+bowtie2 -p 16 -x /bgfs/genomics/refs/GATK_Resource_Bundle/b37/human_g1k_v37.bowtie2_index \
+  -1 ${names[${SLURM_ARRAY_TASK_ID}]}_1.fastq \
+  -2 ${names[${SLURM_ARRAY_TASK_ID}]}_2.fastq \
+  -S alignments/${names[${SLURM_ARRAY_TASK_ID}]}.bowtie2.sam
 
-${names\[${SLURM\_ARRAY\_TASK\_ID}\]} becomes each line within file jobs.
+${names[${SLURM_ARRAY_TASK_ID}]} becomes each line within file jobs.
 ```
 Using a "commands" file
 -----------------------
@@ -116,16 +116,16 @@ For example, we would like to run "bwa mem" on 10 samples with different RG tag.
 
 ```commandline
 [fangping@login0b jobs]$ cat bwa_mem.txt
--Y -R "@RG\\tID:Exome\_Norm\\tPL:ILLUMINA\\tPU:C1TD1ACXX-CGATGT.7\\tLB:exome\_norm\_lib1\\tSM:HCC1395BL\_DNA" -o ../results/bwa/Exome\_Norm.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/Exome/Exome\_Norm\_R1.fastq.gz ../fastqs/Exome/Exome\_Norm\_R2.fastq.gz
--Y -R "@RG\\tID:Exome\_Tumor\\tPL:ILLUMINA\\tPU:C1TD1ACXX-ATCACG.7\\tLB:exome\_tumor\_lib1\\tSM:HCC1395\_DNA" -o ../results/bwa/Exome\_Tumor.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/Exome/Exome\_Tumor\_R1.fastq.gz ../fastqs/Exome/Exome\_Tumor\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Norm\_Lane1\\tPL:ILLUMINA\\tPU:D1VCPACXX.6\\tLB:wgs\_norm\_lib1\\tSM:HCC1395BL\_DNA" -o ../results/bwa/WGS\_Norm\_Lane1.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Norm\_Lane1\_R1.fastq.gz ../fastqs/WGS/WGS\_Norm\_Lane1\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Norm\_Lane2\\tPL:ILLUMINA\\tPU:D1VCPACXX.7\\tLB:wgs\_norm\_lib2\\tSM:HCC1395BL\_DNA" -o ../results/bwa/WGS\_Norm\_Lane2.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Norm\_Lane2\_R1.fastq.gz ../fastqs/WGS/WGS\_Norm\_Lane2\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Norm\_Lane3\\tPL:ILLUMINA\\tPU:D1VCPACXX.8\\tLB:wgs\_norm\_lib3\\tSM:HCC1395BL\_DNA" -o ../results/bwa/WGS\_Norm\_Lane3.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Norm\_Lane3\_R1.fastq.gz ../fastqs/WGS/WGS\_Norm\_Lane3\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Tumor\_Lane1\\tPL:ILLUMINA\\tPU:D1VCPACXX.1\\tLB:wgs\_tumor\_lib1\\tSM:HCC1395\_DNA" -o ../results/bwa/WGS\_Tumor\_Lane1.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Tumor\_Lane1\_R1.fastq.gz ../fastqs/WGS/WGS\_Tumor\_Lane1\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Tumor\_Lane2\\tPL:ILLUMINA\\tPU:D1VCPACXX.2\\tLB:wgs\_tumor\_lib1\\tSM:HCC1395\_DNA" -o ../results/bwa/WGS\_Tumor\_Lane2.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Tumor\_Lane2\_R1.fastq.gz ../fastqs/WGS/WGS\_Tumor\_Lane2\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Tumor\_Lane3\\tPL:ILLUMINA\\tPU:D1VCPACXX.3\\tLB:wgs\_tumor\_lib2\\tSM:HCC1395\_DNA" -o ../results/bwa/WGS\_Tumor\_Lane3.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Tumor\_Lane3\_R1.fastq.gz ../fastqs/WGS/WGS\_Tumor\_Lane3\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Tumor\_Lane4\\tPL:ILLUMINA\\tPU:D1VCPACXX.4\\tLB:wgs\_tumor\_lib2\\tSM:HCC1395\_DNA" -o ../results/bwa/WGS\_Tumor\_Lane4.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Tumor\_Lane4\_R1.fastq.gz ../fastqs/WGS/WGS\_Tumor\_Lane4\_R2.fastq.gz
--Y -R "@RG\\tID:WGS\_Tumor\_Lane5\\tPL:ILLUMINA\\tPU:D1VCPACXX.5\\tLB:wgs\_tumor\_lib3\\tSM:HCC1395\_DNA" -o ../results/bwa/WGS\_Tumor\_Lane5.sam ../results/reference\_genome/hg38/Homo\_sapiens\_assembly38.fasta ../fastqs/WGS/WGS\_Tumor\_Lane5\_R1.fastq.gz ../fastqs/WGS/WGS\_Tumor\_Lane5\_R2.fastq.gz
+-Y -R "@RG\tID:Exome_Norm\tPL:ILLUMINA\tPU:C1TD1ACXX-CGATGT.7\tLB:exome_norm_lib1\tSM:HCC1395BL_DNA" -o ../results/bwa/Exome_Norm.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/Exome/Exome_Norm_R1.fastq.gz ../fastqs/Exome/Exome_Norm_R2.fastq.gz
+-Y -R "@RG\tID:Exome_Tumor\tPL:ILLUMINA\tPU:C1TD1ACXX-ATCACG.7\tLB:exome_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/Exome_Tumor.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/Exome/Exome_Tumor_R1.fastq.gz ../fastqs/Exome/Exome_Tumor_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Norm_Lane1\tPL:ILLUMINA\tPU:D1VCPACXX.6\tLB:wgs_norm_lib1\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane1.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane1_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane1_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Norm_Lane2\tPL:ILLUMINA\tPU:D1VCPACXX.7\tLB:wgs_norm_lib2\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane2.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane2_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane2_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Norm_Lane3\tPL:ILLUMINA\tPU:D1VCPACXX.8\tLB:wgs_norm_lib3\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane3.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane3_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane3_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Tumor_Lane1\tPL:ILLUMINA\tPU:D1VCPACXX.1\tLB:wgs_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane1.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane1_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane1_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Tumor_Lane2\tPL:ILLUMINA\tPU:D1VCPACXX.2\tLB:wgs_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane2.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane2_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane2_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Tumor_Lane3\tPL:ILLUMINA\tPU:D1VCPACXX.3\tLB:wgs_tumor_lib2\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane3.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane3_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane3_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Tumor_Lane4\tPL:ILLUMINA\tPU:D1VCPACXX.4\tLB:wgs_tumor_lib2\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane4.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane4_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane4_R2.fastq.gz
+-Y -R "@RG\tID:WGS_Tumor_Lane5\tPL:ILLUMINA\tPU:D1VCPACXX.5\tLB:wgs_tumor_lib3\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane5.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane5_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane5_R2.fastq.gz
 ```
 You can submit the following job arrays.
 
@@ -135,7 +135,7 @@ You can submit the following job arrays.
 #
 #SBATCH -N 1 # Ensure that all cores are on one machine
 #SBATCH -t 3-00:00 # Runtime in D-HH:MM
-#SBATCH -J bwa\_human\_samples
+#SBATCH -J bwa_human_samples
 #SBATCH --cpus-per-task=8 # Request that ncpus be allocated per process.
 #SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
 #SBATCH --array=1-10 # job array index
@@ -148,7 +148,7 @@ mkdir -p ../results/bwa
 
 arrayjob=`cat bwa_mem.txt | awk -v line=$SLURM_ARRAY_TASK_ID '{if (NR == line) print $0}'`
 
-bwa\_command="bwa mem -t 8 "
+bwa_command="bwa mem -t 8 "
 
 # echo the command
 echo $bwa_command$arrayjob
@@ -175,7 +175,7 @@ loop over all fastq files in the directory, print the filename and submit the gz
 
 ```commandline
 #!/bin/bash
-for FILE in \*.fastq; do
+for FILE in *.fastq; do
     echo ${FILE}
     sbatch -n 1 -t 1-00:00 --wrap="gzip ${FILE}"
     sleep 1 # pause to be kind to the scheduler
