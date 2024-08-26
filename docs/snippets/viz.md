@@ -1,7 +1,6 @@
-# VIZ
+# **VIZ**
 
-Summary
--------
+## **Summary**
 
 VIZ is a set of nodes with a graphical user interface desktop enabled. In this document, we present all the information you need about VIZ.
 
@@ -11,15 +10,13 @@ You can treat this machine as another login node with extra capability to access
 
 \[TOC Contents\]
 
-Access to VIZ
-=============
+## **Access to VIZ**
 
 Like the other resources we have available, accessing VIZ requires a [connection to the PittNet VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters).
 
 After connecting to the VPN, VIZ can be accessed either by the web portal, or by the fastx 2 desktop client. The benefit of using the desktop client is that copy/paste functionality works significantly better.
 
-Desktop Client Method
----------------------
+## **Desktop Client Method**
 
 [Download fastx 2 here](https://www.starnet.com/fastx/current-client?version=2.4.12) using the **Non-admin install build** link. If you have admin access on your device, you can install with the standard installer for all users.
 
@@ -51,8 +48,7 @@ You can use the **plus icon** to create a new session, select your desktop inter
 
 Your session will start and you can use this machine similarly to the login nodes for H2P and HTC.
 
-Web Portal Method
------------------
+## **Web Portal Method**
 
 Below are some screenshots on how to access and use VIZ through the web portal.
 

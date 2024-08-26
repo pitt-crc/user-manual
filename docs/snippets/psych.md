@@ -1,7 +1,6 @@
-# Psych (Psychiatry Department Web Portal)
+# **Psych (Psychiatry Department Web Portal)**
 
-Summary
--------
+## **Summary**
 
 The Psychiatry Web Portal is the gateway to CRC compute and storage resources for the Department of Psychiatry.
 
@@ -17,13 +16,11 @@ All CRC software can be accessed using a terminal and our LMOD software provisio
 
 \[TOC Contents\]
 
-Access Methods
-==============
+## **Access Methods**
 
 While we call it a Web Portal, Psych is actually a linux server that uses FastX to create interactive desktop sessions (similar to OnDemand) forwarded to your local display, through either a web browser or the desktop client.
 
-FastX Desktop Client (Recommended)
-----------------------------------
+### **FastX Desktop Client (Recommended)**
 
 Due to some user experience issues with copy and pasting in the browser version, the new preferred method for accessing psych is via the [F](http://www.starnet.com/download/fastx-client)[astX desktop client (Download Here)](https://www.starnet.com/download/fastx-client)[.](http://www.starnet.com/download/fastx-client) The functionality is otherwise identical to the web browser, but copy/paste is substantially better (highlight + right-click and ctrl-c/ctrl-v between FastX session and local machine windows).
 
@@ -65,8 +62,7 @@ The same thing works from the other direction, copying another line of text from
 
 ![](../_assets/img/web-portals/FastXDesktop6.png)![](../_assets/img/web-portals/FastXDesktop7.png)
 
-FastX Web Portal in a Browser
------------------------------
+### **FastX Web Portal in a Browser**
 
 To access the Psych Web Portal, open a web browser to [https://psych.crc.pitt.edu](https://psych.crc.pitt.edu) and login using your Pitt username **(in lowercase)** and password. 
 

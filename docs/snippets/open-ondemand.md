@@ -1,6 +1,6 @@
-# Open OnDemand
-**Summary**
--------
+# **Open OnDemand**
+
+## **Summary**
 
 The OnDemand interface allows you to conduct your research on HTC cluster through a web browser.
 
@@ -17,8 +17,7 @@ For more help, you can view the
 [extensive documentation for OnDemand](https://www.osc.edu/resources/online_portals/ondemand) created by 
 OSC (including many video tutorials) or submit a [help ticket](https://crc.pitt.edu/tickets).
 
-**Accessing Open OnDemand**
----------------------------
+## **Accessing Open OnDemand**
 
 If your computer is not connected to the Pitt network (e.g. you are working from remotely, or you are using Pitt 
 wireless network), or you are working from a laptop that is connected to the UPMC network, make sure you first 
@@ -39,8 +38,7 @@ in the portal, but are not fully supported.
 To end your OnDemand session, choose **Log Out** at the top right of the **Dashboard** window and **close your 
 browser**.
 
-**Managing Files**
-------------------
+## **Managing Files**
 
 The OnDemand interface provides a visual representation of the cluster file system, allowing you to create, edit or
 move files.
@@ -109,15 +107,13 @@ Restrict the display to file/folder names containing some value
 If you have files under other directories which are not listed in the dropdown menu, use the **Change Directory** 
 button to navigate to the directory via it's absolute path.
 
-**Shell Access**
-----------------
+## **Shell Access**
 
 An in-browser terminal prompt with access to the HTC login nodes can be accessed from the **Clusters** dropdown 
 on the top menu of the **Dashboard** window.  In the window that opens, you are logged in as if you used ssh to 
 connect to the HTC cluster.  
 
-**Interactive Apps**
---------------------
+## **Interactive Apps**
 
 Jump to a specific App:
 
@@ -395,8 +391,7 @@ RStudio window.  **NOTE** that this only closes your RStudio session;
 
 **To end your interactive HTC session,** return to the Dashboard window and click the red Delete button. 
 
-**GUI Apps through VNC**
-------------------------
+## **GUI Apps through VNC**
 
 Open ondemand supports several GUI applications through VNC. So far, we have implemented the MATLAB, Stata and IGV 
 applications.
@@ -452,8 +447,7 @@ I have chosen singlecellTK. Click "Launch", and then when your session is ready,
 
 ![](../_assets/img/web-portals/fail_to_connect.png)
 
-**FAQ**
--------
+## **FAQ**
 
 Q: I am unable to log in to on demand, I recieve "Internal Server Error" and something about there not being any space 
 left on the device. How do I fix this?
