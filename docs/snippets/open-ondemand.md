@@ -135,19 +135,18 @@ Jupyter notebook/Lab allow for interactive code development. You can run Jupyter
 OnDemand.
 
 Jupyter Notebook inside OnDemand which runs on a cluster compute node using dedicated resources can be launched 
-by choosing menu _Interactive Apps -> Jupyter Notebook_. A job submission screen appears:
+by choosing menu *Interactive Apps -> Jupyter Notebook*. A job submission screen appears:
 
 ![](../_assets/img/web-portals/Jupyter-101.png)
 
 Set the job parameters. Unless using numerical libraries like NumPy, which are thread-parallelized, or your jobs 
-require more memory, it is not advisable to choose more than one CPU. Then hit _Launch_ to submit the interactive 
-job. The job gets queued up and when it starts and the Jupyter is provisioned. Click on the _Connect to Jupyter_ button 
+require more memory, it is not advisable to choose more than one CPU. Then hit *Launch* to submit the interactive 
+job. The job gets queued up and when it starts and the Jupyter is provisioned. Click on the *Connect to Jupyter* button 
 to open a new browser tab with the main Jupyter interface.
 
 ****Creating an Environment with the Base Anaconda Installation:****
 
 Use "module load python/ondemand-jupyter-python3.8" to load base ananconda.
-
   
 ![](../_assets/img/web-portals/jupyter-0.png)
 
@@ -297,7 +296,7 @@ Note on Jupyter Interactive Sessions and Python Environments:
 
 If you have Python packages installed under your /ihome .local directory, they may be incompatible with these sessions, 
 causing them to end shortly after they have started. Moving these packages to a virtual environment or conda environment 
-should resolve the issue. See the [debugging output](#Debug Output) of your session to determine which packages are 
+should resolve the issue. See the [debugging output](#Debug-Output) of your session to determine which packages are 
 causing problems. 
 
 **Stopping your Jupyter Notebook session:**
@@ -310,12 +309,12 @@ This Jupyter notebook/Lab allow for interactive code development on GPU cluster.
 supports tensorflow/2.4.1 and pytorch/1.8.1. This Jupyter notebook/Lab interface is still under development.
 
 Jupyter Notebook inside OnDemand which runs on a GPU cluster compute node using dedicated resources can be launched by 
-choosing menu _Interactive Apps -> Jupyter on gpu_. A job submission screen appears:
+choosing menu *Interactive Apps -> Jupyter on gpu*. A job submission screen appears:
 
 ![](../_assets/img/web-portals/Jupyter_gpu_0.png)
 
 Set the job parameters.  Choose tensorflow/2.4.1 or pytorch/1.8.1. Number of cores is the number of cpu cores. Select 
-GPU type. Only one GPU card can be allocated. Then hit _Launch_ to submit the interactive job. The job gets queued 
+GPU type. Only one GPU card can be allocated. Then hit *Launch* to submit the interactive job. The job gets queued 
 up and when it starts and the Jupyter is provisioned. Click on the _Connect to Jupyter_ button to open a new browser 
 tab with the main Jupyter interface.
 
@@ -447,7 +446,7 @@ I have chosen singlecellTK. Click "Launch", and then when your session is ready,
 
 ![](../_assets/img/web-portals/fail_to_connect.png)
 
-## **FAQ**
+## **FAQ** {#Debug-Output}
 
 Q: I am unable to log in to on demand, I recieve "Internal Server Error" and something about there not being any space 
 left on the device. How do I fix this?

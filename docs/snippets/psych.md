@@ -93,8 +93,7 @@ To access the Psych Web Portal, open a web browser to [https://psych.crc.pitt.ed
 
 ![](../_assets/img/web-portals/psych_06.png)
 
-FAQs
-----
+## **FAQs**
 
 Q: When I log in via the web portal, I am prompted for a second password. What do I put here?
 

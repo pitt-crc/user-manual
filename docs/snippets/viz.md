@@ -80,8 +80,7 @@ Open [this page](https://viz.crc.pitt.edu/) in a web browser and login with your
 
 ![](../_assets/img/web-portals/viz14.jpeg)
 
-FAQs
-----
+## **FAQs**
 
 Q: When I log in via the web portal, I am prompted for a second password. What do I put here?
 

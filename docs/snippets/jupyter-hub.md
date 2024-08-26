@@ -1,15 +1,13 @@
 # Jupyter Hub
 
-Summary
--------
+## **Summary**
 
 In addition to Jupyter notebook sessions via Open OnDemand, CRC also hosts the functionality for the multi-user equivalent
 [Jupyter Hub](https://jupyter.org/hub).
 
 [**Log in to Jupyter Hub**](https://hub.crc.pitt.edu)
 
-Accessing CRC Jupyter Hub
--------------------------
+## **Accessing CRC Jupyter Hub**
 
 The **Server Options** dropdown gives you the option to create a Jupyter Hub instance on your local machine, on the SMP cluster 
 (1 core, 3 hours), or on the GPU cluster with GTX 1080 (1 GPU, 3 hours) or A100 (1 GPU, 3 hours).
