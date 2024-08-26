@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # How to Request Computing Resources
 
 Because CRC operates a shared resource for the Pitt research community, there needs to be a tool that ensures fair and equitable access. CRC 
@@ -7,7 +12,7 @@ allocate resources based on defined policies. CRC supports both interactive work
 
 ## Requesting Computing Resources for Interactive Work
 
-Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../web-portals/open-ondemand.md) or through
+Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../../web-portals/open-ondemand) or through
 the Linux terminal using the helper tool, `crc-interactive`:
 
 ```bash
@@ -47,7 +52,10 @@ Additional Job Settings:
 ```
 
 For example, to request 8 cores and 256GB of RAM on the high-mem partition of the SMP cluster for 12 hours, you would 
-type the following on the commandline
+type the following on the commandline (1)
+{ .annotate }
+
+1. ![content_tabs](../../_assets/img/help-annotation/mkdocs_example_tabs.png)
 
  
 !!! example "crc-interactive &lt;options list>"
@@ -83,7 +91,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
     will provide.
 
 !!! example "Architecture of a Slurm job submission script"
-    === "Overview: Whole Script"
+    === "Whole Script"
         ```bash
         #!/usr/bin/env bash
 
@@ -134,8 +142,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
         !!! info
             The job script should start the first line with the standard [**shebang**](https://en.wikipedia.org/wiki/Shebang_(Unix)) 
             line, specifying the [**Linux shell**](https://en.wikipedia.org/wiki/Unix_shell).
-    
-    === "Section 1: Slurm Directives"
+    === "Part1: Slurm Directives"
         ```bash
         ## ------------------------------------------------------------------
         ## Slurm directives defining the resource request
@@ -161,9 +168,23 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             treated as comments only. However, if you were to run the above section of text as input to the Slurm `sbatch` command, 
             `sbatch` will treat every instance of `#SBATCH` as a command to it (hence, the term *directive*) and will interpret
             the ` --<variable>=<value>` parameters accordingly. Any other combination of text starting with a `#` sign will 
-            be treated as a comment, such as the `## ` syntax in the example above.
+            be treated as a comment, such as the `## ` syntax in the example above. 
 
-    === "Section 2: Loading Software"
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    === "Part2: Load Software"
         ```bash
         ## ---------------------------------------------------------------------
         ## Load software into environment
@@ -178,7 +199,35 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             expose the installed software to the user environment by updating the `$PATH`, `$LD_LIBRARY_PATH`, and other required
             environmental variables as specified in the package installation instructions.
 
-    === "Section 3: Software-specific Commands"
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    === "Part3: Run Software"
         ```bash
         ## ---------------------------------------------------------------------
         ## Setup software execution environment
@@ -211,3 +260,16 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             over the commands that you use when running on your local laptop or desktop, with some modifications. At the most 
             straightforward level, you should be able to translate the setup/commands described in the software user manual to
             work within the CRC Ecosystem.
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>

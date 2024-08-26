@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # How to Manage Computing Jobs
 
 ??? abstract "Skip to Table of Commands"
@@ -18,11 +23,12 @@ Now that you have crafted a job submission script, how do you submit it and mana
 to drive the discussion. The command for submitting a job script is `sbatch <job_script>`, (1) where `<job_script>` is a text file containing
 Slurm directives and commands that will be executed from top to bottom. It does not matter if the job submission script ends with a `.slurm`
 extension or not. Our recommendation is to adopt a convention to make it simple to spot the job submission script among all your files. To submit
-the Amber job to Slurm, execute on the commandline `sbatch amber.slurm`:
+the Amber job to Slurm, execute on the commandline `sbatch amber.slurm`: (2)
 { .annotate }
 
 1.  Throughout the examples, we use the conventional syntax `<variable>` to represent a placeholder for an expected value that the user
     will provide.
+2. ![content_tabs](../../_assets/img/help-annotation/mkdocs_example_tabs.png)
 
 !!! example "sbatch &lt;job_script>"
 
@@ -114,7 +120,7 @@ To obtain detailed information about a submitted job, you can use the `scontrol`
 Lastly, if you had submitted a job and realized that you have made a mistake in the submission file, you can 
 use the `scancel` command to delete job identified by the `JobID`:
 
-!!! example "scancel -M <cluster> <JobID>""
+!!! example "scancel -M &lt;cluster> &lt;JobID>""
         
     === "command"
         ```commandline
