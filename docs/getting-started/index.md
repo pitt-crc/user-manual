@@ -22,7 +22,6 @@ data management operations
 *   **CRC Ecosystem** -- the total footprint of the CRC infrastructure, including high performance computing 
 clusters, data storage systems, networking equipment, and software 
 
-
 <ins>**Available Resources**</ins>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">

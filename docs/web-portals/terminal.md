@@ -10,13 +10,11 @@ access a terminal emulator. Clients running MacOS can use the built-in Terminal 
 To render graphics from the remote session, you will also need an X server on your client. MobaXterm comes bundled with 
 an X server. For MacOS, you will need to install [**XQuartz**](https://www.xquartz.org/).
 
-
 Here are the connection details:
 
 * **connection protocol:** ssh
 * **remote hostname:** h2p.crc.pitt.edu or htc.crc.pitt.edu
 * **authentication credentials:** Pitt username (all lowercase) and password
-
 
 The syntax to connect to the CRC login node from your terminal commandline is
 
@@ -42,6 +40,3 @@ commands into a shell prompt to run programs and to manage files without a graph
  `bash` being the default
 *   **Linux commandline** -- this is the shell prompt line where your cursor is highlighted and where you input commands to the
  remote host
-
-
-

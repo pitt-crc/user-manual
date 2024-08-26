@@ -13,7 +13,6 @@ hide:
     | `scontrol -M <cluster> show job <JobID>`    | Display details about job `<JobID>` on `<cluster>`         |
     | `scancel -M <cluster> <JobID>`              | Cancel job `<JobID>` that was submitted to `<cluster>`     |
 
-
 Now that you have crafted a job submission script, how do you submit it and manage the job? We will use the Amber example, that can be found in
 
 ```bash

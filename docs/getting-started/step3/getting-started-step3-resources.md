@@ -9,7 +9,6 @@ Because CRC operates a shared resource for the Pitt research community, there ne
 uses the [**Slurm workload manager**](https://slurm.schedmd.com/quickstart.html) to accomplish this. Slurm is a batch queueing system that will 
 allocate resources based on defined policies. CRC supports both interactive work and batch processing.
 
-
 ## Requesting Computing Resources for Interactive Work
 
 Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../../web-portals/open-ondemand) or through

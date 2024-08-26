@@ -11,7 +11,6 @@ Now that you have successfully logged in an access portal, we will describe
 2. [**How to request computing resources in the back-end**](getting-started-step3-resources.md)
 3. [**How to submit jobs, query the status of jobs, and cancel jobs**](getting-started-step3-manage-jobs.md)
 
-
 A schematic of this part of the process is highlighted below.
 
 ![GETTING-STARTED-MAP](../../_assets/img/getting-started/getting-started-step-3.png)

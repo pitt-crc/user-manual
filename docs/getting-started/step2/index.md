@@ -17,7 +17,6 @@ A schematic of this part of the process is highlighted below.
 
 ![GETTING-STARTED-MAP](../../_assets/img/getting-started/getting-started-step-2.png)
 
-
 ## Guidance on appropriate usage of access portals
 
 Many users are logged into the CRC login nodes. These are the gateways everyone uses to perform interactive 
