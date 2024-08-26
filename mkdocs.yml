@@ -59,7 +59,10 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.snippets:
+      base_path: docs/snippets
   - toc:
+      toc_depth: 0
       permalink: true
   - tables
 nav:
@@ -70,10 +73,10 @@ nav:
     - getting-started/getting-started-step1-account.md
     - Step 2- Login to Access Portals:
       - getting-started/step2/index.md
-      - SSH using a terminal: web-portals/terminal.md
-      - Linux Desktop Webportal: web-portals/viz.md
-      - Open OnDemand Webportal: web-portals/open-ondemand.md
-      - JupyterHub Webportal: web-portals/jupyter-hub.md
+      - SSH using a terminal: getting-started/terminal.md
+      - Linux Desktop Webportal: getting-started/viz.md
+      - Open OnDemand Webportal: getting-started/open-ondemand.md
+      - JupyterHub Webportal: getting-started/jupyter-hub.md
     - Step 3- CRC Ecosystem:
       - getting-started/step3/index.md
       - Discovering Software: getting-started/step3/getting-started-step3-software.md
@@ -84,6 +87,7 @@ nav:
     - policies/hardware-investing-policy.md
     - policies/resource-descriptions-for-writing-proposals.md
   - Connecting to Web Portals:
+    - web-portals/terminal.md
     - web-portals/open-ondemand.md
     - web-portals/jupyter-ondemand.md
     - web-portals/viz.md
