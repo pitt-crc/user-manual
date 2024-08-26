@@ -8,10 +8,10 @@ hide:
 Once you have established a VPN to PittNet, you can access the CRC advanced computing and storage resources via
 several portals, including
 
-* [**SSH connection using a terminal**](../../web-portals/terminal)
-* [**Linux Desktop webportal**](../../web-portals/viz)
-* [**Open OnDemand webportal**](../../web-portals/open-ondemand)
-* [**JupyterHub webportal**](../../web-portals/jupyter-hub)
+* [**SSH connection using a terminal**](../../web-portals/terminal.md)
+* [**Linux Desktop webportal**](../../web-portals/viz.md)
+* [**Open OnDemand webportal**](../../web-portals/open-ondemand.md)
+* [**JupyterHub webportal**](../../web-portals/jupyter-hub.md)
 
 A schematic of this part of the process is highlighted below.
 

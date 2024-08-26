@@ -11,7 +11,7 @@ allocate resources based on defined policies. CRC supports both interactive work
 
 ## Requesting Computing Resources for Interactive Work
 
-Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../../web-portals/open-ondemand) or through
+Dedicated resources for interactive work can be requested using the [**Open OnDemand webportal**](../../web-portals/open-ondemand.md) or through
 the Linux terminal using the helper tool, `crc-interactive`:
 
 ```bash
