@@ -84,7 +84,7 @@ CAD Import Module, Design Module, Matlab/Simulink
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --time=0-01:00:00       # Syntax is DD-HH:MM:SS
-#SBATCH --cluster=smp           # Run crc-sinfo.py to get the cluster and partition details
+#SBATCH --cluster=smp           # Run crc-sinfo to get the cluster and partition details
 #SBATCH --partition=smp
 
 # Load Modules
