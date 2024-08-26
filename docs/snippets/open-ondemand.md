@@ -315,7 +315,7 @@ choosing menu *Interactive Apps -> Jupyter on gpu*. A job submission screen appe
 
 Set the job parameters.  Choose tensorflow/2.4.1 or pytorch/1.8.1. Number of cores is the number of cpu cores. Select 
 GPU type. Only one GPU card can be allocated. Then hit *Launch* to submit the interactive job. The job gets queued 
-up and when it starts and the Jupyter is provisioned. Click on the _Connect to Jupyter_ button to open a new browser 
+up and when it starts and the Jupyter is provisioned. Click on the *Connect to Jupyter* button to open a new browser 
 tab with the main Jupyter interface.
 
 **Stopping your Jupyter Notebook session**
