@@ -20,8 +20,7 @@ Use the search box to search for "Jupyter", you will see two results for your se
 *   Jupyter: is the portal to launch Jupyter on the HTC cluster.
 *   Jupyter on GPU: is the portal to launch Jupyter on the GPU cluster.
 
-Jupyter on HTC
---------------
+## Jupyter on HTC
 
 Click on the Jupyter link, you will see the following screen:  
   
@@ -37,11 +36,11 @@ We offer multiple ready-to-use python environments for Jupyter on HTC where you 
 
 ![](../_assets/img/web-portals/ondemand_005.png)
 
-These are all base conda installtions featuring Jupyter Lab integration, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
+These are all base conda installations featuring Jupyter Lab integration, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
   
 ![](../_assets/img/web-portals/ondemand_007.png)
 
-You can also use a singulairty container to run Jupyter on HTC by providing the path to the container as follows:  
+You can also use a singularity container to run Jupyter on HTC by providing the path to the container as follows:  
   
 ![](../_assets/img/web-portals/ondemand_008.png)
 
@@ -57,12 +56,11 @@ Wait until requested resources are allocated and you should see the following sc
   
 ![](../_assets/img/web-portals/ondemand_011.png)
 
-Press the "Connect to Jupyter" button and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:  
+Press the "Connect to Jupyter" button, and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:  
   
 ![](../_assets/img/web-portals/ondemand_012.png)
 
-Jupyter on GPU
---------------
+## Jupyter on GPU
 
 Click on the Jupyter on GPU link, you will see the following screen:  
   
@@ -77,11 +75,11 @@ We offer multiple ready-to-use deep learning python environments for Jupyter on 
 
 ![](../_assets/img/web-portals/ondemand_013_.png)
 
-These are all base conda installstions featuring Jupyter Lab integration and GPU-enabled packages, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
+These are all base conda installations featuring Jupyter Lab integration and GPU-enabled packages, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
   
 ![](../_assets/img/web-portals/ondemand_014.png)
 
-You can also use a singulairty container to run Jupyter on GPU by providing the path to the container as follows:  
+You can also use a singularity container to run Jupyter on GPU by providing the path to the container as follows:  
   
 ![](../_assets/img/web-portals/ondemand_015.png)
 
@@ -94,7 +92,7 @@ We offer multiple ready-to-use deep learning python environments for Jupyter on 
 *   A100: 12 cores per GPU card
 *   GTX1080: 2 cores per GPU card
 *   V100: 6 cores per GPU card
-*   A100\_NVLNK: 16 cores per GPU card
+*   A100\_NVLINK: 16 cores per GPU card
 *   A100\_multi: 16 cores per GPU card
 
 You can also specify the account from which the SUs will be withdrawn if you are affiliated with multiple groups/accounts.
@@ -107,12 +105,11 @@ Wait until requested resources are allocated and you should see the following sc
 
 ![](../_assets/img/web-portals/ondemand_018.png)
 
-Press the "Connect to Jupyter" button and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:
+Press the "Connect to Jupyter" button, and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:
 
 ![](../_assets/img/web-portals/ondemand_019.png)
 
-General notes about using Jupyter on OnDemand:
-----------------------------------------------
+## General notes about using Jupyter on OnDemand:
 
 Please note that IX, ZFS, and BGFS storage locations are not browsable from OnDemand by default and to access such locations you have to create symbolic links to the directories into your home directory as follows:
 
@@ -125,10 +122,9 @@ Which will direct you to a file explorer with your session logs and scripts as f
   
 ![](../_assets/img/web-portals/ondemand_022.png)
 
-This is useful to debug your session if you are having issues with it and helpful for us to when troubleshooting and solving problems ocuuring with your session if you contact us through submitting a support ticket.
+This is useful to debug your session if you are having issues with it and helpful for us to when troubleshooting and solving problems occurring with your session if you contact us through submitting a support ticket.
 
-Using custom virtual environments with Jupyter on OnDemand:
------------------------------------------------------------
+## Using custom virtual environments with Jupyter on OnDemand:
 
 Please refer to this [tutorial](../applications/python.md), for a complete guide on managing Python environments on the CRC clusters.
 
