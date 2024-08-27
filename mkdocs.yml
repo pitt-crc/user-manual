@@ -142,5 +142,14 @@ nav:
 
   - Supporting Code Optimization: code-optimization.md
 
+not_in_nav: |
+  snippets/jupyter-hub.md
+  snippets/jupyter-hub.md
+  snippets/jupyter-ondemand.md
+  snippets/open-ondemand.md
+  snippets/psych.md
+  snippets/terminal.md
+  snippets/viz.md
+
 
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.
