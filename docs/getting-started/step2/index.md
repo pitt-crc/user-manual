@@ -10,8 +10,8 @@ several portals, including
 
 * [**SSH connection using a terminal**](../terminal.md)
 * [**Linux Desktop webportal**](../viz.md)
-* [**Open OnDemand webportal**](../open-ondemand)
-* [**JupyterHub webportal**](../jupyter-hub)
+* [**Open OnDemand webportal**](../open-ondemand.md)
+* [**JupyterHub webportal**](../jupyter-hub.md)
 
 A schematic of this part of the process is highlighted below.
 
