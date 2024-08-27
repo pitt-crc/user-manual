@@ -1,0 +1,1 @@
+--8<-- "open-ondemand.md"

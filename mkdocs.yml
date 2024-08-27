@@ -2,6 +2,8 @@ site_name: CRC User Manual
 repo_url: https://github.com/pitt-crc/user-manual
 site_url: https://crc-pages.pitt.edu/user-manual/
 theme:
+  icon:
+    annotation: material/alert-circle
   name: material
   logo: _assets/img/pitt_shield_white.png
   favicon: _assets/img/pitt-logo-nav_white.png
@@ -16,6 +18,7 @@ theme:
     # - navigation.tabs
     # - navigation.sections
     - navigation.top
+    - navigation.indexes
     - content.code.annotate
 extra:
   homepage: https://crc.pitt.edu
@@ -53,19 +56,38 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.superfences
+  - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.snippets:
+      base_path: docs/snippets
   - toc:
+      toc_depth: 0
       permalink: true
   - tables
 nav:
   - Back to crc.pitt.edu: https://crc.pitt.edu
   - User Manual Home: index.md
+  - Getting Started:
+    - getting-started/index.md
+    - getting-started/getting-started-step1-account.md
+    - Step 2- Login to Access Portals:
+      - getting-started/step2/index.md
+      - SSH using a terminal: getting-started/terminal.md
+      - Linux Desktop Webportal: getting-started/viz.md
+      - Open OnDemand Webportal: getting-started/open-ondemand.md
+      - JupyterHub Webportal: getting-started/jupyter-hub.md
+    - Step 3- CRC Ecosystem:
+      - getting-started/step3/index.md
+      - Discovering Software: getting-started/step3/getting-started-step3-software.md
+      - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
+      - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Policies:
     - policies/job-scheduling-policy.md
     - policies/hardware-investing-policy.md
     - policies/resource-descriptions-for-writing-proposals.md
   - Connecting to Web Portals:
+    - web-portals/terminal.md
     - web-portals/open-ondemand.md
     - web-portals/jupyter-ondemand.md
     - web-portals/viz.md
@@ -119,6 +141,15 @@ nav:
       - advanced-genomics-support/ATACSeq-data-analysis.md
 
   - Supporting Code Optimization: code-optimization.md
+
+not_in_nav: |
+  snippets/jupyter-hub.md
+  snippets/jupyter-hub.md
+  snippets/jupyter-ondemand.md
+  snippets/open-ondemand.md
+  snippets/psych.md
+  snippets/terminal.md
+  snippets/viz.md
 
 
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.
