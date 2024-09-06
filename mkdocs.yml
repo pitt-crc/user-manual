@@ -142,6 +142,8 @@ nav:
 
   - Supporting Code Optimization: code-optimization.md
 
+  - Frequently Asked Questions: faq.md
+
 not_in_nav: |
   snippets/jupyter-hub.md
   snippets/jupyter-hub.md
