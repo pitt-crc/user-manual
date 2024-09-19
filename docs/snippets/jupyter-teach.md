@@ -3,7 +3,6 @@
 [JupyterHub](https://jupyter.org/hub) provides students access to Jupyter notebooks with the capability of connecting to dedicated
 computing resources on the Teach Cluster. Through this webportal, students can request access to CPU and GPU compute nodes for classwork.
 
-
 ## Step 1. Connecting to JupyterHub 
 
 Point your browser to the address below and authenticate using your Pitt credentials. The username needs to be all lowercase and is the
@@ -14,8 +13,6 @@ not the case, please try again while on [VPN](https://services.pitt.edu/TDClient
 * **authentication credentials:** Pitt username (all lowercase) and password
 
 ![](../_assets/img/jupyter/jupyter-1.png)
-
-
 
 ## Step 2. Selecting Resources
 
@@ -36,7 +33,6 @@ Pressing *Start* will launch the job to the Teach Cluster and send back a Jupyte
 ![](../_assets/img/jupyter/jupyter-4.png)
 
 ![](../_assets/img/jupyter/jupyter-5.png)
-
 
 ## Step 3. Interacting with the Jupyter Notebook
 
