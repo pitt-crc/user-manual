@@ -174,17 +174,17 @@ In most cases the **per-account limit is 500 jobs**, and the **per-user limit is
 `sacctmgr show qos format=Name%20,MaxJobsPA,MaxJobsPU,MaxSubmitJobsPA,MaxSubmitJobsPU,MaxTresPA%20` to view the limits 
 for any given QOS. 
 
-The maximum job array size is 100 on SMP, MPI, and HTC. The array size limits are defined at the cluster configuration level:
+The maximum job array size is 500 on SMP, MPI, and HTC, 1001 on GPU. The array size limits are defined at the cluster configuration level:
 ```
 [nlc60@login1 ~] : for cluster in smp mpi gpu htc; do echo $cluster; scontrol -M $cluster show config | grep MaxArraySize; done
 smp
-MaxArraySize            = 100
+MaxArraySize            = 500
 mpi
-MaxArraySize            = 100
+MaxArraySize            = 500
 gpu
 MaxArraySize            = 1001
 htc
-MaxArraySize            = 100
+MaxArraySize            = 500
 ```
 
 These limits exist to prevent users who batch submit large quantities of jobs in a loop or job array from having all of 
