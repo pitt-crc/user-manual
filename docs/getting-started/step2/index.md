@@ -12,6 +12,7 @@ several portals, including
 * [**Linux Desktop webportal**](../viz.md)
 * [**Open OnDemand webportal**](../open-ondemand.md)
 * [**JupyterHub webportal**](../jupyter-hub.md)
+* [**JupyterHub on Teach Cluster**](../jupyter-teach.md)
 
 A schematic of this part of the process is highlighted below.
 

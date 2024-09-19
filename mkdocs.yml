@@ -77,6 +77,7 @@ nav:
       - Linux Desktop Webportal: getting-started/viz.md
       - Open OnDemand Webportal: getting-started/open-ondemand.md
       - JupyterHub Webportal: getting-started/jupyter-hub.md
+      - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
     - Step 3- CRC Ecosystem:
       - getting-started/step3/index.md
       - Discovering Software: getting-started/step3/getting-started-step3-software.md
@@ -92,6 +93,7 @@ nav:
     - web-portals/jupyter-ondemand.md
     - web-portals/viz.md
     - web-portals/jupyter-hub.md
+    - web-portals/jupyter-teach.md
     - web-portals/psych.md
   - The SLURM Workload Manager:
     - slurm/slurm-overview.md

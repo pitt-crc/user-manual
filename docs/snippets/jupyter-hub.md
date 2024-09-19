@@ -1,5 +1,11 @@
 # Jupyter Hub
 
+!!! warning "Deprecation Notice"
+
+    hub.crc.pitt.edu will be retired during the next quarterly maintenance, scheduled for early Jan 2025. Courses should use the new 
+    jupyter.crc.pitt.edu that is integrated with the compute nodes on the Teach Cluster. Researchers should use 
+    Jupyter through Open On-Demand.
+
 ## **Summary**
 
 In addition to Jupyter notebook sessions via Open OnDemand, CRC also hosts the functionality for the multi-user equivalent
