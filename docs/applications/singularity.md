@@ -82,7 +82,8 @@ In this example, singularity will be used to run an instance of the [deepvariant
 
 To pull the docker container:
 
-```module load singularity/3.8.3
+```
+module load singularity/3.8.3
 singularity pull --name deepvariant-1.3.0.sif docker://google/deepvariant:1.3.0
 ```
 The singularity image is located in the install directory:
