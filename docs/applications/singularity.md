@@ -105,18 +105,18 @@ Write a batch script to run the singularity command similar to this:
 module load singularity/3.8.3
 
 mkdir -p output
-mkdir -p output/intermediate\_results\_dir
+mkdir -p output/intermediate_results_dir
 
-singularity exec  \\
-  /ihome/crc/install/deepvariant/deepvariant-1.3.0.sif \\
-  /opt/deepvariant/bin/run_deepvariant \\
-  --model_type WES \\
-  --ref reference/GRCh38_no_alt_analysis_set.fasta \\
-  --reads input/HG003.novaseq.wes_idt.100x.dedup.bam \\
-  --regions input/idt_capture_novogene.grch38.bed \\
-  --output_vcf output/HG003.output.vcf.gz \\
-  --output_gvcf output/HG003.output.g.vcf.gz \\
-  --num_shards $SLURM_CPUS_PER_TASK \\
+singularity exec  \
+  /ihome/crc/install/deepvariant/deepvariant-1.3.0.sif \
+  /opt/deepvariant/bin/run_deepvariant \
+  --model_type WES \
+  --ref reference/GRCh38_no_alt_analysis_set.fasta \
+  --reads input/HG003.novaseq.wes_idt.100x.dedup.bam \
+  --regions input/idt_capture_novogene.grch38.bed \
+  --output_vcf output/HG003.output.vcf.gz \
+  --output_gvcf output/HG003.output.g.vcf.gz \
+  --num_shards $SLURM_CPUS_PER_TASK \
   --intermediate_results_dir output/intermediate_results_dir
 ```
 Submit the job like so:
@@ -134,7 +134,7 @@ With the above definition, MYVAR will have the value "Overridden".
 export SINGULARITYENV_FS_LICENSE=/ihome/crc/install/freesurfer/license/license_free_surfer.txt
 export SINGULARITYENV_SUBJECTS_DIR=${PWD}
 ```
-For example, the above two environmental variables FS\_LICENSE and SUBJECTS\_DIR are used for Freesurfer singularity image.
+For example, the above two environmental variables FS_LICENSE and SUBJECTS_DIR are used for Freesurfer singularity image.
 
 Building local LMOD modules from singularity images
 ---------------------------------------------------
@@ -145,14 +145,14 @@ mkdir -p ~/modulefiles
 cd ~/modulefiles
 cp -r /ihome/crc/modules/Core/glnexus myglnexus
 ```
-Change the module name and version number. Change the singularity image within run\_fuction. Change the programs to be exposed within programs.
+Change the module name and version number. Change the singularity image within run_fuction. Change the programs to be exposed within programs.
 
 Finally you can do:
 ```
 module use ~/modulefiles
 module load myglnexus/1.4.1 # Change this to your module name and version number
 
-glnexus\_cli --help # test your programs
+glnexus_cli --help # test your programs
 ```
 GPU examples
 ------------
@@ -177,7 +177,7 @@ The option works on singularity functions that run or execute containers.
 srun -M gpu --gres=gpu:1 -n1 -t02:00:00 --pty bash
 singularity shell --nv /ihome/crc/install/openpose/openpose.sif
 ```
-Note: The CUDA runtime (in the container) and driver (on the compute node) versions need to be compatiable. When logged into a GPU compute node, you can check the driver version with \`nvidia-smi\`.
+Note: The CUDA runtime (in the container) and driver (on the compute node) versions need to be compatiable. When logged into a GPU compute node, you can check the driver version with `nvidia-smi`.
 
 FAQ
 ---
