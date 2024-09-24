@@ -22,9 +22,13 @@ if you want us to create a custom profile for your class.
 
 ![](../_assets/img/jupyter/jupyter-2.png)
 
-The *Host Process* profile will run the Jupyter Notebook on the VM server hosting the JupyterHub
-webportal. Our recommendation is that you do not choose *Host Process* but instead select one of the dedicated resources on the Teach
-Cluster.
+!!! bug "Documentation Update"
+    ~~The *Host Process* profile will run the Jupyter Notebook on the VM server hosting the JupyterHub
+    webportal. Our recommendation is that you do not choose *Host Process* but instead select one of the dedicated resources on the Teach
+    Cluster.~~
+
+    Due to memory-heavy jobs causing [OOM error](https://en.wikipedia.org/wiki/Out_of_memory) and bringing down JupyterHub, we have 
+    removed the *Host Process* profile and set the *Teach - 6 cores, 3 hours* as the default job profile.
 
 ![](../_assets/img/jupyter/jupyter-3.png)
 
