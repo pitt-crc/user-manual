@@ -26,7 +26,6 @@ clusters, data storage systems, networking equipment, and software
 You will need to install the [Remote Desktop client](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) 
 for your OS. The previous link provides instructions for various types of devices. Below, we will only highlight MacOS and Windows. 
 
-
 !!! example "Installing and Configuring the Remote Desktop client"
     === "MacOS"
         In MacOS, the Windows App client software is distributed through the Mac App Store. Open the the Windows App after download.
@@ -249,8 +248,3 @@ for your OS. The previous link provides instructions for various types of device
         ![MacOS-AVD-Webportals-04](../_assets/img/avd/MacOS-AVD-Webportals-04.png)
 
         ![MacOS-AVD-Webportals-05](../_assets/img/avd/MacOS-AVD-Webportals-05.png)
-
-    
-
-
-
