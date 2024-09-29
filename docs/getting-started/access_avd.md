@@ -194,13 +194,26 @@ for your OS. The previous link provides instructions for various types of device
         ![MacOS-AVD-WinSCP-09](../_assets/img/avd/MacOS-AVD-WinSCP-09.png)
 
     === "MobaXterm"
-        Within the AVD, point your browser to the [Download page](https://mobaxterm.mobatek.net/download-home-edition.html) 
+        Within the AVD, point your browser to the [**Download page**](https://mobaxterm.mobatek.net/download-home-edition.html) 
         to get the Portable edition of the software.
+
+        !!! warning "End User License Agreement (EULA)"
+            Please read the full [**MoabXterm terms and conditions**](https://mobaxterm.mobatek.net/license.html). According to
+            the EULA, section **5.1 Right of use**:
+
+            *...*
+            <br>
+            *Individual end-user is allowed to download (only from MobaXterm website: https://mobaxterm.mobatek.net) and to use 
+            MobaXterm Home Edition in a commercial or company environment. However, software installation must be performed by 
+            the end-user himself: the user who uses MobaXterm Home Edition inside a company must be the same person who 
+            downloaded the software and installed it. It is therefore not allowed to redistribute or deploy MobaXterm Home 
+            Edition inside a company. It is also not allowed for multiple users to use a single shared installation of MobaXterm 
+            Home Edition in a company, whether at the same time or not. These usages are covered by MobaXterm Professional Edition.*
 
         ![MacOS-AVD-MobaXterm-01](../_assets/img/avd/MacOS-AVD-MobaXterm-01.png)
 
         Navigate to the directory where the MobaXterm zip file was saved and double click on it to extract. Go into the 
-        resulting software directory and run the MobaXterm program.
+        resulting software directory and run the MobaXterm program. 
 
         ![MacOS-AVD-MobaXterm-02](../_assets/img/avd/MacOS-AVD-MobaXterm-02.png)
 
