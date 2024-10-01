@@ -261,3 +261,11 @@ for your OS. The previous link provides instructions for various types of device
         ![MacOS-AVD-Webportals-04](../_assets/img/avd/MacOS-AVD-Webportals-04.png)
 
         ![MacOS-AVD-Webportals-05](../_assets/img/avd/MacOS-AVD-Webportals-05.png)
+
+        * **JupyterHub for teaching:** [https://jupyter.crc.pitt.edu](https://jupyter.crc.pitt.edu)
+
+        ![avd-jupyter-01](../_assets/img/avd/avd-jupyter-01.png)
+
+        ![avd-jupyter-02](../_assets/img/avd/avd-jupyter-02.png)
+
+        ![avd-jupyter-03](../_assets/img/avd/avd-jupyter-03.png)
