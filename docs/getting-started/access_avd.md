@@ -21,7 +21,7 @@ data management operations
 clusters, data storage systems, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to PittNet
 
-^^**1. Install and Configure Remote Desktop client**^^
+##**1. ^^Install and Configure Remote Desktop client^^**
 
 You will need to install the [Remote Desktop client](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) 
 for your OS. The previous link provides instructions for various types of devices. Below, we will only highlight MacOS and Windows. 
@@ -63,7 +63,7 @@ for your OS. The previous link provides instructions for various types of device
         | **1**![Win-AVD-04](../_assets/img/avd/Win-AVD-04.png) | **2**![Win-AVD-05](../_assets/img/avd/Win-AVD-05.png) |
         | **3**![Win-AVD-06](../_assets/img/avd/Win-AVD-06.png) | **4**![Win-AVD-07](../_assets/img/avd/Win-AVD-07.png) |
 
-^^**2. Connecting to an AVD Device**^^
+##**2. ^^Connecting to an AVD Device^^**
 
 !!! example "Connecting to a Remote Device"
     === "MacOS"
@@ -98,7 +98,7 @@ for your OS. The previous link provides instructions for various types of device
 
         ![Win-AVD-12](../_assets/img/avd/Win-AVD-12.png)
 
-^^**3. Various Methods Connecting to CRC**^^
+##**3. ^^Various Methods Connecting to CRC^^**
 
 !!! example "Options for Connecting to CRC"
 
