@@ -16,6 +16,8 @@ a [**VPN**](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) i
     If after exhausting all troubleshooting avenues and the VPN remains non-functional, an alternative approach is to use an
     [**Azure Virtual Desktop**](access_avd.md) as a so-called *jump box* to CRC.
 
+    ==**CRC users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
+
 A schematic of this part of the process is highlighted below.
 
 ![GETTING-STARTED-MAP](../_assets/img/getting-started/getting-started-step-1.png)
