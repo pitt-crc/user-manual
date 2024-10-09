@@ -69,7 +69,14 @@ for your OS. The previous link provides instructions for various types of device
     === "MacOS"
 
         After successful authentication, you will be presented with list of authorized remote Devices that you can connect to. Your
-        device list may be different from what is shown below. The *Device* we wish to log in to is **Pitt IT - Virtual Student Computing Lab**.
+        device list may be different from what is shown below, depending on your role. For students and faculty, the *Device* you wish 
+        to log in to is **Pitt IT - Virtual Student Computing Lab**. For staff, the *Device* you wish to log in to is **Pitt IT - Remote Work**. 
+        If you do not see any of these *Devices*, please submit a
+        [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
+        stating that you need authorization to use AVD to access CRC.
+
+        !!! tip "UPMC Devices"
+            **CRC users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
         ![MacOS-AVD-07](../_assets/img/avd/MacOS-AVD-07.png)
 
@@ -84,7 +91,14 @@ for your OS. The previous link provides instructions for various types of device
     === "Windows"
 
         After successful authentication, you will be presented with list of authorized Workspaces that you can connect to. Your
-        Workspaces may be different from what is shown below. The *Workspace* we wish to log in to is **Pitt IT - Virtual Student Computing Lab**.
+        Workspaces may be different from what is shown below, depending on your role. For students and faculty, the *Workspace* you wish
+        to log in to is **Pitt IT - Virtual Student Computing Lab**. For staff, the *Workspace* you wish to log in to is **Pitt IT - Remote Work**.
+        If you do not see any of these *Devices*, please submit a
+        [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
+        stating that you need authorization to use AVD to access CRC.
+
+        !!! tip "UPMC Devices"
+            **CRC users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
         ![Win-AVD-09](../_assets/img/avd/Win-AVD-09.png)
 
