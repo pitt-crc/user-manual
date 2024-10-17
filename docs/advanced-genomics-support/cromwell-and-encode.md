@@ -40,7 +40,6 @@ specifications (by Anshul Kundaje) in [this google doc](https://docs.google.com/
     User-friendly HTML report: In addition to the standard outputs, the pipeline generates an HTML report that consists of a tabular representation of quality metrics including alignment/peak statistics and FRiP along with many useful plots (IDR/cross-correlation measures). An example of the [HTML report](https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/example_output/qc.html). The [json file](https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/example_output/qc.json) used in generating this report.
     Supported genomes: Pipeline needs genome specific data such as aligner indices, chromosome sizes file and blacklist. We provide a genome database downloader/builder for hg38, hg19, mm10, mm9. You can also use this [builder](https://github.com/ENCODE-DCC/chip-seq-pipeline2/blob/master/docs/build_genome_database.md) to build genome database from FASTA for your custom genome.
 
-
 Example scripts are at /bgfs/genomics/fangping/encode/encode-chip-seq-pipeline
 
 Genome databases are downloaded at /bgfs/genomics/refs/encode-pipeline-genome-data/encode-chip-seq-pipeline
