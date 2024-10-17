@@ -27,15 +27,14 @@ slurm, the platform for the HTC cluster. This will also install Cromwell/Womtool
 Downloading those files can take several minutes. Once they are installed, Caper can completely work offline with 
 local data files.
 
-
 ## ENCODE Transcription Factor and Histone ChIP-Seq processing pipeline
 
-### Introduction
+**Introduction**
 
 This ChIP-Seq pipeline is based off the ENCODE (phase-3) transcription factor and histone ChIP-seq pipeline 
 specifications (by Anshul Kundaje) in [this google doc](https://docs.google.com/document/d/1lG_Rd7fnYgRpSIqrIfuVlAz2dW1VaSQThzk836Db99c/edit).
 
-### Features
+**Features**
 
     Portability: The pipeline run can be performed across different cloud platforms such as Google, AWS and DNAnexus, as well as on cluster engines such as SLURM, SGE and PBS.
     User-friendly HTML report: In addition to the standard outputs, the pipeline generates an HTML report that consists of a tabular representation of quality metrics including alignment/peak statistics and FRiP along with many useful plots (IDR/cross-correlation measures). An example of the [HTML report](https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/example_output/qc.html). The [json file](https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/example_output/qc.json) used in generating this report.
@@ -46,7 +45,7 @@ Example scripts are at /bgfs/genomics/fangping/encode/encode-chip-seq-pipeline
 
 Genome databases are downloaded at /bgfs/genomics/refs/encode-pipeline-genome-data/encode-chip-seq-pipeline
 
-### Input JSON file
+**Input JSON file**
 
 An input JSON file specifies all the input parameters and files that are necessary for successfully running this pipeline. This includes a specification of the path to the genome reference files and the raw data fastq file. Please make sure to specify absolute paths rather than relative paths in your input JSON files.
 
@@ -104,7 +103,7 @@ Check the slurm output file. The workflow runs successfully when you see the fol
 
 “This workflow ran successfully. There is nothing to troubleshoot”
 
-### Use croo to organize outputs
+**Use croo to organize outputs**
 
 Find a metadata.json on Caper's output directory chip.
 
@@ -116,7 +115,7 @@ croo metadata.json
 
 ## ENCODE ATAC-seq Pipeline
 
-### Introduction
+**Introduction**
 
 This pipeline is designed for automated end-to-end quality control and processing of ATAC-seq and DNase-seq data. 
 The pipeline can be run on compute clusters with job submission engines as well as on stand alone machines. 
@@ -138,7 +137,7 @@ Example scripts are at /bgfs/genomics/fangping/encode/encode_atacseq
 
 Genome databases are downloaded at /bgfs/genomics/refs/encode-pipeline-genome-data/encode-atac-seq-pipeline
 
-### Input JSON file
+**Input JSON file**
 
 An input JSON file specifies all the input parameters and files that are necessary for successfully running this pipeline. This includes a specification of the path to the genome reference files and the raw data fastq file. Please make sure to specify absolute paths rather than relative paths in your input JSON files.
 
@@ -196,7 +195,7 @@ Check the slurm output file. The workflow runs successfully when you see the fol
 
 “This workflow ran successfully. There is nothing to troubleshoot”
 
-### Use croo to organize outputs
+**Use croo to organize outputs**
 
 Find a metadata.json on Caper's output directory chip.
 
