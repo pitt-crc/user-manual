@@ -123,6 +123,7 @@ nav:
     - applications/compilers.md
     - applications/python.md
     - applications/r+rstudio.md
+    - applications/ondemand-rstudio-gpu.md
     - applications/singularity.md
     - Licensed Software:
         - applications/licensed-software/ansys.md
