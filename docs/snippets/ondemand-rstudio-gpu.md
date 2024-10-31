@@ -90,7 +90,6 @@ two possible reasons and steps to address the issue.
 
 ![](../_assets/img/ondemand/ondemand-rstudio-gpu-error-02.png)
 
-
 !!! example "Errors and Solutions"
     === "Error 1: No Resources"
         
