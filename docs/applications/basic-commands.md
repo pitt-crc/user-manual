@@ -119,7 +119,7 @@ Please refer to the output of the `man sbatch` command or
 		<tr>
 			<td>--partition</td>
 			<td>Select the partition to submit the job to. smp, high-mem for smp cluster, opa, legacy for mpi cluster, 
-             gtx1080, titan, titanx and k40 for gpu cluster.</td>
+            gtx1080, titan, titanx and k40 for gpu cluster.</td>
 		</tr>
 		<tr>
 			<td>--account</td>
