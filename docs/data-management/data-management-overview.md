@@ -189,6 +189,32 @@ The aspera binary is at `~/.aspera/connect/bin/ascp` and the key is at `~/.asper
 [fangping@login0b aspera]$ ~/.aspera/connect/bin/ascp -QT -l 300m -P33001 -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR949/SRR949627/SRR949627_1.fastq.gz .
 ```
 
+### Use wget or curl to Download Files
+
+wget is a networking command-line tool that lets you download files. It supports the HTTP,HTTPS, FTP, and FTPS internet protocols.
+
+In order to download a file using Wget, type wget followed by the URL of the file that you wish to download. Wget will download the file in the given URL and save it in the current directory.
+
+wget https://what.ever
+
+The equivalent curl command is:
+
+curl https://what.ever
+
+The file will keep the name embedded in the url.
+You can specify a destination name.
+
+curl -o newname https://what.ever
+
+wget -O newname https://what.ever.
+
+If your url includes specific characters, such as ?, you can put the full url in single quotes to prevent the shell from mangling these characters.
+
+wget -O newname 'https://what.ever?userId=id&Credential=password’
+
+curl -o newname 'https://what.ever?userId=id&Credential=password’
+
+
 ### Cloud Tools
 
 #### Pitt OneDrive
