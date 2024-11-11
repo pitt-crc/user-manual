@@ -40,9 +40,9 @@ The [BioContainers](https://biocontainers.pro/) project comprises container imag
 You can download and convert the Docker image to a Singularity image with:
 ```
 module load singularity/3.8.3
-singularity pull --name bowtie2-2.4.5.sif docker://quay.io/biocontainers/bowtie2: 2.4.5--py36hfca12d5\_2
+singularity pull --name bowtie2-2.5.4.sif docker://quay.io/biocontainers/bowtie2:2.5.4--he20e202_2
 ```
-This will produce the file ```bowtie2-2.4.5.sif``` in the current working directory.
+This will produce the file ```bowtie2-2.5.4.sif``` in the current working directory.
 
 Note that singularity pull requires squashfs, and this library is only installed on the login nodes. If you are using "singularity pull" on the computation nodes, you can load the squashfs-tools/4.4 module.
 ```
