@@ -1,16 +1,16 @@
-# Basic Commands
-These are some of the basic commands:
+# Basic Slurm Commands
 
-*   sinfo – Quick view of hardware allocated and free
-*   smap – More visual version of sinfo using ncurses
-*   sview – Graphical interface of hardware (requires X11).
-*   sbatch <job_script> – Submit a job file
-*   squeue – View all running jobs
-*   squeue -u <user> – View particular <user>’s jobs (could be you)
-*   sshare – View fairshare information
-*   sprio – View queued job’s priority
+These are some of the basic commands for viewing information from
+the [Slurm Workload Manager](../slurm/slurm-overview.md):
 
-If you are a PBS Torque user and want to migrate to Slurm, you can find the equivalent examples for PBS and Slurm job scripts in the following table.
+* sinfo – Quick view of hardware allocated and free
+* sbatch <job_script> – Submit a job file
+* squeue – View all running jobs
+* sshare – View fairshare information
+* sprio – View queued job’s priority
+
+If you are a PBS Torque user and want to migrate to Slurm, you can find the equivalent examples for PBS and Slurm job
+scripts in the following table.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -74,7 +74,9 @@ If you are a PBS Torque user and want to migrate to Slurm, you can find the equi
     });
 </script>
 
-The ```sbatch``` arguments here are the minimal subset required to accurately specify a job on the h2p cluster. Please refer to man sbatch for more options.
+The ```sbatch``` arguments here are the minimal subset required to accurately specify a job on the h2p cluster.
+Please refer to the output of the `man sbatch` command or
+[SchedMD's Slurm docs](https://slurm.schedmd.com/man_index.html) for more options.
 
 <table class="display cell-border" id="mTable">
 	<thead>
@@ -139,10 +141,23 @@ The ```sbatch``` arguments here are the minimal subset required to accurately sp
     });
 </script>
 
-```srun``` also takes the ```--nodes```,```--tasks-per-node``` and ```--cpus-per-task``` arguments to allow each job step to change the utilized resources but they cannot exceed those given to sbatch. The above arguments can be provided in a batch script by preceding them with #SBATCH. Note that the shebang (#!) line must be present. The shebang line can call any shell or scripting language available on the cluster. For example, ```#!/usr/bin/env``` bash.
+```srun``` also takes the ```--nodes```,```--tasks-per-node``` and ```--cpus-per-task``` arguments to allow each job
+step to change the utilized resources but they cannot exceed those given to sbatch. The above arguments can be provided
+in a batch script by preceding them with #SBATCH.
 
-Slurm is very explicit in how one requests cores and nodes. While extremely powerful, the three flags,```--nodes```, ```--ntasks```, and ```--cpus-per-task``` can be a bit confusing at first.
+!!! note
+The shebang (#!) line must be present. The shebang line specifies the interpreter for the script, and can
+call any shell or scripting language available on the cluster. For example, ```#!/usr/bin/env``` bash.
+
+Slurm is very explicit in how one requests cores and nodes. While extremely powerful, the three
+flags,```--nodes```, ```--ntasks```, and ```--cpus-per-task``` can be a bit confusing at first.
+
 ```
 --ntasks vs. --cpus-per-task
 ```
-The term “task” in this context can be thought of as a “process”. Therefore, a multi-process program (e.g. MPI) is comprised of multiple tasks. In Slurm, tasks are requested with the ```--ntasks``` flag. A multi-threaded program is comprised of a single task, which can in turn use multiple CPUs. CPUs, for the multithreaded programs, are requested with the ```--cpus-per-task``` flag. Individual tasks cannot be split across multiple compute nodes, so requesting a number of CPUs with ```--cpus-per-task``` flag will always result in all your CPUs allocated on the same compute node.
+
+The term “task” in this context can be thought of as a “process”. Therefore, a multi-process program (e.g. MPI) is
+comprised of multiple tasks. In Slurm, tasks are requested with the ```--ntasks``` flag. A multi-threaded program is
+comprised of a single task, which can in turn use multiple CPUs. CPUs, for the multithreaded programs, are requested
+with the ```--cpus-per-task``` flag. Individual tasks cannot be split across multiple compute nodes, so requesting a
+number of CPUs with ```--cpus-per-task``` flag will always result in all your CPUs allocated on the same compute node.
