@@ -96,8 +96,7 @@ Please refer to the output of the `man sbatch` command or
 		</tr>
 		<tr>
 			<td>--cpus-per-task</td>
-			<td>Advise the Slurm controller that ensuing job steps will require a certain number of processors per 
-            task.</td>
+			<td>Advise the Slurm controller that ensuing job steps will require a certain number of processors per task.</td>
 		</tr>
 		<tr>
 			<td>--error</td>
@@ -118,13 +117,11 @@ Please refer to the output of the `man sbatch` command or
 		</tr>
 		<tr>
 			<td>--partition</td>
-			<td>Select the partition to submit the job to. smp, high-mem for smp cluster, opa, legacy for mpi cluster, 
-            gtx1080, titan, titanx and k40 for gpu cluster.</td>
+			<td>Select the partition to submit the job to. smp, high-mem for smp cluster, opa, legacy for mpi cluster, gtx1080, titan, titanx and k40 for gpu cluster.</td>
 		</tr>
 		<tr>
 			<td>--account</td>
-			<td>Charge resources used by this job to specified account. This is only relevant for users who are in 
-            multiple Slurm accounts because he/she is in groups that are collaborating.</td>
+			<td>Charge resources used by this job to specified account. This is only relevant for users who are in multiple Slurm accounts because he/she is in groups that are collaborating.</td>
 		</tr>
 	</tbody>
 </table>
@@ -146,11 +143,11 @@ Please refer to the output of the `man sbatch` command or
 
 ```srun``` also takes the ```--nodes```,```--tasks-per-node``` and ```--cpus-per-task``` arguments to allow each job
 step to change the utilized resources but they cannot exceed those given to sbatch. The above arguments can be provided
-in a batch script by preceding them with #SBATCH. 
+in a batch script by preceding them with #SBATCH.
 
 !!! note
-    The shebang (#!) line must be present. The shebang line specifies the interpreter for the script, and can
-    call any shell or scripting language available on the cluster. For example, ```#!/usr/bin/env``` bash.
+The shebang (#!) line must be present. The shebang line specifies the interpreter for the script, and can
+call any shell or scripting language available on the cluster. For example, ```#!/usr/bin/env``` bash.
 
 Slurm is very explicit in how one requests cores and nodes. While extremely powerful, the three
 flags,```--nodes```, ```--ntasks```, and ```--cpus-per-task``` can be a bit confusing at first.
