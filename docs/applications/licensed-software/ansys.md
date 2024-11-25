@@ -36,6 +36,11 @@ use under the academic license; the launch command for each application is inclu
 
 - ANSYS RSM (rsmluancher)
 
+### DEM Simulation:
+
+- ANSYS Rocky (Rocky)
+
+
 ## Access modalities for ANSYS
 
 ### Using graphic user interface (VIZ)
