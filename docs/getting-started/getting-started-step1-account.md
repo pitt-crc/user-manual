@@ -18,6 +18,11 @@ a [**VPN**](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) i
 
     ==**CRC users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
+!!! tip "Accessing the HIPAA environment"
+    The CRC HIPAA environment can be accessed using a secured [**Azure Virtual Desktop**](access_hipaa.md). Only projects with an 
+    IRB approval can reside within this restricted environment.
+
+
 A schematic of this part of the process is highlighted below.
 
 ![GETTING-STARTED-MAP](../_assets/img/getting-started/getting-started-step-1.png)
