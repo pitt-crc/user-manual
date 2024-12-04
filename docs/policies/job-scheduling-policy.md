@@ -46,7 +46,7 @@ The priority weight for QOS is 2000.
             <td><code>Short</code></td>
             <td>13</td>
             <td>1.00</td>
-            <td>3-00:00:00</td>
+            <td>1-00:00:00</td>
         </tr>
         <tr>
             <td><code>Normal</code></td>
