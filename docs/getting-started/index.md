@@ -46,7 +46,7 @@ clusters, data storage systems, networking equipment, and software
             <td>For genomics and other health sciences-related workflows that can run on a single node
         </tr>
         <tr>
-            <td>smp</td>
+            <td><a href="../hardware_profiles/smp"><b>smp</b> </a></td>
             <td>Shared Memory Processing</td>
             <td>For jobs that can run on a single node where the CPU cores share a common memory space</td>
         </tr>
