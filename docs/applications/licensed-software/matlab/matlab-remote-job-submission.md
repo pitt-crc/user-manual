@@ -48,7 +48,7 @@ interact with the Slurm job scheduler on a cluster. Use the links below to downl
     The instructions below have been updated to correspond to the R2022a plugin scripts. 
     Some cluster object fieldnames have changed. Changes from the previous scripts will have comments next to them.
 
-You should **not** use them on the clusters as they **share **a filesystem with 
+You should **not** use the above plugin scripts when running directly on the cluster as they **share **a filesystem with 
 the MATLAB installation that is running the jobs! If you are running Matlab from the cluster, such as VIZ, then there is no need to download and execute the plugin scripts. 
 In that case, directly run "configCluster" from Matlab to create the cluster profile.
 
