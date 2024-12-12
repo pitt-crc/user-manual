@@ -36,9 +36,8 @@ cluster: `/ihome/crc/how_to_run/matlab`
 ### Download the Cluster Plugin Scripts
 
 In order to submit jobs from your desktop, you will need to install some custom MATLAB plugin scripts that know how to 
-interact with the Slurm job scheduler on a cluster. Use the link below to download the **non-shared** filesystem 
-(used by your local client, you should not use them on the clusters as they **share **a filesystem with 
-the MATLAB installation that is running the jobs) script bundle for your version of MATLAB:
+interact with the Slurm job scheduler on a cluster. Use the links below to download the **non-shared** filesystem 
+(used by your local client) script bundle for your version of MATLAB. 
 
 [Pitt.h2p.R2022a.zip](https://crc.pitt.edu/sites/default/files/Pitt.nonshared.R2022a.zip) (recommended)
 
@@ -48,6 +47,10 @@ the MATLAB installation that is running the jobs) script bundle for your version
 
     The instructions below have been updated to correspond to the R2022a plugin scripts. 
     Some cluster object fieldnames have changed. Changes from the previous scripts will have comments next to them.
+
+You should **not** use them on the clusters as they **share **a filesystem with 
+the MATLAB installation that is running the jobs! If you are running Matlab from the cluster, such as VIZ, then there is no need to download and execute the plugin scripts. 
+In that case, directly run "configCluster" from Matlab to create the cluster profile.
 
 ### Unpack the Cluster Plugin Bundle to a Path on Your Computer
 
