@@ -256,7 +256,7 @@ for loop:
 
 % A parfor loop will use parallel workers if available.
 tic
-**parfor** i = 1:10000000
+parfor i = 1:10000000
     A(i) = sin(i*2*pi/2500000);
 end
 toc
