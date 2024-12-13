@@ -220,7 +220,7 @@ for your OS. The previous link provides instructions for various types of device
 
         From within the AVD, all CRC webportals are accessible, including
 
-        * **Open OnDemand:** [https://viz.res.crc.pitt.edu](https://viz.res.crc.pitt.edu)
+        * **Open OnDemand:** [https://ondemand.res.crc.pitt.edu](https://ondemand.res.crc.pitt.edu)
   
         ![MacOS-AVD-Webportals-01](../_assets/img/avd/MacOS-AVD-Webportals-01-HIPAA.png)
 
@@ -228,7 +228,25 @@ for your OS. The previous link provides instructions for various types of device
 
         ![MacOS-AVD-Webportals-03](../_assets/img/avd/MacOS-AVD-Webportals-03-HIPAA.png)
 
-##**4. ^^Ending your AVD session^^**
+##**4. ^^Recommendations on setting up your software environment^^**
+
+The CRC team will work with you to set up the software environment. Where self service is possible, we will point
+you to the appropriate documentation that shows you how to do this yourself. If you run into problems, please 
+submit a [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+and we will engage in finding the solution. We summarize below, the best practices for various software.
+
+*   **R and RStudio** -- Most users will already have a working environment and will want to transfer 
+packages from there to the CRC HIPAA environment. Here is a 
+[**blog post**](https://www.r-bloggers.com/2017/07/quick-way-of-installing-all-your-old-r-libraries-on-a-new-device/) that
+shows how to automate the package installation process in three steps.
+
+*   **Python** -- The CRC provides [**guidance on setting up a Python environment**](../applications/python.md). One
+way clone an environment from one system to another is to create a requirements file and then to use that for the 
+package installation in the other system. This is described in 
+the [**pip documentation**](https://pip.pypa.io/en/latest/user_guide/#requirements-files).
+
+
+##**5. ^^Ending your AVD session^^**
 
 Once you are done with your work session, be sure to Sign out.
 
