@@ -98,6 +98,7 @@ nav:
     - web-portals/jupyter-hub.md
     - web-portals/jupyter-teach.md
     - web-portals/psych.md
+    - web-portals/hugen.md
   - The SLURM Workload Manager:
     - slurm/slurm-overview.md
     - slurm/batch-jobs.md
