@@ -1,4 +1,3 @@
-hugen or teach Open Ondemand webportal to teach bioinformatics courses
 # **hugen or teach Open Ondemand webportal on the teach cluster**
 
 ## **Summary**
