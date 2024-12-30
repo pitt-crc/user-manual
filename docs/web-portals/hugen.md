@@ -117,7 +117,7 @@ Type 'q()' to quit R.
 
 <p>Then click Open File from RStudio server and open pbmc3k_tutorial.Rmd. You can Knit to html to generate html output from the R markdown. &nbsp;</p>
 
-<p><img alt="" height="599" src="/sites/default/files/ondemand_R_5.png" width="1000" /></p>
+![](../_assets/img/web-portals/hugen5.png)
 
 <p>The instructor can also teach students how to submit a R batch job. We recommend that the instructors provide a job template (test.sbatch) as follows.</p>
 
