@@ -14,7 +14,9 @@ The hugen.crc.pitt.edu or teach.crc.pitt.edu Open Ondemand Web Portal is the gat
 
 Based on the spreadsheet, we will create the linux group, i.e., hugen2071-2024f. We will add the students, the instructor and the TAs to the linux group. 
 
-Running id <username> will show gid=<primary group>.
+Note that a user can be associated with multiple linux groups. Running `id <username>` will show `gid=<primary group>`. hugen2071-2024f may not be your primary linux group.
+
+/ix1/hugen2071-2024f is owned by the instructor and the linux group hugen2071-2024f. The default permission is 770 so that members of the group hugen2071-2024f have written permissions to this folder. 
 
 **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://teach.crc.pitt.edu)**
 
