@@ -86,9 +86,10 @@ Type 'q()' to quit R.
 
 <p>You can also install your own R packages. R searches the user’s path for libraries followed by the root installation. R will stop searching when it finds the first instance of the library within the path hierarchy.Use “.libPaths()” to check the searching path. For r/4.4.0, your local R packages will be installed under ~/R/x86_64-pc-linux-gnu-library/4.4. To allow all attendees to use the same R packages, we recommend that the instructor hides his/her local R packages. If you need specific R packages for your course, submit a help ticket, and we will install the package so that all attendees can use the same version.</p>
 
-<p>You can also use RStudio server on Open Ondemand to teach the course. Logon ondemand.htc.crc.pitt.edu, Select Interactive Apps -&gt; RStudio Server 2022</p>
+<p>You can also use RStudio server on Open Ondemand to teach the course. Logon hugen.crc.pitt.edu or teach.crc.pitt.edu, Select Interactive Apps -&gt; RStudio Server 2022</p>
 
-<p><img alt="" height="751" src="/sites/default/files/course_R_1.png" width="600" /></p>
+![](../_assets/img/web-portals/hugen3.png)
+![](../_assets/img/web-portals/hugen4.png)
 
 <p>Click Launch to start RStudio server. Slurm will submit a batch job to request 2 cores (16 GB memory), 2 hour walltime. The RStudio server will be run by the login user and the rsession will run the specified R version. The SUs will be extracted from the slurm account course-2023s.</p>
 
