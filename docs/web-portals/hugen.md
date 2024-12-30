@@ -152,11 +152,13 @@ R CMD BATCH test.R test.txt
 
 <p>python/ondemand-jupyter-python3.10</p>
 
+<p>python/ondemand-jupyter-python3.11</p>
+
 <p>Each anaconda python distribution includes more than 6000 python packages.</p>
 
-<p>You can select the corresponding module, and run jupyter notebook/lab using the anaconda python distribution. Logon ondemand.htc.pitt.edu, Interactive Apps -&gt; Jupyter</p>
+<p>You can select the corresponding module, and run jupyter notebook/lab using the anaconda python distribution. Logon hugen.crc.pitt.edu, Interactive Apps -&gt; Jupyter. Do not forget to add the course slurm allocation to the account field.</p>
 
-<p><img alt="" height="669" src="/sites/default/files/ondemand_python.png" width="500" /></p>
+![](../_assets/img/web-portals/hugen6.png)
 
 <p>&nbsp;</p>
 
