@@ -189,9 +189,9 @@ R CMD BATCH test.R test.txt
 
 <p>To start a Jupyter Lab/notebook with this conda environment activated, you can specify the location of the conda environment under “Name of Custom Conda Environment”.</p>
 
-<p><img alt="" height="710" src="/sites/default/files/ondemand_python_2.png" width="500" /></p>
+![](../_assets/img/web-portals/hugen7.png)
 
-<p>If you receive this error "Failed to connect to htc-n??.crc.pitt.edu:?????" when you Lauch the Jupyter. Wait 1-2 minuates, then refresh your browser.</p>
+<p>If you receive this error "Failed to connect to teach-cpu-n??.crc.pitt.edu:?????" when you Lauch the Jupyter. Wait 1-2 minuates, then refresh your browser.</p>
 
 <p>To use the python packages inside this conda environment, you can directly import the python package. To demonstrate the other packages that you have installed in the conda environment, you can run it through jupyter notebook (See the hisat2 example below).</p>
 
