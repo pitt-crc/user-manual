@@ -78,9 +78,9 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
->
-
 &gt;</pre>
+
+`[fangping@login3 ~]$ srun -M teach --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
 
 <p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.3.0, the location of these packages is /ihome/crc/install/gcc-12.2.0/r/4.3.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
 
