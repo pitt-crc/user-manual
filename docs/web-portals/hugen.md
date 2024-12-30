@@ -195,11 +195,11 @@ R CMD BATCH test.R test.txt
 
 <p>To use the python packages inside this conda environment, you can directly import the python package. To demonstrate the other packages that you have installed in the conda environment, you can run it through jupyter notebook (See the hisat2 example below).</p>
 
-<p><img alt="" height="701" src="/sites/default/files/ondemand_python_3.png" width="1000" /></p>
+![](../_assets/img/web-portals/hugen8.png)
 
 <p>You can also run the other packages through terminal. Launcher -&gt; Terminal</p>
 
-<p><img alt="" height="683" src="/sites/default/files/ondemand_python_4.png" width="700" /></p>
+![](../_assets/img/web-portals/hugen9.png)
 
 <p>When you start Jupyter Notebook/Lab, the working directory is the home directory. You can use softlink trick to navigate to course storage.</p>
 
