@@ -203,13 +203,13 @@ R CMD BATCH test.R test.txt
 
 <p>When you start Jupyter Notebook/Lab, the working directory is the home directory. You can use softlink trick to navigate to course storage.</p>
 
-<p>Logon ondemand.htc.crc.pitt.edu, click Clusters -&gt; &gt;_HTC Shell Access</p>
+<p>Logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
 
 <pre>
-[fmu@login0b ~]$ mkdir -p /ix/genomics/demo/users/fmu # create a folder
-[fmu@login0b ~]$ chmod 700 /ix/genomics/demo/users/fmu # change the permission
-[fmu@login0b ~]$ ln -s /ix/genomics/demo/users/fmu my_course_data # generate a softlink to home directory
-[fmu@login0b ~]$</pre>
+[fmu@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu # create a folder
+[fmu@login3 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu # change the permission
+[fmu@login3 ~]$ ln -s /ix1/hugen2071-2024f/users/fmu my_course_data # generate a softlink to home directory
+[fmu@login3 ~]$</pre>
 
 <p>Each student can navigate to his/her own my_course_data from Jupyter Lab.</p>
 
@@ -218,14 +218,15 @@ R CMD BATCH test.R test.txt
 <pre>
 #!/bin/bash
 #SBATCH --job-name ExampleJob
-#SBATCH --account=course-2023s # use your course allocation
+#SBATCH -M teach # use teach cluster
+#SBATCH --account=hugen2071-2024f # use your course allocation
 #SBATCH --nodes=1  # request a single node
 #SBATCH -c 1  # request 1 core
 #SBATCH --time=01:00:00  # 1 hour walltime
 
 # use the custom conda environment
 module load python/ondemand-jupyter-python3.10
-source activate /ix/genomics/demo/software/env
+source activate /ix1/hugen2071-2024f/software/env
 
 # You can also use other modules
 # module load hisat2/2.2.1
