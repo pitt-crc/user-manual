@@ -91,30 +91,28 @@ Type 'q()' to quit R.
 ![](../_assets/img/web-portals/hugen3.png)
 ![](../_assets/img/web-portals/hugen4.png)
 
-<p>Click Launch to start RStudio server. Slurm will submit a batch job to request 2 cores (16 GB memory), 2 hour walltime. The RStudio server will be run by the login user and the rsession will run the specified R version. The SUs will be extracted from the slurm account course-2023s.</p>
-
-<p><img alt="" height="475" src="/sites/default/files/course_R_2.png" width="1000" /></p>
+<p>Click Launch to start RStudio server. Slurm will submit a batch job to request 1 core (8 GB memory), 1 hour walltime. The RStudio server will be run by the login user and the rsession will run the specified R version. The SUs will be extracted from the slurm account hugen2071-2024f. Note that Interactive Apps on hugen.crc.pitt.edu have been configured to automatically submit jobs to the teach cluster. </p>
 
 <p>By default, the working directory of the R session is the home directory. You can use setwd() to change the working directory. For example, you can guide each student to change the working directory as shown above.</p>
 
-<p>The instructor should mkdir the parent folder /ix/genomics/demo/users and chmod it to be group writable.</p>
+<p>The instructor can mkdir a folder /ix1/hugen2071-2024f/users for students and chmod it to be group writable.</p>
 
 <pre>
-[fmu@login0b ~]$ mkdir -p /ix/genomics/demo/users
-[fmu@login0b ~]$ chmod 770 /ix/genomics/demo/users
+[fangping@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users
+[fangping@login3 ~]$ chmod 770 /ix1/hugen2071-2024f/users
 </pre>
 
-<p>The instructor can guide each student to create his/her own folder under the course storage. Each student can logon ondemand.htc.crc.pitt.edu, click Clusters -&gt; &gt;_HTC Shell Access</p>
+<p>The instructor can guide each student to create his/her own folder under the course storage. Each student can logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
 
 <pre>
-[fmu@login0b ~]$ mkdir -p /ix/genomics/demo/users/fmu
-[fmu@login0b ~]$ chmod 700 /ix/genomics/demo/users/fmu
+[fmu@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu
+[fmu@login3 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu
 </pre>
 
 <p>You can open a R markdown file. I have copied pbmc3k_tutorial.Rmd from NGS 2022s workshops.</p>
 
 <pre>
-[fangping@login0b ~]$ cd /ix/genomics/demo/users/fmu
+[fangping@login0b ~]$ cd /ix1/hugen2071-2024f/users/fmu
 [fangping@login0b fmu]$ cp /bgfs/genomics/workshops/2022s/Overview_of_NGS_data_analysis_using_Pitt_ondemand_and_R/seurat/pbmc3k_tutorial.Rmd .</pre>
 
 <p>Then click Open File from RStudio server and open pbmc3k_tutorial.Rmd. You can Knit to html to generate html output from the R markdown. &nbsp;</p>
