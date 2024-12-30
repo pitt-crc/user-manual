@@ -165,12 +165,12 @@ R CMD BATCH test.R test.txt
 <p>Conda is an open source package management system and environment management system. The instructor can generate conda environment and use conda as a package manager to install, run and update packages and their dependencies. We recommend that the instructor generate conda environment(s) under the course storage. All course attendees should use this conda environment(s).</p>
 
 <pre>
-[fangping@login0b ~]$ cd /ix/genomics/demo/software
-[fangping@login0b software]$ module load python/ondemand-jupyter-python3.10
-[fangping@login0b software]$ conda create --prefix=/ix/genomics/demo/software/env python=3.10
+[fangping@login3 ~]$ cd /ix1/hugen2071-2024f/software
+[fangping@login3 software]$ module load python/ondemand-jupyter-python3.10
+[fangping@login3 software]$ conda create --prefix=/ix1/hugen2071-2024f/software/env python=3.10
 ...
-[fangping@login0b software]$ source activate /ix/genomics/demo/software/env
-(/ix/genomics/demo/software/env) [fangping@login0b software]$</pre>
+[fangping@login3 software]$ source activate /ix1/hugen2071-2024f/software/env
+(/ix1/hugen2071-2024f/software/env) [fangping@login3 software]$</pre>
 
 <p>DO NOT activate your environment using “conda activate”</p>
 
@@ -183,7 +183,7 @@ R CMD BATCH test.R test.txt
 <p><a href="https://bioconda.github.io/recipes/hisat2/README.html">https://bioconda.github.io/recipes/hisat2/README.html</a></p>
 
 <pre>
-(/ix/genomics/demo/software/env) [fangping@login0b software]$ conda install hisat2</pre>
+(/ix1/hugen2071-2024f/software/env) [fangping@login3 software]$ conda install hisat2</pre>
 
 <p>...</p>
 
