@@ -4,6 +4,14 @@
 
 The hugen.crc.pitt.edu or teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRC teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
 
+## **Request an Allocation for a Course**
+
+<p>The course instructor can <a href="https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=KVCW5G08Bfo_&amp;RequestorType=Service">fill out this form</a> and attach a spreadsheet file containing the following information on each of the students from your class roster that will require access to the allocation's resources:</p>
+
+<p>Name, Pitt Email (<a href="mailto:username@pitt.edu">username@pitt.edu</a>, no aliased emails)</p>
+
+<p>The format of your course's user group name and slurm allocation will be SUBJECTNUMBER-YEAR(f/s) where the f/s denotes fall or spring semester. We will allocate 25K Sus and 5TB group shared storage to your course.<strong> Duration of computing time and storage: active for 1 term ((4 months).</strong> We will provide you the slurm allocation name and the storage location when we reply to your ticket. In the below demonstration, we will use course-2023s as the slurm allocation name and the storage location is /ix/genomics/demo. <strong>Note that there is an expiration date for the 5TB storage allocation. We will delete the 5TB storage allocation without discussing with the instructors or students.</strong></p>
+
 **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://teach.crc.pitt.edu)**
 
 To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRC.
@@ -13,14 +21,6 @@ The portal server is firewalled within PittNet and as such [you will need to be 
 Once connected, you can run commands directly on the server and submit batch jobs to the CRC clusters.
 
 All CRC software can be accessed using a terminal and our LMOD software provisioning system.
-
-<h1>Request an Allocation for a Course</h1>
-
-<p>The course instructor can <a href="https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=KVCW5G08Bfo_&amp;RequestorType=Service">fill out this form</a> and attach a spreadsheet file containing the following information on each of the students from your class roster that will require access to the allocation's resources:</p>
-
-<p>Name, Pitt Email (<a href="mailto:username@pitt.edu">username@pitt.edu</a>, no aliased emails)</p>
-
-<p>The format of your course's user group name and slurm allocation will be SUBJECTNUMBER-YEAR(f/s) where the f/s denotes fall or spring semester. We will allocate 25K Sus and 5TB group shared storage to your course.<strong> Duration of computing time and storage: active for 1 term ((4 months).</strong> We will provide you the slurm allocation name and the storage location when we reply to your ticket. In the below demonstration, we will use course-2023s as the slurm allocation name and the storage location is /ix/genomics/demo. <strong>Note that there is an expiration date for the 5TB storage allocation. We will delete the 5TB storage allocation without discussing with the instructors or students.</strong></p>
 
 <p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
 
