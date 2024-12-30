@@ -124,13 +124,14 @@ Type 'q()' to quit R.
 <pre>
 #!/bin/bash
 #SBATCH --job-name R_ExampleJob
-#SBATCH --account=course-2023s # use your course allocation
+#SBATCH -M teach  # use teach cluster
+#SBATCH --account=hugen2071-2024f # use your course allocation
 #SBATCH --nodes=1  # request a single node
 #SBATCH -c 1  # request 1 core
 #SBATCH --time=01:00:00  # 1 hour walltime
 
 # load R module
-module load gcc/12.2.0 r/4.3.0
+module load gcc/12.2.0 r/4.4.0
 
 #the instructors or students can write the R code in test.R
 
