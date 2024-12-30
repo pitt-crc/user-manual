@@ -12,6 +12,10 @@ The hugen.crc.pitt.edu or teach.crc.pitt.edu Open Ondemand Web Portal is the gat
 
 <p>The format of your course's user group name and slurm allocation will be SUBJECTNUMBER-YEAR(f/s) where the f/s denotes fall or spring semester. We will allocate 100K Sus on the teach cluster and 5TB group shared storage to your course.<strong> Duration of computing time and storage: active for 1 term ((4 months).</strong> We will provide you the slurm allocation name and the storage location when we reply to your ticket. In the below demonstration, we will use hugen2071-2024f as the slurm allocation name and the storage location is /ix1/hugen2071-2024f. <strong>Note that there is an expiration date for the 5TB storage allocation. We will delete the 5TB storage allocation without discussing with the instructors or students.</strong></p>
 
+Based on the spreadsheet, we will create the linux group, i.e., hugen2071-2024f. We will add the students, the instructor and the TAs to the linux group. 
+
+Running id <username> will show gid=<primary group>.
+
 **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://teach.crc.pitt.edu)**
 
 To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRC.
