@@ -51,16 +51,18 @@ All CRC software can be accessed using this terminal and our LMOD software provi
 
 <p><strong><a href="https://crc.pitt.edu/r_and_rstudio">https://crc-pages.pitt.edu/user-manual/applications/r%2Brstudio/</a></strong></p>
 
-<p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.3.0 can be loaded as:</p>
+<p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.4.0 can be loaded as:</p>
 
 <pre>
-[fangping@login0b demo]$ srun --account=course-2023s --pty bash
-[fangping@htc-1024-n3 demo]$ module load gcc/12.2.0 r/4.3.0
-[fangping@htc-1024-n3 demo]$ R
+[fangping@login3 ~]$ srun -M teach --account=hugen2071-2024f --pty bash
+srun: job 5495 queued and waiting for resources
+srun: job 5495 has been allocated resources
+[fangping@teach-cpu-n0 ~]$ module load gcc/12.2.0 r/4.4.0
+[fangping@teach-cpu-n0 ~]$ R
 
-R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
-Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -75,6 +77,8 @@ Type 'contributors()' for more information and
 Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
+
+>
 
 &gt;</pre>
 
