@@ -26,8 +26,9 @@ The portal server is firewalled within PittNet and as such [you will need to be 
 
 <p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
 
-
 Once connected, you can run commands directly on the server and submit batch jobs to the CRC clusters.
+
+![](../_assets/img/web-portals/hugen1.png)
 
 All CRC software can be accessed using a terminal and our LMOD software provisioning system.
 
