@@ -18,19 +18,18 @@ Note that a user can be associated with multiple linux groups. Running `id <user
 
 /ix1/hugen2071-2024f is owned by the instructor and the linux group hugen2071-2024f. The default permission is 770 so that members of the group hugen2071-2024f have written permissions to this folder. 
 
-**[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://teach.crc.pitt.edu)**
+We will create the slurm account hugen2071-2024f and add the students, the instructor and the TAs to this slurm account. We will allocate 100K Sus on the teach cluster to the slurm account. Note that a user can be associated with multiple slurm accounts. You can use `sacctmgr list user <username>` to check your default slurm account.
 
-To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRC.
+## **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://teach.crc.pitt.edu)**
 
 The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected to PittNet via Ethernet.
+
+<p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
+
 
 Once connected, you can run commands directly on the server and submit batch jobs to the CRC clusters.
 
 All CRC software can be accessed using a terminal and our LMOD software provisioning system.
-
-<p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
-
-<p><strong>IMPORTANT NOTES: Pitt Wireless is off-campus by the definition of Pitt IT. VPN is required if you are using Pitt Wireless.</strong></p>
 
 <p><strong><a href="https://crc.pitt.edu/user-support/installed-software/cluster-application-environment">https://crc-pages.pitt.edu/user-manual/applications/application-environment/</a></strong></p>
 
