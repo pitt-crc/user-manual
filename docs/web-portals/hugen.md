@@ -82,9 +82,9 @@ Type 'q()' to quit R.
 
 `[fangping@login3 ~]$ srun -M teach --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
 
-<p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.3.0, the location of these packages is /ihome/crc/install/gcc-12.2.0/r/4.3.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
+<p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.4.0, the location of these packages is /ihome/crc/install/gcc-12.2.0/r/4.4.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
 
-<p>You can also install your own R packages. R searches the user’s path for libraries followed by the root installation. R will stop searching when it finds the first instance of the library within the path hierarchy.Use “.libPaths()” to check the searching path. For r/4.3.0, your local R packages will be installed under ~/R/x86_64-pc-linux-gnu-library/4.3. To allow all attendees to use the same R packages, we recommend that the instructor hides his/her local R packages. If you need specific R packages for your course, submit a help ticket, and we will install the package so that all attendees can use the same version.</p>
+<p>You can also install your own R packages. R searches the user’s path for libraries followed by the root installation. R will stop searching when it finds the first instance of the library within the path hierarchy.Use “.libPaths()” to check the searching path. For r/4.4.0, your local R packages will be installed under ~/R/x86_64-pc-linux-gnu-library/4.4. To allow all attendees to use the same R packages, we recommend that the instructor hides his/her local R packages. If you need specific R packages for your course, submit a help ticket, and we will install the package so that all attendees can use the same version.</p>
 
 <p>You can also use RStudio server on Open Ondemand to teach the course. Logon ondemand.htc.crc.pitt.edu, Select Interactive Apps -&gt; RStudio Server 2022</p>
 
