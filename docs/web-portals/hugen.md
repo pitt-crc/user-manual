@@ -38,10 +38,10 @@ All CRC software can be accessed using a terminal and our LMOD software provisio
 <p>The instructor can create a folder under the course storage to install conda environments.</p>
 
 <pre>
-[fangping@login0b ~]$ cd /ix/genomics/demo
-[fangping@login0b demo]$ mkdir software</pre>
+[fangping@login3 ~]$ cd /ix1/hugen2071-2024f
+[fangping@login3 hugen2071-2024f]$ mkdir software</pre>
 
-<p>We are using slurm as workload manager. To use the Sus from the course, you can use --account=course-2023s to charge resources used by this job to the specified course account. We recommend the instructor to provide slurm job templates.</p>
+<p>We are using slurm as workload manager. To use the Sus from the course, you can use --account=hugen2071-2024f to charge resources used by this job to the specified course account. We recommend the instructor to provide slurm job templates.</p>
 
 <h1>Using R</h1>
 
