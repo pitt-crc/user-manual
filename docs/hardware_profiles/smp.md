@@ -10,10 +10,11 @@ tags:
 # SMP Cluster Overview
 
 The SMP nodes are appropriate for programs that are parallelized using the shared memory framework. These nodes are 
-similar to your laptop but with more memory and more CPU cores.
+similar to your laptop but with more CPU cores and shared memory space between them.
 
 ## Key Features
 
+- high memory partition for nodes with up to 3 TB of shared memory
 
 ## Specifications
 

@@ -8,10 +8,13 @@ tags:
 ---
 
 # Login Nodes Overview
-
+ 
+The Login Nodes provide access to a Linux Commandline interface on the CRCD system via Secure SHell protocol (ssh).
 
 ## Key Features
 
+- Load balancing between login nodes to better address usage demands
+- Cgroup-based management of system resources  
 
 ## Specifications
 
