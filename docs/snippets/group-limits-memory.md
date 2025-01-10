@@ -1,39 +1,5 @@
-<table border="1" cellpadding="1" cellspacing="1">
-	<tbody>
-		<tr>
-			<td>Cluster</td>
-			<td>Partition</td>
-			<td>Short</td>
-			<td>Normal</td>
-			<td>Long</td>
-		</tr>
-		<tr>
-			<td>smp</td>
-			<td>smp</td>
-			<td>13247</td>
-			<td>11044</td>
-			<td>9999</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>high-mem</td>
-			<td>6512</td>
-			<td>6512</td>
-			<td>6512</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
+| Cluster | Partition | Short | Normal | Long |
+|---------|-----------|-------|--------|------|
+| SMP     | smp       | 13247 | 11044  | 9999 | 
+|         | high-mem  | 6512  | 6512   | 6512 | 
+
