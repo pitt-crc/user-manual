@@ -1,6 +1,5 @@
 # Job Scheduling Policy
 
-
 !!! warning "Group Account Resource Limits"
     === "Aggregate Compute"
         --8<-- "group-limits-compute.md"
@@ -28,7 +27,7 @@ Executing processing scripts or commands on these nodes can cause substantial sl
 For this reason, it is important to make sure that this kind of work is done in either an interactive session on a node 
 from one of the clusters, or as a batch job submission.
 
-Resource-intensive processes found to be running on the login nodes may be killed at anytime.
+Resource-intensive processes found to be running on the login nodes may be killed at any time.
 
 <ins>**The CRC team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
 nodes with processes that can otherwise be run on the compute nodes.**</ins>
@@ -38,15 +37,15 @@ nodes with processes that can otherwise be run on the compute nodes.**</ins>
 ## Jobs are Subject to Priority Queueing
 There are settings in place within the Slurm Workload Manager that allow all groups (and users within those groups) 
 to have equal opportunity to run calculations. This concept is called “Fair Share”. The fair share is a multiplicative 
-factor in computing a job’s “Priority”. At Pitt, we use a multi-factor priority system which includes:
+factor in computing a job’s “Priority”. At Pitt, we use a multifactor priority system which includes:
 
-Age [0,1] – Length of time the job been in the queue and eligible to be scheduled. Longer time spent in the queue 
-recieves higher priority. The maximum is attained at a queue time of 7 days. The priority weight for age is 2000.
+Age \[0,1] – Length of time the job been in the queue and eligible to be scheduled. Longer time spent in the queue 
+receives higher priority. The maximum is attained at a queue time of 7 days. The priority weight for age is 2000.
 
-Job Size [0,1] – Required Nodes, CPUs, and Memory usage. Larger requests receive increased priority. The maximum 
+Job Size \[0,1] – Required Nodes, CPUs, and Memory usage. Larger requests receive increased priority. The maximum 
 corresponds to using all the resources on the cluster. The priority weight for job size is 2000.
 
-Quality of Service (QOS) [0,1] - Factor based on the Walltime of the job. Normalized to the highest (short QOS). 
+Quality of Service (QOS) \[0,1] - Factor based on the Walltime of the job. Normalized to the highest (short QOS). 
 The priority weight for QOS is 2000.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -106,8 +105,7 @@ The priority weight for QOS is 2000.
     });
 </script>
 
-
-Fair Share [0,1] - A metric for overall usage by allocation that prioritizes jobs from under serviced slurm accounts. 
+Fair Share \[0,1] - A metric for overall usage by allocation that prioritizes jobs from under serviced slurm accounts. 
 Less overall cluster use receives higher priority. The priority weight for fairshare is 3000.
 
 Priority is computed as a sum of the individual factors multiplied by their priority weights. Higher 
@@ -287,8 +285,6 @@ your completed jobs:
 - Your group's Allocation ("service units") usage has surpassed the limit specified in your active resource Allocation, 
   or your active Allocations have expired. You can double-check this with `crc-usage`. 
   [Please submit a new Resource Allocation Request following our guidelines](https://crc.pitt.edu/Pitt-CRC-Allocation-Proposal-Guidelines).
-
-
 
 #### MaxTRESPerAccount, MaxCpuPerAccount, or MaxGRESPerAccount
 In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length. 
