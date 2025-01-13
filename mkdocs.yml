@@ -105,6 +105,7 @@ nav:
     - web-portals/jupyter-hub.md
     - web-portals/jupyter-teach.md
     - web-portals/psych.md
+    - web-portals/hugen.md
   - The SLURM Workload Manager:
     - slurm/slurm-overview.md
     - slurm/batch-jobs.md
@@ -117,7 +118,6 @@ nav:
   - Acknowledge CRC Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
     - data-management/data-management-overview.md
-    - data-management/box.md
     - data-management/google-workspace.md
     - data-management/microsoft-onedrive.md
     - data-management/globus.md
@@ -130,6 +130,7 @@ nav:
     - applications/compilers.md
     - applications/python.md
     - applications/r+rstudio.md
+    - applications/ondemand-rstudio-gpu.md
     - applications/singularity.md
     - Licensed Software:
         - applications/licensed-software/ansys.md
@@ -149,8 +150,10 @@ nav:
       - advanced-genomics-support/variant-calling.md
       - advanced-genomics-support/single-cell-rnaseq.md
       - advanced-genomics-support/ChipSeq-data-analysis.md
-      - advanced-genomics-support/cromwell-and-encode.md
       - advanced-genomics-support/ATACSeq-data-analysis.md
+      - advanced-genomics-support/cromwell-and-encode.md
+      - advanced-genomics-support/Snakemake.md
+
 
   - Supporting Code Optimization: code-optimization.md
 
