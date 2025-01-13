@@ -18,7 +18,7 @@ processing that can run on a single node.
 
 ## Specifications
 
-| Partition | Architecture                                                                                                                                                                   | --constraint        | Nodes | Cores/Node | Mem/Node | Mem/Core | Scratch     | Network | Nodes            |
+| Partition | Host Architecture                                                                                                                                                              | --constraint        | Nodes | Cores/Node | Mem/Node | Mem/Core | Scratch     | Network | Node Names       |
 |-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------|------------|----------|----------|-------------|---------|------------------|
 | htc       | [AMD EPYC 9374F (Genoa)](https://www.amd.com/en/products/cpu/amd-epyc-9374f)                                                                                                   | amd, genoa          | 20    | 64         | 768 GB   | 12 GB    | 3.2 TB NVMe | 10GbE   | htc-n\[50-69]    |
 |           | [Intel Xeon Platinum 8352Y (Ice Lake)](https://www.intel.com/content/www/us/en/products/sku/212284/intel-xeon-platinum-8352y-processor-48m-cache-2-20-ghz/specifications.html) | intel, ice_lake     | 18    | 64         | 512 GB   | 8 GB     | 2 TB NVMe   | 10GbE   | htc-n\[32-49]    |
