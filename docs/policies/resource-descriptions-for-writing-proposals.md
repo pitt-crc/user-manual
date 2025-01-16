@@ -34,7 +34,7 @@ the cluster operating systems and storage backups.
 
 CRCD interfaces directly with researchers and provides software installation services, training workshops, and 
 personalized consultation on improving software design/performance and computational workflows. The road map for 
-research computing infrastructure is developed jointly by CRC and CSSD to meet the emerging needs of researchers at 
+research computing infrastructure is developed jointly by CRCD and CSSD to meet the emerging needs of researchers at 
 the University.
 
 Connectivity between the NOC and the main campus is via two 100Gbps fibers and to Internet2 via 100Gbps.

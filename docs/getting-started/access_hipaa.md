@@ -24,7 +24,7 @@ feature within GlobalProtect permits the system to collect information about the
 the endpoint to determine whether to allow or deny access based on defined policies.
 *   **Access Portal** -- one of several remote servers used to submit jobs to the high performance computing clusters or to perform
 data management operations
-*   **CRC HIPAA Ecosystem** -- the total footprint of the CRC HIPAA infrastructure, including a high performance computing 
+*   **CRCD HIPAA Ecosystem** -- the total footprint of the CRC HIPAA infrastructure, including a high performance computing 
 cluster, a data storage system, access portals, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to PittNet
 
@@ -77,7 +77,7 @@ for your OS. The previous link provides instructions for various types of device
 
         After successful authentication, you will be presented with list of authorized remote Devices that you can connect to. Your
         device list may be different from what is shown below, depending on your role. Authorized users of the HIPAA environment will
-        see a *Device* called **Center for Research Computing Restricted**. 
+        see a *Device* called **Center for Research Computing and Data Restricted**. 
         If you do not see this *Device* but should have access, please submit a
         [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
         stating that you need authorization to use AVD to access the CRC HIPAA environment.
@@ -96,7 +96,7 @@ for your OS. The previous link provides instructions for various types of device
 
         After successful authentication, you will be presented with list of authorized Workspaces that you can connect to. Your
         Workspaces may be different from what is shown below, depending on your role. Authorized users of the HIPAA environment will
-        see a *Workspace* called **Center for Research Computing Restricted**.
+        see a *Workspace* called **Center for Research Computing and Data Restricted**.
         If you do not see this *Workspace* but should have access, please submit a
         [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
         stating that you need authorization to use AVD to access the CRC HIPAA environment.
