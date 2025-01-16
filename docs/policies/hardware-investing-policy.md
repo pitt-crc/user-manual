@@ -64,7 +64,7 @@ benefits stated below.
 
 While the bulk of a whole-node computing resource investment is made available to the greater Pitt Research community 
 (investors included), many investors require exclusive access to some component of their investment hardware. It is the 
-CRC's policy that exclusive access can be maintained to up to **20 percent** of the hardware purchased by 
+CRCD's policy that exclusive access can be maintained to up to **20 percent** of the hardware purchased by 
 investment. For example, if a faculty member were to set investment funds towards **5 compute nodes**, 
 **4 of them** will be made available to the community (again, also accessible to them), and 
 **1 can be set aside** specifically for use by that Investor and their user group.

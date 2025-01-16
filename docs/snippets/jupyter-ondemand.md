@@ -1,5 +1,5 @@
 # Jupyter on Ondemand User Guide
-The CRCD offers Jupyter on OnDemand services to help users run Python notebooks on the different CRCD clusters. We are currently offering Jupyter on the following clusters: HTC and GPU. The Jupyter on OnDemand service is available to all users with a CRCD account. The Jupyter on OnDemand service is available, among other different applications, through the CRC OnDemand web portal at: [ondemand.htc.crc.pitt.edu](http://ondemand.htc.crc.pitt.edu).
+The CRCD offers Jupyter on OnDemand services to help users run Python notebooks on the different CRCD clusters. We are currently offering Jupyter on the following clusters: HTC and GPU. The Jupyter on OnDemand service is available to all users with a CRCD account. The Jupyter on OnDemand service is available, among other different applications, through the CRCD OnDemand web portal at: [ondemand.htc.crc.pitt.edu](http://ondemand.htc.crc.pitt.edu).
 
 When you visit the OnDemand web portal, you will be prompted to log in with your Pitt account:  
   

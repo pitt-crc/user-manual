@@ -16,7 +16,7 @@ a [**VPN**](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) i
     If after exhausting all troubleshooting avenues and the VPN remains non-functional, an alternative approach is to use an
     [**Azure Virtual Desktop**](access_avd.md) as a so-called *jump box* to CRC.
 
-    ==**CRC users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
+    ==**CRCD users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
 !!! tip "Accessing the HIPAA environment"
     The CRC HIPAA environment can be accessed using a secured [**Azure Virtual Desktop**](access_hipaa.md). Only projects with an 

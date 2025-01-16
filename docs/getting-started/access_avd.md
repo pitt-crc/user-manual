@@ -17,7 +17,7 @@ A schematic of the process is depicted below.
 *   **Client** -- this is your computer or internet-connected device
 *   **Access Portal** -- one of several remote servers used to submit jobs to the high performance computing clusters or to perform
 data management operations
-*   **CRC Ecosystem** -- the total footprint of the CRC infrastructure, including high performance computing 
+*   **CRCD Ecosystem** -- the total footprint of the CRC infrastructure, including high performance computing 
 clusters, data storage systems, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to PittNet
 
@@ -76,7 +76,7 @@ for your OS. The previous link provides instructions for various types of device
         stating that you need authorization to use AVD to access CRC.
 
         !!! tip "UPMC Devices"
-            **CRC users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
+            **CRCD users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
         ![MacOS-AVD-07](../_assets/img/avd/MacOS-AVD-07.png)
 
@@ -98,7 +98,7 @@ for your OS. The previous link provides instructions for various types of device
         stating that you need authorization to use AVD to access CRC.
 
         !!! tip "UPMC Devices"
-            **CRC users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
+            **CRCD users on UPMC devices**, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
         ![Win-AVD-09](../_assets/img/avd/Win-AVD-09.png)
 
