@@ -2,17 +2,17 @@
 
 ## **Summary**
 
-The Psychiatry Web Portal is the gateway to CRC compute and storage resources for the Department of Psychiatry.
+The Psychiatry Web Portal is the gateway to CRCD compute and storage resources for the Department of Psychiatry.
 
 **[Log in to Psych](https://psych.crc.pitt.edu)**
 
-To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRC and be a member of the \`psych\` group.
+To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRCD and be a member of the \`psych\` group.
 
 The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected to PittNet via Ethernet.
 
-Once connected, you can run commands directly on the server and submit batch jobs to the CRC clusters.
+Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters.
 
-All CRC software can be accessed using a terminal and our LMOD software provisioning system.
+All CRCD software can be accessed using a terminal and our LMOD software provisioning system.
 
 \[TOC Contents\]
 
@@ -34,7 +34,7 @@ Click the plus button to add a new connection.
 
 ![](../_assets/img/web-portals/FastXDesktop1.png)
 
-In the dropdown at the top, make sure \`ssh\` is selected. Enter **psych.crc.pitt.edu** as the Host, and **your CRC Username (Pitt ID, all lowercase)** as the User. Click OK to continue.
+In the dropdown at the top, make sure \`ssh\` is selected. Enter **psych.crc.pitt.edu** as the Host, and **your CRCD Username (Pitt ID, all lowercase)** as the User. Click OK to continue.
 
 ![](../_assets/img/web-portals/FastXDesktop2.png)
 

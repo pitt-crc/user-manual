@@ -1,6 +1,6 @@
-# CRC User Manual
+# CRCD User Manual
 
-Source code for the official CRC user manual.
+Source code for the official CRCD user manual.
 
 ## Quick Start
 

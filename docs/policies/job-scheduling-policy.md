@@ -11,7 +11,7 @@ from one of the clusters, or as a batch job submission.
 
 Resource-intensive processes found to be running on the login nodes may be killed at anytime.
 
-<ins>**The CRC team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
+<ins>**The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
 nodes with processes that can otherwise be run on the compute nodes.**</ins>
 
 ![JOB-SCHEDULING-POLICY1](../_assets/img/policies/job_scheduling_policy_1.png)
@@ -105,7 +105,7 @@ You can use the `sprio` slurm utility to see the priority of your jobs
 ## Walltime Extensions will generally not be Granted
 It is up to the job submitter to determine the demands of their job through some benchmarking before submitting, 
 perform any necessary code optimization, and to then specify the memory, cpu, and time requirements 
-accordingly. This ensures that the job is queued with respect to FairShare, and that CRC resources utilized by a job 
+accordingly. This ensures that the job is queued with respect to FairShare, and that CRCD resources utilized by a job 
 are available to other users within a reasonable time frame.
 
 ## Exceeding Usage Limits will cause Job Pending Status

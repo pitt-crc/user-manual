@@ -8,7 +8,7 @@
 
 ## **Summary**
 
-In addition to Jupyter notebook sessions via Open OnDemand, CRC also hosts the functionality for the multi-user equivalent
+In addition to Jupyter notebook sessions via Open OnDemand, CRCD also hosts the functionality for the multi-user equivalent
 [Jupyter Hub](https://jupyter.org/hub).
 
 [**Log in to Jupyter Hub**](https://hub.crc.pitt.edu)

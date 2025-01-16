@@ -1,6 +1,6 @@
 # Slurm Overview
 
-The CRC clusters use [Slurm](http://slurm.schedmd.com/) for batch job queuing. 
+The CRCD clusters use [Slurm](http://slurm.schedmd.com/) for batch job queuing. 
 The `sinfo` command provides an overview of the state of the nodes within the cluster.
 
 ```commandline

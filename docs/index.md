@@ -1,4 +1,4 @@
-# Welcome to the CRC User Manual
+# Welcome to the CRCD User Manual
 
 This section of the [University of Pittsburgh Center for Research Computing](https://crc.pitt.edu/)  
 website is dedicated to helping you better utilize our services.

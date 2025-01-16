@@ -28,7 +28,7 @@ compute nodes.
 [fangping@n409 ~]$
 ```
 
-Interactive jobs draw service units from the slurm allocation that your CRC user is associated with.
+Interactive jobs draw service units from the slurm allocation that your CRCD user is associated with.
 
 !!! note
 
