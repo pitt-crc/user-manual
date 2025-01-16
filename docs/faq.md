@@ -1,6 +1,6 @@
 # Frequently asked questions
 
-*In this section we list a series of common problems that CRC users may encounter, with possible solutions.*
+*In this section we list a series of common problems that CRCD users may encounter, with possible solutions.*
 
 **1. A connection attempt to the cluster is rejected with a "POSSIBLE DNS SPOOFING" warning message**
 
@@ -28,4 +28,4 @@ ssh-keygen -R remote_machine
 
 where remote\_machine is the name or IP address of the computer you are trying to connect to. This will get rid of the cached host key, create a new one, and update the known\_hosts file automatically.
 
-The same issue can also occur when connecting to a remote machine from one of the login nodes of the CRC cluster. Again, removing the offending key from the known\_hosts file on the cluster will solve the problem.
+The same issue can also occur when connecting to a remote machine from one of the login nodes of the CRCD cluster. Again, removing the offending key from the known\_hosts file on the cluster will solve the problem.

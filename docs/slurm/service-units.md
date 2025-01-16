@@ -1,6 +1,6 @@
 # Service Units
 
-One service unit (SU) is approximately equal to 1 core hour of computing. The charge is calculated based on factors that the&nbsp;slurm workload manager calls '<strong>T</strong>rackable <strong>RES</strong>ources' or TRES. The important TRES values for calculating CRC SUs are:
+One service unit (SU) is approximately equal to 1 core hour of computing. The charge is calculated based on factors that the&nbsp;slurm workload manager calls '<strong>T</strong>rackable <strong>RES</strong>ources' or TRES. The important TRES values for calculating CRCD SUs are:
 
 - Number of cores requested
 - RAM requested

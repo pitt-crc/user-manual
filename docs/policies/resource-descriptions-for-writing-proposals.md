@@ -2,13 +2,13 @@
 
 ## Useful Resource Information For Writing External Proposals
 The information below may be of use to you in drafting proposals or other documents calling for descriptions of 
-Pitt CRC computational resources available to researchers.
+Pitt CRCD computational resources available to researchers.
 
-## Brief Text Description of CRC Resources
+## Brief Text Description of CRCD Resources
 Access to computing hardware, software, and research consulting are provided through the Pitt Center for Research 
-Computing (Pitt CRC). 
+Computing and Data (Pitt CRCD). 
 
-The CRC provides state-of-the-art high performance computing (HPC) resources allocated for shared use for campus 
+The CRCD provides state-of-the-art high performance computing (HPC) resources allocated for shared use for campus 
 researchers.
 
 The clusters comprise 136 dual 24-core Intel Xeon Gold Ice Lake, 22 dual 32-core Intel Xeon Platinum Ice Lake, 58 dual 
@@ -21,7 +21,7 @@ of 512 GB to 1024 GB per node shared memory. The global storage is comprised of 
 
 The systems are housed at the enterprise-level Network Operations Center (NOC) and are administered jointly with 
 Pitt IT. Pitt IT maintains the critical environmental infrastructure (power, cooling, networking, and security) and 
-administers the cluster operating systems and storage backups. CRC interfaces directly with researchers and provides 
+administers the cluster operating systems and storage backups. CRCD interfaces directly with researchers and provides 
 software installation services, training workshops, and personalized consultation on improving software 
 design/performance and computational workflows.
 
@@ -32,7 +32,7 @@ housed at the enterprise-level Network Operations Center (NOC), administered joi
 Pitt IT maintains the critical environmental infrastructure (power, cooling, networking, and security) and administers 
 the cluster operating systems and storage backups.
 
-CRC interfaces directly with researchers and provides software installation services, training workshops, and 
+CRCD interfaces directly with researchers and provides software installation services, training workshops, and 
 personalized consultation on improving software design/performance and computational workflows. The road map for 
 research computing infrastructure is developed jointly by CRC and CSSD to meet the emerging needs of researchers at 
 the University.

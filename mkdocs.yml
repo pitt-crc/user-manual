@@ -1,4 +1,4 @@
-site_name: CRC User Manual
+site_name: CRCD User Manual
 repo_url: https://github.com/pitt-crc/user-manual
 site_url: https://crc-pages.pitt.edu/user-manual/
 theme:
@@ -81,7 +81,7 @@ nav:
       - Open OnDemand Webportal: getting-started/open-ondemand.md
       - JupyterHub Webportal: getting-started/jupyter-hub.md
       - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
-    - Step 3- CRC Ecosystem:
+    - Step 3- CRCD Ecosystem:
       - getting-started/step3/index.md
       - Discovering Software: getting-started/step3/getting-started-step3-software.md
       - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
@@ -115,7 +115,7 @@ nav:
     - slurm/scavenger.md
     - slurm/job-arrays.md
     - slurm/vscode.md
-  - Acknowledge CRC Resources and Assistance in Your Papers: acknowledge-crc.md
+  - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
     - data-management/data-management-overview.md
     - data-management/google-workspace.md

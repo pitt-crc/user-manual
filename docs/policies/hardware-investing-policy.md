@@ -1,17 +1,17 @@
 # Hardware Investing Policy
 
-The Pitt CRC provides a computing hardware investment opportunity for 
+The Pitt CRCD provides a computing hardware investment opportunity for 
 research to further enable the work of the broader Pitt community and 
-their own research groups. We maintain a separate category of CRC 
+their own research groups. We maintain a separate category of CRCD 
 Faculty users who do this called "Investors".
 
 Rather than incurring the burden of purchasing, installing, and 
 maintaining their own hardware, researchers can allocate grant or 
-startup funds to the CRC for community hardware purchases and the 
+startup funds to the CRCD for community hardware purchases and the 
 benefits stated below.
 
 
-## Benefits of Investing in CRC Resources
+## Benefits of Investing in CRCD Resources
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -29,11 +29,11 @@ benefits stated below.
         </tr>
         <tr>
             <td>Slurm Allocation Service Units</td>
-            <td>Investors receive a 5-year user investment allocation on CRC hardware, equivalent to 100% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRC infrastructure.</td>
+            <td>Investors receive a 5-year user investment allocation on CRCD hardware, equivalent to 100% of the computational resources that they would have utilized had they purchased and housed hardware within their own group, enabling utilization of their investment in the context of the existing CRCD infrastructure.</td>
         </tr>
         <tr>
             <td>Bulk Volume Equipment Rates</td>
-            <td>Investors can take advantage of lower equipment prices negotiated by CRC based on the large volumes required for our cluster refreshes.</td>
+            <td>Investors can take advantage of lower equipment prices negotiated by CRCD based on the large volumes required for our cluster refreshes.</td>
         </tr>
         <tr>
             <td>Better Utilization and Energy Efficiency</td>

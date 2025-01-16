@@ -1,4 +1,4 @@
-# CRC Software List
+# CRCD Software List
 
 CRC uses the [lmod](./application-environment.md) environment modules system to provision software to our users. To query whether a software is available, use:
 ```

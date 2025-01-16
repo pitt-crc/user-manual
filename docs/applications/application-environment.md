@@ -1,6 +1,6 @@
 # Application Environment
 
-The CRC utilizes [LMOD](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) to provide optimized 
+The CRCD utilizes [LMOD](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) to provide optimized 
 builds of commonly used software.
 
 Applications are available to users through the LMOD modular environment commands.

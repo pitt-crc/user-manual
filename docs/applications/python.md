@@ -1,6 +1,6 @@
 # Python
 
-The CRC provides a variety of pre-installed Python versions that can be accessed immediately through Lmod. Users can select from the available Python versions or install a different version if their target pipeline has specific requirements. A full list of available Python versions through Lmod can be viewed using:
+The CRCD provides a variety of pre-installed Python versions that can be accessed immediately through Lmod. Users can select from the available Python versions or install a different version if their target pipeline has specific requirements. A full list of available Python versions through Lmod can be viewed using:
     
 ```
 module spider python

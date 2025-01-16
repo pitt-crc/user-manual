@@ -1,6 +1,6 @@
 # Interactive / Remote Computing with VS Code
 
-This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRC computing nodes.
+This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRCD computing nodes.
 
 ## Prerequisites
 
