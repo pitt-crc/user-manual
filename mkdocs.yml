@@ -153,6 +153,7 @@ nav:
       - advanced-genomics-support/ATACSeq-data-analysis.md
       - advanced-genomics-support/cromwell-and-encode.md
       - advanced-genomics-support/Snakemake.md
+    - bioinformatics/alphafold3.md
 
 
   - Supporting Code Optimization: code-optimization.md
