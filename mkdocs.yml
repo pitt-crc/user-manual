@@ -141,7 +141,7 @@ nav:
         - MATLAB:
             - applications/licensed-software/matlab/matlab.md
             - applications/licensed-software/matlab/matlab-remote-job-submission.md
-  - Advanced Genomics Support:
+  - Bioinformatics Support:
     - advanced-genomics-support/clcbio-genomics-server.md
     - advanced-genomics-support/nf-core-genomics-pipelines.md
     - advanced-genomics-support/genome-browser.md
