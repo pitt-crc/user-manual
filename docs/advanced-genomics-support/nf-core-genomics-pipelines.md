@@ -1,4 +1,4 @@
-# nf-core Genomics Pipelines
+# nf-core Pipelines
 
 Nextflow is a reactive workflow framework and a programming DSL that eases the writing of data-intensive computational pipelines.
 
