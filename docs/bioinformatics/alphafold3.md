@@ -4,6 +4,9 @@ This package provides an implementation of the inference pipeline of AlphaFold 3
 ```commandline
 module load alphafold/3.0.0
 ```
+## Obtaining Genetic Databases
+
+This step requires wget and zstd to download the Genetic Databases. We have downloaded the databases under /ix1/genomics/refs/alphafold/alphafold3.
 
 ## Obtaining Model Parameters
 To request access to the AlphaFold 3 model parameters, please complete this form. Access will be granted at Google DeepMind’s sole discretion. We will aim to respond to requests within 2–3 business days. You may only use AlphaFold 3 model parameters if received directly from Google. Use is subject to these terms of use.
