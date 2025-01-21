@@ -15,8 +15,8 @@ To request access to the AlphaFold 3 model parameters, please complete [this for
 
 You can provide inputs to run_alphafold.py in one of two ways:
 
-    Single input file: Use the --json_path flag followed by the path to a single JSON file.
-    Multiple input files: Use the --input_dir flag followed by the path to a directory of JSON files.
+* Single input file: Use the --json_path flag followed by the path to a single JSON file.
+* Multiple input files: Use the --input_dir flag followed by the path to a directory of JSON files.
 
 AlphaFold 3 uses a [custom JSON input format](https://github.com/google-deepmind/alphafold3/blob/main/docs/input.md).
 
