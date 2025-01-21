@@ -2,6 +2,7 @@ Alpha Fold 3
 
 /ix1/bioinformatics/alphafold3/job.sbatch
 
+```commandline
 #!/bin/bash
 #SBATCH --job-name=alphafold3
 #SBATCH -M gpu
@@ -21,4 +22,4 @@ run_alphafold.py \
      --model_dir=models \
      --db_dir=/ix1/genomics/refs/alphafold/alphafold3 \
      --output_dir=output
-
+```
