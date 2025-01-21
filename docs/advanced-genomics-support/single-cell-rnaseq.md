@@ -1,6 +1,6 @@
 # Single Cell Data Analaysis
 
-Spring 2023 CRC Bioinformatics workshops
+## Spring 2023 CRC Bioinformatics workshops
 
 <p><span><strong>10X Genomics single cell techniques </strong> </span><br />
 Monday, March 27, 2023, 1:00pm - 2:30pm<br />
