@@ -1,5 +1,8 @@
+# Spatial Transcriptomics
 
-# Bioinformatics workshops - Fall 2024
+## Bioinformatics workshops - Fall 2024
+
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/Etki196BhVxMqF05s0g8lAQB4BsdLsUeXfX1ZycMaMn0WQ)
 
 <h2><strong>Spatial Transcriptomics WORKSHOP 1</strong></h2>
 
