@@ -142,10 +142,8 @@ nav:
             - applications/licensed-software/matlab/matlab.md
             - applications/licensed-software/matlab/matlab-remote-job-submission.md
   - Bioinformatics Support:
-    - advanced-genomics-support/clcbio-genomics-server.md
-    - advanced-genomics-support/nf-core-genomics-pipelines.md
-    - advanced-genomics-support/genome-browser.md
     - NGS Data Analysis:
+      - advanced-genomics-support/nf-core-genomics-pipelines.md
       - advanced-genomics-support/RNASeq-data-analysis.md
       - advanced-genomics-support/variant-calling.md
       - advanced-genomics-support/single-cell-rnaseq.md
@@ -153,6 +151,8 @@ nav:
       - advanced-genomics-support/ATACSeq-data-analysis.md
       - advanced-genomics-support/cromwell-and-encode.md
       - advanced-genomics-support/Snakemake.md
+      - advanced-genomics-support/genome-browser.md
+      - advanced-genomics-support/clcbio-genomics-server.md
     - bioinformatics/alphafold3.md
 
 
