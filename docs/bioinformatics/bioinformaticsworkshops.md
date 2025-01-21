@@ -1,7 +1,5 @@
 # CRC bioinformatics workshops
 
-<h2><span><span><strong>Bioinformatics workshops - Older versions </strong> </span> </span></h2>
-
 <table>
 	<tbody>
 		<tr>
