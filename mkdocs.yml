@@ -148,6 +148,7 @@ nav:
       - advanced-genomics-support/RNASeq-data-analysis.md
       - advanced-genomics-support/variant-calling.md
       - advanced-genomics-support/single-cell-rnaseq.md
+      - bioinformatics/spatialtranscriptomics.md
       - advanced-genomics-support/ChipSeq-data-analysis.md
       - advanced-genomics-support/ATACSeq-data-analysis.md
       - advanced-genomics-support/cromwell-and-encode.md
