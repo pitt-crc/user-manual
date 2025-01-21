@@ -151,6 +151,7 @@ nav:
       - bioinformatics/spatialtranscriptomics.md
       - advanced-genomics-support/ChipSeq-data-analysis.md
       - advanced-genomics-support/ATACSeq-data-analysis.md
+      - bioinformatics/Methylation.md
       - advanced-genomics-support/cromwell-and-encode.md
       - advanced-genomics-support/Snakemake.md
       - advanced-genomics-support/genome-browser.md
