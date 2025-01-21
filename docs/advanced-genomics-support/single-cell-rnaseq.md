@@ -1,4 +1,37 @@
-# Analysis of Single Cell RNASeq
+# Single Cell Data Analaysis
+
+Spring 2023 CRC Bioinformatics workshops
+
+<p><span><strong>10X Genomics single cell techniques </strong> </span><br />
+Monday, March 27, 2023, 1:00pm - 2:30pm<br />
+This workshop will illustrate the technological basis of 10x Genomics single cell analysis. Several chemistries for applications beyond single cell RNA-Seq and the sequencing read architecture of each application will be discussed. Presented by <strong>Richard Duerr</strong></p>
+
+<p><span><strong>Single-cell Analysis with Seurat </strong> </span><br />
+Tuesday, March 28, 2023, 1:00pm - 4:00pm<br />
+This workshop will briefly review the cellranger pipelines to process raw reads into expression values. The hands-on training will include reading the count data in R, quality control, normalization, dimensionality reduction, cell clustering, and finding marker genes. The Seurat pipeline will be covered. We will also focus on trajectory analysis with Monocle3.<strong> </strong>Presented by <a href="/node/289"><strong>Dhivyaa Rajasundaram</strong></a></p>
+
+<p><span><strong>Single-Cell Analysis with Bioconductor </strong> </span><br />
+Tuesday, April 4, 2023, 1:00pm - 4:00pm<br />
+This workshop will teach how to perform scRNAseq analysis using Bioconductor. The training will include many aspects of analysis such as normalization, cell type annotation of clusters, and pseudo-bulk differential gene expression. Similarities and differences to the Seurat pipeline will be mentioned.<strong> </strong>Presented by <strong>Paul Cantalupo (Genomics Analysis Core)</strong></p>
+
+<p><span><strong>Annotating single-cell transcriptomics </strong> </span><br />
+Thursday, April 6, 2023, 1:00pm - 4:00pm<br />
+Single-cell transcriptomics can quantitatively measure and identify cell types and dynamics based on gene expression profiles. Accurate annotation of cells is the foremost step for downstream analyses. In this workshop, we will focus on how to annotate different cell populations in human biospecimens using automatic or manual approaches, and detect cellular states for biological interpretation. We will also discuss the recommendations, challenges, and best practices for the selection of reference databases, probability models, and relevant computational tools.&nbsp;Presented by <strong>Riyue Bao</strong></p>
+
+<p><span><strong>Advanced Single-Cell Analysis </strong> </span><br />
+Tuesday, April 11, 2023, 1:00pm - 4:00pm<br />
+This advanced workshop will focus on the analysis of multi-omics data and its integration (e.g. CITE-seq, multiome, and DOGMA-seq). The hands-on training will include background introduction and a step-by-step R pipeline with real applications from immunology.<strong> </strong>Presented by <strong>Wei Chen</strong></p>
+
+<p><span><strong>Deep learning for scRNASeq analysis </strong> </span><br />
+Tuesday, April 25, 2023, 1:00pm - 4:00pm<br />
+This workshop will review the deep learning algorithms (variational autoencoder, autoencoder, generative adversarial network and supervised DL models ) and their applicability in the single cell RNA-seq processing pipeline. The hands-on training will provide examples to run deep learning RNASeq algorithms.<strong>. </strong>Presented by<strong> Yufei Huang</strong></p>
+
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
+
+
+## old materials
+
+## Analysis of Single Cell RNASeq
 
 Today it is possible to obtain genome-wide transcriptome data from single cells using high-throughput 
 sequencing (scRNA-seq). scRNA-seq is a new technology, first publication in 2009. scRNA-seq measures the 
