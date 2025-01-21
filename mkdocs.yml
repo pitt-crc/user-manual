@@ -158,7 +158,7 @@ nav:
       - advanced-genomics-support/clcbio-genomics-server.md
     - bioinformatics/alphafold3.md
     - bioinformatics/fMRI.md
-
+    - bioinformatics/EHR.md
 
   - Supporting Code Optimization: code-optimization.md
 
