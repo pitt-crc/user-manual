@@ -156,6 +156,7 @@ nav:
       - advanced-genomics-support/genome-browser.md
       - advanced-genomics-support/clcbio-genomics-server.md
     - bioinformatics/alphafold3.md
+    - bioinformatics/fMRI.md
 
 
   - Supporting Code Optimization: code-optimization.md
