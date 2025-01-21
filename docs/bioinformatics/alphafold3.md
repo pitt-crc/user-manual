@@ -9,10 +9,8 @@ module load alphafold/3.0.0
 This step requires wget and zstd to download the Genetic Databases. We have downloaded the databases under /ix1/genomics/refs/alphafold/alphafold3.
 
 ## Obtaining Model Parameters
-To request access to the AlphaFold 3 model parameters, please complete this form. Access will be granted at Google DeepMind’s sole discretion. We will aim to respond to requests within 2–3 business days. You may only use AlphaFold 3 model parameters if received directly from Google. Use is subject to these terms of use.
+To request access to the AlphaFold 3 model parameters, please complete [this form](https://forms.gle/svvpY4u2jsHEwWYS6). Access will be granted at Google DeepMind’s sole discretion. We will aim to respond to requests within 2–3 business days. You may only use AlphaFold 3 model parameters if received directly from Google. Use is subject to these [terms of use](https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md).
 
-https://forms.gle/svvpY4u2jsHEwWYS6
-https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md
 
 /ix1/bioinformatics/alphafold3/job.sbatch
 
