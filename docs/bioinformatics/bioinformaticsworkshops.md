@@ -7,7 +7,7 @@
 			<th>Links</th>
 		</tr>
 		<tr>
-			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="91c971c5-f0d7-4fcb-9802-1a3b7de56ff3" href="/node/288">Fall 2024</a></td>
+			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="91c971c5-f0d7-4fcb-9802-1a3b7de56ff3" href="https://www.crc.pitt.edu/bioinformatics-workshops-fall-2024">Fall 2024</a></td>
 			<td><a href="https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/Etki196BhVxMqF05s0g8lAQB4BsdLsUeXfX1ZycMaMn0WQ" target="_blank">Bioinformatics workshop materials</a></td>
 		</tr>
 		<tr>
