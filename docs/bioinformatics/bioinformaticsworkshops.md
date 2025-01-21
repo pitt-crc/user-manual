@@ -11,15 +11,15 @@
 			<td><a href="https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/Etki196BhVxMqF05s0g8lAQB4BsdLsUeXfX1ZycMaMn0WQ" target="_blank">Bioinformatics workshop materials</a></td>
 		</tr>
 		<tr>
-			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="ee50c1c0-6dd2-4687-b5f8-e093d3b2b76d" href="/node/287">Spring 2024</a></td>
+			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="ee50c1c0-6dd2-4687-b5f8-e093d3b2b76d" href="https://www.crc.pitt.edu/bioinformatics-workshops-spring-2024">Spring 2024</a></td>
 			<td><a href="https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/Ep7Uug5EaU5EiLDgWHExMmkBL76eatSiY309hR_xD310PQ" target="_blank">Bioinformatics workshop materials</a></td>
 		</tr>
 		<tr>
-			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="8eaf5b1b-119a-4529-ae99-98f7b3d69ad9" href="/node/286" target="_blank">Fall 2023</a></td>
+			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="8eaf5b1b-119a-4529-ae99-98f7b3d69ad9" href="https://www.crc.pitt.edu/bioinformatics-workshops-fall-2023" target="_blank">Fall 2023</a></td>
 			<td><a href="https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/En6ryj74-eJChcQgsWb_PjABC7a5HGyQ7WnLfyakuZxB6g" target="_blank">Bioinformatics workshop materials</a></td>
 		</tr>
 		<tr>
-			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="54af9da3-9dca-418b-aaa2-48d1a787935e" href="/node/285" target="_blank">Spring 2023</a></td>
+			<td><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="54af9da3-9dca-418b-aaa2-48d1a787935e" href="https://www.crc.pitt.edu/bioinformatics-workshops-spring-2023" target="_blank">Spring 2023</a></td>
 			<td><a href="https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA" target="_blank">Bioinformatics workshop materials</a></td>
 		</tr>
 		<tr>
