@@ -20,7 +20,9 @@ You can provide inputs to run_alphafold.py in one of two ways:
 
 AlphaFold 3 uses a [custom JSON input format](https://github.com/google-deepmind/alphafold3/blob/main/docs/input.md).
 
-/ix1/bioinformatics/alphafold3/job.sbatch
+This is an example input: /ix1/bioinformatics/alphafold3/input.json
+
+This is /ix1/bioinformatics/alphafold3/job.sbatch
 
 ```commandline
 #!/bin/bash
