@@ -11,6 +11,14 @@ This step requires wget and zstd to download the Genetic Databases. We have down
 ## Obtaining Model Parameters
 To request access to the AlphaFold 3 model parameters, please complete [this form](https://forms.gle/svvpY4u2jsHEwWYS6). Access will be granted at Google DeepMind’s sole discretion. We will aim to respond to requests within 2–3 business days. You may only use AlphaFold 3 model parameters if received directly from Google. Use is subject to these [terms of use](https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md).
 
+## AlphaFold 3 Input
+
+You can provide inputs to run_alphafold.py in one of two ways:
+
+    Single input file: Use the --json_path flag followed by the path to a single JSON file.
+    Multiple input files: Use the --input_dir flag followed by the path to a directory of JSON files.
+
+AlphaFold 3 uses a [custom JSON input format](https://github.com/google-deepmind/alphafold3/blob/main/docs/input.md).
 
 /ix1/bioinformatics/alphafold3/job.sbatch
 
