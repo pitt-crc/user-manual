@@ -7,20 +7,19 @@ Integrating with the CLCbio Genomics Server
 
 ### Compatibility
 
-We currently maintain two clcbio servers: clcbio.crc.pitt.edu and clcbio-stage.crc.pitt.edu.
+We currently maintain one clcbio server: clcbio.crc.pitt.edu.
 
-*   clcbio.crc.pitt.edu runs CLC Genomics Server 24.0.1.
-*   clcbio-stage.crc.pitt.edu runs perpetual CLC Genomics Server 11.0.3.
+*   clcbio.crc.pitt.edu runs CLC Genomics Server 25.0.
 *   CLC Genome Finishing Server Extension and CLC Microbial Genomics Server Extension are enabled on clcbio.crc.pitt.edu.
 *   CLC Assembly Cell 5.0.3 is available on HTC cluster.
 
-The following are the corresponding client applications for CLC Genomics Server 23.0 clcbio.crc.pitt.edu
+The following are the corresponding client applications for CLC Genomics Server 25.0 clcbio.crc.pitt.edu
 
-*   QIAGEN CLC Genomics Workbench 24.0.1
-*   QIAGEN CLC Main Workbench 24.0.1
-*   QIAGEN CLC Command Line Tools 24.0.1
+*   QIAGEN CLC Genomics Workbench 25.0
+*   QIAGEN CLC Main Workbench 25.0
+*   QIAGEN CLC Command Line Tools 25.0
 
-CLC Genomics Server 24.0.1 is compatible with GCE version 24.0.1.
+CLC Genomics Server 25.0 is compatible with GCE version 25.0.
 
 ### Server plugins (clcbio.crc.pitt.edu)
 
@@ -43,19 +42,13 @@ Additional Alignments Server Plugin
 CLC workbench download link
 ---------------------------
 
-### CLC Genomics Workbench 24.0.1 for clcbio.crc.pitt.edu  
-Version: 24.0.1
+### CLC Genomics Workbench 25.0 for clcbio.crc.pitt.edu  
+Version: 25.0
 
-*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_x86_64.dmg)
-*   [Download Linux 64 bit installer - 320.2 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.sh)
-*   [Download Windows 64 bit installer - 279.4 MB (.exe](http://download.clcbio.com/CLCGenomicsWorkbench/24.0.1/CLCGenomicsWorkbench_24_0_1_64.exe))
-
-### CLC Genomics Workbench 12.0.3 for clcbio-stage.crc.pitt.edu  
-Version: 12.0.3 - Release date: 15. Aug 2019
-
-*   [Download macOS Installer - 269.6 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/12.0.3/CLCGenomicsWorkbench_12_0_3.dmg)
-*   [Download Linux 64 bit installer - 298.4 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/12.0.3/CLCGenomicsWorkbench_12_0_3_64.sh)
-*   [Download Windows 64 bit installer - 251.3 MB (.exe)](http://download.clcbio.com/CLCGenomicsWorkbench/12.0.3/CLCGenomicsWorkbench_12_0_3_64.exe)
+*   [Download macOS Installer - 292.9 MB (.dmg)](http://download.clcbio.com/CLCGenomicsWorkbench/25.0/CLCGenomicsWorkbench_25_0_x86_64.dmg)
+*   [Download macOS Apple Silicon installer (.dmg)](https://download.clcbio.com/clcgenomicswb/25.0/CLCGenomicsWorkbench_25_0_aarch64.dmg)
+*   [Download Linux 64 bit installer - 320.2 MB (.sh)](http://download.clcbio.com/CLCGenomicsWorkbench/25.0/CLCGenomicsWorkbench_25_0_64.sh)
+*   [Download Windows 64 bit installer - 279.4 MB (.exe](http://download.clcbio.com/CLCGenomicsWorkbench/25.0/CLCGenomicsWorkbench_25_0_64.exe))
 
 * * *
 
