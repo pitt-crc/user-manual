@@ -39,9 +39,9 @@ In order to submit jobs from your desktop, you will need to install some custom 
 interact with the Slurm job scheduler on a cluster. Use the links below to download the **non-shared** filesystem 
 (used by your local client) script bundle for your version of MATLAB. 
 
-[Pitt.h2p.R2022a.zip](https://crc.pitt.edu/sites/default/files/Pitt.nonshared.R2022a.zip) (recommended)
+[Pitt.h2p.R2022a.zip](https://pitt.sharepoint.com/:u:/s/crc-team/ER3KbZ75gApBh2XmE4mQUnEB3RgLpcRvoyBZzBEIt2Sw_g?e=HIml3Z) (recommended)
 
-[Pitt.h2p.R2021a.zip](https://crc.pitt.edu/sites/default/files/Pitt.nonshared.R2021a.zip) 
+[Pitt.h2p.R2021a.zip](https://pitt.sharepoint.com/:u:/s/crc-team/ERZRQnu19UNDkoerUm6EYQcBLGkbxSk9B4uIFausJ_wTeQ?e=rN2JVo) 
 
 !!! note
 
