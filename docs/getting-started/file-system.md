@@ -21,7 +21,13 @@ Every individual user has a home directory (under `/ihome/<primary group>/$USER`
 
 The Research Project Space (under `/ix/<primary group>` or `/ix1/<primary group>`) provides data storage space for research projects. The default quota is 5TB. `/ix/<primary group>` or `/ix1/<primary group>` is owned by `<group owner>:<primary group>`, and the permissions are 770 (drwxrwx---). Your group members can access this folder and create their own subfolders. /ix or /ix1 folders are NOT backed up. We only keep 7-days snapshots.
 
-## umask
+## Default Permissions: umask
+
+The default permissions set on a new file or directory is determined by the current setting of `umask`. This value is displayed with the umask command:
+<code>
+umask
+0022
+<code>
 
 
 ## Sharing data
