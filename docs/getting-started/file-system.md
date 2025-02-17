@@ -27,7 +27,8 @@ The default permissions set on a new file or directory is determined by the curr
 <code>
 umask
 0022
-<code>
+</code>
+
 
 
 ## Sharing data
