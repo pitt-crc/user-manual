@@ -1,5 +1,8 @@
 # File Systems and Data Management
 
+## Linux File Permissions and Ownership
+
+Linux uses standard POSIX-style permissions to control who has the ability to read, write, or execute a file or a directory.
 
 ![File-Permissions](../_assets/img/getting-started/file_permissions.png)
 
