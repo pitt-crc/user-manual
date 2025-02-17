@@ -29,6 +29,7 @@ umask
 0022
 </code>
 
+A value of 022 will allow group and others read access. The umask value is a mask that is applied to the permission mode of a file. That is, the numbers are subtracted to give the final permissions.
 
 
 ## Sharing data
