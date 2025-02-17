@@ -31,6 +31,7 @@ umask
 
 A value of 022 will allow group and others read access. The umask value is a mask that is applied to the permission mode of a file. That is, the numbers are subtracted to give the final permissions.
 
+To change your default permissions, the umask command is also used: `umask 027` This value (027) of umask will cause a file to disallow world read access. This command can be added to your ~/.bashrc file to make the change permanent for all login and shell sessions.
 
 ## Sharing data
 TODO
