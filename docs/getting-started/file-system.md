@@ -2,7 +2,7 @@
 
 ## Linux File Permissions and Ownership
 
-Linux uses standard POSIX-style permissions to control who has the ability to read, write, or execute a file or a directory.
+Linux uses standard POSIX-style permissions to control who has the ability to read, write, or execute a file or a directory. The `ls -l` command will show the ownership and permissions of a file, a list of files, or all files in a directory.
 
 ![File-Permissions](../_assets/img/getting-started/file_permissions.png)
 
