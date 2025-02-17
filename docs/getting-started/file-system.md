@@ -33,7 +33,7 @@ A value of 022 will allow group and others read access. The umask value is a mas
 
 To change your default permissions, the umask command is also used: `umask 027` This value (027) of umask will cause a file to disallow world read access. This command can be added to your ~/.bashrc file to make the change permanent for all login and shell sessions.
 
-Note that others can not access your group's /ix/<primary group> or /ix1/<primary group> folder. Others cannot access /ihome/<primary group>. So you can use umask to share files with your group members.  Here is a list of suggestions for umask values.
+Note that others can not access your group's `/ix/<primary group>` or `/ix1/<primary group>` folder. Others cannot access `/ihome/<primary group>`. You can use umask to share files with your group members.  Here is a list of suggestions for umask values.
 
 002 the owner and members of the group have read/write access for files and read/write/execute access for directories; everybody else has read-only access to files and read/execute access to directories.
 
