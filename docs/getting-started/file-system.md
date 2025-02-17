@@ -8,6 +8,8 @@ Linux uses standard POSIX-style permissions to control who has the ability to re
 
 The Execute (x) permission on directories is very different compared to files. Essentially, you can think of it as providing access to the directory. Having execute permission on a directory authorizes you to look at extended information on files in the directory (using `ls -l`, for instance) but also allows you to change your working directory (using cd) or pass through this directory on your way to a subdirectory underneath. If we change the above output folder permissions to 744 (drwxr--r--), then sam group members and others cannot cd to this folder.
 
+The `chmod` command is used to change the permissions of a file or directory. Only the User that owns a file may change ownership or permissions.
+
 ## Data Storage options in the CRCD Environment
 
 ### User Home Directories
