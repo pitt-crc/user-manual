@@ -32,5 +32,5 @@ details about the various applications we've built to more easily extract inform
 This section also includes more in-depth pages on setting up python environments and working with 
 licensed software.
 
-## Genomics Support
-These pages include walk-through tutorials for setting up advanced genomics workflows on the HTC cluster.
+## Bioformatics Support
+These pages include walk-through tutorials for setting up bioinformatics workflows on the HTC cluster.
