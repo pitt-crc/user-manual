@@ -46,4 +46,5 @@ Note that others can not access your group's `/ix/<primary group>` or `/ix1/<pri
 077 files are created as read/write only for the owner; directories are created read/write/execute only for the owner
 
 ## Sharing data
-TODO
+
+To share files on the cluster with other users, we recommend using file access control lists (ACLs) to share access to their data with others. The Linux commands are `nfs4_getfacl` and `nfs4_setfacl`. We recommend that users submit a help ticket to request a shared folder in the group's ix or ix1 folder. We will create a shared folder `/ix or ix1/<group name>/shared/<group name>_<user name>`. Both the group members and the user `<user name>` from other group will be granted rwx permissions to this folder `/ix/<group name>/shared/<group name>_<user name>`. The group members can copy files to this folder to share with the other user `<user name>`. The other user can directly cd to the shared folder `/ix/<group name>/shared/<group name>_<user name>`. The other user can cd to `/ix/<group name>` or `/ix/<group name>/shared`. However, the user will receive "permission denied" error if the user runs ls or other directory or file handling operations.
