@@ -91,6 +91,7 @@ nav:
       - SMP: hardware_profiles/smp.md
       - MPI: hardware_profiles/mpi.md
       - HTC: hardware_profiles/htc.md
+      - TEACH: hardware_profiles/teach.md
       - VIZ: hardware_profiles/viz.md
       - Login Nodes: hardware_profiles/login.md
   - Policies:
