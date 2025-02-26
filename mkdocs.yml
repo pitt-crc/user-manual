@@ -119,7 +119,6 @@ nav:
   - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
     - data-management/data-management-overview.md
-    - data-management/google-workspace.md
     - data-management/microsoft-onedrive.md
     - data-management/globus.md
     - data-management/globus-microsoft-onedrive.md
