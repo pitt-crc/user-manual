@@ -246,22 +246,21 @@ The table below gives the maximum memory (in GB) for each QOS in the clusters/pa
     });
 </script>
 
-If you find yourself consistently running into this issue, you can use the `seff` tool to determine the efficiency of 
+If you find yourself consistently running into this issue, you can use the `crc-seff` tool to determine the efficiency of 
 your completed jobs:
 ```commandline
-[nlc60@login0b ~] : srun -M CLUSTER_JOB_RAN_ON seff YOUR_JOBID
-    srun: job INTERACTIVE_SESSION_JOBID queued and waiting for resources
-    srun: job INTERACTIVE_SESSION_JOBID has been allocated resources
-    Job ID: YOUR_JOBID
-    Cluster: CLUSTER_JOB_RAN_ON
-    User/Group: USERNAME/GROUPNAME
-    State: TIMEOUT (exit code 0)
-    Cores: 1
-    CPU Utilized: 6-00:00:52
-    CPU Efficiency: 100.01% of 6-00:00:19 core-walltime
-    Job Wall-clock time: 6-00:00:19
-    Memory Utilized: 128.58 GB
-    Memory Efficiency: 14.29% of 900.00 GB
+[chx33@login1 ~]$ crc-seff  -M mpi  2707801
+Job ID: 2707801
+Cluster: mpi
+User/Group: hillier/dhillier
+State: TIMEOUT (exit code 0)
+Nodes: 4
+Cores per node: 48
+CPU Utilized: 4-00:48:03
+CPU Efficiency: 99.84% of 4-00:57:36 core-walltime
+Job Wall-clock time: 00:30:18
+Memory Utilized: 8.11 GB
+Memory Efficiency: 2.16% of 375.00 GB
 ```
 
 #### AssocGrpBillingMinutes
