@@ -2,7 +2,7 @@
 
 ## **Summary**
 
-The hugen.crc.pitt.edu or teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRC teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
+The hugen.crc.pitt.edu or ondemand.teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRC teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
 
 ## **Request an Allocation for a Course**
 
