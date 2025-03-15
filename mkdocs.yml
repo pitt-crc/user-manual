@@ -36,7 +36,7 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback! Help us improve this page by creating an issue in 
             our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
 extra_css:
@@ -72,20 +72,20 @@ nav:
   - Back to crc.pitt.edu: https://crc.pitt.edu
   - User Manual Home: index.md
   - Getting Started:
-    - getting-started/index.md
-    - getting-started/getting-started-step1-account.md
-    - Step 2- Login to Access Portals:
-      - getting-started/step2/index.md
-      - SSH using a terminal: getting-started/terminal.md
-      - Linux Desktop Webportal: getting-started/viz.md
-      - Open OnDemand Webportal: getting-started/open-ondemand.md
-      - JupyterHub Webportal: getting-started/jupyter-hub.md
-      - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
-    - Step 3- CRCD Ecosystem:
-      - getting-started/step3/index.md
-      - Discovering Software: getting-started/step3/getting-started-step3-software.md
-      - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
-      - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
+      - getting-started/index.md
+      - getting-started/getting-started-step1-account.md
+      - Step 2- Login to Access Portals:
+          - getting-started/step2/index.md
+          - SSH using a terminal: getting-started/terminal.md
+          - Linux Desktop Webportal: getting-started/viz.md
+          - Open OnDemand Webportal: getting-started/open-ondemand.md
+          - JupyterHub Webportal: getting-started/jupyter-hub.md
+          - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
+      - Step 3- CRCD Ecosystem:
+          - getting-started/step3/index.md
+          - Discovering Software: getting-started/step3/getting-started-step3-software.md
+          - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
+          - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
       - GPU: hardware_profiles/gpu.md
       - SMP: hardware_profiles/smp.md
@@ -95,70 +95,69 @@ nav:
       - VIZ: hardware_profiles/viz.md
       - Login Nodes: hardware_profiles/login.md
   - Policies:
-    - policies/job-scheduling-policy.md
-    - policies/hardware-investing-policy.md
-    - policies/resource-descriptions-for-writing-proposals.md
+      - policies/job-scheduling-policy.md
+      - policies/hardware-investing-policy.md
+      - policies/resource-descriptions-for-writing-proposals.md
   - Connecting to Web Portals:
-    - web-portals/terminal.md
-    - web-portals/open-ondemand.md
-    - web-portals/jupyter-ondemand.md
-    - web-portals/viz.md
-    - web-portals/jupyter-hub.md
-    - web-portals/jupyter-teach.md
-    - web-portals/psych.md
-    - web-portals/hugen.md
+      - web-portals/terminal.md
+      - web-portals/open-ondemand.md
+      - web-portals/jupyter-ondemand.md
+      - web-portals/viz.md
+      - web-portals/jupyter-hub.md
+      - web-portals/jupyter-teach.md
+      - web-portals/psych.md
+      - web-portals/hugen.md
   - The SLURM Workload Manager:
-    - slurm/slurm-overview.md
-    - slurm/batch-jobs.md
-    - slurm/service-units.md
-    - slurm/interactive-jobs.md
-    - slurm/pbs-slurm.md
-    - slurm/scavenger.md
-    - slurm/job-arrays.md
-    - slurm/vscode.md
+      - slurm/slurm-overview.md
+      - slurm/batch-jobs.md
+      - slurm/service-units.md
+      - slurm/interactive-jobs.md
+      - slurm/pbs-slurm.md
+      - slurm/scavenger.md
+      - slurm/job-arrays.md
+      - slurm/vscode.md
   - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
-    - data-management/data-management-overview.md
-    - data-management/microsoft-onedrive.md
-    - data-management/globus.md
-    - data-management/globus-microsoft-onedrive.md
+      - data-management/file-systems.md
+      - data-management/file-permissions.md
+      - data-management/file-transfer-methods.md
   - Applications:
-    - applications/software-list.md
-    - applications/application-environment.md
-    - applications/basic-commands.md
-    - applications/crc-wrappers.md
-    - applications/compilers.md
-    - applications/python.md
-    - applications/r+rstudio.md
-    - applications/ondemand-rstudio-gpu.md
-    - applications/singularity.md
-    - Licensed Software:
-        - applications/licensed-software/ansys.md
-        - applications/licensed-software/comsol.md
-        - applications/licensed-software/lumerical.md
-        - applications/licensed-software/mathematica.md
-        - applications/licensed-software/vasp.md
-        - MATLAB:
-            - applications/licensed-software/matlab/matlab.md
-            - applications/licensed-software/matlab/matlab-remote-job-submission.md
+      - applications/software-list.md
+      - applications/application-environment.md
+      - applications/basic-commands.md
+      - applications/crc-wrappers.md
+      - applications/compilers.md
+      - applications/python.md
+      - applications/r+rstudio.md
+      - applications/ondemand-rstudio-gpu.md
+      - applications/singularity.md
+      - Licensed Software:
+          - applications/licensed-software/ansys.md
+          - applications/licensed-software/comsol.md
+          - applications/licensed-software/lumerical.md
+          - applications/licensed-software/mathematica.md
+          - applications/licensed-software/vasp.md
+          - MATLAB:
+              - applications/licensed-software/matlab/matlab.md
+              - applications/licensed-software/matlab/matlab-remote-job-submission.md
   - Bioinformatics Support:
-    - bioinformatics/bioinformaticsworkshops.md
-    - NGS Data Analysis:
-      - advanced-genomics-support/nf-core-genomics-pipelines.md
-      - advanced-genomics-support/RNASeq-data-analysis.md
-      - advanced-genomics-support/variant-calling.md
-      - advanced-genomics-support/single-cell-rnaseq.md
-      - bioinformatics/spatialtranscriptomics.md
-      - advanced-genomics-support/ChipSeq-data-analysis.md
-      - advanced-genomics-support/ATACSeq-data-analysis.md
-      - bioinformatics/Methylation.md
-      - advanced-genomics-support/cromwell-and-encode.md
-      - advanced-genomics-support/Snakemake.md
-      - advanced-genomics-support/genome-browser.md
-      - advanced-genomics-support/clcbio-genomics-server.md
-    - bioinformatics/alphafold3.md
-    - bioinformatics/fMRI.md
-    - bioinformatics/EHR.md
+      - bioinformatics/bioinformaticsworkshops.md
+      - NGS Data Analysis:
+          - advanced-genomics-support/nf-core-genomics-pipelines.md
+          - advanced-genomics-support/RNASeq-data-analysis.md
+          - advanced-genomics-support/variant-calling.md
+          - advanced-genomics-support/single-cell-rnaseq.md
+          - bioinformatics/spatialtranscriptomics.md
+          - advanced-genomics-support/ChipSeq-data-analysis.md
+          - advanced-genomics-support/ATACSeq-data-analysis.md
+          - bioinformatics/Methylation.md
+          - advanced-genomics-support/cromwell-and-encode.md
+          - advanced-genomics-support/Snakemake.md
+          - advanced-genomics-support/genome-browser.md
+          - advanced-genomics-support/clcbio-genomics-server.md
+      - bioinformatics/alphafold3.md
+      - bioinformatics/fMRI.md
+      - bioinformatics/EHR.md
 
   - Supporting Code Optimization: code-optimization.md
 
