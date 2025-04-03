@@ -122,7 +122,7 @@ nav:
       - data-management/file-systems.md
       - data-management/file-permissions.md
   - File Transfer Methods:
-      - data-management/file-transfer-methods.md
+      - data-management/index.md
       - data-management/file-transfer-methods/box.md
       - data-management/file-transfer-methods/globus.md
       - data-management/file-transfer-methods/globus-microsoft-onedrive.md
