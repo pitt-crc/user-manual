@@ -118,7 +118,7 @@ connect to the HTC cluster.
 Jump to a specific App:
 
 *   [Jupyter Notebook/Labs](#jupyter-notebooklab)
-*   [Jupyter Notebook/Labs on GPU](#jupyter-notebooklabs-on-gpu)
+*   [Jupyter Notebook/Labs on GPU](#jupyter-notebooklab-on-gpu)
 *   [Rstudio](#rstudio)
 *   [MATLAB](#matlab)
 *   [Genomics Apps](#genomics-apps)

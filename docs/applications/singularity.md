@@ -1,7 +1,7 @@
 # Introduction to Singularity
 ---------------------------
 
-Containerization of software runtime environment and processing workloads has become popular, particularly using Docker. However, Docker is not suitable for HPC applications [due to security reasons](#FAQ). There are a couple of alternatives for HPC containers, with Singularity being the one that covers a large set of cases. Singularity can import Docker containers.
+Containerization of software runtime environment and processing workloads has become popular, particularly using Docker. However, Docker is not suitable for HPC applications [due to security reasons](#faq). There are a couple of alternatives for HPC containers, with Singularity being the one that covers a large set of cases. Singularity can import Docker containers.
 
 Singularity is a _container platform_ that was created to run complex applications on HPC clusters in a simple, portable, and reproducible way. Singularity containers are a single file, and you don’t have to worry about how to install all the software you need on different operating systems and hardware.
 
@@ -179,7 +179,7 @@ singularity shell --nv /ihome/crc/install/openpose/openpose.sif
 ```
 Note: The CUDA runtime (in the container) and driver (on the compute node) versions need to be compatiable. When logged into a GPU compute node, you can check the driver version with `nvidia-smi`.
 
-FAQ
+## FAQ
 ---
 
 ### Why can't I use Docker?

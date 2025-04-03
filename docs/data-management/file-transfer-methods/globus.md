@@ -17,11 +17,11 @@
 
 If you forget your endpoint name:
 
-![](../_assets/img/data-management/globus1.png)
+![](../../_assets/img/data-management/globus1.png)
 
-![](../_assets/img/data-management/globus2.png)
+![](../../_assets/img/data-management/globus2.png)
 
-![](../_assets/img/data-management/globus3.png)
+![](../../_assets/img/data-management/globus3.png)
 
 ## Globus File Sharing
 
@@ -56,16 +56,16 @@ credentials.
 
 You should see this screen:
 
-![](../_assets/img/data-management/globus4.png)
+![](../../_assets/img/data-management/globus4.png)
 
 Click Collections, search "pitt#dtn”
-![](../_assets/img/data-management/globus5.png)
+![](../../_assets/img/data-management/globus5.png)
 Select pitt#dtn, click Open in File Manager
 
-![](../_assets/img/data-management/globus6.png)
+![](../../_assets/img/data-management/globus6.png)
 logon using your Pitt credentials. Go to the folder you wish to share.
 
-![](../_assets/img/data-management/globus7.png)
+![](../../_assets/img/data-management/globus7.png)
 
 Highlight the folder that you would like to share and Click Share in the right command pane.
 
@@ -74,20 +74,20 @@ Note: Sharing is available for folders. Individual files can only be shared by s
 Then click Add a Guest Collection.
 
 
-![](../_assets/img/data-management/globus8.png)
+![](../../_assets/img/data-management/globus8.png)
 Provide a clear, meaningful Display Name for the guest collection, and click Create Collection.
 
-![](../_assets/img/data-management/globus9.png)
+![](../../_assets/img/data-management/globus9.png)
 When your collection is created, you’ll be taken to the Permissions tab, where you can set permissions. Click Add 
 Permissions - Share With
 
-![](../_assets/img/data-management/globus10.png)
+![](../../_assets/img/data-management/globus10.png)
 Add the Username or Email.
 
 Note: You must be very careful if you choose write permission. This means that you are giving a user permission to 
 delete existing files.
 
-![](../_assets/img/data-management/globus11.png)
+![](../../_assets/img/data-management/globus11.png)
 Click “Add Permission”.
 
 Important Notes about Sharing:
@@ -108,7 +108,7 @@ Collections management
 To see all collections you have shared, click Collections | Administered by You. Choose the Collection, click Sharing: 
 you should then see the shared endpoint and the people you have shared it with.</p>
 
-![](../_assets/img/data-management/globus12.png)
+![](../../_assets/img/data-management/globus12.png)
 
 At any time, you can terminate access to the directory by clicking the 'X' next to the invitee in the screen above.
 
@@ -151,7 +151,7 @@ able to see the files you shared with them.
 When the user fmu@pitt.edu clicks this URL and logon globus, the contents of this folder is ready to be transferred.
 
 
-![](../_assets/img/data-management/globus13.png)
+![](../../_assets/img/data-management/globus13.png)
 
 They should click on the files they want to transfer, then 'Transfer or Sync to', enter their own endpoint name and 
 desired path, and click the 'Start' button near the bottom to start the transfer.

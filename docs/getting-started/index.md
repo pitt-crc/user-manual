@@ -25,9 +25,9 @@ A schematic of the process is depicted below.
 
 <ins>**Available Resources**</ins>
 
-| Cluster Acronym                 | Expansion                 | Description of Use Cases                                                                                                                                          |
-|---------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [MPI](../hardware_profiles/mpi) | Message Passing Interface | For tightly coupled parallel codes that use the Message Passing Interface APIs for distributing computation across multiple nodes, each with its own memory space |
-| [HTC](../hardware_profiles/htc) | High Throughput Computing | For genomics and other health sciences-related workflows that can run on a single node                                                                            |
-| [SMP](../hardware_profiles/smp) | Shared Memory Processing  | For jobs that can run on a single node where the CPU cores share a common memory space                                                                            |
-| [GPU](../hardware_profiles/gpu) | Graphics Processing Unit  | For AI/ML applications and physics-based simulation codes that had been written to take advantage of accelerated computing on GPU cores                           |
+| Cluster Acronym                    | Expansion                 | Description of Use Cases                                                                                                                                          |
+|------------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [MPI](../hardware_profiles/mpi.md) | Message Passing Interface | For tightly coupled parallel codes that use the Message Passing Interface APIs for distributing computation across multiple nodes, each with its own memory space |
+| [HTC](../hardware_profiles/htc.md) | High Throughput Computing | For genomics and other health sciences-related workflows that can run on a single node                                                                            |
+| [SMP](../hardware_profiles/smp.md) | Shared Memory Processing  | For jobs that can run on a single node where the CPU cores share a common memory space                                                                            |
+| [GPU](../hardware_profiles/gpu.md) | Graphics Processing Unit  | For AI/ML applications and physics-based simulation codes that had been written to take advantage of accelerated computing on GPU cores                           |

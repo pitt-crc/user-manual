@@ -131,7 +131,7 @@ Log in and authorize rclone for access
 Open a web browser and paste the link. Logon your Pitt associated google account.
 
 
-![GOOGLE-WORKSPACE1](../_assets/img/data-management/google_workspace_1.png)
+![GOOGLE-WORKSPACE1](../../_assets/img/data-management/google_workspace_1.png)
 
 Choose Allow to allow rclone access. A code is shown. Please copy this code, switch to your application and paste it there.
 

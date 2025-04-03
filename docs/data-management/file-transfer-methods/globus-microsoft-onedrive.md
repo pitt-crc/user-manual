@@ -7,25 +7,25 @@ using [Globus Connect Personal](https://www.globus.org/globus-connect-personal) 
 [Globus File Manager](https://app.globus.org/) with your Pitt credentials. Search for the collection 
 named “UPitt-OneDrive” and select it:
 
-![](../_assets/img/data-management/gonedrive1.png)
+![](../../_assets/img/data-management/gonedrive1.png)
 
 You may see prompts asking you to verify that you wish to grant access. Complete that process then you will see the 
 files within your OneDrive space and be able to copy files to or from it just like any other Globus collection. Your 
 OneDrive space is shown as the path “My files” in the UPitt-OneDrive collection:
 
-![](../_assets/img/data-management/gonedrive2.png)
+![](../../_assets/img/data-management/gonedrive2.png)
 
-If you would like to transfer data between CRC storage and OneDrive, search for the collection named “pitt#dtn” in the 
-right side of Collection and logon using your Pitt crendentials. Go to your /ix, /bgfs or /ihome folder in Path.
+If you would like to transfer data between CRC storage and OneDrive, search for the collection named “pitt#dtn” on the 
+right side of Collection and logon using your Pitt credentials. Go to your /ix, /bgfs or /ihome folder in Path.
 
-![](../_assets/img/data-management/gonedrive3.png)
+![](../../_assets/img/data-management/gonedrive3.png)
 
 ## How to Access OneDrive Shared Folders in Globus
 
 If someone has shared a folder from their OneDrive with you, that folder can be found by clicking the “up one folder” 
 button and then looking in your “Shared” folder:
 
-![](../_assets/img/data-management/gonedrive4.png)
+![](../../_assets/img/data-management/gonedrive4.png)
 
 ## How to Access SharePoint Sites in Globus
 
@@ -34,15 +34,15 @@ to Globus. To do that, log into [the Pitt IT SharePoint service](https://pitt.sh
 with your Pitt credentials. Next, navigate to the SharePoint site you would like to browse. Then, click the star icon 
 next to the site you wish to follow:
 
-![](../_assets/img/data-management/gonedrive5.png)
+![](../../_assets/img/data-management/gonedrive5.png)
 
 Finally, return to Globus and click the “up one folder” button until you are able to see the “Shared libraries” folder:
 
-![](../_assets/img/data-management/gonedrive6.png)
+![](../../_assets/img/data-management/gonedrive6.png)
 
 The SharePoint site will now be available under the path “Shared libraries”:
 
-![](../_assets/img/data-management/gonedrive7.png)
+![](../../_assets/img/data-management/gonedrive7.png)
 
 ## OneDrive and SharePoint Limitations
 
