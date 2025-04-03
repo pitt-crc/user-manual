@@ -65,7 +65,7 @@ directory or file handling operations.
 
 ## File permissions 
 
-Group project storage locations on `/ix`, `/bgfs`, `/zfs1`, or `/zfs2` can be requested via ticket. The top level folder is 
+Group project storage locations on `/ix1` can be requested via ticket. The top level folder is 
 owned by `root:groupname` with 2770 permission. The 2 sets the sticky bit, group members have read + write permission, 
 and `other` users cannot access the folder.
 

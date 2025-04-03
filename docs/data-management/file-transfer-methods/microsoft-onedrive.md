@@ -48,11 +48,11 @@ OneDrive.
 Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> HTC Desktop, Choose 
 1 hour and 1 core, Click Launch.
 
-![ONDEMAND](../_assets/img/data-management/onedrive_1.png)
+![ONDEMAND](../../_assets/img/data-management/onedrive_1.png)
 
 Click Launch HTC Desktop, Click Terminal Emulator.
 
-![TERMINAL](../_assets/img/data-management/onedrive_2.png)
+![TERMINAL](../../_assets/img/data-management/onedrive_2.png)
 
 ```commandline
 [fangping@htc-n1 ~]$ module load rclone/1.59.2
@@ -131,7 +131,7 @@ Log in and authorize rclone for access
 Waiting for code...
 ```
 
-![ONEDRIVE AUTH](../_assets/img/data-management/onedrive_3.png)
+![ONEDRIVE AUTH](../../_assets/img/data-management/onedrive_3.png)
 
 7. Log in Pitt passport and authorize rclone for access
 8. Choose Onedrive Personal or Business "onedrive"

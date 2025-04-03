@@ -14,9 +14,9 @@ Two use cases are:
 ## Getting Started
 1. Navigate to [Pitt Box](https://pitt.app.box.com/) and log in.
 2. Access Account Settings (top right corner)
-![BOX1](../_assets/img/data-management/box_1.png)
+![BOX1](../../_assets/img/data-management/box_1.png)
 3. Edit External Password using a strong password
-![BOX2](../_assets/img/data-management/box_2.png)
+![BOX2](../../_assets/img/data-management/box_2.png)
 4. Log into the cluster and use the following command:
 ```commandline
 lftp -u $USER@pitt.edu ftps://ftp.box.com

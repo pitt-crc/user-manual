@@ -77,9 +77,9 @@ nav:
       - Step 2- Login to Access Portals:
           - getting-started/step2/index.md
           - SSH using a terminal: getting-started/terminal.md
-          - Linux Desktop Webportal: getting-started/viz.md
-          - Open OnDemand Webportal: getting-started/open-ondemand.md
-          - JupyterHub Webportal: getting-started/jupyter-hub.md
+          - Linux Desktop Web-portal: getting-started/viz.md
+          - Open OnDemand Web-portal: getting-started/open-ondemand.md
+          - JupyterHub Web-portal: getting-started/jupyter-hub.md
           - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
       - Step 3- CRCD Ecosystem:
           - getting-started/step3/index.md
@@ -116,11 +116,18 @@ nav:
       - slurm/scavenger.md
       - slurm/job-arrays.md
       - slurm/vscode.md
+      - slurm/scratch-storage.md
   - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
       - data-management/file-systems.md
       - data-management/file-permissions.md
+  - File Transfer Methods:
       - data-management/file-transfer-methods.md
+      - data-management/file-transfer-methods/box.md
+      - data-management/file-transfer-methods/globus.md
+      - data-management/file-transfer-methods/globus-microsoft-onedrive.md
+      - data-management/file-transfer-methods/google-workspace.md
+      - data-management/file-transfer-methods/microsoft-onedrive.md
   - Applications:
       - applications/software-list.md
       - applications/application-environment.md
@@ -164,6 +171,15 @@ nav:
   - Frequently Asked Questions: faq.md
 
 not_in_nav: |
+  getting-started/access_avd.md
+  getting-started/access_hipaa.md
+  getting-started/upmc_avd.md
+  policies/slurm-limits.md
+  snippets/annual-allocation-limits.md
+  snippets/group-limits-compute.md
+  snippets/group-limits-memory.md
+  snippets/jupyter-teach.md
+  snippets/ondemand-rstudio-gpu.md
   snippets/jupyter-hub.md
   snippets/jupyter-hub.md
   snippets/jupyter-ondemand.md
