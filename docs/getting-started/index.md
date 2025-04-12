@@ -6,13 +6,20 @@ hide:
 # Big Picture Overview
 
 The University of Pittsburgh provides its research community access to high performance computing and data storage
-resources. These systems are maintained and supported through the Center for Research Computing and Data (CRC) and Pitt IT.
-To get started, you will need a CRC account, with which you will use to login to Access Portals to interact with
-the CRC Ecosystem.
+resources. These systems are maintained and supported through the Center for Research Computing and Data (CRCD) and Pitt IT.
+To get started, you will need a CRCD account, with which you will use to login to Access Portals to interact with
+the CRCD Ecosystem.
 
 A schematic of the process is depicted below.
 
 ![GETTING-STARTED-MAP](../_assets/img/getting-started/getting-started-map.png)
+
+<ins>**Who has Access?**</ins>
+
+The [**CRCD-P3: Open Science Research Computing and Data Environment Usage Policy**](https://crc.pitt.edu/sites/default/files/assets/CRC%20P3%20Open%20Science%20Research%20Computing%20and%20Data%20Environment%20Usage%20Policy.pdf) defines
+the scope of access. Briefly, these computing and data resources are available to all Pitt faculty, instructors, Emeritus faculty or center 
+directors. These PIs, in turn, can request access for their students, post doctoral fellows, and staff. Access for Pitt alumni and external 
+collaborators are possible through the [**Sponsored Account**](sponsored_account.md) mechanism.
 
 <ins>**Definitions**</ins>
 
@@ -20,7 +27,7 @@ A schematic of the process is depicted below.
 * **Access Portal** -- one of several remote servers used to submit jobs to the high performance computing clusters or
   to perform
   data management operations
-* **CRCD Ecosystem** -- the total footprint of the CRC infrastructure, including high performance computing
+* **CRCD Ecosystem** -- the total footprint of the CRCD infrastructure, including high performance computing
   clusters, data storage systems, networking equipment, and software
 
 <ins>**Available Resources**</ins>
