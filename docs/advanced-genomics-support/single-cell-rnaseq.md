@@ -2,7 +2,7 @@
 
 ## Spring 2025 CRC Bioinformatics workshops
 
-[Recordings and workshop materials]([https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA])
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
 
 <p><strong>10X single cell techniques and Getting started with Cellranger&nbsp; </strong></p>
 
