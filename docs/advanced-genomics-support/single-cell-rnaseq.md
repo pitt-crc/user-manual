@@ -1,5 +1,9 @@
 # Single Cell Data Analaysis
 
+## Spring 2025 CRC Bioinformatics workshops
+
+[Recordings and workshop materials]([https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA])
+
 <p><strong>10X single cell techniques and Getting started with Cellranger&nbsp; </strong></p>
 
 <p>Tuesday, Feb. 4, 1:00pm-4:00pm</p>
@@ -104,6 +108,8 @@
 
 ## Spring 2023 CRC Bioinformatics workshops
 
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
+
 <p><span><strong>10X Genomics single cell techniques </strong> </span><br />
 Monday, March 27, 2023, 1:00pm - 2:30pm<br />
 This workshop will illustrate the technological basis of 10x Genomics single cell analysis. Several chemistries for applications beyond single cell RNA-Seq and the sequencing read architecture of each application will be discussed. Presented by <strong>Richard Duerr</strong></p>
@@ -128,7 +134,6 @@ This advanced workshop will focus on the analysis of multi-omics data and its in
 Tuesday, April 25, 2023, 1:00pm - 4:00pm<br />
 This workshop will review the deep learning algorithms (variational autoencoder, autoencoder, generative adversarial network and supervised DL models ) and their applicability in the single cell RNA-seq processing pipeline. The hands-on training will provide examples to run deep learning RNASeq algorithms.<strong>. </strong>Presented by<strong> Yufei Huang</strong></p>
 
-[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
 
 
 ## old materials
