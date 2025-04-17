@@ -1,6 +1,114 @@
 # Single Cell Data Analaysis
 
+## Spring 2025 CRC Bioinformatics workshops
+
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/Eh31P_dGiZNBn4AFrDVwJPoBG22sfrJGDeWyZe_HEKzIJw?e=x8fcEP)
+
+<p><strong>10X single cell techniques and Getting started with Cellranger&nbsp; </strong></p>
+
+<p>Tuesday, Feb. 4, 1:00pm-4:00pm</p>
+
+<p><span><span><span><span><span>The workshop will begin with a brief overview of the single cell resources offered by 10X Genomics and provided through the Single Cell Core. Products discussed will include 3’ and 5’ gene expression, fixed RNA profiling (FLEX) and multiome (ATAC + gene expression from the same cell).</span></span></span></span></span></p>
+
+<p><span><span><span><span>This workshop will teach users on how to perform sample demultiplexing, barcode processing, single cell 3’ and 5’ gene counting V(D)J transcript sequence assembly and annotation, and Feature Barcode analysis from single cell data using 10x Genomics’ Cell Ranger analysis pipeline. </span></span></span></span></p>
+
+<p><span><span><strong><span><span>Prerequisite:</span></span></strong><span><span> CRC user account</span></span></span></span></p>
+
+<p>Presented by <strong>Single cell core Heidi Monroe and Oge Ezenwa</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Single cell data analysis using Seurat</strong></p>
+
+<p>Tuesday, Feb. 11, 1:00pm-4:00pm</p>
+
+<p><span><span><span><span>This hands-on workshop introduces the analysis of single cell data using Seurat. The users will learn how to process Cell Ranger count matrices into a Seurat object, run standard pre-processing steps for scRNA-seq data in Seurat which involves selection and filtration of cells based on QC metrics, data normalization and scaling, and detection of highly variable features. We will also show how to identify cell types and answer biological questions using differential gene analysis. </span></span></span></span></p>
+
+<p><span><span><strong><span><span>Prerequisite:</span></span></strong><span><span> CRC user account, Beginner level R</span></span></span></span></p>
+
+<p>Presented by <strong>Oge Ezenwa</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Single-cell trajectory inference methods</strong></p>
+
+<p><s>Tuesday, Feb. 18, 1:00pm-4:00pm</s></p>
+
+<p>Tuesday, March. 25, 1:00pm-4:00pm (rescheduled)</p>
+
+<p><span>Single-cell trajectory inference is a computational technique to study cell development over time. In this workshop, we will theoretically introduce the concept of trajectory inference and pseudo-time. In the practical section, we will hand on a real single-cell dataset to run through the computational pipelines. Single-cell clustering, trajectory inference, pseudo-time calculation, visualization, and differential analysis will be introduced. Presented by </span><strong>Silvia Liu</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>RNA velocity of single cells</strong></p>
+
+<p>Tuesday, Feb. 25, 1:00pm-4:00pm</p>
+
+<p><span><span><span><span><span>In this workshop, we will provide a comprehensive introduction to <strong>single-cell RNA velocity</strong>, a method used to infer the future transcriptional states of cells in dynamic biological processes by analyzing the spliced and unspliced mRNA. Participants will gain hands-on experience with real single-cell datasets using a Python package <strong>scVelo</strong> to 1). understanding the different analyzing modes for RNA velocity: deterministic, stochastic, and dynamical, 2). estimating RNA velocity, 3) identifying dynamic genes, and 4). visualization to explore cellular transitions.&nbsp; For incorporation of chromatin accessibility data, the python package <strong>MultiVelo </strong>will also be presented for examining the temporal relationship between the epigenome and transcriptome.</span></span></span></span></span></p>
+
+<p><span><span><span><span><strong><span>Prerequisite:</span></strong><span>&nbsp;CRC user account, beginner level Unix and Python</span></span></span></span></span></p>
+
+<p>Presented by&nbsp;<strong>Jiefei Wang</strong> and&nbsp;<strong>Tracy Tabib</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Single cell gene regulatory network analysis</strong></p>
+
+<p>Tuesday, March 11, 1:00pm-4:00pm</p>
+
+<p>How do cells control gene activity? In this workshop, we’ll explore Single-Cell Gene Regulatory Network (GRN) Analysis, using scRNA-seq to see what’s active and scATAC-seq to uncover regulatory potential.&nbsp;We’ll go from theory to hands-on application, learning how to infer GRNs from single-cell data. Then, we’ll push further into dynamic GRNs, exploring how gene regulation shifts over time and across cell states.&nbsp;Expect a mix of concepts, real-world datasets, and practical workflows. Whether you're new to GRNs or refining your approach, this session will equip you with key insights and tools. Presented by <strong>Swapnil Keshari on behalf of Jishnu Lab</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Co-expression inference from single cell sequencing data</strong></p>
+
+<p>Tuesday, March 18, 1:00pm-4:00pm</p>
+
+<p><span><span><span><span>In this workshop, we will provide a brief introduction to the analysis of gene co-expression in single-cell RNA sequencing (scRNA-seq) data using <strong>hdWGCNA</strong>, a powerful method for constructing hierarchical co-expression networks (</span><a href="https://smorabit.github.io/hdWGCNA/index.html"><span>https://smorabit.github.io/hdWGCNA/index.html</span></a><span>). By identifying modules of co-expressed genes, researchers can gain insights into underlying biological processes. Participants will gain hands-on experience constructing and analyzing co-expression networks with demo single-cell datasets to 1). identify gene co-expression modules, 2). relate co-expression modules to traits/phenotypes or external information, 3). interpret co-expression networks to identify key regulatory hub genes, and 4). visualization for manuscripts.</span></span></span></span></p>
+
+<p><span><span><span><strong><span>Prerequisite:</span></strong><span>&nbsp;CRC user account, beginner level Unix and R programming, basic familiarity with single-cell analysis.</span></span></span></span></p>
+
+<p>Presented by&nbsp;<strong>Jiefei Wang</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Integrative single cell RNA-seq and ATAC-seq data analysis</strong></p>
+
+<p>Tuesday, April 1, 1:00pm-4:00pm</p>
+
+<p><span><span><span><span>This hands-on workshop </span></span>focuses on demonstrating how to analyze a single-cell dataset that captures both DNA accessibility and gene expression in the same cells. Using the Signac and Seurat packages, attendees will learn to:</span></span></p>
+
+<ul>
+	<li><span><span>Annotate scATAC-seq datasets using an existing scRNA-seq dataset.</span></span></li>
+	<li><span><span>Co-visualize cells from scRNA-seq and scATAC-seq experiments.</span></span></li>
+	<li><span><span>Project scATAC-seq cells onto a UMAP derived from scRNA-seq data for integrative analysis.</span></span></li>
+</ul>
+
+<p><span><span>This workshop emphasizes practical, hands-on experience for effective multiomic single-cell data interpretation.</span></span></p>
+
+<p><span><span><strong><span><span>Prerequisite:</span></span></strong><span><span> CRC user account, Beginner level R</span></span></span></span></p>
+
+<p>Presented by <strong>Oge Ezenwa</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Reference Mapping of single cell data</strong></p>
+
+<p>Tuesday, April 8, 1:00pm-4:00pm</p>
+
+<p><span>Single-cell reference mapping aims to map a query dataset to a well-studied reference dataset. In this workshop, we will introduce how to perform dimension reduction, visualization and clustering using reference mapping strategies. In the first half, we will provide a theoretical introduction of these concepts. &nbsp;In the second half, we will hand on a query and a reference dataset to run through the pipelines. In addition to the in-house reference dataset, we will also introduce data mining on some public single-cell atlases. Presented by </span><strong>Silvia Liu</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Single cell TCR data analysis</strong></p>
+
+<p>Tuesday, April 15, 1:00pm-4:00pm</p>
+
+<p><span>This workshop provides a comprehensive introduction to&nbsp;computational methods for analyzing T cell receptor (TCR) sequencing data, covering raw data processing, clonotype identification, diversity analysis, and visualization. Participants will gain hands-on experience with standard tools (MiXCR, immunarch, scRepertoire) and learn to interpret TCR repertoires in contexts like cancer immunology, and infectious diseases. </span>Presented by<strong> Dhivyaa Rajasundaram</strong></p>
+
 ## Spring 2023 CRC Bioinformatics workshops
+
+[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
 
 <p><span><strong>10X Genomics single cell techniques </strong> </span><br />
 Monday, March 27, 2023, 1:00pm - 2:30pm<br />
@@ -26,7 +134,6 @@ This advanced workshop will focus on the analysis of multi-omics data and its in
 Tuesday, April 25, 2023, 1:00pm - 4:00pm<br />
 This workshop will review the deep learning algorithms (variational autoencoder, autoencoder, generative adversarial network and supervised DL models ) and their applicability in the single cell RNA-seq processing pipeline. The hands-on training will provide examples to run deep learning RNASeq algorithms.<strong>. </strong>Presented by<strong> Yufei Huang</strong></p>
 
-[Recordings and workshop materials](https://pitt-my.sharepoint.com/:f:/g/personal/fangping_pitt_edu/EiPJnsf4SjRCv3HZDxCMVI4BtPjwGGijolCEF79hAj9RXA)
 
 
 ## old materials
