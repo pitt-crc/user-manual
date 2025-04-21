@@ -134,12 +134,6 @@ from mangling these characters.
 You can transfer data between Pitt OneDrive and the cluster. 
 See [this page](file-transfer-methods/microsoft-onedrive.md) for details.
 
-### Pitt Box
-
-You can transfer data from and to Pitt box from the cluster. 
-Follow [these steps](file-transfer-methods/box.md).
-
-
 ### AWS S3
 
 `awscli` has been installed as a module in Lmod. 
