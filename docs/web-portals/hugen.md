@@ -2,7 +2,7 @@
 
 ## **Summary**
 
-The hugen.crc.pitt.edu or ondemand.teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRC teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
+The hugen.crc.pitt.edu or ondemand.teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRCD teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
 
 ## **Request an Allocation for a Course**
 
@@ -26,14 +26,14 @@ The portal server is firewalled within PittNet and as such [you will need to be 
 
 <p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
 
-Once connected, you can run commands directly on the server and submit batch jobs to the CRC clusters. You can click >_ teach Shell Access under Clusters to get a Linux Shell Access.
+Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters. You can click >_ teach Shell Access under Clusters to get a Linux Shell Access.
 
 ![](../_assets/img/web-portals/hugen1.png)
 ![](../_assets/img/web-portals/hugen2.png)
 
 We have not deployed a separate login node for the teach cluster. Thus, you will logon the login node of the HTC cluster.
 
-All CRC software can be accessed using this terminal and our LMOD software provisioning system.
+All CRCD software can be accessed using this terminal and our LMOD software provisioning system.
 
 <p><strong><a href="https://crc.pitt.edu/user-support/installed-software/cluster-application-environment">https://crc-pages.pitt.edu/user-manual/applications/application-environment/</a></strong></p>
 

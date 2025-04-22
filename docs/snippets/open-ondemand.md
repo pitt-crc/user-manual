@@ -21,9 +21,8 @@ OSC (including many video tutorials) or submit a [help ticket](https://crc.pitt.
 
 If your computer is not connected to the Pitt network (e.g. you are working from remotely, or you are using Pitt 
 wireless network), or you are working from a laptop that is connected to the UPMC network, make sure you first 
-connect to the [Pitt VPN](https://www.technology.pitt.edu/services/pittnet-vpn-globalprotect), so that you can 
-communicate with the CRC resources. Note that there are many different VPN roles. 
-**Only Firewall-SAM-USERS-Pulse role** can connect to CRC clusters.
+connect to the [Pitt VPN](https://www.technology.pitt.edu/services/pittnet-vpn-globalprotect), so that you can communicate with the CRC resources. Note that there are many 
+different VPN roles. **Only Firewall-SAM-USERS-Pulse role** can connect to CRC clusters.
 
 After ensuring a VPN connection, navigate to [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu) 
 in your web browser.

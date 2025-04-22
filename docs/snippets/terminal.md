@@ -3,6 +3,10 @@
 SSH ([**Secure Shell**](https://en.wikipedia.org/wiki/Secure_Shell)) is a network protocol that allows for secure access 
 to a computer over an unsecured network. This is the protocol for connecting to the CRCD login nodes.
 
+As with any of the other methods for connecting to CRCD resources, you should start by ensuring you have a proper 
+connection to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293). With this 
+connection established, you can proceed with the steps below.
+
 Clients running Windows can use [**MobaXterm**](https://mobaxterm.mobatek.net/) or [**PuTTY**](https://www.putty.org/) to 
 access a terminal emulator. Clients running MacOS can use the built-in Terminal app (in Applications/Utilities) or 
 [**iTerm2**](https://iterm2.com/).
