@@ -15,6 +15,10 @@ In addition to Jupyter notebook sessions via Open OnDemand, CRCD also hosts the 
 
 ## **Accessing CRCD Jupyter Hub**
 
+As with any of the other methods for connecting to CRCD resources, you should start by ensuring you have a proper 
+connection to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293). With this 
+connection established, you can proceed with the steps below.
+
 The **Server Options** dropdown gives you the option to create a Jupyter Hub instance on your local machine, on the SMP cluster 
 (1 core, 3 hours), or on the GPU cluster with GTX 1080 (1 GPU, 3 hours) or A100 (1 GPU, 3 hours).
 
