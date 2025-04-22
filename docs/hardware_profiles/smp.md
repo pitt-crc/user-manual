@@ -26,7 +26,6 @@ similar to your laptop but with more CPU cores and shared memory space between t
 | high-mem | [Intel Xeon Platinum 8352Y (Ice Lake)](https://www.intel.com/content/www/us/en/products/sku/212284/intel-xeon-platinum-8352y-processor-48m-cache-2-20-ghz/specifications.html) | intel, ice_lake   | 8       | 64           | 1 TB       | 16 GB      | 10 TB NVMe    | 10GbE     | smp-1024-n\[1-8] |
 |      | [Intel Xeon Platinum 8352Y (Ice Lake)](https://www.intel.com/content/www/us/en/products/sku/212284/intel-xeon-platinum-8352y-processor-48m-cache-2-20-ghz/specifications.html) | intel, ice_lake   | 2       | 64           | 2 TB       | 32 GB      | 10 TB NVMe    | 10GbE     | smp-2048-n\[0-1] |
 |      | [AMD EPYC 7351 (Naples)](https://www.amd.com/en/support/cpu/amd-epyc/amd-epyc-7001-series/amd-epyc-7351)                                                                       | amd, naples       | 1       | 32           | 1 TB       | 32 GB      | 1 TB NVMe     | 10GbE     | smp-1024-n0      |
-|      | [Intel Xeon E7-8870v4 (Broadwell)](https://www.intel.com/content/www/us/en/products/sku/93801/intel-xeon-processor-e78870-v4-50m-cache-2-10-ghz/specifications.html)           | intel, broadwell  | 4       | 80           | 3 TB       | 38 GB      | 5 TB SSD      | 10GbE     | smp-3072-n\[0-3] |
 
 ## Additional Features
 
