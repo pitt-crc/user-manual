@@ -1,5 +1,19 @@
 # Variant Calling
 
+## Nvidia parabricks
+
+https://docs.nvidia.com/clara/parabricks/latest/overview.html
+Parabricks is a free software suite for performing secondary analysis of next generation sequencing (NGS) DNA and RNA data. It delivers results at blazing fast speeds and low cost. Under the hood, Parabricks achieves this performance through tight integration with GPUs, which excel at performing data-parallel computation much more effectively than traditional CPU-based solutions. Parabricks was built from the ground up by GPU computing and Deep Learning experts who wanted to develop the fastest and most efficient possible implementation of common genomics algorithms used in secondary analysis.
+
+You must have CRCD’s GPU cluster allocation to use parabricks. Three versions of parabricks have been installed.         
+parabricks/4.0.1
+parabricks/4.2.1
+parabricks/4.5.0
+
+
+
+## Old Document
+
 ## Germline Variant Calling
 
 SNV calling from NGS data refers to a range of methods for identifying the existence of single nucleotide variants 
