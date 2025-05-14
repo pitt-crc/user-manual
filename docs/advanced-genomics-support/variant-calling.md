@@ -92,7 +92,7 @@ time pbrun mutectcaller --num-gpus 4 \
     --tmp-dir=$SLURM_SCRATCH
 ```
 
-## Old Document
+## Old Documentation
 
 ## Germline Variant Calling
 
