@@ -266,7 +266,7 @@ Memory Efficiency: 2.16% of 375.00 GB
 #### AssocGrpBillingMinutes
 - Your group's Allocation ("service units") usage has surpassed the limit specified in your active resource Allocation, 
   or your active Allocations have expired. You can double-check this with `crc-usage`. 
-  [Please submit a new Resource Allocation Request following our guidelines](https://crc.pitt.edu/Pitt-CRC-Allocation-Proposal-Guidelines).
+  [Please submit a new Resource Allocation Request following our guidelines](https://crc.pitt.edu/service-request-forms/compute-allocation-guidelines).
 
 
 
