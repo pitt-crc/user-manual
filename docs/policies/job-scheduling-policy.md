@@ -274,103 +274,16 @@ Memory Efficiency: 2.16% of 375.00 GB
 In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length. 
 If your group requests more CPU/GPUs than in this table you will be forced to wait until your group's jobs finish.
 
-<table class="display cell-border" id="cTable">
-    <thead>
-        <tr>
-            <td>Cluster</td>
-            <td>Partition</td>
-            <td>Short QOS (1 Day)</td>
-            <td>Normal QOS (3 Days)</td>
-            <td>Long QOS (6 Days)</td>
-            <td>Long-long QOS (21 Days)</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>smp</td>
-            <td>smp</td>
-            <td>2304</td>
-            <td>1613</td>
-            <td>1152</td>
-            <td>461</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>high-mem</td>
-            <td>320</td>
-            <td>224</td>
-            <td>160</td>
-            <td>64</td>
-        </tr>
-        <tr>
-            <td>gpu</td>
-            <td>gtx1080</td>
-            <td>32</td>
-            <td>20</td>
-            <td>14</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>a100</td>
-            <td>16</td>
-            <td>12</td>
-            <td>8</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>a100_multi</td>
-            <td>32</td>
-            <td>24</td>
-            <td>8</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>a100_nvlink</td>
-            <td>24</td>
-            <td>16</td>
-            <td>8</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>mpi</td>
-            <td>opa-high-mem</td>
-            <td>504</td>
-            <td>353</td>
-            <td>252</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>mpi</td>
-            <td>3264</td>
-            <td>2285</td>
-            <td>1632</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>htc</td>
-            <td>htc</td>
-            <td>1216</td>
-            <td>852</td>
-            <td>608</td>
-            <td>307</td>
-        </tr>
-    </tbody>
-</table>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#cTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
+
+| Cluster | Partition    | Short QOS (1 Day) | Normal QOS (3 Days) | Long QOS (6 Days) | Long-long QOS (21 Days) |
+|---------|--------------|-------------------|---------------------|-------------------|-------------------------|
+| smp     | smp          | 2304              | 1613                | 1152              | 461                     |
+|         | high-mem     | 320               | 224                 | 160               |                       |
+| gpu    | a100         | 16                | 12                  | 8                 |                         |
+|         | a100_multi   | 32                | 24                  | 8                 |                         |
+|         | a100_nvlink  | 24                | 16                  | 8                 |                         |
+|         | l40s  | 24                | 16                  | 8                 |                         |
+| mpi     | mpi          | 3264              | 2285                | 1632              |                         |
+| htc     | htc          | 1536              | 1075                 | 768               | 307                     |
+| teach     | cpu          | 1152              | 1152                 | 1152               | 1152                     |
+| teach     | gpu          | 24              | 24                 | 24               | 24                     |
