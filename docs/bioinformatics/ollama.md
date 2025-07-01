@@ -12,16 +12,21 @@ We have provided two batch job templates to run Ollama server on CRCD's GPU clus
 
 Using sbatch to run the Ollama server :
 
+```commandline
 sbatch /software/build/ollama/ollama_0.9.2_a100_80gb.slurm
+```
 
 This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an A100 80GB GPU memory which should be suitable for various models provided by Ollama.
 
+```commandline
 sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
+```
 
 This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an L40S 48GB GPU memory.
 
 After the job is submitted and running, you caninquire the host name and the port number it's listening on via the following command:
 
+```commandline
 [fangping@login3 ~]$ squeue -M gpu -u fangping
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -29,7 +34,7 @@ CLUSTER: gpu
            
 [fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
 gpu-n55             45141
-
+```
 ## Connecting to the ollama server from a client
 
 You can connect to the ollama server running on a GPU node through R or Python client.
