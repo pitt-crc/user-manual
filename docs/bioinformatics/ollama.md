@@ -107,36 +107,22 @@ You can use python ollama inside the conda environment to connect to ollama serv
 ![](../_assets/img/bioinformatics/python_ollama.png)
 
 
+### Pulling new models
 
-from ollama import Client
-
-ollama_client = Client(host='http://gpu-n57:48362') # Replace with your host and port
-
-messages = [
-     {'role': 'user', 'content': 'Why is the sky blue?'},
-]
-
-response = ollama_client.chat(model='llama3', messages=[
-   {'role': 'user', 'content': 'Hello!'}
-])
-print(response['message']['content'])
+You have to to get an interactive session on SMP to run the image as follows:
 
 
-
-
-4. To pull new models:
-
-You have to make sure first to get an interactive session on SMP to run the image as follows:
-
+```commandline
 srun -M smp -p smp -n4 --mem=16G -t0-04:00:00 --pty bash
+```
 
 If you are already in an interactive session on SMP or HTC, then you can just run the following directly from the seesion but make sure you don't run this on the login node or it will be killed,
 - when you get directed to the node:
 
+```commandline
 $ module load singularity/3.9.6
 $ singularity shell /software/build/ollama/ollama_0.9.2.sif
-Singularity$ export OLLAMA_HOST=gpu-n58:44883
-Singularity$ ollama pull llama4:scout
-
-To use the running Ollama server from other services similar to rollama like jupyter notebook, you'll just need to make sure you set the ollama host address as indicated previously and it should be working with you
+singularity$ export OLLAMA_HOST=gpu-n58:44883
+singularity$ ollama pull llama4:scout
+```
 
