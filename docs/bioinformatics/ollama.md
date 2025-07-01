@@ -30,6 +30,12 @@ CLUSTER: gpu
 [fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
 gpu-n55             45141
 
+## Connecting to the ollama server from a client
+
+You can connect to the ollama server running on a GPU node through R or Python client.
+
+### Using RStudio server to connect to ollama server
+
 
 3. In the many cases you will be using this service you have to make sure that you set the following option to be able to connect to the running service you launched in the previous steps:
 
