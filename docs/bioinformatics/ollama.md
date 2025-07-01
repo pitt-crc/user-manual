@@ -36,6 +36,7 @@ You can connect to the ollama server running on a GPU node through R or Python c
 
 ### Using RStudio server to connect to ollama server
 
+![](../_assets/img/bioinformatics/rstudio_ollama.png)
 
 3. In the many cases you will be using this service you have to make sure that you set the following option to be able to connect to the running service you launched in the previous steps:
 
