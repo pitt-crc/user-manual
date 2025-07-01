@@ -44,6 +44,15 @@ You can use rollama to connect to ollama server running on the gpu node.
 
 ![](../_assets/img/bioinformatics/rollama.png)
 
+Note that the ollama models will be downloaded to ~/.ollama. Your home directory has 75 GB quota.
+
+[fangping@login3 ~]$ cd ~/.ollama
+[fangping@login3 .ollama]$ ls -l
+total 53
+-rw------- 1 fangping sam 387 Jun  9 10:15 id_ed25519
+-rw-r--r-- 1 fangping sam  81 Jun  9 10:15 id_ed25519.pub
+drwxr-xr-x 4 fangping sam  50 Jul  1 12:27 models
+
 3. In the many cases you will be using this service you have to make sure that you set the following option to be able to connect to the running service you launched in the previous steps:
 
 in case of rollama:
@@ -53,12 +62,7 @@ in case of rollama:
 > query("why is the sky blue?")
 In case of Jupyter Python, you need also to define the Ollama host as mentioned for rollama before you query the models. 
 
-[fangping@login3 ~]$ cd ~/.ollama
-[fangping@login3 .ollama]$ ls -l
-total 53
--rw------- 1 fangping sam 387 Jun  9 10:15 id_ed25519
--rw-r--r-- 1 fangping sam  81 Jun  9 10:15 id_ed25519.pub
-drwxr-xr-x 4 fangping sam  50 Jul  1 12:27 models
+
 
 [fangping@login3 ~]$ squeue -M gpu -u fangping
 CLUSTER: gpu
