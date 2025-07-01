@@ -2,27 +2,34 @@
 
 Ollama is a platform that enables users to interact with Large Language Models (LLMs) via an Application Programming Interface (API). It is a powerful tool for generating text, answering questions, and performing complex natural language processing tasks. 
 
+## Running ollama server
 
-I have pulled the latest Ollama image (0.9.2) on our cluster and you need to follow these steps to run and use Ollama:
+Ollama version 0.9.2 has been installed as a singularity image /software/build/ollama/ollama_0.9.2.sif on our cluster.
 
-1. Run the Ollama server using sbatch:
+We have provided two batch job templates to run Ollama server on CRCD's GPU cluster.
+/software/build/ollama/ollama_0.9.2_a100_80gb.slurm will submit a job to the a100 partion, 80GB GPU memory node.
+/software/build/ollama/ollama_0.9.2_l40s.slurm will submit a job to the l40s, 48GB GPU memory node.
+
+Using sbatch to run the Ollama server :
 
 sbatch /software/build/ollama/ollama_0.9.2_a100_80gb.slurm
 
+This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an A100 80GB GPU memory which should be suitable for various models provided by Ollama.
+
 sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
+
+This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an L40S 48GB GPU memory.
+
+After the job is submitted and running, you caninquire the host name and the port number it's listening on via the following command:
+
 [fangping@login3 ~]$ squeue -M gpu -u fangping
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            1230409      l40s ollama_0 fangping  R       0:03      1 gpu-n55
-
-2. This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an A100 80GB GPU which should be suitable for all models provided by Ollama (You can run on L40S-48GB if you don't need A100 80GB by doing "sbatch /software/build/ollama/ollama_0.9.2_a100_80gb.slurm"). Once the job is submitted and running you inquire the host name and the port number it's listening on via the following command:
-
+           
 [fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
 gpu-n55             45141
 
-squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
- which will produce something like this if the job starts (or empty response if it's waiting in the queue):
- gpu-n66    12345
 
 3. In the many cases you will be using this service you have to make sure that you set the following option to be able to connect to the running service you launched in the previous steps:
 
