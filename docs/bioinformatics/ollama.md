@@ -1,3 +1,7 @@
+# Ollama
+
+Ollama is a platform that enables users to interact with Large Language Models (LLMs) via an Application Programming Interface (API). It is a powerful tool for generating text, answering questions, and performing complex natural language processing tasks. 
+
 
 I have pulled the latest Ollama image (0.9.2) on our cluster and you need to follow these steps to run and use Ollama:
 
