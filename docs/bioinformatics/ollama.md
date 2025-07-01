@@ -24,7 +24,7 @@ sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
 
 This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an L40S 48GB GPU memory.
 
-After the job is submitted and running, you caninquire the host name and the port number it's listening on via the following command:
+After the job is submitted and running, you can inquire the host name and the port number it's listening on via the following command:
 
 ```commandline
 [fangping@login3 ~]$ squeue -M gpu -u fangping
@@ -51,31 +51,25 @@ You can use rollama to connect to ollama server running on the gpu node.
 
 Note that the ollama models will be downloaded to ~/.ollama. Your home directory has 75 GB quota.
 
+```commandline
 [fangping@login3 ~]$ cd ~/.ollama
 [fangping@login3 .ollama]$ ls -l
 total 53
 -rw------- 1 fangping sam 387 Jun  9 10:15 id_ed25519
 -rw-r--r-- 1 fangping sam  81 Jun  9 10:15 id_ed25519.pub
 drwxr-xr-x 4 fangping sam  50 Jul  1 12:27 models
+```
+Delete the ollama server when you have finished testing.
 
-3. In the many cases you will be using this service you have to make sure that you set the following option to be able to connect to the running service you launched in the previous steps:
-
-in case of rollama:
-
-> library(rollama)
-> options(rollama_server = "http://gpu-n66:12345")
-> query("why is the sky blue?")
-In case of Jupyter Python, you need also to define the Ollama host as mentioned for rollama before you query the models. 
-
-
-
-[fangping@login3 ~]$ squeue -M gpu -u fangping
-CLUSTER: gpu
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           1230409      l40s ollama_0 fangping  R      13:33      1 gpu-n55
+```commandline
 [fangping@login3 ~]$ scancel -M gpu 1230409
+```
 
+### Using Jupyter to connect to ollama server
 
+I have installed ollama python package to a conda environment /ix1/bioinformatics/python_envs/ollama. In case that you are planning to install ollama into your own conda environment, these are the instructions. 
+
+```commandline
 [fangping@login3 ~]$ module load python/ondemand-jupyter-python3.11
 [fangping@login3 ~]$ conda create --prefix=/ix1/bioinformatics/python_envs/ollama python=3.11
 Retrieving notices: ...working... done
@@ -90,8 +84,11 @@ Successfully installed annotated-types-0.7.0 anyio-4.9.0 certifi-2025.6.15 h11-0
 (/ix1/bioinformatics/python_envs/ollama) [fangping@login3 ~]$ source deactivate
 DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
 [fangping@login3 ~]$
+```
 
+Run ollama server and inquiry the hostname and port number.
 
+```commandline
 [fangping@login3 ~]$ sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
 Submitted batch job 1230448 on cluster gpu
 [fangping@login3 ~]$ squeue -M gpu -u fangping
@@ -100,12 +97,14 @@ CLUSTER: gpu
            1230448      l40s ollama_0 fangping  R       0:03      1 gpu-n57
 [fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
 gpu-n57             48362
+```
+logon ondemand.htc.crc.pitt.edu, click Jupyter.
 
+![](../_assets/img/bioinformatics/jupyter_ollama.png)
 
+You can use python ollama inside the conda environment to connect to ollama server running on the gpu node.
 
-
-[fangping@login3 ~]$ scancel -M gpu 1230448
-
+![](../_assets/img/bioinformatics/python_ollama.png)
 
 
 
