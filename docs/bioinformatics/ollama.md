@@ -43,6 +43,55 @@ CLUSTER: gpu
 [fangping@login3 ~]$ scancel -M gpu 1230409
 
 
+[fangping@login3 ~]$ module load python/ondemand-jupyter-python3.11
+[fangping@login3 ~]$ conda create --prefix=/ix1/bioinformatics/python_envs/ollama python=3.11
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+...
+
+[fangping@login3 ~]$ source activate /ix1/bioinformatics/python_envs/ollama
+(/ix1/bioinformatics/python_envs/ollama) [fangping@login3 ~]$ pip install ollama
+...
+Successfully installed annotated-types-0.7.0 anyio-4.9.0 certifi-2025.6.15 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.10 ollama-0.5.1 pydantic-2.11.7 pydantic-core-2.33.2 sniffio-1.3.1 typing-extensions-4.14.0 typing-inspection-0.4.1
+(/ix1/bioinformatics/python_envs/ollama) [fangping@login3 ~]$ source deactivate
+DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
+[fangping@login3 ~]$
+
+
+[fangping@login3 ~]$ sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
+Submitted batch job 1230448 on cluster gpu
+[fangping@login3 ~]$ squeue -M gpu -u fangping
+CLUSTER: gpu
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           1230448      l40s ollama_0 fangping  R       0:03      1 gpu-n57
+[fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
+gpu-n57             48362
+
+
+
+
+[fangping@login3 ~]$ scancel -M gpu 1230448
+
+
+
+
+from ollama import Client
+
+ollama_client = Client(host='http://gpu-n57:48362') # Replace with your host and port
+
+messages = [
+     {'role': 'user', 'content': 'Why is the sky blue?'},
+]
+
+response = ollama_client.chat(model='llama3', messages=[
+   {'role': 'user', 'content': 'Hello!'}
+])
+print(response['message']['content'])
+
+
+
+
 4. To pull new models:
 
 You have to make sure first to get an interactive session on SMP to run the image as follows:
