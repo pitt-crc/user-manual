@@ -163,6 +163,7 @@ nav:
       - bioinformatics/alphafold3.md
       - bioinformatics/fMRI.md
       - bioinformatics/EHR.md
+      - bioinformatics/ollama.md
 
   - Supporting Code Optimization: code-optimization.md
 
