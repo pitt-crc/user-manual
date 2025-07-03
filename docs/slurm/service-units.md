@@ -6,166 +6,64 @@ One service unit (SU) is approximately equal to 1 core hour of computing. The ch
 - RAM requested
 - On the GPU cluster, number of cards requested.
 
-Each of these has a TRES Billing Weight assigned to it in the cluster configuration files. These weights along with the amount of resources your job is allocated are used to construct a total cost in SUs. &nbsp;Here is a table listing the weights for each cluster and partition:
+Each of these has a TRES Billing Weight assigned to it in the cluster configuration files. 
+These weights along with the amount of resources your job is allocated are used to construct a total cost in SUs. 
+Here is a table listing the weights for each cluster and partition:
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+| Cluster | Partition          | Compute Weight (Per CPU/GPU) | Memory Weight (Per GB) |
+|---------|--------------------|------------------------------|------------------------|
+| SMP     |                    |                              |                        |
+|         | smp                | 0.8                          | 0.102                  |
+|         | high-mem           | 1.0                          | 0.0477                 |
+|         | preempt            | 0                            | 0                      |
+| MPI     |                    |                              |                        |
+|         | ndr                | 1                            | 0.93                   |
+|         | mpi                | 1                            | 0.93                   |
+|         | preempt            | 0                            | 0                      |
+|         | preempt_ndr        | 0                            | 0                      |
+| GPU     |                    |                              |                        |
+|         | a100               | 8                            | 0                      |
+|         | a100_multi         | 8                            | 0                      |
+|         | a100_nvlink        | 8                            | 0                      |
+|         | a100_nvlink_multi  | 8                            | 0                      |
+|         | l40s               | 8                            | 0                      |
+|         | preempt            | 0                            | 0                      |
+| HTC     |                    |                              |                        |
+|         | htc                | 1                            | 0.128                  |
+|         | preempt            | 0                            | 0                      |
 
-<table class="display cell-border" id="cTable">
-	<thead>
-		<tr>
-			<th scope="col">Cluster</th>
-			<th scope="col">Partition</th>
-			<th scope="col">CPU/GPU Weight</th>
-			<th scope="col">Memory Weight</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>SMP</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>smp</td>
-			<td>0.8</td>
-			<td>0.102</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>high-mem</td>
-			<td>1.0</td>
-			<td>0.0477</td>
-		</tr>
-		<tr>
-			<td>MPI</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>opa-high-mem</td>
-			<td>1</td>
-			<td>0.149</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>mpi</td>
-			<td>1</td>
-			<td>0.93</td>
-		</tr>
-		<tr>
-			<td>GPU</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>gtx1080</td>
-			<td>1</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>v100</td>
-			<td>5</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>power9</td>
-			<td>5</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>a100</td>
-			<td>8</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>a100_multi</td>
-			<td>8</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>a100_nvlink</td>
-			<td>8</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>l40s</td>
-			<td>8</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>HTC</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>htc</td>
-			<td>1</td>
-			<td>0.128</td>
-		</tr>
-	</tbody>
-</table>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#cTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
 
 To see a more detailed view of this information (including investment hardware configurations), you can use the scontrol slurm command, providing the -M flag to specify a cluster:
 
 ```commandline
-[nlc60@login0b ~] : scontrol -M htc show partition
+[nlc60@login1 ~] : scontrol -M htc show partition
 PartitionName=htc
-   AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,htc-htc-s,htc-htc-n,htc-htc-l,htc-htc-s-invest,htc-htc-n-invest,htc-htc-l-invest
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,htc-htc-s,htc-htc-n,htc-htc-l,htc-htc-ll,htc-htc-s-invest,htc-htc-n-invest,htc-htc-l-invest,htc-htc-ll-invest,htc-htc-crunyan-s,htc-htc-crunyan-n,htc-htc-crunyan-l,htc-htc-crunyan-ll
    AllocNodes=ALL Default=YES QoS=N/A
    DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
-   MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
-   Nodes=htc-1024-n[0-3],htc-n[24-49]
+   MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=htc-1024-n[0-3],htc-n[24-93]
    PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
    OverTimeLimit=NONE PreemptMode=CANCEL
-   State=UP TotalCPUs=1792 TotalNodes=30 SelectTypeParameters=NONE
+   State=UP TotalCPUs=6144 TotalNodes=74 SelectTypeParameters=NONE
    JobDefaults=(null)
    DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
-   TRES=cpu=1792,mem=19587200M,node=30,billing=2448
+   TRES=cpu=6144,mem=72007200M,node=74,billing=9000
    TRESBillingWeights=CPU=1.0,Mem=0.128G
 
-PartitionName=scavenger
-   AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,htc-scavenger-s,htc-scavenger-n,htc-scavenger-l
+PartitionName=preempt
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=htc-preempt-s,htc-preempt-n,htc-preempt-l,htc-preempt-ll
    AllocNodes=ALL Default=NO QoS=N/A
    DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
-   MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
-   Nodes=htc-n[24-31]
-   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=htc-1024-n[0-3],htc-n[24-93]
+   PriorityJobFactor=0 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
    OverTimeLimit=NONE PreemptMode=CANCEL
-   State=UP TotalCPUs=384 TotalNodes=8 SelectTypeParameters=NONE
+   State=UP TotalCPUs=6144 TotalNodes=74 SelectTypeParameters=NONE
    JobDefaults=(null)
    DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
-   TRES=cpu=384,mem=6180000M,node=8
-   TRESBillingWeights=CPU=0.0,Mem=0.0G
+   TRES=cpu=6144,mem=72007200M,node=74
+   TRESBillingWeights=CPU=0,Mem=0.0G
 ```
 
 For a concise view of the TRES used by a job, you can use the ```sacct``` command:

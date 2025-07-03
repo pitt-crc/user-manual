@@ -1,5 +1,99 @@
 # Variant Calling
 
+## Nvidia parabricks
+
+https://docs.nvidia.com/clara/parabricks/latest/overview.html
+
+Parabricks is a free software suite for performing secondary analysis of next generation sequencing (NGS) DNA and RNA data. It delivers results at blazing fast speeds and low cost. Under the hood, Parabricks achieves this performance through tight integration with GPUs, which excel at performing data-parallel computation much more effectively than traditional CPU-based solutions. Parabricks was built from the ground up by GPU computing and Deep Learning experts who wanted to develop the fastest and most efficient possible implementation of common genomics algorithms used in secondary analysis.
+
+You must have CRCD’s GPU cluster allocation to use parabricks. Three versions of parabricks have been installed.
+
+```commandline
+parabricks/4.0.1
+parabricks/4.2.1
+parabricks/4.5.0
+```
+
+https://docs.nvidia.com/clara/parabricks/latest/tutorials/how-tos/somaticcalling.html
+
+This how-to runs through a full Whole Genome Sequencing (WGS) somatic variant analysis pipeline for calling SNPs, MNPs, and small indels on real 30X short-read human data.
+The demo is at /ix1/genomics/demo/illumina/gatk4/somatic_svc
+
+```commandline
+[fangping@login3 somatic_svc]$ cat fq2bam_4gpu_normal.sbatch
+#!/bin/bash
+#SBATCH --job-name=parabricks_l40s_job
+#SBATCH --cluster=gpu
+#SBATCH --partition=l40s
+#SBATCH --nodes=1                # node count
+#SBATCH --cpus-per-task=64        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --gres=gpu:4             # number of gpus per node
+#SBATCH --time=3-00:00:00          # total run time limit (HH:MM:SS)
+#SBATCH --error=fq2bam_normal.err
+#SBATCH --output=fq2bam_normal.out
+
+module purge
+module load parabricks/4.2.1
+
+mkdir -p results
+
+DATAPATH=/ix1/genomics/demo/gatk4/somatic_svc
+
+time pbrun fq2bam --num-gpus 4 \
+    --ref $DATAPATH/ref/GRCh38.d1.vd1.fa \
+    --in-fq $DATAPATH/SRR7890827_1.fastq.gz $DATAPATH/SRR7890827_2.fastq.gz "@RG\tID:id_SRR7890827_rg1\tLB:lib1\tPL:bar\tSM:sm_SRR7890827\tPU:pu_SRR7890827_rg1" \
+    --knownSites $DATAPATH/Mills_and_1000G_gold_standard.indels.b38.primary_assembly.vcf.gz \
+    --knownSites $DATAPATH/GCF_000001405.39.gz \
+    --knownSites $DATAPATH/ALL.wgs.1000G_phase3.GRCh38.ncbi_remapper.20150424.shapeit2_indels.vcf.gz \
+    --out-recal-file results/SRR7890827-WGS_FD_N_BQSR_REPORT.txt \
+    --bwa-options=-Y \
+    --out-bam results/SRR7890827-WGS_FD_N.bam \
+    --tmp-dir=$SLURM_SCRATCH
+```
+
+You can submit the job fq2bam_4gpu_normal.sbatch and fq2bam_4gpu_tumor.sbatch to run fq2bam for normal and tumor samples.
+
+```commandline
+sbatch fq2bam_4gpu_normal.sbatch
+sbatch fq2bam_4gpu_tumor.sbatch
+```
+
+After the two jobs are finished, you can run mutect2.
+
+```commandline
+[fangping@login3 somatic_svc]$ cat mutect2_4gpu.sbatch
+#!/bin/bash
+#SBATCH --job-name=parabricks_l40s_job
+#SBATCH --cluster=gpu
+#SBATCH --partition=l40s
+#SBATCH --nodes=1                # node count
+#SBATCH --cpus-per-task=64        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --gres=gpu:4             # number of gpus per node
+#SBATCH --time=3-00:00:00          # total run time limit (HH:MM:SS)
+#SBATCH --error=mutect2.err
+#SBATCH --output=mutect2.out
+
+module purge
+module load parabricks/4.2.1
+
+mkdir -p results
+
+DATAPATH=/ix1/genomics/demo/gatk4/somatic_svc
+
+time pbrun mutectcaller --num-gpus 4 \
+    --ref $DATAPATH/ref/GRCh38.d1.vd1.fa \
+    --in-tumor-bam $DATAPATH/results/SRR7890824-WGS_FD_T.bam \
+    --in-normal-bam $DATAPATH/results/SRR7890827-WGS_FD_N.bam \
+    --in-tumor-recal-file $DATAPATH/results/SRR7890824-WGS_FD_T_BQSR_REPORT.txt  \
+    --in-normal-recal-file $DATAPATH/results/SRR7890827-WGS_FD_N_BQSR_REPORT.txt \
+    --out-vcf results/SRR7890824-SRR7890827-WGS_FD.vcf \
+    --tumor-name sm_SRR7890824 \
+    --normal-name sm_SRR7890827 \
+    --tmp-dir=$SLURM_SCRATCH
+```
+
+## Old Documentation
+
 ## Germline Variant Calling
 
 SNV calling from NGS data refers to a range of methods for identifying the existence of single nucleotide variants 
