@@ -5,9 +5,9 @@ computing resources on the Teach Cluster. Through this webportal, students can r
 
 ## Step 1. Connecting to JupyterHub 
 
-Point your browser to the address below and authenticate using your Pitt credentials. The username needs to be all lowercase and is the
-same one used to access my.pitt.edu. The web host should be accessible for all users while connected through Wireless-PittNet. If that is 
-not the case, please try again while on [VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293).
+Point your browser to the address below and authenticate using your Pitt credentials. The username needs to be all 
+lowercase and is the same one used to access my.pitt.edu. The web host should be accessible for all users while 
+connected through Wireless-PittNet. If that is not the case, please try again while on [VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293).
 
 * **web hostname:** [https://jupyter.crc.pitt.edu](https://jupyter.crc.pitt.edu)
 * **authentication credentials:** Pitt username (all lowercase) and password

@@ -5,9 +5,9 @@ dedicated GPUs. Through this webportal, researchers can leverage GPU compute nod
 
 ## Step 1. Connecting to Open OnDemand
 
-Point your browser to the address below and authenticate using your Pitt credentials. The username needs to be all lowercase and is the
-same one used to access my.pitt.edu. The web host should be accessible for all users while connected through Wireless-PittNet. If that is 
-not the case, please try again while on [VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293).
+Point your browser to the address below and authenticate using your Pitt credentials. The username needs to be all 
+lowercase and is the same one used to access my.pitt.edu. The web host should be accessible for all users while 
+connected through Wireless-PittNet. If that is not the case, please try again while on [VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293).
 
 * **web hostname:** [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu)
 * **authentication credentials:** Pitt username (all lowercase) and password

@@ -8,7 +8,8 @@ The Psychiatry Web Portal is the gateway to CRCD compute and storage resources f
 
 To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRCD and be a member of the \`psych\` group.
 
-The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected to PittNet via Ethernet.
+The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected 
+to PittNet via Ethernet.
 
 Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters.
 
