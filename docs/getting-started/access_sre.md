@@ -188,7 +188,6 @@ way clone an environment from one system to another is to create a requirements 
 package installation in the other system. This is described in 
 the [**pip documentation**](https://pip.pypa.io/en/latest/user_guide/#requirements-files).
 
-
 ##**5. ^^Ending your AVD session^^**
 
 Once you are done with your work session, be sure to Sign out.
