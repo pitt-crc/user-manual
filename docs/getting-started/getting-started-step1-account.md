@@ -18,7 +18,7 @@ a [**VPN**](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) i
 
     ==**CRCD users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
-!!! warning "Deprecation Notice"
+!!! warning "Deprecation Notice for HIPAA environment"
     The HIPAA environment has been upgraded to the NIST SP 800-171 standard (self-attested). Please see the instructions below under
     **Accessing the CRCD Secure Research Environment (SRE)**.
     !!! tip "~~Accessing the HIPAA environment~~"
