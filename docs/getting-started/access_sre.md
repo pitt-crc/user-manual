@@ -108,7 +108,7 @@ for your OS. The previous link provides instructions for various types of device
 
         You will see the Remote Windows Desktop after successful login. From this remote portal, you can access the HIPAA environment.
 
-        ![Win-AVD-12-HIPAA](../_assets/img/avd/Win-AVD-12-HIPAA.png)
+        ![Win-AVD-12-HIPAA](../_assets/img/avd/MacOS-AVD-09-SRE.png)
 
 ##**3. ^^Various Methods Connecting to CRCD SRE^^**
 
