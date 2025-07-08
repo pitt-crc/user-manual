@@ -18,10 +18,16 @@ a [**VPN**](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) i
 
     ==**CRCD users on UPMC devices**==, please follow these [**instructions**](upmc_avd.md) for connecting to the HSIT-AVD instance.
 
-!!! tip "Accessing the HIPAA environment"
-    The CRC HIPAA environment can be accessed using a secured [**Azure Virtual Desktop**](access_hipaa.md). Only projects with an 
-    IRB approval can reside within this restricted environment.
+!!! warning "Deprecation Notice for HIPAA environment"
+    The HIPAA environment has been upgraded to the NIST SP 800-171 standard (self-attested). Please see the instructions below under
+    **Accessing the CRCD Secure Research Environment (SRE)**.
+    !!! tip "~~Accessing the HIPAA environment~~"
+        ~~The CRC HIPAA environment can be accessed using a secured [**Azure Virtual Desktop**](access_hipaa.md). Only projects with an 
+        IRB approval can reside within this restricted environment.~~
 
+!!! tip "Accessing the CRCD Secure Research Environment (SRE)"
+    The CRCD SRE can be accessed using a secured [**Azure Virtual Desktop**](access_sre.md). Only projects with an
+    IRB approval or a data user agreement (DUA) requiring NIST SP 800-171 compliance can reside within this restricted environment.
 
 A schematic of this part of the process is highlighted below.
 
