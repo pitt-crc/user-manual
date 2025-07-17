@@ -188,7 +188,6 @@ way clone an environment from one system to another is to create a requirements 
 package installation in the other system. This is described in 
 the [**pip documentation**](https://pip.pypa.io/en/latest/user_guide/#requirements-files).
 
-
 ##**5. ^^Data Ingress Method^^**
 
 During onboarding to the CRCD_SRE, members of the Research Team with responsibility for the data security will be referred 
