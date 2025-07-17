@@ -188,7 +188,70 @@ way clone an environment from one system to another is to create a requirements 
 package installation in the other system. This is described in 
 the [**pip documentation**](https://pip.pypa.io/en/latest/user_guide/#requirements-files).
 
-##**5. ^^Ending your AVD session^^**
+
+##**5. ^^Data Ingress Method^^**
+
+During onboarding to the CRCD_SRE, members of the Research Team with responsibility for the data security will be referred 
+to as Data Managers in this environment. These individuals are provided with access to the Azure Storage Account for the 
+Research Project where a data ingestion automation works to assist with moving data into the CRCD_SRE storage.
+
+A GLOBUS Storage Gateway and GLOBUS Collection were configured to allow Data Managers to easily transfer files from other 
+storage platforms into the CRCD_SRE environment. The GLOBUS Collection for your Research Projects will have the Data Use 
+Agreement # in the Collection title.
+
+![sre_ingress-globus.1](../_assets/img/avd/crcd-sre_ingress-globus.1.png)
+
+Data Manager(s) can use the GLOBUS Web Client to access existing storage they use that has been configured with a GLOBUS 
+Collection. Utilizing the two-pane view in GLOBUS Web, for instance, allows you to also bring up another storage location 
+(Collection) in a side-by-side view - making it easy to navigate to the files you wish to ingress on one side of the screen, 
+and simply drag/drop or transfer in bulk to the GLOBUS Collection associated with the Research Projects Storage Account.
+
+<!--- ![sre_ingress-globus.2](../_assets/img/avd/crcd-sre_ingress-globus.2.png) --->
+
+![sre_ingress-globus.3](../_assets/img/avd/crcd-sre_ingress-globus.3.png)
+
+The data transfer from Source -> Azure will be handled by GLOBUS, and you should receive a confirmation email for the transfer.
+
+![sre_ingress-globus.4](../_assets/img/avd/crcd-sre_ingress-globus.4.png)
+
+Data transfer from Azure to CRCD_SRE storage will begin once the first transfer succeeds. Once all transfers are complete, the 
+only copy of the data remaining exists on the Source and the CRCD_SRE storage. The Azure Storage Account does not retain a copy of the data.
+
+The data will arrive in the CRCD_SRE storage filesystem for the Research Project associated with the Data Use Agreement under the /ingress directory.
+
+<!--- ![sre_ingress-globus.5](../_assets/img/avd/crcd-sre_ingress-globus.5.png) --->
+
+##**6. ^^Data Egress Method^^**
+
+During onboarding to the CRCD_SRE, members of the Research Team with responsibility for the data security will be referred to as 
+Data Managers in this environment. 
+
+These individuals are responsible to reviewing and approving any requests for data moving out of the secure environment. When a 
+Research Team member stages a file for egress approval, the Data Managers will receive an email with the available information about 
+the file. To prevent accidental sharing of sensitive data within the request, the Data Manager(s) will need to review the file 
+on the CRCD_SRE filesystem. 
+
+Moving data out of the CRCD SRE requires approval from the Data Manager. Each project will have one or more designated Data Manager(s) whose
+role is to ensure that none of the sensitive data leaves the SRE, while facilitating egress of non-sensitive analysis or simulation results 
+for publishing. Each project will have a designated **egress** directory. Copying file(s) into the egress directory will trigger a workflow
+that will
+
+**A.** Send an email to the Data Manager with an option to Approve or Deny the request. It is the responsibility of the Data Manager to log in 
+to the AVD to verify that all sensitive data have been sanitized from the file before approving the request.
+
+![sre_egress_email](../_assets/img/avd/crcd_sre_egress_email.png)
+
+**B.** Selecting **Approve** will trigger a workflow that will transfer the file to a designated Azure Blob storage directory from which the 
+requester can download unto their client computer. After a successful transfer, the file in the **egress** directory will be deleted.
+
+![approve](../_assets/img/avd/Az-Egress-Approval-Logic-App.png) 
+
+Selecting **Deny** will delete the data from the **egress* directory and prevent any data transfer out of the SRE.
+
+**C.** The Data Manager will also receive an email confirmation with a summary of the data transfer details. 
+![approve_confirmation](../_assets/img/avd/approve_confirm.png)
+
+##**7. ^^Ending your AVD session^^**
 
 Once you are done with your work session, be sure to Sign out.
 
