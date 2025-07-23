@@ -125,4 +125,4 @@ $ singularity shell /software/build/ollama/ollama_0.9.2.sif
 singularity$ export OLLAMA_HOST=gpu-n58:44883
 singularity$ ollama pull llama4:scout
 ```
-Note to replace "gpu-n58:44883" to the gpu node name and port that your ollama server is running on
+Note to replace "gpu-n58:44883" to the gpu node name and port that your ollama server is running on.
