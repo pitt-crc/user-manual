@@ -12,7 +12,8 @@ particularly data containing any of the 18 [**HIPAA identifiers**](https://www.h
 to authorized users on projects that are covered under an approved IRB application or data use agreement (DUA). The documentation below describes how to set up AVD for accessing the 
 CRCD SRE.
 
-A schematic of the process is depicted below.
+A schematic of the process is depicted below. The AVD is the user portal from which you can access the CRCD SRE login node (`login.res.crc.pitt.edu`) 
+or the Open OnDemand URL (`https://ondemand.res.crc.pitt.edu`).
 
 ![GETTING-STARTED-MAP](../_assets/img/avd/schematic-SRE.png)
 
@@ -24,6 +25,16 @@ data management operations
 *   **CRCD SRE** -- the total footprint of the CRCD Secure Research Environment, including a high performance computing 
 cluster, a data storage system, access portals, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to the CRCD SRE 
+
+^^**Hardware Profile**^^
+
+| Partition | Host Architecture | Nodes | Cores/Node | Mem/Node | Mem/Core | Scratch | Network | Node Names |
+|-----------|-------------------|-------|------------|----------|----------|---------|---------|------------|
+| cpu       | [AMD EPYC 9374F (Genoa)](https://www.amd.com/en/products/processors/server/epyc/4th-generation-9004-and-8004-series/amd-epyc-9374f.html)                                       | 5    | 64         | 768 GB   | 12 GB    | 3.2 TB NVMe | 10GbE   | n\[0-4]    |
+
+| Partition | GPU Type | Nodes | GPU/Node  | Host Architecture | Core/Node  | Max Core/GPU  | Mem/Node   | Mem/Core  | Scratch    | Network  | Node Names    |
+|-----------|------------|----------|-----------|-------------------|------------|---------------|------------|-----------|------------|----------|---------------|
+| gpu       | [L40S (48GB)](https://www.nvidia.com/en-us/data-center/l40s/) |    2   | 4         | [Intel Xeon Platinum 8462Y+](https://www.intel.com/content/www/us/en/products/sku/232383/intel-xeon-platinum-8462y-processor-60m-cache-2-80-ghz/specifications.html)          | 64          | 16            | 512 GB     | 8 GB      | 7 TB NVMe  | 10GbE             | gpu-n\[0-1] |
 
 ##**1. ^^Install and Configure Remote Desktop client^^**
 
