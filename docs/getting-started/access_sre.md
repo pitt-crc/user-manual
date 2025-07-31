@@ -127,7 +127,7 @@ for your OS. The previous link provides instructions for various types of device
 
     === "Full Desktop Overview of all Tools"
 
-        Shown below is the Desktop of the CRCD-SRE AVD, where there are active connections
+        Shown below is the Desktop of the CRCD SRE AVD, where there are active connections
         to CRCD using
 
         * **PuTTY**
@@ -199,14 +199,230 @@ way clone an environment from one system to another is to create a requirements 
 package installation in the other system. This is described in 
 the [**pip documentation**](https://pip.pypa.io/en/latest/user_guide/#requirements-files).
 
-##**5. ^^Data Ingress Method^^**
+Similar to the Open Science Environment, the CRCD SRE uses the [**Lmod**](https://github.com/TACC/Lmod) system to manage and 
+provision software. Please refer to the [**How to Discover Available Software**](step3/getting-started-step3-software.md) 
+section for descriptions about the `module` commands.
 
-During onboarding to the CRCD_SRE, members of the Research Team with responsibility for the data security will be referred 
+##**5. ^^Job Submission Through Slurm^^**
+
+The CRCD SRE uses [**Slurm**](https://slurm.schedmd.com/quickstart.html) to manage the computing resources. Please refer 
+to the sections [**How to Request Computing Resources**](step3/getting-started-step3-resources.md) and 
+[**How to Manage Computing Jobs**](step3/getting-started-step3-manage-jobs.md) for the standard Slurm commands. Unlike the
+CRCD Open Science Environment, which has many clusters and many partitions, the SRE only has one cluster and a `cpu` and `gpu`
+partition (please refer to the Hardware Profile section at the top).
+
+![sre_sinfo](../_assets/img/avd/SRE_sinfo.png)
+
+You target a specific partition by requesting it using the `--partition` Slurm directive. For example, to request an 
+interactive session for 24 hours with 32 CPU cores, you can use the following `srun` command:
+
+```commandline
+srun --export=ALL --partition=cpu --nodes=1 --ntasks-per-node=32 --time=24:00:00 --pty bash
+```
+The default value for `--nodes` is 1, so you can leave that out of the command and it still works
+
+![sre_cpu](../_assets/img/avd/SRE_cpu.png)
+
+To target the GPUs, you ask for it with the `--partition=gpu` Slurm directive. You can leave off the `--nodes` and even
+the `--ntasks-per-node` directives and only specify the number of GPUs with the `--gres=gpu:<num_GPUs>` (1) and Slurm
+will provision the desired resources. Each requested GPU will be provisioned the corresponding **Max Cores/GPU**. The 
+graphic below shows several examples: 
+{ .annotate }
+
+1.  Throughout the examples, we use the conventional syntax `<variable>` to represent a placeholder for an expected value that the user
+    will provide.
+
+![sre_gpu](../_assets/img/avd/SRE_gpu.png)
+
+Here's another example requesting four GPUs and showing the output from the `nvidia-smi` command:
+
+![sre_gpu](../_assets/img/avd/SRE_gpu-4.png)
+
+To craft a **Slurm batch script**, you take the above directives and format it with the `#SBATCH` prefix. In
+the example below, we provide the **Whole Script** on the first panel and then break it down into the constituent 
+parts in subsequent panels.
+
+!!! example "Architecture of a Slurm job submission script"
+    === "Whole Script"
+        ```bash
+        #!/usr/bin/env bash
+
+        ## ------------------------------------------------------------------
+        ## Slurm directives defining the resource request
+        ## ------------------------------------------------------------------
+        #SBATCH --job-name=sre-gpu
+        #SBATCH --output=sre-gpu.out
+        #SBATCH --nodes=1
+        #SBATCH --ntasks-per-node=16
+        #SBATCH --partition=gpu
+        #SBATCH --gres=gpu:1
+        #SBATCH --time=24:00:00
+
+        ## ---------------------------------------------------------------------
+        ## Load software into environment
+        ## ---------------------------------------------------------------------
+        module purge
+        module load gcc/10.2.0  openmpi/4.1.1
+        module load amber/24
+
+        ## ---------------------------------------------------------------------
+        ## Setup software execution environment
+        ## ---------------------------------------------------------------------
+        # Define environmental variables for Amber input/output files
+        INP=md.in
+        TOP=mocvnhlysm.top
+        CRD=mocvnhlysm.crd
+        OUT=mocvnhlysm
+
+
+        # Define software executable
+        SANDER=pmemd.cuda
+
+        # Display environmental variables to Slurm output file for diagnostics
+        echo AMBERHOME    $AMBERHOME
+        echo SLURM_NTASKS $SLURM_NTASKS
+        echo which SANDER `which $SANDER`
+        echo "Running on node:" `hostname`
+
+        # Display NVIDIA GPU information to Slurm output file
+        nvidia-smi
+
+        # Software execution line
+        $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
+                        -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
+        ```
+        !!! info
+            The job script should start the first line with the standard [**shebang**](https://en.wikipedia.org/wiki/Shebang_(Unix))
+            line, specifying the [**Linux shell**](https://en.wikipedia.org/wiki/Unix_shell).
+    === "Part1: Slurm Directives"
+        ```bash
+        ## ------------------------------------------------------------------
+        ## Slurm directives defining the resource request
+        ## ------------------------------------------------------------------
+        #SBATCH --job-name=sre-gpu
+        #SBATCH --output=sre-gpu.out
+        #SBATCH --nodes=1
+        #SBATCH --ntasks-per-node=16
+        #SBATCH --partition=gpu
+        #SBATCH --gres=gpu:1
+        #SBATCH --time=24:00:00
+        ```
+        The syntax for a Slurm directive begins with `#SBATCH` followed by ` --<variable>=<value>`, where `<variable>`
+        is one of the OPTIONS defined for the [**sbatch**](https://slurm.schedmd.com/sbatch.html) command. The specific
+        `<value>` is unique to how CRCD configures our implementation of the Slurm Workload Manager and is provided in
+        <insert link to table>.
+
+        !!! info
+            Most if not all [**Linux shells**](https://en.wikipedia.org/wiki/Unix_shell) interpret a line starting with
+            the `#` sign as a comment, meaning that the line is
+            not executed as a command. If you were to execute the above section of text as a `bash` script, the text is
+            treated as comments only. However, if you were to run the above section of text as input to the Slurm `sbatch` command,
+            `sbatch` will treat every instance of `#SBATCH` as a command to it (hence, the term *directive*) and will interpret
+            the ` --<variable>=<value>` parameters accordingly. Any other combination of text starting with a `#` sign will
+            be treated as a comment, such as the `## ` syntax in the example above.
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    === "Part2: Load Software"
+        ```bash
+        ## ---------------------------------------------------------------------
+        ## Load software into environment
+        ## ---------------------------------------------------------------------
+        module purge
+        module load gcc/10.2.0  openmpi/4.1.1
+        module load amber/24
+        ```
+
+        !!! info
+            We first purge all previously loaded software and only load the packages that are needed.  These commands will
+            expose the installed software to the user environment by updating the `$PATH`, `$LD_LIBRARY_PATH`, and other required
+            environmental variables as specified in the package installation instructions.
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    === "Part3: Run Software"
+        ```bash
+        ## ---------------------------------------------------------------------
+        ## Setup software execution environment
+        ## ---------------------------------------------------------------------
+        # Define environmental variables for Amber input/output files
+        INP=md.in
+        TOP=mocvnhlysm.top
+        CRD=mocvnhlysm.crd
+        OUT=mocvnhlysm
+
+        # Define software executable
+        SANDER=pmemd.cuda
+
+        # Display environmental variables to Slurm output file for diagnostics
+        echo AMBERHOME    $AMBERHOME
+        echo SLURM_NTASKS $SLURM_NTASKS
+        echo which SANDER `which $SANDER`
+        echo "Running on node:" `hostname`
+
+        # Display NVIDIA GPU information to Slurm output file
+        nvidia-smi
+
+        # Software execution line
+        $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
+                        -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
+        ```
+
+        !!! info
+            This section contains the software specific setup and execution line(s). Typically, you should be able to copy
+            over the commands that you use when running on your local laptop or desktop, with some modifications. At the most
+            straightforward level, you should be able to translate the setup/commands described in the software user manual to
+            work within the CRCD Ecosystem.
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+##**6. ^^Data Ingress Method^^**
+
+During onboarding to the CRCD SRE, members of the Research Team with responsibility for the data security will be referred 
 to as Data Managers in this environment. These individuals are provided with access to the Azure Storage Account for the 
-Research Project where a data ingestion automation works to assist with moving data into the CRCD_SRE storage.
+Research Project where a data ingestion automation works to assist with moving data into the CRCD SRE storage.
 
 A GLOBUS Storage Gateway and GLOBUS Collection were configured to allow Data Managers to easily transfer files from other 
-storage platforms into the CRCD_SRE environment. The GLOBUS Collection for your Research Projects will have the Data Use 
+storage platforms into the CRCD SRE environment. The GLOBUS Collection for your Research Projects will have the Data Use 
 Agreement # in the Collection title.
 
 ![sre_ingress-globus.1](../_assets/img/avd/crcd-sre_ingress-globus.1.png)
@@ -224,22 +440,22 @@ The data transfer from Source -> Azure will be handled by GLOBUS, and you should
 
 ![sre_ingress-globus.4](../_assets/img/avd/crcd-sre_ingress-globus.4.png)
 
-Data transfer from Azure to CRCD_SRE storage will begin once the first transfer succeeds. Once all transfers are complete, the 
-only copy of the data remaining exists on the Source and the CRCD_SRE storage. The Azure Storage Account does not retain a copy of the data.
+Data transfer from Azure to CRCD SRE storage will begin once the first transfer succeeds. Once all transfers are complete, the 
+only copy of the data remaining exists on the Source and the CRCD SRE storage. The Azure Storage Account does not retain a copy of the data.
 
-The data will arrive in the CRCD_SRE storage filesystem for the Research Project associated with the Data Use Agreement under the /ingress directory.
+The data will arrive in the CRCD SRE storage filesystem for the Research Project associated with the Data Use Agreement under the /ingress directory.
 
 <!--- ![sre_ingress-globus.5](../_assets/img/avd/crcd-sre_ingress-globus.5.png) --->
 
-##**6. ^^Data Egress Method^^**
+##**7. ^^Data Egress Method^^**
 
-During onboarding to the CRCD_SRE, members of the Research Team with responsibility for the data security will be referred to as 
+During onboarding to the CRCD SRE, members of the Research Team with responsibility for the data security will be referred to as 
 Data Managers in this environment. 
 
 These individuals are responsible to reviewing and approving any requests for data moving out of the secure environment. When a 
 Research Team member stages a file for egress approval, the Data Managers will receive an email with the available information about 
 the file. To prevent accidental sharing of sensitive data within the request, the Data Manager(s) will need to review the file 
-on the CRCD_SRE filesystem. 
+on the CRCD SRE filesystem. 
 
 Moving data out of the CRCD SRE requires approval from the Data Manager. Each project will have one or more designated Data Manager(s) whose
 role is to ensure that none of the sensitive data leaves the SRE, while facilitating egress of non-sensitive analysis or simulation results 
@@ -261,7 +477,7 @@ Selecting **Deny** will delete the data from the **egress* directory and prevent
 **C.** The Data Manager will also receive an email confirmation with a summary of the data transfer details. 
 ![approve_confirmation](../_assets/img/avd/approve_confirm.png)
 
-##**7. ^^Ending your AVD session^^**
+##**8. ^^Ending your AVD session^^**
 
 Once you are done with your work session, be sure to Sign out.
 

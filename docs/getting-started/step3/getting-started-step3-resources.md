@@ -5,9 +5,9 @@ hide:
 
 # How to Request Computing Resources
 
-Because CRC operates a shared resource for the Pitt research community, there needs to be a tool that ensures fair and equitable access. CRC 
+Because CRCD operates a shared resource for the Pitt research community, there needs to be a tool that ensures fair and equitable access. CRCD 
 uses the [**Slurm workload manager**](https://slurm.schedmd.com/quickstart.html) to accomplish this. Slurm is a batch queueing system that will 
-allocate resources based on defined policies. CRC supports both interactive work and batch processing.
+allocate resources based on defined policies. CRCD supports both interactive work and batch processing.
 
 ## Requesting Computing Resources for Interactive Work
 
@@ -157,7 +157,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
         ```
         The syntax for a Slurm directive begins with `#SBATCH` followed by ` --<variable>=<value>`, where `<variable>`  
         is one of the OPTIONS defined for the [**sbatch**](https://slurm.schedmd.com/sbatch.html) command. The specific
-        `<value>` is unique to how CRC configures our implementation of the Slurm Workload Manager and is provided in
+        `<value>` is unique to how CRCD configures our implementation of the Slurm Workload Manager and is provided in
         <insert link to table>.
 
         !!! info
@@ -222,9 +222,6 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
 
     === "Part3: Run Software"
         ```bash
@@ -258,10 +255,8 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
             This section contains the software specific setup and execution line(s). Typically, you should be able to copy
             over the commands that you use when running on your local laptop or desktop, with some modifications. At the most 
             straightforward level, you should be able to translate the setup/commands described in the software user manual to
-            work within the CRC Ecosystem.
+            work within the CRCD Ecosystem.
 
-        <br>
-        <br>
         <br>
         <br>
         <br>
