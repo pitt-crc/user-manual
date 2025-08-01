@@ -26,7 +26,11 @@ data management operations
 cluster, a data storage system, access portals, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to the CRCD SRE 
 
-^^**Hardware Profile**^^
+^^**Hardware Profiles**^^
+
+**Storage:** 600TB capacity, comprised of self-encrypting hard drives
+
+**Compute:** Organized into two partitions
 
 | Partition | Host Architecture | Nodes | Cores/Node | Mem/Node | Mem/Core | Scratch | Network | Node Names |
 |-----------|-------------------|-------|------------|----------|----------|---------|---------|------------|
@@ -213,7 +217,7 @@ partition (please refer to the Hardware Profile section at the top).
 
 ![sre_sinfo](../_assets/img/avd/SRE_sinfo.png)
 
-You target a specific partition by requesting it using the `--partition` Slurm directive. For example, to request an 
+You can target a specific partition by requesting it using the `--partition` Slurm directive. For example, to request an 
 interactive session for 24 hours with 32 CPU cores, you can use the following `srun` command:
 
 ```commandline
@@ -310,7 +314,7 @@ parts in subsequent panels.
         The syntax for a Slurm directive begins with `#SBATCH` followed by ` --<variable>=<value>`, where `<variable>`
         is one of the OPTIONS defined for the [**sbatch**](https://slurm.schedmd.com/sbatch.html) command. The specific
         `<value>` is unique to how CRCD configures our implementation of the Slurm Workload Manager and is provided in
-        <insert link to table>.
+        the [**Slurm Batch Jobs**](../slurm/batch-jobs.md) section.
 
         !!! info
             Most if not all [**Linux shells**](https://en.wikipedia.org/wiki/Unix_shell) interpret a line starting with
