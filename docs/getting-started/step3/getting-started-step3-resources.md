@@ -158,7 +158,7 @@ with Slurm will be covered in the [**next section**](getting-started-step3-manag
         The syntax for a Slurm directive begins with `#SBATCH` followed by ` --<variable>=<value>`, where `<variable>`  
         is one of the OPTIONS defined for the [**sbatch**](https://slurm.schedmd.com/sbatch.html) command. The specific
         `<value>` is unique to how CRCD configures our implementation of the Slurm Workload Manager and is provided in
-        <insert link to table>.
+        the [**Slurm Batch Jobs**](../../slurm/batch-jobs.md) section.
 
         !!! info
             Most if not all [**Linux shells**](https://en.wikipedia.org/wiki/Unix_shell) interpret a line starting with 
