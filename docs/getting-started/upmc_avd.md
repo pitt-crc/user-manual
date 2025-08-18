@@ -3,17 +3,22 @@ hide:
   - toc
 ---
 
-# Access CRC on UPMC Devices Using Azure Virtual Desktop (AVD)
+# Access CRCD on UPMC Devices Using Azure Virtual Desktop (AVD)
 
 UPMC devices use Global Protect for the VPN to the UPMC network and does not permit connection to PittNet. To access
-CRC, you will need to use the HSIT-AVD instance that is provisioned by the Health Sciences IT group. Please submit a 
+CRCD, you will need to use the HSIT-AVD instance that is provisioned by the Health Sciences IT group. Please submit a 
 [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
-stating that you are working from a UPMC device and need access to CRC. Once we confirm that you have access to HSIT-AVD,
-follow the instructions below to connect to CRC.
+stating that you are working from a UPMC device and need access to CRCD. Once we confirm that you have access to HSIT-AVD,
+follow the instructions below to connect to CRCD.
 
-The Remote Desktop app should already be installed on your UPMC device. Click on the Start Menu --> All apps
+The Remote Desktop app should already be installed on your UPMC device.  Click on the Start Menu --> All apps
 and scroll down to Remote Desktop to launch the application:
 ![hsit-avd-01](../_assets/img/avd/hsit-avd-01.png)
+
+!!! tip "I don't have the Remote Desktop app"
+    If you do not see the [Remote Desktop app](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) 
+    on your managed device, please ask your department IT support to install it for you. If this is your personal device, 
+    you can download and install from the respective Mac or Microsoft App Store.
 
 Use the resulting panel to add a Workspace:
 
@@ -45,7 +50,7 @@ Double clicking on the HSIT-AVD icon will take you to the log in page:
 | **1**![hsit-avd-10](../_assets/img/avd/hsit-avd-10.png) | **2**![hsit-avd-11](../_assets/img/avd/hsit-avd-11.png) |
 | **3**![hsit-avd-12](../_assets/img/avd/hsit-avd-12.png) |                                                         |
 
-Once logged in, you will see the remote desktop, from which you can launch other apps to access CRC directly. 
+Once logged in, you will see the remote desktop, from which you can launch other apps to access CRCD directly. 
 [**Section 3**](./access_avd.md#3-various-methods-connecting-to-crc) of the general AVD manual provides several example access methods.
 
 ![hsit-avd-13](../_assets/img/avd/hsit-avd-13.png)
