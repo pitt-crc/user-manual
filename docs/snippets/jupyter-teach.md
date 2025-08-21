@@ -14,27 +14,29 @@ connected through Wireless-PittNet. If that is not the case, please try again wh
 
 ![](../_assets/img/jupyter/jupyter-1.png)
 
-## Step 2. Selecting Resources
+## Step 2. Configuring Jupyterhub session
 
-The **Select a job profile** dropdown menu provides several preset configurations. Please submit 
+After logging in, you will be presented by the JupyterHub configuration page which looks like the image below.
+![](../_assets/img/jupyter/jupyter-11.png)
+The **Select Partition** dropdown menu provides 4 preset configurations on the TEACH cluster. The configurations are as follows:
+
+* **Teach - 6 CPUs - 45GB**
+* **Teach - Nvidia GTX 1080 GPU - 2 CPUs - 20GB**
+* **Teach - Nvidia Titan X GPU - 3 CPUs - 24GB**
+* **Teach - Nvidia L4 GPU - 16 CPUs - 60GB**
+
+The 4 configurations are designed to best utilize the available resources on the TEACH cluster. All of them are configured to run for 3 hours.
+
+The **Select Virtual Environment** dropdown menu allows you to select the Python environment you want to use. The default 
+is the **base** environment, which is a standard Python 3.11 installation. If your class needs a specific Python 
+environment, please submit 
 a [help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
-if you want us to create a custom profile for your class. 
-
-![](../_assets/img/jupyter/jupyter-2.png)
-
-!!! bug "Documentation Update"
-    ~~The *Host Process* profile will run the Jupyter Notebook on the VM server hosting the JupyterHub
-    webportal. Our recommendation is that you do not choose *Host Process* but instead select one of the dedicated resources on the Teach
-    Cluster.~~
-
-    Due to memory-heavy jobs causing [OOM error](https://en.wikipedia.org/wiki/Out_of_memory) and bringing down JupyterHub, we have 
-    removed the *Host Process* profile and set the *Teach - 6 cores, 3 hours* as the default job profile.
-
-![](../_assets/img/jupyter/jupyter-3.png)
+and we will create it for you, so you can select it from the dropdown menu. The menu also includes a **Provide custom 
+path** option which allows you to specify a custom Python environment path. 
 
 Pressing *Start* will launch the job to the Teach Cluster and send back a Jupyter Notebook on the web GUI.
 
-![](../_assets/img/jupyter/jupyter-4.png)
+![](../_assets/img/jupyter/jupyter-12.png)
 
 ![](../_assets/img/jupyter/jupyter-5.png)
 
