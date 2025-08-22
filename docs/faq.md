@@ -92,3 +92,16 @@ In this section we list a series of common problems that CRCD users may encounte
 
         This situation happens, for example, when we need to replace an old server with a new more performant one and we 
         keep the same hostname. The new host key will not match with the one stored in your `.ssh/known_hosts` file.
+
+^^**2. I'm graduating soon. Can I continue to use CRCD to complete my papers?**^^
+
+Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
+
+
+^^**3. Can I provide my collaborators, who are outside of Pitt, access to my CRCD allocation?**^^
+
+Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
+
+^^**4. I'm an Emeritus Faculty, can I still use CRCD?**^^
+
+Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an active faculty.
