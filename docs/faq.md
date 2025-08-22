@@ -97,7 +97,6 @@ In this section we list a series of common problems that CRCD users may encounte
 
 Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
 
-
 ^^**3. Can I provide my collaborators, who are outside of Pitt, access to my CRCD allocation?**^^
 
 Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
