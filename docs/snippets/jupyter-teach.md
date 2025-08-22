@@ -14,29 +14,41 @@ connected through Wireless-PittNet. If that is not the case, please try again wh
 
 ![](../_assets/img/jupyter/jupyter-1.png)
 
-## Step 2. Selecting Resources
+## Step 2. Configuring Jupyterhub session
 
-The **Select a job profile** dropdown menu provides several preset configurations. Please submit 
-a [help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
-if you want us to create a custom profile for your class. 
-
+After logging in, you will be presented by the JupyterHub configuration page which looks like the image below.
 ![](../_assets/img/jupyter/jupyter-2.png)
+The **Select Partition** dropdown menu provides 4 preset configurations on the TEACH cluster. The configurations are as 
+follows:
 
-!!! bug "Documentation Update"
-    ~~The *Host Process* profile will run the Jupyter Notebook on the VM server hosting the JupyterHub
-    webportal. Our recommendation is that you do not choose *Host Process* but instead select one of the dedicated resources on the Teach
-    Cluster.~~
+* **Teach - 6 CPUs - 45GB**
+* **Teach - Nvidia GTX 1080 GPU - 2 CPUs - 20GB**
+* **Teach - Nvidia Titan X GPU - 3 CPUs - 24GB**
+* **Teach - Nvidia L4 GPU - 16 CPUs - 60GB**
 
-    Due to memory-heavy jobs causing [OOM error](https://en.wikipedia.org/wiki/Out_of_memory) and bringing down JupyterHub, we have 
-    removed the *Host Process* profile and set the *Teach - 6 cores, 3 hours* as the default job profile.
+The 4 configurations are designed to best utilize the available resources on the TEACH cluster. All of them are 
+configured to run for 3 hours.
 
-![](../_assets/img/jupyter/jupyter-3.png)
+The **Select Virtual Environment** dropdown menu allows you to select the Python environment you want to use. The default 
+is the **base** environment, which is a standard Python 3.11 installation. If your class needs a specific Python 
+environment, please submit 
+a [help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+and we will create it for you, so you can select it from the dropdown menu. The menu also includes a **Provide custom 
+path** option which allows you to specify a custom Python environment path. Please refer to the
+[Create a virtual environment for JupyterHub Article](../web-portals/jupyterhub-venv.md) for more instructions on how to create a custom 
+Python environment for JupyterHub.
 
 Pressing *Start* will launch the job to the Teach Cluster and send back a Jupyter Notebook on the web GUI.
 
-![](../_assets/img/jupyter/jupyter-4.png)
+![](../_assets/img/jupyter/jupyter-3.png)
 
 ![](../_assets/img/jupyter/jupyter-5.png)
+
+You can use the **Account** field to specify a different SLURM account to use for the session other than your default 
+account, for example, if you are part of a research group with a SLURM account called ```panthers``` and it's your 
+default SLURM association; however, you will be using JupyterHub for a class that has a SLURM account called 
+```datasci```, you can specify ```datasci``` in the **Account** field. If you leave it blank, your default SLURM 
+account will be used.
 
 ## Step 3. Interacting with the Jupyter Notebook
 

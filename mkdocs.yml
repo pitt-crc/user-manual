@@ -106,6 +106,7 @@ nav:
       - web-portals/viz.md
       - web-portals/jupyter-hub.md
       - web-portals/jupyter-teach.md
+      - web-portals/jupyterhub-venv.md
       - web-portals/psych.md
       - web-portals/hugen.md
   - The SLURM Workload Manager:
