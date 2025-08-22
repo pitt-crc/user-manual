@@ -1,31 +1,94 @@
-# Frequently asked questions
+# Frequently asked questions (FAQ)
 
-*In this section we list a series of common problems that CRCD users may encounter, with possible solutions.*
+In this section we list a series of common problems that CRCD users may encounter, with possible solutions.
 
-**1. A connection attempt to the cluster is rejected with a "POSSIBLE DNS SPOOFING" warning message**
+^^**1. Encountering an Ominous Warning Message**^^
 
-Attempts to connect to h2p.crc.pitt.edu, htc.crc.pitt.edu, or any other remote machine using ssh from your local host machine can fail with the warning message
+!!! example "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
+    === "The Symptom"
+        After a scheduled quarterly maintenance, `ssh` attempts from your laptop to h2p.crc.pitt.edu, htc.crc.pitt.edu, 
+        or another CRCD remote server can fail with the following warning message below.
 
-```commandline
-@ WARNING: POSSIBLE DNS SPOOFING DETECTED! @
-```
+        ```commandline
+        Last login: Fri Aug 22 08:48:12 on ttys009
+        kimwong@M1-Max ~ % ssh login3.crc.pitt.edu
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+        Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+        It is also possible that a host key has just been changed.
+        The fingerprint for the ED25519 key sent by the remote host is
+        SHA256:J0awPWHGaPS37Cc5OZpR/ITGrHmmRIJYj6WfKbD1N9g.
+        Please contact your system administrator.
+        Add correct host key in /Users/kimwong/.ssh/known_hosts to get rid of this message.
+        Offending ED25519 key in /Users/kimwong/.ssh/known_hosts:30
+        Host key for login3.crc.pitt.edu has changed and you have requested strict checking.
+        Host key verification failed.
+        kimwong@M1-Max ~ %
+        ```
 
-Frequently, this indicates that changes on the remote computer (e.g., an IP address change) have invalidated your local ssh host key for that specific remote machine. Ssh host keys for all remote machines to which you have connected in the past are stored in a file called 
+    === "The Fix"
+        This warning message indicates that changes to the remote server (e.g., an IP address change) have invalidated the
+        remote server host key, which is stored in a file called `.ssh/known_hosts`. The message also suggests a possible fix
+        (highlighted in yellow).
 
-```commandline
-.ssh/known_hosts
-```
+        ```commandline
+        Last login: Fri Aug 22 08:48:12 on ttys009
+        kimwong@M1-Max ~ % ssh login3.crc.pitt.edu
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+        Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+        It is also possible that a host key has just been changed.
+        The fingerprint for the ED25519 key sent by the remote host is
+        SHA256:J0awPWHGaPS37Cc5OZpR/ITGrHmmRIJYj6WfKbD1N9g.
+        Please contact your system administrator.
+        {==Add correct host key in /Users/kimwong/.ssh/known_hosts to get rid of this message.
+        Offending ED25519 key in /Users/kimwong/.ssh/known_hosts:30==}
+        Host key for {++login3.crc.pitt.edu++} has changed and you have requested strict checking.
+        Host key verification failed.
+        kimwong@M1-Max ~ %
+        ```
 
-in your home directory on your local machine. Each line in this file contains the name of a remote machine, followed by its host key. Removing the line corresponding to the remote machine that is rejecting an ssh or sftp connection attempt usually solves the problem. 
+        One fix is to edit the file `/Users/kimwong/.ssh/known_hosts` and delete line 30 which has the offending "ED25519 key".
+        The `:30` syntax in the second highlighted sentence above indicates line 30 of the file `known_hosts`.
 
-A valid new host key for the specific remote machine will be created and added automatically to the known\_hosts file next time you attempt to connect to the machine.
+        An alternative fix is to issue the command
 
-As an alternative to modifying the known\_hosts file manually, you can also issue the command
+        ```commandline
+        ssh-keygen -R <hostname>
+        ```
+        where `<hostname>` is the hostname of the computer you are trying to connect to. This will remove all keys belonging 
+        to the specified `<hostname>` and update the `known_hosts` file automatically. The above warning message also shows
+        the `<hostname>` (highlighted in green and underlined) that failed the host key verification.
 
-```commandline
-ssh-keygen -R remote_machine
-```
+    === "What's Going On?"
+        When you first log into a remote server, you are warned that the authenticity of a host cannot be verified and 
+        if you wish to continue connecting.
 
-where remote\_machine is the name or IP address of the computer you are trying to connect to. This will get rid of the cached host key, create a new one, and update the known\_hosts file automatically.
+        ```commandine
+        kimwong@M1-Max ~ % ssh login3.crc.pitt.edu
+        The authenticity of host 'login3.crc.pitt.edu (136.142.28.148)' can't be established.
+        ED25519 key fingerprint is SHA256:J0awPWHGaPS37Cc5OZpR/ITGrHmmRIJYj6WfKbD1N9g.
+        This host key is known by the following other names/addresses:
+            ~/.ssh/known_hosts:27: login2.crc.pitt.edu
+            ~/.ssh/known_hosts:31: h2p.crc.pitt.edu
+            ~/.ssh/known_hosts:32: login1.crc.pitt.edu
+        Are you sure you want to continue connecting (yes/no/[fingerprint])?
+        ```
 
-The same issue can also occur when connecting to a remote machine from one of the login nodes of the CRCD cluster. Again, removing the offending key from the known\_hosts file on the cluster will solve the problem.
+        If you answer `yes`, you will see the following message:
+
+        ```commandline
+        Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+        {==Warning: Permanently added 'login3.crc.pitt.edu' (ED25519) to the list of known hosts.==}
+        Connection closed by 136.142.28.148 port 22
+        ```
+        which means the new host key was added to the `.ssh/known_hosts` file. Now the next time you `ssh` to the
+        remote server, the key on the remote server is compared against the one stored in `.ssh/known_hosts`. If the 
+        keys match, you continue connecting to the server. If the keys don't match, you see the ominous warning message.
+
+        This situation happens, for example, when we need to replace an old server with a new more performant one and we 
+        keep the same hostname. The new host key will not match with the one stored in your `.ssh/known_hosts` file.
