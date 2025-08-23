@@ -104,3 +104,19 @@ Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_ac
 ^^**4. I'm an Emeritus Faculty, can I still use CRCD?**^^
 
 Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an active faculty.
+
+^^**5. Open OnDemand: Website under heavy load error**^^
+
+!!! example "The website is under heavy load (queue full)" 
+    === "The Symptom"
+        ![OnDemand-heavy-load](_assets/img/faq/faq_ondemand_heavyload.png)
+
+    === "The Fix"
+        From a Chrome browser, start a New Incognito Window and paste the following URL and authenticate.
+
+        ```commandline
+        https://ondemand.htc.crc.pitt.edu/nginx/stop?redir=/pun/sys/dashboard/
+        ```
+
+    === "What's Going On?"
+        You can read about it from the Open OnDemand [Discourse forum](https://discourse.openondemand.org/t/website-is-under-heavy-load-queue-full/4109).    
