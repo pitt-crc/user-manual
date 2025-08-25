@@ -120,3 +120,158 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
 
     === "What's Going On?"
         You can read about it from the Open OnDemand [Discourse forum](https://discourse.openondemand.org/t/website-is-under-heavy-load-queue-full/4109).
+
+^^**6. Red Hat Insights prompt upon login**^^
+
+!!! example "Red Hat Insights"
+    === "The Symptom"
+        Upone successful login, I see the following prompt. Do I need to do anything?
+
+        ```commandline
+        kimwong@M1-Max ~ % ssh h2p.crc.pitt.edu
+        Register this system with Red Hat Insights: rhc connect
+        
+        Example:
+        # rhc connect --activation-key <key> --organization <org>
+        
+        The rhc client and Red Hat Insights will enable analytics and additional
+        management capabilities on your system.
+        View your connected systems at https://console.redhat.com/insights
+        
+        You can learn more about how to register your system
+        using rhc at https://red.ht/registration
+        Last login: Mon Aug 25 15:58:56 2025 from 10.25.193.128
+        [kimwong@login1.crc.pitt.edu ~]$
+        ```
+
+    === "The Fix"
+        Ignore. This message is intended for Systems Administrators. We will leave this FAQ up until we find time to disable the message.
+
+    === "What's Going On?"
+        It's advertisement for AI. You can read the [promo](https://www.redhat.com/en/technologies/management/insights) if you are interested.
+
+^^**7. I loaded python but where's conda?**^^
+
+!!! example "Missing conda"
+    === "The Symptom"
+        ```commandline
+        [kimwong@login1.crc.pitt.edu ~]$module spider python
+        
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          python:
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+             Versions:
+                python/ondemand-jupyter-python3.9
+                python/ondemand-jupyter-python3.11
+                ...
+                python/3.12.0-ig3l6e
+                python/3.12.8-ydargp
+             Other possible modules matches:
+                openslide-python  py-biopython
+        
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          To find other possible module matches execute:
+        
+              $ module -r spider '.*python.*'
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          For detailed information about a specific "python" package (including how to load the modules) use the module's full name.
+          Note that names that have a trailing (E) are extensions provided by other modules.
+          For example:
+        
+             $ module spider python/3.12.8-ydargp
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+        [kimwong@login1.crc.pitt.edu ~]$module load python/3.12.8-ydargp
+        {==[kimwong@login1.crc.pitt.edu ~]$which python
+        /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/python-3.12.8-ydargpm3mtvvle4gg4stjl66phnu3nth/bin/python
+        [kimwong@login1.crc.pitt.edu ~]$which conda
+        /usr/bin/which: no conda in (/software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/python-3.12.8-ydargpm3mtvvle4gg4stjl66phnu3nth/bin:.:/xhome/crc/kimwong/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ihome/crc/pipx/bin)==}
+        [kimwong@login1.crc.pitt.edu ~]$
+        ```
+
+    === "The Fix"
+        In the new rhel9 [Spack](https://spack.io/) environment, the Anaconda distribution of Python is a separate module. You can 
+        load it as follows, which will also provide you `conda`:
+
+        ```commandline
+        [kimwong@login1.crc.pitt.edu ~]$module spider anaconda
+        
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          anaconda3:
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+             Versions:
+                anaconda3/2021.11-python_3.9.7-fqibig
+                anaconda3/2022.10-python_3.9.13-x3avg2
+                anaconda3/2023.09-0-python_3.11.5-amgrwv
+        
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          For detailed information about a specific "anaconda3" package (including how to load the modules) use the module's full name.
+          Note that names that have a trailing (E) are extensions provided by other modules.
+          For example:
+        
+             $ module spider anaconda3/2023.09-0-python_3.11.5-amgrwv
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+        {==[kimwong@login1.crc.pitt.edu ~]$module load anaconda3/2022.10-python_3.9.13-x3avg2
+        [kimwong@login1.crc.pitt.edu ~]$which python
+        /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/anaconda3-2022.10-x3avg2z6spaqdupsmq3cdzsfjzzzdimp/bin/python
+        [kimwong@login1.crc.pitt.edu ~]$which conda
+        /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/anaconda3-2022.10-x3avg2z6spaqdupsmq3cdzsfjzzzdimp/condabin/conda
+        [kimwong@login1.crc.pitt.edu ~]$which pip3
+        /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/anaconda3-2022.10-x3avg2z6spaqdupsmq3cdzsfjzzzdimp/bin/pip3
+        [kimwong@login1.crc.pitt.edu ~]$which pip
+        /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/anaconda3-2022.10-x3avg2z6spaqdupsmq3cdzsfjzzzdimp/bin/pip==}
+        [kimwong@login1.crc.pitt.edu ~]$
+        ```
+
+    === "What's Going On?"
+        In the old rhel7 environment, the environment modules were created by hand. We decided at the time to organized the Anaconda distribution under the 
+        python category.
+
+        ```commandline
+        [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
+        
+        ------------------------------------------------
+          python:
+        ------------------------------------------------
+            Description:
+              Anaconda is the leading open data science platform powered by Python.
+        
+             Versions:
+                python/anaconda2.7-5.2.0
+                python/anaconda3.5-4.2.0
+                ... 
+                python/anaconda3.9-2021.11
+                python/bioconda-2.7-5.2.0
+                ...
+                python/bioconda-3.7-2019.03
+                python/intel-3.5
+                python/intel-3.6
+                python/ondemand-jupyter-python3.8
+                python/ondemand-jupyter-python3.10
+                python/ondemand-jupyter-python3.11
+                python/3.7.0-fastx
+                python/3.7.0
+        
+             Other possible modules matches:
+                biopython  openslide-python
+        
+        ------------------------------------------------
+          To find other possible module matches do:
+              module -r spider '.*python.*'
+        
+        ------------------------------------------------
+          For detailed information about a specific "python" module (including how to load the modules) use the module's full name.
+          For example:
+        
+             $ module spider python/ondemand-jupyter-python3.9
+        ------------------------------------------------
+        
+        [kimwong@viz-n0.crc.pitt.edu ~]$module spider anaconda
+        Lmod has detected the following error:  Unable to find: "anaconda"
+        
+        [kimwong@viz-n0.crc.pitt.edu ~]$
+        ```
+
+        In the new rhel9 environment, the modules are generated automatically in [Spack](https://spack.io/). Within the Spack recipe, Anaconda is
+        a separate module.
