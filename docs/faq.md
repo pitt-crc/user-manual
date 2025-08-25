@@ -155,6 +155,10 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
 !!! example "Missing conda"
     === "The Symptom"
         ```commandline
+        [kimwong@login1.crc.pitt.edu ~]$module spider python2
+        ```
+
+        ```commandline
         [kimwong@login1.crc.pitt.edu ~]$module spider python
         
         ------------------------------------------------------
@@ -228,10 +232,6 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
     === "What's Going On?"
         In the old rhel7 environment, the environment modules were created by hand. We decided at the time to organized the Anaconda distribution under the 
         python category.
-
-        ```commandline
-           [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
-        ```
 
         ```commandline
         [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
