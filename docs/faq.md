@@ -157,9 +157,9 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
         ```commandline
         [kimwong@login1.crc.pitt.edu ~]$module spider python
         
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------
           python:
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------
              Versions:
                 python/ondemand-jupyter-python3.9
                 python/ondemand-jupyter-python3.11
@@ -169,23 +169,24 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
              Other possible modules matches:
                 openslide-python  py-biopython
         
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------
           To find other possible module matches execute:
         
               $ module -r spider '.*python.*'
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------
           For detailed information about a specific "python" package (including how to load the modules) use the module's full name.
           Note that names that have a trailing (E) are extensions provided by other modules.
           For example:
         
              $ module spider python/3.12.8-ydargp
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        ------------------------------------------------------
         
         [kimwong@login1.crc.pitt.edu ~]$module load python/3.12.8-ydargp
         {==[kimwong@login1.crc.pitt.edu ~]$which python
         /software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/python-3.12.8-ydargpm3mtvvle4gg4stjl66phnu3nth/bin/python
         [kimwong@login1.crc.pitt.edu ~]$which conda
-        /usr/bin/which: no conda in (/software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/python-3.12.8-ydargpm3mtvvle4gg4stjl66phnu3nth/bin:.:/xhome/crc/kimwong/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ihome/crc/pipx/bin)==}
+        /usr/bin/which: no conda in (/software/rhel9/spack/install/linux-rhel9-x86_64/gcc-11.4.1/python-3.12.8-ydargpm3mtvvle4gg4stjl66phnu3nth/bin:.:
+        /xhome/crc/kimwong/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/ihome/crc/pipx/bin)==}
         [kimwong@login1.crc.pitt.edu ~]$
         ```
 
@@ -196,21 +197,21 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
         ```commandline
         [kimwong@login1.crc.pitt.edu ~]$module spider anaconda
         
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------------------------
           anaconda3:
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------------------------
              Versions:
                 anaconda3/2021.11-python_3.9.7-fqibig
                 anaconda3/2022.10-python_3.9.13-x3avg2
                 anaconda3/2023.09-0-python_3.11.5-amgrwv
         
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------------------------
           For detailed information about a specific "anaconda3" package (including how to load the modules) use the module's full name.
           Note that names that have a trailing (E) are extensions provided by other modules.
           For example:
         
              $ module spider anaconda3/2023.09-0-python_3.11.5-amgrwv
-        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------------------------------
         
         {==[kimwong@login1.crc.pitt.edu ~]$module load anaconda3/2022.10-python_3.9.13-x3avg2
         [kimwong@login1.crc.pitt.edu ~]$which python
