@@ -224,3 +224,7 @@ source activate /ix1/hugen2071-2024f/software/env
 hisat2 --help # run your commands</pre>
 
 <p>To submit this job, run "sbatch test.sbatch"</p>
+
+<h1><strong>Open Composer</strong></h1>
+
+Open Composer is a web application to generate batch job scripts and submit batch jobs for HPC clusters
