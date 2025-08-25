@@ -230,6 +230,10 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
         python category.
 
         ```commandline
+           [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
+        ```
+
+        ```commandline
         [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
         
         ------------------------------------------------
