@@ -51,7 +51,7 @@ All CRCD software can be accessed using this terminal and our LMOD software prov
 
 <p><strong><a href="https://crc.pitt.edu/r_and_rstudio">https://crc-pages.pitt.edu/user-manual/applications/r%2Brstudio/</a></strong></p>
 
-<p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.4.0 can be loaded as:</p>
+<p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.5.0 can be loaded as:</p>
 
 <pre>
 [fangping@login4 ~]$ srun --account=hugen2071-2024f --pty bash
@@ -120,14 +120,13 @@ Type 'q()' to quit R.
 <pre>
 #!/bin/bash
 #SBATCH --job-name R_ExampleJob
-#SBATCH -M teach  # use teach cluster
 #SBATCH --account=hugen2071-2024f # use your course allocation
 #SBATCH --nodes=1  # request a single node
 #SBATCH -c 1  # request 1 core
 #SBATCH --time=01:00:00  # 1 hour walltime
 
 # load R module
-module load gcc/12.2.0 r/4.4.0
+module load r/4.5.0
 
 #the instructors or students can write the R code in test.R
 
@@ -142,11 +141,7 @@ R CMD BATCH test.R test.txt
 
 <p>We have installed multiple anaconda python as modules and these modules can also be used through Open Ondemand Jupyter notebook/lab.</p>
 
-<p>python/ondemand-jupyter-python3.8</p>
-
 <p>python/ondemand-jupyter-python3.9</p>
-
-<p>python/ondemand-jupyter-python3.10</p>
 
 <p>python/ondemand-jupyter-python3.11</p>
 
@@ -161,12 +156,12 @@ R CMD BATCH test.R test.txt
 <p>Conda is an open source package management system and environment management system. The instructor can generate conda environment and use conda as a package manager to install, run and update packages and their dependencies. We recommend that the instructor generate conda environment(s) under the course storage. All course attendees should use this conda environment(s).</p>
 
 <pre>
-[fangping@login3 ~]$ cd /ix1/hugen2071-2024f/software
-[fangping@login3 software]$ module load python/ondemand-jupyter-python3.10
-[fangping@login3 software]$ conda create --prefix=/ix1/hugen2071-2024f/software/env python=3.10
+[fangping@login4 ~]$ cd /ix1/hugen2071-2024f/software
+[fangping@login4 software]$ module load python/ondemand-jupyter-python3.11
+[fangping@login4 software]$ conda create --prefix=/ix1/hugen2071-2024f/software/env python=3.11
 ...
-[fangping@login3 software]$ source activate /ix1/hugen2071-2024f/software/env
-(/ix1/hugen2071-2024f/software/env) [fangping@login3 software]$</pre>
+[fangping@login4 software]$ source activate /ix1/hugen2071-2024f/software/env
+(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$</pre>
 
 <p>DO NOT activate your environment using “conda activate”</p>
 
@@ -202,10 +197,10 @@ R CMD BATCH test.R test.txt
 <p>Logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
 
 <pre>
-[fmu@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu # create a folder
-[fmu@login3 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu # change the permission
-[fmu@login3 ~]$ ln -s /ix1/hugen2071-2024f/users/fmu my_course_data # generate a softlink to home directory
-[fmu@login3 ~]$</pre>
+[fmu@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu # create a folder
+[fmu@login4 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu # change the permission
+[fmu@login4 ~]$ ln -s /ix1/hugen2071-2024f/users/fmu my_course_data # generate a softlink to home directory
+[fmu@login4 ~]$</pre>
 
 <p>Each student can navigate to his/her own my_course_data from Jupyter Lab.</p>
 
@@ -214,14 +209,13 @@ R CMD BATCH test.R test.txt
 <pre>
 #!/bin/bash
 #SBATCH --job-name ExampleJob
-#SBATCH -M teach # use teach cluster
 #SBATCH --account=hugen2071-2024f # use your course allocation
 #SBATCH --nodes=1  # request a single node
 #SBATCH -c 1  # request 1 core
 #SBATCH --time=01:00:00  # 1 hour walltime
 
 # use the custom conda environment
-module load python/ondemand-jupyter-python3.10
+module load python/ondemand-jupyter-python3.11
 source activate /ix1/hugen2071-2024f/software/env
 
 # You can also use other modules
