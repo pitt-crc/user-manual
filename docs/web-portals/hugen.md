@@ -31,7 +31,7 @@ Once connected, you can run commands directly on the server and submit batch job
 ![](../_assets/img/web-portals/hugen1.png)
 ![](../_assets/img/web-portals/hugen2.png)
 
-We have not deployed a separate login node for the teach cluster. Thus, you will logon the login node of the HTC cluster.
+You will logon the login node of the teach cluster: teach.crc.pitt.edu or login4.crc.pitt.edu.
 
 All CRCD software can be accessed using this terminal and our LMOD software provisioning system.
 
