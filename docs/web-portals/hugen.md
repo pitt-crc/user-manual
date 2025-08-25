@@ -54,33 +54,31 @@ All CRCD software can be accessed using this terminal and our LMOD software prov
 <p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.4.0 can be loaded as:</p>
 
 <pre>
-[fangping@login3 ~]$ srun -M teach --account=hugen2071-2024f --pty bash
-srun: job 5495 queued and waiting for resources
-srun: job 5495 has been allocated resources
-[fangping@teach-cpu-n0 ~]$ module load gcc/12.2.0 r/4.4.0
+[fangping@login4 ~]$ srun --account=hugen2071-2024f --pty bash
+srun: cpus_per_task: 65534.0
+srun: min_cpu: 1.0
+srun: job 14646 queued and waiting for resources
+srun: job 14646 has been allocated resources
+[fangping@teach-cpu-n0 ~]$ module load r/4.5.0
 [fangping@teach-cpu-n0 ~]$ R
-
-R version 4.4.0 (2024-04-24) -- "Puppy Cup"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
-
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
-
   Natural language support but running in an English locale
-
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
 'citation()' on how to cite R or R packages in publications.
-
 Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
+>
 
 &gt;</pre>
 
-`[fangping@login3 ~]$ srun -M teach --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
+`[fangping@login3 ~]$ srun --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
 
 <p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.4.0, the location of these packages is /ihome/crc/install/gcc-12.2.0/r/4.4.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
 
