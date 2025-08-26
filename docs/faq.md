@@ -9,7 +9,7 @@ In this section we list a series of common problems that CRCD users may encounte
         After a scheduled quarterly maintenance, `ssh` attempts from your laptop to h2p.crc.pitt.edu, htc.crc.pitt.edu, 
         or another CRCD remote server can fail with the following warning message below.
 
-        ```commandline
+        ```console
            Last login: Fri Aug 22 08:48:12 on ttys009
            kimwong@M1-Max ~ % ssh login3.crc.pitt.edu
            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -33,7 +33,7 @@ In this section we list a series of common problems that CRCD users may encounte
         remote server host key, which is stored in a file called `.ssh/known_hosts`. The message also suggests a possible fix
         (highlighted in yellow).
 
-        ```commandline
+        ```console
            Last login: Fri Aug 22 08:48:12 on ttys009
            kimwong@M1-Max ~ % ssh login3.crc.pitt.edu
            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -57,7 +57,7 @@ In this section we list a series of common problems that CRCD users may encounte
 
         An alternative fix is to issue the command
 
-        ```commandline
+        ```console
            ssh-keygen -R <hostname>
         ```
         where `<hostname>` is the hostname of the computer you are trying to connect to. This will remove all keys belonging 
@@ -81,7 +81,7 @@ In this section we list a series of common problems that CRCD users may encounte
 
         If you answer `yes`, you will see the following message:
 
-        ```commandline
+        ```console
            Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
            {==Warning: Permanently added 'login3.crc.pitt.edu' (ED25519) to the list of known hosts.==}
            Connection closed by 136.142.28.148 port 22
@@ -114,7 +114,7 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
     === "The Fix"
         From a Chrome browser, start a New Incognito Window and paste the following URL and authenticate.
 
-        ```commandline
+        ```console
            https://ondemand.htc.crc.pitt.edu/nginx/stop?redir=/pun/sys/dashboard/
         ```
 
@@ -127,7 +127,7 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
     === "The Symptom"
         Upone successful login, I see the following prompt. Do I need to do anything?
 
-        ```commandline
+        ```console
            kimwong@M1-Max ~ % ssh h2p.crc.pitt.edu
            Register this system with Red Hat Insights: rhc connect
            
@@ -195,7 +195,7 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
         In the new rhel9 [Spack](https://spack.io/) environment, the Anaconda distribution of Python is a separate module. You can 
         load it as follows, which will also provide you `conda`:
 
-        ```commandline
+        ```console
            [kimwong@login1.crc.pitt.edu ~]$module spider anaconda
            
            --------------------------------------------------------
@@ -230,7 +230,7 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
         In the old rhel7 environment, the environment modules were created by hand. We decided at the time to organized the Anaconda distribution under the 
         python category.
 
-        ```commandline
+        ```console
            [kimwong@viz-n0.crc.pitt.edu ~]$module spider python
            
            ------------------------------------------------
