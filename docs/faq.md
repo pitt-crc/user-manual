@@ -154,7 +154,8 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
 
 !!! example "Missing conda"
     === "The Symptom"
-        ```commandline
+
+        ```console
            [kimwong@login1.crc.pitt.edu ~]$module spider python
            
            ------------------------------------------------------
