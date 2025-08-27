@@ -44,7 +44,26 @@ the environment can be used in JupyterHub, so please do not remove them.
    source activate /path/to/your/env/yk-teach-env
    ```
 
-**Step6:** Install any additional packages you need in the environment. For example, if you need `numpy` and
+**Step6:** Copy the following dir to a local dir of yours (e.g. `~/`) and change the dir to this copied dir:
+
+   ```bash
+   cp -r /software/rhel9/manual/install/jupyterhub/batchspawner ~/
+   cd ~/batchspawner
+   ```
+
+**Step7:** Make sure you are in the `batchspawner` dir and install the package in the activated environment:
+
+   ```bash
+   pip install .
+   ```
+
+**Step8:** Install `jupyterhub` version `5.2.1` in the activated environment.
+
+   ```bash
+   conda install jupyterhub=5.2.1
+   ```
+
+**Step9:** Install any additional packages you need in the environment. For example, if you need `numpy` and
 `pandas`, you can install them as follows:
 
    ```bash
@@ -58,11 +77,11 @@ You can install any other packages you need in the same way. If you need to inst
    pip install <package_name>
    ```
 
-**Step7:** You can now test your environment by using it in JupyterHub. As referred in the
+**Step10:** You can now test your environment by using it in JupyterHub. As referred in the
 [JupyterHub on the Teach Cluster](../snippets/jupyter-teach.md) documentation, you can use your environment in the
 **Select Virtual Environment** dropdown menu (the Provide custom path option) when starting a new JupyterHub session.
 
-**Step8:** You can provide the path to your environment for students to use in the JupyterHub dropdown menu as follows:
+**Step11:** You can provide the path to your environment for students to use in the JupyterHub dropdown menu as follows:
 
    ```
    /path/to/your/env/yk-teach-env
