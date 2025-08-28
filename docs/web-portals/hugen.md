@@ -42,8 +42,8 @@ All CRCD software can be accessed using this terminal and our LMOD software prov
 <p>The instructor can create a folder under the course storage to install conda environments.</p>
 
 <pre>
-[fangping@login3 ~]$ cd /ix1/hugen2071-2024f
-[fangping@login3 hugen2071-2024f]$ mkdir software</pre>
+[fangping@login4 ~]$ cd /ix1/hugen2071-2024f
+[fangping@login4 hugen2071-2024f]$ mkdir software</pre>
 
 <p>We are using slurm as workload manager. To use the Sus from the course, you can use --account=hugen2071-2024f to charge resources used by this job to the specified course account. We recommend the instructor to provide slurm job templates.</p>
 
@@ -78,7 +78,7 @@ Type 'q()' to quit R.
 
 `[fangping@login3 ~]$ srun --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
 
-<p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.4.0, the location of these packages is /software/rhel9/manual/install/r/4.5.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
+<p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.5.0, the location of these packages is /software/rhel9/manual/install/r/4.5.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
 
 <p>You can also install your own R packages. R searches the user’s path for libraries followed by the root installation. R will stop searching when it finds the first instance of the library within the path hierarchy.Use “.libPaths()” to check the searching path. For r/4.5.0, your local R packages will be installed under ~/R/x86_64-pc-linux-gnu-library/4.5. To allow all attendees to use the same R packages, we recommend that the instructor hides his/her local R packages. If you need specific R packages for your course, submit a help ticket, and we will install the package so that all attendees can use the same version.</p>
 
@@ -94,22 +94,22 @@ Type 'q()' to quit R.
 <p>The instructor can mkdir a folder /ix1/hugen2071-2024f/users for students and chmod it to be group writable.</p>
 
 <pre>
-[fangping@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users
-[fangping@login3 ~]$ chmod 770 /ix1/hugen2071-2024f/users
+[fangping@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users
+[fangping@login4 ~]$ chmod 770 /ix1/hugen2071-2024f/users
 </pre>
 
 <p>The instructor can guide each student to create his/her own folder under the course storage. Each student can logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
 
 <pre>
-[fmu@login3 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu
-[fmu@login3 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu
+[fmu@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu
+[fmu@login4 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu
 </pre>
 
 <p>You can open a R markdown file. I have copied pbmc3k_tutorial.Rmd from NGS 2022s workshops.</p>
 
 <pre>
-[fangping@login0b ~]$ cd /ix1/hugen2071-2024f/users/fmu
-[fangping@login0b fmu]$ cp /bgfs/genomics/workshops/2022s/Overview_of_NGS_data_analysis_using_Pitt_ondemand_and_R/seurat/pbmc3k_tutorial.Rmd .</pre>
+[fangping@login4 ~]$ cd /ix1/hugen2071-2024f/users/fmu
+[fangping@login4 fmu]$ cp /bgfs/genomics/workshops/2022s/Overview_of_NGS_data_analysis_using_Pitt_ondemand_and_R/seurat/pbmc3k_tutorial.Rmd .</pre>
 
 <p>Then click Open File from RStudio server and open pbmc3k_tutorial.Rmd. You can Knit to html to generate html output from the R markdown. &nbsp;</p>
 
@@ -174,7 +174,7 @@ R CMD BATCH test.R test.txt
 <p><a href="https://bioconda.github.io/recipes/hisat2/README.html">https://bioconda.github.io/recipes/hisat2/README.html</a></p>
 
 <pre>
-(/ix1/hugen2071-2024f/software/env) [fangping@login3 software]$ conda install hisat2</pre>
+(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$ conda install hisat2</pre>
 
 <p>...</p>
 
