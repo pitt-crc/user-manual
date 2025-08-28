@@ -228,3 +228,8 @@ hisat2 --help # run your commands</pre>
 <h1><strong>Open Composer</strong></h1>
 
 Open Composer is a web application to generate batch job scripts and submit batch jobs for HPC clusters. Open Composer is designed to simplify batch job submissions, a core task for HPC cluster users. It offers job management capabilities, including status monitoring and job deletion, promotes parameter reuse, and enables seamless launching of related Open OnDemand applications with a single click.
+
+![](../_assets/img/web-portals/hugen10.png)
+![](../_assets/img/web-portals/hugen11.png)
+![](../_assets/img/web-portals/hugen12.png)
+
