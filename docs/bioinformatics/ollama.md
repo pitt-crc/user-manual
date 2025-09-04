@@ -4,22 +4,22 @@ Ollama is a platform that enables users to interact with Large Language Models (
 
 ## Running ollama server
 
-Ollama version 0.9.2 has been installed as a singularity image /software/build/ollama/ollama_0.9.2.sif on our cluster.
+Ollama version 0.11.10 has been installed as a singularity image /software/rhel9/manual/install/ollama/ollama-0.11.10.sif on our cluster.
 
 We have provided two batch job templates to run Ollama server on CRCD's GPU cluster.
-/software/build/ollama/ollama_0.9.2_a100_80gb.slurm will submit a job to the a100 partion, 80GB GPU memory node.
-/software/build/ollama/ollama_0.9.2_l40s.slurm will submit a job to the l40s, 48GB GPU memory node.
+/software/rhel9/manual/install/ollama/ollama-0.11.10_a100_80gb.slurm will submit a job to the a100 partion, 80GB GPU memory node.
+/software/rhel9/manual/install/ollama/ollama-0.11.10_l40s.slurm will submit a job to the l40s, 48GB GPU memory node.
 
 Using sbatch to run the Ollama server :
 
 ```commandline
-sbatch /software/build/ollama/ollama_0.9.2_a100_80gb.slurm
+sbatch /software/rhel9/manual/install/ollama/ollama-0.11.10_a100_80gb.slurm
 ```
 
 This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an A100 80GB GPU memory which should be suitable for various models provided by Ollama.
 
 ```commandline
-sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
+sbatch /software/rhel9/manual/install/ollama/ollama-0.11.10_l40s.slurm
 ```
 
 This will run the ollama service on a GPU node with 125GB of memory, 16 cores and an L40S 48GB GPU memory.
@@ -32,7 +32,7 @@ CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            1230409      l40s ollama_0 fangping  R       0:03      1 gpu-n55
            
-[fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
+[fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.11.10_server_job --states=R -h -O NodeList,Comment
 gpu-n55             45141
 ```
 ## Connecting to the ollama server from a client
@@ -89,13 +89,13 @@ DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
 Run ollama server and inquiry the hostname and port number.
 
 ```commandline
-[fangping@login3 ~]$ sbatch /software/build/ollama/ollama_0.9.2_l40s.slurm
+[fangping@login3 ~]$ sbatch /software/rhel9/manual/install/ollama/ollama-0.11.10_l40s.slurm
 Submitted batch job 1230448 on cluster gpu
 [fangping@login3 ~]$ squeue -M gpu -u fangping
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            1230448      l40s ollama_0 fangping  R       0:03      1 gpu-n57
-[fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.9.2_server_job --states=R -h -O NodeList,Comment
+[fangping@login3 ~]$ squeue -M gpu --me --name=ollama_0.11.10_server_job --states=R -h -O NodeList,Comment
 gpu-n57             48362
 ```
 logon ondemand.htc.crc.pitt.edu, click Jupyter.
