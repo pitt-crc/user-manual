@@ -120,8 +120,8 @@ If you are already in an interactive session on SMP or HTC, then you can just ru
 - when you get directed to the node:
 
 ```commandline
-$ module load singularity/3.9.6
-$ singularity shell /software/build/ollama/ollama_0.9.2.sif
+$ module load singularity/4.3.2
+$ singularity shell /software/rhel9/manual/install/ollama/ollama-0.11.10.sif
 singularity$ export OLLAMA_HOST=gpu-n58:44883
 singularity$ ollama pull llama4:scout
 ```
