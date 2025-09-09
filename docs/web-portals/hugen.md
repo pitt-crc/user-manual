@@ -22,6 +22,9 @@ We will create the slurm account hugen2071-2024f and add the students, the instr
 
 ## **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://ondemand.teach.crc.pitt.edu)**
 
+https://hugen.crc.pitt.edu 
+https://ondemand.teach.crc.pitt.edu
+
 The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected to PittNet via Ethernet.
 
 <p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
