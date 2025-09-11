@@ -186,54 +186,34 @@ followed by the familiar Python environment
 
 hub-02 TODO
 
+---
 
 # Software Environment and the LMOD Module System
-
-What You'll Learn in this Section:
-
-    Logging On
-    Example of logging on via a terminal connection
-    Loading software with LMOD
-    How to load software modules with the module system
-
-What You'll Need
-
-- A terminal connection to CRCD resources.
 
 If you are familiar with the Linux command line, the traditional terminal interface is the most efficient method for 
 accessing the CRCD compute and storage resources. username should be your Pitt ID.
 
 ```commandline
 YOUR-PC:~ YOUR-LOCAL-USERNAME$ ssh -X username@h2p.crc.pitt.edu
-
 username@h2p.crc.pitt.edu's password:
+###############################################################################
 
-Warning: untrusted X11 forwarding setup failed: xauth key data not generated
-Last login: Thu Jan 13 12:09:21 2022
-#########################################################################################################################################################################################
+                         Welcome to h2p.crc.pitt.edu!
 
-                                                                               Welcome to h2p.crc.pitt.edu!
+      Documentation can be found at https://crc-pages.pitt.edu/user-manual/
 
-                                                                      Documentation can be found at crc.pitt.edu/h2p
+-------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                             IMPORTANT REMINDERS
 
-                                                                                 IMPORTANT NOTIFICATIONS
+ Don't run jobs on login nodes! Use interactive jobs: `crc-interactive --help`
 
-   Renewal of CRCD allocations requires you to acknowledge and add citations to our database, login to crc.pitt.edu and navigate to crc.pitt.edu/acknowledge for details and entry form
+ Slurm is separated into 'clusters', e.g. if `scancel <jobnum>` doesn't work 
+      try `crc-scancel <jobnum>`. Try `crc-sinfo` to see all clusters.
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-                                                                                   IMPORTANT REMINDERS
-
-                                                     Don't run jobs on login nodes! Use interactive jobs: `crc-interactive --help`
-
-                    Slurm is separated into 'clusters', e.g. if `scancel <jobnum>` doesn't work try `crc-scancel <jobnum>`. Try `crc-sinfo` to see all clusters.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#########################################################################################################################################################################################
-
+###############################################################################
 [username@login1 ~]$ pwd
 /ihome/groupname/username
 
@@ -243,255 +223,205 @@ CRCD  Desktop  zzz_cleanmeup
 
 ## The LMOD Module System
 
-CRCD uses the Lmod Environment Modules tool to manage and provision software applications. The command module spider 
-shows if a package is available. For example
+The CRCD uses the LMOD Environment Modules tool to manage and provision software applications. 
+The reason why it is necessary to employ LMOD is that many users on one system brings a broad range of software 
+application demands, and many of them are not compatible with eachother or have depdendencies that conflict.
 
+
+The command for searching for specific software by keyword is `module spider'. Let's try searching for software 
+containing the keyword "python":
 ```commandline
-[username@login1 ~]$ module spider python
+[username@login1 ~] : module spider python
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------
   python:
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Description:
-      Anaconda is the leading open data science platform powered by Python.
-
+---------------------------------------------------------------------------
      Versions:
-        python/anaconda2.7-4.2.0_westpa
-        python/anaconda2.7-4.2.0
-        python/anaconda2.7-4.4.0_genomics
-        python/anaconda2.7-5.2.0_westpa
-        python/anaconda2.7-5.2.0
-        python/anaconda2.7-2018.12_westpa
-        python/anaconda3.5-4.2.0-dev
-        python/anaconda3.5-4.2.0
-        python/anaconda3.6-5.2.0_deeplabcut
-        python/anaconda3.6-5.2.0_leap
-        python/anaconda3.6-5.2.0
-        python/anaconda3.7-5.3.1_genomics
-        python/anaconda3.7-2018.12_westpa
-        python/anaconda3.7-2019.03_astro
-        python/anaconda3.7-2019.03_deformetrica
-        python/anaconda3.7-2019.03
-        python/anaconda3.8-2020.11
-        python/anaconda3.9-2021.11
-        python/bioconda-2.7-5.2.0
-        python/bioconda-3.6-5.2.0
-        python/bioconda-3.7-2019.03
-        python/intel-3.5
-        python/intel-3.6_2018.3.039
-        python/intel-3.6_2019.2.066
-        python/intel-3.6
         python/ondemand-jupyter-python3.8
-        python/3.7.0-dev
-        python/3.7.0-fastx
+        python/ondemand-jupyter-python3.9
+        python/ondemand-jupyter-python3.11
+        python/pytorch_251_311_cu124
+        python/tensorflow_218_311
         python/3.7.0
-
+        python/3.7.17
+        python/3.8.18
+        python/3.9.18
+        python/3.10.13
+        python/3.11.6
+        python/3.11.9
+        python/3.12.0
+        python/3.12.8
      Other possible modules matches:
-        biopython  openslide-python
+        openslide-python  py-biopython  py-bx-python  py-gitpython  ...
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  To find other possible module matches do:
-      module -r spider '.*python.*'
+---------------------------------------------------------------------------
+  To find other possible module matches execute:
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  For detailed information about a specific "python" module (including how to load the modules) use the module's full name.
+      $ module -r spider '.*python.*'
+
+---------------------------------------------------------------------------
+  For detailed information about a specific "python" package (including how to load the modules) use the module's full 
+  name. Note that names that have a trailing (E) are extensions provided by other modules.
   For example:
 
-     $ module spider python/ondemand-jupyter-python3.8
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     $ module spider python/3.12.8
+---------------------------------------------------------------------------
+
 ```
+This shows that we have several versions of Python available.
 
-Software Loading Example: Python
+## Software Loading Example: Python
 
-This shows that we have several versions of Python available. Packages typically have dependencies. To discover these 
-dependencies, apply the module spider command to a specific installed package
+To load software, use the command `module load PACKAGE_NAME`. You may also specify a version from the module spider 
+output, but each package will have a default module that loads if you do not specify a version.
+Any dependency modules should also be loaded automatically.
 
 ```commandline
-[username@login1 ~]$ module spider python/anaconda3.7-2019.03_deformetrica
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  python: python/anaconda3.7-2019.03_deformetrica
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Description:
-      Anaconda is the leading open data science platform powered by Python. Compatible with gcc/8.2.0
-
-     Other possible modules matches:
-        biopython, openslide-python
-
-    You will need to load all module(s) on any one of the lines below before the "python/anaconda3.7-2019.03_deformetrica" module is available to load.
-
-      gcc/8.2.0
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  To find other possible module matches do:
-      module -r spider '.*python/anaconda3.7-2019.03_deformetrica.*'
+[username@login1 ~] : module load python
 ```
 
-If you attempt to directly load this Python to your session environment, you will encounter an error because the 
-gcc/8.2.0 dependency has not been satisfied
+After loading some modules, you can check which modules you have loaded with `module list`:
+```commandline
+[username@login1 ~] : module list
+
+Currently Loaded Modules:
+  1) glibc/2.34-pdpia3h          12) zlib-ng/2.2.3-sp4tqsg
+  2) gcc-runtime/11.4.1-35mycmu  13) libxml2/2.13.5-ftxdjfd
+  3) bzip2/1.0.8-fmepb3v         14) tar/1.34-x7cmoa7
+  4) libmd/1.0.4-6r67pli         15) gettext/0.23.1-mn2kp6h
+  5) libbsd/0.12.2-qfsjhws       16) libffi/3.4.6-wsudgk7
+  6) expat/2.6.4-ia66qf2         17) libxcrypt/4.4.35-adfotdo
+  7) ncurses/6.5-ywu2pv4         18) openssl/3.0.7-rfrhxyq
+  8) readline/8.2-jpmleyb        19) sqlite/3.46.0-bxwcjm4
+  9) gdbm/1.23-rvnehuy           20) util-linux-uuid/2.40.2-druic7y
+ 10) libiconv/1.17-oygrtg5       21) python/3.12.8
+ 11) xz/5.4.6-anmq7m4
+
+```
+
+??? Question "What is that string of characters at the end of the loaded modules?"
+    On our system, many dependency packages will not appear in `module spider` or `module avail` output. These are
+    packages with a hash string suffix.
+
+Usually, two versions of the same module will conflict and not be able to be loaded together. In the case of python, 
+the versions will be swapped:
+```commandline
+[username@login1 ~] : module load python/3.12.0
+
+The following have been reloaded with a version change:
+  1) bzip2/1.0.8-fmepb3v => bzip2/1.0.8
+  2) expat/2.6.4-ia66qf2 => expat/2.5.0-civmiu6
+  3) gdbm/1.23-rvnehuy => gdbm/1.23-i7j3ckd
+  4) gettext/0.23.1-mn2kp6h => gettext/0.22.4-oschqsp
+  5) libbsd/0.12.2-qfsjhws => libbsd/0.11.7-tjvomkh
+  6) libffi/3.4.6-wsudgk7 => libffi/3.4.4-o6i2vfh
+  7) libiconv/1.17-oygrtg5 => libiconv/1.17-b47av4d
+  8) libmd/1.0.4-6r67pli => libmd/1.0.4-pr3r6b6
+  9) libxcrypt/4.4.35-adfotdo => libxcrypt/4.4.35-vxku33b
+ 10) libxml2/2.13.5-ftxdjfd => libxml2/2.10.3
+ 11) ncurses/6.5-ywu2pv4 => ncurses/6.4
+ 12) openssl/3.0.7-rfrhxyq => openssl/3.1.3-527o4u3
+ 13) python/3.12.8 => python/3.12.0
+ 14) readline/8.2-jpmleyb => readline/8.2-hdjus6f
+ 15) sqlite/3.46.0-bxwcjm4 => sqlite/3.43.2-usqgkvi
+ 16) util-linux-uuid/2.40.2-druic7y => util-linux-uuid/2.38.1-jgrgx4c
+ 17) xz/5.4.6-anmq7m4 => xz/5.4.1
+ 18) zlib-ng/2.2.3-sp4tqsg => zlib-ng/2.1.5-g64y7ia
+
+```
+
+??? Warning "Some packages require you manually load one or more dependencies first!"
+    Some software will have dependencies that you need to manually load. This is usually the case for packages that 
+    depend on a specific version of a specific compiler or MPI library.
+
+    ```commandline
+    [username@login1 ~] : module load hdf5/1.14.6
+    Lmod has detected the following error:  These module(s) or
+    extension(s) exist but cannot be loaded as requested: "hdf5/1.14.6"
+    Try: "module spider hdf5/1.14.6" to see how to load the module(s).
+    
+    
+    
+    [username@login1 ~] : module spider hdf5/1.14.6
+
+    ---------------------------------------------------------------------------
+      hdf5: hdf5/1.14.6
+    ---------------------------------------------------------------------------
+
+    You will need to load all module(s) on any one of the lines below before the "hdf5/1.14.6" module is available to 
+    load.
+
+      openmpi/4.1.7
+ 
+    Help:
+      HDF5 is a data model, library, and file format for storing and managing
+      data. It supports an unlimited variety of datatypes, and is designed for
+      flexible and efficient I/O and for high volume and complex data.
+
+    ```
+
+    The module will become loadable when you explicitly load the dependency **first**.
+
+    ```commandline
+    [username@login1 ~] : module load openmpi/4.1.7 hdf5/1.14.6
+    [username@login1 ~] : module list
+
+    Currently Loaded Modules:
+      1) glibc/2.34-pdpia3h          11) openssl/3.0.7-rfrhxyq
+      2) gcc-runtime/11.4.1-35mycmu  12) libevent/2.1.12-tpkhym3
+      3) libiconv/1.17-oygrtg5       13) numactl/2.0.18-73x3q67
+      4) xz/5.4.6-anmq7m4            14) openssh/8.7p1-fxu75mo
+      5) zlib/1.3.1-hyu2l33          15) pmix/5.0.5-fdtsecx
+      6) libxml2/2.13.5-wfubyta      16) slurm/23.11.10-ikt2uzm
+      7) cuda/12.8.0-jlgo77i         17) openmpi/4.1.7
+      8) libpciaccess/0.17-o53lwnr   18) pkgconf/1.7.3-ydzqjwx
+      9) ncurses/6.5-ywu2pv4         19) hdf5/1.14.6
+     10) hwloc/2.11.1-tana35e
+    ```
+
+The command to remove an individual module and it's dependencies from your environment is `module remove`.
 
 ```commandline
-[username@login1 ~]$ module load python/anaconda3.7-2019.03_deformetrica
-Lmod has detected the following error:  These module(s) exist but cannot be loaded as requested: "python/anaconda3.7-2019.03_deformetrica"
-
-   Try: "module spider python/anaconda3.7-2019.03_deformetrica" to see how to load the module(s).
-```
-
-## Loading Dependencies
-
-The gcc/8.2.0 module first before loading the desired Python:
-
-```commandline
-[username@login1 ~]$ module load gcc/8.2.0
-
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) gcc/8.2.0
-
-[username@login1 ~]$ module load python/anaconda3.7-2019.03_deformetrica
-
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica
-```
-
-You can also load all the packages using a single commandline, making sure that the dependencies are to the left of the 
-package
-
-[username@login1 ~]$ module purge
-
-[username@login1 ~]$ module load gcc/8.2.0 python/anaconda3.7-2019.03_deformetrica
-
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica
-
-## Other Module System Commands
-
-In the previous section, two new commands that were introduced.
-
-They are module purge and module list. These commands do exactly as the words imply.
-
-module list is used to list all the loaded software packages
-
-module purge is to get remove of all the packages from your current session's environment
-
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica
-
-[username@login1 ~]$ module purge
-[username@login1 ~]$ module list
+[username@login1 ~] : module remove python
+[username@login1 ~] : module list
 No modules loaded
-[username@login1 ~]$
+```
 
-Now, you might be wondering if it is possible to remove a particular package while keeping others. Why don't we try 
-it
+If you wish to clear all loaded modules from your environment and start fresh, the command is `module purge`.
 
 ```commandline
-[username@login1 ~]$ module purge
-[username@login1 ~]$ module list
+[username@login1 ~] : module load python apptainer
+[username@login1 ~] : module list
+
+Currently Loaded Modules:
+  1) bzip2/1.0.8                  20) expat/2.5.0-civmiu6
+  2) libiconv/1.17-b47av4d        21) libxcrypt/4.4.35-vxku33b
+  3) xz/5.4.1                     22) openssl/3.1.3-527o4u3
+  4) zlib-ng/2.1.5-g64y7ia        23) sqlite/3.43.2-usqgkvi
+  5) libxml2/2.10.3               24) util-linux-uuid/2.38.1-jgrgx4c
+  6) ncurses/6.4                  25) python/3.11.6
+  7) tar/1.34-x7cmoa7             26) glib/2.78.0-ba6elef
+  8) gettext/0.22.4-oschqsp       27) libseccomp/2.5.4-tot6t3t
+  9) pkgconf/1.7.3-ydzqjwx        28) conmon/2.1.7-ysrmyqx
+ 10) zstd/1.5.5-p3ezlwy           29) git/2.39.3
+ 11) elfutils/0.190-t44l4oz       30) go/1.21.3-ii4fypb
+ 12) libffi/3.4.4-o6i2vfh         31) libgpg-error/1.47-s3rxpz2
+ 13) pcre2/10.42-m2savla          32) squashfs/4.6.1-qvfurlh
+ 14) berkeley-db/18.1.40-yawkwrd  33) libfuse/3.16.2-ow27vmq
+ 15) readline/8.2-hdjus6f         34) lz4/1.9.4-36utyjs
+ 16) gdbm/1.23-i7j3ckd            35) lzo/2.10-3knt437
+ 17) perl/5.38.0                  36) squashfuse/0.5.0-dvxfijq
+ 18) libmd/1.0.4-pr3r6b6          37) apptainer/1.1.9
+ 19) libbsd/0.11.7-tjvomkh
+
+
+ 
+
+[username@login1 ~] : module purge 
+[username@login1 ~] : module list
 No modules loaded
-[username@login1 ~]$ module spider matlab
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  matlab:
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Description:
-      Matlab R2021b
-
-     Versions:
-        matlab/R2015a
-        matlab/R2017a
-        matlab/R2018a
-        matlab/R2019b
-        matlab/R2020b
-        matlab/R2021a
-        matlab/R2021b
-
-     Other possible modules matches:
-        matlab-mcr  matlab-proxy
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  To find other possible module matches do:
-      module -r spider '.*matlab.*'
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  For detailed information about a specific "matlab" module (including how to load the modules) use the module's full name.
-  For example:
-
-     $ module spider matlab/R2021b
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
-
-## Software Loading Example 2: MATLAB
-
-```commandline
-[username@login1 ~]$ module load matlab/R2021b
-
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) fontconfig/2.10.95   2) matlab/R2021b
-
-[username@login1 ~]$ module load gcc/8.2.0 python/anaconda3.7-2019.03_deformetrica
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) fontconfig/2.10.95   2) matlab/R2021b   3) openmpi/3.1.1   4) gcc/8.2.0   5) python/anaconda3.7-2019.03_deformetrica
-
-[username@login1 ~]$ module rm matlab/R2021b
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica
-```
-
-In the above commands, MATLAB R2021b was loaded and then Python was loaded afterwards. Notice that MATLAB can be loaded 
-directly but that there is also a side effect of automatically loading fontconfig/2.10.95.
-
-Next, the gcc/8.2.0 dependency was loaded before the specific Python package. This Python package also has a side 
-effect of automatically loading openmpi/3.1.1.
-
-Lastly, when MATLAB was unloaded, matlab/R2021b and fontconfig/2.10.95 are removed from the environment.
-
-You might wonder, What happens if I unload Python instead of MATLAB? Let's try it out:
-
-```commandline
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica
-
-[username@login1 ~]$ module load matlab/R2021b
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) openmpi/3.1.1   2) gcc/8.2.0   3) python/anaconda3.7-2019.03_deformetrica   4) fontconfig/2.10.95   5) matlab/R2021b
-
-[username@login1 ~]$ module rm python/anaconda3.7-2019.03_deformetrica
-[username@login1 ~]$ module list
-
-Currently Loaded Modules:
-  1) fontconfig/2.10.95   2) matlab/R2021b
-```
-
-The effect of unloading a package module is to remove all dependencies and to return the session environment to the 
-state before loading the package.
-
-The command to unload one or more packages is `module rm`.
-
-You might also wonder if module unload might be a better choice of words for the command.
-
-As a matter of fact, `module rm` and `module unload` are synonymous. Try it out.
-
-These are few commands are useful to memorize to efficiently manipulate the software package environment. 
-The reason why it is necessary to employ LMOD is that the CRCD community uses a broad range of software 
-applications, many of which are not compatible with one another.
+These few commands are useful to memorize to efficiently manipulate the software package environment.
 
 --- 
 
@@ -502,9 +432,9 @@ Users submit "jobs" to SLURM via scripts that outline the resources to be reques
 Upon submission to SLURM, the jobs are queued within a scheduling system. They run when the requested resources become 
 available, so long as the request is in accordance with scheduling policies.
 
-Shown below is the architecture of a SLURM job submission script
+Shown below is the architecture of a SLURM job submission script:
 
-slurm-script-arch
+![](../_assets/img/onramp/slurm/Slurm_Submission_Script.png)
 
 The SLURM job submission script is essentially a text file that contains 
 - directives required by SLURM
@@ -515,13 +445,24 @@ The SLURM job submission script is essentially a text file that contains
 The commands execute sequentially line-by-line from top to bottom (unless you background the command with an & at 
 the end). We provide a growing number of example job submission scripts for specific software applications
 
-[username@login1 ~]$ ls /ihome/crc/how_to_run/
-abaqus  ansys             comsol  DeepLabCut-1.02  febio   gaussian  hello-world  julia     lumerical        matlab        mopac  nektar++  pbdr   quantumespresso  stata      vasp
-abm     bioeng2370_2021f  cp2k    deformetrica     fluent  gpaw      hfss         lammps    lumerical.test   molecularGSM  mosek  openfoam  psi4   r                tinker     westpa
-amber   blender           damask  fdtd             gamess  gromacs   ipc          lightgbm  lumerical.test2  molpro        namd   orca      qchem  sas              turbomole  xilinx
+```commandline
+[username@login1 ~] : ls /ihome/crc/how_to_run/
+abaqus            febio         lumerical        pbdr
+abm               fluent        lumerical.test   psi4
+amber             gamess        lumerical.test2  python_3.6.8_pip-list.txt
+ansys             gaussian      matlab           qchem
+bioeng2370_2021f  gpaw          molecularGSM     quantumespresso
+blender           gromacs       molpro           r
+comsol            h2p_examples  mopac            sas
+cp2k              hello-world   mosek            stata
+dalton            hfss          namd             tinker
+damask            ipc           nektar++         turbomole
+DeepLabCut-1.02   julia         nsight-systems   vasp
+deformetrica      lammps        openfoam         westpa
+fdtd              lightgbm      orca             xilinx
+```
 
 ## Example Submission Script
-
 ```commandline
 [username@login1 ~]$ pwd
 /ihome/groupname/username
@@ -537,7 +478,7 @@ CRCD  Desktop  mocvnhlysm_1N.24C_OMPI_SMP  mocvnhlysm_1titanX.1C  mocvnhlysm_2GT
 ```
 
 First let's go into the mocvnhlysm_1N.24C_OMPI_SMP directory and show the contents of the SLURM submission script
-
+```commandline
 [username@login1 ~]$ cd mocvnhlysm_1N.24C_OMPI_SMP
 
 [username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ ls
@@ -555,9 +496,7 @@ amber.slurm  logfile  md.in  mocvnhlysm.crd  mocvnhlysm.nfo  mocvnhlysm.rst  moc
 
 # Load Modules
 module purge
-module load gcc/5.4.0
-module load openmpi/3.0.0
-module load amber/16_gcc-5.4.0
+module load amber/24
 
 # Run over Omni-Path fabric
 #export I_MPI_FABRICS_LIST=tmi
@@ -576,67 +515,72 @@ SANDER=pmemd.MPI
 mpirun -n $SLURM_NTASKS \
           $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
                           -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
+```
 
-The SLURM directives begin with the #SBATCH prefix and instructs the scheduler to allocate 1 node with 12 cores within the high-mem partition on the smp cluster for 1 hour. Then the submission script loads the Amber molecular dynamics package and dependencies, followed by application-specific execution syntax.
-A Note on Multiple SLURM Allocation Associations
+The SLURM directives begin with the #SBATCH prefix and instructs the scheduler to allocate 1 node with 12 cores within 
+the high-mem partition on the smp cluster for 1 hour. Then the submission script loads the Amber molecular dynamics 
+package and dependencies, followed by application-specific execution syntax.
 
-If your CRCD user is associated with multiple SLURM accounts, you can specify which account to debit the SUs from by adding the `--account` option to the SLURM directives in your job submission script.
+??? Question What if I am a member of multiple SLURM accounts?
 
-For example, to use the SUs from the workshop account, use
+    If your CRCD user is associated with multiple SLURM accounts, you can specify which account to debit the SUs from by 
+    adding the `--account` option to the SLURM directives in your job submission script.
+    
+    For example, to use the SUs from the workshop account, use
+    
+    `#SBATCH --account=workshops`
+    
+    You can use the following command to see which SLURM allocations your user account is associated with:
+    
+    ```commandline
+    [username@login1 ~] : sacctmgr show assoc where user=username format=cluster,account,user
+       Cluster    Account       User 
+    ---------- ---------- ----------
+           gpu  groupname   username 
+           gpu  workshops   username 
+           htc  groupname   username  
+           htc  workshops   username  
+           mpi  groupname   username 
+           mpi  workshops   username  
+           smp  groupname   username 
+           smp  workshops   username  
+         teach  groupname   username  
+         teach  workshops   username
+    ```
 
-#SBATCH --account=workshops
+## Submitting a Job
 
-You can use the following command to see which SLURM allocations your user account is associated with
+Use `sbatch` to submit the job:
 
-[username@login1 ~]$ sacctmgr show assoc | grep $USER
-       gpu      groupname    username                    1                                                                                                                1000                           gpu-a100-l,gpu-a100+    normal
-       gpu      workshops    username                    1                                                                                                                                               gpu-a100-l,gpu-a100+ gpu-gtx1+
-       htc      groupname    username                    1                                                                                                                1000                           htc-htc-l,htc-htc-l+    normal
-       htc      workshops    username                    1                                                                                                                                               htc-htc-l,htc-htc-l+    normal
-       mpi      groupname    username                    1                                                                                                                1000                           long,mpi-ib-l,mpi-i+    normal
-       mpi      workshops    username                    1                                                                                                                                               long,mpi-ib-l,mpi-i+ mpi-opa-s
-       smp      groupname    username                    1                                                                                                                1000                           long,normal,short,s+    normal
-       smp      workshops    username                    1                                                                                                                                               long,normal,short,s+ smp-smp-s
-
-As shown, user username is associated with the groupname and workshops allocations.
-
-To see your default allocation that will be used when you don't explicitly specify with the --account option:
-
-[username@login1 ~]$ sacctmgr show assoc onlydefault | grep $USER
-       htc        sam    username                    1                                                                                                                1000                           htc-htc-l,htc-htc-l+    normal
-       mpi        sam    username                    1                                                                                                                1000                           long,mpi-ib-l,mpi-i+ mpi-opa-s
-       gpu        sam    username                    1                                                                                                                1000                           gpu-a100-l,gpu-a100+ gpu-gtx1+
-       smp        sam    username                    1                                                                                                                1000                           long,normal,short,s+ smp-smp-s
-
-Submitting a Job
-
-Use sbatch to submit the job:
-
+```commandline
 [username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ sbatch amber.slurm
-Submitted batch job 5103575 on cluster smp
+Submitted batch job 20802819 on cluster smp
 
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ squeue -M smp -u $USER
+
+[username@login1 mocvnhlysm_1N.24C_OMPI_SMP] : squeue -M smp -u $USER
 CLUSTER: smp
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           5103575  high-mem     mocv  username  R       0:18      1 smp-512-n1
+             JOBID PARTITION     NAME        USER ST       TIME  NODES NODELIST(REASON)
+          20802819  high-mem     mocv    username  R       0:08      1 smp-2048-n0
 
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ tail mocvnhlysm.out
+
+[username@login1 mocvnhlysm_1N.24C_OMPI_SMP] : tail mocvnhlysm.out
 |---------------------------------------------------
 
- NSTEP =      500   TIME(PS) =    2021.000  TEMP(K) =   300.08  PRESS =     0.0
- Etot   =   -292450.7926  EKtot   =     68100.1600  EPtot      =   -360550.9527
- BOND   =       534.0932  ANGLE   =      1306.5392  DIHED      =      1661.1194
- 1-4 NB =       555.1360  1-4 EEL =      4509.5203  VDWAALS    =     51060.9002
- EELEC  =   -420178.2610  EHBOND  =         0.0000  RESTRAINT  =         0.0000
- Ewald error estimate:   0.1946E-03
+ NSTEP =      500   TIME(PS) =    2021.000  TEMP(K) =   300.79  PRESS =     0.0
+ Etot   =   -292505.1896  EKtot   =     68260.7485  EPtot      =   -360765.9380
+ BOND   =       505.5351  ANGLE   =      1282.1948  DIHED      =      1665.2778
+ 1-4 NB =       554.2510  1-4 EEL =      4547.0025  VDWAALS    =     51205.2089
+ EELEC  =   -420525.4082  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ Ewald error estimate:   0.2093E-03
  ------------------------------------------------------------------------------
+```
 
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$
+Every job submission is assigned a "Job ID". In this case it is 20802819.
 
-Every job submission is assigned a "Job ID". In this case it is 5103575.
+Use the squeue command to check on the status of submitted jobs. The -M option is to specify the cluster and the -u 
+flag is used to only output information for a particular username.
 
-Use the squeue command to check on the status of submitted jobs. The -M option is to specify the cluster and the -u flag is used to only output information for a particular username.
-
+```commandline
 [username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ echo $USER
 username
 
@@ -644,115 +588,103 @@ username
 CLUSTER: smp
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
              
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ tail -30 mocvnhlysm.out
-|     Total               14.01    5.51
+[username@login1 mocvnhlysm_1N.24C_OMPI_SMP] : tail -30 mocvnhlysm.out
+|     Total               13.38    5.03
 
 |  PME Load Balancing CPU Time, Average for All Tasks:
 |
 |     Routine                 Sec        %
 |     ------------------------------------
 |     Atom Reassign           0.01    0.00
-|     Image Reassign          0.01    0.00
+|     Image Reassign          0.00    0.00
 |     FFT Reassign            0.01    0.00
 |     ------------------------------------
 |     Total                   0.02    0.01
 
 |  Final Performance Info:
 |     -----------------------------------------------------
-|     Average timings for last       0 steps:
-|     Elapsed(s) =       0.07 Per Step(ms) =   Infinity
-|         ns/day =       0.00   seconds/ns =   Infinity
+|     Average timings for last       1 steps:
+|     Elapsed(s) =       0.00 Per Step(ms) =       4.89
+|         ns/day =      35.34   seconds/ns =    2444.95
 |
 |     Average timings for all steps:
-|     Elapsed(s) =     254.36 Per Step(ms) =      50.87
-|         ns/day =       3.40   seconds/ns =   25436.13
+|     Elapsed(s) =     269.50 Per Step(ms) =      53.90
+|         ns/day =       3.21   seconds/ns =   26949.99
 |     -----------------------------------------------------
 
-|  Master Setup CPU time:            0.54 seconds
-|  Master NonSetup CPU time:       254.10 seconds
-|  Master Total CPU time:          254.64 seconds     0.07 hours
+|  Master Setup CPU time:            0.53 seconds
+|  Master NonSetup CPU time:       264.30 seconds
+|  Master Total CPU time:          264.83 seconds     0.07 hours
 
-|  Master Setup wall time:           3    seconds
-|  Master NonSetup wall time:      254    seconds
-|  Master Total wall time:         257    seconds     0.07 hours
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$
+|  Master Setup wall time:           2    seconds
+|  Master NonSetup wall time:      270    seconds
+|  Master Total wall time:         272    seconds     0.08 hours
+```
 
 In the time needed to write the descriptions, the job had completed.
 
 If you leave out the -u option to squeue, you get reporting of everyone's jobs on the specified cluster:
-
-[username@login1 mocvnhlysm_1N.24C_OMPI_SMP]$ squeue -M smp
+```commandline
+[username@login1 mocvnhlysm_1N.24C_OMPI_SMP] : squeue -M smp
 CLUSTER: smp
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           5046724       smp desf_y_1 sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046730       smp isof_y_1 sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046732       smp enfl_y_1 sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046760       smp enfl_pf_ sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046761       smp enfl_pcl sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046762       smp isof_pcl sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046763       smp isof_poc sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046773       smp desf_pf_ sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046780       smp desf_poc sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046853       smp desf_bo_ sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           5046869       smp isof_bo_ sadowsky PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4304639       smp run_mrs.    taa80 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158825       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158826       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158827       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158828       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158829       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158830       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158831       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158832       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158833       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158834       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158835       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158836       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158837       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158838       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158839       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158840       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158841       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158842       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158843       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           3158844       smp methane/    sum57 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4684270       smp  reverse   has197 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4684271       smp generate   has197 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120436  high-mem     chr7 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120437  high-mem     chr6 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120438  high-mem     chr5 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120439  high-mem     chr4 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120440  high-mem     chr3 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120441  high-mem     chr2 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4120443  high-mem     chr1 kowaae22 PD       0:00      1 (AssocGrpCPURunMinutesLimit)
-           4684277       smp  reverse   has197 PD       0:00      1 (Dependency)
-           4684278       smp generate   has197 PD       0:00      1 (Dependency)
-           5097014  high-mem      eom   jmb503 PD       0:00      1 (MaxCpuPerAccount)
-       4917460_468       smp   canP13    ryanp PD       0:00      1 (launch failed requeued held)
-           5085232  high-mem T2T_CENP   mam835  R 2-11:54:39      1 smp-256-n2
-           5085230  high-mem T2T_CENP   mam835  R 2-11:54:49      1 smp-256-n1
-           5091263       smp bowtie_c   sat143  R    9:48:55      1 smp-n192
-           5080187  high-mem LCuH_dim   yuz171  R 1-16:03:36      1 smp-3072-n1
-           5086871       smp 24-1_17-    jsh89  R 1-13:40:04      1 smp-n86
-           5095388       smp sampled_   sem156  R    1:04:09      1 smp-n20
-           5095387       smp sampled_   sem156  R    1:23:19      1 smp-n21
-           5095386       smp sampled_   sem156  R    1:47:10      1 smp-n16
-           5095385       smp sampled_   sem156  R    2:20:17      1 smp-n5
-           5095384       smp sampled_   sem156  R    2:23:30      1 smp-n11
-           5095382       smp sampled_   sem156  R    2:31:08      1 smp-n6
-           5095378       smp sampled_   sem156  R    3:14:25      1 smp-n3
-       5089347_250       smp   RFshim   ans372  R    2:30:41      1 smp-n195
-       5089347_249       smp   RFshim   ans372  R    2:31:14      1 smp-n98
-       5089347_248       smp   RFshim   ans372  R    2:32:59      1 smp-n152
-       5089347_247       smp   RFshim   ans372  R    2:34:46      1 smp-n111
-       5089347_246       smp   RFshim   ans372  R    2:35:51      1 smp-n51
+          20140070  high-mem     mocv   mts178 PD       0:00      1 (AssocGrpBillingMinutes)
+          17788936  high-mem scenic_c   amz138 PD       0:00      1 (AssocGrpBillingMinutes)
+          17788920  high-mem scenic_c   amz138 PD       0:00      1 (AssocGrpBillingMinutes)
+          17716353  high-mem scenic_c   amz138 PD       0:00      1 (AssocGrpBillingMinutes)
+          17715494  high-mem scenic_c   amz138 PD       0:00      1 (AssocGrpBillingMinutes)
+          20303173  high-mem my_freef   aad100 PD       0:00      1 (MaxMemoryPerAccount)
+          20303184  high-mem my_freef   aad100 PD       0:00      1 (MaxMemoryPerAccount)
+          20304554  high-mem my_freef   aad100 PD       0:00      1 (MaxMemoryPerAccount)
+    20801826_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801825_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801824_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801823_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801822_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801821_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801820_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+    20801819_[0-1]  high-mem postproc knoneman PD       0:00      1 (MaxCpuPerAccount)
+          20802337  high-mem 1-3_cati   nam340 PD       0:00      1 (Resources)
+          20802065  high-mem baybe_se    kwl20 PD       0:00      1 (Priority)
+          20802849  high-mem 1-3_cati   nam340 PD       0:00      1 (Priority)
+        20801808_0  high-mem postproc knoneman  R      41:56      1 smp-1024-n8
+        20801807_0  high-mem postproc knoneman  R      46:53      1 smp-1024-n2
+        20801806_0  high-mem postproc knoneman  R      49:14      1 smp-1024-n1
+        20801804_0  high-mem postproc knoneman  R      57:39      1 smp-1024-n3
+        20801802_0  high-mem postproc knoneman  R    1:01:04      1 smp-1024-n1
+        20801805_0  high-mem postproc knoneman  R      56:49      1 smp-1024-n7
+        20801803_0  high-mem postproc knoneman  R      59:12      1 smp-1024-n8
+        20801801_0  high-mem postproc knoneman  R    1:10:57      1 smp-1024-n7
+        20801800_0  high-mem postproc knoneman  R    1:13:51      1 smp-1024-n2
+        20801773_0  high-mem postproc knoneman  R    2:29:18      1 smp-1024-n6
+          20802776  high-mem workload    ziq15  R      14:51      1 smp-1024-n5
+          20782726  high-mem   Job523    moe13  R 3-09:05:20      1 smp-1024-n3
+          20802442  high-mem Glyoxal_    bea60  R      26:22      1 smp-1024-n3
+          20802443  high-mem Glyoxal_    bea60  R      26:22      1 smp-1024-n5
+          20802447  high-mem Glyoxal_    bea60  R      26:22      1 smp-1024-n5
+          20774674  high-mem PT-orca-   jml230  R 4-22:39:36      1 smp-2048-n1
+          20800966  high-mem benzene_   nam340  R    9:21:39      1 smp-2048-n0
+          20800875  high-mem  cc-pvqz   nam340  R    9:42:57      1 smp-1024-n5
+          20779618  high-mem xene-neu   nam340  R 4-03:02:23      1 smp-1024-n4
+          20801648  high-mem 1-4_cati   nam340  R      45:10      1 smp-1024-n6
+          20801406    osiris full_mod    lom31  R    6:57:23      1 smp-n265
+          20800897      pliu    TS-06   yuz171  R    9:20:17      1 smp-n261
+          20802915      pliu cpptraj_    bim12  R       4:22      1 smp-n256
+          20802920      pliu cpptraj_    bim12  R       4:22      1 smp-n257
+          20802921      pliu cpptraj_    bim12  R       4:22      1 smp-n258
+          20802908      pliu cpptraj_    bim12  R       5:22      1 smp-n252
+          20802909      pliu cpptraj_    bim12  R       5:22      1 smp-n255
+          ...
+```
 
-3. Adjusting Job Parameters and Checking their Status
-GPU Cluster Example 1
+## Adjusting Job Parameters and Checking their Status
+
+### GPU Cluster Example 1 TODO
 
 Now let's take a look at a job submission script to the gpu cluster
 
-[username@login1 ~]$ cd
+```commandline
+[username@login1 ~]$ cd ..
 
 [username@login1 ~]$ cd mocvnhlysm_1titanX.1C
 
@@ -795,6 +727,7 @@ nvidia-smi
 
           $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
                           -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
+```
 
 The content of this job submission script is similar to the one for the smp cluster, with key differences in the SLURM 
 directives and the specification of the GPU-accelerated Amber package and executable.
@@ -810,6 +743,7 @@ Here, we are requesting
 
 We submit the job using the sbatch command.
 
+```commandline
 [username@login1 mocvnhlysm_1titanX.1C]$ sbatch amber.slurm
 Submitted batch job 260052 on cluster gpu
 
@@ -828,11 +762,11 @@ CLUSTER: gpu
  1-4 NB =       555.5940  1-4 EEL =      4530.8677  VDWAALS    =     51423.4399
  EELEC  =   -420605.5206  EHBOND  =         0.0000  RESTRAINT  =         0.0000
  ------------------------------------------------------------------------------
-
-[username@login1 mocvnhlysm_1titanX.1C]$
+```
 
 While this job is running, let's run the other GPU-accelerated example:
 
+```commandline
 [username@login1 mocvnhlysm_1titanX.1C]$ cd ../mocvnhlysm_2GTX1080.2C/
 
 [username@login1 mocvnhlysm_2GTX1080.2C]$ cat amber.slurm
@@ -870,6 +804,7 @@ nvidia-smi
 mpirun -n $SLURM_NTASKS \
           $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
                           -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
+```
 
 In this example, we are requesting:
 
@@ -881,6 +816,7 @@ In this example, we are requesting:
 
 Submit the job using sbatch and check on the queue
 
+```commandline
 [username@login1 mocvnhlysm_2GTX1080.2C]$ squeue -M gpu -u $USER
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -894,8 +830,7 @@ CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
             260053   gtx1080   gpus-2  username  R       0:04      1 gpu-n25
             260052    titanx   gpus-1  username  R       6:23      1 gpu-stage06
-
-[username@login1 mocvnhlysm_2GTX1080.2C]$
+```
 
 You see that we now have two jobs running on the GPU cluster, one on the titanx partition and the other on the gtx1080 
 partition.
@@ -906,87 +841,110 @@ is there any way I can see the state of the cluster and the partitions?
 
 You can use the sinfo command to list the current state.
 
-[username@login1 mocvnhlysm_2GTX1080.2C]$ sinfo -M gpu
+```commandline
+[username@login1 ~] : sinfo -M gpu
 CLUSTER: gpu
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-gtx1080*     up   infinite      1  drain gpu-stage08
-gtx1080*     up   infinite     13    mix gpu-n[16-19,22-25],gpu-stage[09-11,13-14]
-gtx1080*     up   infinite      3   idle gpu-n[20-21],gpu-stage12
-titanx       up   infinite      4    mix gpu-stage[02,04-06]
-titanx       up   infinite      3   idle gpu-stage[01,03,07]
-k40          up   infinite      1   idle smpgpu-n0
-v100         up   infinite      1    mix gpu-n27
-power9       up   infinite      4   idle ppc-n[1-4]
-scavenger    up   infinite      1  drain gpu-stage08
-scavenger    up   infinite     18    mix gpu-n[16-19,22-25,27],gpu-stage[02,04-06,09-11,13-14]
-scavenger    up   infinite      7   idle gpu-n[20-21],gpu-stage[01,03,07,12],smpgpu-n0
-a100         up   infinite      1    mix gpu-n28
-a100         up   infinite      2   idle gpu-n[29-30]
+PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
+a100*                up   infinite     12    mix gpu-n[33-44]
+a100_multi           up   infinite      8    mix gpu-n[46-50,52-54]
+a100_multi           up   infinite      2   idle gpu-n[45,51]
+preempt              up   infinite     15    mix gpu-n[46-50,52-54,58-59,61-62,69-70],mems-n0
+preempt              up   infinite     13  alloc gpu-n[55-57,60,63-68,71-73]
+preempt              up   infinite      2   idle gpu-n[45,51]
+a100_nvlink          up   infinite      4    mix gpu-n[28,30-32]
+a100_nvlink          up   infinite      1  alloc gpu-n29
+a100_nvlink_multi    up   infinite      4    mix gpu-n[28,30-32]
+a100_nvlink_multi    up   infinite      1  alloc gpu-n29
+l40s                 up   infinite      6    mix gpu-n[58-59,61-62,69-70]
+l40s                 up   infinite     13  alloc gpu-n[55-57,60,63-68,71-73]
+isenocak             up   infinite      2    mix gpu-n[26-27]
+eschneider           up   infinite      4   idle ppc-n[1-4]
+eschneider           up   infinite      1   down ppc-n0
+jmendoza-arenas      up   infinite      1    mix mems-n0
+
+```
 
 To see all the cluster info, pass a comma separate list of cluster names to the -M flag
 
-[username@login1 mocvnhlysm_2GTX1080.2C]$ sinfo -M smp,gpu,mpi,htc
+```commandline
+[username@login1 ~] : sinfo -M smp,gpu,mpi,htc
 CLUSTER: gpu
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-gtx1080*     up   infinite      1  drain gpu-stage08
-gtx1080*     up   infinite     13    mix gpu-n[16-19,22-25],gpu-stage[09-11,13-14]
-gtx1080*     up   infinite      3   idle gpu-n[20-21],gpu-stage12
-titanx       up   infinite      4    mix gpu-stage[02,04-06]
-titanx       up   infinite      3   idle gpu-stage[01,03,07]
-k40          up   infinite      1   idle smpgpu-n0
-v100         up   infinite      1    mix gpu-n27
-power9       up   infinite      4   idle ppc-n[1-4]
-scavenger    up   infinite      1  drain gpu-stage08
-scavenger    up   infinite     18    mix gpu-n[16-19,22-25,27],gpu-stage[02,04-06,09-11,13-14]
-scavenger    up   infinite      7   idle gpu-n[20-21],gpu-stage[01,03,07,12],smpgpu-n0
-a100         up   infinite      1    mix gpu-n28
-a100         up   infinite      2   idle gpu-n[29-30]
+PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
+a100*                up   infinite     12    mix gpu-n[33-44]
+a100_multi           up   infinite      8    mix gpu-n[46-50,52-54]
+a100_multi           up   infinite      2   idle gpu-n[45,51]
+preempt              up   infinite     15    mix gpu-n[46-50,52-54,58-59,61-62,69-70],mems-n0
+preempt              up   infinite     13  alloc gpu-n[55-57,60,63-68,71-73]
+preempt              up   infinite      2   idle gpu-n[45,51]
+a100_nvlink          up   infinite      4    mix gpu-n[28,30-32]
+a100_nvlink          up   infinite      1  alloc gpu-n29
+a100_nvlink_multi    up   infinite      4    mix gpu-n[28,30-32]
+a100_nvlink_multi    up   infinite      1  alloc gpu-n29
+l40s                 up   infinite      6    mix gpu-n[58-59,61-62,69-70]
+l40s                 up   infinite     13  alloc gpu-n[55-57,60,63-68,71-73]
+isenocak             up   infinite      2    mix gpu-n[26-27]
+eschneider           up   infinite      4   idle ppc-n[1-4]
+eschneider           up   infinite      1   down ppc-n0
+jmendoza-arenas      up   infinite      1    mix mems-n0
 
 CLUSTER: htc
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-htc*         up   infinite     11    mix htc-n[28-29,100-103,107-110,112]
-htc*         up   infinite      2  alloc htc-n[27,105]
-htc*         up   infinite     29   idle htc-n[0-26,30-31]
-scavenger    up   infinite     11    mix htc-n[28-29,100-103,107-110,112]
-scavenger    up   infinite      2  alloc htc-n[27,105]
-scavenger    up   infinite     29   idle htc-n[0-26,30-31]
+PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+htc*          up   infinite      1  inval htc-n26
+htc*          up   infinite      2  down* htc-n[76-77]
+htc*          up   infinite      2   drng htc-1024-n3,htc-n72
+htc*          up   infinite     30    mix htc-1024-n[0,2],htc-n[24-25,27,29-35,39,59-63,68,70-71,73-75,83-85,89-91]
+htc*          up   infinite      1  alloc htc-n86
+htc*          up   infinite     36   idle htc-1024-n1,htc-n[28,36-38,40-58,64-67,69,78-82,87-88]
+preempt       up   infinite      1  inval htc-n26
+preempt       up   infinite      2  down* htc-n[76-77]
+preempt       up   infinite      2   drng htc-1024-n3,htc-n72
+preempt       up   infinite     30    mix htc-1024-n[0,2],htc-n[24-25,27,29-35,39,59-63,68,70-71,73-75,83-85,89-91]
+preempt       up   infinite      1  alloc htc-n86
+preempt       up   infinite     38   idle htc-1024-n1,htc-n[28,36-38,40-58,64-67,69,78-82,87-88,92-93]
+vcooper       up   infinite      1   idle htc-n92
+seyoungkim    up   infinite      1   idle htc-n93
 
 CLUSTER: mpi
-PARTITION    AVAIL  TIMELIMIT  NODES  STATE NODELIST
-opa*            up   infinite      2  down* opa-n[63,77]
-opa*            up   infinite     81  alloc opa-n[0-45,50-53,55-56,61-62,64-76,78-83,88-95]
-opa*            up   infinite     12   idle opa-n[46-49,57-60,84-87]
-opa*            up   infinite      1   down opa-n54
-opa-high-mem    up   infinite     36  alloc opa-n[96-131]
-ib              up   infinite      6   resv ib-n[0-3,12-13]
-ib              up   infinite     12  alloc ib-n[4-5,7-11,18-19,26-28]
-ib              up   infinite     14   idle ib-n[6,14-17,20-25,29-31]
-scavenger       up   infinite      2  down* opa-n[63,77]
-scavenger       up   infinite    117  alloc opa-n[0-45,50-53,55-56,61-62,64-76,78-83,88-131]
-scavenger       up   infinite     12   idle opa-n[46-49,57-60,84-87]
-scavenger       up   infinite      1   down opa-n54
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+mpi*           up   infinite      1 drain* mpi-n121
+mpi*           up   infinite      5  down* mpi-n[104-105,119,132-133]
+mpi*           up   infinite      1  drain mpi-n61
+mpi*           up   infinite    118  alloc mpi-n[0-19,26-60,62-69,72-94,96-103,106-117,122-131,134-135]
+mpi*           up   infinite     11   idle mpi-n[20-25,70-71,95,118,120]
+ndr            up   infinite      3  down* mpi-n[137-138,144]
+ndr            up   infinite      2  alloc mpi-n[141-142]
+ndr            up   infinite     13   idle mpi-n[136,139-140,143,145-153]
+preempt        up   infinite      1 drain* mpi-n121
+preempt        up   infinite      5  down* mpi-n[104-105,119,132-133]
+preempt        up   infinite      1  drain mpi-n61
+preempt        up   infinite    118  alloc mpi-n[0-19,26-60,62-69,72-94,96-103,106-117,122-131,134-135]
+preempt        up   infinite     11   idle mpi-n[20-25,70-71,95,118,120]
+preempt_ndr    up   infinite      3  down* mpi-n[137-138,144]
+preempt_ndr    up   infinite      2  alloc mpi-n[141-142]
+preempt_ndr    up   infinite     13   idle mpi-n[136,139-140,143,145-153]
 
 CLUSTER: smp
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-smp*         up   infinite      3  down* smp-n[0,8,151]
-smp*         up   infinite    124    mix smp-n[1,24-32,34-37,39-40,42-44,47-49,51-53,55,57-58,60,62-63,65-66,68-69,73-75,77,80-82,84-92,96-98,101-103,105-107,109-111,113-114,116,119,126-127,131-132,134-138,140,143-144,150,152-153,157-165,167-168,171,173-181,183-184,187,189-200,202,204-205,207-208,210]
-smp*         up   infinite     49  alloc smp-n[2,4-6,11,13-14,16,20-21,23,33,38,41,50,54,56,59,61,64,67,70-71,78-79,99-100,104,108,112,115,121-122,129,133,139,142,145,154-156,166,169-170,182,185,188,201,206]
-smp*         up   infinite     30   idle smp-n[3,7,9-10,12,15,19,22,45-46,72,76,83,93-95,117-118,120,128,130,141,146-149,172,186,203,209]
-high-mem     up   infinite      6    mix smp-256-n[1-2],smp-3072-n[0-3]
-high-mem     up   infinite      1  alloc smp-nvme-n1
-high-mem     up   infinite      3   idle smp-512-n[1-2],smp-1024-n0
-legacy       up   infinite      2    mix legacy-n[13,16]
-legacy       up   infinite      5  alloc legacy-n[7-11]
-legacy       up   infinite     12   idle legacy-n[0-6,14-15,17-19]
-legacy       up   infinite      1   down legacy-n12
-scavenger    up   infinite      3  down* smp-n[0,8,151]
-scavenger    up   infinite    132    mix legacy-n[13,16],smp-256-n[1-2],smp-3072-n[0-3],smp-n[1,24-32,34-37,39-40,42-44,47-49,51-53,55,57-58,60,62-63,65-66,68-69,73-75,77,80-82,84-92,96-98,101-103,105-107,109-111,113-114,116,119,126-127,131-132,134-138,140,143-144,150,152-153,157-165,167-168,171,173-181,183-184,187,189-200,202,204-205,207-208,210]
-scavenger    up   infinite     55  alloc legacy-n[7-11],smp-n[2,4-6,11,13-14,16,20-21,23,33,38,41,50,54,56,59,61,64,67,70-71,78-79,99-100,104,108,112,115,121-122,129,133,139,142,145,154-156,166,169-170,182,185,188,201,206],smp-nvme-n1
-scavenger    up   infinite     45   idle legacy-n[0-6,14-15,17-19],smp-512-n[1-2],smp-1024-n0,smp-n[3,7,9-10,12,15,19,22,45-46,72,76,83,93-95,117-118,120,128,130,141,146-149,172,186,203,209]
-scavenger    up   infinite      1   down legacy-n12
+smp*         up   infinite     13    mix smp-n[156,158,201,214,217,228-229,233,240,246,249,251,266]
+smp*         up   infinite     81  alloc smp-n[157,159-200,202-210,215-216,218-227,230-232,234-239,241-245,247-248,250]
+high-mem     up   infinite      1  down$ smp-1024-n0
+high-mem     up   infinite      4    mix smp-1024-n[3-5],smp-2048-n0
+high-mem     up   infinite      6  alloc smp-1024-n[1-2,6-8],smp-2048-n1
+preempt      up   infinite      1  inval osiris-n1
+preempt      up   infinite      1  down$ smp-1024-n0
+preempt      up   infinite     30    mix osiris-n0,smp-1024-n[3-5],smp-2048-n0,smp-n[156,158,201,214,217,228-229,233,240,246,249,251-252,255-266]
+preempt      up   infinite     90  alloc smp-1024-n[1-2,6-8],smp-2048-n1,smp-n[157,159-200,202-211,215-216,218-227,230-232,234-239,241-245,247-248,250,253-254]
+preempt      up   infinite      1   idle smp-n212
+pliu         up   infinite     11    mix smp-n[252,255-264]
+pliu         up   infinite      3  alloc smp-n[211,253-254]
+pliu         up   infinite      1   idle smp-n212
+osiris       up   infinite      1  inval osiris-n1
+osiris       up   infinite      2    mix osiris-n0,smp-n265
+```
 
 You can use a similar syntax for the squeue command to see all the jobs you have submitted.
 
+```commandline
 [username@login1 mocvnhlysm_2GTX1080.2C]$ squeue -M smp,gpu,mpi,htc -u $USER
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -1023,11 +981,13 @@ CLUSTER: mpi
 CLUSTER: smp
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            5105649  high-mem     mocv  username  R       0:28      1 smp-512-n1
+```
 
 ### Example 3: Changing the partition
 
 Next, we will change the job submission script to submit to the v100 partition on the gpu cluster
 
+```commandline
 [username@login1 ~]$ cp -rp mocvnhlysm_1titanX.1C mocvnhlysm_1v100.1C
 
 [username@login1 ~]$ cd mocvnhlysm_1v100.1C
@@ -1094,10 +1054,12 @@ JobId=260056 JobName=gpus-1
    Power=
    TresPerNode=gpu:1
    MailUser=(null) MailType=NONE
+```
 
 If you realize that you made a mistake in the inputs for your job submission script, you can cancel the job with the 
 `scancel` command:
 
+```commandline
 [username@login1 mocvnhlysm_1v100.1C]$ squeue -M smp,gpu,mpi,htc -u $USER
 CLUSTER: gpu
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -1128,181 +1090,227 @@ CLUSTER: mpi
 
 CLUSTER: smp
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+```
 
 That's it! Once you become familiar with these handful of commands, you should become proficient in leveraging all 
-the compute-resources for your research.
+the compute-resources for your research. The hardest part is crafting the job submission script.
 
-The hardest part is crafting the job submission script.
-
-CRCD is building a collection of examples within the directory `/ihome/crc/how_to_run/` that might address your 
-specific application.
+---
 
 # CRCD Helper Scripts
 
-For your convenience, the CRCD maintains some wrappers for common Slurm commands 
+For your convenience, the CRCD maintains some wrappers for gathering info from they system
 
-## Checking Disk Quota
+## Checking Storage Quotas
 
 Checking disk quota with crc-quota
 
+```commandline
 [username@login1 ~]$ crc-quota
 User: 'username'
 -> ihome: 70.11 GB / 75.0 GB
 
 Group: 'groupname'
 -> bgfs: 35.91 GB / 5.0 TB
+```
 
 ## SLURM Allocation Details
 
-View your group's SLURM allocation details with crc-usage. Using this command alone will show the details for your user account's default allocation.
+View your group's SLURM allocation details with crc-usage. Using this command alone will show the details for your user
+account's default allocation.
 
-[nlc60@login1 ~] : crc-usage
+```commandline
+[username@login1 ~] : crc-usage 
 Please enter your CRCD login password:
 
 +-----------------------------------------------------------------------------+
-|              Resource Allocation Request Information for 'sam'              |
+|        Resource Allocation Request Information for 'groupname'              |
 +---------+--------------------------------------------+----------------------+
 |    ID   |                   TITLE                    |   EXPIRATION DATE    |
 +---------+--------------------------------------------+----------------------+
-|  35544  |    Resource Allocation Request for sam     |      2025-05-01      |
+|  35737  |       groupname allocation on teach        |      2025-09-19      |
 +---------+--------------------------------------------+----------------------+
 |         |                  CLUSTER                   |    SERVICE UNITS     |
 |         |                    ----                    |         ----         |
-|         |                    smp                     |        100000        |
-|         |                    mpi                     |        100000        |
-|         |                    htc                     |        100000        |
-|         |                    gpu                     |        100000        |
+|         |                   teach                    |        50000         |
+|         |                                            |                      |
++---------+--------------------------------------------+----------------------+
+|  35744  |            Strategic Investment            |      2025-09-20      |
++---------+--------------------------------------------+----------------------+
+|         |                  CLUSTER                   |    SERVICE UNITS     |
+|         |                    ----                    |         ----         |
+|         |                    gpu                     |        250000        |
+|         |                    htc                     |        250000        |
+|         |                    mpi                     |        250000        |
+|         |                    smp                     |        250000        |
+|         |                   teach                    |        250000        |
+|         |                                            |                      |
++---------+--------------------------------------------+----------------------+
+|  36085  | Resource Allocation Request for groupname  |      2026-05-01      |
++---------+--------------------------------------------+----------------------+
+|         |                  CLUSTER                   |    SERVICE UNITS     |
+|         |                    ----                    |         ----         |
+|         |                    gpu                     |       1000000        |
+|         |                    htc                     |       1000000        |
+|         |                    smp                     |       1000000        |
+|         |                    mpi                     |       1000000        |
+|         |                   teach                    |       1000000        |
 |         |                                            |                      |
 +---------+--------------------------------------------+----------------------+
 +-----------------------------------------------------------------------------+
 |                     Summary of Usage Across All Clusters                    |
-+-------+-------------------------+-----------------------+-------------------+
-|  smp  |     TOTAL USED: 1279    |    AWARDED: 100000    |     % USED: 1     |
-+-------+-------------------------+-----------------------+-------------------+
-|       |           USER          |          USED         |       % USED      |
-|       |           ----          |          ----         |        ----       |
-|       |          chx33          |          1192         |         1         |
-|       |          leb140         |           42          |         <1        |
-|       |          yak73          |           28          |         <1        |
-|       |         kimwong         |           16          |         <1        |
-|       |          nlc60          |           0           |         <1        |
-|       |                         |                       |                   |
-+-------+-------------------------+-----------------------+-------------------+
-|  mpi  |    TOTAL USED: 45313    |    AWARDED: 100000    |     % USED: 45    |
-+-------+-------------------------+-----------------------+-------------------+
-|       |           USER          |          USED         |       % USED      |
-|       |           ----          |          ----         |        ----       |
-|       |          leb140         |         44799         |         44        |
-|       |          chx33          |          353          |         <1        |
-|       |          yak73          |          160          |         <1        |
-|       |         kimwong         |           2           |         <1        |
-|       |                         |                       |                   |
-+-------+-------------------------+-----------------------+-------------------+
-|  htc  |     TOTAL USED: 931     |    AWARDED: 100000    |     % USED: 0     |
-+-------+-------------------------+-----------------------+-------------------+
-|       |           USER          |          USED         |       % USED      |
-|       |           ----          |          ----         |        ----       |
-|       |         kimwong         |          621          |         <1        |
-|       |          yak73          |          218          |         <1        |
-|       |         fangping        |           49          |         <1        |
-|       |          chx33          |           41          |         <1        |
-|       |          djp81          |           1           |         <1        |
-|       |          leb140         |           1           |         <1        |
-|       |       clcgenomics       |           0           |         <1        |
-|       |                         |                       |                   |
-+-------+-------------------------+-----------------------+-------------------+
-|  gpu  |    TOTAL USED: 33257    |    AWARDED: 100000    |     % USED: 33    |
-+-------+-------------------------+-----------------------+-------------------+
-|       |           USER          |          USED         |       % USED      |
-|       |           ----          |          ----         |        ----       |
-|       |          yak73          |         32464         |         32        |
-|       |          leb140         |          712          |         <1        |
-|       |          chx33          |           74          |         <1        |
-|       |         kimwong         |           4           |         <1        |
-|       |         fangping        |           3           |         <1        |
-|       |                         |                       |                   |
-+-------+-------------------------+-----------------------+-------------------+
++----------+-------------------------+-----------------------+----------------+
+|  teach   |     TOTAL USED: 541     |    AWARDED: 1300000   |   % USED: 0    |
++----------+-------------------------+-----------------------+----------------+
+|          |           USER          |          USED         |     % USED     |
+|          |           ----          |          ----         |      ----      |
+|          |          user1          |          213          |       <1       |
+|          |          user2          |          168          |       <1       |
+|          |          user3          |           88          |       <1       |
+|          |          user4          |           35          |       <1       |
+|          |          user5          |           22          |       <1       |
+|          |          user6          |           11          |       <1       |
+|          |          user7          |           3           |       <1       |
+|          |       username          |           2           |       <1       |
+|          |                         |                       |                |
++----------+-------------------------+-----------------------+----------------+
+|   gpu    |    TOTAL USED: 36461    |    AWARDED: 1250000   |   % USED: 2    |
++----------+-------------------------+-----------------------+----------------+
+|          |           USER          |          USED         |     % USED     |
+|          |           ----          |          ----         |      ----      |
+|          |          user1          |         21776         |       1        |
+|          |          user2          |         10278         |       <1       |
+|          |          user3          |          3698         |       <1       |
+|          |          user4          |          425          |       <1       |
+|          |          user5          |          196          |       <1       |
+|          |          user6          |           88          |       <1       |
+|          |       username          |           0           |       <1       |
+|          |          user7          |           0           |       <1       |
+|          |                         |                       |                |
++----------+-------------------------+-----------------------+----------------+
+|   htc    |     TOTAL USED: 2371    |    AWARDED: 1250000   |   % USED: 0    |
++----------+-------------------------+-----------------------+----------------+
+|          |           USER          |          USED         |     % USED     |
+|          |           ----          |          ----         |      ----      |
+|          |          user1          |          1212         |       <1       |
+|          |          user2          |          649          |       <1       |
+|          |          user3          |          352          |       <1       |
+|          |          user4          |          149          |       <1       |
+|          |       username          |           6           |       <1       |
+|          |          user5          |           1           |       <1       |
+|          |          user6          |           1           |       <1       |
+|          |          user7          |           1           |       <1       |
+|          |          user8          |           0           |       <1       |
+|          |          user9          |           0           |       <1       |
+|          |                         |                       |                |
++----------+-------------------------+-----------------------+----------------+
+|   mpi    |    TOTAL USED: 122418   |    AWARDED: 1250000   |   % USED: 9    |
++----------+-------------------------+-----------------------+----------------+
+|          |           USER          |          USED         |     % USED     |
+|          |           ----          |          ----         |      ----      |
+|          |          user1          |         84399         |       6        |
+|          |          user2          |         36459         |       2        |
+|          |          user3          |          1423         |       <1       |
+|          |          user4          |          137          |       <1       |
+|          |                         |                       |                |
++----------+-------------------------+-----------------------+----------------+
+|   smp    |    TOTAL USED: 58433    |    AWARDED: 1250000   |   % USED: 4    |
++----------+-------------------------+-----------------------+----------------+
+|          |           USER          |          USED         |     % USED     |
+|          |           ----          |          ----         |      ----      |
+|          |          user1          |         39580         |       3        |
+|          |          user2          |         10215         |       <1       |
+|          |          user3          |          8057         |       <1       |
+|          |          user4          |          562          |       <1       |
+|          |       username          |           13          |       <1       |
+|          |          user5          |           6           |       <1       |
+|          |          user6          |           1           |       <1       |
+|          |          user7          |           0           |       <1       |
+|          |                         |                       |                |
++----------+-------------------------+-----------------------+----------------+
+```
 
-If your user account is associated with multiple SLURM allocations, you can use `crc-usage GROUPNAME` where `GROUPNAME` is the name of an alternate allocation your user belongs to. 
+If your user account is associated with multiple SLURM allocations, you can use `crc-usage GROUPNAME` where `GROUPNAME` 
+is the name of an alternate allocation your user belongs to. 
 
 ## Scanning for Idle Resources
 
 Look for available resources across the clusters with crc-idle.
 
 ```commandline
-[username@login1 ~]$  crc-idle
+[username@login1 ~] : crc-idle --help
+usage: crc-idle [-h] [-v] [-s] [-g] [-m] [-d] [-t] [-p PARTITION [PARTITION ...]]
+
+Display idle Slurm resources.
+
+optional arguments:
+  -h, --help                                      show this help message and exit
+  -v, --version                                   show program's version number and exit
+  -s, --smp                                       list idle resources on the smp cluster
+  -g, --gpu                                       list idle resources on the gpu cluster
+  -m, --mpi                                       list idle resources on the mpi cluster
+  -d, --htc                                       list idle resources on the htc cluster
+  -t, --teach                                     list idle resources on the teach cluster
+  -p PARTITION [PARTITION ...], --partition PARTITION [PARTITION ...]
+                                                  only include information for specific partitions
+[username@login1 ~] : crc-idle -s
+Cluster: smp, Partition: osiris
+======================================================================
+   1 nodes w/   0 idle cores 744.82G - 744.82G min-max free memory
+   1 nodes w/   4 idle cores 1,451.52G - 1,451.52G min-max free memory
+   1 nodes w/  16 idle cores 361.89G - 361.89G min-max free memory
+
 Cluster: smp, Partition: smp
-============================
-  2 nodes w/   1 idle cores
-  5 nodes w/   2 idle cores
-  1 nodes w/   3 idle cores
-  9 nodes w/   4 idle cores
-  2 nodes w/   5 idle cores
- 11 nodes w/   6 idle cores
- 30 nodes w/   7 idle cores
- 35 nodes w/   8 idle cores
-  1 nodes w/   9 idle cores
- 11 nodes w/  12 idle cores
-  4 nodes w/  15 idle cores
-  1 nodes w/  16 idle cores
-  1 nodes w/  18 idle cores
-  1 nodes w/  21 idle cores
-  1 nodes w/  22 idle cores
- 20 nodes w/  23 idle cores
+======================================================================
+  73 nodes w/   0 idle cores 3.41G - 747.68G min-max free memory
+   1 nodes w/   3 idle cores 390.08G - 390.08G min-max free memory
+   7 nodes w/   4 idle cores 426.35G - 704.15G min-max free memory
+   2 nodes w/   6 idle cores 163.77G - 197.95G min-max free memory
+   6 nodes w/   8 idle cores 157.56G - 684.24G min-max free memory
+   1 nodes w/  10 idle cores 712.87G - 712.87G min-max free memory
+   1 nodes w/  11 idle cores 640.69G - 640.69G min-max free memory
+   1 nodes w/  16 idle cores 227.38G - 227.38G min-max free memory
+   1 nodes w/  32 idle cores 402.70G - 402.70G min-max free memory
+   1 nodes w/  40 idle cores 742.75G - 742.75G min-max free memory
+
+Cluster: smp, Partition: preempt
+======================================================================
+  84 nodes w/   0 idle cores 0.00G - 1,780.40G min-max free memory
+   1 nodes w/   3 idle cores 390.08G - 390.08G min-max free memory
+   8 nodes w/   4 idle cores 426.35G - 1,451.52G min-max free memory
+   2 nodes w/   6 idle cores 163.77G - 197.95G min-max free memory
+   1 nodes w/   7 idle cores 393.01G - 393.01G min-max free memory
+   6 nodes w/   8 idle cores 157.56G - 684.24G min-max free memory
+   1 nodes w/  10 idle cores 712.87G - 712.87G min-max free memory
+   1 nodes w/  11 idle cores 640.69G - 640.69G min-max free memory
+   1 nodes w/  12 idle cores 836.24G - 836.24G min-max free memory
+   1 nodes w/  14 idle cores 712.15G - 712.15G min-max free memory
+   2 nodes w/  15 idle cores 374.82G - 993.46G min-max free memory
+   2 nodes w/  16 idle cores 227.38G - 361.89G min-max free memory
+   1 nodes w/  23 idle cores 1,034.66G - 1,034.66G min-max free memory
+   4 nodes w/  32 idle cores 4.35G - 1,208.29G min-max free memory
+   1 nodes w/  35 idle cores 439.60G - 439.60G min-max free memory
+   1 nodes w/  40 idle cores 742.75G - 742.75G min-max free memory
+   1 nodes w/  44 idle cores 1,442.72G - 1,442.72G min-max free memory
+   2 nodes w/  80 idle cores 1,278.01G - 1,311.72G min-max free memory
+   1 nodes w/  88 idle cores 1,461.82G - 1,461.82G min-max free memory
+   1 nodes w/  96 idle cores 1,364.35G - 1,364.35G min-max free memory
+   1 nodes w/ 136 idle cores 1,461.70G - 1,461.70G min-max free memory
+
 Cluster: smp, Partition: high-mem
-=================================
-  6 nodes w/   8 idle cores
-  2 nodes w/  12 idle cores
-Cluster: smp, Partition: legacy
-===============================
-  1 nodes w/   1 idle cores
-  1 nodes w/   8 idle cores
-Cluster: gpu, Partition: gtx1080
-================================
-  3 nodes w/   1 idle GPUs
-  1 nodes w/   2 idle GPUs
-  4 nodes w/   3 idle GPUs
-  4 nodes w/   4 idle GPUs
-Cluster: gpu, Partition: titanx
-===============================
-  1 nodes w/   1 idle GPUs
-  1 nodes w/   2 idle GPUs
-  1 nodes w/   3 idle GPUs
-  3 nodes w/   4 idle GPUs
-Cluster: gpu, Partition: k40
-============================
-  1 nodes w/   2 idle GPUs
-Cluster: gpu, Partition: v100
-=============================
- No idle GPUs
-Cluster: mpi, Partition: opa
-============================
- No idle cores
-Cluster: mpi, Partition: opa-high-mem
-=====================================
- No idle cores
-Cluster: mpi, Partition: ib
-===========================
- 14 nodes w/  20 idle cores
-Cluster: htc, Partition: htc
-============================
-  2 nodes w/   2 idle cores
-  1 nodes w/   5 idle cores
-  1 nodes w/   6 idle cores
-  1 nodes w/  10 idle cores
-  3 nodes w/  11 idle cores
-  1 nodes w/  12 idle cores
- 20 nodes w/  16 idle cores
-  4 nodes w/  24 idle cores
-  1 nodes w/  25 idle cores
-  1 nodes w/  37 idle cores
-  5 nodes w/  48 idle cores
+======================================================================
+   7 nodes w/   0 idle cores 0.00G - 1,780.40G min-max free memory
+   1 nodes w/  12 idle cores 836.24G - 836.24G min-max free memory
+   1 nodes w/  14 idle cores 712.15G - 712.15G min-max free memory
+   2 nodes w/  32 idle cores 4.35G - 1,208.29G min-max free memory
+
 ```
 
 ## Requesting an Interactive Session
 
 You can request an interactive session on a compute-node with `crc-interactive`:
 
+TODO
 ```commandline
 [username@login1 ~]$ crc-interactive --help
  crc-interactive -- An interactive Slurm helper
@@ -1374,49 +1382,50 @@ Wed Jan 26 08:42:04 2022
 [username@gpu-stage06 ~]$ exit
 exit
 
-[username@login1 ~]$
+[username@login1 ~]$ hostname
+login1.crc.pitt.edu
 ```
 
-Use the `-a` option to specify an account to debit SUs from if you don't want to use your default account:
+??? Note "Use the `-a` option to specify an account besides your default Slurm account"
 
-```commandline
-[username@login1 ~]$ crc-interactive -g -p titanx -n 1 -c 1 -u 1 -t 12 -a workshops
-srun: job 260079 queued and waiting for resources
-srun: job 260079 has been allocated resources
-
-[username@gpu-stage06 ~]$ scontrol show job 260079
-JobId=260079 JobName=bash
-   UserId=username(152289) GroupId=groupname(16260) MCS_label=N/A
-   Priority=2797 Nice=0 Account=workshops QOS=gpu-titanx-s
-   JobState=RUNNING Reason=None Dependency=(null)
-   Requeue=1 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
-   RunTime=00:00:10 TimeLimit=12:00:00 TimeMin=N/A
-   SubmitTime=2022-01-26T10:45:13 EligibleTime=2022-01-26T10:45:13
-   AccrueTime=2022-01-26T10:45:13
-   StartTime=2022-01-26T10:45:13 EndTime=2022-01-26T22:45:13 Deadline=N/A
-   PreemptEligibleTime=2022-01-26T10:45:13 PreemptTime=None
-   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2022-01-26T10:45:13
-   Partition=titanx AllocNode:Sid=login1:25474
-   ReqNodeList=(null) ExcNodeList=(null)
-   NodeList=gpu-stage06
-   BatchHost=gpu-stage06
-   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
-   TRES=cpu=1,mem=1G,node=1,billing=1,gres/gpu=1
-   Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
-   MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0
-   Features=(null) DelayBoot=00:00:00
-   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
-   Command=bash
-   WorkDir=/ihome/groupname/username
-   Power=
-   TresPerNode=gpu:1
-   MailUser=(null) MailType=NONE
-
-[username@gpu-stage06 ~]$ exit
-exit
-
-[username@login1 ~]$
-```
+    ```commandline
+    [username@login1 ~]$ crc-interactive -g -p titanx -n 1 -c 1 -u 1 -t 12 -a workshops
+    srun: job 260079 queued and waiting for resources
+    srun: job 260079 has been allocated resources
+    
+    [username@gpu-stage06 ~]$ scontrol show job 260079
+    JobId=260079 JobName=bash
+       UserId=username(152289) GroupId=groupname(16260) MCS_label=N/A
+       Priority=2797 Nice=0 Account=workshops QOS=gpu-titanx-s
+       JobState=RUNNING Reason=None Dependency=(null)
+       Requeue=1 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
+       RunTime=00:00:10 TimeLimit=12:00:00 TimeMin=N/A
+       SubmitTime=2022-01-26T10:45:13 EligibleTime=2022-01-26T10:45:13
+       AccrueTime=2022-01-26T10:45:13
+       StartTime=2022-01-26T10:45:13 EndTime=2022-01-26T22:45:13 Deadline=N/A
+       PreemptEligibleTime=2022-01-26T10:45:13 PreemptTime=None
+       SuspendTime=None SecsPreSuspend=0 LastSchedEval=2022-01-26T10:45:13
+       Partition=titanx AllocNode:Sid=login1:25474
+       ReqNodeList=(null) ExcNodeList=(null)
+       NodeList=gpu-stage06
+       BatchHost=gpu-stage06
+       NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+       TRES=cpu=1,mem=1G,node=1,billing=1,gres/gpu=1
+       Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
+       MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0
+       Features=(null) DelayBoot=00:00:00
+       OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+       Command=bash
+       WorkDir=/ihome/groupname/username
+       Power=
+       TresPerNode=gpu:1
+       MailUser=(null) MailType=NONE
+    
+    [username@gpu-stage06 ~]$ exit
+    exit
+    
+    [username@login1 ~]$
+    ```
 
 # Other Useful Wrapper Scripts
 
@@ -1451,10 +1460,10 @@ crc-sinfo - Show the status of the partitions of each cluster and their nodes
 
 --- 
 
-5. Resources and Asking for Help
+# Resources and Asking for Help
 
-    Website Home: https://crc.pitt.edu
-    Getting Started: https://crc.pitt.edu/getting-started/requesting-new-account
-    User Manual: https://crc-pages.pitt.edu/user-manual/
+- Website Home: https://crc.pitt.edu
+- Getting Started: https://crc.pitt.edu/getting-started/requesting-new-account
+- User Manual: https://crc-pages.pitt.edu/user-manual/
 
-The best way to get help on a specific issue is to submit a help ticket.
+The best way to get help on a specific issue is to submit a help ticket!
