@@ -41,7 +41,7 @@ use in your compute jobs.
 
 Quota: 5 TB (default allocation, no charge). Users can check their quota utilization using the `crc-quota` command.
 
-Additional storage can be purchased in 5 TB increments at a subsidized rate of $65 per TB per year.
+Additional storage can be purchased in 5 TB increments at a subsidized rate of $85 per TB per year.
 
 Permissions:
 
@@ -80,7 +80,7 @@ Please [submit the help request form](https://services.pitt.edu/TDClient/33/Port
 and someone from the team will provision the space for you.
 
 ### I've hit the limit on my initial 5TB provision on /ix or /ix1, how do I request more space?
-5 TB increments of extra storage are available for purchase at a subsidized rate of $65 per TB per year.
+5 TB increments of extra storage are available for purchase at a subsidized rate of $85 per TB per year.
 [Use this form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=D8BjnEQtuz0_&RequestorType=Service)
 to request additional storage space beyond 5 TB.
 
