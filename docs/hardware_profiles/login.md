@@ -9,7 +9,7 @@ tags:
 
 # Login Nodes
  
-Login nodes serve as the primary entrypoint for accessing the CRCD's computational resources. They provide secure command-line access, allowing users to submit jobs, manage files, and launch interactive tasks.
+Login nodes serve as the primary entrypoint for accessing the CRCD's computational resources. They provide secure command-line access over SSH, allowing users to submit jobs, manage files, and launch interactive tasks.
 
 Login nodes are a shared resource that provide fast network access and responsive storage for tasks such as preparing data, compiling code, or submitting jobs. **They are not intended for running large-scale analysis or compute-heavy tasks.** Running intensive computations directly on login nodes can slow down systems for all users, and built-in limits on CPU, memory, and runtime may prevent larger jobs from completing successfully. For analysis and compute-heavy tasks, users should submit jobs through Slurm to the compute nodes, which are designed to handle high-performance workloads.
 
