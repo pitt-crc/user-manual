@@ -88,13 +88,13 @@ nav:
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
-      - GPU: hardware_profiles/gpu.md
+      - Login Nodes: hardware_profiles/login.md
       - SMP: hardware_profiles/smp.md
       - MPI: hardware_profiles/mpi.md
       - HTC: hardware_profiles/htc.md
+      - GPU: hardware_profiles/gpu.md
       - TEACH: hardware_profiles/teach.md
       - VIZ: hardware_profiles/viz.md
-      - Login Nodes: hardware_profiles/login.md
   - Policies:
       - policies/job-scheduling-policy.md
       - policies/hardware-investing-policy.md
