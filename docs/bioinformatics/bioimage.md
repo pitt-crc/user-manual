@@ -31,6 +31,7 @@ QuPath
 [fangping@htc-n28 bin]$ module load java/24.0.1
 [fangping@htc-n28 bin]$ ./QuPath
 ```
+![](../_assets/img/bioinformatics/qupath.png)
 
 You will be running your own version of QuPath. You can use the GUI to install your own plugins.
 
