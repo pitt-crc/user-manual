@@ -3,7 +3,7 @@
 
 ## How to install and run your own version of biomedical image analysis tools?
 
-There are multiple complexes to handle biomedical image analysis tools on HPC environments. In general, these software runs as a desktop software application. Most of the software also provide plugins, and these plugins can only be installed in a specific folder. 
+There are multiple complexes to handle biomedical image analysis tools on HPC environments. In general, the software runs as a desktop software application. Most of the software also provide plugins, and these plugins can only be installed in a specific folder. 
 
 ## 1.	QuPath
 
