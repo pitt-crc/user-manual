@@ -1,9 +1,9 @@
 
-##How to install and run your own version of biomedical image analysis tools?
+# How to install and run your own version of biomedical image analysis tools?
 
 There are multiple complexes to handle biomedical image analysis tools on HPC environments. In general, these software runs as a desktop software application. Most of the software also provide plugins, and these plugins can only be installed in a specific folder. 
 
-#1.	QuPath
+## 1.	QuPath
 
 QuPath is an open-source software for bioimage analysis. QuPath is often used for whole slide images common in pathology, but it can be used for other microscopy images too. Indeed, QuPath was published and designed under the merits of being user-friendly and specific for visualization and computational challenges posed by whole slide images. Furthermore, it includes features with batch-processing and scripting functionality. The software runs as a desktop software application.
 
