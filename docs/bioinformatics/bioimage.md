@@ -9,15 +9,18 @@ QuPath is an open-source software for bioimage analysis. QuPath is often used fo
 
 Copy /software/rhel9/manual/install/qupath/0.6.0/QuPath-v0.6.0-Linux.tar.xz to your own folder.
 
+```commandline
 [fangping@login3 qupath]$ pwd
 /ix1/bioinformatics/qupath # replace this folder to your own folder
 [fangping@login3 qupath]$ cp /software/rhel9/manual/install/qupath/0.6.0/QuPath-v0.6.0-Linux.tar.xz .
 [fangping@login3 qupath]$ tar xf QuPath-v0.6.0-Linux.tar.xz
 [fangping@login3 qupath]$ ls
 QuPath  QuPath-v0.6.0-Linux.tar.xz
+```
 
 Logon ondemand.htc.crc.pitt.edu, Click Interactive Apps -> Desktop, Choose Number of Hours and Number of Cores, click Launch.
 
+```commandline
 [fangping@htc-n28 ~]$ cd /ix1/bioinformatics/qupath/QuPath/ # go to your path
 [fangping@htc-n28 QuPath]$ ls
 bin  lib
@@ -27,6 +30,7 @@ QuPath
 [fangping@htc-n28 bin]$ export XDG_RUNTIME_DIR="/tmp/${UID}" 
 [fangping@htc-n28 bin]$ module load java/24.0.1
 [fangping@htc-n28 bin]$ ./QuPath
+```
 
 You will be running your own version of QuPath. You can use the GUI to install your own plugins.
 
