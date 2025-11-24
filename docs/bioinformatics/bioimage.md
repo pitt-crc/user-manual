@@ -38,3 +38,7 @@ QuPath
 You will be running your own version of QuPath. You can use the GUI to install your own plugins.
 
 Note that QuPath includes features with batch-processing and scripting functionality. Thus you can submit batch jobs to run the scripts.
+
+## 2. Napari
+
+todo
