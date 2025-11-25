@@ -92,4 +92,4 @@ module use ~/modulefiles
 module load my_napari/0.6.6
 napari
 ```
-
+![](../_assets/img/bioinformatics/napari.png)
