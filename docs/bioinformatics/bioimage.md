@@ -93,3 +93,9 @@ module load my_napari/0.6.6
 napari
 ```
 ![](../_assets/img/bioinformatics/napari.png)
+
+You are running your own napari. You can click Plugins to install or manage your own plugins. https://napari.org/dev/plugins/index.html
+
+
+
+
