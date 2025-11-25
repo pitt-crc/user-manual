@@ -41,4 +41,55 @@ Note that QuPath includes features with batch-processing and scripting functiona
 
 ## 2. Napari
 
-todo
+napari is a fast, interactive, multi-dimensional image viewer for Python. It's designed for browsing, annotating, and analyzing large multi-dimensional images. It's built on top of Qt (for the GUI), vispy (for performant GPU-based rendering), and the scientific Python stack (numpy, scipy).
+
+https://napari.org/dev/tutorials/fundamentals/installation.html
+
+```commandline
+[fangping@login3 ~]$ # install a miniconda environment
+[fangping@login3 ~]$ cd /software/rhel9/manual/build/python
+[fangping@login3 python]$ bash Miniconda3-py311_24.4.0-0-Linux-x86_64.sh -b -p /ix1/bioinformatics/napari/0.6.6/python3.11
+PREFIX=/ix1/bioinformatics/napari/0.6.6/python3.11
+…
+[fangping@login3 python]$ cd /ix1/bioinformatics/napari/0.6.6/python3.11/bin
+[fangping@login3 bin]$ # install napari using this miniconda environment
+[fangping@login3 bin]$ ./python -m pip install "napari[all]"
+…
+Successfully installed IPython-9.7.0 …
+```
+
+You can also create your own napari module.
+
+```commandline
+[fangping@login3 bin]$ mkdir -p ~/modulefiles
+[fangping@login3 bin]$ cd ~/modulefiles/
+[fangping@login3 modulefiles]$ mkdir my_napari
+[fangping@login3 modulefiles]$ cd my_napari/
+[fangping@login3 my_napari]$ vi 0.6.6.lua # create 0.6.6.lua with the following contents
+[fangping@login3 my_napari]$ cat 0.6.6.lua
+-- Package Root
+local package_root = "/ix1/bioinformatics/napari/0.6.6/python3.11"
+
+-- Description
+whatis("Name: " .. myModuleName())
+whatis("Version: 0.6.6")
+whatis("Description:  Napari 0.6.6.")
+
+-- Environment Variables
+
+-- PATH Inclusions
+prepend_path("PATH", pathJoin(package_root, "bin"))
+prepend_path("LIBRARY_PATH", pathJoin(package_root, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(package_root, "lib"))
+```
+Replace the above /ix1/bioinformatics/napari/0.6.6/python3.11 to your own folder.
+
+Logon ondemand.htc.crc.pitt.edu, Interactive Apps -> Desktop, Choose Number of Hours and Number of Cores, click Launch.
+
+```commandline
+export XDG_RUNTIME_DIR="/tmp/${UID}"
+module use ~/modulefiles
+module load my_napari/0.6.6
+napari
+```
+
