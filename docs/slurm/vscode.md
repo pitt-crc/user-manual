@@ -13,6 +13,18 @@ A new Code server session will automatically be created on one of the HTC comput
 
 ![](../_assets/img/bioinformatics/code_server_2.png)
 
+### Installing Code-Server Extensions
+You can install any desired extensions from the Extensions sidebar on the left-hand side. This only needs to be done the first time you run Code Server, or whenever you need new extensions. I demonstrate installing Jupyter extensions.
+Search “Jupyter” from EXTENSIONS: MARKETPLACE, select a specific extension. Click “Install”
+
+![](../_assets/img/bioinformatics/code_server_3.png)
+
+The extensions will be installed under ~/.local/share/code-server.
+
+Now you can open Jupyter Notebooks.
+
+![](../_assets/img/bioinformatics/code_server_4.png)
+
 ## 3. Tunneling
 
 
