@@ -6,9 +6,9 @@ https://github.com/coder/code-server
 
 ### Launching a Code-Server
 Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> Code Server. Choose code server version, select Number of cores, Number of hours and Working Directory. Click Launch.
-
+![](../_assets/img/bioinformatics/code_server_1.png)
 A new Code server session will automatically be created on one of the HTC compute nodes. Once the session has been created, start the session.
-
+![](../_assets/img/bioinformatics/code_server_2.png)
 
 ## 3. Tunneling
 
