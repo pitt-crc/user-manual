@@ -48,7 +48,7 @@ Type “/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python
 ## 2. VSCode via VNC
 
 Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> VSCode on htc. Choose VSCode version, select Number of cores and Number of hours. Click Launch.
-You will run VSCode inside TurboVNC session. 
+You will run VSCode inside a TurboVNC session. 
 
 ![](../_assets/img/bioinformatics/vscode_1.png)
 
