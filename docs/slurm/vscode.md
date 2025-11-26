@@ -33,6 +33,18 @@ If you have not installed the basic the basic Python extension, install Python e
 
 ![](../_assets/img/bioinformatics/code_server_5.png)
 
+Start Command Palette…
+
+![](../_assets/img/bioinformatics/code_server_6.png)
+
+Type "Python: Select Interpreter" in the Command Palette and select this option. 
+
+![](../_assets/img/bioinformatics/code_server_7.png)
+
+Type “/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python”, and Choose this Conda Environment. Now you can use this conda environment to execute the codes in the cell2location tutorial Jupyter notebook.
+
+![](../_assets/img/bioinformatics/code_server_8.png)
+
 
 ## 3. Tunneling
 
