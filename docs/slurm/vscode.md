@@ -45,6 +45,13 @@ Type “/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python
 
 ![](../_assets/img/bioinformatics/code_server_8.png)
 
+## 2. VSCode via VNC
+
+Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> VSCode on htc. Choose VSCode version, select Number of cores and Number of hours. Click Launch.
+You will run VSCode inside TurboVNC session. 
+
+![](../_assets/img/bioinformatics/vscode_1.png)
+
 
 ## 3. Tunneling
 
