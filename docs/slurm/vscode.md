@@ -29,7 +29,7 @@ Now you can open Jupyter Notebooks.
 
 When your Jupyter notebooks depend on a customized conda environment, you can use customized conda environments in VS Code-Server. We have installed cell2location conda environment at /software/rhel9/manual/install/cell2location/0.1.4/python3.11, which can be used to execute the codes in the above Jupyter notebook.
 
-If you have not installed the basic the basic Python extension, install Python extension for Visual Studio Code. 
+If you have not installed the basic Python extension, install Python extension for Visual Studio Code. 
 
 ![](../_assets/img/bioinformatics/code_server_5.png)
 
