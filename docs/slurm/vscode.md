@@ -1,13 +1,26 @@
 # Interactive / Remote Computing with VS Code
 
+## Code Server
+Code server refers to a technology that enables running Visual Studio Code (VS Code) on a remote server and accessing it through a web browser. This setup provides a consistent development environment accessible from various devices, including laptops, tablets, and even low-powered machines.
+https://github.com/coder/code-server
+
+### Launching a Code-Server
+Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> Code Server. Choose code server version, select Number of cores, Number of hours and Working Directory. Click Launch.
+
+A new Code server session will automatically be created on one of the HTC compute nodes. Once the session has been created, start the session.
+
+
+## Tunneling
+
+
 This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRCD computing nodes.
 
-## Prerequisites
+### Prerequisites
 
 - The latest version of VS Code installed on your local machine
 - Latest version of the ["Remote Development" extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
-## Steps performed **only once**
+### Steps performed **only once**
 
 Add the following lines to the ssh config file on your local machine (~/.ssh/config) 
 and replace <name> with your Pitt username:
@@ -76,7 +89,7 @@ cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
 ```
 
-## Steps performed every time to connect your VS Code to the cluster
+### Steps performed every time to connect your VS Code to the cluster
 ---------------------------------------------------------------------
 
 From your local terminal, connect to the cluster using ssh htc and once logged in, 
@@ -95,7 +108,7 @@ Submitted batch job 1383495
 
 Open VS Code on your local machine and connect to your projects using `Remote Explorer` with `htcx` as the ssh target.
 
-## Changes you need to do to allocate resources with GPUs
+### Changes you need to do to allocate resources with GPUs
 ----------------------------------------------------------
 
 Add the following host to the ssh config file on your local machine (`~/.ssh/config`) and 
