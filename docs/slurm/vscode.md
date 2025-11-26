@@ -25,6 +25,10 @@ Now you can open Jupyter Notebooks.
 
 ![](../_assets/img/bioinformatics/code_server_4.png)
 
+### Using customized conda environments in Code-Server
+
+todo
+
 ## 3. Tunneling
 
 
