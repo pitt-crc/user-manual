@@ -1,6 +1,6 @@
 # Interactive / Remote Computing with VS Code
 
-## Code Server
+## 1. Code Server
 Code server refers to a technology that enables running Visual Studio Code (VS Code) on a remote server and accessing it through a web browser. This setup provides a consistent development environment accessible from various devices, including laptops, tablets, and even low-powered machines.
 https://github.com/coder/code-server
 
@@ -10,7 +10,7 @@ Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> Code Server. Choose c
 A new Code server session will automatically be created on one of the HTC compute nodes. Once the session has been created, start the session.
 
 
-## Tunneling
+## 3. Tunneling
 
 
 This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRCD computing nodes.
