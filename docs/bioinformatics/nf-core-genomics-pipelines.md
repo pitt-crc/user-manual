@@ -31,6 +31,10 @@ Point your browser to https://ondemand.htc.crc.pitt.edu
 
 4. Fill the webform, and click "Launch Workflow".
 
+## Guidelines
+
+todo
+
 [nf-core/rnaseq](https://nf-co.re/rnaseq/2.0)
 ---------------------------------------------
 
