@@ -38,6 +38,7 @@ Point your browser to https://ondemand.htc.crc.pitt.edu
 3. Parent path of the samplesheet is used to run the pipeline. -work-dir and outdir is relative to the parent path. In the above screenshot, parent path is /ix1/bioinformatics/nf-core/nf-core-rnaseq. Thus the working directory is /ix1/bioinformatics/nf-core/nf-core-rnaseq/work, and the outdir is /ix1/bioinformatics/nf-core/nf-core-rnaseq/results
 4. After you click Launch, nf-params.json and job.sbatch will be created in the parent path. job.sbatch will be automatically submitted to run the nf-core pipeline. 
 5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. If you keep -profile empty, the default config file will be used. You can also create your own config file and provide the absolute path to -profile. In the above screenshot, I have provided /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, in which I have modified clusterOptions to use a specific slurm account.
+6. Nf-core pipelines are inside folder /software/rhel9/manual/install/nf-core/pipelines/dec_2025
 
 [nf-core/rnaseq](https://nf-co.re/rnaseq/2.0)
 ---------------------------------------------
