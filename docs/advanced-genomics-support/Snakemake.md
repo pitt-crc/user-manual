@@ -1,3 +1,0 @@
-# Snakemake
-
-## Introduction to snakemake
