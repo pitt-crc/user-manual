@@ -15,8 +15,6 @@ theme:
   features:
     - content.code.copy
     - search.suggest
-    # - navigation.tabs
-    # - navigation.sections
     - navigation.top
     - navigation.indexes
     - content.code.annotate
@@ -88,11 +86,12 @@ nav:
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
+      - Overview: hardware_profiles/overview.md
       - Login Nodes: hardware_profiles/login.md
       - SMP: hardware_profiles/smp.md
       - MPI: hardware_profiles/mpi.md
-      - HTC: hardware_profiles/htc.md
       - GPU: hardware_profiles/gpu.md
+      - HTC: hardware_profiles/htc.md
       - TEACH: hardware_profiles/teach.md
       - VIZ: hardware_profiles/viz.md
   - Policies:

@@ -1,5 +1,4 @@
 ---
-title: TEACH Node Specifications
 tags:
   - CRC
   - Hardware
@@ -7,14 +6,12 @@ tags:
   - User Manual
 ---
 
-# TEACH Overview
+# TEACH Cluster
 
-The TEACH cluster make a subset of hardware on the CRCD system available for students and teachers to develop
-computational workflows around course materials without competing with research-oriented jobs.
-
-## Key Features
-
-- Consists of both CPU and GPU hardware
+The Teach cluster provides dedicated resources for classroom instruction and coursework. It offers a stable environment
+for students to learn HPC concepts, run assignments, and develop workflows without competing for resources with
+production research workloads. The Teach cluster is not suitable for research work, and should only be used to run
+jobs associated with classroom activities.
 
 ## Specifications
 
