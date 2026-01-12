@@ -96,6 +96,52 @@ napari
 
 You are running your own napari. You can click Plugins to install or manage your own plugins. https://napari.org/dev/plugins/index.html
 
+## 3. Fiji
 
+Fiji is an image processing package—a “batteries-included” distribution of ImageJ2, bundling a lot of plugins which facilitate scientific image analysis.
 
+https://imagej.net/software/fiji/
 
+```commandline
+[fangping@login3 20250709]$ pwd
+/ix1/bioinformatics/fiji/20250709 # replace this folder to your own folder
+[fangping@login3 20250709]$ cp /software/rhel9/manual/install/fiji/20250709/fiji-stable-linux64-jdk.zip .
+[fangping@login3 20250709]$ unzip fiji-stable-linux64-jdk.zip
+```
+
+Create a module.
+
+```commandline
+[fangping@login3 ~]$ mkdir -p ~/modulefiles
+[fangping@login3 ~]$ cd ~/modulefiles/
+[fangping@login3 modulefiles]$ mkdir my_fiji
+[fangping@login3 modulefiles]$ cd my_fiji
+[fangping@login3 my_fiji]$ vi 20250709.lua
+[fangping@login3 my_fiji]$ cat 20250709.lua
+local mroot = "/ix1/bioinformatics/fiji"
+local mdir = pathJoin(mroot, "20250709/Fiji.app")
+
+-- Add PATH, LD_LIBRARY_PATH, MANPATH, etc
+
+prepend_path("PATH",mdir)
+
+-- whatis("Name: "..pkgName)
+
+whatis("Name: "..myModuleName())
+whatis("Version: 20250709")
+whatis("Category: application")
+whatis("Description: Fiji is a batteries-included distribution of ImageJ—a popular, free scientific image processing application—which includes a lot of plugins organized into a coherent menu structure.")
+```
+
+Logon ondemand.htc.crc.pitt.edu, Interactive Apps -> Desktop, Choose Number of Hours and Number of Cores, click Launch.
+
+```commandline
+export XDG_RUNTIME_DIR="/tmp/${UID}"
+module use ~/modulefiles
+module load my_fiji/20250709
+fiji
+```
+
+![](../_assets/img/bioinformatics/fiji.png)
+
+You can click Plugins to install or manage your own Fiji plugins.
