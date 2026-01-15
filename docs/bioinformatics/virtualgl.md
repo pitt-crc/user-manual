@@ -15,3 +15,5 @@ module load fsl/6.0.7.18
 module load virtualgl/3.1.3 #load virtualgl
 vglrun fsleyes # use vglrun <command>
 ```
+
+![](../_assets/img/bioinformatics/virtualgl.png)
