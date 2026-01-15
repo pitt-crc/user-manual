@@ -10,7 +10,7 @@ VirtualGL is an open-source package that gives any Linux remote display software
 
 Logon ondemand.htc.crc.pitt.edu, Interactive Apps -> Desktop on gpu
 
-```
+```commandline
 module load fsl/6.0.7.18
 module load virtualgl/3.1.3 #load virtualgl
 vglrun fsleyes # use vglrun <command>
