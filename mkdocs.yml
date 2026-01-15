@@ -165,6 +165,7 @@ nav:
       - bioinformatics/EHR.md
       - bioinformatics/ollama.md
       - bioinformatics/bioimage.md
+      - bioinformatics/virtualgl.md
 
   - Supporting Code Optimization: code-optimization.md
 
