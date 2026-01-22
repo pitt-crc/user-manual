@@ -1,6 +1,6 @@
 # Slurm Batch Jobs
 A brief introduction to Slurm batch jobs and a simple example job can be found in our  
-[Getting Started section](https://crc.pitt.edu/getting-started/running-jobs-slurm).
+[Getting Started section](https://crc-pages.pitt.edu/user-manual/getting-started/step3/getting-started-step3-resources/).
 
 This page will provide lower level details related to Slurm jobs, as well as a more complex example submission script.
 
