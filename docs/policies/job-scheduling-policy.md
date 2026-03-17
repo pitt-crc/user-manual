@@ -9,9 +9,11 @@ Executing processing scripts or commands on these nodes can cause substantial sl
 For this reason, it is important to make sure that this kind of work is done in either an interactive session on a node 
 from one of the clusters, or as a batch job submission.
 
-Resource-intensive processes found to be running on the login nodes may be killed at anytime.
+To protect the shared login environment, **per-user resource limits are enforced via cgroups: 1 CPU core and 8 GB of memory**. These limits apply collectively across all processes a user is running on the login node. When the login node's overall resource pool is exhausted, users may be unable to log in until utilization falls below the threshold.
 
-<ins>**The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
+Resource-intensive processes found to be running on the login nodes may be killed at any time.
+
+<ins>**The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login
 nodes with processes that can otherwise be run on the compute nodes.**</ins>
 
 ![JOB-SCHEDULING-POLICY1](../_assets/img/policies/job_scheduling_policy_1.png)

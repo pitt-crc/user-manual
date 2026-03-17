@@ -169,6 +169,9 @@ nav:
 
   - Supporting Code Optimization: code-optimization.md
 
+  - Tips & Tricks:
+      - tips/persist-sessions.md
+
   - Frequently Asked Questions: faq.md
 
 not_in_nav: |
