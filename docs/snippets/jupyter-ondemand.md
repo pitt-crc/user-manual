@@ -7,7 +7,7 @@ The Jupyter on OnDemand service is available, among other different applications
 at: [ondemand.htc.crc.pitt.edu](http://ondemand.htc.crc.pitt.edu).
 
 As with any of the other methods for connecting to CRCD resources, you should start by ensuring you have a proper 
-connection to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293). With this 
+connection to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426). With this 
 connection established, you can proceed with the steps below.
 
 When you visit the OnDemand web portal, you will be prompted to log in with your Pitt account:  
