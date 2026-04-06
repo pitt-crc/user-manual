@@ -19,8 +19,7 @@ computation across multiple nodes, each with its own memory space.
 
 ## Specifications
 
-| Partition      | Host Architecture                                                                                                                                                    | Nodes | Cores/Node | Mem/Node | Mem/Core | Scratch     | Network       | Node Names     |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|------------|----------|----------|-------------|---------------|----------------|
-| `mpi`          | [Intel Xeon Gold 6342 (Ice Lake)](https://www.intel.com/content/www/us/en/products/sku/215276/intel-xeon-gold-6342-processor-36m-cache-2-80-ghz/specifications.html) | 136   | 48         | 512 GB   | 10.6 GB  | 1.6 TB NVMe | HDR200; 10GbE | mpi-n\[0-135]  |
-|                |                                                                                                                                                                      |       |            |          |          |             |               |                |
-| `opa-high-mem` | [Intel Xeon Gold 6132 (Skylake)](https://ark.intel.com/content/www/us/en/ark/products/123541/intel-xeon-gold-6132-processor-19-25m-cache-2-60-ghz.html)              | 36    | 28         | 192 GB   | 6.8 GB   | 500 TB SSD  | OPA; 10GbE    | opa-n\[96-131] |
+| Partition | Nodes | GPU | VRAM | GPU/Node | --constraint | CPU                  | Cores/Node | Mem/Node | Scratch   | Network   | Node Names                                                                                                                   |
+|-----------|-------|-----|------|----------|--------------|----------------------|------------|----------|-----------|-----------|------------------------------------------------------------------------------------------------------------------------------|
+| mpi       | 136   | N/A | N/A  | N/A      | hdr          | Intel Xeon Gold 6342 | 48         | 512 GB   | 2 TB NVMe | HDR200 IB | mpi-n[0-1,10,100-109,11,110-119,12,120-129,13,130-135,14-19,2,20-29,3,30-39,4,40-49,5,50-59,6,60-69,7,70-79,8,80-89,9,90-99] |
+| ndr       | 18    | N/A | N/A  | N/A      | ndr          | Amd Epyc 9575F       | 128        | 1 TB     | 3 TB NVMe | HDR200 IB | mpi-n[136-153]                                                                                                               |
