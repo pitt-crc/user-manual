@@ -2,101 +2,136 @@
 
 The CRCD provides several distinct file spaces, each serving a different purpose:
 
-## `/ihome` (Home Directories)
+| Path | Purpose | Default Quota | Snapshots |
+|---|---|---|---|
+| `/ihome` | Home directories | 75 GB | Daily, 8-day retention |
+| `/vast` | High-performance project storage | 1 TB | Daily, 8-day retention |
+| `/ix`, `/ix1` | Standard-tier project storage | 5 TB | 7-day retention |
 
-Purpose: Houses user home directories.
+---
 
-Location: `$HOME` or `/ihome/<primary group>/$USER`
+## `/ihome` — Home Directories
 
-Details:
+**Purpose:** Houses user home directories.
 
-The root of this filesystem contains subdirectories for each user group, with individual user directories within.
+**Location:** `$HOME` or `/ihome/<primary group>/$USER`
 
-These individual user directories serves as the login directory and is the entry point when a user logs into the CRCD 
-ecosystem.
+**Underlying storage:** VAST Data all-flash
 
-Your home directory is the default location for various configuration files, session logs for jupyterhub and the other
-web portals, and user-level environments in python, R, etc.
+**Details:**
 
-Quota: 75 GB (cannot be increased). Users can check their quota utilization using the `crc-quota` command.
+The root of this filesystem contains subdirectories for each user group, with individual user
+directories within. Your home directory is the login directory and entry point when accessing
+the CRCD ecosystem. It is also the default location for configuration files, web portal session
+logs, and user-level Python and R environments.
 
-Permissions:
+**Quota:** 75 GB (cannot be increased). Use `crc-quota` to check utilization.
 
-    `/ihome/<primary group>` is owned by root:<primary group> with permissions 750 (drwxr-x---).
+**Permissions:**
 
-    `/ihome/<primary group>/$USER` is owned by $USER:<primary group> with permissions 755 (drwxr-xr-x).
+```
+/ihome/<primary group>        root:<primary group>   750  (drwxr-x---)
+/ihome/<primary group>/$USER  $USER:<primary group>  755  (drwxr-xr-x)
+```
 
-Snapshots: User home directories are backed up daily.
+**Snapshots:** Daily snapshots with 8-day retention are available for file restoration.
 
-## `/ix` and `/ix1` (Project Data Storage)
+---
 
-Purpose: Enterprise storage locations for persistent file storage.
+## `/vast` — High-Performance Project Storage
 
-Location: `/ix/<primary group>` or `/ix1/<primary group>`
+**Purpose:** High-throughput project and working data storage for I/O-intensive workloads.
 
-Details:
+**Location:** `/vast/<primary group>`
 
-PIs and group members can access this folder and create their own subfolders. Use this file system to stage data for
-use in your compute jobs.
+**Underlying storage:** VAST Data all-flash
 
-Quota: 5 TB (default allocation, no charge). Users can check their quota utilization using the `crc-quota` command.
+**Details:**
 
-Additional storage can be purchased in 5 TB increments at a subsidized rate of $85 per TB per year.
+PIs and group members can access this folder and create their own subfolders. Use this
+filesystem for data requiring high I/O throughput, such as large genomics datasets, ML
+training data, or intermediate results from compute jobs.
 
-Permissions:
+**Quota:** 1 TB default at no charge. Use `crc-quota` to check utilization.
 
-    /ix/<primary group> or /ix1/<primary group> is owned by <group owner>:<primary group> with permissions 770 (drwxrwx---).
+**Permissions:**
 
-Snapshots: /ix or /ix1 folders are NOT backed up. 7-day snapshots are available for file restoration.
+```
+/vast/<primary group>  <group owner>:<primary group>  770  (drwxrwx---)
+```
 
-## `/bgfs` (BeeGFS File System)
+**Snapshots:** Daily snapshots with 8-day retention are available for file restoration,
+consistent with the `/ihome` snapshot policy.
 
-Purpose: Persistent file storage (no longer being provisioned).
+---
 
-Details:
+## `/ix` and `/ix1` — Standard-Tier Project Storage
 
-Groups are actively being migrated off /bgfs in favor of /ix1
+**Purpose:** Enterprise storage for persistent project data.
 
-Quota: Varies by group. Users can check their quota utilization using the `crc-quota` command.
+**Location:** `/ix/<primary group>` or `/ix1/<primary group>`
 
-Snapshots: **Not available.**
+**Underlying storage:** iXsystems enterprise storage, ZFS-backed with 12 TB NVMe caching
 
-## `/zfs1` and `/zfs2` (Archival Storage)
+**Details:**
 
-Purpose: Archival storage with a total capacity of 1 PB (no longer being provisioned).
+PIs and group members can access this folder and create their own subfolders. Use this
+filesystem to stage data for compute jobs or store results that need to persist long-term.
 
-Details:
+**Quota:** 5 TB default at no charge. Additional storage can be purchased in 5 TB increments
+at a subsidized rate of $85/TB/year. Use `crc-quota` to check utilization.
 
-Groups are actively being migrated off /zfs1 and /zfs2 in favor of /ix1
+**Permissions:**
 
-Quota: Varies by group. Users can check their quota utilization using the `crc-quota` command.
+```
+/ix/<primary group>   <group owner>:<primary group>  770  (drwxrwx---)
+/ix1/<primary group>  <group owner>:<primary group>  770  (drwxrwx---)
+```
 
-Snapshots: 7-day snapshots are available for file restoration.
+**Snapshots:** `/ix` and `/ix1` are **not backed up**. 7-day snapshots are available for
+accidental deletion recovery.
+
+---
+
+## `/bgfs` and `/zfs` — Decommissioned
+
+These filesystems are no longer being provisioned and are actively being decommissioned.
+If your group still has data on `/bgfs`, `/zfs1`, or `/zfs2` and you haven't heard from
+our team about migrating it yet, please
+[submit a help request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+and we will work with you to move your data to `/ix1`.
+
+---
 
 ## Frequently Asked Questions
 
-### A 5TB location on /ix or /ix1 was not provisioned to me upon my faculty account's creation. How can I request this?
-Please [submit the help request form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+### A 5 TB location on `/ix` or `/ix1` was not provisioned upon my faculty account's creation. How can I request this?
+
+Please [submit a help request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
 and someone from the team will provision the space for you.
 
-### I've hit the limit on my initial 5TB provision on /ix or /ix1, how do I request more space?
-5 TB increments of extra storage are available for purchase at a subsidized rate of $85 per TB per year.
+### I've hit the limit on my initial 5 TB on `/ix` or `/ix1`. How do I request more space?
+
+Additional storage is available in 5 TB increments at a subsidized rate of $85/TB/year.
 [Use this form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=D8BjnEQtuz0_&RequestorType=Service)
-to request additional storage space beyond 5 TB.
+to request additional space.
 
-### How do I check how close I am to exceeding my storage quotas? 
-You can check your usage and quotas across these filesystems with the wrapper script command `crc-quota`:
+### How do I check how close I am to exceeding my storage quotas?
 
-```commandline
-[nlc60@login0b ~] : crc-quota
+Use the `crc-quota` command:
+
+```
+[nlc60@login0 ~]$ crc-quota
 User: 'nlc60'
 -> ihome: 59.63 GB / 75.0 GB
 
 Group: 'sam'
--> zfs1: 1.76 TB / 5.0 TB
--> beegfs: 14.68 TB / 80.0 TB
+-> ix: 1.76 TB / 5.0 TB
+-> vast: 0.43 TB / 1.0 TB
 ```
 
-### How do I restore some files that were accidentally deleted?
-Depending on the file system, snapshots are available to restore accidentally deleted files
-[Submit the Help Request form to request file restoration](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+### How do I restore files that were accidentally deleted?
+
+Snapshots are available on `/ihome`, `/vast`, `/ix`, and `/ix1`.
+[Submit a help request](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+to request file restoration from a snapshot.
