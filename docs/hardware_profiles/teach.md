@@ -15,14 +15,11 @@ jobs associated with classroom activities.
 
 ## Specifications
 
-| Resource Type | Node Count | CPU Architecture             | Core/Node | CPU Memory (GB) | GPU Card           | No. GPU | GPU Memory (GB) |
-|---------------|------------|------------------------------|-----------|-----------------|--------------------|---------|-----------------|
-| `CPU`         | 54         | Gold 6126 Skylake 12C 2.6GHz | 24        | 192             | N/A                | N/A     | N/A             |
-|               |            |                              |           |                 |                    |         |                 |
-| `GPU 1`       | 7          | E5-2620v3 Haswell 6C 2.4GHz  | 12        | 128             | NVIDIA Titan X     | 4       | 12              |
-|               |            |                              |           |                 |                    |         |                 |
-| `GPU 2`       | 6          | E5-2620v3 Haswell 6C 2.5GHz  | 12        | 128             | NVIDIA GTX 1080    | 4       | 8               | 
-|               |            |                              |           |                 |                    |         |                 |
-| `GPU 3`       | 10         | Xeon 4112 Skylake 4C 2.6GHz  | 8         | 96              | NVIDIA GTX 1080 Ti | 4       | 11              |
-|               |            |                              |           |                 |                    |         |                 | 
-| `GPU 4`       | 2          | Xeon Platinum 8502+ 1.9GHz   | 128       | 512             | NVIDIA L4          | 8       | 24              |
+| Partition | Nodes | GPU                        | VRAM  | GPU/Node | --constraint | CPU                                 | Cores/Node | Mem/Node | Scratch     | Network | Node Names                                         |
+|-----------|-------|----------------------------|-------|----------|--------------|-------------------------------------|------------|----------|-------------|---------|----------------------------------------------------|
+| cpu       | 48    | N/A                        | N/A   | N/A      | (null)       | Intel Xeon Gold 6126                | 24         | 192 GB   | 480 GB NVMe | 1GbE    | teach-cpu-n[0-1,10-19,2,20-29,3,30-39,4,40-47,5-9] |
+| gpu       | 1     | N/A                        | N/A   | N/A      | gtx1080      | unknown                             | 19         | 128 GB   | ?           | 10GbE   | teach-gpu-n12                                      |
+| gpu       | 9     | NVIDIA GeForce GTX 1080 Ti | 11 GB | 4        | gtx1080      | Intel Xeon Silver 4112              | 19         | 96 GB    | 480 GB NVMe | 1GbE    | teach-gpu-n[17-25]                                 |
+| gpu       | 7     | NVIDIA GeForce GTX TITAN X | 12 GB | 4        | titanx       | Intel Xeon CPU E5-2620 v3 @ 2.40GHz | 19         | 128 GB   | 960 GB NVMe | 1GbE    | teach-gpu-n[0-6]                                   |
+| gpu       | 2     | NVIDIA L4                  | 22 GB | 8        | l4           | Intel Xeon Platinum 8592+           | 19         | 512 GB   | 733 GB NVMe | 10GbE   | teach-gpu-n[15-16]                                 |
+| gpu       | 7     | NVIDIA GeForce GTX 1080    | 8 GB  | 4        | gtx1080      | Intel Xeon CPU E5-2620 v3 @ 2.40GHz | 19         | 128 GB   | 822 GB NVMe | 1GbE    | teach-gpu-n[10-11,13-14,7-9]                       |
