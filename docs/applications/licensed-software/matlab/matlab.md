@@ -6,7 +6,7 @@ MATLAB is a programming and numeric computing platform developed and distributed
 CRC users can access this software by means of the module loading system on the cluster, or via 
 [MATLAB Remote Job Submission](matlab-remote-job-submission.md). 
 
-The most recent MATLAB version available on CRC is **R2023a**.
+The most recent MATLAB version available on CRC is **R2023a**. Newer versions such as R2025a will be available on our new systems after upgrade to RHEL 9.
 
 See [the instructions on accessing VIZ](../../../web-portals/viz.md) for an example of opening MATLAB on those machines.
 
@@ -29,3 +29,6 @@ installed copy of MATLAB or from VIZ. This is facilitated by
 
 This method is great for less experience users who are not as comfortable with the command line or for users who are 
 having issues with resource intensive processing jobs completing successfully on their local machine or VIZ.
+
+
+The latest Matlab seminar held at Pitt has been recorded can be accessed [here](https://pitt.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ed74045b-8ecf-456c-86f0-b31700347a2b).

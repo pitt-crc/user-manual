@@ -19,35 +19,44 @@ benefit of using the desktop client is that copy/paste functionality works signi
 
 ## **Desktop Client Method**
 
-[Download fastx 2 here](https://www.starnet.com/fastx/current-client?version=2.4.12) using the **Non-admin install build** link. If you have admin access on your device, 
-you can install with the standard installer for all users.
+[Download the latest fastx client here](https://www.starnet.com/download/fastx-client).
 
-Install to a location accessible to you and run the FastX.exe file in the installation directory.
+Install to a location accessible to you and run the executable file in the installation directory.
 
 When you run the executable, the window that opens is your Connections window.
 
-In the top right corner, use the plus icon to add a "Web" connection.
-
 ![](../_assets/img/web-portals/VizFastXDesktop_1.png)
 
-Name: VIZ
+Towards the top left corner, use the plus icon to add an **https** connection.
 
-Url: https://viz.crc.pitt.edu/
+![](../_assets/img/web-portals/VizFastXDesktop_2.png)
 
-User: your Pitt ID, **all lower case**
+**Host:** viz.crc.pitt.edu
 
-Click save.
+**User:** your Pitt ID, **all lower case**
 
-Double click the new connection in the Connections window, you will be prompted to log in with your Pitt ID and password.
+**Port:** 443
 
-![](../_assets/img/web-portals/VizFastXDesktop__2.png)
+**Auth:** ssh
+
+**Name:** VIZ
+
+Click **OK**.
+
+![](../_assets/img/web-portals/VizFastXDesktop_3.png)
+
+Double-click the new connection in the Connections window, you will be prompted to provide your Pitt password.
+
+![](../_assets/img/web-portals/VizFastXDesktop_4.png)
 
 The new window that opens is your Sessions window. This works similarly to the web portal interface.
+
+![](../_assets/img/web-portals/VizFastXDesktop_5.png)
 
 You can use the **plus icon** to create a new session, select your desktop interface (MATE is a good default), and 
 click ok.
 
-![](../_assets/img/web-portals/VizFastXDesktop_3.png)
+![](../_assets/img/web-portals/VizFastXDesktop_6.png)
 
 Your session will start, and you can use this machine similarly to the login nodes for H2P and HTC.
 

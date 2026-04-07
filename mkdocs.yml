@@ -15,8 +15,6 @@ theme:
   features:
     - content.code.copy
     - search.suggest
-    # - navigation.tabs
-    # - navigation.sections
     - navigation.top
     - navigation.indexes
     - content.code.annotate
@@ -56,6 +54,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.superfences
@@ -87,13 +86,14 @@ nav:
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
-      - GPU: hardware_profiles/gpu.md
+      - Overview: hardware_profiles/overview.md
+      - Login Nodes: hardware_profiles/login.md
       - SMP: hardware_profiles/smp.md
       - MPI: hardware_profiles/mpi.md
+      - GPU: hardware_profiles/gpu.md
       - HTC: hardware_profiles/htc.md
       - TEACH: hardware_profiles/teach.md
       - VIZ: hardware_profiles/viz.md
-      - Login Nodes: hardware_profiles/login.md
   - Policies:
       - policies/job-scheduling-policy.md
       - policies/hardware-investing-policy.md
@@ -105,6 +105,7 @@ nav:
       - web-portals/viz.md
       - web-portals/jupyter-hub.md
       - web-portals/jupyter-teach.md
+      - web-portals/jupyterhub-venv.md
       - web-portals/psych.md
       - web-portals/hugen.md
   - The SLURM Workload Manager:
@@ -148,7 +149,6 @@ nav:
   - Bioinformatics Support:
       - bioinformatics/bioinformaticsworkshops.md
       - NGS Data Analysis:
-          - advanced-genomics-support/nf-core-genomics-pipelines.md
           - advanced-genomics-support/RNASeq-data-analysis.md
           - advanced-genomics-support/variant-calling.md
           - advanced-genomics-support/single-cell-rnaseq.md
@@ -157,14 +157,20 @@ nav:
           - advanced-genomics-support/ATACSeq-data-analysis.md
           - bioinformatics/Methylation.md
           - advanced-genomics-support/cromwell-and-encode.md
-          - advanced-genomics-support/Snakemake.md
           - advanced-genomics-support/genome-browser.md
           - advanced-genomics-support/clcbio-genomics-server.md
+      - bioinformatics/nf-core-genomics-pipelines.md
       - bioinformatics/alphafold3.md
       - bioinformatics/fMRI.md
       - bioinformatics/EHR.md
+      - bioinformatics/ollama.md
+      - bioinformatics/bioimage.md
+      - bioinformatics/virtualgl.md
 
   - Supporting Code Optimization: code-optimization.md
+
+  - Tips & Tricks:
+      - tips/persist-sessions.md
 
   - Frequently Asked Questions: faq.md
 

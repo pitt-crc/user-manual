@@ -1,5 +1,4 @@
 ---
-title: GPU Cluster Specifications
 tags:
   - CRC
   - Hardware
@@ -7,15 +6,12 @@ tags:
   - User Manual
 ---
 
-# GPU Cluster Overview
+# GPU Cluster
 
-The GPU cluster is optimized for computational tasks requiring GPU acceleration, such as artificial intelligence and 
-machine learning workflows, molecular dynamics simulations, and large-scale data analysis.
-
-## Key Features
-
-- Designed for high-performance GPU workloads.
-- Supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated frameworks.
+The GPU cluster is optimized for workloads requiring GPU acceleration, including machine learning, molecular dynamics
+simulations, and large-scale data analysis. The cluster supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated
+frameworks. Users who do not require GPU resources are strongly encouraged to leverage the [MPI](mpi.md) or
+[SMP](smp.md) clusters instead.
 
 ## Specifications
 

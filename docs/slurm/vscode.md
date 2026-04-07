@@ -1,13 +1,69 @@
 # Interactive / Remote Computing with VS Code
 
+## 1. Code Server
+Code server refers to a technology that enables running Visual Studio Code (VS Code) on a remote server and accessing it through a web browser. This setup provides a consistent development environment accessible from various devices, including laptops, tablets, and even low-powered machines.
+https://github.com/coder/code-server
+
+### Launching a Code-Server
+Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> Code Server. Choose code server version, select Number of cores, Number of hours and Working Directory. Click Launch.
+
+![](../_assets/img/bioinformatics/code_server_1.png)
+
+A new Code server session will automatically be created on one of the HTC compute nodes. Once the session has been created, start the session.
+
+![](../_assets/img/bioinformatics/code_server_2.png)
+
+### Installing Code-Server Extensions
+You can install any desired extensions from the Extensions sidebar on the left-hand side. This only needs to be done the first time you run Code Server, or whenever you need new extensions. I demonstrate installing Jupyter extensions.
+Search “Jupyter” from EXTENSIONS: MARKETPLACE, select a specific extension. Click “Install”
+
+![](../_assets/img/bioinformatics/code_server_3.png)
+
+The extensions will be installed under ~/.local/share/code-server.
+
+Now you can open Jupyter Notebooks.
+
+![](../_assets/img/bioinformatics/code_server_4.png)
+
+### Using customized conda environments in Code-Server
+
+When your Jupyter notebooks depend on a customized conda environment, you can use customized conda environments in VS Code-Server. We have installed cell2location conda environment at /software/rhel9/manual/install/cell2location/0.1.4/python3.11, which can be used to execute the codes in the above Jupyter notebook.
+
+If you have not installed the basic Python extension, install Python extension for Visual Studio Code. 
+
+![](../_assets/img/bioinformatics/code_server_5.png)
+
+Start Command Palette…
+
+![](../_assets/img/bioinformatics/code_server_6.png)
+
+Type "Python: Select Interpreter" in the Command Palette and select this option. 
+
+![](../_assets/img/bioinformatics/code_server_7.png)
+
+Type “/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python”, and Choose this Conda Environment. Now you can use this conda environment to execute the codes in the cell2location tutorial Jupyter notebook.
+
+![](../_assets/img/bioinformatics/code_server_8.png)
+
+## 2. VSCode via VNC
+
+Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> VSCode on htc. Choose VSCode version, select Number of cores and Number of hours. Click Launch.
+You will run VSCode inside a TurboVNC session. 
+
+![](../_assets/img/bioinformatics/vscode_1.png)
+
+
+## 3. Tunneling
+
+
 This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRCD computing nodes.
 
-## Prerequisites
+### Prerequisites
 
 - The latest version of VS Code installed on your local machine
 - Latest version of the ["Remote Development" extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
-## Steps performed **only once**
+### Steps performed **only once**
 
 Add the following lines to the ssh config file on your local machine (~/.ssh/config) 
 and replace <name> with your Pitt username:
@@ -76,7 +132,7 @@ cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
 ```
 
-## Steps performed every time to connect your VS Code to the cluster
+### Steps performed every time to connect your VS Code to the cluster
 ---------------------------------------------------------------------
 
 From your local terminal, connect to the cluster using ssh htc and once logged in, 
@@ -95,7 +151,7 @@ Submitted batch job 1383495
 
 Open VS Code on your local machine and connect to your projects using `Remote Explorer` with `htcx` as the ssh target.
 
-## Changes you need to do to allocate resources with GPUs
+### Changes you need to do to allocate resources with GPUs
 ----------------------------------------------------------
 
 Add the following host to the ssh config file on your local machine (`~/.ssh/config`) and 

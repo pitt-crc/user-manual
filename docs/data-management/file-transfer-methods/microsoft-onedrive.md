@@ -32,7 +32,7 @@ environment to use the tool.
 
 To use Rclone, you first need to load it via LMOD:
 ```commandline
-module load rclone/1.59.2
+module load rclone/1.70.3
 ```
 The next step is to configure rclone for the transfer partner.
 
@@ -55,7 +55,7 @@ Click Launch HTC Desktop, Click Terminal Emulator.
 ![TERMINAL](../../_assets/img/data-management/onedrive_2.png)
 
 ```commandline
-[fangping@htc-n1 ~]$ module load rclone/1.59.2
+[fangping@htc-n1 ~]$ module load rclone/1.70.3
 [fangping@htc-n1 ~]$ rclone config
 ```
 
@@ -93,12 +93,12 @@ Type of storage to configure.
 Enter a string value. Press Enter for the default ("").
 Choose a number from below, or type in your own value
  <long list of types>
-22 / Microsoft Azure Blob Storage
+37 / Microsoft Azure Blob Storage
    \ "azureblob"
-23 / Microsoft OneDrive
+38 / Microsoft OneDrive
    \ "onedrive"
 <several more types>
-Storage> 32
+Storage> 38
 ```
 
 4. Leave the Client ID and Client Secret fields blank -- press enter
@@ -109,6 +109,26 @@ client_id>
 <information>
 client_secret>
 <more information>
+Option region.
+Choose national cloud region for OneDrive.
+Choose a number from below, or type in your own value of type string.
+Press Enter for the default (global).
+ 1 / Microsoft Cloud Global
+   \ (global)
+ 2 / Microsoft Cloud for US Government
+   \ (us)
+ 3 / Microsoft Cloud Germany (deprecated - try global region first).
+   \ (de)
+ 4 / Azure and Office 365 operated by Vnet Group in China
+   \ (cn)
+region> 1
+
+Option tenant.
+ID of the service principal's tenant. Also called its directory ID.
+Set this if using
+- Client Credential flow
+Enter a value. Press Enter to leave empty.
+tenant> 
 ```
 5. Advanced configuration - choose no
 ```commandline

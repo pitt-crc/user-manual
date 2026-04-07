@@ -1,5 +1,4 @@
 ---
-title: MPI Cluster Specifications
 tags:
   - CRC
   - Hardware
@@ -7,15 +6,16 @@ tags:
   - User Manual
 ---
 
-# MPI Cluster Overview
+# MPI Cluster
 
-The MPI cluster enables jobs with tightly coupled parallel codes using Message Passing Interface APIs for distributing
-computation across multiple nodes, each with its own memory space.
+The MPI cluster is optimized to support parallel workloads running across many nodes at once. High-speed networking
+enables low-latency communication between processes, making the cluster ideal for tightly coupled codes using message
+passing interfaces or other distributed frameworks.
 
-## Key Features
-
-- Infiniband and Omni-Path networking
-- Minimum of 2 Nodes per Job
+Jobs on the MPI cluster are allocated a minimum of 2 nodes. Users who regularly run single-node workloads should
+submit to the [SMP](smp.md) cluster instead, which is specifically designed for single node jobs. While running single node jobs
+on MPI is allowed, resources allocated on the unused node(s) will still be count against the user's consumed
+service units.
 
 ## Specifications
 

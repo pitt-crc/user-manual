@@ -134,6 +134,12 @@ from mangling these characters.
 You can transfer data between Pitt OneDrive and the cluster. 
 See [this page](file-transfer-methods/microsoft-onedrive.md) for details.
 
+### Pitt Cloud Onboarding
+
+This is the link to the Pitt Cloud Onboarding Survey that collects the information needed to start the account vend process. 
+
+https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=2795
+
 ### AWS S3
 
 `awscli` has been installed as a module in Lmod. 

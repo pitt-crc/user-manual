@@ -1,5 +1,4 @@
 ---
-title: SMP Cluster Specifications
 tags:
   - CRC
   - Hardware
@@ -7,14 +6,11 @@ tags:
   - User Manual
 ---
 
-# SMP Cluster Overview
+# SMP Cluster
 
-The SMP nodes are appropriate for programs that are parallelized using the shared memory framework. These nodes are 
-similar to your laptop but with more CPU cores and shared memory space between them.
-
-## Key Features
-
-- high memory partition for nodes with up to 3 TB of shared memory
+The SMP cluster is designed for workloads that run on a single node using shared memory parallelism. Each node provides
+multiple CPU cores with access to a common memory space, making the cluster well suited for multithreaded applications,
+OpenMP codes, and jobs that do not require distributed computing across multiple nodes.
 
 ## Specifications
 

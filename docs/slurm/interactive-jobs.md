@@ -14,18 +14,18 @@ Submitting an interactive job is similar to submitting a batch job, except you u
 <a href="https://slurm.schedmd.com/srun.html">srun</a> command instead of sbatch. For example:
 
 ```commandline
-srun -n1 -t02:00:00 --pty bash
+srun -M smp -n1 -t02:00:00 --pty bash
 ```
 
-Will prompt the scheduler to start a job on a cluster node with 1 `task` (or `core`, -n1) for 2 hours wall clock 
+Will prompt the scheduler to start a job on a SMP (other clusters such as HTC, MPI, GPU are also possible) node with 1 `task` (or `core`, -n1) for 2 hours wall clock 
 time (-t02:00:00), and in terminal mode.
 
 When the interactive job starts, you will notice that you are no longer on a login node, but rather one of the 
 compute nodes.
 
 ```commandline
-[fangping@login0a ~]$ srun -n1 -t02:00:00 --pty bash
-[fangping@n409 ~]$
+[fangping@login0a ~]$ srun -M smp -n1 -t02:00:00 --pty bash
+[fangping@smp-n45 ~]$
 ```
 
 Interactive jobs draw service units from the slurm allocation that your CRCD user is associated with.
@@ -44,16 +44,16 @@ If you would like to run an application that has a GUI interface, X11 forwarding
 You should allocate a job to a node with your parameters, then SSH authenticated X11 session from the login node to 
 your interactive session on that compute node. You can follow the following steps:
 
-First, allocate a job
+First, allocate a job on a cluster, for example HTC (SMP, GPU, MPI are also possible)
 ```commandline
-salloc -n1 -t02:00:00
+salloc -M htc -n1 -t02:00:00
 salloc: Granted job allocation 874773
 salloc: Waiting for resource configuration
-salloc: Nodes htc-n1 are ready for job
+salloc: Nodes htc-n12 are ready for job
 ```
 Then use ssh to connect to the node that is ready for you.
 ```commandline
-ssh -X htc-n1
+ssh -X htc-n12
 ```
 
 Once in your interactive session you can load software that provide GUI with the module system and launch them from 

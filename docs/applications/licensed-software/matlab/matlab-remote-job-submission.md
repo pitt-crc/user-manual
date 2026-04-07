@@ -30,7 +30,7 @@ cluster: `/ihome/crc/how_to_run/matlab`
         listed. If you don't, you can open MATLAB > go to the home tab > Add-Ons > Get Add-Ons > Search for 
         `Parallel Computing Toolbox` and Install (If you are using MATLAB licensed through the university).
 4. You must be connected to the CRC VPN in order to submit jobs from your desktop, if you are off-campus. 
-        Please visit [this page](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=293) on installing 
+        Please visit [this page](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426) on installing 
         the vpn.
 
 ### Download the Cluster Plugin Scripts

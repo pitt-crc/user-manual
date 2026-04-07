@@ -36,7 +36,7 @@ CAD Import Module, Design Module, Matlab/Simulink
 
 ### 1- Using graphic user interface (VIZ)
 
- Please read the documentation on crc.pitt.edu/viz on how to access VIZ and then watch the video below:
+ Please read the documentation on https://crc-pages.pitt.edu/user-manual/getting-started/viz on how to access VIZ and then watch the video below:
 
 <iframe allow="autoplay" allowfullscreen="" height="405" src="https://pitt.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f4517c0d-6e39-4367-acd7-ada50152a8c4&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=false&amp;captions=false&amp;interactivity=all" style="border: 1px solid #464646;" width="720"></iframe>
 
