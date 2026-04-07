@@ -16,11 +16,11 @@ Pitt Digital. Pitt Digital maintains the critical environmental infrastructure (
 networking, and security) and administers the cluster operating systems and storage backups. CRCD
 interfaces directly with researchers and provides software installation services, training workshops, and
 personalized consultation on improving software design/performance and computational workflows.
-Connectivity between the NOC and main campus is via two 100 Gbps fibers and to Internet2 via
-100 Gbps. In terms of physical space, power, and cooling, the NOC has excess headroom for future
-expansion. CRCD does not pay Pitt Digital for hosting, electricity, or other support charges. These data
-center costs are covered by Pitt Digital as part of our joint campus cyberinfrastructure efforts to
-democratize access to research computing.
+Connectivity between the NOC and main campus is via two 100 Gbps fibers and to Internet2 via 100 Gbps.
+In terms of physical space, power, and cooling, the NOC has excess headroom for future expansion.
+CRCD does not pay Pitt Digital for hosting, electricity, or other support charges. These data center costs
+are covered by Pitt Digital as part of our joint campus cyberinfrastructure efforts to democratize access
+to research computing.
 
 The CRCD provides different types of hardware for different advanced computing needs, supporting the
 shared memory processing (SMP), high throughput computing (HTC), message passing interface (MPI),
@@ -58,12 +58,12 @@ The CPU-centric clusters include a total of **20,512 CPU cores**, comprised of t
 
 The GPU cluster provides access to **328 GPU instances** across 60 dedicated nodes:
 
-- **2 HGX nodes** with 8× NVIDIA H200 141 GB SXM each; NDR-200G and 25 GbE; dual-socket Intel Xeon Platinum 8592+ (128 cores); 3 TB host RAM; 7 TB NVMe local storage
-- **13 nodes** with 8× NVIDIA RTX PRO 6000 Blackwell 96 GB PCIe each; NDR-200G and 25 GbE; dual-socket AMD EPYC 9555 (128 cores); 1.5 TB host RAM; 7 TB NVMe local storage
-- **20 nodes** with 4× NVIDIA L40S 48 GB PCIe each; 10 GbE; dual-socket Intel Xeon Platinum 8462Y+ (64 cores); 512 GB host RAM; 7 TB NVMe local storage
-- **2 HGX nodes** with 8× NVIDIA A100 80 GB SXM NVLink each; HDR-200G and 10 GbE; dual-socket AMD EPYC 7742 (128 cores); 1 TB host RAM; 2 TB NVMe local storage
-- **3 HGX nodes** with 8× NVIDIA A100 40 GB SXM NVLink each; HDR-200G and 10 GbE; dual-socket AMD EPYC 7742 (128 cores); 1 TB host RAM; 12 TB NVMe local storage
-- **22 nodes** with 4× NVIDIA A100 40 GB PCIe each; HDR-200G and 10 GbE; single-socket AMD EPYC 7742 (64 cores); 512 GB host RAM; 3 TB NVMe local storage
+- **2 HGX nodes** with 8× NVIDIA H200 141 GB SXM; NDR-200G and 25 GbE; dual-socket Intel Xeon Platinum 8592+ (128 cores); 3 TB RAM; 7 TB NVMe local storage
+- **13 nodes** with 8× NVIDIA RTX PRO 6000 Blackwell 96 GB PCIe; NDR-200G and 25 GbE; dual-socket AMD EPYC 9555 (128 cores); 1.5 TB RAM; 7 TB NVMe local storage
+- **20 nodes** with 4× NVIDIA L40S 48 GB PCIe; 10 GbE; dual-socket Intel Xeon Platinum 8462Y+ (64 cores); 512 GB RAM; 7 TB NVMe local storage
+- **2 HGX nodes** with 8× NVIDIA A100 80 GB SXM NVLink; HDR-200G and 10 GbE; dual-socket AMD EPYC 7742 (128 cores); 1 TB RAM; 2 TB NVMe local storage
+- **3 HGX nodes** with 8× NVIDIA A100 40 GB SXM NVLink; HDR-200G and 10 GbE; dual-socket AMD EPYC 7742 (128 cores); 1 TB RAM; 12 TB NVMe local storage
+- **22 nodes** with 4× NVIDIA A100 40 GB PCIe; HDR-200G and 10 GbE; single-socket AMD EPYC 7742 (64 cores); 512 GB RAM; 3 TB NVMe local storage
 
 The GPU cluster supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated frameworks, and is
 used for AI/ML training and inference, molecular dynamics simulations, genomics acceleration, and
@@ -75,8 +75,8 @@ large-scale scientific data analysis.
 
 The global storage infrastructure includes:
 
-- A **4 PB all-flash VAST DataStore** providing high-performance storage for home directories (`/ihome`) and project data (`/vast`)
-- A **6 PB iXsystems** enterprise storage tier (`/ix` and `/ix1`) for standard-tier project data, backed by a ZFS filesystem with 12 TB NVMe caching and 2-week snapshots
+- A **4 PB all-flash VAST DataStore** providing high-performance storage for home directories (`/ihome`) and project data (`/vast`), with daily snapshots and 8-day retention
+- A **6 PB iXsystems** enterprise storage tier (`/ix` and `/ix1`) for standard-tier project data, ZFS-backed with 12 TB NVMe caching and 7-day snapshots
 
 All compute nodes are equipped with local NVMe scratch storage ranging from 960 GB to 14 TB per node.
 
@@ -90,7 +90,7 @@ on NIH controlled-access datasets and Protected Health Information (PHI) contain
 The SRE is currently comprised of:
 
 - 5 nodes of 64-core AMD EPYC 9374F (Genoa) with 768 GB RAM and 3.2 TB NVMe local storage
-- 2 nodes with 4× NVIDIA L40S 48 GB PCIe GPUs; 10 GbE; dual-socket Intel Xeon Platinum 8462Y+ (64 cores); 512 GB host RAM; 7 TB NVMe local storage
+- 2 nodes with 4× NVIDIA L40S 48 GB PCIe GPUs; 10 GbE; dual-socket Intel Xeon Platinum 8462Y+ (64 cores); 512 GB RAM; 7 TB NVMe local storage
 - 600 TB iXsystems enterprise storage (ZFS-backed, self-encrypting drives)
 
 There is a cost associated with usage of the SRE.
