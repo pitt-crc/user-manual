@@ -2,11 +2,11 @@
 
 The CRCD provides several distinct file spaces, each serving a different purpose:
 
-| Path | Purpose | Default Quota | Snapshots |
-|---|---|---|---|
-| `/ihome` | Home directories | 75 GB | Daily, 8-day retention |
-| `/vast` | High-performance project storage | 1 TB | Daily, 8-day retention |
-| `/ix`, `/ix1` | Standard-tier project storage | 5 TB | 7-day retention |
+| Path          | Purpose                          | Default Quota | Snapshots              |
+|---------------|----------------------------------|---------------|------------------------|
+| `/ihome`      | Home directories                 | 75 GB         | Daily, 8-day retention |
+| `/vast`       | High-performance project storage | 1 TB          | Daily, 8-day retention |
+| `/ix`, `/ix1` | Standard-tier project storage    | 5 TB          | 7-day retention        |
 
 ---
 
@@ -52,7 +52,8 @@ PIs and group members can access this folder and create their own subfolders. Us
 filesystem for data requiring high I/O throughput, such as large genomics datasets, ML
 training data, or intermediate results from compute jobs.
 
-**Quota:** 1 TB default at no charge. Use `crc-quota` to check utilization.
+**Quota:** 1 TB default at no charge. Additional storage can be purchased a subsidized rate of $85/TB/year. 
+Use `crc-quota` to check utilization.
 
 **Permissions:**
 
@@ -79,7 +80,7 @@ PIs and group members can access this folder and create their own subfolders. Us
 filesystem to stage data for compute jobs or store results that need to persist long-term.
 
 **Quota:** 5 TB default at no charge. Additional storage can be purchased in 5 TB increments
-at a subsidized rate of $85/TB/year. Use `crc-quota` to check utilization.
+at a subsidized rate of $65/TB/year. Use `crc-quota` to check utilization.
 
 **Permissions:**
 
@@ -112,7 +113,7 @@ and someone from the team will provision the space for you.
 
 ### I've hit the limit on my initial 5 TB on `/ix` or `/ix1`. How do I request more space?
 
-Additional storage is available in 5 TB increments at a subsidized rate of $85/TB/year.
+Additional storage is available at a subsidized rate of $65/TB/year.
 [Use this form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=D8BjnEQtuz0_&RequestorType=Service)
 to request additional space.
 
