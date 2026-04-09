@@ -14,10 +14,13 @@ OpenMP codes, and jobs that do not require distributed computing across multiple
 
 ## Specifications
 
-| Partition | Nodes | GPU | VRAM | GPU/Node | --constraint   | CPU                       | Cores/Node | Mem/Node | Scratch     | Network | Node Names                      |
-|-----------|-------|-----|------|----------|----------------|---------------------------|------------|----------|-------------|---------|---------------------------------|
-| smp       | 94    | N/A | N/A  | N/A      | amd,rome       | Amd Epyc 7302             | 47         | 256 GB   | 960 GB NVMe | 10GbE   | smp-n[156-210,214-251,266]      |
-| high-mem  | 11    | N/A | N/A  | N/A      | intel,ice_lake | Intel Xeon Platinum 8352Y | 61         | 1 TB     | 10 TB NVMe  | 10GbE   | smp-1024-n[0-8],smp-2048-n[0-1] |
+| Partition | Nodes | GPU | VRAM | GPU/Node | --constraint   | CPU                       | Cores/Node | Mem/Node | Scratch       | Network | Node Names      |
+|-----------|-------|-----|------|----------|----------------|---------------------------|------------|----------|---------------|---------|-----------------|
+| smp       | 55    | N/A | N/A  | N/A      | amd,rome       | Amd Epyc 7302             | 32         | 256 GB   | 960 GB NVMe   | 10GbE   | smp-n[156-210]  |
+| smp       | 38    | N/A | N/A  | N/A      | amd,genoa      | Amd Epyc 9374F            | 64         | 768 GB   | 3.2 TB NVMe   | 10GbE   | smp-n[214-251]  |
+| smp       | 1     | N/A | N/A  | N/A      | amd,turin      | Amd Epyc 9755             | 256        | 1.5 TB   | 3.2 TB NVMe   | 10GbE   | smp-n266        |
+| high-mem  | 9     | N/A | N/A  | N/A      | intel,ice_lake | Intel Xeon Platinum 8352Y | 64         | 1 TB     | 10.24 TB NVMe | 10GbE   | smp-1024-n[0-8] |
+| high-mem  | 2     | N/A | N/A  | N/A      | intel,ice_lake | Intel Xeon Platinum 8352Y | 64         | 2 TB     | 10.24 TB NVMe | 10GbE   | smp-2048-n[0-1] |
 
 ## Additional Features
 
