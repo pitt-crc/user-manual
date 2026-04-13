@@ -24,15 +24,23 @@ https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
 
 Start RStudio Server 2025 from https://ondemmand.htc.crc.pitt.edu
 
+Navigate to Tools > Global Options > Copilot.
+
 ![](../_assets/img/bioinformatics/rstudio_copilot1.png)
+
+Check the box to “Enable GitHub Copilot”.
 
 ![](../_assets/img/bioinformatics/rstudio_copilot2.png)
 
+Click the “Sign In” button.
+
 ![](../_assets/img/bioinformatics/rstudio_copilot3.png)
 
+In the “GitHub Copilot: Sign in” dialog, copy the Verification Code.
 
 ![](../_assets/img/bioinformatics/rstudio_copilot4.png)
 
+GitHub will request the necessary permissions for GitHub Copilot. To approve these permissions, click “Authorize GitHub Copilot Plugin”.
 
 ![](../_assets/img/bioinformatics/rstudio_copilot5.png)
 
