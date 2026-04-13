@@ -20,8 +20,6 @@ Available for free to verified students, teachers, and open-source maintainers. 
 
 GitHub Copilot is available as an opt-in integration in RStudio Server.
 
-https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
-
 Start RStudio Server 2025 from https://ondemmand.htc.crc.pitt.edu
 
 Navigate to Tools > Global Options > Copilot.
@@ -44,6 +42,9 @@ GitHub will request the necessary permissions for GitHub Copilot. To approve the
 
 ![](../_assets/img/bioinformatics/rstudio_copilot5.png)
 
+Using Copilot
+
+https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
 
 ![](../_assets/img/bioinformatics/rstudio_copilot6.png)
 
