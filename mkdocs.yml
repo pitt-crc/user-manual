@@ -166,6 +166,7 @@ nav:
       - bioinformatics/ollama.md
       - bioinformatics/bioimage.md
       - bioinformatics/virtualgl.md
+      - bioinformatics/copilot.md
 
   - Supporting Code Optimization: code-optimization.md
 
