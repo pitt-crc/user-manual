@@ -42,6 +42,8 @@ GitHub will request the necessary permissions for GitHub Copilot. To approve the
 
 ![](../_assets/img/bioinformatics/rstudio_copilot5.png)
 
+To disable GitHub Copilot, click Sign Out or uncheck “Enable GitHub Copilot”
+
 Using Copilot
 
 https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
