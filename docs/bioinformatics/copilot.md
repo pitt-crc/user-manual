@@ -24,4 +24,18 @@ https://docs.posit.co/ide/user/ide/guide/tools/copilot.html
 
 Start RStudio Server 2025 from https://ondemmand.htc.crc.pitt.edu
 
-![](../_assets/img/bioinformatics/virtualgl.png)
+![](../_assets/img/bioinformatics/rstudio_copilot1.png)
+
+![](../_assets/img/bioinformatics/rstudio_copilot2.png)
+
+![](../_assets/img/bioinformatics/rstudio_copilot3.png)
+
+
+![](../_assets/img/bioinformatics/rstudio_copilot4.png)
+
+
+![](../_assets/img/bioinformatics/rstudio_copilot5.png)
+
+
+![](../_assets/img/bioinformatics/rstudio_copilot6.png)
+
