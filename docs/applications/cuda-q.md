@@ -32,7 +32,7 @@ module spider cudaq
 
      $ module spider cudaq/0.14
 ```
-Usage
+## Usage
 -----
 
 CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand or through the terminal.
@@ -59,7 +59,7 @@ When your session starts, click the blue 'Connect to Jupyter' button. A new wind
 
 You can also install and use your own singularity image for the Jupyter session as described above. The pre-installed image on the cluster already contains all the standard packages and modules needed for standard application development in CUDA-Q such as numpy, scipy, cupy, matplotlib, et cetera. 
 
-### Interactive Bash Mode
+### Interactive Mode in Terminal
 
 In order to configure CUDA-Q, first make sure to allocate and login to a GPU node, either through an interactive session as shown below or inside a Slurm job script.
 
