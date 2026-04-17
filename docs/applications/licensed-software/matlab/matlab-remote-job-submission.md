@@ -20,16 +20,17 @@ cluster: `/ihome/crc/how_to_run/matlab`
 ### Prerequisites
 
 1. Your MATLAB version must be at least R2021a. Plugin scripts are also available for MATLAB 2022a. If you don’t 
-        have one of these versions, please visit the [Pitt IT Software Download Service](https://software.pitt.edu), 
-        search for "MATLAB" and download and install R2021a or R2022a. Note: The 2022a plugin scripts seem to work 
-        fine with previous versions, but will work best with 2022a MATLAB.
-2. Make sure you are using the newest update of your version of MATLAB (Open MATLAB > "HOME" Tab > "RESOURCES" 
+        have MATLAB on your machine, please visit the [Pitt IT Software Download Service](https://software.pitt.edu), 
+        search for "MATLAB" and download and install. Note: The 2022a plugin scripts seem to work fine with previous versions.
+        For newer versions, please make sure to replace all occurences of '2022a' in the plugin scripts to the MATLAB version
+        which you are using.
+3. Make sure you are using the newest update of your version of MATLAB (Open MATLAB > "HOME" Tab > "RESOURCES" 
         Section> "Help" Drop Down > Check for Updates)
-3. You must have the MATLAB **Parallel Computing Toolbox** installed. To see what toolboxes are 
+4. You must have the MATLAB **Parallel Computing Toolbox** installed. To see what toolboxes are 
         installed, type the `ver` command in the MATLAB command window. You should see `Parallel Computing Toolbox`
         listed. If you don't, you can open MATLAB > go to the home tab > Add-Ons > Get Add-Ons > Search for 
         `Parallel Computing Toolbox` and Install (If you are using MATLAB licensed through the university).
-4. You must be connected to the CRC VPN in order to submit jobs from your desktop, if you are off-campus. 
+5. You must be connected to the CRC VPN in order to submit jobs from your desktop, if you are off-campus. 
         Please visit [this page](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426) on installing 
         the vpn.
 
