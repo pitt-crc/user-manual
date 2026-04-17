@@ -59,9 +59,9 @@ When your session starts, click the blue 'Connect to Jupyter' button. A new wind
 
 You can also install and use your own singularity image for the Jupyter session as described above. The pre-installed image on the cluster already contains all the standard packages and modules needed for standard application development in CUDA-Q such as numpy, scipy, cupy, matplotlib, et cetera. 
 
-### Terminal Access
+### Interactive Bash Mode
 
-In order to configure your environment for CUDA-Q, first make sure to allocate and login to a GPU node, either through an interactive session as shown below or inside a Slurm job script.
+In order to configure CUDA-Q, first make sure to allocate and login to a GPU node, either through an interactive session as shown below or inside a Slurm job script.
 
  #for example, ```crc-interactive -g```
 
@@ -104,5 +104,3 @@ q2 : ┤ x ├──────────────────────
   0.  -0.35j -0.25+0.25j]
 ```
 
-
-```
