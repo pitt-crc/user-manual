@@ -1,5 +1,5 @@
 # NVIDIA CUDA-Q
-CUDA-Q offers a unified programming model for hybrid application development in quantum computing: https://nvidia.github.io/cuda-quantum/latest/using/quick_start.html  
+CUDA-Q offers a unified programming model for hybrid application development in quantum computing. More information can be found on NVIDIA's official [documentation page.]( https://nvidia.github.io/cuda-quantum/latest/using/quick_start.html)  
 
 Availability
 ------------
