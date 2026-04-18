@@ -61,11 +61,17 @@ You can also install and use your own singularity image for the Jupyter session 
 
 ### Interactive Mode in Terminal
 
-In order to configure CUDA-Q, first make sure to allocate and login to a GPU node, either through an interactive session as shown below or inside a Slurm job script.
+In order to configure CUDA-Q, first make sure to allocate and login to a GPU node, either through an interactive session via [crc-interactive](https://crc-pages.pitt.edu/user-manual/applications/crc-wrappers/) as shown below or inside a Slurm job script.
 
- #for example, ```crc-interactive -g```
+```
+[chx33@login1 ~]$ crc-interactive -g
+srun: You have specified NO/WRONG partition, so defaulting to the A100 partition.
+srun: job 1669764 queued and waiting for resources
+srun: job 1669764 has been allocated resources
+[chx33@gpu-n36 ~]$ 
+```
 
-then load the corresponding module. # e.g., ```module load cudaq/0.14```
+Once you are on a GPU node, load the corresponding module. # e.g., ```module load cudaq/0.14```
 
 Follow the instruction prompt after loading the module to execute the CUDA-Q image within singularity in interactive bash mode. Then you can execute CUDA-Q python scripts with the command 'python3 <myScript.py>' as shown below.
 
