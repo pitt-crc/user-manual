@@ -35,7 +35,7 @@ module spider cudaq
 ## Usage
 -----
 
-CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand or through the terminal. Example scripts and notebooks can be found under the directory '/software/rhel9/manual/install/cudaq'.
+CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand or through the terminal. Example python scripts and Jupyter notebooks can be found under the directory '/software/rhel9/manual/install/cudaq/examples'.
 
 ### Run CUDA-Q on the GPU cluster in Jupyter
 
