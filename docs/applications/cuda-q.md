@@ -35,11 +35,11 @@ module spider cudaq
 ## Usage
 -----
 
-CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand or through the terminal.
+CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand or through the terminal. Example scripts and notebooks can be found under the directory '/software/rhel9/manual/install/cudaq'.
 
 ### Run CUDA-Q on the GPU cluster in Jupyter
 
-To benefit from best performance, it is recommended to run CUDA-Q with GPU support. In order to launch Jupyter on the GPU cluster, please visit [Jupyter on GPU documentation](../web-portals/https://crc-pages.pitt.edu/user-manual/web-portals/open-ondemand/#jupyter-notebooklab-on-gpu).
+To benefit from best performance, it is recommended to run CUDA-Q with GPU support. In order to launch Jupyter on the GPU cluster, please visit [Jupyter on GPU documentation](../web-portals/https://crc-pages.pitt.edu/user-manual/web-portals/open-ondemand).
 
 To connect to the GPU cluster via OnDemand, point your browser to https://ondemand.htc.crc.pitt.edu.
 
