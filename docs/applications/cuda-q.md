@@ -39,7 +39,7 @@ CUDA-Q can be launched in two different ways; through Jupyter on Open OnDemand o
 
 ### Run CUDA-Q on the GPU cluster in Jupyter
 
-To benefit from best performance, it is recommended to run CUDA-Q with GPU support. In order to launch Jupyter on the GPU cluster, please visit [Jupyter on GPU documentation](../web-portals/https://crc-pages.pitt.edu/user-manual/web-portals/open-ondemand).
+To benefit from best performance, it is recommended to run CUDA-Q with GPU support. In order to launch Jupyter on the GPU cluster, please visit [Jupyter on GPU documentation](https://crc-pages.pitt.edu/user-manual/snippets/jupyter-ondemand/#jupyter-on-gpu).
 
 To connect to the GPU cluster via OnDemand, point your browser to https://ondemand.htc.crc.pitt.edu.
 
