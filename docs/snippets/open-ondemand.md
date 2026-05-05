@@ -1,132 +1,64 @@
-# **Open OnDemand**
+# Open OnDemand
 
-## **Summary**
+## Summary
 
-The OnDemand interface allows you to conduct your research on HTC cluster through a web browser.
+Open OnDemand provides web-based access to the HTC cluster for file management, job submission, and interactive applications (Jupyter, RStudio, MATLAB) - all without traditional SSH access.
 
 **[Log in to Open OnDemand](https://ondemand.htc.crc.pitt.edu)**
 
-With OnDemand, users can upload and download files; create, edit, submit and monitor jobs; and run GUI 
-applications (e.g. RStudio Server and Jupyter Notebook), without logging in to the HTC cluster via traditional 
-interfaces.
+For additional help, see the [official OnDemand documentation](https://www.osc.edu/resources/online_portals/ondemand) (by Ohio Supercomputer Center) or [submit a help ticket](https://crc.pitt.edu/tickets).
 
-OnDemand was created by the Ohio Supercomputer Center (OSC). This document provides an outline of how to use 
-OnDemand on the HTC cluster.
+## Accessing Open OnDemand
 
-For more help, you can view the 
-[extensive documentation for OnDemand](https://www.osc.edu/resources/online_portals/ondemand) created by 
-OSC (including many video tutorials) or submit a [help ticket](https://crc.pitt.edu/tickets).
+**Prerequisites:**
 
-## **Accessing Open OnDemand**
+- [Pitt VPN](https://www.technology.pitt.edu/services/pittnet-vpn-globalprotect) connection (required when off-campus or on UPMC network)
+- Chrome or Firefox browser (recommended; Safari is not fully supported)
 
-If your computer is not connected to the Pitt network (e.g. you are working from remotely, or you are using Pitt 
-wireless network), or you are working from a laptop that is connected to the UPMC network, make sure you first 
-connect to the [Pitt VPN](https://www.technology.pitt.edu/services/pittnet-vpn-globalprotect), so that you can communicate with the CRC resources. Note that there are many 
-different VPN roles. **Only Firewall-SAM-USERS-Pulse role** can connect to CRC clusters.
+**Steps:**
 
-After ensuring a VPN connection, navigate to [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu) 
-in your web browser.
+1. Connect to the Pitt VPN
+2. Navigate to [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu)
+3. Log in with your Pitt username and password
+4. The Dashboard opens with menus for files, jobs, and interactive apps
 
-**Note**: We recommend to use Chrome or Firefox. Safari and Internet Explorer may work properly for some of the apps 
-in the portal, but are not fully supported.
+To end your session, click **Log Out** and close your browser.
 
-*   Provide your Pitt username and password.  
-*   The OnDemand **Dashboard** window will open.  From this page, you can use the menus across the top of the page to 
-* manage files and submit jobs to the HTC cluster.
+## Managing Files
 
-To end your OnDemand session, choose **Log Out** at the top right of the **Dashboard** window and **close your 
-browser**.
+Click **Files** in the top menu to browse your cluster directories (home, /bgfs, /zfs1). The File Explorer provides:
 
-## **Managing Files**
+| Action | Description |
+|--------|-------------|
+| Open in Terminal | Launch a terminal in a new browser tab |
+| New File / New Directory | Create files or folders |
+| Upload / Download | Transfer files to/from the cluster |
+| Copy/Move | Reorganize files |
+| Delete | Remove selected files |
+| Change Directory | Navigate to any path on the cluster |
+| Show Dotfiles | Toggle hidden file visibility |
 
-The OnDemand interface provides a visual representation of the cluster file system, allowing you to create, edit or
-move files.
+!!! warning
+    OnDemand file upload is not suitable for files larger than 1 GB due to cache limitations. Use [Globus](../data-management/file-transfer-methods/globus.md) for large transfers.
 
-Click on the **Files** dropdown item from the top menu bar in the **Dashboard** window.  The list that appears shows 
-your directories on CRC file systems. Your home directory is the first item, followed by folders under /bgfs, and 
-/zfs1 directories, they are also listed. 
+Use **Change Directory** to navigate to paths not listed in the dropdown menu.
 
-Choosing one of the file spaces opens the **File Explorer** in a new browser tab.  The files in the selected directory 
-are listed.  No matter which directory you are in, your home directory is displayed in a panel on the left.
+## Shell Access
 
-There are two sets of buttons in the **File Explorer**. Buttons near the top of the window perform these functions:
+Access an in-browser terminal from **Clusters** in the top menu. This provides the same environment as an SSH connection to the HTC login nodes.
 
-**Open in Terminal**
+## Interactive Apps
 
-Open a terminal window in a new browser tab
+Available interactive applications:
 
-**New File**
-
-Create a new empty file
-
-**New Directory**
-
-Create a new subdirectory
-
-**Upload**
-
-Copy files from your local machine to the cluster
-
-**Download**
-
-Copy the selected file(s) from the cluster to your local machine
-
-**Copy/Move**
-
-Copy or move the selected file(s) to the current directory
-
-**Delete**
-
-Delete the selected file(s)
-
-**Go up Directory (Up Arrow)** 
-
-Navigate to the parent directory
-
-**Change directory**
-
-Provide the absolute path to a new directory to view
-
-**Copy path**
-
-Copy the absolute path to the current directory to the clipboard
-
-**Show Dotfiles**
-
-Toggles the display of hidden files
-
-**Show Owner/Mode**
-
-Toggles the display of owner and permission settings
-
-**Filter**
-
-Restrict the display to file/folder names containing some value
-
-If you have files under other directories which are not listed in the dropdown menu, use the **Change Directory** 
-button to navigate to the directory via it's absolute path.
-
-## **Shell Access**
-
-An in-browser terminal prompt with access to the HTC login nodes can be accessed from the **Clusters** dropdown 
-on the top menu of the **Dashboard** window.  In the window that opens, you are logged in as if you used ssh to 
-connect to the HTC cluster.  
-
-## **Interactive Apps**
-
-Jump to a specific App:
-
-*   [Jupyter Notebook/Labs](#jupyter-notebooklab)
-*   [Jupyter Notebook/Labs on GPU](#jupyter-notebooklab-on-gpu)
-*   [Rstudio](#rstudio)
-*   [MATLAB](#matlab)
-*   [Genomics Apps](#genomics-apps)
+- [Jupyter Notebook/Lab](#jupyter-notebooklab)
+- [Jupyter Notebook/Lab on GPU](#jupyter-notebooklab-on-gpu)
+- [RStudio](#rstudio)
+- [MATLAB](#matlab)
+- [Genomics Apps](#genomics-apps)
 
 !!! note
-
-    **When you click "Connect to \*\*\*\*", and receive “Failed to connect to htc-n\*\*.crc.pitt.edu:<port number>”, 
-    do not be panic.** This error means that the web server is not fully ready yet. Wait 1-2 minutes, and refresh 
-    your web browser.
+    If you see "Failed to connect to htc-n**.crc.pitt.edu:<port>" after clicking "Connect to...", the web server is still starting. Wait 1-2 minutes and refresh your browser.
 
 ### ***Jupyter Notebook/Lab***
 

@@ -1,291 +1,108 @@
 # Job Scheduling Policy
 
-## Login Nodes are for Interactive, Non-intensive Work Only
+## Login Node Usage Policy
 
-Many users are logged into the login nodes of the H2P and HTC clusters at the same time. These are the gateways everyone 
-uses to perform interactive work like editing code, submitting and checking the status of jobs, etc.
+Login nodes are shared gateways for lightweight interactive work: editing code, submitting jobs, and checking status.
 
-Executing processing scripts or commands on these nodes can cause substantial slowdowns for the rest of the users. 
-For this reason, it is important to make sure that this kind of work is done in either an interactive session on a node 
-from one of the clusters, or as a batch job submission.
+**Per-user resource limits (enforced via cgroups):**
 
-To protect the shared login environment, **per-user resource limits are enforced via cgroups: 1 CPU core and 8 GB of memory**. These limits apply collectively across all processes a user is running on the login node. When the login node's overall resource pool is exhausted, users may be unable to log in until utilization falls below the threshold.
+| Resource | Limit |
+|----------|-------|
+| CPU cores | 1 |
+| Memory | 8 GB |
 
-Resource-intensive processes found to be running on the login nodes may be killed at any time.
+These limits apply collectively across all processes a user is running. Resource-intensive processes may be terminated without notice.
 
-<ins>**The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login
-nodes with processes that can otherwise be run on the compute nodes.**</ins>
+!!! warning
+    Repeated abuse of login nodes may result in revoked cluster access. Use [interactive jobs](../slurm/interactive-jobs.md) or [batch jobs](../slurm/batch-jobs.md) for computational work.
 
 ![JOB-SCHEDULING-POLICY1](../_assets/img/policies/job_scheduling_policy_1.png)
 
-## Jobs are Subject to Priority Queueing
-There are settings in place within the Slurm Workload Manager that allow all groups (and users within those groups) 
-to have equal opportunity to run calculations. This concept is called “Fair Share”. The fair share is a multiplicative 
-factor in computing a job’s “Priority”. At Pitt, we use a multi-factor priority system which includes:
+## Job Priority
 
-Age [0,1] – Length of time the job been in the queue and eligible to be scheduled. Longer time spent in the queue 
-recieves higher priority. The maximum is attained at a queue time of 7 days. The priority weight for age is 2000.
+Slurm uses a multi-factor priority system called "Fair Share" to ensure all groups have equitable access. Priority is computed as a weighted sum of four factors:
 
-Job Size [0,1] – Required Nodes, CPUs, and Memory usage. Larger requests receive increased priority. The maximum 
-corresponds to using all the resources on the cluster. The priority weight for job size is 2000.
+| Factor | Range | Description | Weight |
+|--------|-------|-------------|--------|
+| Age | [0, 1] | Time spent in queue (max at 7 days) | 2000 |
+| Job Size | [0, 1] | Resources requested relative to cluster capacity | 2000 |
+| QoS | [0, 1] | Based on walltime tier (shorter = higher) | 2000 |
+| Fair Share | [0, 1] | Overall allocation usage (less usage = higher) | 3000 |
 
-Quality of Service (QOS) [0,1] - Factor based on the Walltime of the job. Normalized to the highest (short QOS). 
-The priority weight for QOS is 2000.
+### Quality of Service (QoS) Tiers
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
-<table class="display cell-border" id="nTable">
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Priority</td>
-            <td>QOS Factor</td>
-            <td>Max Walltime (D-HH:MM:SS)</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>Short</code></td>
-            <td>13</td>
-            <td>1.00</td>
-            <td>1-00:00:00</td>
-        </tr>
-        <tr>
-            <td><code>Normal</code></td>
-            <td>12</td>
-            <td>0.92</td>
-            <td>3-00:00:00</td>
-        </tr>
-        <tr>
-            <td><code>Long</code></td>
-            <td>11</td>
-            <td>0.84</td>
-            <td>6-00:00:00</td>
-        </tr>
-        <tr>
-            <td><code>Long-long (on SMP and HTC)</code></td>
-            <td>10</td>
-            <td>0.76</td>
-            <td>21-00:00:00</td>
-        </tr>
-    </tbody>
-</table>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#nTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
-
-
-Fair Share [0,1] - A metric for overall usage by allocation that prioritizes jobs from under serviced slurm accounts. 
-Less overall cluster use receives higher priority. The priority weight for fairshare is 3000.
-
-Priority is computed as a sum of the individual factors multiplied by their priority weights. Higher 
-priorities will be assigned resources first. Your jobs may receive pending status with Priority as the reason.
+| QoS | Priority | Factor | Max Walltime |
+|-----|----------|--------|-------------|
+| Short | 13 | 1.00 | 1-00:00:00 |
+| Normal | 12 | 0.92 | 3-00:00:00 |
+| Long | 11 | 0.84 | 6-00:00:00 |
+| Long-long (SMP/HTC only) | 10 | 0.76 | 21-00:00:00 |
 
 ### Checking Job Priority
-You can use the `sprio` slurm utility to see the priority of your jobs
+
 ```commandline
-[nlc60@login0b ~] : sprio -M smp -u nlc60 -j 6136016
-  JOBID PARTITION     USER   PRIORITY       SITE        AGE  FAIRSHARE    JOBSIZE        QOS                 
-6136016 smp          nlc60       2272          0          0        269          4       2000
+sprio -M smp -u $USER -j <jobid>
 ```
 
-## Walltime Extensions will generally not be Granted
-It is up to the job submitter to determine the demands of their job through some benchmarking before submitting, 
-perform any necessary code optimization, and to then specify the memory, cpu, and time requirements 
-accordingly. This ensures that the job is queued with respect to FairShare, and that CRCD resources utilized by a job 
-are available to other users within a reasonable time frame.
+## Walltime Extensions
 
-## Exceeding Usage Limits will cause Job Pending Status
-After submission, a job can appear with a "status" of "PD" (not running).
+Walltime extensions are generally not granted. Users should benchmark their jobs and specify appropriate time requirements. This ensures proper Fair Share queueing and timely resource availability for other users.
 
-There are various reasons that Slurm will put your job in a pending state. Some common explanations are listed below.
+## Pending Job Reasons
 
-### Reasons related to resource availability and job dependencies:
+### Resource Availability
 
-<table class="display cell-border" id="aTable">
-    <thead>
-        <tr>
-            <td>Reason</td>
-            <td>Explanation</td>
-            <td>Resolution</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Resources</td>
-            <td>The cluster is busy and no resources are currently available for your job.</td>
-            <td>Your job will run as soon as the resources requested become available</td>
-        </tr>
-        <tr>
-            <td>Priority</td>
-            <td>See section on job priority</td>
-            <td>Your job will run as soon as it has reached a high enough priority</td>
-        </tr>
-        <tr>
-            <td>Dependency</td>
-            <td>A job cannot start until another job is finished. This only happens if you included a &quot;--dependency&quot; 
-directive in your Slurm script.</td>
-            <td>Wait until the job that you have marked as a dependency is finished, then your job will run</td>
-        </tr>
-        <tr>
-            <td>DependencyNeverSatisfied</td>
-            <td>A job cannot start because another job on which it depends failed</td>
-            <td>Please cancel this job, as it will never be able to run. You will need to resolve the issues in the job 
-that has been marked as a dependency.</td>
-        </tr>
-    </tbody>
-</table>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#aTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
+| Reason | Explanation | Resolution |
+|--------|-------------|------------|
+| Resources | Cluster is fully utilized | Wait for resources to free up |
+| Priority | Other jobs have higher priority | Wait for priority to increase |
+| Dependency | Waiting for another job to finish | Wait for dependency to complete |
+| DependencyNeverSatisfied | Dependent job failed | Cancel the job and fix the dependency |
 
-### Reasons related to exceeding a usage limit:
+### Usage Limits
 
-#### JobArrayTaskLimit, QOSMaxJobsPerUserLimit and QOSMaxJobsPerAccountLimit
-One or more of your jobs have exceeded limits in place on the number of jobs you can have in the queue 
-**that are actively accruing priority**. Jobs with this status will remain in the queue, but will not being accruing
-priority until other jobs from the submitting user have completed. 
+#### JobArrayTaskLimit / QOSMaxJobsPerUserLimit / QOSMaxJobsPerAccountLimit
 
-In most cases the **per-account limit is 500 jobs**, and the **per-user limit is 100 jobs**. You can use 
-`sacctmgr show qos format=Name%20,MaxJobsPA,MaxJobsPU,MaxSubmitJobsPA,MaxSubmitJobsPU,MaxTresPA%20` to view the limits 
-for any given QOS. 
+Your jobs have exceeded the limit on actively priority-accruing jobs:
 
-The maximum job array size is 500 on SMP, MPI, and HTC, 1001 on GPU. The array size limits are defined at the cluster configuration level:
+- **Per-account limit**: 500 jobs
+- **Per-user limit**: 100 jobs
+- **Max job array size**: 500 (SMP/MPI/HTC), 1001 (GPU)
+- **Max submitted jobs**: 1000 total
+
+Check limits with:
+```commandline
+sacctmgr show qos format=Name%20,MaxJobsPA,MaxJobsPU,MaxSubmitJobsPA,MaxSubmitJobsPU,MaxTresPA%20
 ```
-[nlc60@login1 ~] : for cluster in smp mpi gpu htc; do echo $cluster; scontrol -M $cluster show config | grep MaxArraySize; done
-smp
-MaxArraySize            = 500
-mpi
-MaxArraySize            = 500
-gpu
-MaxArraySize            = 1001
-htc
-MaxArraySize            = 500
-```
-
-These limits exist to prevent users who batch submit large quantities of jobs in a loop or job array from having all of 
-their jobs at a higher priority than one-off submissions simply due to having submitted them all at once. 
-
-A hard limit on the maximum number of submitted jobs (including in a job array) is 1000. This separate limit exists to 
-prevent any one user from overwhelming the workload manager with a singular, very large request for resources.
 
 #### MaxMemoryPerAccount
-The job exceeds the current within-group memory quota. The maximum quota available depends on the cluster and partition. 
-The table below gives the maximum memory (in GB) for each QOS in the clusters/partitions it is defined.
 
-<table class="display cell-border" id="bTable">
-    <thead>
-        <tr>
-            <td>Cluster</td>
-            <td>Partition</td>
-            <td>Short</td>
-            <td>Normal</td>
-            <td>Long</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>smp</td>
-            <td>smp</td>
-            <td>13247</td>
-            <td>11044</td>
-            <td>9999</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>legacy</td>
-            <td>620</td>
-            <td>620</td>
-            <td>620</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>high-mem</td>
-            <td>6512</td>
-            <td>6512</td>
-            <td>6512</td>
-        </tr>
-    </tbody>
-</table>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#bTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
+Your group has exceeded its aggregate memory quota. Maximum memory (GB) per QoS:
 
-If you find yourself consistently running into this issue, you can use the `crc-seff` tool to determine the efficiency of 
-your completed jobs:
-```commandline
-[chx33@login1 ~]$ crc-seff  -M mpi  2707801
-Job ID: 2707801
-Cluster: mpi
-User/Group: hillier/dhillier
-State: TIMEOUT (exit code 0)
-Nodes: 4
-Cores per node: 48
-CPU Utilized: 4-00:48:03
-CPU Efficiency: 99.84% of 4-00:57:36 core-walltime
-Job Wall-clock time: 00:30:18
-Memory Utilized: 8.11 GB
-Memory Efficiency: 2.16% of 375.00 GB
-```
+| Cluster | Partition | Short | Normal | Long |
+|---------|-----------|-------|--------|------|
+| SMP | smp | 13,247 | 11,044 | 9,999 |
+| SMP | high-mem | 6,512 | 6,512 | 6,512 |
+
+Use `crc-seff -M <cluster> <jobid>` to check your jobs' memory efficiency and reduce requests if possible.
 
 #### AssocGrpBillingMinutes
-- Your group's Allocation ("service units") usage has surpassed the limit specified in your active resource Allocation, 
-  or your active Allocations have expired. You can double-check this with `crc-usage`. 
-  [Please submit a new Resource Allocation Request following our guidelines](https://crc.pitt.edu/service-request-forms/compute-allocation-guidelines).
 
+Your allocation's service units are exhausted or expired. Check with `crc-usage` and [request a new allocation](https://crc.pitt.edu/service-request-forms/compute-allocation-guidelines) if needed.
 
+#### MaxTRESPerAccount / MaxCpuPerAccount / MaxGRESPerAccount
 
-#### MaxTRESPerAccount, MaxCpuPerAccount, or MaxGRESPerAccount
-In the table below, the group based CPU (GPUs for the gpu cluster) limits are presented for each QOS walltime length. 
-If your group requests more CPU/GPUs than in this table you will be forced to wait until your group's jobs finish.
+Your group has exceeded its concurrent CPU/GPU limit. Limits per QoS tier:
 
-
-| Cluster | Partition    | Short QOS (1 Day) | Normal QOS (3 Days) | Long QOS (6 Days) | Long-long QOS (21 Days) |
-|---------|--------------|-------------------|---------------------|-------------------|-------------------------|
-| smp     | smp          | 2304              | 1613                | 1152              | 461                     |
-|         | high-mem     | 320               | 224                 | 160               |                       |
-| gpu    | a100         | 16                | 12                  | 8                 |                         |
-|         | a100_multi   | 32                | 24                  | 8                 |                         |
-|         | a100_nvlink  | 24                | 16                  | 8                 |                         |
-|         | l40s  | 24                | 16                  | 8                 |                         |
-| mpi     | mpi          | 3264              | 2285                | 1632              |                         |
-| htc     | htc          | 1536              | 1075                 | 768               | 307                     |
-| teach     | cpu          | 1152              | 1152                 | 1152               | 1152                     |
-| teach     | gpu          | 24              | 24                 | 24               | 24                     |
+| Cluster | Partition | Short (1 day) | Normal (3 days) | Long (6 days) | Long-long (21 days) |
+|---------|-----------|---------------|-----------------|---------------|---------------------|
+| SMP | smp | 2,304 | 1,613 | 1,152 | 461 |
+| SMP | high-mem | 320 | 224 | 160 | - |
+| GPU | a100 | 16 | 12 | 8 | - |
+| GPU | a100_multi | 32 | 24 | 8 | - |
+| GPU | a100_nvlink | 24 | 16 | 8 | - |
+| GPU | l40s | 24 | 16 | 8 | - |
+| MPI | mpi | 3,264 | 2,285 | 1,632 | - |
+| HTC | htc | 1,536 | 1,075 | 768 | 307 |
+| Teach | cpu | 1,152 | 1,152 | 1,152 | 1,152 |
+| Teach | gpu | 24 | 24 | 24 | 24 |

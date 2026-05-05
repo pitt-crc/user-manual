@@ -3,31 +3,23 @@ hide:
   - toc
 ---
 
-# Step 2- Login to Access Portals
+# Step 2: Login to Access Portals
 
-Once you have established a VPN to PittNet, you can access the CRC advanced computing and storage resources via
-several portals, including
+Once you have established a VPN connection to PittNet, you can access CRCD resources through several portals:
 
-* [**SSH connection using a terminal**](../terminal.md)
-* [**Linux Desktop webportal**](../viz.md)
-* [**Open OnDemand webportal**](../open-ondemand.md)
-* [**JupyterHub webportal**](../jupyter-hub.md)
-* [**JupyterHub on Teach Cluster**](../jupyter-teach.md)
-
-A schematic of this part of the process is highlighted below.
+- [SSH terminal](../terminal.md) - Command-line access
+- [Linux Desktop (VIZ)](../viz.md) - Remote graphical desktop
+- [Open OnDemand](../open-ondemand.md) - Web-based cluster management
+- [JupyterHub](../jupyter-hub.md) - Interactive notebooks
+- [JupyterHub on Teach](../jupyter-teach.md) - Notebooks for coursework
 
 ![GETTING-STARTED-MAP](../../_assets/img/getting-started/getting-started-step-2.png)
 
-## Guidance on appropriate usage of access portals
+## Login Node Usage Policy
 
-Many users are logged into the CRC login nodes. These are the gateways everyone uses to perform interactive 
-work like editing code, submitting and checking the status of jobs, etc.
+Login nodes are a shared resource for lightweight interactive work: editing code, submitting jobs, checking status, and managing files.
 
-Executing processing scripts or commands on these nodes can cause substantial slowdowns for the rest of the users. 
-For this reason, it is important to make sure that this kind of work is done in either an interactive session on a node 
-from one of the clusters, or as a batch job submission.
-
-Resource-intensive processes found to be running on the login nodes may be killed at anytime.
-
-<ins>**The CRC team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
-nodes with processes that can otherwise be run on the compute nodes.**</ins>
+!!! warning "Do not run compute-intensive work on login nodes"
+    - Resource-intensive processes may be terminated without notice
+    - Use [interactive jobs](../../slurm/interactive-jobs.md) or [batch jobs](../../slurm/batch-jobs.md) for computational work
+    - **Repeated violations may result in revoked cluster access**

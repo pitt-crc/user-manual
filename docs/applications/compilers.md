@@ -1,87 +1,23 @@
 # Compilers
-GNU compilers are available in your path when you login. Newer GNU compilers are available as module environments.
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+GNU compilers are available in your path at login. Newer versions and additional compilers are available through the module system.
 
-<table class="display cell-border" id="compTable">
-	<thead>
-		<tr>
-			<th>Compiler</th>
-			<th>Version</th>
-			<th>executable name</th>
-			<th>AVX2 support</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>GNU C</td>
-			<td>8.2.0*</td>
-			<td>gcc</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>GNU C++</td>
-			<td>8.2.0*</td>
-			<td>g++</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>GNU Fortran</td>
-			<td>8.2.0*</td>
-			<td>gfortran</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>----</td>
-			<td>----</td>
-			<td>----</td>
-			<td>----</td>
-		</tr>
-		<tr>
-			<td>GNU C</td>
-			<td>4.8.5</td>
-			<td>gcc</td>
-			<td>No</td>
-		</tr>
-		<tr>
-			<td>GNU C++</td>
-			<td>4.8.5</td>
-			<td>g++</td>
-			<td>No</td>
-		</tr>
-		<tr>
-			<td>GNU Fortran</td>
-			<td>4.8.5</td>
-			<td>gfortran</td>
-			<td>No</td>
-		</tr>
-	</tbody>
-</table>
+## Available Compilers
 
+| Compiler | Version | Executable | AVX2 Support | How to Access |
+|----------|---------|-----------|--------------|---------------|
+| GNU C | 8.2.0 | `gcc` | Yes | `module load gcc/8.2.0` |
+| GNU C++ | 8.2.0 | `g++` | Yes | `module load gcc/8.2.0` |
+| GNU Fortran | 8.2.0 | `gfortran` | Yes | `module load gcc/8.2.0` |
+| GNU C | 4.8.5 | `gcc` | No | Available by default (system) |
+| GNU C++ | 4.8.5 | `g++` | No | Available by default (system) |
+| GNU Fortran | 4.8.5 | `gfortran` | No | Available by default (system) |
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+Use `man <executable>` for detailed information about compiler flags.
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#compTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
+## Notes
 
-See the man pages man <executable> for more information about flags.
-
-*   GCC 8.2.0 is available through the Lmod Application Environment. See below.
-*   Currently, HTC cluster does not support distributed parallel MPI jobs. Only shared memory parallel jobs are supported.
-
-### Instruction sets
-
-The Haswell CPUs support AVX2 instructions. The GCC 8.2.0 compiler support AVX2 with the -march=core-avx2 flag. The login nodes have the same architecture as the compute nodes.
+- GCC 8.2.0 and newer are available through the Lmod module system
+- The compute nodes support AVX2 instructions; use `-march=core-avx2` with GCC 8.2.0+ to enable them
+- Login nodes have the same architecture as compute nodes, so code compiled on login nodes will run on compute nodes
+- The HTC cluster does not support distributed parallel MPI jobs; only shared memory (OpenMP) parallelism is supported on HTC

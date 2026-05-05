@@ -1,12 +1,20 @@
+# Project Information
 site_name: CRCD User Manual
-repo_url: https://github.com/pitt-crc/user-manual
+site_description: University of Pittsburgh Center for Research Computing and Data - User Documentation
+site_author: CRCD
 site_url: https://crc-pages.pitt.edu/user-manual/
+repo_url: https://github.com/pitt-crc/user-manual
+repo_name: GitHub/pitt-crc/user-manual
+edit_uri: blob/main/docs/
+
+# Theme Configuration
 theme:
   icon:
     annotation: material/alert-circle
   name: material
   logo: _assets/img/pitt_shield_white.png
   favicon: _assets/img/pitt-logo-nav_white.png
+  language: en
   palette:
     primary: custom
   font:
@@ -14,10 +22,18 @@ theme:
     code: Roboto Mono
   features:
     - content.code.copy
+    - content.code.annotate
+    - content.action.edit
     - search.suggest
+    - search.highlight
     - navigation.top
     - navigation.indexes
-    - content.code.annotate
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - toc.follow
+
+# Extra Configuration
 extra:
   homepage: https://crc.pitt.edu
   analytics:
@@ -35,11 +51,26 @@ extra:
           name: This page could be improved
           data: 0
           note: >-
-            Thanks for your feedback! Help us improve this page by creating an issue in 
+            Thanks for your feedback! Help us improve this page by creating an issue in
             our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
+  social:
+    - icon: material/home-circle
+      link: https://crc.pitt.edu
+      name: CRCD Home
+    - icon: material/help-circle
+      link: https://services.pitt.edu/TDClient/33/Portal/Requests/ServiceDet?ID=1511
+      name: Get Help
+    - icon: fontawesome/brands/github
+      link: https://github.com/pitt-crc
+      name: GitHub
+
 extra_css:
   - _assets/css/pitt_colors.css
+
+# Plugins
 plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - mkdocstrings
   - mkdocs-video:
       is_video: True
@@ -48,138 +79,164 @@ plugins:
   - redirects:
       redirect_maps:
         'data-management/globus-microsoft-onedrive.md': 'https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=823'
-  - search
+
+# Markdown Extensions
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - footnotes
+  - tables
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.mark
   - pymdownx.tilde
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.snippets:
       base_path: docs/snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
-      toc_depth: 0
       permalink: true
-  - tables
+      toc_depth: 3
+
+# Navigation
 nav:
-  - Back to crc.pitt.edu: https://crc.pitt.edu
-  - User Manual Home: index.md
-  - Getting Started:
-      - getting-started/index.md
-      - getting-started/getting-started-step1-account.md
-      - Step 2- Login to Access Portals:
-          - getting-started/step2/index.md
-          - SSH using a terminal: getting-started/terminal.md
-          - Linux Desktop Web-portal: getting-started/viz.md
-          - Open OnDemand Web-portal: getting-started/open-ondemand.md
-          - JupyterHub Web-portal: getting-started/jupyter-hub.md
-          - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
-      - Step 3- CRCD Ecosystem:
-          - getting-started/step3/index.md
-          - Discovering Software: getting-started/step3/getting-started-step3-software.md
-          - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
-          - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
-  - Hardware Profiles:
-      - Overview: hardware_profiles/overview.md
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Understanding Our Systems:
+      - systems/index.md
       - Login Nodes: hardware_profiles/login.md
-      - SMP: hardware_profiles/smp.md
-      - MPI: hardware_profiles/mpi.md
-      - GPU: hardware_profiles/gpu.md
-      - HTC: hardware_profiles/htc.md
-      - TEACH: hardware_profiles/teach.md
-      - VIZ: hardware_profiles/viz.md
-  - Policies:
-      - policies/job-scheduling-policy.md
-      - policies/hardware-investing-policy.md
-      - policies/resource-descriptions-for-writing-proposals.md
-  - Connecting to Web Portals:
-      - web-portals/terminal.md
-      - web-portals/open-ondemand.md
-      - web-portals/jupyter-ondemand.md
-      - web-portals/viz.md
-      - web-portals/jupyter-hub.md
-      - web-portals/jupyter-teach.md
-      - web-portals/jupyterhub-venv.md
-      - web-portals/psych.md
-      - web-portals/hugen.md
-  - The SLURM Workload Manager:
-      - slurm/slurm-overview.md
-      - slurm/batch-jobs.md
-      - slurm/service-units.md
-      - slurm/interactive-jobs.md
-      - slurm/pbs-slurm.md
-      - slurm/scavenger.md
-      - slurm/job-arrays.md
-      - slurm/vscode.md
-      - slurm/scratch-storage.md
-  - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
-  - Data Management:
-      - data-management/file-systems.md
-      - data-management/file-permissions.md
-  - File Transfer Methods:
-      - data-management/index.md
-      - data-management/file-transfer-methods/globus.md
-      - data-management/file-transfer-methods/globus-microsoft-onedrive.md
-      - data-management/file-transfer-methods/microsoft-onedrive.md
-  - Applications:
-      - applications/software-list.md
-      - applications/application-environment.md
-      - applications/basic-commands.md
-      - applications/crc-wrappers.md
-      - applications/compilers.md
-      - applications/python.md
-      - applications/cuda-q.md
-      - applications/r+rstudio.md
-      - applications/ondemand-rstudio-gpu.md
-      - applications/singularity.md
+      - SMP Cluster: hardware_profiles/smp.md
+      - MPI Cluster: hardware_profiles/mpi.md
+      - GPU Cluster: hardware_profiles/gpu.md
+      - HTC Cluster: hardware_profiles/htc.md
+      - Teach Cluster: hardware_profiles/teach.md
+      - VIZ Cluster: hardware_profiles/viz.md
+  - Getting an Account:
+      - accounts/index.md
+      - Sponsored Accounts: getting-started/sponsored_account.md
+  - Connecting to CRCD:
+      - connect/index.md
+      - SSH Terminal Access: web-portals/terminal.md
+      - Open OnDemand: web-portals/open-ondemand.md
+      - JupyterHub: web-portals/jupyter-hub.md
+      - Jupyter on OnDemand: web-portals/jupyter-ondemand.md
+      - JupyterHub on Teach: web-portals/jupyter-teach.md
+      - JupyterHub Virtual Environments: web-portals/jupyterhub-venv.md
+      - VIZ Linux Desktop: web-portals/viz.md
+      - Psych Portal: web-portals/psych.md
+      - HUGEN Portal: web-portals/hugen.md
+      - VS Code Integration: slurm/vscode.md
+  - Running Jobs:
+      - jobs/index.md
+      - Batch Jobs: slurm/batch-jobs.md
+      - Interactive Jobs: slurm/interactive-jobs.md
+      - Job Arrays: slurm/job-arrays.md
+      - Scavenger Jobs: slurm/scavenger.md
+      - Service Units and Charges: slurm/service-units.md
+      - PBS to Slurm Migration: slurm/pbs-slurm.md
+      - Scratch Storage: slurm/scratch-storage.md
+  - Working with Software:
+      - applications/index.md
+      - Software List: applications/software-list.md
+      - The Module System: applications/application-environment.md
+      - Basic Module Commands: applications/basic-commands.md
+      - CRC Wrapper Tools: applications/crc-wrappers.md
+      - Compilers: applications/compilers.md
+      - Languages and Frameworks:
+          - Python: applications/python.md
+          - R and RStudio: applications/r+rstudio.md
+          - RStudio on GPU Nodes: applications/ondemand-rstudio-gpu.md
+          - CUDA-Q: applications/cuda-q.md
+      - Containers:
+          - Singularity: applications/singularity.md
       - Licensed Software:
-          - applications/licensed-software/ansys.md
-          - applications/licensed-software/comsol.md
-          - applications/licensed-software/lumerical.md
-          - applications/licensed-software/mathematica.md
-          - applications/licensed-software/vasp.md
+          - ANSYS: applications/licensed-software/ansys.md
+          - COMSOL: applications/licensed-software/comsol.md
+          - Lumerical: applications/licensed-software/lumerical.md
+          - Mathematica: applications/licensed-software/mathematica.md
+          - VASP: applications/licensed-software/vasp.md
           - MATLAB:
-              - applications/licensed-software/matlab/matlab.md
-              - applications/licensed-software/matlab/matlab-remote-job-submission.md
-  - Bioinformatics Support:
-      - bioinformatics/bioinformaticsworkshops.md
+              - Using MATLAB: applications/licensed-software/matlab/matlab.md
+              - Remote Job Submission: applications/licensed-software/matlab/matlab-remote-job-submission.md
+  - Managing Data:
+      - data-management/index.md
+      - File Systems: data-management/file-systems.md
+      - File Permissions: data-management/file-permissions.md
+      - Moving Data:
+          - Globus: data-management/file-transfer-methods/globus.md
+          - Globus with OneDrive: data-management/file-transfer-methods/globus-microsoft-onedrive.md
+          - Microsoft OneDrive: data-management/file-transfer-methods/microsoft-onedrive.md
+  - Bioinformatics and Domain Support:
+      - bioinformatics/index.md
+      - Workshops: bioinformatics/bioinformaticsworkshops.md
       - NGS Data Analysis:
-          - advanced-genomics-support/RNASeq-data-analysis.md
-          - advanced-genomics-support/variant-calling.md
-          - advanced-genomics-support/single-cell-rnaseq.md
-          - bioinformatics/spatialtranscriptomics.md
-          - advanced-genomics-support/ChipSeq-data-analysis.md
-          - advanced-genomics-support/ATACSeq-data-analysis.md
-          - bioinformatics/Methylation.md
-          - advanced-genomics-support/cromwell-and-encode.md
-          - advanced-genomics-support/genome-browser.md
-          - advanced-genomics-support/clcbio-genomics-server.md
-      - bioinformatics/nf-core-genomics-pipelines.md
-      - bioinformatics/alphafold3.md
-      - bioinformatics/fMRI.md
-      - bioinformatics/EHR.md
-      - bioinformatics/ollama.md
-      - bioinformatics/bioimage.md
-      - bioinformatics/virtualgl.md
-      - bioinformatics/copilot.md
-
-  - Supporting Code Optimization: code-optimization.md
-
-  - Tips & Tricks:
-      - tips/persist-sessions.md
-
-  - Frequently Asked Questions: faq.md
+          - RNA-Seq: advanced-genomics-support/RNASeq-data-analysis.md
+          - Variant Calling: advanced-genomics-support/variant-calling.md
+          - Single-Cell RNA-Seq: advanced-genomics-support/single-cell-rnaseq.md
+          - Spatial Transcriptomics: bioinformatics/spatialtranscriptomics.md
+          - ChIP-Seq: advanced-genomics-support/ChipSeq-data-analysis.md
+          - ATAC-Seq: advanced-genomics-support/ATACSeq-data-analysis.md
+          - Methylation: bioinformatics/Methylation.md
+          - Cromwell and ENCODE: advanced-genomics-support/cromwell-and-encode.md
+          - Genome Browser: advanced-genomics-support/genome-browser.md
+          - CLCbio Genomics Server: advanced-genomics-support/clcbio-genomics-server.md
+      - Genomics Pipelines:
+          - nf-core Pipelines: bioinformatics/nf-core-genomics-pipelines.md
+      - AI and Machine Learning:
+          - AlphaFold3: bioinformatics/alphafold3.md
+          - Ollama LLM Inference: bioinformatics/ollama.md
+          - GitHub Copilot: bioinformatics/copilot.md
+      - Imaging and Visualization:
+          - Bioimage Analysis: bioinformatics/bioimage.md
+          - VirtualGL: bioinformatics/virtualgl.md
+          - fMRI Analysis: bioinformatics/fMRI.md
+      - Health Data:
+          - Electronic Health Records: bioinformatics/EHR.md
+  - Policies:
+      - policies/index.md
+      - Job Scheduling Policy: policies/job-scheduling-policy.md
+      - Hardware Investing Policy: policies/hardware-investing-policy.md
+      - Resource Descriptions for Proposals: policies/resource-descriptions-for-writing-proposals.md
+  - Help and Support:
+      - help/index.md
+      - Frequently Asked Questions: faq.md
+      - Acknowledging CRCD: acknowledge-crc.md
+      - Code Optimization Support: code-optimization.md
+      - Tips and Tricks:
+          - Persisting Sessions: tips/persist-sessions.md
 
 not_in_nav: |
+  getting-started/index.md
+  getting-started/getting-started-step1-account.md
+  getting-started/step2/index.md
+  getting-started/terminal.md
+  getting-started/viz.md
+  getting-started/open-ondemand.md
+  getting-started/jupyter-hub.md
+  getting-started/jupyter-teach.md
+  getting-started/step3/index.md
+  getting-started/step3/getting-started-step3-software.md
+  getting-started/step3/getting-started-step3-resources.md
+  getting-started/step3/getting-started-step3-manage-jobs.md
   getting-started/access_avd.md
   getting-started/access_hipaa.md
+  getting-started/access_sre.md
   getting-started/upmc_avd.md
+  hardware_profiles/overview.md
+  slurm/slurm-overview.md
   policies/slurm-limits.md
   snippets/annual-allocation-limits.md
   snippets/group-limits-compute.md
@@ -187,12 +244,10 @@ not_in_nav: |
   snippets/jupyter-teach.md
   snippets/ondemand-rstudio-gpu.md
   snippets/jupyter-hub.md
-  snippets/jupyter-hub.md
   snippets/jupyter-ondemand.md
   snippets/open-ondemand.md
   snippets/psych.md
   snippets/terminal.md
   snippets/viz.md
-
 
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.

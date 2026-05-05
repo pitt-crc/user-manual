@@ -1,10 +1,22 @@
-# Supporting Code Optimization
+# Code Optimization Support
 
-Pitt CRCD faculty consultants offer support for optimizing users' code. 
-However, the support may vary depending upon our available resources, and the 
-volume and degree of the support needed. We ask that in your proposal you describe 
-the level of support you will need, and an estimation of the duration of that 
-support to allow our consultants to plan the most effective use of resources. 
+CRCD PhD-level faculty consultants offer support for optimizing research code. Support scope varies depending on available resources and the degree of assistance needed.
 
-Pitt CRCD consultants may also direct you toward workshops or other teaching 
-resources in addition to or instead of direct consultation. 
+## What We Offer
+
+- Performance profiling and bottleneck identification
+- Parallelization strategies (OpenMP, MPI, GPU)
+- Algorithm optimization recommendations
+- Guidance on compiler flags and build configurations
+
+## How to Request Support
+
+In your allocation proposal or help ticket, describe:
+
+- The level of support needed
+- An estimation of the duration of that support
+
+This allows our consultants to plan resources effectively.
+
+!!! note
+    CRCD consultants may direct you toward workshops or other training resources in addition to, or instead of, direct consultation depending on the nature of the request.
