@@ -80,7 +80,7 @@ PIs and group members can access this folder and create their own subfolders. Us
 filesystem to stage data for compute jobs or store results that need to persist long-term.
 
 **Quota:** 5 TB default at no charge. Additional storage can be purchased in 5 TB increments
-at a subsidized rate of $65/TB/year. Use `crc-quota` to check utilization.
+at a subsidized rate of $30/TB/year. Use `crc-quota` to check utilization.
 
 **Permissions:**
 
@@ -113,7 +113,7 @@ and someone from the team will provision the space for you.
 
 ### I've hit the limit on my initial 5 TB on `/ix` or `/ix1`. How do I request more space?
 
-Additional storage is available at a subsidized rate of $65/TB/year.
+Additional storage is available at a subsidized rate of $30/TB/year.
 [Use this form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=D8BjnEQtuz0_&RequestorType=Service)
 to request additional space.
 
