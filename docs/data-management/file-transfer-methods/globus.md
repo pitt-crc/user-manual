@@ -23,22 +23,23 @@ Click FILE MANAGER. You'll be moving data between two mapped collections using G
 ![](../../_assets/img/data-management/globus21.png)
 
 ### Step 1: Set up the source collection (CRCD data)
+
 On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
 
 
 ![](../../_assets/img/data-management/globus22.png)
 
-![](../../_assets/img/data-management/globus23.png)
-
-![](../../_assets/img/data-management/globus24.png)
-
-
-
 ### Step 2: Set up the destination collection
+
 On the right panel, search for and select a second endpoint. For example, if you choose the UPitt-OneDrive endpoint, the mapped collection will display your OneDrive folders.
 
+![](../../_assets/img/data-management/globus23.png)
+
 ### Step 3: Transfer
+
 With both endpoints set up, you can now transfer files between the two collections.
+
+![](../../_assets/img/data-management/globus24.png)
 
 Important note:
 The **COLLECTIONS** option in the left-hand navigation menu refers to your **Guest Collections** — this is different from the **mapped collections** you access by searching for an endpoint (like pitt#dtn or UPitt-OneDrive). Don't confuse the two.
