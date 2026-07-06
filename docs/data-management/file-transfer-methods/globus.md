@@ -51,9 +51,7 @@ The **COLLECTIONS** option in the left-hand navigation menu refers to your **Gue
 Globus file sharing lets you set up **Guest Collections** based on your mapped collections, i.e., your CRCD storage, on the pitt#dtn endpoint. If this is the approach you intend to take, please review the documentation below.
 
 Globus sharing provides a mechanism for CRC PIs and users to store their data and easily share with collaborators, 
-without the burden of local account management. CRC leverages our BeeGFS and ZFS storage infrastructure to make Globus 
-Transfer and Sharing services available for researchers to store large amounts of research data, move data in and out 
-of the system, and to make subsets of the data available to their collaborators.
+without the burden of local account management. 
 
 CRC thanks Central IT for subscribing to Globus and paying the annual subscription fee.
 
@@ -62,15 +60,15 @@ sensitive, contact your department or the Office of Trade Compliance.**
 
 To use Globus sharing:
 
-The PI must have an active allocation on CRC with data available on CRC’s BeeGFS or ZFS file system.
+The PI must have an active allocation on CRC with data available on CRCD’s file systems.
 
 **PI must submit a help ticket to request Globus sharing and submit a help ticket 
 to request access for users from her/his group**
 
-PI is responsible for the integrity of their directories on the BeeGFS or ZFS file system, especially if the PI or 
+PI is responsible for the integrity of their directories on the CRCD file systems, especially if the PI or 
 other users share directories with write permission to offsite collaborators.
 
-Once approved, the PI and other users can share their folders on BeeGFS or ZFS with their Pitt or outside collaborators.
+Once approved, the PI and other users can share their folders on CRCD's file systems with their Pitt or outside collaborators.
 
 ### Sharing data with other users
 
