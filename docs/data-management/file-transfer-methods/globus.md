@@ -2,26 +2,41 @@
 
 ## Transfer files using Globus
 
-<ul>
-	<li>Sign in using Pitt Credentials Globus <a href="https://app.globus.org">Sign In</a></li>
-	<li>Connect from your computer: <a href="https://www.globus.org/globus-connect-personal">Globus Personal</a>
-	<ul>
-		<li>On Linux, you may need to make minor changes to the python scripts
-		<ul>
-			<li>Use python 2: #!/usr/bin/python → #!/usr/bin/python2</li>
-		</ul>
-		</li>
-	</ul>
-	</li>
-</ul>
+Go to https://www.globus.org/ and click LOG IN at the top right corner.
+Select University of Pittsburgh, and LOGIN Pitt passport using your Pitt credentials.
+![](../../_assets/img/data-management/globus20.png)
 
-If you forget your endpoint name:
+![](../../_assets/img/data-management/globus20.png)
 
-![](../../_assets/img/data-management/globus1.png)
+![](../../_assets/img/data-management/globus21.png)
 
-![](../../_assets/img/data-management/globus2.png)
+![](../../_assets/img/data-management/globus22.png)
 
-![](../../_assets/img/data-management/globus3.png)
+![](../../_assets/img/data-management/globus23.png)
+
+![](../../_assets/img/data-management/globus24.png)
+
+![](../../_assets/img/data-management/globus25.png)
+
+Within the Globus ecosystem, Endpoints and Collections are key, closely related entities.
+An Endpoint represents a specific server or cluster of servers.
+A Collection represents a location containing data plus the policies and permissions for accessing that data.
+A Mapped Collection is a point of access to a storage system which uses the credentials of the currently logged-in user. That user is "mapped" to some underlying credential or access mechanism.
+A Guest Collection is a point of access to a storage system which is hosted on a Mapped Collection, and which uses the credentials or access of the user who created it. Guest Collections are used to share data with other users.
+
+Transferring Data Between Two Mapped Collections
+Click FILE MANAGER. You'll be moving data between two mapped collections using Globus.
+Step 1: Set up the source collection (CRCD data)
+On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
+Step 2: Set up the destination collection
+On the right panel, search for and select a second endpoint. For example, if you choose the UPitt-OneDrive endpoint, the mapped collection will display your OneDrive folders.
+Step 3: Transfer
+With both endpoints set up, you can now transfer files between the two collections.
+Important note:
+The COLLECTIONS option in the left-hand navigation menu refers to your Guest Collections — this is different from the mapped collections you access by searching for an endpoint (like pitt#dtn or UPitt-OneDrive). Don't confuse the two.
+
+
+
 
 ## Globus File Sharing
 
