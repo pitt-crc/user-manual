@@ -3,20 +3,30 @@
 ## Transfer files using Globus
 
 Go to https://www.globus.org/ and click LOG IN at the top right corner.
+
 Select University of Pittsburgh, and LOGIN Pitt passport using your Pitt credentials.
 
 ![](../../_assets/img/data-management/globus20.png)
 
 Within the Globus ecosystem, Endpoints and Collections are key, closely related entities.
-An Endpoint represents a specific server or cluster of servers.
-A Collection represents a location containing data plus the policies and permissions for accessing that data.
-A Mapped Collection is a point of access to a storage system which uses the credentials of the currently logged-in user. That user is "mapped" to some underlying credential or access mechanism.
-A Guest Collection is a point of access to a storage system which is hosted on a Mapped Collection, and which uses the credentials or access of the user who created it. Guest Collections are used to share data with other users.
 
-Transferring Data Between Two Mapped Collections
+An **Endpoint** represents a specific server or cluster of servers.
+
+A **Collection** represents a location containing data plus the policies and permissions for accessing that data.
+
+A **Mapped Collection** is a point of access to a storage system which uses the credentials of the currently logged-in user. That user is "mapped" to some underlying credential or access mechanism.
+
+A **Guest Collection** is a point of access to a storage system which is hosted on a Mapped Collection, and which uses the credentials or access of the user who created it. Guest Collections are used to share data with other users.
+
+Transferring Data Between Two **Mapped Collections**
+
 Click FILE MANAGER. You'll be moving data between two mapped collections using Globus.
 
 ![](../../_assets/img/data-management/globus21.png)
+
+####Step 1: Set up the source collection (CRCD data)
+On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
+
 
 ![](../../_assets/img/data-management/globus22.png)
 
@@ -26,8 +36,6 @@ Click FILE MANAGER. You'll be moving data between two mapped collections using G
 
 ![](../../_assets/img/data-management/globus25.png)
 
-Step 1: Set up the source collection (CRCD data)
-On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
 Step 2: Set up the destination collection
 On the right panel, search for and select a second endpoint. For example, if you choose the UPitt-OneDrive endpoint, the mapped collection will display your OneDrive folders.
 Step 3: Transfer
