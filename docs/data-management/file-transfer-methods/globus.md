@@ -26,7 +26,6 @@ Click FILE MANAGER. You'll be moving data between two mapped collections using G
 
 On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
 
-
 ![](../../_assets/img/data-management/globus22.png)
 
 ### Step 2: Set up the destination collection
