@@ -16,16 +16,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install pixi
+        uses: prefix-dev/setup-pixi@v0.9.6
         with:
-          python-version: '3.x'
+          locked: true
+          frozen: false
+          cache: true
+          cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Setup environment
+        run: pixi install
 
       - name: Build and publish
-        run: mkdocs build
+        run: pixi run build
 
       - name: Upload docs to artifact storage
         uses: actions/upload-pages-artifact@v3.0.1

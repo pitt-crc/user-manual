@@ -4,16 +4,23 @@ Source code for the official CRCD user manual.
 
 ## Quick Start
 
-Start by installing the project dependencies:
+Clone and enter the repository.
 
 ```bash
-pip install -r requirements.txt
+git clone git@github.com:pitt-crc/user-manual.git && \
+cd user-manual
 ```
 
-To generate a live preview locally, use the `serve` command:
+Ensure you have [Pixi](https://pixi.prefix.dev/latest/) available and install the documentation dependencies with the following command.
 
 ```bash
-mkdocs serve
+pixi install
+```
+
+To generate a live preview locally, use the `serve` task:
+
+```bash
+pixi run serve
 ```
 
 A new version of the documentation is built and pushed to production every time the main branch is updated.
