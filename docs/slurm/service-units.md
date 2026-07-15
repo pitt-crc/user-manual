@@ -39,7 +39,7 @@ For the exact charge on a *finished* job, use `crc-seff` or `crc-job-stats`
 !!! tip "Zero-cost `preempt` partitions"
     Every cluster's `preempt` partition has billing weights of `0` — jobs there
     cost no SUs, but are preemptible. See
-    [**Scavenger Partitions**](scavenger.md).
+    [**Preemptible Partitions**](preempt.md).
 
 ## TRES billing weights
 
@@ -145,7 +145,7 @@ an allocation runs low or expires, submit a new
 
     Use idle resources on the preemptible partitions.
 
-    [:octicons-arrow-right-24: Scavenger Partitions](scavenger.md)
+    [:octicons-arrow-right-24: Preemptible Partitions](preempt.md)
 
 -   :material-scale-balance:{ .lg .middle } __Usage limits & priority__
 

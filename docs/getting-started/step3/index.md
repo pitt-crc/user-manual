@@ -11,15 +11,14 @@ hide:
 Now that you have successfully logged in an access portal, work through these in order to get jobs running:
 
 <div class="grid cards" markdown>
-
--   :material-package-variant:{ .lg .middle } __1. Upload files__
+-   :material-upload:{ .lg .middle } __1. Upload files__
 
     ---
 
-    Find the applications and libraries you need and load them with the module
-    system.
+    Move your data and code onto the cluster from your computer or cloud
+    storage.
 
-    [:octicons-arrow-right-24: Discovering software](getting-started-step3-software.md)
+    [:octicons-arrow-right-24: File transfer](../../data-management/file-transfer-methods/index.md)
 
 -   :material-package-variant:{ .lg .middle } __2. Discover software__
 

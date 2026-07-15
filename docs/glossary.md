@@ -104,10 +104,10 @@ Partition
 :   A named subset of a cluster's nodes that jobs are submitted to, often grouped
     by hardware type or purpose.
 
-Scavenger partition
+Preemptible Partition
 :   A low-priority partition that runs on idle resources at no service-unit cost,
     but whose jobs can be **preempted** (interrupted) when higher-priority work
-    needs the nodes. See [Scavenger Partitions](slurm/scavenger.md).
+    needs the nodes. See [Preemptible Partitions](slurm/preempt.md).
 
 Walltime
 :   The real-world clock time a job is allowed to run before the scheduler stops

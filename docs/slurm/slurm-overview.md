@@ -90,7 +90,7 @@ Reading the output:
     Every cluster has a `preempt` partition. Jobs there incur **no Service Unit
     cost** but are **preemptible** — Slurm can interrupt them when higher-priority
     paid work needs the nodes. See
-    [**Scavenger Partitions**](scavenger.md) for how to use it safely.
+    [**Preemptible Partitions**](preempt.md) for how to use it safely.
 
 ## Checking the queue with `squeue`
 

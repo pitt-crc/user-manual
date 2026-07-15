@@ -7,11 +7,11 @@ how much data you're moving and how you work:
 | --------- | --- |
 | Small or occasional transfers, graphical | An [SFTP client](#sftp-clients) (Cyberduck, FileZilla) or the OnDemand file app |
 | Scripted or command-line transfers | [`rsync` or `scp`](#command-line-tools) |
-| Large datasets, unreliable networks, or sharing with collaborators | [Globus](file-transfer-methods/globus.md) |
+| Large datasets, unreliable networks, or sharing with collaborators | [Globus](globus.md) |
 | To or from cloud storage | [Cloud tools](#cloud-tools) (OneDrive, S3, Google Cloud, Azure) |
 
 Before transferring, decide *where* the data should land — see
-[File Systems](file-systems.md) for the storage tiers and quotas. In the
+[File Systems](../file-systems.md) for the storage tiers and quotas. In the
 examples below, replace paths like `/ix1/<group>/<username>` with your own.
 
 ## SFTP clients
@@ -51,9 +51,9 @@ Log on to `ondemand.htc.crc.pitt.edu`, click **Files → Home Directory**, then
 
 ### Globus
 
-For large datasets, use [**Globus**](file-transfer-methods/globus.md). An
-institutional endpoint isn't required — you can set up a personal endpoint on
-your own computer to move large amounts of data reliably.
+For large datasets, use [**Globus**](globus.md). An institutional endpoint isn't
+required — you can set up a personal endpoint on your own computer to move large
+amounts of data reliably.
 
 ## Command-line tools
 
@@ -120,9 +120,8 @@ The cloud CLIs are provided as modules. Load the current version — run
 ### Pitt OneDrive
 
 You can transfer data between Pitt OneDrive and the cluster. See
-[Microsoft OneDrive](file-transfer-methods/microsoft-onedrive.md), or
-[Globus for OneDrive](file-transfer-methods/globus-microsoft-onedrive.md) to move
-data via Globus.
+[Microsoft OneDrive](microsoft-onedrive.md), or
+[Globus for OneDrive](globus-microsoft-onedrive.md) to move data via Globus.
 
 ### AWS S3
 
