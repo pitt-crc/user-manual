@@ -1,249 +1,211 @@
 # Slurm Batch Jobs
-A brief introduction to Slurm batch jobs and a simple example job can be found in our  
-[Getting Started section](https://crc.pitt.edu/getting-started/running-jobs-slurm).
 
-This page will provide lower level details related to Slurm jobs, as well as a more complex example submission script.
+For your *first* batch job, start with
+[**Requesting Resources**](../getting-started/step3/getting-started-step3-resources.md)
+and [**Managing Jobs**](../getting-started/step3/getting-started-step3-manage-jobs.md)
+in Getting Started, which walk through a simple example end to end. This page is
+the fuller reference: the directives you can use, a complete submission script,
+and answers to common questions.
 
-## Slurm Batch Job Arguments
+!!! tip "Test interactively first"
+    Before scaling up to a batch job, it's often worth running a smaller version
+    in an [Interactive Job](interactive-jobs.md) to make sure it works.
 
-Below are a subset of sbatch arguments that can be used to specify a job on the cluster. You do not need to include 
-them all. 
+## Common `sbatch` directives
 
-Please refer to the [slurm documentation on sbatch](https://slurm.schedmd.com/sbatch.html) for more options.
-<table class="display cell-border" id="nTable">
-    <thead>
-        <tr>
-            <td>Argument</td>
-            <td>Description</td>
-            <td>Format</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>--job-name</code></td>
-            <td>The job name. This will appear when you check the status with squeue.</td>
-            <td>Something descriptive enough to easily identify and differentiate jobs with. Default is the JobID.</td>
-        </tr>
-        <tr>
-            <td><code>--nodes</code></td>
-            <td>Maximum number of nodes to be used.</td>
-            <td>Usually 1, MPI requires a minimum of 2. Default is 1.</td>
-        </tr>
-        <tr>
-            <td><code>--ntasks, --ntasks-per-node</code></td>
-            <td>Specify the maximum number of tasks to be launched per node.</td>
-            <td>Default is 1.</td>
-        </tr>
-        <tr>
-            <td><code>--cluster</code></td>
-            <td>The cluster that the job will run on.</td>
-            <td>smp, mpi, gpu, htc</td>
-        </tr>
-        <tr>
-            <td><code>--partition</code></td>
-            <td>The partition of the cluster that the job will run on..</td>
-            <td>See Node Configurations: https://crc.pitt.edu/resources/computing-hardware.</td>
-        </tr>
-        <tr>
-            <td><code>--time</code></td>
-            <td>Define the max walltime required for the job.</td>
-            <td>days-hh:mm:ss</td>
-        </tr>
-        <tr>
-            <td><code>--qos</code></td>
-            <td>Declare the Quality of Service to be used.The default is normal. 
-                You need to specify `long` if the walltime is greater than 3 days.</td>
-            <td>short, normal, long</td>
-        </tr>
-        <tr>
-            <td><code>--error</code></td>
-            <td>File to redirect standard error.</td>
-            <td>full path or filename to be written to working directory.</td>
-        </tr>
-        <tr>
-            <td><code>--mem</code></td>
-            <td>Memory limit per compute node.</td>
-            <td>Memory in MB</td>
-        </tr>
-        <tr>
-            <td><code>--mail-user</code></td>
-            <td>Email address for notifications.</td>
-            <td>PittID@pitt.edu</td>
-        </tr>
-        <tr>
-            <td><code>--mail-type</code></td>
-            <td>Conditions for sending notifications.</td>
-            <td>END for when the job finishes, FAIL for if the job fails while running.</td>
-        </tr>
-        <tr>
-            <td><code>--cpus-per-task</code></td>
-            <td>Advise the Slurm controller that ensuing job steps will require ncpus number of processors per task.</td>
-            <td> Use this to facillitate multithreading.</td>
-        </tr>
-        <tr>
-            <td><code>--gres</code></td>
-            <td>Specify usage of a general resource. This is used on GPU cluster jobs to indicate number of cards needed.</td>
-            <td>--gres=gpu:1 for 1 card. Required when submitting to the GPU cluster.</td>
-        </tr>
-    </tbody>
-</table>
+These are the arguments you'll reach for most often; you don't need them all.
+See the [**Slurm `sbatch` documentation**](https://slurm.schedmd.com/sbatch.html)
+for the complete list.
 
-		
-    
-		
-		
-		
-	
+| Argument | Description | Format / example |
+| -------- | ----------- | ---------------- |
+| `--job-name` | Name shown in `squeue`. | Something descriptive; defaults to the Job ID |
+| `--nodes` | Number of nodes. | Usually `1`; MPI needs ≥ 2. Default `1` |
+| `--ntasks-per-node` | Tasks (processes) launched per node. | Default `1` |
+| `--cpus-per-task` | CPUs per task, for multithreading. | e.g. `16` |
+| `--cluster` | Cluster to run on. | `smp`, `mpi`, `gpu`, `htc` |
+| `--partition` | Partition within the cluster. | See [Hardware Profiles](../hardware_profiles/overview.md) |
+| `--gres` | Generic resources; on GPU jobs, the card count. | `gpu:1`. **Required** on the GPU cluster |
+| `--mem` | Memory per node. | e.g. `16G` (or MB, e.g. `16000`) |
+| `--time` | Maximum walltime. | `days-HH:MM:SS` |
+| `--qos` | Quality of Service (caps walltime, affects priority). | Default `normal`; see below |
+| `--output` | File for standard output. | e.g. `myjob_%j.out` (`%j` = Job ID) |
+| `--error` | File for standard error (if separate from output). | full path or filename |
+| `--account` | Charge a specific allocation. | group name (see [FAQ](#faq)) |
+| `--mail-user` | Address for notifications. | `PittID@pitt.edu` |
+| `--mail-type` | When to notify. | `END`, `FAIL` (comma-separated) |
 
+!!! info "QoS levels and limits live in one place"
+    Rather than list QoS walltimes and limits here (they change), see the
+    authoritative table on the
+    [**Job Scheduling Policy**](../policies/job-scheduling-policy.md#jobs-are-subject-to-priority-queueing)
+    page. The default is `normal`; request another with `--qos=<name>`.
 
-	
+## A complete submission script
 
+A more realistic example loads modules, stages inputs on fast scratch storage,
+runs the program, and copies results back:
 
-## A More Complex Slurm Submission Script Example
-
-Below is a more abstracted example that loads some modules from the module systems, copies inputs and outputs, etc.
-
-```shell
-#!/bin/bash                                     
-#SBATCH --job-name=<job_name>                  
-#SBATCH --nodes=<number of nodes> 
-#SBATCH --ntasks-per-node=<tasks per node> 
-#SBATCH --cluster=<cluster name> 
-#SBATCH --partition=<partition>            
-#SBATCH --mail-user=<user_ID>@pitt.edu    
-#SBATCH --mail-type=END,FAIL               
-#SBATCH --time=<days-HH:MM:SS>                  
-#SBATCH --qos=<qos>                         
-
-module purge                                    
-module load module1 module2 
-
-cp <inputs> $SLURM_SCRATCH                      
-cd $SLURM_SCRATCH  
-run_on_exit(){ cp -r $SLURM_SCRATCH/* $SLURM_SUBMIT_DIR 
-} 
-trap run_on_exit EXIT 
-
-srun <job executable with parameters>           
-
-crc-job-stats                                 
-
-cp <outputs> $SLURM_SUBMIT_DIR 
-```
-
-
-## GPU Jobs
-
-If you want to submit a GPU job, you only need to make some minor changes to the above script, i.e. changing the cluster and partition names a well as specifying the number of requested GPUs and nodes:
-
-
-```shell
+```bash
 #!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --time=0-00:01:00
-#SBATCH --ntasks-per-node=<NUMBER OF GPU NODES>
-#SBATCH --gres=gpu:<NUMBER OF GPUs PER NODE>
-#SBATCH --cluster=gpu
-#SBATCH --partition=a100
+#SBATCH --job-name=<job_name>
+#SBATCH --nodes=<number of nodes>
+#SBATCH --ntasks-per-node=<tasks per node>
+#SBATCH --cluster=<cluster name>
+#SBATCH --partition=<partition>
+#SBATCH --mail-user=<user_ID>@pitt.edu
+#SBATCH --mail-type=END,FAIL
+#SBATCH --time=<days-HH:MM:SS>
+#SBATCH --qos=<qos>
 
-<USER_SPECIFC COMMAND FOR GPU CODE TO BE EXECUTED>
+module purge
+module load module1 module2
+
+cp <inputs> $SLURM_SCRATCH
+cd $SLURM_SCRATCH
+run_on_exit(){ cp -r $SLURM_SCRATCH/* $SLURM_SUBMIT_DIR; }
+trap run_on_exit EXIT
+
+srun <job executable with parameters>
+
+crc-job-stats
+
+cp <outputs> $SLURM_SUBMIT_DIR
 ```
 
-### Specify the interpreter
-A shebang (#!) line must be present. The shebang line can call any shell or scripting language available on the cluster.
-For example `#!/bin/bash`, `#!/bin/tcsh`, `#!/bin/env python` or `#!/bin/env perl`.
-The sbatch arguments are provided in a batch script by preceding them with `#SBATCH`.
-The resource specific arguments (`ntasks`, `mem`, `nodes`, `time`) specify the limits of your jobs resources. 
+!!! note "Why copy to `$SLURM_SCRATCH`?"
+    Staging data on node-local scratch speeds up I/O-heavy jobs and keeps load
+    off the shared filesystems. The `trap` ensures results are copied back even
+    if the job exits early. See
+    [**Utilizing Scratch Space**](scratch-storage.md) for the full explanation.
 
-### Module loading
-You'll need to specify which modules your job requires. See the 
-[module system page](../applications/application-environment.md) for more details on searching for 
-available software.
+### Anatomy of the script
 
-It's always a good idea to perform a `module purge` first to make sure the environment is clean.
+**Specify the interpreter.** A shebang (`#!`) line must come first — any shell
+or scripting language on the cluster works, e.g. `#!/bin/bash`, `#!/bin/tcsh`,
+`#!/usr/bin/env python`. The `#SBATCH` lines that follow are Slurm directives.
 
-### Input Handling
-After you load your modules, you can automate any other setup you need to adjust the job's running environment or get 
-your input ready. In the case of the example, this is copying input data to a scratch location, and setting up a trap 
-to copy temp files and intermediate outputs. By default, the working directory of your job is the directory from which 
-the batch script was submitted. You can use the 
-[sbatch argument `--chdir`](https://slurm.schedmd.com/sbatch.html#OPT_chdir) to adjust this.
+**Load modules.** Declare the software your job needs. A `module purge` first
+keeps the environment clean. See
+[Discovering Software](../getting-started/step3/getting-started-step3-software.md)
+and the [Application Environment](../applications/application-environment.md).
 
-### Start Parallel Job with srun
-`srun` can be used to start your job. It also takes the --nodes, --tasks-per-node and --cpus-per-task arguments to allow 
-each job step  to change the utilized resources, but they cannot exceed those given to sbatch.
+**Handle inputs.** Your job's working directory defaults to where you submitted
+from; the example stages inputs to scratch instead. Adjust the working directory
+with [`--chdir`](https://slurm.schedmd.com/sbatch.html#OPT_chdir) if you prefer.
 
-### Report Job Statistics 
+**Run with `srun`.** `srun` launches your program. It accepts `--nodes`,
+`--ntasks-per-node`, and `--cpus-per-task` to vary resources per step, but never
+above what `sbatch` was given.
 
-Add a call to the `crc-job-stats` wrapper script to display statistics for your job. 
+**Report statistics.** The `crc-job-stats` wrapper appends a summary of the
+resources your job used to its output — useful for right-sizing future requests.
 
+**Handle outputs.** Copy results back and do any post-processing at the end.
 
-### Output Handling
+**After submission.** Monitoring, inspecting, and cancelling jobs (`squeue`,
+`scontrol`, `scancel`) are covered end to end in
+[**Managing Jobs**](../getting-started/step3/getting-started-step3-manage-jobs.md).
 
-Automate any manipulation of the job's output files at the end of the script.
+## GPU jobs
 
-### Interacting with your Job after Submission
-[`scancel`](https://slurm.schedmd.com/scancel.html) - Cancel a job, job array, or job step.
+A GPU job is the same script with the cluster and partition changed and the
+number of GPUs requested via `--gres`:
 
-[`squeue`](https://slurm.schedmd.com/squeue.html) - View information about jobs in the queue.
+```bash
+#!/bin/bash
+#SBATCH --job-name=<job_name>
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=<tasks per node>
+#SBATCH --cluster=gpu
+#SBATCH --partition=a100          # a100 | a100_multi | a100_nvlink | l40s | h200 | rtx6k
+#SBATCH --gres=gpu:<GPUs per node>
+#SBATCH --time=<days-HH:MM:SS>
 
-## Frequently Asked Questions
+<commands to run your GPU code>
+```
 
-### Q: I don't receive any email notifications about my job despite having supplied --mail-type and --mail-user, what gives?
-A: This most frequently due to users providing only their username, and not the following domain in their SBATCH directive.
-You **need** to provide your email as `PITTID@pitt.edu` for emails to be sent correctly. In more rare cases, the queue 
-for emails can be filled by an individual user by submitting many jobs. This should eventually be resolved on its own, 
-but it can be avoided by using proper etiquette when submitting a large quantity of jobs, and removing the email 
-notification directive for all/many of the submissions and monitoring more interactively with `squeue`. 
+See the [GPU cluster](../hardware_profiles/gpu.md) hardware page for the current
+partitions and what each provides.
 
-### Q: Where can I find more specific examples of these batch scripts?
-A: Example Jobs utilizing commonly loaded modules can be found in `/ihome/crc/how_to_run`
-For users performing NGS analyses on HTC, see Dr. Fangping Mu's 
-[extensive notes on this page](../advanced-genomics-support/RNASeq-data-analysis.md). 
+## Frequently Asked Questions { #faq }
 
-### Q: I'm confused by the interaction between nodes, tasks, and cpus-per-task. How does that work?
-A: Slurm is very explicit in how one requests resources. 
-A node is a compute node in the cluster. The default partition of the SMP cluster has many nodes for example. 
-The term task in this context can be thought of as a “process”, and is related to the number of CPUs/cores you request.
+### I supplied `--mail-type` and `--mail-user` but get no email. Why?
 
-Say you've specifed `--ntasks=16`:
-The first case is that it's for a HTC/SMP/GPU job with 16 independent processes. 
-The implicit configuration here is `--nodes=1`, `--ntasks=16` => `--ntasks-per-node=16`
+Most often the address is missing its domain — it must be `PittID@pitt.edu`, not
+just your username. More rarely, the mail queue is backed up from one user
+submitting many jobs; this clears on its own, but when submitting large batches
+it's good etiquette to drop the email directive from most of them and monitor
+with `squeue` instead.
 
-A second case is that you are running a multi-process program on MPI. (--nodes=<some number greater than or equal to 2>)
-`--ntasks=16` alone means your program will create a maximum of 16 processes, but you don't care how the cores 
-are distributed.
+### Where can I find more example batch scripts?
 
-You can use `--ntasks-per-node` to get more specific about what number of tasks you want running across the number of 
-nodes you're requesting.
+Example jobs using commonly loaded modules are in `/ihome/crc/how_to_run`. For
+NGS analyses on HTC, see the
+[RNASeq notes](../advanced-genomics-support/RNASeq-data-analysis.md).
 
-Another case is that you have a multi-threaded program, that is a single task, but can use multiple cores:
-`--ntasks=1`, `--cpus-per-task=16`
-This is using `--cpus-per-task` to specify that you have 1 task that can be completed by multithreading across 16 cores.
-On HTC, SMP, and GPU, individual tasks cannot be split across multiple compute nodes, so requesting a number of CPUs 
-with `--cpus-per-task` flag will always result in all your CPUs allocated on the same compute node.
+### How do `--nodes`, `--ntasks`, and `--cpus-per-task` interact?
 
-### Q: Slurm doesn't seem to be taking my .bashrc additions into account. How do I prompt this?
-A: Slurm does not source `~/.bashrc` or `~/.profile` by default. If your job submission requires environment setting 
-specified by these files, you should include `source ~/.bashrc`
-in your job submission script after any `module load ...` commands.
+A **node** is a physical compute node. A **task** is essentially a process, tied
+to the CPUs/cores you request. Common cases:
 
-### Q: I want to submit a job, but I am unsure what allocation I am drawing resources from. How do I check this?
-A: This can be determined with the `sacctmgr` (slurm account manager) command.
-`sacctmgr show associations onlydefaults | grep USERNAME`
-Where USERNAME is your CRC username.
-The output will show, for each cluster (first column), which allocation (second column, refered to as GROUPNAME below) 
-is charged from by default.
+- **Independent processes on one node** — `--ntasks=16` implies `--nodes=1`,
+  `--ntasks-per-node=16`.
+- **MPI across nodes** — `--ntasks=16` alone lets Slurm spread 16 processes
+  however it likes; use `--ntasks-per-node` to control the layout.
+- **One multithreaded process** — `--ntasks=1 --cpus-per-task=16`.
 
-!!!note
-    
-    If your user account is associated with multiple PI compute resource allocations, you can run the command above without 
-    the `onlydefaults` argument to list all of them, and then specify which one your job will charge with 
-    the `-A` or `--account=` arguments followed by the group name.
-    
-    `#SBATCH --account=GROUPNAME` # Charge GROUPNAME instead of the default.
+On HTC, SMP, and GPU a single task can't span nodes, so `--cpus-per-task` always
+lands all its cores on one node.
 
+### Slurm isn't picking up my `~/.bashrc` changes. Why?
 
-### Q: My analyses require that I run the same job on many input files, or the same input with many sets of 
-### parameters. Is there a better way to submit collections of jobs?
-A: Yes, please see this documentation on [submitting multiple jobs](./job-arrays.md).
+Slurm doesn't source `~/.bashrc` or `~/.profile`. If your job needs settings
+from them, add `source ~/.bashrc` after your `module load` commands.
+
+### Which allocation is my job charging, and how do I change it?
+
+Check with `sacctmgr show associations onlydefaults | grep <username>`. The
+output lists, per cluster, the allocation charged by default.
+
+!!! note
+    If you belong to multiple allocations, run the command without
+    `onlydefaults` to list them all, then charge a specific one with a directive:
+
+    ```bash
+    #SBATCH --account=GROUPNAME    # charge GROUPNAME instead of the default
+    ```
+
+### I need to run the same job over many inputs. Is there a better way?
+
+Yes — use a job array. See [**Job Arrays**](job-arrays.md).
+
+## Where to go next
+
+<div class="grid cards" markdown>
+
+-   :material-clipboard-check:{ .lg .middle } __Manage running jobs__
+
+    ---
+
+    Submit, monitor, inspect, and cancel jobs.
+
+    [:octicons-arrow-right-24: Managing Jobs](../getting-started/step3/getting-started-step3-manage-jobs.md)
+
+-   :material-file-multiple-outline:{ .lg .middle } __Submit many at once__
+
+    ---
+
+    Run the same script across many inputs with a job array.
+
+    [:octicons-arrow-right-24: Job Arrays](job-arrays.md)
+
+-   :material-currency-usd:{ .lg .middle } __Understand the cost__
+
+    ---
+
+    How Service Units are calculated and charged.
+
+    [:octicons-arrow-right-24: Service Units](service-units.md)
+
+</div>

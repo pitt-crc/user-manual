@@ -1,192 +1,237 @@
-# Submitting Multiple Jobs to the Clusters
+# Job Arrays
 
-Submitting Multiple Jobs to the Clusters
-========================================
+You'll often need to submit many similar jobs at once — the same program over
+many input files, or one analysis swept across a range of parameters. This is
+common in NGS data analysis. A **job array** is the right tool: it submits and
+manages a whole collection of near-identical jobs from a single script, far more
+efficiently than submitting them in a loop.
 
-One will often need to submit multiple jobs to the clusters for various reasons: To submit a collection of similar jobs on different input files, to vary parameters within one analysis, etc. This is particularly prevalent in NGS data analysis. The instructions below aim to help you take advantage of slurm arrays and shell resources.
+## What a job array is
 
-Job arrays
-----------
+A job array launches many **tasks** from one submission. Every task shares the
+same resource request (cores, memory, time); they differ only by an index that
+your script reads to pick its input. Arrays are batch-only, and the index range
+is set with `--array` (or `-a`):
 
-Job arrays offer a mechanism for submitting and managing collections of similar jobs quickly and easily; job arrays with millions of tasks can be submitted in milliseconds (subject to configured size limits). All jobs must have the same initial options (e.g. size, time limit, etc.)
+- `--array=1-10` — tasks 1 through 10
+- `--array=0-9` — tasks 0 through 9
+- `--array=1,4,7` — specific indices
+- `--array=1-10:2` — a step size (1, 3, 5, 7, 9)
+- `--array=0-99%4` — cap it at 4 tasks running **concurrently**
 
-Job arrays are only supported for batch jobs and the array index values are specified using the --array or -a option of the sbatch command. The option argument can be specific array index values, a range of index values, and an optional step size as shown in the examples below.
+Inside the script, three values connect a task to its work:
 
-Assume that one has a folder with 5 paired end Illumila data set. The file names are ```SRR098333_1.fastq```, ```SRR098333_2.fastq```, ```SRR098334_1.fastq```, ```SRR098334_2.fastq```, …, ```SRR098338_1.fastq```, ```SRR098338_2.fastq```. One would like to perform fastqc on all files. create a Slurm batch file ```fastqc.sbatch```:
+- `%A` — the array's job ID (used in `--output` filenames)
+- `%a` — the task index (used in `--output` filenames)
+- `$SLURM_ARRAY_TASK_ID` — the task index, available as a shell variable at runtime
 
-```commandline
+!!! note "Array size limits"
+    The maximum array size is **500** on SMP, MPI, and HTC, and **1001** on GPU.
+    Per-user and per-account limits also cap how many jobs accrue priority at
+    once. Use the `%N` concurrency throttle above to stay friendly to the
+    scheduler. See the
+    [Job Scheduling Policy](../policies/job-scheduling-policy.md#exceeding-usage-limits-will-cause-job-pending-status).
+
+## A minimal example
+
+This runs 10 tasks, each printing its index and (as a template) processing one
+numbered input file:
+
+```bash
 #!/bin/bash
-#
-#SBATCH -N 1 # Ensure that all cores are on one machine
-#SBATCH -t 3-00:00 # Runtime in D-HH:MM
-#SBATCH -J fastqc_samples
+#SBATCH --job-name=array-demo
+#SBATCH --cluster=htc
+#SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=1-00:00:00
+#SBATCH --array=1-10
+#SBATCH --output=demo-%A_%a.out
+
+echo "Array task ${SLURM_ARRAY_TASK_ID} of job ${SLURM_ARRAY_JOB_ID}"
+# Do this task's work, e.g.:
+# ./my_program input_${SLURM_ARRAY_TASK_ID}.dat
+```
+
+Submit it like any batch job with `sbatch array-demo.sbatch`. Everything else
+about the script — directives, `module load`, etc. — works exactly as on the
+[Batch Jobs](batch-jobs.md) page; the only additions are `--array` and the
+`%A`/`%a`/`$SLURM_ARRAY_TASK_ID` substitutions.
+
+## Applied examples (NGS)
+
+### Sequentially named files
+
+Suppose a folder holds five paired-end datasets, `SRR098333_1.fastq` …
+`SRR098338_2.fastq`, and you want `fastqc` on all of them. Because the sample
+numbers run 33–38, an array index of `3-8` maps straight onto the filenames:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=fastqc_samples
+#SBATCH --cluster=htc
+#SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=3-00:00:00
+#SBATCH --array=3-8
 #SBATCH --output=fastqc-%A_%a.out
-#SBATCH --array=3-8 # job array index
- 
-#SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
- 
+
+module purge
 module load fastqc/0.11.9
- 
-echo "parsing sample: SRR09833"${SLURM_ARRAY_TASK_ID}
- 
+
+mkdir -p ./fastqc_pretrim
+echo "parsing sample: SRR09833${SLURM_ARRAY_TASK_ID}"
 fastqc -o ./fastqc_pretrim/ SRR09833${SLURM_ARRAY_TASK_ID}_1.fastq
 fastqc -o ./fastqc_pretrim/ SRR09833${SLURM_ARRAY_TASK_ID}_2.fastq
 ```
-*   %A in the #SBATCH line becomes the job ID
-*   %a in the #SBATCH line becomes the array index
-*   ```${SLURM_ARRAY_TASK_ID}``` is a shell variable that is set when the job runs, and it is substituted into the parameter to generate the proper filename
 
-You submit your jobs with the command sbatch fastqc.sbatch. If the directory ```fastqc_pretrim``` does not exist, you may need to create one mkdir ```fastqc_pretrim```.
+### Non-sequentially named files
 
-Non-sequentially named files
-----------------------------
+When filenames don't map cleanly to integers, build the name from the index with
+`ls`, `head`, and `tail`:
 
-Job arrays are easy if the files are named sequentially in the example above. If they are not, you need to play some tricks. If for example you would like to run fastqc on all \*\_1.fastq files within the above folder, you can use a combination of ls, head and tail to get the name of the file for each task. Create your SLURM batch file run\_fastqc.sbatch.
-
-```commandline
+```bash
 #!/bin/bash
-#
-#SBATCH -N 1 # Ensure that all cores are on one machine
-#SBATCH -t 3-00:00 # Runtime in D-HH:MM
-#SBATCH -J fastqc
+#SBATCH --job-name=fastqc
+#SBATCH --cluster=htc
+#SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=3-00:00:00
+#SBATCH --array=1-6
 #SBATCH --output=fastqc-%A_%a.out
-#SBATCH --array=1-6 # job array index
-#SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
 
+module purge
 module load fastqc/0.11.9
 
-# get file name
-file=`ls *_1.fastq | head -n $SLURM_ARRAY_TASK_ID | tail -n 1`
-
-echo "parsing sample: "$file
-
+file=$(ls *_1.fastq | head -n $SLURM_ARRAY_TASK_ID | tail -n 1)
+echo "parsing sample: $file"
+mkdir -p ./fastqc_posttrim
 fastqc -o ./fastqc_posttrim/ $file
 ```
-### Bowtie2 examples
 
-If you would like to use bowtie2 on samples within this directory, it is also possible to use job arrays. My solution is a little tricky, but manageable.
+### A name array (bowtie2)
 
-First, generate a file jobs for the tasks.
-```commandline
-ls *_1.fastq |cut -d_ -f1 > jobs
+Precompute a list of sample names, then index into it with the task ID:
+
+```bash
+ls *_1.fastq | cut -d_ -f1 > jobs      # -> SRR098333, SRR098334, ...
 ```
-The contents of this file are:
 
-```
-SRR098333
-SRR098334
-SRR098335
-SRR098336
-SRR098337
-SRR098338
-```
-Then, you can submit the following jobs array to HTC cluster.
-
-```commandline
+```bash
 #!/bin/bash
-#
 #SBATCH --job-name=bowtie2
-#SBATCH -N 1
-#SBATCH --cpus-per-task=16 # Request that ncpus be allocated per process.
-#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --cluster=htc
+#SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
+#SBATCH --time=1-00:00:00
+#SBATCH --array=0-5
 #SBATCH --output=bowtie2-%A_%a.out
-#SBATCH --array=0-5 # job array index
 
+module purge
 module load bowtie2/2.4.5
 
 names=($(cat jobs))
+sample=${names[${SLURM_ARRAY_TASK_ID}]}
+echo "$sample"
 
-echo ${names[${SLURM_ARRAY_TASK_ID}]}
-
-bowtie2 -p 16 -x /bgfs/genomics/refs/GATK_Resource_Bundle/b37/human_g1k_v37.bowtie2_index \
-  -1 ${names[${SLURM_ARRAY_TASK_ID}]}_1.fastq \
-  -2 ${names[${SLURM_ARRAY_TASK_ID}]}_2.fastq \
-  -S alignments/${names[${SLURM_ARRAY_TASK_ID}]}.bowtie2.sam
-
-${names[${SLURM_ARRAY_TASK_ID}]} becomes each line within file jobs.
+bowtie2 -p 16 -x /path/to/bowtie2_index \
+  -1 ${sample}_1.fastq -2 ${sample}_2.fastq \
+  -S alignments/${sample}.bowtie2.sam
 ```
-Using a "commands" file
------------------------
 
-The approach to use the job index works well for a single parameter, or a set of parameters that can be mapped to natural numbers (in this case, the different parameter would be calculated from the job index). There are also cases with multiple parameters that cannot be mapped to natural numbers. Then an alternative technique would be to create a text file "commands" which contains 1 command per line.
+### A "commands" file (multiple parameters)
 
-Then we can use the variable ```$SLURM_ARRAY_TASK_ID``` as a pointer determining which line of the file a job executes.
+When each job needs several parameters that don't map to integers, put one full
+command's arguments per line in a text file and select the line with `awk`:
 
-For example, we would like to run "bwa mem" on 10 samples with different RG tag. Generate a text file with one sample information per line.
-
-```commandline
-[fangping@login0b jobs]$ cat bwa_mem.txt
--Y -R "@RG\tID:Exome_Norm\tPL:ILLUMINA\tPU:C1TD1ACXX-CGATGT.7\tLB:exome_norm_lib1\tSM:HCC1395BL_DNA" -o ../results/bwa/Exome_Norm.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/Exome/Exome_Norm_R1.fastq.gz ../fastqs/Exome/Exome_Norm_R2.fastq.gz
--Y -R "@RG\tID:Exome_Tumor\tPL:ILLUMINA\tPU:C1TD1ACXX-ATCACG.7\tLB:exome_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/Exome_Tumor.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/Exome/Exome_Tumor_R1.fastq.gz ../fastqs/Exome/Exome_Tumor_R2.fastq.gz
--Y -R "@RG\tID:WGS_Norm_Lane1\tPL:ILLUMINA\tPU:D1VCPACXX.6\tLB:wgs_norm_lib1\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane1.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane1_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane1_R2.fastq.gz
--Y -R "@RG\tID:WGS_Norm_Lane2\tPL:ILLUMINA\tPU:D1VCPACXX.7\tLB:wgs_norm_lib2\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane2.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane2_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane2_R2.fastq.gz
--Y -R "@RG\tID:WGS_Norm_Lane3\tPL:ILLUMINA\tPU:D1VCPACXX.8\tLB:wgs_norm_lib3\tSM:HCC1395BL_DNA" -o ../results/bwa/WGS_Norm_Lane3.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Norm_Lane3_R1.fastq.gz ../fastqs/WGS/WGS_Norm_Lane3_R2.fastq.gz
--Y -R "@RG\tID:WGS_Tumor_Lane1\tPL:ILLUMINA\tPU:D1VCPACXX.1\tLB:wgs_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane1.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane1_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane1_R2.fastq.gz
--Y -R "@RG\tID:WGS_Tumor_Lane2\tPL:ILLUMINA\tPU:D1VCPACXX.2\tLB:wgs_tumor_lib1\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane2.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane2_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane2_R2.fastq.gz
--Y -R "@RG\tID:WGS_Tumor_Lane3\tPL:ILLUMINA\tPU:D1VCPACXX.3\tLB:wgs_tumor_lib2\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane3.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane3_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane3_R2.fastq.gz
--Y -R "@RG\tID:WGS_Tumor_Lane4\tPL:ILLUMINA\tPU:D1VCPACXX.4\tLB:wgs_tumor_lib2\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane4.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane4_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane4_R2.fastq.gz
--Y -R "@RG\tID:WGS_Tumor_Lane5\tPL:ILLUMINA\tPU:D1VCPACXX.5\tLB:wgs_tumor_lib3\tSM:HCC1395_DNA" -o ../results/bwa/WGS_Tumor_Lane5.sam ../results/reference_genome/hg38/Homo_sapiens_assembly38.fasta ../fastqs/WGS/WGS_Tumor_Lane5_R1.fastq.gz ../fastqs/WGS/WGS_Tumor_Lane5_R2.fastq.gz
 ```
-You can submit the following job arrays.
+[fangping@login1 jobs]$ cat bwa_mem.txt
+-Y -R "@RG\tID:Exome_Norm\t..." -o ../results/bwa/Exome_Norm.sam ref.fasta Exome_Norm_R1.fastq.gz Exome_Norm_R2.fastq.gz
+-Y -R "@RG\tID:Exome_Tumor\t..." -o ../results/bwa/Exome_Tumor.sam ref.fasta Exome_Tumor_R1.fastq.gz Exome_Tumor_R2.fastq.gz
+...  (one line per sample)
+```
 
-```commandline
-[fangping@login0b jobs]$ cat 2.bwa.sbatch
+```bash
 #!/bin/bash
-#
-#SBATCH -N 1 # Ensure that all cores are on one machine
-#SBATCH -t 3-00:00 # Runtime in D-HH:MM
-#SBATCH -J bwa_human_samples
-#SBATCH --cpus-per-task=8 # Request that ncpus be allocated per process.
-#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
-#SBATCH --array=1-10 # job array index
+#SBATCH --job-name=bwa_human_samples
+#SBATCH --cluster=htc
+#SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=60g
+#SBATCH --time=3-00:00:00
+#SBATCH --array=1-10
 #SBATCH --output=bwa-%A_%a.out
 
 module purge
-module load gcc/8.2.0 bwa/0.7.17
-
+module load gcc/10.2.0 bwa/0.7.17
 mkdir -p ../results/bwa
 
-arrayjob=`cat bwa_mem.txt | awk -v line=$SLURM_ARRAY_TASK_ID '{if (NR == line) print $0}'`
-
-bwa_command="bwa mem -t 8 "
-
-# echo the command
-echo $bwa_command$arrayjob
-
-# run the command
-bash -c "$bwa_command$arrayjob"
+args=$(awk -v line=$SLURM_ARRAY_TASK_ID 'NR==line' bwa_mem.txt)
+echo "bwa mem -t 8 $args"
+bash -c "bwa mem -t 8 $args"
 ```
-```awk``` is used to select the line ```$SLURM_ARRAY_TASK_ID``` from ```bwa_mem.txt``` file. ```bash -c``` is used to run the command.
 
-Slurm wrap
-----------
+For fuller, maintained bioinformatics workflows, see the
+[RNASeq Data Analysis](../advanced-genomics-support/RNASeq-data-analysis.md)
+notes.
 
-The wrap feature of sbatch can be used to submit multiple jobs at once.
+## Managing array jobs
 
-From the man page for sbatch:
-```commandline
---wrap=<command string>
-```
-Sbatch will wrap the specified command string in a simple "sh" shell script, and submit that script to the slurm controller. When --wrap is used, a script name and arguments may not be specified on the command line; instead the sbatch-generated wrapper script is used.
+In `squeue`, array tasks appear as `JobID_TaskID`. Cancel the entire array with
+`scancel <JobID>`, or a single task with `scancel <JobID>_<index>`. Monitoring,
+inspecting, and cancelling jobs are covered in
+[Managing Jobs](../getting-started/step3/getting-started-step3-manage-jobs.md).
 
-For example, lets say you want to run gzip on all fastq files within this directory. Create a shell script called ```run_gzip.sh```:
+## Alternative: `sbatch --wrap` for one-offs
 
-loop over all fastq files in the directory, print the filename and submit the gzip jobs to Slurm
+For a quick batch of unrelated one-off commands, `--wrap` submits a command as a
+job without writing a script file. For example, to `gzip` every FASTQ in a
+directory:
 
-```commandline
+```bash
 #!/bin/bash
 for FILE in *.fastq; do
-    echo ${FILE}
-    sbatch -n 1 -t 1-00:00 --wrap="gzip ${FILE}"
-    sleep 1 # pause to be kind to the scheduler
+    echo "${FILE}"
+    sbatch --cluster=htc --partition=htc -n 1 -t 1-00:00:00 --wrap="gzip ${FILE}"
+    sleep 1   # pause to be kind to the scheduler
 done
 ```
-then run script, which will submit a Slurm job for every .fastq file in the directory and gzip it.
-```commandline
-./run_gzip.sh
-```
-If you meet "permission denied" problem, you should change the file permission.
-```commandline
-chmod +x run_gzip.sh
-```
-Here we make a variable FILE that will match all files matching the string pattern ```*.fastq```. Then we toss that as an argument to sbatch.
+
+Make it executable (`chmod +x run_gzip.sh`) and run it. That said, when the jobs
+are variations on one task, a **job array is usually preferable** — one
+submission instead of a loop, and much less load on the scheduler (the `sleep 1`
+above is a symptom of that load).
+
+## Related
+
+<div class="grid cards" markdown>
+
+-   :material-file-document-edit:{ .lg .middle } __Batch job basics__
+
+    ---
+
+    Directives and script structure that arrays build on.
+
+    [:octicons-arrow-right-24: Batch Jobs](batch-jobs.md)
+
+-   :material-clipboard-check:{ .lg .middle } __Track your tasks__
+
+    ---
+
+    Monitor and cancel array jobs and individual tasks.
+
+    [:octicons-arrow-right-24: Managing Jobs](../getting-started/step3/getting-started-step3-manage-jobs.md)
+
+-   :material-scale-balance:{ .lg .middle } __Array & job limits__
+
+    ---
+
+    Maximum array sizes and per-user/account job limits.
+
+    [:octicons-arrow-right-24: Job Scheduling Policy](../policies/job-scheduling-policy.md)
+
+</div>

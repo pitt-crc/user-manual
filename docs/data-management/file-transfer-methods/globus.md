@@ -1,181 +1,113 @@
 # Globus
 
-Go to https://www.globus.org/ and click LOG IN at the top right corner.
+[Globus](https://www.globus.org/) is the recommended way to move large datasets
+to, from, and within CRCD, and to share data with collaborators. It handles
+large transfers reliably — resuming automatically after interruptions — and
+doesn't require your collaborators to have CRCD accounts.
 
-Select University of Pittsburgh, and LOGIN Pitt passport using your Pitt credentials.
+!!! warning "Sensitive data"
+    Sensitive material cannot be shared on Globus. To determine whether material
+    is considered sensitive, contact your department or the Office of Trade
+    Compliance.
 
-![](../../_assets/img/data-management/globus20.png)
+## Getting started
 
-Within the Globus ecosystem, Endpoints and Collections are key, closely related entities.
+- Sign in at [app.globus.org](https://app.globus.org) with your Pitt
+  credentials (choose "University of Pittsburgh").
+- To move data to or from your own computer, install
+  [Globus Connect Personal](https://www.globus.org/globus-connect-personal) and
+  set up a personal endpoint. An institutional endpoint is **not** required.
+- CRCD's storage is reachable through the **`pitt#dtn`** collection. Search for it
+  in **Collections**, open it in the File Manager, and navigate to your `/ix`,
+  `/ix1`, `/vast`, or `/ihome` folder.
 
-An **Endpoint** represents a specific server or cluster of servers.
+Central IT subscribes to Globus on behalf of the University — CRCD thanks them
+for covering the annual subscription.
 
-A **Collection** represents a location containing data plus the policies and permissions for accessing that data.
+## Sharing data with collaborators
 
-A **Mapped Collection** is a point of access to a storage system which uses the credentials of the currently logged-in user. That user is "mapped" to some underlying credential or access mechanism.
+Globus lets you share a folder of CRCD data with Pitt or outside collaborators by
+creating a **guest collection**, without any local account management on your end.
+You need an active CRCD allocation with data on a CRCD filesystem, and you are
+responsible for the integrity of any directories you share — especially those
+shared with write access.
 
-A **Guest Collection** is a point of access to a storage system which is hosted on a Mapped Collection, and which uses the credentials or access of the user who created it. Guest Collections are used to share data with other users.
+To share a folder:
 
-## Transferring Data Between Two **Mapped Collections**
+1. Sign in to [Globus](https://app.globus.org) with your Pitt credentials.
 
-Click FILE MANAGER. You'll be moving data between two mapped collections using Globus.
+    ![Globus File Manager](../../_assets/img/data-management/globus4.png)
 
-![](../../_assets/img/data-management/globus21.png)
+2. In **Collections**, search `pitt#dtn`, select it, and **Open in File
+   Manager**, authenticating with your Pitt credentials. Navigate to the folder
+   you want to share.
 
-### Step 1: Set up the source collection (CRCD data)
+    ![Find the pitt#dtn collection](../../_assets/img/data-management/globus5.png)
 
-On the left panel, click Search in the Collection field and search for the pitt#dtn endpoint. Once selected, your CRCD folders should appear. You can adjust the Path field to navigate to the specific folder you need.
+3. Highlight the folder and click **Share** in the right-hand pane, then **Add a
+   Guest Collection**. (Sharing works on folders, not individual files — share
+   the containing folder.)
 
-![](../../_assets/img/data-management/globus22.png)
+    ![Share a folder](../../_assets/img/data-management/globus8.png)
 
-![](../../_assets/img/data-management/globus23.png)
+4. Give the guest collection a clear display name and click **Create
+   Collection**. You'll land on the **Permissions** tab; click **Add Permissions
+   – Share With** and add the collaborator's username or email, choosing read or
+   read/write access.
 
-### Step 2: Set up the destination collection
+    ![Add permissions](../../_assets/img/data-management/globus10.png)
 
-On the right panel, search for and select a second endpoint. For example, if you choose the UPitt-OneDrive endpoint, the mapped collection will display your OneDrive folders.
+!!! warning "Be careful with write access"
+    Read/write access lets a collaborator **delete** files, and permissions apply
+    to the whole directory tree. Best practice: grant write access only on an
+    empty directory your collaborator will upload into, and delete the guest
+    collection once the transfer is complete.
 
-![](../../_assets/img/data-management/globus24.png)
+**Managing and ending a share.** Under **Collections → Administered by You**,
+select the collection and click **Sharing** to see who has access; remove a
+person with the **×** next to their name, or remove the whole share with **Delete
+Collection**.
 
-### Step 3: Transfer
+## What to tell your collaborators
 
-With both endpoints set up, you can now transfer files between the two collections.
+Your collaborator needs a (free) Globus account — they may already have one
+through their institution — and, if transferring to their own computer,
+[Globus Connect Personal](https://www.globus.org/globus-connect-personal). If
+they have a CRCD account, they can use `pitt#dtn` to move the data into their own
+`/ix1` (or other) folder.
 
+If you enabled email notification when adding their permission, Globus emails
+them a link to the shared collection. They sign in, select the files, choose
+**Transfer or Sync to**, enter their own endpoint and path, and click **Start**.
 
-**Important note**:
-The **COLLECTIONS** option in the left-hand navigation menu refers to your **Guest Collections** — this is different from the **mapped collections** you access by searching for an endpoint (like pitt#dtn or UPitt-OneDrive). Don't confuse the two.
+    ![Collaborator's transfer view](../../_assets/img/data-management/globus13.png)
 
-![](../../_assets/img/data-management/globus25.png)
+## Related
 
-## Globus File Sharing
+<div class="grid cards" markdown>
 
-Globus file sharing lets you set up **Guest Collections** based on your mapped collections, i.e., your CRCD storage, on the pitt#dtn endpoint. If this is the approach you intend to take, please review the documentation below.
+-   :material-microsoft:{ .lg .middle } __OneDrive via Globus__
 
-Globus sharing provides a mechanism for CRC PIs and users to store their data and easily share with collaborators, 
-without the burden of local account management. 
+    ---
 
-CRC thanks Central IT for subscribing to Globus and paying the annual subscription fee.
+    Move data between CRCD and Pitt OneDrive or SharePoint.
 
-**Please note: Sensitive material cannot be shared on Globus. To find out if material may be considered 
-sensitive, contact your department or the Office of Trade Compliance.**
+    [:octicons-arrow-right-24: Globus for OneDrive](globus-microsoft-onedrive.md)
 
-To use Globus sharing:
+-   :material-swap-horizontal:{ .lg .middle } __Other transfer methods__
 
-The PI must have an active allocation on CRC with data available on CRCD’s file systems.
+    ---
 
-**PI must submit a help ticket to request Globus sharing and submit a help ticket 
-to request access for users from her/his group**
+    SFTP clients, rsync/scp, and cloud tools.
 
-PI is responsible for the integrity of their directories on the CRCD file systems, especially if the PI or 
-other users share directories with write permission to offsite collaborators.
+    [:octicons-arrow-right-24: File Transfer Methods](../index.md)
 
-Once approved, the PI and other users can share their folders on CRCD's file systems with their Pitt or outside collaborators.
+-   :material-harddisk:{ .lg .middle } __Where your data lives__
 
-### Sharing data with other users
+    ---
 
-Point your web browser to [https://www.globus.org/](https://www.globus.org/)
-Click “Log In” at the top right corner
-Choose “University of Pittsburgh”, click Continue. This should bring you to Pitt Passport: logon using your Pitt 
-credentials.
+    Storage tiers and quotas on CRCD.
 
-You should see this screen:
+    [:octicons-arrow-right-24: File Systems](../file-systems.md)
 
-![](../../_assets/img/data-management/globus4.png)
-
-Click Collections, search "pitt#dtn”
-![](../../_assets/img/data-management/globus5.png)
-Select pitt#dtn, click Open in File Manager
-
-![](../../_assets/img/data-management/globus6.png)
-logon using your Pitt credentials. Go to the folder you wish to share.
-
-![](../../_assets/img/data-management/globus7.png)
-
-Highlight the folder that you would like to share and Click Share in the right command pane.
-
-Note: Sharing is available for folders. Individual files can only be shared by sharing the folder that contains them.
-
-Then click Add a Guest Collection.
-
-
-![](../../_assets/img/data-management/globus8.png)
-Provide a clear, meaningful Display Name for the guest collection, and click Create Collection.
-
-![](../../_assets/img/data-management/globus9.png)
-When your collection is created, you’ll be taken to the Permissions tab, where you can set permissions. Click Add 
-Permissions - Share With
-
-![](../../_assets/img/data-management/globus10.png)
-Add the Username or Email.
-
-Note: You must be very careful if you choose write permission. This means that you are giving a user permission to 
-delete existing files.
-
-![](../../_assets/img/data-management/globus11.png)
-Click “Add Permission”.
-
-Important Notes about Sharing:
-
-You can only share directories, not individual files.
-
-Globus allows directory trees to be shared as either read or read/write. This means that any subdirectories within that 
-tree also have the same permissions.
-
-When you create the shared endpoint and give access to one or more Globus users, you can select whether each person 
-has read or read/write access. If they have write access, they are also able to delete files within that directory 
-tree, so you should be careful about providing write access. We recommend that you only provide write access to an 
-empty directory shared with your collaborators so that your collaborators can transfer files to the directory. We also 
-recommend that you delete the endpoint share when your collaborator has completed transferring the data.
-
-Collections management
-
-To see all collections you have shared, click Collections | Administered by You. Choose the Collection, click Sharing: 
-you should then see the shared endpoint and the people you have shared it with.</p>
-
-![](../../_assets/img/data-management/globus12.png)
-
-At any time, you can terminate access to the directory by clicking the 'X' next to the invitee in the screen above.
-
-It is highly recommended that you delete the collection share when your collaborator has completed downloading the data. 
-You can do so by going to 'Collections' in the left bar, then 'Administered by You': select the collection, and click 
-on 'Delete endpoint'.
-
-What to tell your collaborators<
-
-If you set up a shared endpoint and want your collaborator to download the data, you need to tell them.
-
-The collaborator needs to get a Globus account. This account is free. They may already have Globus access via their 
-institution.
-
-If the collaborator is downloading the data to his/her personal workstation, they need to install the Globus Connect
-client. Globus connect clients are available for Mac, Windows or Linux systems and are free. If your collaborator has a 
-CRC account and bgfs or zfs directory, they can use pitt#dtn endpoint to transfer data to their bgfs or zfs directory.
-
-If you clicked on the 'notify users via email' button when you added access for this user, they should have received 
-the following message:
-
-    Globus user Fangping Mu (fangping@globusid.org) shared the folder "/" on the endpoint "My genomics data" 
-    (endpoint id: 4b612536-d362-4151-b5e2-50e72a1af462) with Fangping Mu (fmu@pitt.edu).
-
-    Additional Message:
-
-    shared data genomics project
-
-    Use this URL to access the share:
-
-    https://app.globus.org/file-manager?&amp;origin_id=4b612536-d362-4151-b5e2-50e72a1af462&amp;origin_path=/&amp;add_identity=95f5a10d-82a4-4975-b326-537b1bd1e27d
-
-    The Globus Team
-    support@globus.org
-
-You can, of course, also email your collaborators yourself that you've shared a folder with them. The collaborator 
-should click on the link and log in with their institutional or Globus login username and password. They should then be 
-able to see the files you shared with them.
-
-When the user fmu@pitt.edu clicks this URL and logon globus, the contents of this folder is ready to be transferred.
-
-
-![](../../_assets/img/data-management/globus13.png)
-
-They should click on the files they want to transfer, then 'Transfer or Sync to', enter their own endpoint name and 
-desired path, and click the 'Start' button near the bottom to start the transfer.
-
+</div>

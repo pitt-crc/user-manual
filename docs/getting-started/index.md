@@ -5,6 +5,12 @@ hide:
 
 # Big Picture Overview
 
+!!! tip "New to HPC?"
+    Unfamiliar with a term? The [Glossary](../glossary.md) explains the words and
+    acronyms used throughout this manual. You'll also see some acronyms — like SU
+    or MPI — with a dotted underline: hover over one (or tap on a touch screen)
+    to read its definition without leaving the page.
+
 The University of Pittsburgh provides its research community access to high performance computing and data storage
 resources. These systems are maintained and supported through the Center for Research Computing and Data (CRCD) and Pitt IT.
 To get started, you will need a CRCD account, with which you will use to login to Access Portals to interact with

@@ -14,10 +14,12 @@ theme:
     code: Roboto Mono
   features:
     - content.code.copy
+    - content.tooltips
     - search.suggest
     - navigation.top
     - navigation.indexes
     - content.code.annotate
+    - navigation.footer      # prev/next buttons — helps users walk Steps 1 → 2 → 3
 extra:
   homepage: https://crc.pitt.edu
   analytics:
@@ -39,6 +41,7 @@ extra:
             our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+{title}+-+{url}" target="_blank" rel="noopener">Github Repository</a>.
 extra_css:
   - _assets/css/pitt_colors.css
+  - _assets/css/stretched_link.css
 plugins:
   - mkdocstrings
   - mkdocs-video:
@@ -48,11 +51,17 @@ plugins:
   - redirects:
       redirect_maps:
         'data-management/globus-microsoft-onedrive.md': 'https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=823'
+        slurm/pbs-slurm.md: applications/basic-commands.md
   - search
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
+  - def_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.mark
@@ -63,6 +72,8 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.snippets:
       base_path: docs/snippets
+      auto_append:
+        - includes/abbreviations.md
   - toc:
       toc_depth: 0
       permalink: true
@@ -72,13 +83,13 @@ nav:
   - User Manual Home: index.md
   - Getting Started:
       - getting-started/index.md
+      - Quick Start (Your First Job): getting-started/quickstart.md
       - getting-started/getting-started-step1-account.md
       - Step 2- Login to Access Portals:
           - getting-started/step2/index.md
-          - SSH using a terminal: getting-started/terminal.md
-          - Linux Desktop Web-portal: getting-started/viz.md
+          - Terminal SSH: getting-started/terminal.md
+          - Linux Desktop Visualization: getting-started/viz.md
           - Open OnDemand Web-portal: getting-started/open-ondemand.md
-          - JupyterHub Web-portal: getting-started/jupyter-hub.md
           - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
       - Step 3- CRCD Ecosystem:
           - getting-started/step3/index.md
@@ -108,25 +119,25 @@ nav:
       - web-portals/jupyterhub-venv.md
       - web-portals/psych.md
       - web-portals/hugen.md
-  - The SLURM Workload Manager:
-      - slurm/slurm-overview.md
-      - slurm/batch-jobs.md
-      - slurm/service-units.md
-      - slurm/interactive-jobs.md
-      - slurm/pbs-slurm.md
-      - slurm/scavenger.md
-      - slurm/job-arrays.md
-      - slurm/vscode.md
-      - slurm/scratch-storage.md
+  - Running Jobs with Slurm:
+      - Overview: slurm/slurm-overview.md
+      - Interactive Jobs: slurm/interactive-jobs.md
+      - Batch Jobs: slurm/batch-jobs.md
+      - Service Units: slurm/service-units.md
+      - Preemptible Partitions: slurm/preempt.md
+      - Job Arrays: slurm/job-arrays.md
+      - Scratch Space: slurm/scratch-storage.md
+      - VS Code: slurm/vscode.md
   - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
-      - data-management/file-systems.md
-      - data-management/file-permissions.md
-  - File Transfer Methods:
       - data-management/index.md
-      - data-management/file-transfer-methods/globus.md
-      - data-management/file-transfer-methods/globus-microsoft-onedrive.md
-      - data-management/file-transfer-methods/microsoft-onedrive.md
+      - data-management/file-systems.md
+      - File Permissions: data-management/file-permissions.md
+      - File Transfer:
+          - data-management/file-transfer-methods/index.md
+          - Globus: data-management/file-transfer-methods/globus.md
+          - Globus for OneDrive: data-management/file-transfer-methods/globus-microsoft-onedrive.md
+          - Microsoft OneDrive: data-management/file-transfer-methods/microsoft-onedrive.md
   - Applications:
       - applications/software-list.md
       - applications/application-environment.md
@@ -173,7 +184,7 @@ nav:
 
   - Tips & Tricks:
       - tips/persist-sessions.md
-
+  - Glossary: glossary.md
   - Frequently Asked Questions: faq.md
 
 not_in_nav: |

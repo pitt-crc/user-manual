@@ -5,29 +5,53 @@ hide:
 
 # Step 2- Login to Access Portals
 
-Once you have established a VPN to PittNet, you can access the CRC advanced computing and storage resources via
+!!! abstract "In this step"
+    Choose an access portal and log in. Next: [Step 3 — run jobs](../step3/index.md).
+
+Once you have established a VPN to PittNet, you can access the CRCD advanced computing and storage resources via
 several portals, including
 
-* [**SSH connection using a terminal**](../terminal.md)
-* [**Linux Desktop webportal**](../viz.md)
-* [**Open OnDemand webportal**](../open-ondemand.md)
-* [**JupyterHub webportal**](../jupyter-hub.md)
-* [**JupyterHub on Teach Cluster**](../jupyter-teach.md)
+<div class="grid cards" markdown>
+
+-   :material-console:{ .lg .middle } __Terminal SSH to Login Node__
+
+    ---
+
+    Command-line access for scripting and for submitting and monitoring jobs —
+    the most flexible option.
+
+    [:octicons-arrow-right-24: Connect via SSH](../terminal.md)
+
+-   :material-web:{ .lg .middle } __Open OnDemand Webportal__
+
+    ---
+
+    Browser-based access to files, interactive apps, and notebooks — nothing to
+    install.
+
+    [:octicons-arrow-right-24: Open OnDemand](../open-ondemand.md)
+
+-   :material-monitor:{ .lg .middle } __Linux Desktop Visualization Node__
+
+    ---
+
+    A full graphical Linux desktop for GUI applications and visualization.
+
+    [:octicons-arrow-right-24: Launch a desktop](../viz.md)
+
+-   :material-school:{ .lg .middle } __JupyterHub Webportal on Teach Cluster__
+
+    ---
+
+    Notebooks on the Teach cluster, for courses and teaching.
+
+    [:octicons-arrow-right-24: Teach cluster](../jupyter-teach.md)
+
+</div>
+
+---
 
 A schematic of this part of the process is highlighted below.
 
 ![GETTING-STARTED-MAP](../../_assets/img/getting-started/getting-started-step-2.png)
 
-## Guidance on appropriate usage of access portals
-
-Many users are logged into the CRC login nodes. These are the gateways everyone uses to perform interactive 
-work like editing code, submitting and checking the status of jobs, etc.
-
-Executing processing scripts or commands on these nodes can cause substantial slowdowns for the rest of the users. 
-For this reason, it is important to make sure that this kind of work is done in either an interactive session on a node 
-from one of the clusters, or as a batch job submission.
-
-Resource-intensive processes found to be running on the login nodes may be killed at anytime.
-
-<ins>**The CRC team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login 
-nodes with processes that can otherwise be run on the compute nodes.**</ins>

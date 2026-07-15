@@ -1,104 +1,144 @@
 # Interactive Jobs
 
-Often times it is prudent to test that a smaller version of your slurm job works correctly before submitting 
-the whole thing and to be able to debug your code more interactively.
+An interactive job gives you a shell on a compute node where you can type
+commands live. It's the right tool for testing a smaller version of a job before
+you scale up, debugging code, benchmarking, or working through a tutorial for
+new software.
 
-You may also want to perform benchmarking or work through a tutorial for new software, but without disrupting 
-the experience of other users by 
-<a href="https://crc.pitt.edu/resources/resources/job-scheduling-policy#:~:text=Login%20nodes%20are%20for%20interactive%20work%20only%3A">running resource intensive commands on the login node</a>.</p>
+!!! warning "Don't run heavy work on the login nodes"
+    Login nodes are shared gateways meant for editing files and submitting jobs,
+    not for computation — see the
+    [Job Scheduling Policy](../policies/job-scheduling-policy.md). An interactive
+    job moves that work onto a compute node where it belongs.
 
-Interactive jobs can be used to create an instance for this kind of work on a compute node.
+!!! tip "Interactive or batch?"
+    Interactive sessions are for hands-on, exploratory work. For production runs
+    that should proceed unattended, write a [Batch Job](batch-jobs.md) instead.
 
-## Submitting an Interactive Job
-Submitting an interactive job is similar to submitting a batch job, except you use the
-<a href="https://slurm.schedmd.com/srun.html">srun</a> command instead of sbatch. For example:
+## Starting an interactive session
 
-```commandline
+### The easy way: `crc-interactive`
+
+The `crc-interactive` command builds the Slurm request for you. The simplest
+invocation grabs the defaults — one core on one SMP node for one hour:
+
+```bash
+crc-interactive -s
+```
+
+Add flags to request more (cluster, cores, memory, time, GPUs). The full flag
+list and a worked example are on
+[**Requesting Resources**](../getting-started/step3/getting-started-step3-resources.md).
+
+!!! tip
+    Add `-z` to any `crc-interactive` command to print the equivalent `srun`
+    command without running it — a good way to learn the raw syntax below.
+
+### The underlying command: `srun`
+
+`crc-interactive` ultimately calls `srun`, which you can also use directly:
+
+```bash
 srun -M smp -n1 -t02:00:00 --pty bash
 ```
 
-Will prompt the scheduler to start a job on a SMP (other clusters such as HTC, MPI, GPU are also possible) node with 1 `task` (or `core`, -n1) for 2 hours wall clock 
-time (-t02:00:00), and in terminal mode.
+This asks the scheduler for a session on the `smp` cluster (`-M`) with one core
+(`-n1`) for two hours (`-t02:00:00`), running `bash` in terminal mode
+(`--pty`). Any of `smp`, `htc`, `mpi`, or `gpu` can follow `-M` — see the
+[`-M` flag note](slurm-overview.md) in the Overview.
 
-When the interactive job starts, you will notice that you are no longer on a login node, but rather one of the 
-compute nodes.
+When the session starts, your prompt changes from a login node to the assigned
+compute node:
 
-```commandline
-[fangping@login0a ~]$ srun -M smp -n1 -t02:00:00 --pty bash
-[fangping@smp-n45 ~]$
+```
+[kimwong@login1.crc.pitt.edu ~]$ srun -M smp -n1 -t02:00:00 --pty bash
+[kimwong@smp-n165.crc.pitt.edu ~]$
 ```
 
-Interactive jobs draw service units from the slurm allocation that your CRCD user is associated with.
+!!! note "Interactive jobs cost Service Units"
+    An interactive session draws [Service Units](service-units.md) from your
+    group's allocation for as long as it's held — so exit when you're done. If
+    you belong to more than one allocation, choose which to charge with `-A`
+    (or `--account`) followed by the group name. To see your default, run
+    `sacctmgr show associations onlydefaults | grep <username>`.
 
-!!! note
+## GUI applications (X11 forwarding)
 
-    If your user account is associated with multiple PI compute resource allocations, you can specify which one your 
-    interactive session will charge with the '-A' or '--account' arguments, followed by the group name. To check which 
-    account your user charges by default, use the command `sacctmgr show assoc onlydefaults | grep USERNAME`
-    Where USERNAME is your username.
+To run a graphical application from the terminal, forward X11 to the compute
+node. Allocate a node with `salloc`, then SSH into it with `-X`:
 
-## Interactive jobs with x11 forwarding
-
-If you would like to run an application that has a GUI interface, X11 forwarding is required.
-
-You should allocate a job to a node with your parameters, then SSH authenticated X11 session from the login node to 
-your interactive session on that compute node. You can follow the following steps:
-
-First, allocate a job on a cluster, for example HTC (SMP, GPU, MPI are also possible)
-```commandline
+```
 salloc -M htc -n1 -t02:00:00
 salloc: Granted job allocation 874773
 salloc: Waiting for resource configuration
 salloc: Nodes htc-n12 are ready for job
 ```
-Then use ssh to connect to the node that is ready for you.
-```commandline
+
+```bash
 ssh -X htc-n12
 ```
 
-Once in your interactive session you can load software that provide GUI with the module system and launch them from 
+Once connected, load a GUI application with the module system and launch it from
 the command line.
 
-## Open Ondemand
+!!! note
+    The `ssh -X <node>` hop from a login node to your compute node relies on
+    passwordless SSH *within* the cluster. If you're prompted for a password or
+    denied, set it up following
+    [Passwordless SSH → between cluster nodes](../getting-started/passwordless-ssh.md).
 
-We have implemented [Open Ondemand](../web-portals/open-ondemand.md) to run common GUI tools, such as RStudio, 
-Jupyter NotebookD, Jupyter Lab and Matlab. This interface is often easier to use if you are unfamiliar with slurm and 
-submitting jobs via the command line. This is also the best method for launching an interactive session with a 
-GUI desktop.
+For a full graphical desktop, or GUI apps without any X11 setup, the
+[Linux Desktop (VIZ)](../getting-started/viz.md) portal is usually easier.
 
-## Quality of Service
-All jobs submitted to Slurm must be assigned a Quality of Service (QoS). QoS levels define resource 
-limitations. The default QoS is `normal`.
+## Open OnDemand (browser-based)
 
-<table>
-	<thead>
-		<tr>
-			<th>Quality of Service</th>
-			<th>Max Walltime</th>
-			<th>Priority factor</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>short</td>
-			<td>12:00:00</td>
-			<td>1.0</td>
-		</tr>
-		<tr>
-			<td>normal</td>
-			<td>3-00:00:00</td>
-			<td>0.75</td>
-		</tr>
-		<tr>
-			<td>long</td>
-			<td>6-00:00:00</td>
-			<td>0.5</td>
-		</tr>
-	</tbody>
-</table>
+[**Open OnDemand**](../getting-started/open-ondemand.md) runs common GUI tools —
+RStudio, Jupyter Notebook, JupyterLab, and MATLAB — in your browser. It's the
+easiest option if you're unfamiliar with Slurm or the command line, and the best
+way to launch an interactive GUI desktop.
 
-<ul>
-	<li>Walltime is specified in days-hh:mm:ss</li>
-</ul>
+## Quality of Service (QoS)
 
-If your job does not meet these requirements it will be not be accepted
+Every job — interactive or batch — is assigned a Quality of Service that caps
+its walltime and influences its scheduling priority. The default is `normal`;
+request another with `--qos=<name>`. A job asking for more walltime than its QoS
+allows will be rejected.
+
+The QoS levels, their maximum walltimes and priority factors, and the related
+per-group CPU/GPU and memory limits are maintained in one place:
+
+!!! info "See the Job Scheduling Policy for current QoS limits"
+    The authoritative table lives on the
+    [**Job Scheduling Policy**](../policies/job-scheduling-policy.md#jobs-are-subject-to-priority-queueing)
+    page. Check there rather than relying on a copy here — these limits change,
+    and a duplicated table would fall out of date.
+
+## Where to go next
+
+<div class="grid cards" markdown>
+
+-   :material-file-document-edit:{ .lg .middle } __Run work unattended__
+
+    ---
+
+    Turn a tested command into a batch script that runs without you.
+
+    [:octicons-arrow-right-24: Batch Jobs](batch-jobs.md)
+
+-   :material-currency-usd:{ .lg .middle } __Understand the cost__
+
+    ---
+
+    How Service Units are calculated and charged against your allocation.
+
+    [:octicons-arrow-right-24: Service Units](service-units.md)
+
+-   :material-web:{ .lg .middle } __Work in the browser__
+
+    ---
+
+    Notebooks, RStudio, MATLAB, and desktops without command-line setup.
+
+    [:octicons-arrow-right-24: Open OnDemand](../getting-started/open-ondemand.md)
+
+</div>
