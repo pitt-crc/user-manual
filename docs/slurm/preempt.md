@@ -17,7 +17,7 @@ higher-priority paid jobs need the nodes.
   `0` (see [Service Units](service-units.md)).
 - **On every cluster** — SMP, HTC, MPI (`preempt` and `preempt_ndr`), and GPU.
 - **Preemptible** — a preempted job is cancelled by default, or requeued if you
-  ask for it (see [below](#preemption-and-requeueing)).
+  ask for it (see [below](#how-preemption-works)).
 
 ## Do you need preempt?
 
@@ -56,34 +56,37 @@ Request the partition on the cluster you want:
 ```
 
 Everything else works like a normal [batch job](batch-jobs.md) or
-[interactive job](interactive-jobs.md).
+[interactive job](interactive-jobs.md). The same QoS walltime tiers apply as on
+the regular partitions — `short`, `normal`, and `long` on every cluster, plus
+`long-long` on SMP and HTC (see [Job Limits & QoS](job-limits.md)).
 
-!!! warning "Confirm the current submission details"
-    The `preempt` partitions are relatively new and replaced scavenger during
-    cluster maintenance. Before relying on this in production, confirm the
-    current specifics with CRCD, as they may differ from the retired scavenger
-    setup:
+!!! note "Targeting a GPU type"
+    The GPU `preempt` partition spans several GPU types on one partition, so you
+    can't select a type by partition name the way you would on the regular GPU
+    cluster. Request GPUs with `--gres=gpu:<count>` and, if you need a specific
+    model, confirm the current GRES type name with CRCD. The old
+    `--constraint=gtx1080|titanx|k40|v100` values refer to retired hardware and no
+    longer apply — see the current [GPU cluster](../hardware_profiles/gpu.md)
+    partitions such as `a100` and `l40s`.
 
-    - the exact partition name(s) on each cluster (`preempt`, `preempt_ndr`);
-    - how to target a **GPU type** on the GPU `preempt` partition — the old
-      `--constraint=gtx1080|titanx|k40|v100` values refer to retired hardware and
-      no longer apply (see the current [GPU cluster](../hardware_profiles/gpu.md)
-      partitions such as `a100` and `l40s`);
-    - any per-QoS **time limits**, which now appear to apply to `preempt` (unlike
-      the old scavenger partitions) — see the
-      [Job Scheduling Policy](../policies/job-scheduling-policy.md).
+## How preemption works { #how-preemption-works }
 
-## Preemption and requeueing
+Preemption is QoS-based (`PreemptType=preempt/qos`): when a higher-priority job
+needs nodes your preempt job is holding, Slurm reclaims them. The clusters run
+with `PreemptMode=cancel` and no grace period, which means a preempted job is
+**cancelled immediately** — it does not get a warning signal or time to shut down
+cleanly. This is why preempt work must save progress as it goes rather than at the
+end.
 
-If a higher-priority job needs the nodes, a preempt job is **cancelled** by
-default. To have Slurm return it to the queue instead, add:
+To have Slurm return a preempted job to the queue instead of leaving it cancelled,
+add:
 
 ```bash
 #SBATCH --requeue
 ```
 
-A requeued job may be preempted repeatedly, so pair `--requeue` with
-checkpointing so each restart resumes rather than starts over.
+A requeued job may be preempted repeatedly, so pair `--requeue` with checkpointing
+so each restart resumes rather than starts over.
 
 If a preempt job is *not* being preempted when you'd expect it to be, open a
 [support ticket](https://crc.pitt.edu/tickets) with the details.

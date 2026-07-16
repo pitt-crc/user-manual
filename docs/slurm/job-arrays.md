@@ -29,8 +29,8 @@ Inside the script, three values connect a task to its work:
     The maximum array size is **500** on SMP, MPI, and HTC, and **1001** on GPU.
     Per-user and per-account limits also cap how many jobs accrue priority at
     once. Use the `%N` concurrency throttle above to stay friendly to the
-    scheduler. See the
-    [Job Scheduling Policy](../policies/job-scheduling-policy.md#exceeding-usage-limits-will-cause-job-pending-status).
+    scheduler. See
+    [Job Limits & QoS](job-limits.md#concurrent-job-and-array-limits).
 
 ## A minimal example
 
@@ -232,6 +232,6 @@ above is a symptom of that load).
 
     Maximum array sizes and per-user/account job limits.
 
-    [:octicons-arrow-right-24: Job Scheduling Policy](../policies/job-scheduling-policy.md)
+    [:octicons-arrow-right-24: Job Limits & QoS](job-limits.md)
 
 </div>

@@ -19,7 +19,7 @@ new software.
 
 ### The easy way: `crc-interactive`
 
-The `crc-interactive` command builds the Slurm request for you. The simplest
+The `crc-interactive` helper builds the Slurm request for you. The simplest
 invocation grabs the defaults — one core on one SMP node for one hour:
 
 ```bash
@@ -107,9 +107,9 @@ allows will be rejected.
 The QoS levels, their maximum walltimes and priority factors, and the related
 per-group CPU/GPU and memory limits are maintained in one place:
 
-!!! info "See the Job Scheduling Policy for current QoS limits"
-    The authoritative table lives on the
-    [**Job Scheduling Policy**](../policies/job-scheduling-policy.md#jobs-are-subject-to-priority-queueing)
+!!! info "See Job Limits & QoS for current limits"
+    The authoritative tables live on the
+    [**Job Limits & QoS**](job-limits.md#group-resource-limits)
     page. Check there rather than relying on a copy here — these limits change,
     and a duplicated table would fall out of date.
 

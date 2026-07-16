@@ -48,8 +48,8 @@ For the exact charge on a *finished* job, use `crc-seff` or `crc-job-stats`
 | SMP | smp | 0.8 | 0.102 |
 | | high-mem | 1.0 | 0.0477 |
 | | preempt | 0 | 0 |
-| MPI | ndr | 1 | 0.93 |
-| | mpi | 1 | 0.93 |
+| MPI | ndr | 1 | 0.093 |
+| | mpi | 1 | 0.093 |
 | | preempt | 0 | 0 |
 | | preempt_ndr | 0 | 0 |
 | GPU | a100 | 8 | 0 |
@@ -124,7 +124,7 @@ an allocation runs low or expires, submit a new
 !!! note "Cost is not the same as limits"
     Billing weights determine what a job *costs*. Separately, your group has
     *limits* on how much it can use at once (max CPUs/GPUs/memory per QoS). Those
-    are on the [**Job Scheduling Policy**](../policies/job-scheduling-policy.md#exceeding-usage-limits-will-cause-job-pending-status)
+    are on the [**Job Limits & QoS**](job-limits.md#why-is-my-job-pending)
     page, and exceeding them holds jobs in `PENDING` rather than costing extra.
 
 ## Related
@@ -147,12 +147,12 @@ an allocation runs low or expires, submit a new
 
     [:octicons-arrow-right-24: Preemptible Partitions](preempt.md)
 
--   :material-scale-balance:{ .lg .middle } __Usage limits & priority__
+-   :material-scale-balance:{ .lg .middle } __Usage limits__
 
     ---
 
-    QoS walltimes, per-group limits, and how priority is computed.
+    QoS walltimes and per-group CPU, GPU, and memory caps.
 
-    [:octicons-arrow-right-24: Job Scheduling Policy](../policies/job-scheduling-policy.md)
+    [:octicons-arrow-right-24: Job Limits & QoS](job-limits.md)
 
 </div>

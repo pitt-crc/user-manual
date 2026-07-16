@@ -19,8 +19,12 @@ service units.
 
 ## Specifications
 
-| Partition | Nodes | GPU | VRAM | GPU/Node | --constraint | CPU                  | Cores/Node | Mem/Node | Scratch     | Network    | Node Names                                                                                                                   |
-|-----------|-------|-----|------|----------|--------------|----------------------|------------|----------|-------------|------------|------------------------------------------------------------------------------------------------------------------------------|
-| mpi       | 136   | N/A | N/A  | N/A      | hdr          | Intel Xeon Gold 6342 | 48         | 512 GB   | 1.6 TB NVMe | HDR200 IB  | mpi-n[0-1,10,100-109,11,110-119,12,120-129,13,130-135,14-19,2,20-29,3,30-39,4,40-49,5,50-59,6,60-69,7,70-79,8,80-89,9,90-99] |
-| ndr       | 18    | N/A | N/A  | N/A      | ndr          | Amd Epyc 9575F       | 128        | 1.5 TB   | 3.2 TB NVMe | NDR-200 IB | mpi-n[136-153]                                                                                                               |
+<!--
+  Rows ordered newest first (ndr / NDR InfiniBand before mpi / HDR InfiniBand).
+  Node ranges verified against slurm.conf: mpi = mpi-n[0-135], ndr = mpi-n[136-153].
+-->
 
+| Partition | Nodes | --constraint | CPU                  | Cores/Node | Mem/Node | Mem/Core | Scratch     | Network    | Node Names     |
+|-----------|-------|--------------|----------------------|------------|----------|----------|-------------|------------|----------------|
+| ndr       | 18    | ndr          | Amd Epyc 9575F       | 128        | 1.5 TB   | 12 GB    | 3.2 TB NVMe | NDR-200 IB | mpi-n[136-153] |
+| mpi       | 136   | hdr          | Intel Xeon Gold 6342 | 48         | 512 GB   | 10.7 GB  | 1.6 TB NVMe | HDR200 IB  | mpi-n[0-135]   |

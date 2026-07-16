@@ -14,7 +14,7 @@ and answers to common questions.
 ## Common `sbatch` directives
 
 These are the arguments you'll reach for most often; you don't need them all.
-See the [**Slurm `sbatch` documentation**](https://slurm.schedmd.com/sbatch.html)
+See the [Slurm `sbatch` documentation](https://slurm.schedmd.com/sbatch.html)
 for the complete list.
 
 | Argument | Description | Format / example |
@@ -37,8 +37,8 @@ for the complete list.
 
 !!! info "QoS levels and limits live in one place"
     Rather than list QoS walltimes and limits here (they change), see the
-    authoritative table on the
-    [**Job Scheduling Policy**](../policies/job-scheduling-policy.md#jobs-are-subject-to-priority-queueing)
+    authoritative tables on the
+    [**Job Limits & QoS**](job-limits.md)
     page. The default is `normal`; request another with `--qos=<name>`.
 
 ## A complete submission script

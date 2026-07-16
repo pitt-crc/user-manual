@@ -1,4 +1,9 @@
-# Clusters
+---
+hide:
+  - toc
+---
+
+# Our Clusters
 
 The CRCD operates several HPC clusters, each optimized for a different use case. Users can connect these systems using
 a common pool of login nodes, which serve as the primary entry point for submitting jobs. Selecting the appropriate

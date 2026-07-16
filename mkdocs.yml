@@ -52,6 +52,7 @@ plugins:
       redirect_maps:
         'data-management/globus-microsoft-onedrive.md': 'https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=823'
         slurm/pbs-slurm.md: applications/basic-commands.md
+        policies/slurm-limits.md: slurm/job-limits.md
   - search
 markdown_extensions:
   - abbr
@@ -97,19 +98,15 @@ nav:
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
-      - Overview: hardware_profiles/overview.md
+      - hardware_profiles/index.md
       - Login Nodes: hardware_profiles/login.md
       - SMP: hardware_profiles/smp.md
+      - HTC: hardware_profiles/htc.md
       - MPI: hardware_profiles/mpi.md
       - GPU: hardware_profiles/gpu.md
-      - HTC: hardware_profiles/htc.md
-      - TEACH: hardware_profiles/teach.md
-      - VIZ: hardware_profiles/viz.md
-  - Policies:
-      - policies/job-scheduling-policy.md
-      - policies/hardware-investing-policy.md
-      - policies/resource-descriptions-for-writing-proposals.md
-  - Connecting to Web Portals:
+      - Teach: hardware_profiles/teach.md
+      - Viz: hardware_profiles/viz.md
+  - Login to Access:
       - web-portals/terminal.md
       - web-portals/open-ondemand.md
       - web-portals/jupyter-ondemand.md
@@ -124,11 +121,11 @@ nav:
       - Interactive Jobs: slurm/interactive-jobs.md
       - Batch Jobs: slurm/batch-jobs.md
       - Service Units: slurm/service-units.md
+      - Job Limits & QoS: slurm/job-limits.md
       - Preemptible Partitions: slurm/preempt.md
       - Job Arrays: slurm/job-arrays.md
       - Scratch Space: slurm/scratch-storage.md
       - VS Code: slurm/vscode.md
-  - Acknowledge CRCD Resources and Assistance in Your Papers: acknowledge-crc.md
   - Data Management:
       - data-management/index.md
       - data-management/file-systems.md
@@ -179,11 +176,14 @@ nav:
       - bioinformatics/bioimage.md
       - bioinformatics/virtualgl.md
       - bioinformatics/copilot.md
-
-  - Supporting Code Optimization: code-optimization.md
-
+  - Code Optimization: code-optimization.md
   - Tips & Tricks:
       - tips/persist-sessions.md
+  - Policies:
+      - policies/job-scheduling-policy.md
+      - policies/hardware-investing-policy.md
+      - policies/resource-descriptions-for-writing-proposals.md
+  - Citing CRCD: acknowledge-crc.md
   - Glossary: glossary.md
   - Frequently Asked Questions: faq.md
 
@@ -191,10 +191,6 @@ not_in_nav: |
   getting-started/access_avd.md
   getting-started/access_hipaa.md
   getting-started/upmc_avd.md
-  policies/slurm-limits.md
-  snippets/annual-allocation-limits.md
-  snippets/group-limits-compute.md
-  snippets/group-limits-memory.md
   snippets/jupyter-teach.md
   snippets/ondemand-rstudio-gpu.md
   snippets/jupyter-hub.md
