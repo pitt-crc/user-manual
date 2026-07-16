@@ -117,7 +117,7 @@ nav:
       - web-portals/psych.md
       - web-portals/hugen.md
   - Running Jobs with Slurm:
-      - Overview: slurm/slurm-overview.md
+      - slurm/index.md
       - Interactive Jobs: slurm/interactive-jobs.md
       - Batch Jobs: slurm/batch-jobs.md
       - Service Units: slurm/service-units.md

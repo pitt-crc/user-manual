@@ -1,101 +1,96 @@
-# **VIZ**
+# Viz
 
-## **Summary**
+## Summary
 
-VIZ is a set of nodes with a graphical user interface desktop enabled. In this document, we present all the information
-you need about VIZ.
+Viz is a set of nodes with a graphical desktop environment enabled. This page covers what you need to know to use it.
 
-[**Log in to VIZ**](https://viz.crc.pitt.edu)
+**[Log in to Viz](https://viz.crc.pitt.edu)**
 
-You can treat this machine as another login node with extra capability to access to GUI interface. You can also submit 
-jobs to H2P or HTC using the VIZ interface.
+You can treat this machine as another login node, with the added ability to run a graphical desktop. You can also submit
+jobs to H2P or HTC from within the Viz interface.
 
-## **Access to VIZ**
+## Accessing Viz
 
-Like the other resources we have available, accessing VIZ requires a [connection to the PittNet VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters).
+Like the other CRCD resources, Viz requires a connection to the
+[GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426).
 
-After connecting to the VPN, VIZ can be accessed either by the web portal, or by the fastx 2 desktop client. The 
-benefit of using the desktop client is that copy/paste functionality works significantly better.
+After connecting to the VPN, you can reach Viz either through the **web portal** or through the **FastX desktop
+client**. The desktop client is worth using because copy/paste works significantly better than in the browser.
 
-## **Desktop Client Method**
+## Desktop client method
 
-[Download the latest fastx client here](https://www.starnet.com/download/fastx-client).
+[Download the latest FastX client here](https://www.starnet.com/download/fastx-client). Install it somewhere you can
+access, then run the executable from the installation directory.
 
-Install to a location accessible to you and run the executable file in the installation directory.
+When you run it, the window that opens is your **Connections** window:
 
-When you run the executable, the window that opens is your Connections window.
+![FastX Connections window](../_assets/img/web-portals/VizFastXDesktop_1.png)
 
-![](../_assets/img/web-portals/VizFastXDesktop_1.png)
+Near the top-left corner, use the **plus** icon to add an **https** connection:
 
-Towards the top left corner, use the plus icon to add an **https** connection.
+![Add an HTTPS connection](../_assets/img/web-portals/VizFastXDesktop_2.png)
 
-![](../_assets/img/web-portals/VizFastXDesktop_2.png)
+Enter the following, then click **OK**:
 
-**Host:** viz.crc.pitt.edu
+| Setting | Value |
+| ------- | ----- |
+| Host | `viz.crc.pitt.edu` |
+| User | Your Pitt ID, **all lowercase** |
+| Port | `443` |
+| Auth | `ssh` |
+| Name | `Viz` |
 
-**User:** your Pitt ID, **all lower case**
+![New connection details](../_assets/img/web-portals/VizFastXDesktop_3.png)
 
-**Port:** 443
+Double-click the new connection in the Connections window; you'll be prompted for your Pitt password:
 
-**Auth:** ssh
+![Password prompt](../_assets/img/web-portals/VizFastXDesktop_4.png)
 
-**Name:** VIZ
+The window that opens is your **Sessions** window, which works much like the web portal interface:
 
-Click **OK**.
+![Sessions window](../_assets/img/web-portals/VizFastXDesktop_5.png)
 
-![](../_assets/img/web-portals/VizFastXDesktop_3.png)
+Use the **plus** icon to create a new session, select a desktop environment (MATE is a good default), and click **OK**:
 
-Double-click the new connection in the Connections window, you will be prompted to provide your Pitt password.
+![Create a new session](../_assets/img/web-portals/VizFastXDesktop_6.png)
 
-![](../_assets/img/web-portals/VizFastXDesktop_4.png)
+Your session starts, and you can use this machine much like the H2P and HTC login nodes.
 
-The new window that opens is your Sessions window. This works similarly to the web portal interface.
+## Web portal method
 
-![](../_assets/img/web-portals/VizFastXDesktop_5.png)
+Open [viz.crc.pitt.edu](https://viz.crc.pitt.edu/) in a web browser and log in with your Pitt username and password.
+Your username is your Pitt ID, **all lowercase**. The screenshots below walk through accessing and using Viz in the
+browser:
 
-You can use the **plus icon** to create a new session, select your desktop interface (MATE is a good default), and 
-click ok.
+![Viz web portal — step 1](../_assets/img/web-portals/viz1.jpeg)
 
-![](../_assets/img/web-portals/VizFastXDesktop_6.png)
+![Viz web portal — step 2](../_assets/img/web-portals/viz2.jpeg)
 
-Your session will start, and you can use this machine similarly to the login nodes for H2P and HTC.
+![Viz web portal — step 3](../_assets/img/web-portals/viz3.jpeg)
 
-## **Web Portal Method**
+![Viz web portal — step 4](../_assets/img/web-portals/viz4.jpeg)
 
-Below are some screenshots on how to access and use VIZ through the web portal.
+![Viz web portal — step 5](../_assets/img/web-portals/viz5.jpeg)
 
-Open [this page](https://viz.crc.pitt.edu/) in a web browser and login with your Pitt username and password. Your username is your pittID, 
-**making sure that all letters are lower case**.
+![Viz web portal — step 6](../_assets/img/web-portals/viz6.jpeg)
 
-![](../_assets/img/web-portals/viz1.jpeg)
+![Viz web portal — step 7](../_assets/img/web-portals/viz7.jpeg)
 
-![](../_assets/img/web-portals/viz2.jpeg)
+![Viz web portal — step 8](../_assets/img/web-portals/viz8.jpeg)
 
-![](../_assets/img/web-portals/viz3.jpeg)
+![Viz web portal — step 9](../_assets/img/web-portals/viz9.jpeg)
 
-![](../_assets/img/web-portals/viz4.jpeg)
+![Viz web portal — step 10](../_assets/img/web-portals/viz11.jpeg)
 
-![](../_assets/img/web-portals/viz5.jpeg)
+![Viz web portal — step 11](../_assets/img/web-portals/viz12.jpeg)
 
-![](../_assets/img/web-portals/viz6.jpeg)
+![Viz web portal — step 12](../_assets/img/web-portals/viz13.jpeg)
 
-![](../_assets/img/web-portals/viz7.jpeg)
+![Viz web portal — step 13](../_assets/img/web-portals/viz14.jpeg)
 
-![](../_assets/img/web-portals/viz8.jpeg)
+## FAQ
 
-![](../_assets/img/web-portals/viz9.jpeg)
+**When I log in via the web portal, I'm prompted for a second password. What do I enter?**
 
-![](../_assets/img/web-portals/viz11.jpeg)
-
-![](../_assets/img/web-portals/viz12.jpeg)
-
-![](../_assets/img/web-portals/viz13.jpeg)
-
-![](../_assets/img/web-portals/viz14.jpeg)
-
-## **FAQs**
-
-Q: When I log in via the web portal, I am prompted for a second password. What do I put here?
-
-A: This is what happens when you enter your username (pitt ID) as all capitals instead of all lower case. You should 
-re-attempt the connection using all lower case letters in your username.
+This happens when you type your username (Pitt ID) in uppercase instead of lowercase. Reconnect using all-lowercase
+letters in your username.

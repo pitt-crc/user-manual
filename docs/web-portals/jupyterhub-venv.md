@@ -1,88 +1,86 @@
 # Create a virtual environment for JupyterHub
 
-Please follow the following steps to create a virtual environment for JupyterHub on the TEACH cluster. The instructions
-provided here show how to create just the base environment with Python 3.11. If you need additional packages, you have
-to install them yourself after creating the environment. If you need a custom environment with specific packages that
-can be preloaded in JupyterHUb dropdown menu, please submit a
-[help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
-and we will create it for you.
+Follow these steps to create a virtual environment for JupyterHub on the Teach cluster. The instructions below create
+just the base environment with Python 3.11; if you need additional packages, install them yourself after creating the
+environment. If you need a custom environment with specific packages preloaded into the JupyterHub dropdown menu, submit
+a [help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service)
+and we'll create it for you.
 
-**Step1:** Log into any of the login nodes of the CRCD clusters. For this example we will use login3 "htc.crc.pitt.edu".
+**Step 1:** Log into any of the CRCD login nodes. For this example we'll use `htc.crc.pitt.edu`.
 
-   ```bash
-   ssh <your_pitt_username>@htc.crc.pitt.edu
-   ```
+```
+ssh <your_pitt_username>@htc.crc.pitt.edu
+```
 
-**Step2:** Load the JupyterHub Conda module.
+**Step 2:** Load the JupyterHub Conda module.
 
-   ```bash
-   module load jupyterhub/hub.5.2.1
-   ```
+```
+module load jupyterhub/hub.5.2.1
+```
 
-**Step3:** Test if you have `conda` command available.
+**Step 3:** Confirm the `conda` command is available.
 
-   ```bash
-   conda --version
-   ```
+```
+conda --version
+```
 
 It should return something like `conda 25.7.0`.
 
-**Step4:** Create a new conda environment. In this example we will create an environment named `yk-teach-env` with
-Python 3.11.
+**Step 4:** Create a new conda environment. This example creates one named `yk-teach-env` with Python 3.11.
 
-   ```bash
-   conda create -p  /path/to/your/env/yk-teach-env python=3.11 ipykernel jupyterlab
-   ```
-Replace `/path/to/your/env/` with the actual path where you want to create the environment. You can choose any name for 
-the environment, here we used `yk-teach-env` as an example, but please try to make it distinctive so that it can be
-easily identified in the JupyterHub dropdown menu. The `ipykernel` and `jupyterlab` packages are included to ensure that
-the environment can be used in JupyterHub, so please do not remove them.
+```
+conda create -p /path/to/your/env/yk-teach-env python=3.11 ipykernel jupyterlab
+```
 
-**Step5:** Activate the newly created environment.
+Replace `/path/to/your/env/` with the path where you want the environment. You can choose any name — here we use
+`yk-teach-env` — but make it distinctive so it's easy to identify in the JupyterHub dropdown menu.
 
-   ```bash
-   source activate /path/to/your/env/yk-teach-env
-   ```
+!!! warning "Keep `ipykernel` and `jupyterlab`"
+    The `ipykernel` and `jupyterlab` packages are what let the environment run in JupyterHub, so don't remove them.
 
-**Step6:** Copy the following dir to a local dir of yours (e.g. `~/`) and change the dir to this copied dir:
+**Step 5:** Activate the new environment.
 
-   ```bash
-   cp -r /software/rhel9/manual/install/jupyterhub/batchspawner ~/
-   cd ~/batchspawner
-   ```
+```
+source activate /path/to/your/env/yk-teach-env
+```
 
-**Step7:** Make sure you are in the `batchspawner` dir and install the package in the activated environment:
+**Step 6:** Copy the following directory to a local directory of yours (for example `~/`) and change into the copy:
 
-   ```bash
-   pip install .
-   ```
+```
+cp -r /software/rhel9/manual/install/jupyterhub/batchspawner ~/
+cd ~/batchspawner
+```
 
-**Step8:** Install `jupyterhub` version `5.2.1` in the activated environment.
+**Step 7:** From inside the `batchspawner` directory, install the package into the activated environment:
 
-   ```bash
-   conda install jupyterhub=5.2.1
-   ```
+```
+pip install .
+```
 
-**Step9:** Install any additional packages you need in the environment. For example, if you need `numpy` and
-`pandas`, you can install them as follows:
+**Step 8:** Install `jupyterhub` version `5.2.1` into the activated environment.
 
-   ```bash
-   conda install numpy pandas
-   ```
-You can install any other packages you need in the same way. If you need to install packages from PyPI, you can use 
+```
+conda install jupyterhub=5.2.1
+```
 
-`pip` command as follows:
+**Step 9:** Install any additional packages you need. For example, for `numpy` and `pandas`:
 
-   ```bash
-   pip install <package_name>
-   ```
+```
+conda install numpy pandas
+```
 
-**Step10:** You can now test your environment by using it in JupyterHub. As referred in the
-[JupyterHub on the Teach Cluster](../snippets/jupyter-teach.md) documentation, you can use your environment in the
-**Select Virtual Environment** dropdown menu (the Provide custom path option) when starting a new JupyterHub session.
+To install packages from PyPI instead, use the `pip` command:
 
-**Step11:** You can provide the path to your environment for students to use in the JupyterHub dropdown menu as follows:
+```
+pip install <package_name>
+```
 
-   ```
-   /path/to/your/env/yk-teach-env
-   ```
+**Step 10:** Test your environment in JupyterHub. As described in the
+[JupyterHub on the Teach Cluster](../getting-started/jupyter-teach.md) documentation, select it via the **Provide custom
+path** option in the **Select Virtual Environment** dropdown when starting a new session.
+
+**Step 11:** To let students use the environment, give them its path to enter in the JupyterHub dropdown menu:
+
+```
+/path/to/your/env/yk-teach-env
+```

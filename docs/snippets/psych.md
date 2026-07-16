@@ -1,101 +1,109 @@
-# **Psych (Psychiatry Department Web Portal)**
+# Psych (Psychiatry Department Web Portal)
 
-## **Summary**
+## Summary
 
 The Psychiatry Web Portal is the gateway to CRCD compute and storage resources for the Department of Psychiatry.
 
 **[Log in to Psych](https://psych.crc.pitt.edu)**
 
-To access this portal, you need to have a [user account](https://crc.pitt.edu/getting-started#) within CRCD and be a member of the \`psych\` group.
+To use this portal you need a [CRCD user account](https://crc.pitt.edu/getting-started) and membership in the `psych`
+group.
 
-The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected 
-to PittNet via Ethernet.
+The portal server is firewalled within PittNet, so you must be connected to the
+[VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426) or directly connected to PittNet via
+Ethernet. Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters. All
+CRCD software is available through a terminal and our Lmod software provisioning system.
 
-Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters.
+## Access Methods
 
-All CRCD software can be accessed using a terminal and our LMOD software provisioning system.
+While we call it a Web Portal, Psych is actually a Linux server that uses FastX to create interactive desktop sessions
+(similar to OnDemand), forwarded to your local display through either a web browser or the desktop client.
 
-\[TOC Contents\]
+### FastX Desktop Client (recommended)
 
-## **Access Methods**
+Because copy/paste is awkward in the browser version, the preferred way to access Psych is the
+[FastX desktop client](https://www.starnet.com/download/fastx-client). Functionality is otherwise identical to the
+browser, but copy/paste works far better (highlight + right-click, and Ctrl-C/Ctrl-V between the FastX session and your
+local windows).
 
-While we call it a Web Portal, Psych is actually a linux server that uses FastX to create interactive desktop sessions (similar to OnDemand) forwarded to your local display, through either a web browser or the desktop client.
+!!! note "Windows without admin rights"
+    If you're on Windows and don't have admin access to your workstation, you may need to use the **nonroot** client.
 
-### **FastX Desktop Client (Recommended)**
+Download from the link above and install with the default settings. Start FastX; an empty connections window appears.
+(These screenshots are from Windows, but connecting is the same on macOS and Linux.) Click the **plus** button to add a
+new connection.
 
-Due to some user experience issues with copy and pasting in the browser version, the new preferred method for accessing psych is via the [F](http://www.starnet.com/download/fastx-client)[astX desktop client (Download Here)](https://www.starnet.com/download/fastx-client)[.](http://www.starnet.com/download/fastx-client) The functionality is otherwise identical to the web browser, but copy/paste is substantially better (highlight + right-click and ctrl-c/ctrl-v between FastX session and local machine windows).
+![FastX connections window](../_assets/img/web-portals/FastXDesktop1.png)
 
-NOTE: If you are on Windows and do not have admin access to your workstation, **you may need to use the nonroot client.**
+In the dropdown at the top, make sure `ssh` is selected. Enter **psych.crc.pitt.edu** as the Host and your CRCD username
+(Pitt ID, all lowercase) as the User, then click **OK**.
 
-Download with the link above and install with the default settings.
+![New connection settings](../_assets/img/web-portals/FastXDesktop2.png)
 
-After it is installed, start FastX and an empty connections window will appear. These images are from a Windows PC, but connecting should be the same on OSX and Linux.
+The new connection appears in your list. Double-click it. The first time you connect, you're prompted to add the server
+to your known hosts — click **Continue**.
 
-Click the plus button to add a new connection.
+![Known-hosts prompt](../_assets/img/web-portals/FastXDesktop3.png)
 
-![](../_assets/img/web-portals/FastXDesktop1.png)
+You're then prompted for your CRCD account password.
 
-In the dropdown at the top, make sure \`ssh\` is selected. Enter **psych.crc.pitt.edu** as the Host, and **your CRCD Username (Pitt ID, all lowercase)** as the User. Click OK to continue.
+![Password prompt](../_assets/img/web-portals/FastXDesktop4.png)
 
-![](../_assets/img/web-portals/FastXDesktop2.png)
+Next, select the type of Linux GUI you want. The **MATE desktop with VirtualGL optimization** is a good choice for most
+people.
 
-The new connection will now be in your list. Double click it. If it is your first time connecting, you will be prompted to add the server to your list of known hosts. Click continue.
+![Select desktop type](../_assets/img/web-portals/FastXDesktop5.png)
 
-![](../_assets/img/web-portals/FastXDesktop3.png)
+A desktop appears, and you can open a terminal and load modules as usual.
 
-You will then be prompted for your CRC account password.
+To exit, click **System** in the top-left corner and select **Log Out**. If you don't log out, your session keeps
+running in the background even if you lose your internet connection.
 
-![](../_assets/img/web-portals/FastXDesktop4.png)
+The images below show that copy/paste works as expected — selecting text from Notepad++ (right window) on the local
+machine and pasting into gedit inside the FastX session, and the reverse. Keyboard shortcuts (Ctrl-C/Ctrl-V on Windows,
+Cmd-C/Cmd-V on macOS) work between them too.
 
-Next you will be prompted to select the type of linux GUI you want. The MATE desktop with VirtualGL optimization is an appropriate choice for most people.
+![Copy/paste: local to session](../_assets/img/web-portals/FastXDesktop6.png)
 
-![](../_assets/img/web-portals/FastXDesktop5.png)
+![Copy/paste: session to local](../_assets/img/web-portals/FastXDesktop7.png)
 
-A desktop interface will appear, and you can open a terminal to load modules like you normally would.
+### FastX Web Portal in a Browser
 
-To exit out of your session, click on **System** in the top left corner and select **Log Out** from the drop-down menu. If you don't log out, your session will continue to run in the background even if you lose internet connection.
+To use the browser version, open <https://psych.crc.pitt.edu> and log in with your Pitt username (lowercase) and
+password.
 
-Below is an example showing that copy and paste works how you would expect:
+!!! warning "Copy/paste is limited in the browser"
+    The browser method has notably inconvenient copy/paste between the Psych session and your local machine. For normal
+    highlight + right-click and Ctrl-C/Ctrl-V behavior, use the FastX desktop client method above.
 
-Selecting text from an instance of notepad++ (right window) on my local machine, I can paste directly into gedit inside the FastX session by right clicking and selecting paste.
+![Psych web portal sessions](../_assets/img/web-portals/psych_01.png)
 
-The same thing works from the other direction, copying another line of text from gedit in the FastX session, and pasting into notepad++ on my local machine. You can use keyboard shortcuts (ctrl+v/ctrl+c on Windows, cmd+c/cmd+v on OSX) between them as well.
+Click the **+** to open a new session, or click an existing session to continue where you left off.
 
-![](../_assets/img/web-portals/FastXDesktop6.png)![](../_assets/img/web-portals/FastXDesktop7.png)
+![Open a new session](../_assets/img/web-portals/psych_02.png)
 
-### **FastX Web Portal in a Browser**
+When opening a new session, you're offered several options for a Linux GUI desktop or a terminal. The MATE desktop with
+VirtualGL optimization is a good choice.
 
-To access the Psych Web Portal, open a web browser to [https://psych.crc.pitt.edu](https://psych.crc.pitt.edu) and login using your Pitt username **(in lowercase)** and password. 
+![Select a desktop environment](../_assets/img/web-portals/psych_03.png)
 
-**Note: the web browser method is known to have a particularly inconvenient copy/paste functionality between the psych session and your local machine.**
+The result is a Linux desktop inside your web browser — the web portal for accessing CRCD resources.
 
-**Please use the FastX desktop client method above to have normal highlight + right click and ctrl+c/ctrl+v functionality.**
+![Linux desktop in the browser](../_assets/img/web-portals/psych_04.png)
 
-![](../_assets/img/web-portals/psych_01.png)
+Software that opens a GUI is displayed within this virtual desktop.
 
-*   Click on the + to open a new session or click on an existing session if you wish to continue where you left off.
+![GUI software in the desktop](../_assets/img/web-portals/psych_05.png)
 
-![](../_assets/img/web-portals/psych_02.png)
+To exit, click **System** and select **Log Out**. If you don't log out, your session keeps running in the background
+even if you lose your connection — so, for example, you can start a calculation, close your laptop for lunch, and log
+back in later to check its progress.
 
-*   When opening a new session, you will be presented with several options for starting a Linux GUI desktop environment or a terminal. The MATE desktop with VirtualGL optimization is an appropriate choice.
+![Log out of the session](../_assets/img/web-portals/psych_06.png)
 
-![](../_assets/img/web-portals/psych_03.png)
+## FAQ
 
-*   The final interface that you will see is a Linux desktop within your web browser. This is the web portal for accessing CRC resources.
+**When I log in via the web portal, I'm prompted for a second password. What do I enter?**
 
-![](../_assets/img/web-portals/psych_04.png)
-
-*   Software that opens a GUI will be displayed within this virtual desktop environment.
-
-![](../_assets/img/web-portals/psych_05.png)
-
-*   To exit out of your session, click on System and select Log Out from the drop-down menu. If you don't log out, your session will continue to run in the background even if you lose internet connection.
-*   For example, you can start a calculation on the server, close your laptop to go to lunch, and then log back in afterwards to see the progress of your job.
-
-![](../_assets/img/web-portals/psych_06.png)
-
-## **FAQs**
-
-Q: When I log in via the web portal, I am prompted for a second password. What do I put here?
-
-A: This is what happens when you enter your username (pitt ID) as all capitals instead of all lower case. You should re-attempt the connection using all lower case letters in your user name.
+This happens when you type your username (Pitt ID) in uppercase instead of lowercase. Reconnect using all-lowercase
+letters in your username.
