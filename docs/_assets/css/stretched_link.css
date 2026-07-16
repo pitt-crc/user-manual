@@ -22,15 +22,15 @@
 
 /* Lift cards off the white page */
 .md-typeset .grid.cards > ul > li {
-  border: .05rem solid var(--md-default-fg-color--lightest);
+  border: .05rem solid var(--md-default-fg-color--lightest); /* stylelint-disable-line custom-property-pattern -- Material theme variable uses a double-hyphen tonal variant */
   border-radius: .4rem;
-  box-shadow: 0 .1rem .4rem rgba(0, 0, 0, .1);
+  box-shadow: 0 .1rem .4rem rgb(0 0 0 / 10%);
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
 
 .md-typeset .grid.cards > ul > li:hover {
   border-color: var(--md-accent-fg-color);
-  box-shadow: 0 .35rem .9rem rgba(0, 0, 0, .12);
+  box-shadow: 0 .35rem .9rem rgb(0 0 0 / 12%);
   transform: translateY(-.1rem);
 }
 
