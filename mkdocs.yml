@@ -106,6 +106,7 @@ nav:
       - GPU: hardware_profiles/gpu.md
       - Teach: hardware_profiles/teach.md
       - Viz: hardware_profiles/viz.md
+      - Storage Tiers: hardware_profiles/storage.md
   - Login to Access:
       - web-portals/terminal.md
       - web-portals/open-ondemand.md

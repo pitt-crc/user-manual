@@ -24,3 +24,5 @@
 *[Resource Allocation]: An allotment of computing time and/or data storage quota
 *[PittNet]: The internal University network
 *[CRCD Ecosystem]: The complement of CRCD infrastructure
+*[PI]: Principle Investigator
+*[PIs]: Principle Investigators

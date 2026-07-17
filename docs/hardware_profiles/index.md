@@ -46,3 +46,10 @@ Once you know which cluster fits, see [**Service Units**](../slurm/service-units
 for what a job costs, and the [**Job Scheduling Policy**](../policies/job-scheduling-policy.md)
 for per-group limits and how priority is computed. New to the clusters? Start with
 [**Getting Started**](../getting-started/index.md).
+
+## Storage
+
+Compute is only half the picture — your data needs somewhere to live. CRCD offers
+tiered storage allocated per research group, from fast all-flash space for active
+jobs to low-cost archive. See [**Storage Tiers**](storage.md) for what each tier
+costs and how to request more.
