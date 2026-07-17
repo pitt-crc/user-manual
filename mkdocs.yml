@@ -99,13 +99,15 @@ nav:
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
   - Hardware Profiles:
       - hardware_profiles/index.md
-      - Login Nodes: hardware_profiles/login.md
-      - SMP: hardware_profiles/smp.md
-      - HTC: hardware_profiles/htc.md
-      - MPI: hardware_profiles/mpi.md
-      - GPU: hardware_profiles/gpu.md
-      - Teach: hardware_profiles/teach.md
-      - Viz: hardware_profiles/viz.md
+      - Compute Clusters:
+        - SMP: hardware_profiles/smp.md
+        - HTC: hardware_profiles/htc.md
+        - MPI: hardware_profiles/mpi.md
+        - GPU: hardware_profiles/gpu.md
+        - Teach: hardware_profiles/teach.md
+      - Access & Auxiliary Nodes:
+        - Login Nodes: hardware_profiles/login.md
+        - Viz: hardware_profiles/viz.md
       - Storage Tiers: hardware_profiles/storage.md
   - Login to Access:
       - web-portals/terminal.md

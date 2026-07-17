@@ -3,14 +3,15 @@ hide:
   - toc
 ---
 
-# Our Clusters
+# Hardware Profiles
 
-The CRCD operates several HPC clusters, each optimized for a different use case.
-You connect through a shared pool of **login nodes** and submit work to whichever
-cluster best fits your job. Choosing the right one uses resources efficiently and
-reduces time spent waiting in the queue.
+The CRCD operates several HPC clusters, each optimized for a different use case,
+plus the nodes you connect through and the storage tiers that hold your data. You
+submit work to whichever cluster best fits your job — choosing the right one uses
+resources efficiently and reduces time spent waiting in the queue. This section
+profiles each of them.
 
-## Compute clusters
+## Compute Clusters
 
 Submit jobs to these with the `--cluster` directive (or the matching
 `crc-interactive` flag). Each page lists the node hardware, partitions, and any
@@ -24,7 +25,7 @@ group-specific investment hardware.
 | [GPU](gpu.md)     | GPU-accelerated work such as machine learning and molecular dynamics.                                     |
 | [Teach](teach.md) | Reserved for classroom instruction and coursework.                                                        |
 
-## Access and auxiliary nodes
+## Access & Auxiliary Nodes
 
 These are entry points and special-purpose servers — not job-submission targets.
 
@@ -40,16 +41,16 @@ These are entry points and special-purpose servers — not job-submission target
     [Hardware Investing Policy](../policies/hardware-investing-policy.md) for how
     investment works.
 
-## Choosing a cluster
-
-Once you know which cluster fits, see [**Service Units**](../slurm/service-units.md)
-for what a job costs, and the [**Job Scheduling Policy**](../policies/job-scheduling-policy.md)
-for per-group limits and how priority is computed. New to the clusters? Start with
-[**Getting Started**](../getting-started/index.md).
-
 ## Storage
 
 Compute is only half the picture — your data needs somewhere to live. CRCD offers
 tiered storage allocated per research group, from fast all-flash space for active
 jobs to low-cost archive. See [**Storage Tiers**](storage.md) for what each tier
 costs and how to request more.
+
+## Choosing a cluster
+
+Once you know which cluster fits, see [**Service Units**](../slurm/service-units.md)
+for what a job costs, and the [**Job Scheduling Policy**](../policies/job-scheduling-policy.md)
+for per-group limits and how priority is computed. New to the clusters? Start with
+[**Getting Started**](../getting-started/index.md).
