@@ -61,6 +61,13 @@ of this error is shown in the [Appendix](#appendix-errors) at the bottom.
 
 ## Step 4. Ending session
 
+!!! warning "What happens if I don't [Stop My Server] ?"
+    The server process is a Slurm job that will continue to run in the background until the requested walltime has expired or someone
+    `scancel` the job. The great news is that your analysis can continue to run even if you close your web browser. You can log
+    back into JupyterHub later and pick up where you left off. The bad news is that if you are done with your work session and forgot
+    to [Stop My Server], the resource remains idle and unavailable to other users, hence wasted. Your Resource Allocation will
+    still be *charged* for the wasted time.
+
 Be sure to *Save All* your work before ending your session.
 
 ![Saving work before ending the session](../_assets/img/jupyter/jupyter-8.png)
