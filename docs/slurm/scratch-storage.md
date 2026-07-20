@@ -143,8 +143,8 @@ Project storage path: /ix1/sam/chx33/simulations
 
     ---
 
-    `crc-job-stats` and other CRC helper commands.
+    `crc-job-stats` and other CRCD helper commands.
 
-    [:octicons-arrow-right-24: CRC Wrappers](../applications/crc-wrappers.md)
+    [:octicons-arrow-right-24: CRCD Wrappers](../applications/crc-wrappers.md)
 
 </div>

@@ -10,88 +10,94 @@ are from macOS; the Windows and Linux clients work the same way.
     [GlobalProtect VPN](../../getting-started/getting-started-step1-account.md) before connecting
     with FileZilla.
 
-## Install and launch
+Download the **FileZilla Client** from the
+[FileZilla download page](https://filezilla-project.org/download.php?show_all=1) and install it,
+then work through the tabs below to connect and transfer files.
 
-Download the **FileZilla Client** from the [FileZilla download page](https://filezilla-project.org/download.php?show_all=1) and
-install it. The first time you open it on macOS, confirm that you want to open an app downloaded
-from the internet.
+=== "1. Install & launch"
 
-![macOS confirming you want to open FileZilla, downloaded from the internet](../../_assets/img/data-management/filezilla-1.png){ width="360" }
+    The first time you open FileZilla on macOS, confirm that you want to open an app downloaded
+    from the internet. macOS may also ask FileZilla for permission to read a local location —
+    such as a network volume — so it can list files to transfer; click **Allow**.
 
-macOS may also ask FileZilla for permission to read a local location — such as a network volume —
-so it can list files to transfer. Click **Allow**.
+    <div class="grid" markdown>
 
-![macOS prompt to allow FileZilla to access files on a network volume](../../_assets/img/data-management/filezilla-2.png){ width="360" }
+    [![macOS confirming you want to open FileZilla, downloaded from the internet](../../_assets/img/data-management/filezilla-1.png)](../../_assets/img/data-management/filezilla-1.png)
 
-## Connect to CRCD
+    [![macOS prompt to allow FileZilla to access files on a network volume](../../_assets/img/data-management/filezilla-2.png)](../../_assets/img/data-management/filezilla-2.png)
 
-Fill in the **Quickconnect** bar at the top of the window:
+    </div>
 
-| Field | Value |
-| ----- | ----- |
-| Host | `sftp://h2p.crc.pitt.edu` for SMP, MPI, or GPU; `sftp://htc.crc.pitt.edu` for HTC. The `sftp://` prefix forces a secure connection. |
-| Username | Your Pitt username, all lowercase. |
-| Password | Your Pitt password. |
-| Port | `22` |
+=== "2. Connect"
 
-Then click **Quickconnect**.
+    Fill in the **Quickconnect** bar at the top of the window, then click **Quickconnect**:
 
-![FileZilla Quickconnect bar filled in with host, username, password, and port 22](../../_assets/img/data-management/filezilla-3.png)
+    | Field    | Value |
+    | -------- | ----- |
+    | Host     | `sftp://h2p.crc.pitt.edu` for SMP, MPI, or GPU; `sftp://htc.crc.pitt.edu` for HTC. The `sftp://` prefix forces a secure connection. |
+    | Username | Your Pitt username, all lowercase. |
+    | Password | Your Pitt password. |
+    | Port     | `22` |
 
-FileZilla asks whether to remember passwords. On your own computer, **Save passwords** is
-convenient; on a shared machine, choose **Do not save passwords** or protect them with a master
-password.
+    [![FileZilla Quickconnect bar filled in with host, username, password, and port 22](../../_assets/img/data-management/filezilla-3.png)](../../_assets/img/data-management/filezilla-3.png)
 
-![FileZilla 'Remember passwords?' dialog](../../_assets/img/data-management/filezilla-4.png)
+=== "3. Save password & trust host"
 
-The first time you connect to a host, FileZilla shows the server's host key. Check **Always trust
-this host, add this key to the cache** and click **OK**.
+    FileZilla asks whether to remember passwords — on your own computer, **Save passwords** is
+    convenient; on a shared machine, choose **Do not save passwords** or protect them with a
+    master password. Then, on first connection, FileZilla shows the server's host key: check
+    **Always trust this host, add this key to the cache** and click **OK**.
 
-![FileZilla 'Unknown host key' dialog showing the server fingerprint](../../_assets/img/data-management/filezilla-5.png)
+    <div class="grid" markdown>
 
-Once connected, the **Remote site** panel on the right shows your CRCD home directory
-(`/ihome/<group>/<username>`); the **Local site** panel on the left is your own computer.
+    [![FileZilla 'Remember passwords?' dialog](../../_assets/img/data-management/filezilla-4.png)](../../_assets/img/data-management/filezilla-4.png)
 
-![FileZilla connected, with the remote site showing the /ihome home directory](../../_assets/img/data-management/filezilla-6.png)
+    [![FileZilla 'Unknown host key' dialog showing the server fingerprint](../../_assets/img/data-management/filezilla-5.png)](../../_assets/img/data-management/filezilla-5.png)
 
-## Allow access to local folders
+    </div>
 
-As you browse your computer to pick files, macOS asks FileZilla for permission to each personal
-folder. Click **Allow** on each so FileZilla can upload from and download to them.
+=== "4. Connected"
 
-=== "OneDrive"
+    Once connected, the **Remote site** panel on the right shows your CRCD home directory
+    (`/ihome/<group>/<username>`); the **Local site** panel on the left is your own computer.
 
-    ![macOS prompt to allow FileZilla to access files managed by OneDrive](../../_assets/img/data-management/filezilla-7a.png){ width="360" }
+    [![FileZilla connected, with the remote site showing the /ihome home directory](../../_assets/img/data-management/filezilla-6.png)](../../_assets/img/data-management/filezilla-6.png)
 
-=== "Desktop"
+=== "5. Allow local folders"
 
-    ![macOS prompt to allow FileZilla to access your Desktop folder](../../_assets/img/data-management/filezilla-7b.png){ width="360" }
+    As you browse your computer to pick files, macOS asks FileZilla for permission to each
+    personal folder (OneDrive, Desktop, Documents, Downloads). Click **Allow** on each so
+    FileZilla can upload from and download to them.
 
-=== "Documents"
+    <div class="grid" markdown>
 
-    ![macOS prompt to allow FileZilla to access your Documents folder](../../_assets/img/data-management/filezilla-7c.png){ width="360" }
+    [![macOS prompt to allow FileZilla to access files managed by OneDrive](../../_assets/img/data-management/filezilla-7a.png)](../../_assets/img/data-management/filezilla-7a.png)
 
-=== "Downloads"
+    [![macOS prompt to allow FileZilla to access your Desktop folder](../../_assets/img/data-management/filezilla-7b.png)](../../_assets/img/data-management/filezilla-7b.png)
 
-    ![macOS prompt to allow FileZilla to access your Downloads folder](../../_assets/img/data-management/filezilla-7d.png){ width="360" }
+    [![macOS prompt to allow FileZilla to access your Documents folder](../../_assets/img/data-management/filezilla-7c.png)](../../_assets/img/data-management/filezilla-7c.png)
 
-## Transfer files
+    [![macOS prompt to allow FileZilla to access your Downloads folder](../../_assets/img/data-management/filezilla-7d.png)](../../_assets/img/data-management/filezilla-7d.png)
 
-With both panels showing the folders you want, move files by dragging them between **Local site**
-and **Remote site**, or by double-clicking a file to send it to the other side. Progress appears
-in the transfer queue at the bottom, and finished transfers move to the **Successful transfers**
-tab.
+    </div>
 
-![FileZilla after a successful transfer, with the file now in the remote Downloads folder](../../_assets/img/data-management/filezilla-8.png)
+=== "6. Transfer files"
+
+    With both panels showing the folders you want, move files by dragging them between **Local
+    site** and **Remote site**, or by double-clicking a file to send it to the other side.
+    Progress appears in the transfer queue at the bottom, and finished transfers move to the
+    **Successful transfers** tab.
+
+    [![FileZilla after a successful transfer, with the file now in the remote Downloads folder](../../_assets/img/data-management/filezilla-8.png)](../../_assets/img/data-management/filezilla-8.png)
+
+=== "7. Reconnect later"
+
+    FileZilla remembers recent connections. Next time, click the arrow next to **Quickconnect**
+    and pick your saved host from the history instead of retyping it.
+
+    [![FileZilla Quickconnect dropdown showing the saved sftp connection in history](../../_assets/img/data-management/filezilla-9.png)](../../_assets/img/data-management/filezilla-9.png)
 
 !!! tip "Where to put your data"
     Your home directory has a 75 GB quota. For large datasets, transfer into your group's project
     storage (`/ix`, `/ix1`, `/vast`) instead — see
     [Storage Tiers](../../hardware_profiles/storage.md) and [File Systems](../file-systems.md).
-
-## Reconnect later
-
-FileZilla remembers recent connections. Next time, click the arrow next to **Quickconnect** and
-pick your saved host from the history instead of retyping it.
-
-![FileZilla Quickconnect dropdown showing the saved sftp connection in history](../../_assets/img/data-management/filezilla-9.png)

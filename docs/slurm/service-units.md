@@ -113,7 +113,7 @@ For a concise view of the TRES a job used, use `sacct`:
 The `crc-seff` wrapper reports how *efficiently* a completed job used its
 allocation — helpful for right-sizing future requests — and `crc-job-stats`
 (added to a batch script) appends a usage summary to the job's output. See
-[**CRC Wrappers**](../applications/crc-wrappers.md).
+[**CRCD Wrappers**](../applications/crc-wrappers.md).
 
 ## Checking your allocation
 

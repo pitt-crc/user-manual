@@ -39,5 +39,5 @@ We provide guidelines on how to create Python virtual environments, install soft
 kernels in Jupyter Hub at [python](../applications/python.md).
 
 General information about Juyter notebook capabilities are available at [https://jupyter.org](https://jupyter.org). Jupyter notebooks 
-created using the CRCD Jupyter Hub are automatically saved to your home directory on the CRC cluster. The **File** menu near the top 
+created using the CRCD Jupyter Hub are automatically saved to your home directory on the CRCD cluster. The **File** menu near the top 
 left corner of Jupyter Hub allows you to rename your files or to save them to non-default directories.
