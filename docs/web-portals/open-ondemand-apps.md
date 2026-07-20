@@ -5,7 +5,55 @@ This page covers the individual interactive applications available through
 MATLAB. For logging in, managing files, and the general launch/connect/delete pattern, see the
 [Open OnDemand](open-ondemand.md) overview.
 
+**Jump to an app:**
+
+<div class="grid cards" id="apps" markdown>
+
+-   :material-notebook:{ .lg .middle } __Jupyter__
+
+    ---
+
+    Jupyter Notebook or JupyterLab on a CPU node.
+
+    [:octicons-arrow-right-24: Jupyter](#jupyter-notebook-and-lab)
+
+-   :material-notebook:{ .lg .middle } __Jupyter on GPU__
+
+    ---
+
+    Jupyter Notebook or JupyterLab on a GPU node.
+
+    [:octicons-arrow-right-24: Jupyter on GPU](#jupyter-on-gpu)
+
+-   :material-chart-line:{ .lg .middle } __RStudio__
+
+    ---
+
+    RStudio Server on a CPU node.
+
+    [:octicons-arrow-right-24: RStudio](#rstudio)
+
+-   :material-chart-line:{ .lg .middle } __RStudio on GPU__
+
+    ---
+
+    RStudio Server on a GPU node.
+
+    [:octicons-arrow-right-24: RStudio Server on GPU](#rstudio-server-on-gpu)
+
+-   :material-calculator-variant:{ .lg .middle } __MATLAB__
+
+    ---
+
+    The MATLAB desktop, served through the browser by `matlab-proxy`.
+
+    [:octicons-arrow-right-24: MATLAB](#matlab)
+
+</div>
+
 ## Jupyter Notebook and Lab
+
+[↑ Back to app menu](#apps)
 
 The **Jupyter** app runs Jupyter Notebook or JupyterLab on a compute node with dedicated
 resources. (This is the Jupyter app inside Open OnDemand — distinct from the standalone
@@ -49,20 +97,26 @@ end the session and free the resources.
 
 ## Jupyter on GPU
 
+[↑ Back to app menu](#apps)
+
 Jupyter on GPU is the same app running on a GPU node. It has no pinned tile — open it from
 **Interactive Apps → Jupyter on gpu** (under the **Deep Learning** group).
 
 ![Interactive Apps menu open, with Jupyter on gpu listed under the Deep Learning group](../_assets/img/web-portals/ondemand-jupyter-gpu-1.png)
 
-The launch form is like the [Jupyter](#jupyter-notebook-and-lab) app's, with GPU-specific
-additions:
+On the launch form, set the job parameters and click **Launch**:
 
 | Field | What it does |
 | ----- | ------------ |
+| Use JupyterLab instead of Jupyter Notebook? | Check for the JupyterLab IDE; leave unchecked for the classic Notebook. |
 | Python version | Bundles the framework, Python, and CUDA together — for example, `pytorch 2.5.1 python 3.11 cuda 12.4`. |
 | Cuda version | A separate CUDA module to load. Choose **None** if you're using PyTorch with its bundled CUDA packages. |
+| Number of hours | Wall-time limit for the session. |
+| Number of cores | 1–128 cores, roughly 8 GB of memory per core unless you request a whole node. |
+| CPU Memory (GB) | Optional explicit memory request. |
 | GPU type | Which GPU/node type to request (for example, `rtx6k,96g,amd(avx512)`). |
 | Number of gpu cards | 1–4 cards on the node. |
+| Account | The Slurm allocation to charge; leave blank to use your default. |
 | Reservation | Leave blank unless you've been given a reservation. |
 
 ![Top of the Jupyter on gpu launch form: JupyterLab option, Python/framework version, and CUDA version](../_assets/img/web-portals/ondemand-jupyter-gpu-2a.png)
@@ -90,6 +144,8 @@ Click **Launch**. As before, the session is queued, then runs; when it shows **R
 When you're done, end the session with the red **Delete** button, the same as any interactive app.
 
 ## RStudio
+
+[↑ Back to app menu](#apps)
 
 RStudio Server runs the RStudio IDE in the browser on a compute node, so you can run more
 compute-intensive R work than on a login node. Launch it from the **RStudio Server 2026** tile
@@ -145,20 +201,27 @@ see **Status code 503**; start a new session from **Interactive Apps → RStudio
 
 ## RStudio Server on GPU
 
+[↑ Back to app menu](#apps)
+
 RStudio Server on GPU is the same app running on a GPU node. Like Jupyter on GPU, it has no
 pinned tile — open it from **Interactive Apps → RStudio Server on gpu** (under the **Deep
 Learning** group).
 
 ![Interactive Apps menu open, with RStudio Server on gpu listed under the Deep Learning group](../_assets/img/web-portals/ondemand-rstudio-gpu-1.png)
 
-The form is like the [RStudio](#rstudio) app's, with GPU-specific additions:
+On the launch form, set the job parameters and click **Launch**:
 
 | Field | What it does |
 | ----- | ------------ |
-| Number of cores | 1–64 cores on a GPU node — fewer than the CPU app's 1–128. |
+| R version | The R module to load (for example, `4.5.0`). |
+| Number of hours | Wall-time limit for the session. |
+| Number of cores | 1–64 cores on a GPU node, roughly 8 GB of memory per core unless you request a whole node. |
+| Memory (GB) | Optional explicit memory request. |
 | GPU type | Which GPU to request (for example, `l40s`). |
 | constraint | A node feature to match (for example, `amd,40g`). |
 | Number of gpu cards | 1–4 cards on the node. |
+| Account | The Slurm allocation to charge; leave blank to use your default. |
+| Reservation | Leave blank unless you've been given a reservation. |
 
 ![Top of the RStudio Server on gpu launch form: R version, cores, memory, and GPU type](../_assets/img/web-portals/ondemand-rstudio-gpu-2a.png)
 
@@ -172,17 +235,38 @@ The session is queued, then runs; when it shows **Running**, click **Connect to 
 
 ![RStudio Server IDE running in the browser on a GPU node](../_assets/img/web-portals/ondemand-rstudio-gpu-5.png)
 
-!!! note "This session is a Slurm job too"
-    Like the Jupyter apps, an RStudio Server on GPU session is a Slurm job on a dedicated GPU
-    node. From the RStudio **Terminal** tab, `squeue -M gpu -u $USER` lists it with its job ID,
-    node, and partition.
+!!! note "This session is a Slurm job"
+    An RStudio Server on GPU session is a Slurm job on a dedicated GPU node. From the RStudio
+    **Terminal** tab, `squeue -M gpu -u $USER` lists it with its job ID, node, and partition.
 
 ![RStudio Terminal tab showing the session listed as a Slurm job on a GPU node by squeue](../_assets/img/web-portals/ondemand-rstudio-gpu-6.png)
 
-The package-installation tip and the error and session-ending notes from the [RStudio](#rstudio)
-section apply here too.
+The R modules bundle many R and Bioconductor packages. To install your own, open **Clusters →
+HTC Shell Access**, load an R module (find the current one with `module spider r`), start `R`,
+and use `install.packages("pkg")` or `BiocManager::install("Bioconductor_pkg")`. Use
+`.libPaths()` to see where R searches.
+
+### Common RStudio errors on GPU
+
+RStudio Server stores its state in your home directory (`~/.local/share/rstudio` or the legacy
+`~/.rstudio`), which has a 75 GB quota. Large project files or timed-out sessions can fill it; you
+can delete unused sessions from `~/.local/share/rstudio/sessions`. When switching R versions, it
+helps to remove `~/.local/share/rstudio` (e.g. `rm -rf ~/.local/share/rstudio`) — it will be
+regenerated.
+
+Because the RStudio Server interface is a single-threaded process, a long-running operation can
+make another action (such as saving) time out with **Status code 502**. Usually nothing crashes —
+wait for the running code to finish and try again. If you exceed your requested time limit you'll
+see **Status code 503**; start a new session from **Interactive Apps → RStudio Server on gpu**.
+
+!!! warning "Quitting RStudio does not free the node"
+    Selecting **File → Quit Session** (or the red icon in RStudio) only closes RStudio — it does
+    **not** end your interactive session, and you keep consuming your allocation. To end it, return
+    to **My Interactive Sessions** and click the red **Delete** button.
 
 ## MATLAB
+
+[↑ Back to app menu](#apps)
 
 Two MATLAB apps are offered. Prefer **matlab** (the `matlab-proxy` web app); **MATLAB on htc** is
 the older VNC-based version. Launch the web app from the **matlab** tile on the Dashboard.

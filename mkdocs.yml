@@ -138,6 +138,7 @@ nav:
           - Globus: data-management/file-transfer-methods/globus.md
           - Globus for OneDrive: data-management/file-transfer-methods/globus-microsoft-onedrive.md
           - Microsoft OneDrive: data-management/file-transfer-methods/microsoft-onedrive.md
+          - FileZilla: data-management/file-transfer-methods/filezilla.md
   - Applications:
       - applications/software-list.md
       - applications/application-environment.md
