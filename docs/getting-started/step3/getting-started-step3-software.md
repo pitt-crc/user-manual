@@ -3,19 +3,19 @@ hide:
   - toc
 ---
 
-# How to Discover Available Software 
+# Discovering and Loading Software 
 
-??? abstract "Skip to Table of Commands"
+??? abstract "Show Table of Commands"
     | Command                          | Description                                                |
     | :------------------------------- | :--------------------------------------------------------- |
     | `module spider <software>`       | Query if `<software>` is available                         |
-    | `module load <software>`         | Load `<software` into environment                          |
+    | `module load <software>`         | Load `<software>` into environment                          |
     | `module list`                    | List loaded software packages                              |
     | `module rm <software>`           | Remove previously loaded `<software>` from environment     |
     | `module unload <software>`       | Same as `module rm <software>`                             |
     | `module purge`                   | Remove all previously loaded `<software>` from environment |
 
-CRC uses the [**Lmod**](https://github.com/TACC/Lmod) Environment Modules tool to manage and provision software applications. The 
+CRCD uses the [**Lmod**](https://github.com/TACC/Lmod) Environment Modules tool to manage and provision software applications. The 
 command `module spider <software>` (1) shows if a package is available. For example, (2)
 { .annotate }
 
@@ -158,7 +158,7 @@ To remove a software package from your environment, use the command `module rm <
         ```
     === "output"
         ```bash
-        {kimwong@login1.crc.pitt.edu ~}$module list
+        [kimwong@login1.crc.pitt.edu ~]$module list
         
         Currently Loaded Modules:
           1) gcc/8.2.0   2) python/anaconda3.10-2022.10
@@ -170,45 +170,49 @@ To remove a software package from your environment, use the command `module rm <
         ```
 
 You should have noticed in the output that removal of the `python/anaconda3.10-2022.10` module also
-removes `gcc/8.2.0`. This is because the latter was a dependency for the Python module. What happens if you 
-were to remove the dependency first? Let's load the modules again and try it out:
+removes `gcc/8.2.0`. This is because the latter was a dependency for the Python module. 
 
-!!! example "module rm &lt;software>"
-    === "command"
+??? note "What happens if I remove a dependency first?"
+    Let's load the modules again and try it out:
 
-        ```commandline
-        module load gcc/8.2.0 python/anaconda3.10-2022.10
-        module list
-        module rm gcc/8.2.0
-        module list
-        ```
-    === "output"
+    !!! example "module rm &lt;software>"
+        === "command"
+    
+            ```commandline
+            module load gcc/8.2.0 python/anaconda3.10-2022.10
+            module list
+            module rm gcc/8.2.0
+            module list
+            ```
+        === "output"
+    
+            ```bash
+            [kimwong@login1.crc.pitt.edu ~]$module load gcc/8.2.0 python/anaconda3.10-2022.10
+            [kimwong@login1.crc.pitt.edu ~]$module list
+            
+            Currently Loaded Modules:
+              1) gcc/8.2.0   2) python/anaconda3.10-2022.10
+            
+            [kimwong@login1.crc.pitt.edu ~]$module rm gcc/8.2.0
+            
+            Inactive Modules:
+              1) python/anaconda3.10-2022.10
+            
+            [kimwong@login1.crc.pitt.edu ~]$module list
+            
+            Currently Loaded Modules:
+              None found.
+            
+            Inactive Modules:
+              1) python/anaconda3.10-2022.10
+            
+            [kimwong@login1.crc.pitt.edu ~]$
+            ```
+    
+    The removal of the dependent software makes the main software module *inactive*, which has the same 
+    effect as a `module rm <software>`. 
 
-        ```bash
-        [kimwong@login1.crc.pitt.edu ~]$module load gcc/8.2.0 python/anaconda3.10-2022.10
-        [kimwong@login1.crc.pitt.edu ~]$module list
-        
-        Currently Loaded Modules:
-          1) gcc/8.2.0   2) python/anaconda3.10-2022.10
-        
-        [kimwong@login1.crc.pitt.edu ~]$module rm gcc/8.2.0
-        
-        Inactive Modules:
-          1) python/anaconda3.10-2022.10
-        
-        [kimwong@login1.crc.pitt.edu ~]$module list
-        
-        Currently Loaded Modules:
-          None found.
-        
-        Inactive Modules:
-          1) python/anaconda3.10-2022.10
-        
-        [kimwong@login1.crc.pitt.edu ~]$
-        ```
-
-The removal of the dependent software makes the main software module *inactive*, which has the same 
-effect as a `module rm <software>`. Now, suppose you have a few software packages loaded. Do you need
+Now, suppose you have a few software packages loaded. Do you need
 to remove each package individually or is there a single global remove command? The command is 
 `module purge`:
 
@@ -236,3 +240,44 @@ to remove each package individually or is there a single global remove command? 
         No modules loaded
         [kimwong@login1.crc.pitt.edu ~]$
         ```
+
+## Next steps
+
+You can now find and load software. The next stage is asking the scheduler for
+the compute resources to run it — continue to
+**[Requesting resources](getting-started-step3-resources.md)**.
+
+### If the software you need isn't a module
+
+<div class="grid cards" markdown>
+
+-   :material-language-python:{ .lg .middle } __Install your own packages__
+
+    ---
+
+    Create conda or virtual environments to install Python packages yourself
+    where modules fall short.
+
+    [:octicons-arrow-right-24: Python environments](../../applications/python.md)
+
+-   :material-cube-outline:{ .lg .middle } __Run containers__
+
+    ---
+
+    Use Singularity to run Docker/OCI images when software isn't provided as a
+    module.
+
+    [:octicons-arrow-right-24: Introduction to Singularity](../../applications/singularity.md)
+
+-   :material-format-list-bulleted:{ .lg .middle } __Browse the catalog__
+
+    ---
+
+    See every package installed on the clusters and search for what you need.
+
+    [:octicons-arrow-right-24: CRCD Software List](../../applications/software-list.md)
+
+</div>
+
+See also [R and RStudio](../../applications/r+rstudio.md) and
+[Application Environment](../../applications/application-environment.md).

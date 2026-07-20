@@ -125,7 +125,7 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
 
 !!! example "Red Hat Insights"
     === "The Symptom"
-        Upone successful login, I see the following prompt. Do I need to do anything?
+        Upon successful login, I see the following prompt. Do I need to do anything?
 
         ```bash
         kimwong@M1-Max ~ % ssh h2p.crc.pitt.edu
@@ -277,3 +277,20 @@ Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an a
 
         In the new rhel9 environment, the modules are generated automatically in [Spack](https://spack.io/). Within the Spack recipe, Anaconda is
         a separate module.
+
+
+^^**8. How do I avoid typing my Pitt password every time I log in?**^^
+
+Set up passwordless SSH with a key pair. Generate a key on your own computer,
+copy the public half to the login node once (the last time you'll enter your
+Pitt password), then connect as usual:
+
+    ssh-keygen -t ed25519
+    ssh-copy-id <pittID>@h2p.crc.pitt.edu
+    ssh <pittID>@h2p.crc.pitt.edu
+
+You still need the [VPN](getting-started/getting-started-step1-account.md)
+connected. For the full walkthrough — Windows steps, using an SSH agent and a
+config shortcut, and setting up passwordless hops between cluster nodes for MPI
+— see [Passwordless SSH](getting-started/passwordless-ssh.md).
+

@@ -1,186 +1,183 @@
-# Interactive / Remote Computing with VS Code
+# Remote Development with VS Code
 
-## 1. Code Server
-Code server refers to a technology that enables running Visual Studio Code (VS Code) on a remote server and accessing it through a web browser. This setup provides a consistent development environment accessible from various devices, including laptops, tablets, and even low-powered machines.
-https://github.com/coder/code-server
+You can use Visual Studio Code with CRCD in three ways. Pick based on how much
+setup you want and whether you'd rather work in a browser or in your own local
+VS Code:
 
-### Launching a Code-Server
-Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> Code Server. Choose code server version, select Number of cores, Number of hours and Working Directory. Click Launch.
+| Method | Where VS Code runs | Best when |
+| ------ | ------------------ | --------- |
+| [Code Server](#code-server) | In your browser, via Open OnDemand | You want the quickest start with nothing to install |
+| [VS Code via VNC](#vs-code-via-vnc) | In a browser desktop (TurboVNC), via Open OnDemand | You want the full desktop VS Code UI in the browser |
+| [Remote tunnel](#remote-tunnel) | Your **local** VS Code, connected to a compute node | You want your own VS Code, extensions, and settings against cluster resources |
 
-![](../_assets/img/bioinformatics/code_server_1.png)
+The first two run through [Open OnDemand](../getting-started/open-ondemand.md)
+and need no local setup. The tunnel is the most powerful but the most involved.
 
-A new Code server session will automatically be created on one of the HTC compute nodes. Once the session has been created, start the session.
+## Code Server
 
-![](../_assets/img/bioinformatics/code_server_2.png)
+[Code Server](https://github.com/coder/code-server) runs VS Code on a compute
+node and serves it to your browser.
 
-### Installing Code-Server Extensions
-You can install any desired extensions from the Extensions sidebar on the left-hand side. This only needs to be done the first time you run Code Server, or whenever you need new extensions. I demonstrate installing Jupyter extensions.
-Search “Jupyter” from EXTENSIONS: MARKETPLACE, select a specific extension. Click “Install”
+Log on to `ondemand.htc.crc.pitt.edu`, click **Interactive Apps → Code Server**,
+choose a version, number of cores, hours, and working directory, then **Launch**.
+A session is created on an HTC compute node; start it once it's ready.
 
-![](../_assets/img/bioinformatics/code_server_3.png)
+![Launching Code Server](../_assets/img/bioinformatics/code_server_1.png)
 
-The extensions will be installed under ~/.local/share/code-server.
+### Installing extensions
 
-Now you can open Jupyter Notebooks.
+Install extensions from the Extensions sidebar (only needed the first time, or
+when you need new ones). For example, search "Jupyter" in **Extensions:
+Marketplace** and click **Install**; extensions are stored under
+`~/.local/share/code-server`. You can then open Jupyter notebooks.
 
-![](../_assets/img/bioinformatics/code_server_4.png)
+![Installing extensions](../_assets/img/bioinformatics/code_server_3.png)
 
-### Using customized conda environments in Code-Server
+### Using a conda environment
 
-When your Jupyter notebooks depend on a customized conda environment, you can use customized conda environments in VS Code-Server. We have installed cell2location conda environment at /software/rhel9/manual/install/cell2location/0.1.4/python3.11, which can be used to execute the codes in the above Jupyter notebook.
+To run notebooks against a specific conda environment, open the Command Palette,
+type **Python: Select Interpreter**, and enter the path to that environment's
+`python`. For example, the `cell2location` environment installed at
+`/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python`.
+(Install the Python extension first if you haven't.) See
+[Python](../applications/python.md) for creating your own environments.
 
-If you have not installed the basic Python extension, install Python extension for Visual Studio Code. 
+## VS Code via VNC
 
-![](../_assets/img/bioinformatics/code_server_5.png)
+Log on to `ondemand.htc.crc.pitt.edu`, click **Interactive Apps → VSCode on
+htc**, choose a version, cores, and hours, then **Launch**. VS Code runs inside a
+TurboVNC desktop session in your browser.
 
-Start Command Palette…
+![VSCode via VNC](../_assets/img/bioinformatics/vscode_1.png)
 
-![](../_assets/img/bioinformatics/code_server_6.png)
+## Remote tunnel
 
-Type "Python: Select Interpreter" in the Command Palette and select this option. 
+This connects the VS Code installed on **your own machine** to a CRCD compute
+node using the Remote-SSH extension.
 
-![](../_assets/img/bioinformatics/code_server_7.png)
+!!! note "This is the advanced option"
+    It requires SSH key setup and an SSH config. If you just want VS Code
+    quickly, use Code Server above.
 
-Type “/software/rhel9/manual/install/cell2location/0.1.4/python3.11/bin/python”, and Choose this Conda Environment. Now you can use this conda environment to execute the codes in the cell2location tutorial Jupyter notebook.
+**Prerequisites**
 
-![](../_assets/img/bioinformatics/code_server_8.png)
+- The latest VS Code on your local machine.
+- The [Remote Development extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
 
-## 2. VSCode via VNC
+### One-time setup
 
-Logon ondemand.htc.crc.pitt.edu, click Interactive Apps -> VSCode on htc. Choose VSCode version, select Number of cores and Number of hours. Click Launch.
-You will run VSCode inside a TurboVNC session. 
+**1. Set up passwordless SSH.** The tunnel needs your public key installed on the
+login node (so you connect without a password) and a key in your cluster home
+directory that the compute-node `sshd` will use as its host key. Both are covered
+on [Passwordless SSH](../getting-started/passwordless-ssh.md) — follow it to
+create an `ed25519` key pair before continuing.
 
-![](../_assets/img/bioinformatics/vscode_1.png)
+**2. Add an SSH config.** On your local machine, add to `~/.ssh/config` (replace
+`<username>` with your Pitt username):
 
-
-## 3. Tunneling
-
-
-This tutorial outlines how to set up VS Code for interactive/remote development/debugging on Pitt CRCD computing nodes.
-
-### Prerequisites
-
-- The latest version of VS Code installed on your local machine
-- Latest version of the ["Remote Development" extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
-
-### Steps performed **only once**
-
-Add the following lines to the ssh config file on your local machine (~/.ssh/config) 
-and replace <name> with your Pitt username:
-
-```
-Host htc  
-  ControlMaster auto  
-  ControlPath ~/.ssh/master-%r@%h:%p  
-  HostName htc.crc.pitt.edu  
-  User <name>
-
-Host htcx  
-  ProxyCommand ssh htc 'nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)'  
-  StrictHostKeyChecking no  
-  User <name>
-```
-
-For users on a **Windows** machine, the ControlMaster may not be available, so add the following lines instead:
-
-```
+```text
 Host htc
   HostName htc.crc.pitt.edu
-  User <name>
+  User <username>
+  ControlMaster auto
+  ControlPath ~/.ssh/master-%r@%h:%p
 
-Host htcx  
-  ProxyCommand ssh htc "nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)"  
-  StrictHostKeyChecking no  
-  User <name>
+Host htcx
+  ProxyCommand ssh htc 'nc $(squeue --me --name=tunnel --states=R -h -O NodeList,Comment)'
+  StrictHostKeyChecking no
+  User <username>
 ```
 
-Connect to the HTC cluster and create the following sbatch file into your home directory (`~/tunnel.sbatch`):
+!!! note "Windows"
+    If `ControlMaster` isn't available on your machine, omit the `ControlMaster`
+    and `ControlPath` lines from the `Host htc` block; the rest is unchanged.
 
-```shell
+**3. Create the tunnel job script.** On the cluster, create `~/tunnel.sbatch`:
+
+```bash
 #!/bin/bash
+#SBATCH --output="tunnel.log"
+#SBATCH --job-name="tunnel"
+#SBATCH --time=4:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --mem-per-cpu=8G
 
-#SBATCH --output="tunnel.log"  
-#SBATCH --job-name="tunnel"  
-#SBATCH --time=4:00:00 # walltime  
-#SBATCH --cpus-per-task=2 # number of cores  
-#SBATCH --mem-per-cpu=8G # memory per CPU core
+module load python   # any Python module works (see Discovering Software); used only to find a free port
 
-# load the modules  
-module load python/ondemand-jupyter-python3.8
-
-# find open port  
-PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')  
+# find an open port and record it in the job's Comment field
+PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 scontrol update JobId="$SLURM_JOB_ID" Comment="$PORT"
 
-# start sshd server on the available port  
-echo "Starting sshd on port $PORT"  
-/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_rsa
+# start an sshd on that port, using your key as the host key
+echo "Starting sshd on port $PORT"
+/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_ed25519
 ```
 
-In the terminal on your local machine, generate an ssh key if you don't have one already using the following:
+### Connecting (each time)
+
+From your local terminal, `ssh htc`, then start the tunnel job:
+
 ```
-ssh-keygen -t rsa
-```
-Copy your local public ssh key to the cluster using:
-```
-ssh-copy-id htc
-```
-On `htc.crc.pitt.edu`, run the following commands if you have not done so:
-```
-ssh-keygen #then follow on screen instructions  
-cd ~/.ssh  
-cat id_rsa.pub >> authorized_keys
+[user@login1 ~]$ sbatch tunnel.sbatch
+Submitted batch job 1383495
+[user@login1 ~]$ squeue -u $USER
+  JOBID  PARTITION    NAME   USER  ST   TIME  NODES  NODELIST(REASON)
+1383495        htc  tunnel   user   R   0:17      1  htc-1024-n0
 ```
 
-### Steps performed every time to connect your VS Code to the cluster
----------------------------------------------------------------------
+Once the job is running, open VS Code locally and connect via **Remote Explorer**
+using `htcx` as the SSH target.
 
-From your local terminal, connect to the cluster using ssh htc and once logged in, 
-type sbatch tunnel.sbatch to start the remote server. Make sure that your job does run!
+### Requesting a GPU
 
-Sample output:
+Add a `gpux` host to your local `~/.ssh/config`:
 
-```commandline
-[user@login0b ~]$ sbatch tunnel.sbatch  
-Submitted batch job 1383495  
-[user@login0b ~]$ squeue -u user
-
-  JOBID      PARTITION      NAME      USER      ST      TIME      NODES      NODELIST(REASON)  
-1383495            htc    tunnel      user       R      0:17          1           htc-1024-n0
+```text
+Host gpux
+  ProxyCommand ssh htc 'nc $(squeue -M gpu --me --name=tunnel --states=R -h -O NodeList,Comment)'
+  StrictHostKeyChecking no
+  User <username>
 ```
 
-Open VS Code on your local machine and connect to your projects using `Remote Explorer` with `htcx` as the ssh target.
+And change the `#SBATCH` lines in `~/tunnel.sbatch` to target the GPU cluster:
 
-### Changes you need to do to allocate resources with GPUs
-----------------------------------------------------------
-
-Add the following host to the ssh config file on your local machine (`~/.ssh/config`) and 
-replace `<name>` with your username:
-```
-Host gpux  
-  ProxyCommand ssh htc 'nc $(squeue -M gpu --me --name=tunnel --states=R -h -O NodeList,Comment)'  
-  StrictHostKeyChecking no  
-  User <name>
-```
-
-Change the contents of the sbatch file in your home directory on HTC (`~/tunnel.sbatch`) to:
-```shell
-#!/bin/bash  
-#SBATCH --output="tunnel.log"  
-#SBATCH --job-name="tunnel"  
-#SBATCH --cpus-per-task 2  
-#SBATCH --time 0-01:00:00  
-#SBATCH --clusters=gpu  
-#SBATCH --partition=a100  
+```bash
+#SBATCH --time=0-01:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --cluster=gpu
+#SBATCH --partition=a100      # a100 | l40s | h200 | ... (see the GPU hardware page)
 #SBATCH --gres=gpu:1
-
-module load python/ondemand-jupyter-python3.8 # load the modules
-
-# find open port  
-PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0));  
-print(s.getsockname()[1]); s.close()')  
-scontrol update JobId="$SLURM_JOB_ID" Comment="$PORT"  
-# start sshd server on the available port  
-echo "Starting sshd on port $PORT"  
-/usr/sbin/sshd -D -p ${PORT} -f /dev/null -h ${HOME}/.ssh/id_rsa
 ```
+
+Then connect using `gpux` as the SSH target instead of `htcx`. See the
+[GPU cluster](../hardware_profiles/gpu.md) page for available partitions.
+
+## Related
+
+<div class="grid cards" markdown>
+
+-   :material-web:{ .lg .middle } __Browser access__
+
+    ---
+
+    Code Server, VNC, and other apps through Open OnDemand.
+
+    [:octicons-arrow-right-24: Open OnDemand](../getting-started/open-ondemand.md)
+
+-   :material-key:{ .lg .middle } __Set up SSH keys__
+
+    ---
+
+    Passwordless SSH, required for the remote tunnel.
+
+    [:octicons-arrow-right-24: Passwordless SSH](../getting-started/passwordless-ssh.md)
+
+-   :material-console:{ .lg .middle } __Interactive sessions__
+
+    ---
+
+    Other ways to get a shell on a compute node.
+
+    [:octicons-arrow-right-24: Interactive Jobs](interactive-jobs.md)
+
+</div>

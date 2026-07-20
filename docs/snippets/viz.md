@@ -1,101 +1,127 @@
-# **VIZ**
+# Linux Desktop Visualization (Viz)
 
-## **Summary**
+The Viz nodes provide a full graphical Linux desktop that you reach through your web
+browser using FastX. Use it for GUI applications, visualization, and previewing results,
+or as a desktop gateway to the clusters. See the [Viz node hardware](../hardware_profiles/viz.md)
+for specifications.
 
-VIZ is a set of nodes with a graphical user interface desktop enabled. In this document, we present all the information
-you need about VIZ.
+!!! note "Connect to the VPN first"
+    Like the other CRCD resources, Viz is reachable only from the University network. From
+    off campus, connect to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426)
+    first (see [Step 1](../getting-started/getting-started-step1-account.md)).
 
-[**Log in to VIZ**](https://viz.crc.pitt.edu)
+## Step 1. Log in to FastX
 
-You can treat this machine as another login node with extra capability to access to GUI interface. You can also submit 
-jobs to H2P or HTC using the VIZ interface.
+Point your browser to <https://viz.crc.pitt.edu> and sign in with your Pitt credentials.
+Enter your Pitt username (1) in all lowercase and your Pitt password (2), then click
+**SSH Login** (3).
 
-## **Access to VIZ**
+![FastX SSH login page with the Username field, Password field, and SSH Login button](../_assets/img/web-portals/fastx-1.png)
 
-Like the other resources we have available, accessing VIZ requires a [connection to the PittNet VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters).
+!!! tip "Use all lowercase for your username"
+    If you are unexpectedly prompted for a second password, you most likely entered your
+    username with capital letters. Reload the page and sign in again using your Pitt
+    username in all lowercase.
 
-After connecting to the VPN, VIZ can be accessed either by the web portal, or by the fastx 2 desktop client. The 
-benefit of using the desktop client is that copy/paste functionality works significantly better.
+## Step 2. Launch a desktop session
 
-## **Desktop Client Method**
+After logging in you land on the **My Sessions** page. The **Applications** panel on the
+left lists the available desktops and terminals — **mate**, **xfce**, and **xterm**. Click
+**mate** (a good default desktop) to start a new session.
 
-[Download the latest fastx client here](https://www.starnet.com/download/fastx-client).
+![FastX My Sessions page showing the Applications list (mate, xfce, xterm) with mate selected](../_assets/img/web-portals/fastx-2.png)
 
-Install to a location accessible to you and run the executable file in the installation directory.
+## Step 3. Choose how to connect
 
-When you run the executable, the window that opens is your Connections window.
+FastX asks how you want to open the session. Choose **Browser Client** to run the desktop
+in a new browser tab with nothing to install; the **Open in New Tab** option is selected so
+the desktop opens in its own tab. The **Desktop Client** is an alternative that generally
+handles copy and paste better — download it with the link on this screen if you prefer it.
 
-![](../_assets/img/web-portals/VizFastXDesktop_1.png)
+![FastX prompt asking how to connect to the session, with Browser Client and Desktop Client options](../_assets/img/web-portals/fastx-3.png)
 
-Towards the top left corner, use the plus icon to add an **https** connection.
+## Step 4. Use the desktop
 
-![](../_assets/img/web-portals/VizFastXDesktop_2.png)
+Your MATE desktop opens in the browser. Use it like any Linux desktop: the **Applications**,
+**Places**, and **System** menus are in the top-left, and the desktop icons give you your
+home folder, Computer, and Trash.
 
-**Host:** viz.crc.pitt.edu
+![MATE desktop session running in the FastX browser client](../_assets/img/web-portals/fastx-5.png)
 
-**User:** your Pitt ID, **all lower case**
+If the desktop does not fill the window — as below, where the StarNet background shows around
+a smaller desktop — use the toolbar on the right edge of the session to fit or resize it.
 
-**Port:** 443
+![MATE desktop shown smaller than the browser window, with the StarNet watermark border visible](../_assets/img/web-portals/fastx-4.png)
 
-**Auth:** ssh
+## Step 5. Run an application
 
-**Name:** VIZ
+Open a terminal from the desktop by clicking the terminal icon in the top menu bar (1),
+which starts **Mate Terminal** (2). From there you can load software with the module system
+and launch it. For example, to start MATLAB:
 
-Click **OK**.
+```bash
+module load matlab
+matlab
+```
 
-![](../_assets/img/web-portals/VizFastXDesktop_3.png)
+![MATE desktop with a terminal running 'module load matlab' and MATLAB R2025a open](../_assets/img/web-portals/fastx-6.png)
 
-Double-click the new connection in the Connections window, you will be prompted to provide your Pitt password.
+## Step 6. Reconnect or end your session
 
-![](../_assets/img/web-portals/VizFastXDesktop_4.png)
+Your session keeps running on the Viz node even if you close the browser tab, navigate
+away, or lose your network connection — you are only *disconnected*, not logged out. To
+pick up where you left off, return to <https://viz.crc.pitt.edu>: any running session
+appears under **Connected Sessions** on the My Sessions page. Click its thumbnail to
+reconnect exactly where you left it — handy for long-running GUI work you come back to over
+several sittings.
 
-The new window that opens is your Sessions window. This works similarly to the web portal interface.
+![FastX My Sessions page showing a running 'mate' session under Connected Sessions](../_assets/img/web-portals/fastx-16.png)
 
-![](../_assets/img/web-portals/VizFastXDesktop_5.png)
+!!! tip "Reconnect or terminate from My Sessions"
+    From the **My Sessions** page you can click a **Connected Session** to reconnect, or
+    terminate it there without reopening it. Closing the browser tab only disconnects — the
+    session (and its resource use) keeps running until you log out or terminate it.
 
-You can use the **plus icon** to create a new session, select your desktop interface (MATE is a good default), and 
-click ok.
+Because a disconnected session keeps consuming resources, **log out** from inside the
+desktop when you are truly finished. Click through the sequence below.
 
-![](../_assets/img/web-portals/VizFastXDesktop_6.png)
+=== "1. Save work"
 
-Your session will start, and you can use this machine similarly to the login nodes for H2P and HTC.
+    ![LibreOffice and a terminal open on the MATE desktop before logging out](../_assets/img/web-portals/fastx-7.png)
 
-## **Web Portal Method**
+    Save your work and close any open applications — here, LibreOffice, launched with
+    `module load libreoffice` then `soffice`.
 
-Below are some screenshots on how to access and use VIZ through the web portal.
+=== "2. Log out"
 
-Open [this page](https://viz.crc.pitt.edu/) in a web browser and login with your Pitt username and password. Your username is your pittID, 
-**making sure that all letters are lower case**.
+    ![The MATE System menu open with 'Log Out gnowmik…' highlighted](../_assets/img/web-portals/fastx-8.png)
 
-![](../_assets/img/web-portals/viz1.jpeg)
+    From the desktop menu bar, open **System** and choose **Log Out gnowmik…**. (The
+    **Shut Down…** entry just below does the same thing — it ends your session, not the
+    shared Viz node.)
 
-![](../_assets/img/web-portals/viz2.jpeg)
+=== "3. Confirm"
 
-![](../_assets/img/web-portals/viz3.jpeg)
+    ![MATE 'Log out of this system now?' dialog with Switch User, Cancel, and Log Out buttons](../_assets/img/web-portals/fastx-9.png)
 
-![](../_assets/img/web-portals/viz4.jpeg)
+    Click **Log Out** to confirm — or just wait for the short countdown to log you out
+    automatically.
 
-![](../_assets/img/web-portals/viz5.jpeg)
+=== "4. Disconnected"
 
-![](../_assets/img/web-portals/viz6.jpeg)
+    ![FastX 'Client Disconnected — the session exited normally' message with a Home button](../_assets/img/web-portals/fastx-10.png)
 
-![](../_assets/img/web-portals/viz7.jpeg)
+    FastX confirms the session exited normally and its resources are freed. Click **Home**
+    to return to My Sessions.
 
-![](../_assets/img/web-portals/viz8.jpeg)
+Back on the My Sessions page, **No Sessions Running** confirms the session has fully ended
+and its resources are freed — compare with **Connected Sessions** above, where it was still
+available to reconnect.
 
-![](../_assets/img/web-portals/viz9.jpeg)
+![FastX My Sessions page showing No Sessions Running](../_assets/img/web-portals/fastx-11.png)
 
-![](../_assets/img/web-portals/viz11.jpeg)
+##Definitions##
 
-![](../_assets/img/web-portals/viz12.jpeg)
-
-![](../_assets/img/web-portals/viz13.jpeg)
-
-![](../_assets/img/web-portals/viz14.jpeg)
-
-## **FAQs**
-
-Q: When I log in via the web portal, I am prompted for a second password. What do I put here?
-
-A: This is what happens when you enter your username (pitt ID) as all capitals instead of all lower case. You should 
-re-attempt the connection using all lower case letters in your username.
+- **FastX** -- the StarNet remote-desktop software that streams a Linux graphical desktop to your browser or to a local desktop client.
+- **MATE / XFCE** -- lightweight Linux desktop environments; either works for a Viz session, and MATE is a good default.
+- **session** -- a running desktop or application on a Viz node; sessions persist until you terminate them.
