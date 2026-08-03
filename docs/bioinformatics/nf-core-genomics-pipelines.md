@@ -9,8 +9,6 @@ Key characteristics:
 *  Designed for ease of use
 *  Manages interaction with compute infrastructure, enabling execution across nearly any environment
 
-nf-core is a community-driven initiative that maintains a curated collection of analysis pipelines built with Nextflow.
-
 [nf-core](https://nf-co.re/) is a community-driven initiative that maintains a curated collection of analysis [pipelines](https://nf-co.re/pipelines) built with Nextflow.
 
 I built a web application through open ondemand:
