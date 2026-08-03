@@ -25,7 +25,7 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 
 ![](../_assets/img/advanced-genomics-support/nf-core-1.png)
 
-2. Choose a pipelne, for example, rnaseq 2.0, click Launch
+2. Select a pipelne, for example, rnaseq 3.22.2, then click Launch
 
 ![](../_assets/img/advanced-genomics-support/nf-core-2.png)
 
@@ -33,7 +33,7 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 
 ![](../_assets/img/advanced-genomics-support/nf-core-3.png)
 
-4. Fill the webform, and click "Launch Workflow".
+4. Complete the webform, then click "Launch Workflow".
 
 ## Guidelines
 
