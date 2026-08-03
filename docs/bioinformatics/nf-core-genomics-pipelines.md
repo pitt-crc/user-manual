@@ -11,15 +11,17 @@ Key characteristics:
 
 [nf-core](https://nf-co.re/) is a community-driven initiative that maintains a curated collection of analysis [pipelines](https://nf-co.re/pipelines) built with Nextflow.
 
-I built a web application through open ondemand:
+I built a web application on Open OnDemand that lets you:
 
-*   Choose a pipeline
-*   Fill the launch form for that pipeline.
-*   Launch the pipeline with your choices to the HTC cluster
+*  Select a pipeline
+*  Complete the launch form for that pipeline
+*  Submit the pipeline to the HTC cluster with your selected options
 
-Point your browser to https://ondemand.htc.crc.pitt.edu
+To get started:
 
-1. Click Genomics Apps -> nf-core pipelines
+Navigate to https://ondemand.htc.crc.pitt.edu
+
+1. Click Genomics Apps → nf-core pipelines
 
 ![](../_assets/img/advanced-genomics-support/nf-core-1.png)
 
