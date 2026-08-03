@@ -37,12 +37,12 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 
 ## Guidelines
 
-1. /ix1/bioinformatics/nf-core/nf-core-rnaseq is an example of nf-core rnaseq 3.22.2.
-2. You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Provide the absolute path to input. As shown in the above screenshot, I have provided /ix1/bioinformatics/nf-core/nf-core-rnaseq/samples.csv.
-3. Parent path of the samplesheet is used to run the pipeline. -work-dir and outdir is relative to the parent path. In the above screenshot, parent path is /ix1/bioinformatics/nf-core/nf-core-rnaseq. Thus the working directory is /ix1/bioinformatics/nf-core/nf-core-rnaseq/work, and the outdir is /ix1/bioinformatics/nf-core/nf-core-rnaseq/results
-4. After you click Launch, nf-params.json and job.sbatch will be created in the parent path. job.sbatch will be automatically submitted to run the nf-core pipeline. 
-5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. If you keep -profile empty, the default config file will be used. You can also create your own config file and provide the absolute path to -profile. In the above screenshot, I have provided /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, in which I have modified clusterOptions to use a specific slurm account.
-6. Nf-core pipelines are inside folder /software/rhel9/manual/install/nf-core/pipelines/dec_2025
+1. /ix1/bioinformatics/nf-core/nf-core-rnaseq serves as an example setup for nf-core rnaseq 3.22.2.
+2. Before running the pipeline, you'll need to create a samplesheet containing information about the samples you want to analyze. Provide the absolute path to this input file. As shown in the screenshot above, the samplesheet path used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/samples.csv.
+3. The pipeline runs from the samplesheet's parent directory, and both -work-dir and outdir are relative to this path. In the example above, the parent path is /ix1/bioinformatics/nf-core/nf-core-rnaseq, making the working directory /ix1/bioinformatics/nf-core/nf-core-rnaseq/work and the output directory /ix1/bioinformatics/nf-core/nf-core-rnaseq/results.
+4. After clicking Launch, an nf-params.json file and a job.sbatch file will be generated in the parent directory. The job.sbatch file is then automatically submitted to run the nf-core pipeline.
+5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. In the example screenshot, the config file used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, where clusterOptions has been modified to specify a particular Slurm account.
+6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines/dec_2025.
 
 [nf-core/rnaseq](https://nf-co.re/rnaseq/2.0)
 ---------------------------------------------
