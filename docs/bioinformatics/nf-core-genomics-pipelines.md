@@ -1,13 +1,17 @@
 # nf-core Pipelines
 
-Nextflow is a reactive workflow framework and a programming DSL that eases the writing of data-intensive computational pipelines.
+Nextflow is a reactive workflow framework and programming DSL designed to simplify the creation of data-intensive computational pipelines.
 
-*   Programming language to handle computational workflows, based on Groovy/Java
-*   Well suited for complex and highly parallel Bioinformatics workflows
-*   Easy to run/use
-*   Handles interaction with compute infrastructure, runs just about anywhere
+Key characteristics:
 
-[nf-core](https://nf-co.re/) is a community effort to collect a curated set of analysis [pipelines](https://nf-co.re/pipelines) built using Nextflow.
+*  A workflow-oriented programming language built on Groovy/Java
+*  Particularly well-suited for complex, highly parallel bioinformatics pipelines
+*  Designed for ease of use
+*  Manages interaction with compute infrastructure, enabling execution across nearly any environment
+
+nf-core is a community-driven initiative that maintains a curated collection of analysis pipelines built with Nextflow.
+
+[nf-core](https://nf-co.re/) is a community-driven initiative that maintains a curated collection of analysis [pipelines](https://nf-co.re/pipelines) built with Nextflow.
 
 I built a web application through open ondemand:
 
