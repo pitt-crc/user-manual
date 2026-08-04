@@ -44,6 +44,60 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. In the example screenshot, the config file used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, where clusterOptions has been modified to specify a particular Slurm account.
 6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines/dec_2025.
 
+[sopa 1.0.0](https://nf-co.re/sopa/1.0.0)
+[spatialaxe 1.0.0](https://nf-co.re/nf-core-spatialaxe/1.0.0)
+[airrflow 4.3.1](https://nf-co.re/airrflow/4.3.1)
+[ampliseq 2.15.0](https://nf-co.re/ampliseq/2.15.0)
+[atacseq 2.1.2](https://nf-co.re/atacseq/2.1.2)
+[bacass 2.5.0](https://nf-co.re/bacass/2.5.0)
+[bactmap 1.0.0](https://nf-co.re/bactmap/1.0.0)
+[bamtofastq 2.2.0](https://nf-co.re/bamtofastq/2.2.0)
+[chipseq 2.1.0](https://nf-co.re/chipseq/2.1.0)
+[circdna 1.1.0](https://nf-co.re/circdna/1.1.0)
+[cutandrun 3.2.2](https://nf-co.re/cutandrun/3.2.2)
+[demultiplex 1.7.0](https://nf-co.re/demultiplex/1.7.0)
+[denovotranscript 1.2.1](https://nf-co.re/denovotranscript/1.2.1)
+[differentialabundance 1.5.0](https://nf-co.re/differentialabundance/1.5.0)
+[drugresponseeval 1.1.0](https://nf-co.re/drugresponseeval/1.1.0)
+[fetchngs 1.12.0](https://nf-co.re/fetchngs/1.12.0)
+[funcscan 3.0.0](https://nf-co.re/funcscan/3.0.0)
+[genomeassembler 1.1.0](https://nf-co.re/genomeassembler/1.1.0)
+[hgtseq 1.1.0](https://nf-co.re/hgtseq/1.1.0)
+[hic 2.1.0](https://nf-co.re/hic/2.1.0)
+[hlatyping 2.1.0](https://nf-co.re/hlatyping/2.1.0)
+[isoseq 2.0.0](https://nf-co.re/isoseq/2.0.0)
+[mag 5.3.0](https://nf-co.re/mag/5.3.0)
+[metatdenovo 1.3.0](https://nf-co.re/metatdenovo/1.3.0)
+[methylseq 4.2.0](https://nf-co.re/methylseq/4.2.0)
+[mhcquant 3.0.0](https://nf-co.re/mhcquant/3.0.0)
+[nanoseq 3.1.0](https://nf-co.re/nanoseq/3.1.0)
+[oncoanalyser 2.3.0](https://nf-co.re/oncoanalyser/2.3.0)
+[pacvar 1.0.1](https://nf-co.re/pacvar/1.0.1)
+[pangenome 1.1.3](https://nf-co.re/pangenome/1.1.3)
+[pathogensurveillance 1.0.0](https://nf-co.re/pathogensurveillance/1.0.0)
+[raredisease 2.6.0](https://nf-co.re/raredisease/2.6.0)
+[rnafusion 4.0.0](https://nf-co.re/rnafusion/4.0.0)
+[rnaseq 3.22.2](https://nf-co.re/rnaseq/3.22.2)
+[rnasplice 1.0.4](https://nf-co.re/rnasplice/1.0.4)
+[rnavar 1.2.2](https://nf-co.re/rnavar/1.2.2)
+[sarek 3.7.1](https://nf-co.re/sarek/3.7.1)
+[scnanoseq 1.2.1](https://nf-co.re/scnanoseq/1.2.1)
+[scrnaseq 4.1.0](https://nf-co.re/scrnaseq/4.1.0)
+[taxprofiler 1.2.5](https://nf-co.re/taxprofiler/1.2.5)
+[viralmetagenome 1.0.1](https://nf-co.re/viralmetagenome/1.0.1)
+[viralrecon 3.0.0](https://nf-co.re/viralrecon/3.0.0)
+
+
+[mcmicro 2.0.0](https://nf-co.re/jul/2026/nf-core-mcmicro/2.0.0)
+
+
+[proteinfamilies 2.4.0](https://nf-co.re/jul/2026/nf-core-proteinfamilies/2.4.0)
+[proteinannotator 1.1.0](https://nf-co.re/jul/2026/nf-core-proteinannotator/1.1.0)
+[proteinfold 2.0.0](https://nf-co.re/jul/2026/nf-core-proteinfold/2.0.0)
+
+
+[quantms 1.8.0](https://nf-co.re/jul/2026/nf-core-quantms/1.8.0)
+
 [nf-core/rnaseq](https://nf-co.re/rnaseq/2.0)
 ---------------------------------------------
 
