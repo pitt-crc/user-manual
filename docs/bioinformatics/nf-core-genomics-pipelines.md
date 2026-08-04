@@ -91,15 +91,15 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 [viralrecon 3.0.0](https://nf-co.re/viralrecon/3.0.0)  
 
 
-[mcmicro 2.0.0](https://nf-co.re/jul/2026/nf-core-mcmicro/2.0.0)  
+[mcmicro 2.0.0](https://nf-co.re/mcmicro/2.0.0)  
 
 
-[proteinfamilies 2.4.0](https://nf-co.re/jul/2026/nf-core-proteinfamilies/2.4.0)  
-[proteinannotator 1.1.0](https://nf-co.re/jul/2026/nf-core-proteinannotator/1.1.0)  
-[proteinfold 2.0.0](https://nf-co.re/jul/2026/nf-core-proteinfold/2.0.0)  
+[proteinfamilies 2.4.0](https://nf-co.re/proteinfamilies/2.4.0)  
+[proteinannotator 1.1.0](https://nf-co.re/proteinannotator/1.1.0)  
+[proteinfold 2.0.0](https://nf-co.re/proteinfold/2.0.0)  
 
 
-[quantms 1.8.0](https://nf-co.re/jul/2026/nf-core-quantms/1.8.0)  
+[quantms 1.8.0](https://github.com/bigbio/quantms)  
 
 # nf-core rnaseq 3.22.2
 ---------------------------------------------
