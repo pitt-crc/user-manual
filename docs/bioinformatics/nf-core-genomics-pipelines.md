@@ -43,6 +43,7 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 4. After clicking Launch, an nf-params.json file and a job.sbatch file will be generated in the parent directory. The job.sbatch file is then automatically submitted to run the nf-core pipeline.
 5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. /vast/bioinformatics/tutorials/nf-core-rnaseq/htc.config is another config file, where clusterOptions has been modified to specify a particular Slurm account.
 6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines.
+7. Nextflow is built for running highly parallel bioinformatics pipelines, which means it relies on a fast file system to perform well. For this reason, we recommend running Nextflow pipelines on CRCD's /vast file system. If you're instead using CRCD's warm storage (/ix or /ix1), limit your pipeline runs to fewer than 10 samples.
 
 ## Installed pipelines
 
