@@ -174,6 +174,11 @@ This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-
 
 ![](../_assets/img/advanced-genomics-support/nf-core-26.png)
 
+![](../_assets/img/advanced-genomics-support/nf-core-27.png)
+
+
+
+
 RNA sequencing analysis pipeline using STAR, RSEM, HISAT2 or Salmon with gene/isoform counts and extensive quality control.
 
 1. Logon ondemand.htc.crc.pitt.edu, Click Files -> Home Directory, Click Change directory and go to your bgfs or zfs folder. You can go to ```/bgfs/genomics/fangping/nf-core-rnaseq``` to see an example.
