@@ -44,9 +44,9 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. In the example screenshot, the config file used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, where clusterOptions has been modified to specify a particular Slurm account.
 6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines/dec_2025.
 
-[sopa 1.0.0](https://nf-co.re/sopa/1.0.0)
-[spatialaxe 1.0.0](https://nf-co.re/nf-core-spatialaxe/1.0.0)
-[airrflow 4.3.1](https://nf-co.re/airrflow/4.3.1)
+ [sopa 1.0.0](https://nf-co.re/sopa/1.0.0)
+ [spatialaxe 1.0.0](https://nf-co.re/nf-core-spatialaxe/1.0.0)
+ [airrflow 4.3.1](https://nf-co.re/airrflow/4.3.1)
 [ampliseq 2.15.0](https://nf-co.re/ampliseq/2.15.0)
 [atacseq 2.1.2](https://nf-co.re/atacseq/2.1.2)
 [bacass 2.5.0](https://nf-co.re/bacass/2.5.0)
