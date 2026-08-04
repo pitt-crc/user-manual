@@ -109,11 +109,25 @@ This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-
 1. Go to https://ondemand.htc.crc.pitt.edu and log in with your Pitt credentials.
    
 2. Click Files to confirm you have access to a /vast folder. Alternatively, click Home Directory, then use Change directory to navigate to your group's folder. In this example, we've moved to /vast/bioinformatics/tutorials.
+   
 ![](../_assets/img/advanced-genomics-support/nf-core-10.png)
-4. Use New Directory to create a new folder. Here, we've named it nf-core-rnaseq.
-5. Inside nf-core-rnaseq, create a subfolder called fastqs and move your raw sequencing files there. This example uses 12 fastq.gz files uploaded to that folder. To upload your own raw data, follow one of the methods described in this manual: https://crc-pages.pitt.edu/user-manual/data-management/. Do not use OnDemand's built-in Upload feature for this, since it's meant for small files only, not large sequencing datasets.
-6. Return to the nf-core-rnaseq folder, click New File, and name it samples.csv.
-7. Click Edit to open samples.csv.
+
+3. Use New Directory to create a new folder. Here, we've named it nf-core-rnaseq.
+
+![](../_assets/img/advanced-genomics-support/nf-core-11.png)
+
+4. Inside nf-core-rnaseq, create a subfolder called fastqs and move your raw sequencing files there. This example uses 12 fastq.gz files uploaded to that folder. To upload your own raw data, follow one of the methods described in this manual: https://crc-pages.pitt.edu/user-manual/data-management/. Do not use OnDemand's built-in Upload feature for this, since it's meant for small files only, not large sequencing datasets.
+
+![](../_assets/img/advanced-genomics-support/nf-core-12.png)
+
+5. Return to the nf-core-rnaseq folder, click New File, and name it samples.csv.
+
+![](../_assets/img/advanced-genomics-support/nf-core-13.png)
+
+6. Click Edit to open samples.csv.
+
+![](../_assets/img/advanced-genomics-support/nf-core-14.png)
+
 8. Paste in your nf-core samplesheet content and click Save.
 9. Get the absolute path to samples.csv. Clicking copy path gives you the parent directory path — in this case, /vast/bioinformatics/tutorials/nf-core-rnaseq — so the full path to the file is /vast/bioinformatics/tutorials/nf-core-rnaseq/samples.csv.
 10. Click Genomics Apps → nf-core pipelines, choose rnaseq 3.22.2, and click Launch.
