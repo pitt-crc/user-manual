@@ -136,27 +136,27 @@ This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-
 
 9. Click Genomics Apps → nf-core pipelines, choose rnaseq 3.22.2, and click Launch.
 
-![](../_assets/img/advanced-genomics-support/nf-core-16.png)
+![](../_assets/img/advanced-genomics-support/nf-core-17.png)
 
 10. Click Connect to Nextflow.
 
-![](../_assets/img/advanced-genomics-support/nf-core-17.png)
+![](../_assets/img/advanced-genomics-support/nf-core-18.png)
 
 11. Enter the absolute path to samples.csv in the input field, and set the outdir field to results.
 
-![](../_assets/img/advanced-genomics-support/nf-core-18.png)
+![](../_assets/img/advanced-genomics-support/nf-core-19.png)
 
 12. Under Reference genome options, select GRCh38 as the genome.
     
-![](../_assets/img/advanced-genomics-support/nf-core-19.png)
+![](../_assets/img/advanced-genomics-support/nf-core-20.png)
 
 13. Under Alignment options, default settings were used for this example.
 
-![](../_assets/img/advanced-genomics-support/nf-core-20.png)
+![](../_assets/img/advanced-genomics-support/nf-core-21.png)
 
 14. Under Optional outputs, the save_references box was checked, so the STAR index gets saved in the results directory for future reuse.
 
-![](../_assets/img/advanced-genomics-support/nf-core-21.png)
+![](../_assets/img/advanced-genomics-support/nf-core-22.png)
 
 19. Scroll to the bottom and click Launch workflow.
 20. Once submitted, you'll receive two emails: one when the pipeline starts and one when it finishes.
