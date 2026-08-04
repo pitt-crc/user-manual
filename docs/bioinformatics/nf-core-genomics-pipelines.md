@@ -37,12 +37,14 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 
 ## Guidelines
 
-1. /ix1/bioinformatics/nf-core/nf-core-rnaseq serves as an example setup for nf-core rnaseq 3.22.2.
-2. Before running the pipeline, you'll need to create a samplesheet containing information about the samples you want to analyze. Provide the absolute path to this input file. As shown in the screenshot above, the samplesheet path used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/samples.csv.
-3. The pipeline runs from the samplesheet's parent directory, and both -work-dir and outdir are relative to this path. In the example above, the parent path is /ix1/bioinformatics/nf-core/nf-core-rnaseq, making the working directory /ix1/bioinformatics/nf-core/nf-core-rnaseq/work and the output directory /ix1/bioinformatics/nf-core/nf-core-rnaseq/results.
+1. /vast/bioinformatics/tutorials/nf-core-rnaseq serves as an example setup for nf-core rnaseq 3.22.2.
+2. Before running the pipeline, you'll need to create a samplesheet containing information about the samples you want to analyze. Provide the absolute path to this input file. As shown in the screenshot above, the samplesheet path used is /vast/bioinformatics/tutorials/nf-core-rnaseq/samples.csv.
+3. The pipeline runs from the samplesheet's parent directory, and both -work-dir and outdir are relative to this path. In the example above, the parent path is /vast/bioinformatics/tutorials/nf-core-rnaseq, making the working directory /vast/bioinformatics/tutorials/nf-core-rnaseq/work and the output directory /vast/bioinformatics/tutorials/nf-core-rnaseq/results.
 4. After clicking Launch, an nf-params.json file and a job.sbatch file will be generated in the parent directory. The job.sbatch file is then automatically submitted to run the nf-core pipeline.
-5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. In the example screenshot, the config file used is /ix1/bioinformatics/nf-core/nf-core-rnaseq/htc.config, where clusterOptions has been modified to specify a particular Slurm account.
-6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines/dec_2025.
+5. The default config file is /software/rhel9/manual/install/nf-core/pipelines/config/htc.config. Leaving -profile empty will use this default. Alternatively, you can create a custom config file and specify its absolute path in -profile. /vast/bioinformatics/tutorials/nf-core-rnaseq/htc.config is another config file, where clusterOptions has been modified to specify a particular Slurm account.
+6. All nf-core pipelines are located in /software/rhel9/manual/install/nf-core/pipelines.
+
+## Installed pipelines
 
 [sopa 1.0.0](https://nf-co.re/sopa/1.0.0)  
 [spatialaxe 1.0.0](https://nf-co.re/nf-core-spatialaxe/1.0.0)  
