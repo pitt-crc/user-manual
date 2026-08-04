@@ -119,31 +119,49 @@ This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-
 4. Inside nf-core-rnaseq, create a subfolder called fastqs and move your raw sequencing files there. This example uses 12 fastq.gz files uploaded to that folder. To upload your own raw data, follow one of the methods described in this manual: https://crc-pages.pitt.edu/user-manual/data-management/. Do not use OnDemand's built-in Upload feature for this, since it's meant for small files only, not large sequencing datasets.
 
 5. Return to the nf-core-rnaseq folder, click New File, and name it samples.csv.
-6. 
+
 ![](../_assets/img/advanced-genomics-support/nf-core-12.png)
 
-7. Click Edit to open samples.csv.
+6. Click Edit to open samples.csv.
 
 ![](../_assets/img/advanced-genomics-support/nf-core-13.png)
 
-8. Paste in your nf-core samplesheet content and click Save.
+7. Paste in your nf-core samplesheet content and click Save.
 
 ![](../_assets/img/advanced-genomics-support/nf-core-14.png)
 
-10. Get the absolute path to samples.csv. Clicking copy path gives you the parent directory path — in this case, /vast/bioinformatics/tutorials/nf-core-rnaseq — so the full path to the file is /vast/bioinformatics/tutorials/nf-core-rnaseq/samples.csv.
+8. Get the absolute path to samples.csv. Clicking copy path gives you the parent directory path — in this case, /vast/bioinformatics/tutorials/nf-core-rnaseq — so the full path to the file is /vast/bioinformatics/tutorials/nf-core-rnaseq/samples.csv.
 
 ![](../_assets/img/advanced-genomics-support/nf-core-15.png)
 
-12. Click Genomics Apps → nf-core pipelines, choose rnaseq 3.22.2, and click Launch.
-13. Click Connect to Nextflow.
-14. Enter the absolute path to samples.csv in the input field, and set the outdir field to results.
-15. Under Reference genome options, select GRCh38 as the genome.
-16. Under Alignment options, default settings were used for this example.
-17. Under Optional outputs, the save_references box was checked, so the STAR index gets saved in the results directory for future reuse.
-18. Scroll to the bottom and click Launch workflow.
-19. Once submitted, you'll receive two emails: one when the pipeline starts and one when it finishes.
-20. On successful completion, results will be in the results folder. If the run fails, enable Show Dotfiles and check .nextflow.log to troubleshoot.
-21. A good starting point for reviewing results is downloading multiqc_report.html and looking through it.
+9. Click Genomics Apps → nf-core pipelines, choose rnaseq 3.22.2, and click Launch.
+
+![](../_assets/img/advanced-genomics-support/nf-core-16.png)
+
+10. Click Connect to Nextflow.
+
+![](../_assets/img/advanced-genomics-support/nf-core-17.png)
+
+11. Enter the absolute path to samples.csv in the input field, and set the outdir field to results.
+
+![](../_assets/img/advanced-genomics-support/nf-core-18.png)
+
+12. Under Reference genome options, select GRCh38 as the genome.
+    
+![](../_assets/img/advanced-genomics-support/nf-core-19.png)
+
+13. Under Alignment options, default settings were used for this example.
+
+![](../_assets/img/advanced-genomics-support/nf-core-20.png)
+
+14. Under Optional outputs, the save_references box was checked, so the STAR index gets saved in the results directory for future reuse.
+
+![](../_assets/img/advanced-genomics-support/nf-core-21.png)
+
+19. Scroll to the bottom and click Launch workflow.
+20. Once submitted, you'll receive two emails: one when the pipeline starts and one when it finishes.
+21. On successful completion, results will be in the results folder. If the run fails, enable Show Dotfiles and check .nextflow.log to troubleshoot.
+22. A good starting point for reviewing results is downloading multiqc_report.html and looking through it.
 
 
 RNA sequencing analysis pipeline using STAR, RSEM, HISAT2 or Salmon with gene/isoform counts and extensive quality control.
