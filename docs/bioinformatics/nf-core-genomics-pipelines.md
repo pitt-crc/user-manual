@@ -48,7 +48,7 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 ## Installed pipelines
 
 [sopa 1.0.0](https://nf-co.re/sopa/1.0.0)  
-[spatialaxe 1.0.0](https://nf-co.re/nf-core-spatialaxe/1.0.0)  
+[spatialaxe 1.0.0](https://nf-co.re/spatialaxe/1.0.0)  
 [airrflow 4.3.1](https://nf-co.re/airrflow/4.3.1)  
 [ampliseq 2.15.0](https://nf-co.re/ampliseq/2.15.0)  
 [atacseq 2.1.2](https://nf-co.re/atacseq/2.1.2)  
