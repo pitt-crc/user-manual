@@ -158,11 +158,21 @@ This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-
 
 ![](../_assets/img/advanced-genomics-support/nf-core-22.png)
 
-19. Scroll to the bottom and click Launch workflow.
-20. Once submitted, you'll receive two emails: one when the pipeline starts and one when it finishes.
-21. On successful completion, results will be in the results folder. If the run fails, enable Show Dotfiles and check .nextflow.log to troubleshoot.
-22. A good starting point for reviewing results is downloading multiqc_report.html and looking through it.
+15. Scroll to the bottom and click Launch workflow.
 
+![](../_assets/img/advanced-genomics-support/nf-core-23.png)
+
+16. Once submitted, you'll receive two emails: one when the pipeline starts and one when it finishes.
+
+![](../_assets/img/advanced-genomics-support/nf-core-24.png)
+
+17. On successful completion, results will be in the results folder. If the run fails, enable Show Dotfiles and check .nextflow.log to troubleshoot.
+
+![](../_assets/img/advanced-genomics-support/nf-core-25.png)
+
+18. A good starting point for reviewing results is downloading multiqc_report.html and looking through it.
+
+![](../_assets/img/advanced-genomics-support/nf-core-26.png)
 
 RNA sequencing analysis pipeline using STAR, RSEM, HISAT2 or Salmon with gene/isoform counts and extensive quality control.
 
