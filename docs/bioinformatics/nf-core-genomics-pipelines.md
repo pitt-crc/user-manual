@@ -107,10 +107,9 @@ Navigate to https://ondemand.htc.crc.pitt.edu
 This walkthrough demonstrates how to run nf-core/rnaseq 3.22.2 on an actual RNA-seq dataset.
 
 1. Go to https://ondemand.htc.crc.pitt.edu and log in with your Pitt credentials.
-
-![](../_assets/img/advanced-genomics-support/nf-core-10.png)
    
 2. Click Files to confirm you have access to a /vast folder. Alternatively, click Home Directory, then use Change directory to navigate to your group's folder. In this example, we've moved to /vast/bioinformatics/tutorials.
+![](../_assets/img/advanced-genomics-support/nf-core-10.png)
 4. Use New Directory to create a new folder. Here, we've named it nf-core-rnaseq.
 5. Inside nf-core-rnaseq, create a subfolder called fastqs and move your raw sequencing files there. This example uses 12 fastq.gz files uploaded to that folder. To upload your own raw data, follow one of the methods described in this manual: https://crc-pages.pitt.edu/user-manual/data-management/. Do not use OnDemand's built-in Upload feature for this, since it's meant for small files only, not large sequencing datasets.
 6. Return to the nf-core-rnaseq folder, click New File, and name it samples.csv.
