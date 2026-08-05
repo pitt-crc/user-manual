@@ -85,13 +85,16 @@ nav:
   - User Manual Home: index.md
   - Getting Started:
       - getting-started/index.md
-      - Quick Start (Your First Job): getting-started/quickstart.md
+      - Quick Starts:
+          - Your First Job: getting-started/quickstart.md
+          - Running Python (OnDemand): getting-started/quickstart-python-ondemand.md
+          - Running R (OnDemand): getting-started/quickstart-r-ondemand.md
       - getting-started/getting-started-step1-account.md
       - Step 2- Login to Access Portals:
           - getting-started/step2/index.md
           - Terminal SSH: getting-started/terminal.md
-          - Linux Desktop Visualization: getting-started/viz.md
           - Open OnDemand Web-portal: getting-started/open-ondemand.md
+          - Linux Desktop Visualization: getting-started/viz.md
           - JupyterHub on Teach Cluster: getting-started/jupyter-teach.md
       - Step 3- CRCD Ecosystem:
           - getting-started/step3/index.md
@@ -142,6 +145,8 @@ nav:
           - FileZilla: data-management/file-transfer-methods/filezilla.md
   - Applications:
       - applications/software-list.md
+      - Coding:
+          - VS Code: applications/coding/vscode.md
       - applications/application-environment.md
       - applications/basic-commands.md
       - applications/crc-wrappers.md

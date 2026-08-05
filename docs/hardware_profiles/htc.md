@@ -13,7 +13,7 @@ single nodes and are well suited for high-throughput pipelines that process many
 
 Resource allocation on HTC is prioritized for projects funded by the National Institutes of Health (NIH). Non-NIH
 projects may also use the cluster, but users who are not running biomedical workloads or do not require hardware
-specific to the HTC cluster are encouraged to use the [MPI](mpi.md) or [SMP](smp.md) clusters instead.
+specific to the HTC cluster are encouraged to use the [SMP](smp.md) cluster instead.
 
 ## Specifications
 

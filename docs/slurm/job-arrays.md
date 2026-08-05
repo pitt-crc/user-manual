@@ -167,7 +167,7 @@ command's arguments per line in a text file and select the line with `awk`:
 #SBATCH --output=bwa-%A_%a.out
 
 module purge
-module load gcc/10.2.0 bwa/0.7.17
+module load bwa/0.7.17
 mkdir -p ../results/bwa
 
 args=$(awk -v line=$SLURM_ARRAY_TASK_ID 'NR==line' bwa_mem.txt)

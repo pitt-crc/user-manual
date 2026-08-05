@@ -13,14 +13,14 @@ VS Code:
 The first two run through [Open OnDemand](../getting-started/open-ondemand.md)
 and need no local setup. The tunnel is the most powerful but the most involved.
 
-## Code Server
+## Code-Server
 
-[Code Server](https://github.com/coder/code-server) runs VS Code on a compute
+[Code-Server](https://github.com/coder/code-server) runs VS Code on a compute
 node and serves it to your browser.
 
-Log on to `ondemand.htc.crc.pitt.edu`, click **Interactive Apps → Code Server**,
-choose a version, number of cores, hours, and working directory, then **Launch**.
-A session is created on an HTC compute node; start it once it's ready.
+Once you login to https://ondemand.htc.crc.pitt.edu using your Pitt credentials (username in lowercase + Pitt password),
+you can click on Code Server from the Pinned Apps to bring up the job submission form
+
 
 ![Launching Code Server](../_assets/img/bioinformatics/code_server_1.png)
 

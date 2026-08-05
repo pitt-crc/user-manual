@@ -34,7 +34,7 @@ Whether interactive or batch, you're asking Slurm for the same things: a
 | Account / allocation | `-a <group>` | your default allocation |
 
 Not sure which cluster or partition to pick? See the
-[**Hardware Profiles**](../../hardware_profiles/overview.md) section. The same
+[**Hardware Profiles**](../../hardware_profiles/index.md) section. The same
 concepts map to `#SBATCH` directives in a batch script — those are shown in the
 [**batch section**](#batch-processing) below.
 
@@ -51,12 +51,24 @@ Request interactive resources through the
 `crc-interactive` command. The simplest possible request grabs the defaults —
 one core on one SMP node for one hour:
 
-```bash
-crc-interactive -s
-```
+=== "command"
 
-When the session starts, your shell prompt changes from a login node to a compute
-node — that's how you know you're no longer on the shared gateway.
+    ```bash
+    crc-interactive -s
+    ```
+
+=== "output"
+
+    ```bash
+    [gnowmik@login1 ~]$ crc-interactive -s
+    srun: You have specified NO/WRONG partition, so defaulting to the smp partition.
+    srun: job 23645428 queued and waiting for resources
+    srun: job 23645428 has been allocated resources
+    [gnowmik@smp-n214 ~]$
+    ```
+
+When the session starts, your shell prompt changes from a login node to a compute node. See how the 
+hostname in the output changes from `login1` to `smp-n214` once Slurm allocates the requested resources. 
 
 To request more resources, add the corresponding flags and desired values. For example, to request **8 
 cores and 256 GB of RAM on the high-mem partition of the SMP cluster for 12 hours**:
@@ -70,48 +82,44 @@ cores and 256 GB of RAM on the high-mem partition of the SMP cluster for 12 hour
 === "output"
 
     ```
-    [kimwong@login1.crc.pitt.edu ~]$crc-interactive -s -p high-mem -c 8 -b 256 -t 12:00:00
-    srun: job 16615902 queued and waiting for resources
-    srun: job 16615902 has been allocated resources
-    [kimwong@smp-1024-n8.crc.pitt.edu ~]$
+    [gnowmik@login1 ~]$ crc-interactive -s -p high-mem -c 8 -b 256 -t 12:00:00
+    srun: job 23645429 queued and waiting for resources
+    srun: job 23645429 has been allocated resources
+    [gnowmik@smp-1024-n1 ~]$
     ```
-
-!!! note
-    See how the hostname in the output changes from `login1.crc.pitt.edu` to
-    `smp-1024-n8.crc.pitt.edu` once Slurm allocates the requested resources.
 
 !!! tip "Learn the underlying Slurm command"
     Add `-z` to any `crc-interactive` command to print the equivalent `srun`
-    command without running it — a good way to learn the raw Slurm syntax.
+    command without running it. This is a good way to learn the raw Slurm syntax.
 
-??? note "Full `crc-interactive` options"
+??? note "Click for a full listing of `crc-interactive` options"
     ```
-    usage: crc-interactive [-h] [-v] [-z] [-s] [-g] [-m] [-i] [-d] [-e] [-p PARTITION] [-b MEM] [-t TIME] [-n NUM_NODES] [-c NUM_CORES] [-u NUM_GPUS] [-a ACCOUNT] [-r RESERVATION] [-l LICENSE]
-                           [-f FEATURE] [-o]
-
+    usage: crc-interactive [-h] [-v] [-z] [-p PARTITION] [-s] [-g] [-m] [-i] [-d] [-e] [-b MEM] [-t TIME] [-n NUM_NODES] [-c NUM_CORES] [-u NUM_GPUS] [-a ACCOUNT] [-r RESERVATION]
+                           [-l LICENSE] [-f FEATURE] [-o]
+    
     Launch an interactive Slurm session.
-
+    
     optional arguments:
       -h, --help                                 show this help message and exit
       -v, --version                              show program's version number and exit
       -z, --print-command                        print the equivalent slurm command and exit
-
+    
     Cluster Arguments:
+      -p PARTITION, --partition PARTITION        run the session on a specific partition
       -s, --smp                                  launch a session on the smp cluster
       -g, --gpu                                  launch a session on the gpu cluster
       -m, --mpi                                  launch a session on the mpi cluster
       -i, --invest                               launch a session on the invest cluster
       -d, --htc                                  launch a session on the htc cluster
       -e, --teach                                launch a session on the teach cluster
-      -p PARTITION, --partition PARTITION        run the session on a specific partition
-
+    
     Arguments for Increased Resources:
       -b MEM, --mem MEM                          memory in GB
       -t TIME, --time TIME                       run time in hours or hours:minutes [default: 01:00:00]
       -n NUM_NODES, --num-nodes NUM_NODES        number of nodes [default: 1]
       -c NUM_CORES, --num-cores NUM_CORES        number of cores per node [default: 1]
       -u NUM_GPUS, --num-gpus NUM_GPUS           if using -g, the number of GPUs [default: 0]
-
+    
     Additional Job Settings:
       -a ACCOUNT, --account ACCOUNT              specify a non-default account
       -r RESERVATION, --reservation RESERVATION  specify a reservation name
@@ -134,7 +142,7 @@ GPU. Use the tabs to see the whole script, then each part explained.
 
     ```bash
     #!/usr/bin/env bash
-
+    
     ## ------------------------------------------------------------------
     ## Slurm directives defining the resource request
     ## ------------------------------------------------------------------
@@ -146,14 +154,13 @@ GPU. Use the tabs to see the whole script, then each part explained.
     #SBATCH --partition=l40s
     #SBATCH --gres=gpu:1
     #SBATCH --time=24:00:00
-
+    
     ## ---------------------------------------------------------------------
     ## Load software into environment
     ## ---------------------------------------------------------------------
     module purge
-    module load gcc/10.2.0  openmpi/4.1.1
     module load amber/24
-
+    
     ## ---------------------------------------------------------------------
     ## Setup software execution environment
     ## ---------------------------------------------------------------------
@@ -162,19 +169,19 @@ GPU. Use the tabs to see the whole script, then each part explained.
     TOP=mocvnhlysm.top
     CRD=mocvnhlysm.crd
     OUT=mocvnhlysm
-
+    
     # Define software executable
     SANDER=pmemd.cuda
-
+    
     # Display environmental variables to Slurm output file for diagnostics
     echo AMBERHOME    $AMBERHOME
     echo SLURM_NTASKS $SLURM_NTASKS
     echo which SANDER `which $SANDER`
     echo "Running on node:" `hostname`
-
+    
     # Display NVIDIA GPU information to Slurm output file
     nvidia-smi
-
+    
     # Software execution line
     $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
                     -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd
@@ -223,7 +230,6 @@ GPU. Use the tabs to see the whole script, then each part explained.
     ## Load software into environment
     ## ---------------------------------------------------------------------
     module purge
-    module load gcc/10.2.0  openmpi/4.1.1
     module load amber/24
     ```
 
@@ -243,19 +249,19 @@ GPU. Use the tabs to see the whole script, then each part explained.
     TOP=mocvnhlysm.top
     CRD=mocvnhlysm.crd
     OUT=mocvnhlysm
-
+    
     # Define software executable
     SANDER=pmemd.cuda
-
+    
     # Display environmental variables to Slurm output file for diagnostics
     echo AMBERHOME    $AMBERHOME
     echo SLURM_NTASKS $SLURM_NTASKS
     echo which SANDER `which $SANDER`
     echo "Running on node:" `hostname`
-
+    
     # Display NVIDIA GPU information to Slurm output file
     nvidia-smi
-
+    
     # Software execution line
     $SANDER  -O     -i   $INP   -p   $TOP   -c   $CRD   -r   $OUT.rst \
                     -o   $OUT.out   -e   $OUT.ene   -v   $OUT.vel   -inf $OUT.nfo   -x   $OUT.mdcrd

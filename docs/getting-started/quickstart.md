@@ -7,7 +7,7 @@ step makes sense, follow the linked reference pages for the full detail.
 !!! note "Before you begin"
     You need two things first:
 
-    1. A **CRCD account and resource allocation** — see [Step 1: Getting an Account](getting-started-step1-account.md).
+    1. A **CRCD account and Resource Allocation** — see [Step 1: Getting an Account](getting-started-step1-account.md).
     2. An active **PittNet VPN (GlobalProtect)** connection — the clusters are firewalled within PittNet, so nothing below will work without it.
 
     Your username is your **Pitt username in all lowercase**.
@@ -19,7 +19,7 @@ step makes sense, follow the linked reference pages for the full detail.
 The fastest way in is SSH from a terminal. Connect to a login node with:
 
 ```bash
-ssh -X <pittID>@h2p.crc.pitt.edu
+ssh -X <username>@h2p.crc.pitt.edu
 ```
 
 `h2p.crc.pitt.edu` reaches the SMP, MPI, and GPU clusters; use
@@ -29,7 +29,9 @@ GUI applications can display on your machine.
 Prefer a browser instead of a terminal? Open
 [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu) and sign
 in with the same credentials — see [Step 2](step2/index.md) for a comparison of every
-access portal and when to use each.
+access portal and when to use each. To run a specific language in the browser, jump to
+[Running Python in Open OnDemand](quickstart-python-ondemand.md) or
+[Running R in Open OnDemand](quickstart-r-ondemand.md).
 
 !!! warning "Don't compute on the login nodes"
     Login nodes are shared gateways for editing files and submitting jobs — **not** for
@@ -53,8 +55,7 @@ into your environment for the current session.
 === "Load"
 
     ```bash
-    # Load dependencies first, then the package (order matters):
-    module load gcc/8.2.0 python/anaconda3.10-2022.10
+    module load python
     ```
 
 === "Check / clear"
@@ -64,7 +65,7 @@ into your environment for the current session.
     module purge    # unload everything
     ```
 
-`module spider <name>` lists every available version and tells you which
+`module spider <software name>` lists every available version and tells you which
 dependencies to load first. Full details and more examples are on
 [Discovering Software](step3/getting-started-step3-software.md).
 
@@ -72,8 +73,8 @@ dependencies to load first. Full details and more examples are on
 
 ## 3a. Run interactively (for testing)
 
-To grab a compute node for hands-on work — testing a script, exploring data —
-use the `crc-interactive` helper, which requests a Slurm session for you:
+To grab a compute node for hands-on work, such as for testing a script or exploring data,
+use the `crc-interactive` command, which requests a Slurm session for you:
 
 ```bash
 crc-interactive --help    # see all options (cluster, cores, memory, time, GPUs)
@@ -99,7 +100,6 @@ Most work runs unattended as a **batch job**. Create a file called
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=00:05:00
 #SBATCH --output=first-job_%j.out
-# #SBATCH --account=<your_group>   # uncomment if your group requires it
 
 echo "Hello from $(hostname)"
 date
@@ -112,19 +112,19 @@ Submit it:
 sbatch first-job.slurm
 ```
 
-Slurm replies with a job ID, e.g. `Submitted batch job 956929 on cluster smp`.
-When the job finishes, your output waits in `first-job_<jobid>.out`.
+Slurm replies with a job ID, e.g. `Submitted batch job 23498093 on cluster smp`.
+When the job finishes, your output will be in the file `first-job_<jobid>.out`.
 
 !!! tip "Choosing a cluster"
     Match the cluster to your workload. Details on each are in the
-    [Hardware Profiles](../hardware_profiles/overview.md) section.
+    [Hardware Profiles](../hardware_profiles/index.md) section.
 
     | Cluster | Best for |
     | ------- | -------- |
-    | **SMP** | Single-node jobs sharing one memory space |
-    | **HTC** | Genomics / health-sciences, single-node throughput |
-    | **MPI** | Tightly coupled multi-node parallel (MPI) codes |
-    | **GPU** | AI/ML and GPU-accelerated simulation |
+    | `smp` | Single-node jobs sharing one memory space |
+    | `htc` | Genomics / health-sciences, single-node high throughput computing |
+    | `mpi` | Tightly coupled multi-node parallel (MPI) codes |
+    | `gpu` | AI/ML and GPU-accelerated simulation |
 
 ---
 
@@ -146,11 +146,13 @@ More on monitoring, holding, and cancelling jobs is on
 
 You have logged in, loaded software, and completed a job. Sensible next stops:
 
+- [Running Python in Open OnDemand](quickstart-python-ondemand.md) — Jupyter in the browser
+- [Running R in Open OnDemand](quickstart-r-ondemand.md) — RStudio in the browser
 - [Slurm Batch Jobs](../slurm/batch-jobs.md) — write more capable job scripts
 - [Service Units](../slurm/service-units.md) — understand how usage is charged
 - [File Systems](../data-management/file-systems.md) — where to keep your data
 - [Frequently Asked Questions](../faq.md) — quick answers to common snags
 
 !!! question "Stuck?"
-    Open a ticket or reach the CRCD team via the
+    Open a help ticket using the link on our
     [service catalog](https://crc.pitt.edu/service-request-forms).

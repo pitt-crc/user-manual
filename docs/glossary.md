@@ -19,7 +19,7 @@ HPC (High-Performance Computing)
 Cluster
 :   A large collection of connected computers ("nodes") that work as one system.
     CRCD runs several clusters tuned for different workloads — see
-    [Hardware Profiles](hardware_profiles/overview.md).
+    [Hardware Profiles](hardware_profiles/index.md).
 
 Node
 :   A single computer within a cluster. Nodes come in two kinds below: login
@@ -98,7 +98,7 @@ Scheduler
 Slurm
 :   The specific scheduler ("workload manager") CRCD uses. You interact with it
     through commands like `sbatch`, `squeue`, and `scontrol`. See the
-    [Slurm Overview](slurm/slurm-overview.md).
+    [Slurm Overview](slurm/index.md).
 
 Partition
 :   A named subset of a cluster's nodes that jobs are submitted to, often grouped

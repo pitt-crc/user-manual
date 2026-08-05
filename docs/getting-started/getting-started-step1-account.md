@@ -6,7 +6,7 @@ hide:
 # Step 1- Getting an Account
 
 !!! abstract "In this step"
-    Request your CRCD account and allocation, and connect to the PittNet VPN so you
+    Request your CRCD account and Resource Allocation, and connect to the PittNet VPN so you
     can reach the clusters. Next: [Step 2 — logging in](step2/index.md).
 
 ## Request an account and allocation

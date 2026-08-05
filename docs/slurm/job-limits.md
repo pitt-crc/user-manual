@@ -10,7 +10,7 @@ priority is computed, see the
 !!! note "Values verified against live cluster configuration"
     The numbers below were taken from the live Slurm configuration. Limits change
     as hardware is added or retired — check your own limits any time with
-    `sacctmgr show qos` and `crc-usage`, and treat this page as a snapshot.
+    `sacctmgr show qos` and `crc-usage`, and treat this page as a snapshot in time.
 
 ## QoS walltime tiers
 
@@ -35,9 +35,9 @@ only on SMP and HTC.
 
 Limits are enforced **per group (account)**, not per user — everyone in your
 group draws from the same pool. Ask for more than the cap and the extra jobs wait
-in `PENDING` (see [Why is my job pending?](#why-is-my-job-pending) below) until
-your group's running jobs free up room. The caps shrink as the walltime tier
-grows, so a 6-day job can claim fewer cores than a 1-day job.
+in `PD` state until your group's running jobs free up room. The caps shrink as the 
+walltime tier grows, so a 6-day job can claim fewer cores than a 1-day job. See 
+[**Why is my job pending?**](#why-is-my-job-pending) to debug the cause.
 
 ### CPU cores
 
@@ -69,9 +69,8 @@ grows, so a 6-day job can claim fewer cores than a 1-day job.
 | h200 | 4 | 2 | 1 |
 
 !!! info "Investor and community-owned partitions"
-    Groups that have invested in hardware, and PI-owned community partitions,
-    have their own QoS with different limits and higher priority. The tables above
-    are the general-access limits. See the
+    Groups that have invested in hardware, have their own QoS with different limits and higher 
+    priority. The tables above are for the general-access limits. See the
     [Job Scheduling Policy](../policies/job-scheduling-policy.md) for how
     community-owned priority works.
 
@@ -113,8 +112,14 @@ check your current usage with `crc-usage`.
 
 ## Why is my job pending? { #why-is-my-job-pending }
 
-A job shown as `PD` (pending) hasn't started yet. `squeue` lists a **reason** in
-parentheses; the common ones fall into two groups.
+A job shown as `PD` (Pending) hasn't started yet. The command
+
+```bash
+squeue -M all -u $USER
+```
+
+will lists a **reason** under the `NODELIST(REASON)` column for the Pending 
+state. The common ones fall into two groups.
 
 **Resource availability and dependencies** — nothing is wrong; the job is waiting
 its turn:
@@ -124,7 +129,7 @@ its turn:
 | `Resources` | The cluster is busy; no resources free yet. | Wait — it runs when resources free up. |
 | `Priority` | Higher-priority jobs are ahead of yours. | Wait; see the [scheduling policy](../policies/job-scheduling-policy.md). |
 | `Dependency` | Waiting on another job you marked with `--dependency`. | Wait for that job to finish. |
-| `DependencyNeverSatisfied` | A job it depends on failed. | Cancel this job — it can never run — and fix the upstream job. |
+| `DependencyNeverSatisfied` | A job it depends on failed. | Job will never run. [**Cancel**](../../getting-started/step3/getting-started-step3-manage-jobs/) it and fix the upstream job before resubmitting. |
 
 **Exceeding a usage limit** — the job is asking for more than your group is
 allowed at once:
@@ -134,7 +139,7 @@ allowed at once:
 | `QOSMaxJobsPerUserLimit`, `QOSMaxJobsPerAccountLimit`, `JobArrayTaskLimit` | Too many of your jobs are already accruing priority. | Wait for some to finish; they'll start automatically. |
 | `MaxCpuPerAccount`, `MaxGRESPerAccount`, `MaxTRESPerAccount` | Your group's running jobs already hold the CPU/GPU cap for this partition and tier. | Wait, request fewer resources, or use a shorter QoS with a higher cap. |
 | `MaxMemoryPerAccount` | Your group is at its memory cap for this partition and tier. | Wait or request less memory. |
-| `AssocGrpBillingMinutes` | Your group's allocation (Service Units) is used up or expired. | Check `crc-usage`; submit a new allocation request. |
+| `AssocGrpBillingMinutes` | Your group's Resource Allocation (Service Units) is used up or expired. | Check `crc-usage`; submit a new allocation request. |
 
 If you keep hitting resource caps, check whether your jobs are actually using what
 they request — `crc-seff <jobid>` reports CPU and memory efficiency for a finished

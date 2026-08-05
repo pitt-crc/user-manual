@@ -1,10 +1,16 @@
 # Storage Tiers
 
+!!! warning "No sensitive data can be stored"
+    CRCD storage in the Open Science Environment is **not** approved for HIPAA-protected health information (PHI),
+    personally identifiable information (PII), or other data under protected controls. If you are working 
+    with protected data, the CRCD [Secure Research Environment (SRE)](../getting-started/access_sre.md)
+    may meet the requirements.
+
 CRCD provides several storage tiers spanning the research data lifecycle — from
 fast flash for active computation to low-cost archive for cold data. Each tier
 trades performance for cost, so most groups keep data across more than one.
 
-This page covers what each tier is for, how much you get, and what more costs. For
+This page covers what each tier is for, how much you get at no cost, and how much additional storage costs. For
 the operational detail — full paths, permissions, snapshots, and checking your
 usage with `crc-quota` — see [File Systems](../data-management/file-systems.md).
 
@@ -20,7 +26,7 @@ lifecycle framing in the graphic above maps onto the CRCD tiers as follows:
 | ---- | --------- | ----------- | ----- | --------------- | ------------------- |
 | Performance | Active | `/vast` | All-flash | 1 TB per PI | $85 / TB / year |
 | Standard | Warm | `/ix`, `/ix1` | Hard disk | 5 TB per PI | $30 / TB / year |
-| Archive&nbsp;* | Archive | Cloud | Cloud | — | $12 / TB / year |
+| [**Archive**&nbsp;*](https://services.pitt.edu/TDClient/33/Portal/KB/Article/444/Getting-Started-with-Archiving-Services) | Archive | Cloud | Cloud | — | $12 / TB / year |
 
 The performance tier (`/vast`) is all-flash storage delivering high-throughput,
 low-latency access over NFS. It is best for I/O-intensive and AI workloads that
@@ -31,16 +37,7 @@ The standard tier (`/ix`, `/ix1`) is enterprise hard-disk storage for persistent
 5 TB at no cost, making it the default home for most project data.
 
 The archive tier is low-cost cloud storage for cold data you need to retain but
-rarely touch.
-
-!!! warning "Confirm the archive tier before publishing"
-    The archive service shown in the graphic (cloud, $12/TB/year) does **not**
-    currently appear on the CRCD
-    [Data Storage](https://www.crcd.pitt.edu/overview-crc-services/data-storage) or
-    [Service Request Forms](https://www.crcd.pitt.edu/service-request-forms) pages,
-    and the meaning of the asterisk (`*`) isn't defined in either source. Confirm
-    the tier's availability, request path, and any caveats with the CRCD team
-    before this page goes live, and add the request link once it's known.
+rarely touch and is provided through a [**Pitt Digital service**](https://services.pitt.edu/TDClient/33/Portal/KB/Article/444/Getting-Started-with-Archiving-Services).
 
 ## Home directories (`/ihome`)
 
@@ -48,8 +45,8 @@ Separate from project storage, every user gets a personal home directory at
 `/ihome/<primary group>/$USER`, created with your account. It is your default login
 location and holds configuration files, logs, and user-level environments.
 
-The allocation is 75 GB per user at no cost, and it **cannot be increased** — keep
-large datasets and heavy job I/O in project storage rather than home.
+The quota is 75 GB per user at no cost, and it **cannot be increased** — keep
+large datasets and heavy I/O jobs in project storage rather than in `$HOME`.
 
 ## Requesting storage
 
@@ -64,21 +61,14 @@ form:
 
 | Request | Beyond | Cost |
 | ------- | ------ | ---- |
-| Standard storage | initial 5 TB | $30 / TB / year |
 | Performance storage | initial 1 TB | $85 / TB / year |
+| Standard storage | initial 5 TB | $30 / TB / year |
 
 Storage is billed annually per terabyte and is separate from the compute
 [Service Units](../slurm/service-units.md) your jobs consume. The full list of
 options is on the CRCD
 [Service Request Forms](https://www.crcd.pitt.edu/service-request-forms) page.
 
-!!! warning "No protected data without approval"
-    CRCD storage is **not** approved for HIPAA-protected health information (PHI),
-    personally identifiable information (PII), or other data under protected
-    controls without explicit approval. If you may be working with protected data,
-    contact the CRCD team first — identifiable PHI belongs in the
-    [Secure Research Environment (SRE)](../getting-started/access_sre.md), not the
-    tiers above.
 
 ## Related
 

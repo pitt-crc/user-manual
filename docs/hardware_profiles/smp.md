@@ -8,7 +8,7 @@ tags:
 
 # SMP Cluster
 
-The SMP cluster is designed for workloads that run on a single node using shared memory parallelism. Each node provides
+The SMP cluster is designed for workloads that run on a single server using shared memory parallelism. Each node provides
 multiple CPU cores with access to a common memory space, making the cluster well suited for multithreaded applications,
 OpenMP codes, and jobs that do not require distributed computing across multiple nodes.
 

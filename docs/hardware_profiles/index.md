@@ -6,9 +6,9 @@ hide:
 # Hardware Profiles
 
 The CRCD operates several HPC clusters, each optimized for a different use case,
-plus the nodes you connect through and the storage tiers that hold your data. You
-submit work to whichever cluster best fits your job — choosing the right one uses
-resources efficiently and reduces time spent waiting in the queue. This section
+plus the nodes that you connect through and the storage tiers that hold your data. You
+submit work to whichever cluster best fits your job. Choosing the appropriate one ensures that
+resources are used efficiently and reduces the time spent waiting in the queue. This section
 profiles each of them.
 
 ## Compute Clusters
@@ -20,10 +20,10 @@ group-specific investment hardware.
 | Cluster           | Best for                                                                                                  |
 |-------------------|-----------------------------------------------------------------------------------------------------------|
 | [SMP](smp.md)     | Single-node jobs using shared-memory parallelism.                                                         |
-| [HTC](htc.md)     | Many independent single-node jobs (high-throughput); prioritized for NIH-funded and health-sciences work. |
-| [MPI](mpi.md)     | Tightly coupled multi-node jobs using MPI or other distributed frameworks.                                |
-| [GPU](gpu.md)     | GPU-accelerated work such as machine learning and molecular dynamics.                                     |
-| [Teach](teach.md) | Reserved for classroom instruction and coursework.                                                        |
+| [HTC](htc.md)     | Many independent single-node jobs (high-throughput); prioritized for NIH-funded and health sciences work. |
+| [MPI](mpi.md)     | Tightly coupled multi-node jobs using the Message Passing Interface or similar frameworks.                |
+| [GPU](gpu.md)     | GPU-accelerated work such as AI, machine learning, and physics-based simulation and modeling.             |
+| [Teach](teach.md) | Instructional activities, such as coursework, tutorials and workshops, and hackathons.                    |
 
 ## Access & Auxiliary Nodes
 

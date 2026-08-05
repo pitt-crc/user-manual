@@ -6,12 +6,10 @@ RStudio and Jupyter, without connecting over SSH. It was created by the
 [Ohio Supercomputer Center (OSC)](https://www.osc.edu/resources/online_portals/ondemand),
 whose documentation (including video tutorials) is a good further reference.
 
-[Log in to Open OnDemand](https://ondemand.htc.crc.pitt.edu)
-
 ## Accessing Open OnDemand
 
-Open OnDemand is reachable only from the University network. From off campus, on Pitt
-wireless, or on a UPMC-networked device, first connect to the
+Open OnDemand is reachable only from the University network. From off campus or on Pitt
+wireless, first connect to the
 [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426)
 (see [Step 1](../getting-started/getting-started-step1-account.md)). Then open
 <https://ondemand.htc.crc.pitt.edu> and sign in with your Pitt username (1) and password
@@ -28,7 +26,14 @@ The OnDemand **Dashboard** opens. The menu bar across the top is your starting p
 jobs, and **Interactive Apps** (along with the themed **AI**, **Bioimage Apps**, and
 **Genomics Apps** menus) for GUI applications. The **Pinned Apps** tiles below are
 quick-launch shortcuts to a featured subset; follow **all available apps** to see the rest.
-To end your session, choose **Log Out** at the top right and close your browser.
+To end your session on the OnDemand portal, choose **Log Out** at the top right and close your browser.
+
+!!! warning "Logging out of OnDemand does not terminate your Slurm jobs"
+    An interactive job through OnDemand, such as Jupyter and RStudio, run as a Slurm job on a compute 
+    node. The Slurm job will run until the specified wall-time limit or until you click the red 
+    **Delete** button for the job shown under **My Interactive Sessions**. The good news is that if you 
+    lose internet connection, you can return to **My Interactive Sessions** later and *reconnect* to 
+    your job to continue where you left off or to monitor the progress.
 
 ![Open OnDemand Dashboard showing the top menu bar and Pinned Apps such as Jupyter, RStudio Server, Code Server, MATLAB, and COMSOL](../_assets/img/web-portals/ondemand-2.png)
 
@@ -63,7 +68,7 @@ resources. The pattern is the same for every app:
 4. When finished, return to the Dashboard and click the red **Delete** button to end the
    session and free the resources.
 
-!!! warning "Deleting is not optional"
+!!! warning "Deleting your Interactive Session when done is not optional"
     Closing the app's browser tab does **not** end the job. Until you click **Delete** on the
     Dashboard, the interactive session keeps consuming your allocation.
 

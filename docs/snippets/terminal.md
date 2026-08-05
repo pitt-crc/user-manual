@@ -3,13 +3,13 @@
 !!! warning "Appropriate usage of login nodes"
     The login nodes are the gateways we use to perform light interactive work like editing code, submitting and
     checking the status of jobs, etc. Executing CPU-heavy scripts on these nodes can cause slowdown for everyone.
-    It is important to make sure that CPU-heavy work is done in either an interactive session on a compute
-    node or as a batch job submission.
+    It is important to make sure that CPU-heavy work is done in either an [interactive session](../slurm/interactive-jobs.md) 
+    on a compute node or as a [batch job](../slurm/batch-jobs.md) submission.
 
     Resource-intensive processes running on the login nodes may be killed at any time.
 
-    <ins>**The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login
-    nodes with processes that can otherwise be run on the compute nodes.**</ins>
+    **The CRCD team reserves the right to revoke cluster access of any user who repeatedly causes slowdowns on the login
+    nodes with processes that can otherwise be run on the compute nodes.**
 
 SSH ([**Secure Shell**](https://en.wikipedia.org/wiki/Secure_Shell)) is a network protocol that allows for secure access
 to a computer over an unsecured network. This is the protocol for connecting to the CRCD login nodes.

@@ -1,35 +1,17 @@
 # Preemptible Partitions
 
-!!! info "Formerly the “scavenger” partitions"
-    CRCD's preemptible partitions were previously called **scavenger**. Each
-    cluster now has a partition named **`preempt`** (plus **`preempt_ndr`** on
-    MPI) that serves the same purpose. If you have older scripts that use
-    `--partition=scavenger`, switch them to `--partition=preempt`.
-
 ## What the preempt partitions are
 
 Each cluster has a `preempt` partition that lets you use **idle** resources at
 **no Service Unit cost**. In exchange, the jobs are **preemptible**: they run
 only when resources would otherwise sit idle, and Slurm will stop them when
-higher-priority paid jobs need the nodes.
+higher-priority paid jobs need the resource.
 
 - **Zero cost** — the `preempt` partitions have Service Unit billing weights of
   `0` (see [Service Units](service-units.md)).
 - **On every cluster** — SMP, HTC, MPI (`preempt` and `preempt_ndr`), and GPU.
 - **Preemptible** — a preempted job is cancelled by default, or requeued if you
-  ask for it (see [below](#how-preemption-works)).
-
-## Do you need preempt?
-
-For most workloads, a regular allocation is simpler than working around
-preemption. A **Standard Allocation of 25,000 service units per year** is
-available to every faculty account and is usable on any cluster, which is enough
-to benchmark workflows and prepare a larger [Resource Allocation
-Request](https://crc.pitt.edu/service-request-forms/compute-allocation-guidelines).
-
-Reach for `preempt` when you specifically want to run on idle capacity without
-drawing down SUs, *and* your work tolerates being interrupted — that is, it fits
-one of the patterns below.
+  ask for it (see the [**How preemption works**](#how-preemption-works) section below).
 
 ## Good use cases
 
@@ -38,8 +20,7 @@ partial output or report failures before it's cancelled. Two patterns fit well:
 
 **Many short jobs.** Short jobs lose little work if preempted. By default
 preempted jobs are not requeued, so you decide when and where to resubmit —
-either with your own resubmission script, or by requeueing (at the risk of
-repeated preemption).
+either with your own resubmission script, or by requeueing.
 
 **Long, restartable jobs.** A long job should checkpoint: write intermediate
 output periodically and, on restart, detect the latest checkpoint to resume
@@ -58,16 +39,15 @@ Request the partition on the cluster you want:
 Everything else works like a normal [batch job](batch-jobs.md) or
 [interactive job](interactive-jobs.md). The same QoS walltime tiers apply as on
 the regular partitions — `short`, `normal`, and `long` on every cluster, plus
-`long-long` on SMP and HTC (see [Job Limits & QoS](job-limits.md)).
+`long-long` on SMP and HTC (see [**Job Limits & QoS**](job-limits.md)).
 
 !!! note "Targeting a GPU type"
     The GPU `preempt` partition spans several GPU types on one partition, so you
-    can't select a type by partition name the way you would on the regular GPU
-    cluster. Request GPUs with `--gres=gpu:<count>` and, if you need a specific
-    model, confirm the current GRES type name with CRCD. The old
-    `--constraint=gtx1080|titanx|k40|v100` values refer to retired hardware and no
-    longer apply — see the current [GPU cluster](../hardware_profiles/gpu.md)
-    partitions such as `a100` and `l40s`.
+    can't select a type by partition name alone. Request
+    GPUs with `--gres=gpu:<count>` and, if you need a specific
+    model, include the feature using the directive `--constraint=<feature>`.
+    See the [**GPU cluster hardware profile**](../hardware_profiles/gpu.md)
+    for a list of defined constraints.
 
 ## How preemption works { #how-preemption-works }
 
@@ -87,9 +67,6 @@ add:
 
 A requeued job may be preempted repeatedly, so pair `--requeue` with checkpointing
 so each restart resumes rather than starts over.
-
-If a preempt job is *not* being preempted when you'd expect it to be, open a
-[support ticket](https://crc.pitt.edu/tickets) with the details.
 
 ## Related
 

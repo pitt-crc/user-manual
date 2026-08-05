@@ -37,13 +37,13 @@ the scratch-handling lines added:
 ```bash
 #!/bin/bash
 #SBATCH --job-name=<job_name>
-#SBATCH --nodes=<number of nodes>
-#SBATCH --ntasks-per-node=<tasks per node>
 #SBATCH --cluster=<cluster name>
 #SBATCH --partition=<partition>
-#SBATCH --mail-user=<user_ID>@pitt.edu
-#SBATCH --mail-type=END,FAIL
+#SBATCH --nodes=<number of nodes>
+#SBATCH --ntasks-per-node=<tasks per node>
 #SBATCH --time=<days-HH:MM:SS>
+#SBATCH --mail-user=<Pitt_ID>@pitt.edu
+#SBATCH --mail-type=END,FAIL
 #SBATCH --qos=<qos>
 
 module purge
@@ -77,11 +77,10 @@ scratch before the run, and `sgather` to collect per-node files back afterward:
 #SBATCH --output=job.o%j
 #SBATCH --error=job.e%j
 #SBATCH --job-name="TestScratch"
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=48
 #SBATCH --cluster=mpi
 #SBATCH --partition=mpi
-#SBATCH --account=sam
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=48
 #SBATCH --time=00:09:30
 
 module purge

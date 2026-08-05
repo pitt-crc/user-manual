@@ -23,7 +23,7 @@ data, compiling code, or submitting jobs.
 
 ## Per-User Resource Limits
 
-To protect the shared login environment, per-user resource limits are enforced via cgroups:
+To preserve interactivity of the shared login environment, per-user resource limits are enforced via cgroups:
 
 | Resource  | Per-User Limit |
 | --------- | -------------- |

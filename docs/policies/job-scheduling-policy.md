@@ -9,26 +9,26 @@ and array limits — see [**Job Limits & QoS**](../slurm/job-limits.md).
 Many users share the login nodes of the H2P and HTC clusters. They're the gateway
 for interactive work like editing code and submitting or checking jobs. Running
 computation directly on them slows everyone down, so that work belongs in an
-[interactive session](../slurm/interactive-jobs.md) or a batch job.
+[interactive session](../slurm/interactive-jobs.md) or a [batch job](http://127.0.0.1:8000/user-manual/slurm/batch-jobs/).
 
-To protect the shared environment, **per-user limits are enforced via cgroups
-(currently 8 GB of memory per user, with CPU use also constrained)**. These apply
-across all of your processes on the login node; when the node's resources are
+To preserve the interactivity of the shared environment, **per-user limits are enforced via cgroups
+(currently 1 core and 8 GB of memory per user)**. These apply
+across all of your processes on the login node. When the node's resources are
 exhausted, you may be unable to log in until usage drops. Resource-intensive
 processes on the login nodes may be killed at any time.
 
-<ins>**CRCD reserves the right to revoke cluster access from any user who
-repeatedly causes login-node slowdowns with work that belongs on the compute
-nodes.**</ins>
+!!! warning "Don't get banned!"
+    CRCD reserves the right to revoke cluster access from any user who repeatedly causes 
+    login node slowdowns with work that belongs on the compute nodes.
 
 ![Job scheduling policy](../_assets/img/policies/job_scheduling_policy_1.png)
 
 ## Jobs are subject to priority queueing
 
-Slurm gives every group — and every user within a group — a fair opportunity to
+The Slurm scheduler gives every group and every user within a group a fair opportunity to
 run work. When resources are busy, jobs wait in the queue and are started in order
-of a computed **priority**. CRCD uses Slurm's multifactor priority, so a job's
-priority is the weighted sum of several factors:
+of a computed **priority**. CRCD uses [Slurm's multifactor priority](https://slurm.schedmd.com/priority_multifactor.html), 
+so a job's priority is the weighted sum of several factors:
 
 - **Age** — how long the job has been eligible in the queue. Longer waits earn
   more priority, up to a maximum reached at **7 days**.
@@ -55,7 +55,7 @@ The weights differ by cluster. The current values:
     SMP, HTC, and GPU run with `PriorityFavorSmall`, so on those clusters a
     *smaller* job earns a higher Job Size factor — a quick, modest job can jump
     ahead of a large one. MPI is the exception: there, larger jobs are favored.
-    Because the scheduler also uses **backfill**, a small, short job can start
+    Because the scheduler also uses [**backfill**](https://slurm.schedmd.com/sched_config.html), a small, short job can start
     ahead of a larger queued job whenever doing so won't delay the higher-priority
     job's start.
 
@@ -64,9 +64,14 @@ The weights differ by cluster. The current values:
 Use `sprio` to see the priority breakdown for a pending job:
 
 ```
-[nlc60@login1 ~] : sprio -M smp -u nlc60 -j 6136016
-  JOBID PARTITION     USER   PRIORITY       SITE        AGE  FAIRSHARE    JOBSIZE        QOS
-6136016 smp          nlc60       2272          0          0        269          4       2000
+[gnowmik@login1 mocvnhlysm_GPU_8L40S-8C]$ squeue -M gpu -u $USER
+CLUSTER: gpu
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           3347015     rtx6k   gpus-1  gnowmik PD       0:00      1 (Resources)
+[gnowmik@login1 mocvnhlysm_GPU_8L40S-8C]$
+[gnowmik@login1 mocvnhlysm_GPU_8L40S-8C]$ sprio -M gpu -j 3347015
+          JOBID PARTITION   PRIORITY       SITE        AGE  FAIRSHARE    JOBSIZE  PARTITION        QOS                 TRES
+        3347015 rtx6k          13607          0          0       1123       1985      10000        500
 ```
 
 A job may show a pending reason of `Priority`, meaning higher-priority jobs are
@@ -74,15 +79,15 @@ ahead of it; it will start once it has risen far enough.
 
 ## Walltime extensions are generally not granted
 
-It's up to you to estimate a job's needs — through benchmarking and any necessary
-optimization — and set the memory, CPU, and time accordingly before submitting.
+It's up to you to estimate a job's needs (through benchmarking and any necessary
+optimization) and set the memory, CPU, and time accordingly before submitting.
 This keeps queueing fair and ensures resources come back to the community within a
 reasonable time. Choose a QoS walltime tier that comfortably fits your job, since
 extensions to a running job's walltime generally won't be granted.
 
 ## Exceeding usage limits will cause job pending status
 
-After submission, a job can sit in a pending (`PD`) state for several reasons —
+After submission, a job can sit in a pending (`PD`) state for several reasons,
 including asking for more than your group's share at once. The pending reasons and
 how to resolve each are documented alongside the limits themselves on the
 [**Job Limits & QoS**](../slurm/job-limits.md#why-is-my-job-pending) page.

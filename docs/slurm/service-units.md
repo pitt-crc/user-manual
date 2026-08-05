@@ -64,56 +64,58 @@ For the exact charge on a *finished* job, use `crc-seff` or `crc-job-stats`
 ### Seeing the weights for a partition
 
 The weights live in the cluster configuration. To read them directly (including
-investment hardware), use `scontrol show partition` with `-M`:
+investment hardware), use `scontrol -M <cluster> show partition`:
 
 ```
-[nlc60@login1 ~] : scontrol -M htc show partition
+[gnowmik@login1 ~]$ scontrol -M htc show partition
 PartitionName=htc
    ...
-   TRES=cpu=6144,mem=72007200M,node=74,billing=9000
+   TRES=cpu=5888,mem=68927200M,node=72,billing=8615
    TRESBillingWeights=CPU=1.0,Mem=0.128G
 ```
 
 ??? note "Full `scontrol show partition` output"
     ```
-    [nlc60@login1 ~] : scontrol -M htc show partition
+    [gnowmik@login1 ~]$ scontrol -M htc show partition
     PartitionName=htc
        AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,htc-htc-s,htc-htc-n,htc-htc-l,htc-htc-ll,htc-htc-s-invest,htc-htc-n-invest,htc-htc-l-invest,htc-htc-ll-invest,htc-htc-crunyan-s,htc-htc-crunyan-n,htc-htc-crunyan-l,htc-htc-crunyan-ll
        AllocNodes=ALL Default=YES QoS=N/A
        DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
        MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
-       Nodes=htc-1024-n[0-3],htc-n[24-93]
+       Nodes=htc-1024-n[0-3],htc-n[24-91]
        PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
        OverTimeLimit=NONE PreemptMode=CANCEL
-       State=UP TotalCPUs=6144 TotalNodes=74 SelectTypeParameters=NONE
+       State=UP TotalCPUs=5888 TotalNodes=72 SelectTypeParameters=NONE
        JobDefaults=(null)
        DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
-       TRES=cpu=6144,mem=72007200M,node=74,billing=9000
+       TRES=cpu=5888,mem=68927200M,node=72,billing=8615
        TRESBillingWeights=CPU=1.0,Mem=0.128G
-
+    
     PartitionName=preempt
        AllowGroups=ALL AllowAccounts=ALL AllowQos=htc-preempt-s,htc-preempt-n,htc-preempt-l,htc-preempt-ll
-       AllocNodes=ALL Default=NO QoS=N/A
        ...
        TRES=cpu=6144,mem=72007200M,node=74
        TRESBillingWeights=CPU=0,Mem=0.0G
     ```
 
+    Notice how the TRESBillingWeights for the [**`preempt`**](preempt.md) are set to 0, to turn off charging 
+    on that partition.
+
 ## Checking a job's cost { #checking-a-jobs-cost }
 
-For a concise view of the TRES a job used, use `sacct`:
+To display the TRES a job consumed, use `sacct` with `-j <JobID>` and the following format
+
+```bash
+--format=User,JobID,Jobname,AllocTRES%40,Elapsed
+```
+to output the billing components.
 
 ```
-[nlc60@login1 ~] : sacct -X -M smp -j 6169876 --format=User,JobID,Jobname,AllocTRES%30,Elapsed
-     User        JobID    JobName                      AllocTRES    Elapsed
---------- ------------ ---------- ------------------------------ ----------
-    nlc60 6169876      hello_wor+         cpu=1,mem=4018M,node=1   00:00:01
+[gnowmik@login1 ~]$ sacct -X -M htc -j 10722043 --format=User,JobID,Jobname,AllocTRES%40,Elapsed
+     User JobID           JobName                                AllocTRES    Elapsed
+--------- ------------ ---------- ---------------------------------------- ----------
+  gnowmik 10722043     interacti+     billing=67,cpu=67,mem=536000M,node=1   00:39:49
 ```
-
-The `crc-seff` wrapper reports how *efficiently* a completed job used its
-allocation — helpful for right-sizing future requests — and `crc-job-stats`
-(added to a batch script) appends a usage summary to the job's output. See
-[**CRCD Wrappers**](../applications/crc-wrappers.md).
 
 ## Checking your allocation
 
@@ -124,8 +126,9 @@ an allocation runs low or expires, submit a new
 !!! note "Cost is not the same as limits"
     Billing weights determine what a job *costs*. Separately, your group has
     *limits* on how much it can use at once (max CPUs/GPUs/memory per QoS). Those
-    are on the [**Job Limits & QoS**](job-limits.md#why-is-my-job-pending)
-    page, and exceeding them holds jobs in `PENDING` rather than costing extra.
+    parameters are on the [**Job Limits & QoS**](job-limits.md#why-is-my-job-pending)
+    page, and exceeding them holds jobs in the `PENDING` state, which are not charged
+    until resources are allocated to the job and the job changes to the `Running` state.
 
 ## Related
 

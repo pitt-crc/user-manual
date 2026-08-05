@@ -30,13 +30,13 @@ Run this in a terminal on your **local machine**, not on the cluster:
 === "macOS / Linux"
 
     ```bash
-    ssh-keygen -t ed25519 -C "your_pittID@pitt.edu"
+    ssh-keygen -t ed25519 -C "<username>@pitt.edu"
     ```
 
 === "Windows (PowerShell / Terminal)"
 
     ```powershell
-    ssh-keygen -t ed25519 -C "your_pittID@pitt.edu"
+    ssh-keygen -t ed25519 -C "<username>@pitt.edu"
     ```
 
 Accept the default file location. When prompted for a passphrase, **setting one
@@ -56,7 +56,7 @@ This is the one time you'll enter your Pitt password.
 === "macOS / Linux"
 
     ```bash
-    ssh-copy-id <pittID>@h2p.crc.pitt.edu
+    ssh-copy-id <username>@h2p.crc.pitt.edu
     ```
 
 === "Windows (PowerShell)"
@@ -64,7 +64,7 @@ This is the one time you'll enter your Pitt password.
     `ssh-copy-id` is not included on Windows, so append the key manually:
 
     ```powershell
-    type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh <pittID>@h2p.crc.pitt.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+    type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh <username>@h2p.crc.pitt.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
     ```
 
 Use `htc.crc.pitt.edu` instead if you work on the HTC cluster. Because your home
@@ -74,7 +74,7 @@ login node.
 ### Step 3: Test it
 
 ```bash
-ssh <pittID>@h2p.crc.pitt.edu
+ssh <username>@h2p.crc.pitt.edu
 ```
 
 You should connect without a Pitt password prompt. (If you set a key passphrase
@@ -115,7 +115,7 @@ instant:
 ```text
 Host h2p
     HostName h2p.crc.pitt.edu
-    User <pittID>
+    User <username>
     ForwardX11 yes
     ControlMaster auto
     ControlPath ~/.ssh/cm-%r@%h:%p
@@ -184,7 +184,7 @@ Still being asked for a password?
   must be `600`. `ssh-copy-id` sets these for you; the manual/Windows path sets
   them explicitly.
 - Make sure you used the matching key. Add `-v` to see which key SSH offers:
-  `ssh -v <pittID>@h2p.crc.pitt.edu`.
+  `ssh -v <username>@h2p.crc.pitt.edu`.
 
 **"Permission denied (publickey)"** usually means the public key isn't installed
 for that account, or you used the wrong username — recheck Step 2.
