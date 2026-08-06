@@ -40,42 +40,37 @@ cluster, a data storage system, access portals, networking equipment, and softwa
 |-----------|------------|----------|-----------|-------------------|------------|---------------|------------|-----------|------------|----------|---------------|
 | gpu       | [L40S (48GB)](https://www.nvidia.com/en-us/data-center/l40s/) |    2   | 4         | [Intel Xeon Platinum 8462Y+](https://www.intel.com/content/www/us/en/products/sku/232383/intel-xeon-platinum-8462y-processor-60m-cache-2-80-ghz/specifications.html)          | 64          | 16            | 512 GB     | 8 GB      | 7 TB NVMe  | 10GbE             | gpu-n\[0-1] |
 
-##**1. ^^Install and Configure Remote Desktop client^^**
+##**1. ^^Install and configure the Windows App client^^**
 
-You will need to install the [Remote Desktop client](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) 
-for your OS. The previous link provides instructions for various types of devices. Below, we will only highlight MacOS and Windows. 
+You will need to install the [Windows App client](https://learn.microsoft.com/en-us/windows-app/landing) 
+for your OS. Below, we will only highlight the client for MacOS and Windows. 
 
-!!! example "Installing and Configuring the Remote Desktop client"
+!!! example "Installing and Configuring the Windows App client"
     === "MacOS"
         In MacOS, the Windows App client software is distributed through the Mac App Store. Open the the Windows App after download.
 
         ![MacOS-AVD-01](../_assets/img/avd/MacOS-AVD-01.png)
 
-        Next, add Pitt's Remote Desktop Device by selecting *Add Work or School Account* from the + widget, located towards the upper right-hand 
-        corner of the window.
+        !!! tip "Direct Download outside of App Store"
+            If installation through the App Store is not possible, you can download the [**Installer as `.pkg`**](https://learn.microsoft.com/en-us/windows-app/whats-new?tabs=macos).
+
+        Next, add Pitt's Remote Desktop Device by selecting *Add Work or School Account* from the + widget, located in the middle of the toolbar.
 
         ![MacOS-AVD-02](../_assets/img/avd/MacOS-AVD-02.png)
 
         This will take you to the *Microsoft Sign in* panel for authenticating using Pitt Single Sign-On.
 
-        | Authenticate via Pitt Passport| |
+        | Authenticate via Pitt Passport | |
         | ----------- | ------------------------------------ |
         | **1**![MacOS-AVD-03](../_assets/img/avd/MacOS-AVD-03.png) | **2**![MacOS-AVD-04](../_assets/img/avd/MacOS-AVD-04.png) |
         | **3**![MacOS-AVD-05](../_assets/img/avd/MacOS-AVD-05.png) | **4**![MacOS-AVD-06](../_assets/img/avd/MacOS-AVD-06.png) |
 
     === "Windows"
 
-        In Windows, the Microsoft Remote Desktop software is distributed through the Microsoft App Store. Open Remote Desktop installer after download.
+        The Windows App comes preinstalled with Windows 11. Click on the Start Button on the task bar and search for it by name.
         ![Win-AVD-01](../_assets/img/avd/Win-AVD-01.png)
 
-        Next, add Pitt's Workspaces by selecting *Workspaces* from the **+ Add** widget, located towards the upper right-hand
-        corner of the window.
-
-        ![Win-AVD-02](../_assets/img/avd/Win-AVD-02.png)
-
-        This will take you to the *Subscribe to a Workspace* window where you will be asked to sign in using your Pitt credentials..
-
-        ![Win-AVD-03](../_assets/img/avd/Win-AVD-03.png)
+        Next, sign into your Microsoft account using your Pitt credentials..
 
         | Authenticate via Pitt Passport| |
         | ----------- | ------------------------------------ |
@@ -94,36 +89,28 @@ for your OS. The previous link provides instructions for various types of device
         [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
         stating that you need authorization to use AVD to access the CRCD Secure Research Environment.
 
-        ![MacOS-AVD-07-HIPAA](../_assets/img/avd/MacOS-AVD-07-SRE.png)
+        | Authenticate using Pitt credentials | |
+        | ----------- | ------------------------------------ |
+        | **1.** The remote Device you want is called CRCD-SRE. ![MacOS-AVD-07-HIPAA](../_assets/img/avd/MacOS-AVD-07-SRE.png) | **2.** Double clicking on that selection will prompt for your Pitt credentials. ![MacOS-AVD-08-HIPAA](../_assets/img/avd/MacOS-AVD-08-SRE.png) |
 
-        Double clicking on that selection will prompt for your Pitt credentials.
-
-        ![MacOS-AVD-08-HIPAA](../_assets/img/avd/MacOS-AVD-08-SRE.png)
-
-        You will see the Remote Windows Desktop after successful login. From this remote portal, you can access the Secure Research Environment.
+        You will see the Remote Windows Desktop below after successful login. From this remote portal, you can access the Secure Research Environment.
 
         ![MacOS-AVD-09-HIPAA](../_assets/img/avd/MacOS-AVD-09-SRE.png)
 
     === "Windows"
 
-        After successful authentication, you will be presented with list of authorized Workspaces that you can connect to. Your
-        Workspaces may be different from what is shown below, depending on your role. Authorized users of the HIPAA environment will
-        see a *Workspace* called **CRCD-SRE**.
-        If you do not see this *Workspace* but should have access, please submit a
+        After successful authentication, you will be presented with list of authorized Devices that you can connect to.
+        Authorized users of the CRCD SRE will see a *Device* called **CRCD-SRE**.
+        If you do not see this *Device* but should have access, please submit a
         [**help ticket**](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service),
         stating that you need authorization to use AVD to access the CRCD Secure Research Environment.
 
-        ![Win-AVD-09-HIPAA](../_assets/img/avd/Win-AVD-09-SRE.png)
+        ![Win-AVD-09-HIPAA](../_assets/img/avd/Win-AVD-08.png)
 
-        Double clicking on that selection will prompt for your Pitt credentials.
+        Clicking on that selection will prompt for your Pitt credentials to log you into the SRE AVD, from which 
+        you can access the SRE.
 
-        | Authenticate via Pitt Passport| |
-        | ----------- | ------------------------------------ |
-        | **1**![Win-AVD-10-HIPAA](../_assets/img/avd/Win-AVD-10-HIPAA.png) | **2**![Win-AVD-11-HIPAA](../_assets/img/avd/Win-AVD-11-HIPAA.png) |
-
-        You will see the Remote Windows Desktop after successful login. From this remote portal, you can access the HIPAA environment.
-
-        ![Win-AVD-12-HIPAA](../_assets/img/avd/MacOS-AVD-09-SRE.png)
+        ![Win-AVD-09-SRE](../_assets/img/avd/Win-AVD-09-SRE.png)
 
 ##**3. ^^Various Methods Connecting to CRCD SRE^^**
 
@@ -137,20 +124,14 @@ for your OS. The previous link provides instructions for various types of device
         * **PuTTY**
         * **Open OnDemand portal via a web browser**
 
-        ![MacOS-AVD-All-Tools](../_assets/img/avd/MacOS-AVD-All-Tools-SRE.png)
+        ![MacOS-AVD-All-Tools](../_assets/img/avd/Win-AVD-All-Tools-SRE.png)
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
     === "PuTTY"
         Search for and launch the PuTTY app from the Windows Start Menu.
 
         ![MacOS-AVD-PuTTY-01](../_assets/img/avd/MacOS-AVD-PuTTY-01-SRE.png)
+
 
         Fill in the PuTTY Configuration using the following values:
 
@@ -158,33 +139,22 @@ for your OS. The previous link provides instructions for various types of device
         * **Port:** 22
         * **Connection type:** SSH
 
-        You might also want to Save the profile under a name for quick loading in the future.
-
-        ![MacOS-AVD-PuTTY-02](../_assets/img/avd/MacOS-AVD-PuTTY-02-SRE.png)
-
-        When you first connect, you may see the following PuTTY Security Alert message below. Select Accept.
-
-        ![MacOS-AVD-PuTTY-03](../_assets/img/avd/MacOS-AVD-PuTTY-03-SRE.png)
-
-        The login credentials are your  Pitt username (all lowercase) and password.
-
-        ![MacOS-AVD-PuTTY-04](../_assets/img/avd/MacOS-AVD-PuTTY-04-HIPAA.png)
-
-        A successful authentication will present you with a terminal to the CRCD SRE login node.
-
-        ![MacOS-AVD-PuTTY-05](../_assets/img/avd/MacOS-AVD-PuTTY-05-SRE.png)
+        | Login through a terminal     |                              |
+        | ---------------------------- | ---------------------------- |
+        | **1.** You might also want to Save the profile under a name for quick loading in the future. ![Win-AVD-PuTTY-02](../_assets/img/avd/Win-AVD-PuTTY-02-SRE.png) | **2.** When you first connect, you may see the following PuTTY Security Alert message below. Select Accept. ![Win-AVD-PuTTY-03](../_assets/img/avd/Win-AVD-PuTTY-03-SRE.png) |
+        | **3.** The credentials are your Pitt username (all lowercase) and password. ![Win-AVD-PuTTY-04](../_assets/img/avd/Win-AVD-PuTTY-04-SRE.png) | **4.** A successful authentication will present you with a terminal to the CRCD SRE login node. ![Win-AVD-PuTTY-05](../_assets/img/avd/Win-AVD-PuTTY-05-SRE.png) |
 
     === "CRCD Webportals"
 
         From within the AVD, all CRCD webportals are accessible, including
 
         * **Open OnDemand:** [https://ondemand.res.crc.pitt.edu](https://ondemand.res.crc.pitt.edu)
+
+        | Use Pitt credentials to authenticate; all lowercase username | |
+        | ----------- | ------------------------------------ |
+        | **1** ![MacOS-AVD-Webportals-01](../_assets/img/avd/Win-AVD-Webportals-01-SRE.png) | **2** ![MacOS-AVD-Webportals-02](../_assets/img/avd/Win-AVD-Webportals-02-SRE.png) |
   
-        ![MacOS-AVD-Webportals-01](../_assets/img/avd/MacOS-AVD-Webportals-01-SRE.png)
-
-        ![MacOS-AVD-Webportals-02](../_assets/img/avd/MacOS-AVD-Webportals-02-SRE.png)
-
-        ![MacOS-AVD-Webportals-03](../_assets/img/avd/MacOS-AVD-Webportals-03-SRE.png)
+        **3** ![MacOS-AVD-Webportals-03](../_assets/img/avd/Win-AVD-Webportals-03-SRE.png)
 
 ##**4. ^^Recommendations on setting up your software environment^^**
 
