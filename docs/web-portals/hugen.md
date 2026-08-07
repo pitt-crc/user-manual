@@ -1,248 +1,273 @@
-# **hugen or teach Open Ondemand webportal on the teach cluster**
+# HuGen / Teach Open OnDemand Portal
 
-## **Summary**
+## Summary
 
-The hugen.crc.pitt.edu or ondemand.teach.crc.pitt.edu Open Ondemand Web Portal is the gateway to CRCD teach cluster to teach bioinformatics courses. Department of Human Genetics has paid part of the cost of this node. 
+The Open OnDemand portal at `hugen.crc.pitt.edu` (also reachable as `ondemand.teach.crc.pitt.edu`) is the gateway to the
+CRCD Teach cluster for teaching bioinformatics courses. The Department of Human Genetics paid part of the cost of this
+node.
 
-## **Request an Allocation for a Course**
+## Request an allocation for a course
 
-<p>The course instructor can <a href="https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=KVCW5G08Bfo_&amp;RequestorType=Service">fill out this form</a> and attach a spreadsheet file containing the following information on each of the students from your class roster that will require access to the allocation's resources:</p>
+The course instructor can
+[fill out this form](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=KVCW5G08Bfo_&RequestorType=Service)
+and attach a spreadsheet listing each student from the class roster who needs access, with their **Name** and **Pitt
+email** (`<username>@pitt.edu`, no aliased emails).
 
-<p>Name, Pitt Email (<a href="mailto:username@pitt.edu">username@pitt.edu</a>, no aliased emails)</p>
+Your course's user-group name and Slurm allocation follow the format `SUBJECTNUMBER-YEAR(f/s)`, where `f`/`s` denotes
+fall or spring semester. We allocate **100,000 SUs** on the Teach cluster and **5 TB** of group-shared storage per
+course, active for **one term (4 months)**. We provide the Slurm allocation name and storage location when we reply to
+your ticket. The examples below use `hugen2071-2024f` as the allocation name and `/ix1/hugen2071-2024f` as the storage
+location.
 
-<p>The format of your course's user group name and slurm allocation will be SUBJECTNUMBER-YEAR(f/s) where the f/s denotes fall or spring semester. We will allocate 100K Sus on the teach cluster and 5TB group shared storage to your course.<strong> Duration of computing time and storage: active for 1 term ((4 months).</strong> We will provide you the slurm allocation name and the storage location when we reply to your ticket. In the below demonstration, we will use hugen2071-2024f as the slurm allocation name and the storage location is /ix1/hugen2071-2024f. <strong>Note that there is an expiration date for the 5TB storage allocation. We will delete the 5TB storage allocation without discussing with the instructors or students.</strong></p>
+!!! warning "The 5 TB storage allocation expires"
+    Course storage has an expiration date, and we delete the 5 TB allocation at the end of the term without further
+    discussion with instructors or students. Move anything you want to keep before the term ends.
 
-Based on the spreadsheet, we will create the linux group, i.e., hugen2071-2024f. We will add the students, the instructor and the TAs to the linux group. 
+Based on the spreadsheet, we create the Linux group (e.g. `hugen2071-2024f`) and add the students, instructor, and TAs
+to it. A user can belong to multiple Linux groups — running `id <username>` shows your `gid=<primary group>`, and
+`hugen2071-2024f` may not be your primary group.
 
-Note that a user can be associated with multiple linux groups. Running `id <username>` will show `gid=<primary group>`. hugen2071-2024f may not be your primary linux group.
+`/ix1/hugen2071-2024f` is owned by the instructor and the `hugen2071-2024f` group. Its default permission is `770`, so
+group members have write access to the folder.
 
-/ix1/hugen2071-2024f is owned by the instructor and the linux group hugen2071-2024f. The default permission is 770 so that members of the group hugen2071-2024f have written permissions to this folder. 
+We also create the Slurm account `hugen2071-2024f` and add the students, instructor, and TAs to it, with 100,000 SUs on
+the Teach cluster. A user can be associated with multiple Slurm accounts; run `sacctmgr list user <username>` to check
+your default.
 
-We will create the slurm account hugen2071-2024f and add the students, the instructor and the TAs to this slurm account. We will allocate 100K Sus on the teach cluster to the slurm account. Note that a user can be associated with multiple slurm accounts. You can use `sacctmgr list user <username>` to check your default slurm account.
+## Logging in
 
-## **[Log in to hugen or teach](https://hugen.crc.pitt.edu, https://ondemand.teach.crc.pitt.edu)**
+The portal is available at:
 
-https://hugen.crc.pitt.edu
+- <https://hugen.crc.pitt.edu>
+- <https://ondemand.teach.crc.pitt.edu>
 
-https://ondemand.teach.crc.pitt.edu
+The portal server is firewalled within PittNet, so you must be connected to the
+[VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426) (Pitt IT's GlobalProtect) or directly
+connected to PittNet via Ethernet.
 
-The portal server is firewalled within PittNet and as such [you will need to be on VPN](https://crc.pitt.edu/user-support/resource-documentation/vpn-and-accessing-clusters) or be directly connected to PittNet via Ethernet.
+Once connected, you can run commands directly on the server and submit batch jobs to the Teach cluster. Click
+**Clusters → \_teach Shell Access** to open a Linux shell.
 
-<p>If you are off-campus, the clusters are accessible securely from almost anywhere in the world via the PittNet Virtual Private Network&nbsp;(VPN), which is administered by Pitt IT. The VPN requires certain software to run on your system. We recommend Global Protect.</p>
+![Open OnDemand dashboard](../_assets/img/web-portals/hugen1.png)
 
-Once connected, you can run commands directly on the server and submit batch jobs to the CRCD clusters. You can click >_ teach Shell Access under Clusters to get a Linux Shell Access.
+![Teach shell access](../_assets/img/web-portals/hugen2.png)
 
-![](../_assets/img/web-portals/hugen1.png)
-![](../_assets/img/web-portals/hugen2.png)
+You'll land on the Teach login node, `teach.crc.pitt.edu` (also `login4.crc.pitt.edu`). All CRCD software is available
+through this terminal and our Lmod software provisioning system — see
+[Application Environment](../applications/application-environment.md).
 
-You will logon the login node of the teach cluster: teach.crc.pitt.edu or login4.crc.pitt.edu.
+[Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) provides optimized builds of commonly used
+software through modular environment commands. No modules are loaded by default when you log in. You can use this system
+to teach your course, and you can also create conda environments and install your own tools.
 
-All CRCD software can be accessed using this terminal and our LMOD software provisioning system.
+The instructor can create a folder under the course storage to hold conda environments:
 
-<p><strong><a href="https://crc.pitt.edu/user-support/installed-software/cluster-application-environment">https://crc-pages.pitt.edu/user-manual/applications/application-environment/</a></strong></p>
-
-<p><a href="https://www.tacc.utexas.edu/research-development/tacc-projects/lmod" target="_blank">Lmod</a>&nbsp;will be used by cluster administrators to provide optimized builds of commonly used software. Applications are available to users through the&nbsp;<a href="https://www.tacc.utexas.edu/research-development/tacc-projects/lmod" target="_blank">Lmod</a>&nbsp;modular environment commands. There are no default modules loaded when you log in. You can use this system to teach the course. You can also create conda environment and install your own tools.</p>
-
-<p>The instructor can create a folder under the course storage to install conda environments.</p>
-
-<pre>
+```
 [fangping@login4 ~]$ cd /ix1/hugen2071-2024f
-[fangping@login4 hugen2071-2024f]$ mkdir software</pre>
+[fangping@login4 hugen2071-2024f]$ mkdir software
+```
 
-<p>We are using slurm as workload manager. To use the Sus from the course, you can use --account=hugen2071-2024f to charge resources used by this job to the specified course account. We recommend the instructor to provide slurm job templates.</p>
+We use Slurm as the workload manager. To spend the course's SUs, pass `--account=hugen2071-2024f` so the job is charged
+to the course account. We recommend the instructor provide Slurm job templates.
 
-<h1>Using R</h1>
+## Using R
 
-<p><strong><a href="https://crc.pitt.edu/r_and_rstudio">https://crc-pages.pitt.edu/user-manual/applications/r%2Brstudio/</a></strong></p>
+See [R and RStudio](../applications/r+rstudio.md) for full details. We provide multiple R modules — run `module spider r`
+to list them and `module spider r/<version>` to see how to load one. For example, the latest `r/4.5.0`:
 
-<p>We have installed multiple R modules. &nbsp;You can use module spider r to view available modules and module spider r/version to show how to load the module. The latest r/4.5.0 can be loaded as:</p>
-
-<pre>
+```
 [fangping@login4 ~]$ srun --account=hugen2071-2024f --pty bash
-srun: cpus_per_task: 65534.0
-srun: min_cpu: 1.0
 srun: job 14646 queued and waiting for resources
 srun: job 14646 has been allocated resources
 [fangping@teach-cpu-n0 ~]$ module load r/4.5.0
 [fangping@teach-cpu-n0 ~]$ R
 R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
-Copyright (C) 2025 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
-  Natural language support but running in an English locale
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-&gt;</pre>
+...
+>
+```
 
-`[fangping@login3 ~]$ srun --account=hugen2071-2024f --pty bash` This command will request a single core, 1 hour walltime on teach cluster using hugen2071-2024f allocation. You can add slurm arguments to specify the job. https://crc-pages.pitt.edu/user-manual/slurm/batch-jobs/
+The command `srun --account=hugen2071-2024f --pty bash` requests a single core for 1 hour on the Teach cluster, charged
+to the `hugen2071-2024f` allocation. Add Slurm arguments to change the request — see
+[Slurm Batch Jobs](../slurm/batch-jobs.md).
 
-<p>Within each R module, various R packages and bioconductor packages have been installed. For the above r/4.5.0, the location of these packages is /software/rhel9/manual/install/r/4.5.0/lib64/R/library. Within the R console, load the library to check whether it is already installed.</p>
+Each R module includes many preinstalled R and Bioconductor packages; for `r/4.5.0` they live in
+`/software/rhel9/manual/install/r/4.5.0/lib64/R/library`. In the R console, load a library to check whether it's already
+installed.
 
-<p>You can also install your own R packages. R searches the user’s path for libraries followed by the root installation. R will stop searching when it finds the first instance of the library within the path hierarchy.Use “.libPaths()” to check the searching path. For r/4.5.0, your local R packages will be installed under ~/R/x86_64-pc-linux-gnu-library/4.5. To allow all attendees to use the same R packages, we recommend that the instructor hides his/her local R packages. If you need specific R packages for your course, submit a help ticket, and we will install the package so that all attendees can use the same version.</p>
+You can also install your own R packages. R searches your personal library path before the root installation and stops
+at the first match — check the path with `.libPaths()`. For `r/4.5.0`, your local packages install under
+`~/R/x86_64-pc-linux-gnu-library/4.5`. So that all attendees use the same packages, we recommend the instructor hide
+their personal R packages; if your course needs specific packages, submit a help ticket and we'll install them for
+everyone.
 
-<p>You can also use RStudio server on Open Ondemand to teach the course. Logon hugen.crc.pitt.edu or teach.crc.pitt.edu, Select Interactive Apps -&gt; RStudio Server 2025</p>
+You can also teach with **RStudio Server** on Open OnDemand. Log in to `hugen.crc.pitt.edu`, then select **Interactive
+Apps → RStudio Server 2025**.
 
-![](../_assets/img/web-portals/hugen3.png)
-![](../_assets/img/web-portals/hugen4.png)
+![RStudio Server app](../_assets/img/web-portals/hugen3.png)
 
-<p>Click Launch to start RStudio server. Slurm will submit a batch job to request 1 core (8 GB memory), 1 hour walltime. The RStudio server will be run by the login user and the rsession will run the specified R version. The SUs will be extracted from the slurm account hugen2071-2024f. Note that Interactive Apps on hugen.crc.pitt.edu have been configured to automatically submit jobs to the teach cluster. </p>
+![RStudio Server submission form](../_assets/img/web-portals/hugen4.png)
 
-<p>By default, the working directory of the R session is the home directory. You can use setwd() to change the working directory. For example, you can guide each student to change the working directory as shown above.</p>
+Click **Launch** to start RStudio Server. Slurm submits a batch job requesting 1 core (8 GB memory) for 1 hour, run as
+your user, with the SUs charged to `hugen2071-2024f`. (Interactive Apps on `hugen.crc.pitt.edu` are configured to submit
+jobs to the Teach cluster automatically.)
 
-<p>The instructor can mkdir a folder /ix1/hugen2071-2024f/users for students and chmod it to be group writable.</p>
+By default the R session's working directory is your home directory; use `setwd()` to change it. The instructor can
+create a shared `users` folder and make it group-writable:
 
-<pre>
+```
 [fangping@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users
 [fangping@login4 ~]$ chmod 770 /ix1/hugen2071-2024f/users
-</pre>
+```
 
-<p>The instructor can guide each student to create his/her own folder under the course storage. Each student can logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
+Then guide each student to create their own folder under it via **Clusters → \_teach Shell Access**:
 
-<pre>
+```
 [fmu@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu
 [fmu@login4 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu
-</pre>
+```
 
-<p>You can open a R markdown file. I have copied pbmc3k_tutorial.Rmd from NGS 2022s workshops.</p>
+You can open an R Markdown file — for example, `pbmc3k_tutorial.Rmd` from an NGS workshop:
 
-<pre>
+```
 [fangping@login4 ~]$ cd /ix1/hugen2071-2024f/users/fmu
-[fangping@login4 fmu]$ cp /bgfs/genomics/workshops/2022s/Overview_of_NGS_data_analysis_using_Pitt_ondemand_and_R/seurat/pbmc3k_tutorial.Rmd .</pre>
+[fangping@login4 fmu]$ cp <path-to-workshop-materials>/seurat/pbmc3k_tutorial.Rmd .
+```
 
-<p>Then click Open File from RStudio server and open pbmc3k_tutorial.Rmd. You can Knit to html to generate html output from the R markdown. &nbsp;</p>
+!!! note "Workshop path"
+    The workshop materials were previously on the `/bgfs` filesystem, which has been decommissioned. Ask CRCD for the
+    current location of these files.
 
-![](../_assets/img/web-portals/hugen5.png)
+Then use **Open File** in RStudio Server to open `pbmc3k_tutorial.Rmd`, and **Knit to HTML** to generate HTML output.
 
-<p>The instructor can also teach students how to submit a R batch job. We recommend that the instructors provide a job template (test.sbatch) as follows.</p>
+![Knit an R Markdown file](../_assets/img/web-portals/hugen5.png)
 
-<pre>
+The instructor can also teach students how to submit an R batch job. We recommend providing a job template
+(`test.sbatch`):
+
+```bash
 #!/bin/bash
-#SBATCH --job-name R_ExampleJob
-#SBATCH --account=hugen2071-2024f # use your course allocation
-#SBATCH --nodes=1  # request a single node
-#SBATCH -c 1  # request 1 core
-#SBATCH --time=01:00:00  # 1 hour walltime
+#SBATCH --job-name=R_ExampleJob
+#SBATCH --account=hugen2071-2024f   # use your course allocation
+#SBATCH --nodes=1                   # request a single node
+#SBATCH -c 1                        # request 1 core
+#SBATCH --time=01:00:00             # 1 hour walltime
 
-# load R module
 module load r/4.5.0
 
-#the instructors or students can write the R code in test.R
-
+# write the R code in test.R
 R CMD BATCH test.R test.txt
-# R CMD BATCH test.R #output will be directed to test.Rout</pre>
+# R CMD BATCH test.R   # output goes to test.Rout
+```
 
-<p>To submit this job, run "sbatch test.sbatch"</p>
+Submit it with `sbatch test.sbatch`. For advanced topics such as parallel processing or high-throughput jobs, see
+[R and RStudio](../applications/r+rstudio.md).
 
-<p>The instructor can also teach other advance topics, including parallel processing or high throughput computing jobs. You can refer to https://crc.pitt.edu/r_and_rstudio</p>
+## Using conda and Python
 
-<h1><strong>Using conda and python</strong></h1>
+We provide multiple Anaconda Python distributions as modules, which can also be used through the Open OnDemand Jupyter
+Notebook/Lab app:
 
-<p>We have installed multiple anaconda python as modules and these modules can also be used through Open Ondemand Jupyter notebook/lab.</p>
+- `python/ondemand-jupyter-python3.9`
+- `python/ondemand-jupyter-python3.11`
 
-<p>python/ondemand-jupyter-python3.9</p>
+Each distribution includes thousands of Python packages. Select the module, then run Jupyter through **Interactive Apps
+→ Jupyter** on `hugen.crc.pitt.edu` — remember to enter the course Slurm allocation in the **Account** field.
 
-<p>python/ondemand-jupyter-python3.11</p>
+![Jupyter submission form](../_assets/img/web-portals/hugen6.png)
 
-<p>Each anaconda python distribution includes more than 6000 python packages.</p>
+Conda is an open-source package and environment manager. The instructor can create conda environment(s) under the course
+storage for all attendees to use:
 
-<p>You can select the corresponding module, and run jupyter notebook/lab using the anaconda python distribution. Logon hugen.crc.pitt.edu, Interactive Apps -&gt; Jupyter. Do not forget to add the course slurm allocation to the account field.</p>
-
-![](../_assets/img/web-portals/hugen6.png)
-
-<p>&nbsp;</p>
-
-<p>Conda is an open source package management system and environment management system. The instructor can generate conda environment and use conda as a package manager to install, run and update packages and their dependencies. We recommend that the instructor generate conda environment(s) under the course storage. All course attendees should use this conda environment(s).</p>
-
-<pre>
+```
 [fangping@login4 ~]$ cd /ix1/hugen2071-2024f/software
 [fangping@login4 software]$ module load python/ondemand-jupyter-python3.11
 [fangping@login4 software]$ conda create --prefix=/ix1/hugen2071-2024f/software/env python=3.11
 ...
 [fangping@login4 software]$ source activate /ix1/hugen2071-2024f/software/env
-(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$</pre>
+(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$
+```
 
-<p>DO NOT activate your environment using “conda activate”</p>
+!!! warning "Use `source activate`, not `conda activate`"
+    Activate the environment with `source activate <path>`. Do **not** use `conda activate`, which requires
+    `conda init` and can break your shell environment on the cluster.
 
-<p>Now the instructor can install software packages related to the course to the conda environment.</p>
+The instructor can then install course-related software into the environment. **Bioconda** provides thousands of
+biomedical-research packages through conda ([bioconda.github.io](https://bioconda.github.io/)):
 
-<p><strong>Bioconda</strong> lets you install thousands of software packages related to biomedical research using the conda package manager.</p>
+```
+(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$ conda install hisat2
+```
 
-<p><a href="https://bioconda.github.io/">https://bioconda.github.io/</a></p>
+To start Jupyter Lab/Notebook with this environment active, enter the environment's path under **Name of Custom Conda
+Environment**.
 
-<p><a href="https://bioconda.github.io/recipes/hisat2/README.html">https://bioconda.github.io/recipes/hisat2/README.html</a></p>
+![Custom conda environment field](../_assets/img/web-portals/hugen7.png)
 
-<pre>
-(/ix1/hugen2071-2024f/software/env) [fangping@login4 software]$ conda install hisat2</pre>
+!!! note "\"Failed to connect\" right after launching"
+    If you see "Failed to connect to teach-cpu-n??.crc.pitt.edu:?????" when launching Jupyter, the server usually just
+    isn't ready yet — wait 1–2 minutes and refresh your browser.
 
-<p>...</p>
+To use the environment's Python packages, import them directly. You can also demonstrate installed tools through a
+notebook (see the hisat2 example below).
 
-<p>To start a Jupyter Lab/notebook with this conda environment activated, you can specify the location of the conda environment under “Name of Custom Conda Environment”.</p>
+![hisat2 in a Jupyter notebook](../_assets/img/web-portals/hugen8.png)
 
-![](../_assets/img/web-portals/hugen7.png)
+Or run tools from a terminal via **Launcher → Terminal**.
 
-<p>If you receive this error "Failed to connect to teach-cpu-n??.crc.pitt.edu:?????" when you Lauch the Jupyter. Wait 1-2 minuates, then refresh your browser.</p>
+![Terminal in Jupyter Lab](../_assets/img/web-portals/hugen9.png)
 
-<p>To use the python packages inside this conda environment, you can directly import the python package. To demonstrate the other packages that you have installed in the conda environment, you can run it through jupyter notebook (See the hisat2 example below).</p>
+When you start Jupyter Notebook/Lab, the working directory is your home directory. You can use a symbolic link to reach
+the course storage. Via **Clusters → \_teach Shell Access**:
 
-![](../_assets/img/web-portals/hugen8.png)
+```
+[fmu@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu           # create a folder
+[fmu@login4 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu          # set permissions
+[fmu@login4 ~]$ ln -s /ix1/hugen2071-2024f/users/fmu my_course_data   # symlink into home
+```
 
-<p>You can also run the other packages through terminal. Launcher -&gt; Terminal</p>
+Each student can then navigate to their own `my_course_data` from Jupyter Lab.
 
-![](../_assets/img/web-portals/hugen9.png)
+You can also teach students to submit a batch job that uses the conda environment or other CRCD modules. A template
+(`test.sbatch`):
 
-<p>When you start Jupyter Notebook/Lab, the working directory is the home directory. You can use softlink trick to navigate to course storage.</p>
-
-<p>Logon hugen.crc.pitt.edu, click Clusters -&gt; &gt;_teach Shell Access</p>
-
-<pre>
-[fmu@login4 ~]$ mkdir -p /ix1/hugen2071-2024f/users/fmu # create a folder
-[fmu@login4 ~]$ chmod 700 /ix1/hugen2071-2024f/users/fmu # change the permission
-[fmu@login4 ~]$ ln -s /ix1/hugen2071-2024f/users/fmu my_course_data # generate a softlink to home directory
-[fmu@login4 ~]$</pre>
-
-<p>Each student can navigate to his/her own my_course_data from Jupyter Lab.</p>
-
-<p>The instructor can also teach students how to submit a batch job using the conda environment or other CRC modules. We recommend that the instructors provide a job template (test.sbatch) as follows.</p>
-
-<pre>
+```bash
 #!/bin/bash
-#SBATCH --job-name ExampleJob
-#SBATCH --account=hugen2071-2024f # use your course allocation
-#SBATCH --nodes=1  # request a single node
-#SBATCH -c 1  # request 1 core
-#SBATCH --time=01:00:00  # 1 hour walltime
+#SBATCH --job-name=ExampleJob
+#SBATCH --account=hugen2071-2024f   # use your course allocation
+#SBATCH --nodes=1                   # request a single node
+#SBATCH -c 1                        # request 1 core
+#SBATCH --time=01:00:00             # 1 hour walltime
 
 # use the custom conda environment
 module load python/ondemand-jupyter-python3.11
 source activate /ix1/hugen2071-2024f/software/env
 
-# You can also use other modules
+# or load other modules
 # module load hisat2/2.2.1
 
-hisat2 --help # run your commands</pre>
+hisat2 --help   # run your commands
+```
 
-<p>To submit this job, run "sbatch test.sbatch"</p>
+Submit it with `sbatch test.sbatch`.
 
-<h1><strong>Open Composer</strong></h1>
+## Open Composer
 
-Open Composer is a web application to generate batch job scripts and submit batch jobs for HPC clusters. Open Composer is designed to simplify batch job submissions, a core task for HPC cluster users. It offers job management capabilities, including status monitoring and job deletion, promotes parameter reuse, and enables seamless launching of related Open OnDemand applications with a single click.
+Open Composer is a web application for generating batch job scripts and submitting jobs to HPC clusters. It simplifies
+job submission with status monitoring, job deletion, parameter reuse, and one-click launching of related Open OnDemand
+apps.
 
-Click Jobs -> Open Composer
+Click **Jobs → Open Composer**.
 
-![](../_assets/img/web-portals/hugen10.png)
+![Jobs menu, Open Composer](../_assets/img/web-portals/hugen10.png)
 
-Click teach
+Click **teach**.
 
-![](../_assets/img/web-portals/hugen11.png)
+![Select the teach cluster](../_assets/img/web-portals/hugen11.png)
 
-When you enter values in the web form on the left side of the page, a job script is dynamically generated in the text area on the right side of the page. The text area can be freely edited. Do NOT forget to change Script Location and Script Name. Edit the three <replace with ...> fields in the text area.
+As you fill in the form on the left, a job script is generated in the editable text area on the right. Don't forget to
+set the **Script Location** and **Script Name**, and edit the three `<replace with ...>` fields in the text area.
 
-![](../_assets/img/web-portals/hugen12.png)
+![Open Composer job form](../_assets/img/web-portals/hugen12.png)
 
-When you click the "Submit" button below the text area, the generated job script is submitted to the job scheduler. You can click the history to manage your jobs.
+Clicking **Submit** below the text area sends the generated script to the scheduler. Use the history view to manage your
+jobs.

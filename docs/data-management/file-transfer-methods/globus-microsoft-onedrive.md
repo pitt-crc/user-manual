@@ -1,60 +1,84 @@
 # Globus for Microsoft OneDrive
 
-## How to Access OneDrive in Globus
+[Globus](globus.md) can access your files on Microsoft OneDrive and SharePoint,
+which makes it a convenient way to move data between CRCD storage and OneDrive.
 
-Globus can be used to access your files on Microsoft OneDrive and SharePoint. Connect from your computer 
-using [Globus Connect Personal](https://www.globus.org/globus-connect-personal) or sign in to 
-[Globus File Manager](https://app.globus.org/) with your Pitt credentials. Search for the collection 
-named “UPitt-OneDrive” and select it:
+## Accessing OneDrive in Globus
 
-![](../../_assets/img/data-management/gonedrive1.png)
+Connect from your computer using
+[Globus Connect Personal](https://www.globus.org/globus-connect-personal), or
+sign in to the [Globus File Manager](https://app.globus.org/) with your Pitt
+credentials. Search for the collection named **"UPitt-OneDrive"** and select it:
 
-You may see prompts asking you to verify that you wish to grant access. Complete that process then you will see the 
-files within your OneDrive space and be able to copy files to or from it just like any other Globus collection. Your 
-OneDrive space is shown as the path “My files” in the UPitt-OneDrive collection:
+![Find the UPitt-OneDrive collection](../../_assets/img/data-management/gonedrive1.png)
 
-![](../../_assets/img/data-management/gonedrive2.png)
+Complete any access-verification prompts, after which you'll see your OneDrive
+files and be able to copy to or from them like any other Globus collection. Your
+OneDrive space appears under the path **"My files"**:
 
-If you would like to transfer data between CRC storage and OneDrive, search for the collection named “pitt#dtn” on the 
-right side of Collection and logon using your Pitt credentials. Go to your /ix, /bgfs or /ihome folder in Path.
+![OneDrive files in Globus](../../_assets/img/data-management/gonedrive2.png)
 
-![](../../_assets/img/data-management/gonedrive3.png)
+To transfer between CRCD storage and OneDrive, search for the **`pitt#dtn`**
+collection on the other side, sign in with your Pitt credentials, and navigate to
+your `/ix`, `/ix1`, `/vast`, or `/ihome` folder.
 
-## How to Access OneDrive Shared Folders in Globus
+![Transfer between CRCD and OneDrive](../../_assets/img/data-management/gonedrive3.png)
 
-If someone has shared a folder from their OneDrive with you, that folder can be found by clicking the “up one folder” 
-button and then looking in your “Shared” folder:
+## Accessing OneDrive shared folders
 
-![](../../_assets/img/data-management/gonedrive4.png)
+If someone has shared a OneDrive folder with you, find it by clicking **up one
+folder** and looking in your **"Shared"** folder:
 
-## How to Access SharePoint Sites in Globus
+![Shared folder](../../_assets/img/data-management/gonedrive4.png)
 
-SharePoint sites can also be browsed within Globus. However, you must first “follow” the site before it will be visible 
-to Globus. To do that, log into [the Pitt IT SharePoint service](https://pitt.sharepoint.com/_layouts/15/sharepoint.aspx) 
-with your Pitt credentials. Next, navigate to the SharePoint site you would like to browse. Then, click the star icon 
-next to the site you wish to follow:
+## Accessing SharePoint sites
 
-![](../../_assets/img/data-management/gonedrive5.png)
+SharePoint sites can be browsed in Globus, but you must **follow** a site first.
+Log in to the [Pitt IT SharePoint service](https://pitt.sharepoint.com/_layouts/15/sharepoint.aspx)
+with your Pitt credentials, navigate to the site, and click the **star** icon to
+follow it:
 
-Finally, return to Globus and click the “up one folder” button until you are able to see the “Shared libraries” folder:
+![Follow a SharePoint site](../../_assets/img/data-management/gonedrive5.png)
 
-![](../../_assets/img/data-management/gonedrive6.png)
+Back in Globus, click **up one folder** until you reach **"Shared libraries"**;
+the followed site now appears there:
 
-The SharePoint site will now be available under the path “Shared libraries”:
+![SharePoint under Shared libraries](../../_assets/img/data-management/gonedrive7.png)
 
-![](../../_assets/img/data-management/gonedrive7.png)
+## OneDrive and SharePoint limitations
 
-## OneDrive and SharePoint Limitations
+OneDrive and SharePoint restrict what files can be stored, which matters when
+uploading from Linux systems such as the CRCD `pitt#dtn` endpoint:
 
-OneDrive and SharePoint have limitations on what files can be stored, which may affect how you use the service. This is 
-of particular importance if you upload files from Linux systems such as Globus endpoints pitt#dtn or "pitt crc dtn 5.4” 
-provided by CRC.
+1. **No empty (zero-byte) files** — transferring one fails with a "storage quota
+   exceeded / does not support creation of empty files" error.
+2. **No symbolic links** — uploading a symlink instead uploads a copy of the file
+   it points to, so the link becomes a regular duplicate file.
+3. **No POSIX permissions or ACLs** — files downloaded back from OneDrive lose any
+   custom permissions or ACLs, so you'll need to re-apply them (e.g. with `chmod`)
+   afterward.
 
-<ol>
-	<li value="NaN">OneDrive does not support empty (zero-byte) files. Transferring a zero-byte file will result in a “storage quota exceeded” error with the message “OneDrive does not support creation of empty files”.</li>
-	<li value="NaN">OneDrive does not support symbolic links. When you attempt to upload a file that is a symlink, OneDrive will instead upload the contents of the file to which the symlink points. In other words, if you upload the file “a.txt” and file “symlink-to-a.txt”, both files in OneDrive will be identical. The latter would no longer be a symlink but just a regular file with the same content as a.txt.</li>
-	<li value="NaN">OneDrive does not support POSIX file permissions or access control lists (ACLs). When you upload a file to OneDrive and then later download that file, the file will no longer have any of the custom permissions or ACLs that the original file had. If you require specific permissions on your files, you will need to modify the permission of the files (e.g., chmod) after they have been downloaded from OneDrive/SharePoint.</li>
-</ol>
+To preserve these, pack the files into a `tar` or `zip` archive before
+transferring to OneDrive.
 
-To store these unsupported file types, you may choose to create a tar archive or zip your files then transfer that 
-file to OneDrive.
+## Related
+
+<div class="grid cards" markdown>
+
+-   :material-transit-connection-variant:{ .lg .middle } __Globus basics__
+
+    ---
+
+    Endpoints, transfers, and sharing folders with collaborators.
+
+    [:octicons-arrow-right-24: Globus](globus.md)
+
+-   :material-microsoft-onedrive:{ .lg .middle } __OneDrive without Globus__
+
+    ---
+
+    Using rclone and the OneDrive client on the cluster.
+
+    [:octicons-arrow-right-24: Microsoft OneDrive](microsoft-onedrive.md)
+
+</div>

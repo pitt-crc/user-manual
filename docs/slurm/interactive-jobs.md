@@ -1,104 +1,299 @@
 # Interactive Jobs
 
-Often times it is prudent to test that a smaller version of your slurm job works correctly before submitting 
-the whole thing and to be able to debug your code more interactively.
+An interactive job gives you a shell on a compute node where you can type
+commands live for hands-on, exploratory work. It's the right tool for testing a 
+smaller version of a job before you scale up, debugging code, benchmarking, or 
+working through a tutorial for new software. The steps below assumes that you have
+successfully [**ssh into a login node using a terminal**](../../getting-started/terminal).
 
-You may also want to perform benchmarking or work through a tutorial for new software, but without disrupting 
-the experience of other users by 
-<a href="https://crc.pitt.edu/resources/resources/job-scheduling-policy#:~:text=Login%20nodes%20are%20for%20interactive%20work%20only%3A">running resource intensive commands on the login node</a>.</p>
+## Starting an interactive session
 
-Interactive jobs can be used to create an instance for this kind of work on a compute node.
+### The easy way: `crc-interactive`
 
-## Submitting an Interactive Job
-Submitting an interactive job is similar to submitting a batch job, except you use the
-<a href="https://slurm.schedmd.com/srun.html">srun</a> command instead of sbatch. For example:
+The `crc-interactive` command builds the Slurm request for you. The simplest
+invocation grabs the defaults — one core on one SMP node for one hour:
 
-```commandline
-srun -M smp -n1 -t02:00:00 --pty bash
+```bash
+crc-interactive -s
 ```
 
-Will prompt the scheduler to start a job on a SMP (other clusters such as HTC, MPI, GPU are also possible) node with 1 `task` (or `core`, -n1) for 2 hours wall clock 
-time (-t02:00:00), and in terminal mode.
+Add flags to request more (cluster, cores, memory, time, GPUs). Pass the command the 
+`--help` flag to display the full list of options
 
-When the interactive job starts, you will notice that you are no longer on a login node, but rather one of the 
-compute nodes.
+=== "command"
 
-```commandline
-[fangping@login0a ~]$ srun -M smp -n1 -t02:00:00 --pty bash
-[fangping@smp-n45 ~]$
+    ```bash
+    crc-interactive --help
+    ```
+=== "output"
+
+    ```bash
+    usage: crc-interactive [-h] [-v] [-z] [-p PARTITION] [-s] [-g] [-m] [-i] [-d] [-e] [-b MEM] [-t TIME] [-n NUM_NODES] [-c NUM_CORES]
+                           [-u NUM_GPUS] [-a ACCOUNT] [-r RESERVATION] [-l LICENSE] [-f FEATURE] [-o]
+    
+    Launch an interactive Slurm session.
+    
+    optional arguments:
+      -h, --help                                 show this help message and exit
+      -v, --version                              show program's version number and exit
+      -z, --print-command                        print the equivalent slurm command and exit
+    
+    Cluster Arguments:
+      -p PARTITION, --partition PARTITION        run the session on a specific partition
+      -s, --smp                                  launch a session on the smp cluster
+      -g, --gpu                                  launch a session on the gpu cluster
+      -m, --mpi                                  launch a session on the mpi cluster
+      -i, --invest                               launch a session on the invest cluster
+      -d, --htc                                  launch a session on the htc cluster
+      -e, --teach                                launch a session on the teach cluster
+    
+    Arguments for Increased Resources:
+      -b MEM, --mem MEM                          memory in GB
+      -t TIME, --time TIME                       run time in hours or hours:minutes [default: 01:00:00]
+      -n NUM_NODES, --num-nodes NUM_NODES        number of nodes [default: 1]
+      -c NUM_CORES, --num-cores NUM_CORES        number of cores per node [default: 1]
+      -u NUM_GPUS, --num-gpus NUM_GPUS           if using -g, the number of GPUs [default: 0]
+    
+    Additional Job Settings:
+      -a ACCOUNT, --account ACCOUNT              specify a non-default account
+      -r RESERVATION, --reservation RESERVATION  specify a reservation name
+      -l LICENSE, --license LICENSE              specify a license
+      -f FEATURE, --feature FEATURE              specify a feature, e.g. `ti` for GPUs
+      -o, --openmp                               run using OpenMP style submission
+    ```
+
+!!! tip
+    Add `-z` to any `crc-interactive` command to print the equivalent `srun`
+    command without running it.
+
+    === "command"
+
+        ```bash
+        crc-interactive -s -z
+        ```
+
+    === "output"
+
+        ``` bash
+        srun -M smp --export=ALL --nodes=1 --time=01:00:00 --mem=1g --ntasks-per-node=1 --pty bash
+        ```
+
+### The underlying command: `srun`
+
+`crc-interactive` ultimately calls `srun`, which you can also use directly:
+
+```bash
+[gnowmik@login1 ~]$ srun -M smp --export=ALL --nodes=1 --time=01:00:00 --mem=1g --ntasks-per-node=1 --pty bash
+srun: You have specified NO/WRONG partition, so defaulting to the smp partition.
+srun: job 23650051 queued and waiting for resources
+srun: job 23650051 has been allocated resources
+[gnowmik@smp-n215 ~]$
 ```
 
-Interactive jobs draw service units from the slurm allocation that your CRCD user is associated with.
+This commmand asks the scheduler for a session on the `smp` cluster (`-M`) with one core
+(`--ntasks-per-node`) and 1GB of RAM (`--mem`) on one node (`--nodes`) for one hours (`--time`), running `bash` in terminal mode
+(`--pty`). 
 
-!!! note
+When the session starts, your prompt changes from a login node (login1) to the assigned
+compute node (smp-n215).
 
-    If your user account is associated with multiple PI compute resource allocations, you can specify which one your 
-    interactive session will charge with the '-A' or '--account' arguments, followed by the group name. To check which 
-    account your user charges by default, use the command `sacctmgr show assoc onlydefaults | grep USERNAME`
-    Where USERNAME is your username.
+!!! note "Interactive jobs cost Service Units"
+    An interactive session draws [Service Units](service-units.md) from your group's Resource 
+    Allocation for as long as it's held. Be sure to exit out of the compute node when you're done. 
 
-## Interactive jobs with x11 forwarding
+    If you belong to multiple Resource Allocations, you can select which one to charge against by 
+    explicitly specifying `--account=<group>`. To see your default, run
 
-If you would like to run an application that has a GUI interface, X11 forwarding is required.
+    ```bash
+    sacctmgr show associations onlydefaults format=cluster,account%30s,user | grep $USER
+    ```
 
-You should allocate a job to a node with your parameters, then SSH authenticated X11 session from the login node to 
-your interactive session on that compute node. You can follow the following steps:
+    Remove the `onlydefaults` option to show all your Resource Allocations.
 
-First, allocate a job on a cluster, for example HTC (SMP, GPU, MPI are also possible)
-```commandline
-salloc -M htc -n1 -t02:00:00
-salloc: Granted job allocation 874773
+## GUI applications (X11 forwarding)
+
+To run a graphical application from the terminal, you need enable X11 forwarding from a compute
+node. First, allocate a node with the `salloc` command, then ssh into it with `-X` flag:
+
+```
+[gnowmik@login1 ~]$ salloc -M htc --nodes=1 --time=02:00:00
+salloc: You have specified NO/WRONG partition, so defaulting to the htc partition.
+salloc: Granted job allocation 10721347
 salloc: Waiting for resource configuration
-salloc: Nodes htc-n12 are ready for job
-```
-Then use ssh to connect to the node that is ready for you.
-```commandline
-ssh -X htc-n12
+salloc: Nodes htc-n72 are ready for job
+[gnowmik@login1 ~]$
 ```
 
-Once in your interactive session you can load software that provide GUI with the module system and launch them from 
+```bash
+[gnowmik@login1 ~]$ ssh -X htc-n72
+The authenticity of host 'htc-n72 (10.201.8.72)' can't be established.
+ED25519 key fingerprint is SHA256:LSRI8iKoJTxzJprwTWQkr55XuZ/UtTYlk5AtS04Icz0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'htc-n72' (ED25519) to the list of known hosts.
+[gnowmik@htc-n72 ~]$
+[gnowmik@htc-n72 ~]$ module load xeyes
+[gnowmik@htc-n72 ~]$ xeyes
+```
+
+Once connected, load a GUI application with the module system and launch it from
 the command line.
 
-## Open Ondemand
+![XEYES](../../_assets/img/slurm/xeyes.png)
 
-We have implemented [Open Ondemand](../web-portals/open-ondemand.md) to run common GUI tools, such as RStudio, 
-Jupyter NotebookD, Jupyter Lab and Matlab. This interface is often easier to use if you are unfamiliar with slurm and 
-submitting jobs via the command line. This is also the best method for launching an interactive session with a 
-GUI desktop.
+!!! note
+    The `ssh -X <compute_node>` hop from a login node to your compute node relies on
+    passwordless SSH *within* the cluster. If you're prompted for a password or
+    denied, set it up following
+    [Passwordless SSH → between cluster nodes](../getting-started/passwordless-ssh.md).
 
-## Quality of Service
-All jobs submitted to Slurm must be assigned a Quality of Service (QoS). QoS levels define resource 
-limitations. The default QoS is `normal`.
 
-<table>
-	<thead>
-		<tr>
-			<th>Quality of Service</th>
-			<th>Max Walltime</th>
-			<th>Priority factor</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>short</td>
-			<td>12:00:00</td>
-			<td>1.0</td>
-		</tr>
-		<tr>
-			<td>normal</td>
-			<td>3-00:00:00</td>
-			<td>0.75</td>
-		</tr>
-		<tr>
-			<td>long</td>
-			<td>6-00:00:00</td>
-			<td>0.5</td>
-		</tr>
-	</tbody>
-</table>
+Remember to `scancel` any interactive job that was started with `salloc`. Otherwise,
+the allocated resources remain held until completion of the requested walltime limit.
+As shown below, the job remains in the queue in the Running state even after I logged 
+out of the compute node.
 
-<ul>
-	<li>Walltime is specified in days-hh:mm:ss</li>
-</ul>
+```bash
+[gnowmik@htc-n72 ~]$ module load xeyes
+[gnowmik@htc-n72 ~]$ xeyes
 
-If your job does not meet these requirements it will be not be accepted
+^C
+[gnowmik@htc-n72 ~]$ exit
+logout
+Connection to htc-n72 closed.
+[gnowmik@login1 ~]$ squeue -M htc -u $USER
+CLUSTER: htc
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          10721347       htc interact  gnowmik  R       5:15      1 htc-n72
+[gnowmik@login1 ~]$
+```
+
+The `scontrol` command shows more details about the allocated interactive job that was 
+spawned with `salloc -M htc --nodes=1 --time=02:00:00`. The `--nodes=1` flag allocated
+one CPU core on a single node along with the default 8GB of RAM per core for that
+particular node.
+
+```bash
+[gnowmik@login1 ~]$ scontrol -M htc show job 10721347
+JobId=10721347 JobName=interactive
+   UserId=gnowmik(152289) GroupId=kwong(16260) MCS_label=N/A
+   Priority=14105 Nice=0 Account=kwong QOS=htc-htc-s
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
+   RunTime=00:13:52 TimeLimit=02:00:00 TimeMin=N/A
+   SubmitTime=2026-08-02T20:10:30 EligibleTime=2026-08-02T20:10:30
+   AccrueTime=Unknown
+   StartTime=2026-08-02T20:10:30 EndTime=2026-08-02T22:10:30 Deadline=N/A
+   PreemptEligibleTime=2026-08-02T20:10:30 PreemptTime=None
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-08-02T20:10:30 Scheduler=Main
+   Partition=htc AllocNode:Sid=login1:400755
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=htc-n72
+   BatchHost=htc-n72
+   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=8000M,node=1,billing=1
+   AllocTRES=cpu=1,mem=8000M,node=1,billing=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryCPU=8000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/bin/bash
+   WorkDir=/ihome/kwong/gnowmik
+   Power=
+
+[gnowmik@login1 ~]$
+```
+
+If you need more, 67 cores for example, you can pass to `salloc` the additional flag `--ntasks-per-node=67`,
+and Slurm will schedule the job 
+
+=== "command"
+    ```bash
+    [gnowmik@login1 ~]$ salloc -M htc --nodes=1 --time=02:00:00 --ntasks-per-node=67
+    salloc: You have specified NO/WRONG partition, so defaulting to the htc partition.
+    salloc: Granted job allocation 10722043
+    salloc: Nodes htc-n87 are ready for job
+    [gnowmik@login1 ~]$ scontrol -M htc show job 10722043
+    ```
+=== "output"
+
+    ```bash
+    JobId=10722043 JobName=interactive
+       UserId=gnowmik(152289) GroupId=kwong(16260) MCS_label=N/A
+       Priority=14084 Nice=0 Account=kwong QOS=htc-htc-s
+       JobState=RUNNING Reason=None Dependency=(null)
+       Requeue=1 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
+       RunTime=00:00:18 TimeLimit=02:00:00 TimeMin=N/A
+       SubmitTime=2026-08-03T00:50:00 EligibleTime=2026-08-03T00:50:00
+       AccrueTime=Unknown
+       StartTime=2026-08-03T00:50:00 EndTime=2026-08-03T02:50:00 Deadline=N/A
+       PreemptEligibleTime=2026-08-03T00:50:00 PreemptTime=None
+       SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-08-03T00:50:00 Scheduler=Main
+       Partition=htc AllocNode:Sid=login1:370003
+       ReqNodeList=(null) ExcNodeList=(null)
+       NodeList=htc-n87
+       BatchHost=htc-n87
+       NumNodes=1 NumCPUs=67 NumTasks=67 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+       ReqTRES=cpu=67,mem=536000M,node=1,billing=67
+       AllocTRES=cpu=67,mem=536000M,node=1,billing=67
+       Socks/Node=* NtasksPerN:B:S:C=67:0:*:* CoreSpec=*
+       MinCPUsNode=67 MinMemoryCPU=8000M MinTmpDiskNode=0
+       Features=(null) DelayBoot=00:00:00
+       OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+       Command=/bin/bash
+       WorkDir=/ihome/kwong/gnowmik
+       Power=
+    ```
+You see in the output to `scontrol` that the job was allocated `NumNodes=1 NumCPUs=67 NumTasks=67`
+and with `mem=536000M`, which is the aggregate RAM for 67 cores at 8GB/core.
+
+## GUI applications (Open OnDemand and Viz)
+
+[**Open OnDemand**](../getting-started/open-ondemand.md) runs common GUI tools —
+RStudio, Jupyter Notebook, JupyterLab, and MATLAB — in your browser. It's the
+easiest option if you're unfamiliar with Slurm or the command line.
+
+Alternatively, for a full graphical Linux desktop, the 
+[**VIZ portal**](../getting-started/viz.md) gives you GUI access using a web browser.
+
+## Quality of Service (QoS)
+
+Every job — interactive or batch — is assigned a Quality of Service that caps
+its walltime and influences its scheduling priority. The default is `normal`;
+request another with `--qos=<name>`. A job asking for more walltime than its QoS
+allows will be rejected.
+
+!!! info "See Job Limits & QoS for current limits"
+    The QoS levels, their maximum walltimes and priority factors, and the related
+    per-group CPU/GPU and memory limits are maintained in the
+    [**Job Limits & QoS**](job-limits.md#group-resource-limits) page.
+
+## Where to go next
+
+<div class="grid cards" markdown>
+
+-   :material-file-document-edit:{ .lg .middle } __Run work unattended__
+
+    ---
+
+    Turn a tested command into a batch script that runs without you.
+
+    [:octicons-arrow-right-24: Batch Jobs](batch-jobs.md)
+
+-   :material-currency-usd:{ .lg .middle } __Understand the cost__
+
+    ---
+
+    How Service Units are calculated and charged against your allocation.
+
+    [:octicons-arrow-right-24: Service Units](service-units.md)
+
+-   :material-web:{ .lg .middle } __Work in the browser__
+
+    ---
+
+    Notebooks, RStudio, MATLAB, and desktops without command-line setup.
+
+    [:octicons-arrow-right-24: Open OnDemand](../getting-started/open-ondemand.md)
+
+</div>
