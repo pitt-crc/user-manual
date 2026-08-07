@@ -421,8 +421,9 @@ The data will arrive in the CRCD SRE storage filesystem for the Research Project
 
 <!--- ![sre_ingress-globus.5](../_assets/img/avd/crcd-sre_ingress-globus.5.png) --->
 
-!!! tip "Data ingress via Globus"  Data ingress via Globus is a two-step process. First, data is transferred from the source collection to the Azure Storage Account for the Research Project. Second, the data in the Azure Storage Account is automatically transferred to the corresponding ingress folder in the corresponding CRCD SRE storage.
-This automatic second step only transfers individual files — folders are skipped and will remain stuck in the Azure Storage Account. If you need to transfer folders into your CRCD SRE storage, first create a tarball of the entire folder and transfer that tarball file instead.
+!!! tip "Data ingress via Globus"  
+    Data ingress via Globus is a two-step process. First, data is transferred from the source collection to the Azure Storage Account for the Research Project. Second, the data in the Azure Storage Account is automatically transferred to the corresponding ingress folder in the corresponding CRCD SRE storage.
+    This automatic second step only transfers individual files — folders are skipped and will remain stuck in the Azure Storage Account. If you need to transfer folders into your CRCD SRE storage, first create a tarball of the entire folder and transfer that tarball file instead.
 
 ##**7. ^^Data Egress Method^^**
 
