@@ -1,0 +1,40 @@
+/* Make the entire grid card clickable via its final link */
+.md-typeset .grid.cards > ul > li {
+  position: relative;
+}
+
+.md-typeset .grid.cards > ul > li > p:last-child > a::after {
+  content: "";
+  position: absolute;
+  inset: 0;               /* cover the whole card */
+}
+
+/* Show a pointer cursor anywhere on the card */
+.md-typeset .grid.cards > ul > li:hover {
+  cursor: pointer;
+}
+
+/* Keep body links clickable and abbreviation tooltips hoverable above the stretched overlay */
+.md-typeset .grid.cards > ul > li > *:not(:last-child) :is(a, abbr) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Lift cards off the white page */
+.md-typeset .grid.cards > ul > li {
+  border: .05rem solid var(--md-default-fg-color--lightest); /* stylelint-disable-line custom-property-pattern -- Material theme variable uses a double-hyphen tonal variant */
+  border-radius: .4rem;
+  box-shadow: 0 .1rem .4rem rgb(0 0 0 / 10%);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 .35rem .9rem rgb(0 0 0 / 12%);
+  transform: translateY(-.1rem);
+}
+
+/* Colour the card icons with the theme's primary colour */
+.md-typeset .grid.cards > ul > li .twemoji.lg {
+  color: var(--md-primary-fg-color);
+}

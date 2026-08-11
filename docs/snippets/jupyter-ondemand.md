@@ -1,145 +1,162 @@
-# Jupyter on Ondemand User Guide
+# Jupyter on OnDemand
 
-The CRCD offers Jupyter on OnDemand services to help users run Python notebooks on the different CRCD clusters. 
-We are currently offering Jupyter on the following clusters: HTC and GPU. The Jupyter on OnDemand service is available 
-to all users with a CRCD account. 
-The Jupyter on OnDemand service is available, among other different applications, through the CRCD OnDemand web portal 
-at: [ondemand.htc.crc.pitt.edu](http://ondemand.htc.crc.pitt.edu).
+The CRCD offers Jupyter through Open OnDemand so users can run Python notebooks on the CRCD clusters — currently the
+**HTC** and **GPU** clusters. The service is available to everyone with a CRCD account, through the OnDemand web portal
+at [ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu).
 
-As with any of the other methods for connecting to CRCD resources, you should start by ensuring you have a proper 
-connection to the [GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426). With this 
-connection established, you can proceed with the steps below.
+As with any method of connecting to CRCD resources, first make sure you are connected to the
+[GlobalProtect VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=3426), then proceed with the steps
+below.
 
-When you visit the OnDemand web portal, you will be prompted to log in with your Pitt account:  
-  
-![](../_assets/img/web-portals/ondemand_001.png)
+When you visit the OnDemand web portal, you are prompted to log in with your Pitt account:
 
-Once you log in, you will see the following screen:  
-  
-![](../_assets/img/web-portals/ondemand_002.png)
+![OnDemand login prompt](../_assets/img/web-portals/ondemand_001.png)
 
-Click on the "all available apps" link highlighted in the red box in the previous screen. You will see the following screen that includes all the available applications through OnDemand:  
-  
-![](../_assets/img/web-portals/ondemand_003.png)
+Once logged in, you see the Dashboard:
 
-Use the search box to search for "Jupyter", you will see two results for your search as follows:  
-  
-![](../_assets/img/web-portals/ondemand_004.png)
+![OnDemand dashboard](../_assets/img/web-portals/ondemand_002.png)
 
-*   Jupyter: is the portal to launch Jupyter on the HTC cluster.
-*   Jupyter on GPU: is the portal to launch Jupyter on the GPU cluster.
+Click the **All Available Apps** link (highlighted in red above) to see every application available through OnDemand:
+
+![All available apps](../_assets/img/web-portals/ondemand_003.png)
+
+Search for "Jupyter" in the search box; two results appear:
+
+![Jupyter search results](../_assets/img/web-portals/ondemand_004.png)
+
+- **Jupyter** — launches Jupyter on the HTC cluster.
+- **Jupyter on GPU** — launches Jupyter on the GPU cluster.
 
 ## Jupyter on HTC
 
-Click on the Jupyter link, you will see the following screen:  
-  
-![](../_assets/img/web-portals/ondemand_006.png)
+Click the **Jupyter** link to open the submission form:
 
-We offer multiple ready-to-use python environments for Jupyter on HTC where you can choose between:
+![Jupyter on HTC submission form](../_assets/img/web-portals/ondemand_006.png)
 
-*   Python 3.10
-*   Python 3.9
-*   Python 3.8
-*   Python 3.7
-*   Python 2.7
+Several ready-to-use Python environments are offered for Jupyter on HTC:
 
-![](../_assets/img/web-portals/ondemand_005.png)
+- Python 3.10
+- Python 3.9
+- Python 3.8
+- Python 3.7
+- Python 2.7
 
-These are all base conda installations featuring Jupyter Lab integration, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
-  
-![](../_assets/img/web-portals/ondemand_007.png)
+![Python environment dropdown](../_assets/img/web-portals/ondemand_005.png)
 
-You can also use a singularity container to run Jupyter on HTC by providing the path to the container as follows:  
-  
-![](../_assets/img/web-portals/ondemand_008.png)
+These are base conda installations with JupyterLab integration, so you can start Jupyter and work with your notebooks
+right away. You can also use your own conda environment by providing its path:
 
-Once you select the python environment, you can specify the number of hours you want to run Jupyter for. The default is 1 hour. You can also specify the number of cores you want to use. The default is 1 core. You can also specify the account from which the SUs will be withdrawn if you are affiliated with multiple groups/accounts.
+![Custom conda environment path](../_assets/img/web-portals/ondemand_007.png)
 
-![](../_assets/img/web-portals/ondemand_009.png)
+Or run Jupyter from a Singularity container by providing the container's path:
 
-Once you choose the appropriate environment and click on the "Launch" button, you will see the following screen:  
-  
-![](../_assets/img/web-portals/ondemand_010.png)
+![Singularity container path](../_assets/img/web-portals/ondemand_008.png)
 
-Wait until requested resources are allocated and you should see the following screen:  
-  
-![](../_assets/img/web-portals/ondemand_011.png)
+After selecting an environment, set the number of hours (default 1) and cores (default 1). If you belong to more than
+one group/account, you can also choose which account the Service Units are drawn from:
 
-Press the "Connect to Jupyter" button, and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:  
-  
-![](../_assets/img/web-portals/ondemand_012.png)
+![Hours, cores, and account](../_assets/img/web-portals/ondemand_009.png)
+
+Click **Launch**. The job is queued:
+
+![Job queued](../_assets/img/web-portals/ondemand_010.png)
+
+Wait until the requested resources are allocated:
+
+![Resources allocated](../_assets/img/web-portals/ondemand_011.png)
+
+Click **Connect to Jupyter** to open the JupyterLab interface, where you can browse your home directory for notebooks:
+
+![JupyterLab interface](../_assets/img/web-portals/ondemand_012.png)
 
 ## Jupyter on GPU
 
-Click on the Jupyter on GPU link, you will see the following screen:  
-  
-![](../_assets/img/web-portals/ondemand_013.png)
+Click the **Jupyter on GPU** link to open the submission form:
 
-We offer multiple ready-to-use deep learning python environments for Jupyter on GPU where you can choose between:
+![Jupyter on GPU submission form](../_assets/img/web-portals/ondemand_013.png)
 
-*   PyTorch 2.0.0 on GPU
-*   PyTorch 1.11.0 on GPU
-*   PyTorch 1.8.1 on GPU + CUDA 11.1.1
-*   Tensorflow 2.4.1 on GPU + CUDA 10.1
+Several ready-to-use deep-learning environments are offered for Jupyter on GPU, for example:
 
-![](../_assets/img/web-portals/ondemand_013_.png)
+- PyTorch 2.0.0
+- PyTorch 1.11.0
+- PyTorch 1.8.1 + CUDA 11.1.1
+- TensorFlow 2.4.1 + CUDA 10.1
 
-These are all base conda installations featuring Jupyter Lab integration and GPU-enabled packages, enabling users to initiate Jupyter and engage with their notebooks. Furthermore, we provide the option to utilize a personalized conda environment established by the user by simply furnishing the environment's path:  
-  
-![](../_assets/img/web-portals/ondemand_014.png)
+![Deep-learning environment dropdown](../_assets/img/web-portals/ondemand_013_.png)
 
-You can also use a singularity container to run Jupyter on GPU by providing the path to the container as follows:  
-  
-![](../_assets/img/web-portals/ondemand_015.png)
+!!! tip "Check the current offerings"
+    The exact framework and CUDA versions in the dropdown change over time — use whatever the form currently lists
+    rather than the specific versions shown here.
 
-Once you select the python environment, you can specify the CUDA version you want to load with your environment:  
-  
-![](../_assets/img/web-portals/ondemand_016.png)
+These are base conda installations with JupyterLab integration and GPU-enabled packages. As on HTC, you can instead
+supply the path to your own conda environment:
 
-We offer multiple ready-to-use deep learning python environments for Jupyter on GPU where you can choose between:
+![Custom conda environment path (GPU)](../_assets/img/web-portals/ondemand_014.png)
 
-*   A100: 12 cores per GPU card
-*   GTX1080: 2 cores per GPU card
-*   V100: 6 cores per GPU card
-*   A100\_NVLINK: 16 cores per GPU card
-*   A100\_multi: 16 cores per GPU card
+Or run from a Singularity container:
 
-You can also specify the account from which the SUs will be withdrawn if you are affiliated with multiple groups/accounts.
+![Singularity container path (GPU)](../_assets/img/web-portals/ondemand_015.png)
 
-Once you choose the appropriate environment and parameters and click on the "Launch" button, you will see the following screen:
+After selecting an environment, you can choose the CUDA version to load with it:
 
-![](../_assets/img/web-portals/ondemand_017.png)
+![CUDA version selection](../_assets/img/web-portals/ondemand_016.png)
 
-Wait until requested resources are allocated and you should see the following screen:
+You also choose the **GPU type**, which determines how many CPU cores are available per GPU card:
 
-![](../_assets/img/web-portals/ondemand_018.png)
+- A100: 12 cores per GPU card
+- A100_NVLINK: 16 cores per GPU card
+- A100_multi: 16 cores per GPU card
 
-Press the "Connect to Jupyter" button, and you will be directed to the Jupyter-Lab interface where you can browse your home directory for notebooks as follows:
+!!! note "Available GPU types reflect current hardware"
+    The GPU types listed in the form track the GPU cluster's current partitions. See the
+    [GPU cluster](../hardware_profiles/gpu.md) page for the full, up-to-date list (such as `l40s`, `rtx6k`, and `h200`)
+    and confirm the options in the live dropdown, as they change as hardware is added or retired.
 
-![](../_assets/img/web-portals/ondemand_019.png)
+If you belong to more than one group/account, you can choose which account the Service Units are drawn from. After
+choosing your environment and parameters, click **Launch**:
 
-## General notes about using Jupyter on OnDemand:
+![Job queued (GPU)](../_assets/img/web-portals/ondemand_017.png)
 
-Please note that IX, ZFS, and BGFS storage locations are not browsable from OnDemand by default and to access such locations you have to create symbolic links to the directories into your home directory as follows:
+Wait until the requested resources are allocated:
 
- ln -s /ix/group/username/dir /ihome/group/username/ix\_dir
+![Resources allocated (GPU)](../_assets/img/web-portals/ondemand_018.png)
 
-You can view the logs of your Jupyter session by clicking on the "My Interactive Sessions" link as follows:  
-![](../_assets/img/web-portals/ondemand_020.png)
+Click **Connect to Jupyter** to open the JupyterLab interface:
 
-Which will direct you to a file explorer with your session logs and scripts as follows:  
-  
-![](../_assets/img/web-portals/ondemand_022.png)
+![JupyterLab interface (GPU)](../_assets/img/web-portals/ondemand_019.png)
 
-This is useful to debug your session if you are having issues with it and helpful for us to when troubleshooting and solving problems occurring with your session if you contact us through submitting a support ticket.
+## General notes
 
-## Using custom virtual environments with Jupyter on OnDemand:
+!!! note "Project storage isn't browsable by default"
+    Project storage locations (for example `/ix`, `/ix1`, and `/vast`) are not browsable from OnDemand by default. To
+    reach them, create a symbolic link from your home directory to the location, for example:
 
-Please refer to this [tutorial](../applications/python.md), for a complete guide on managing Python environments on the CRC clusters.
+    ```bash
+    ln -s /ix/<group>/<username>/dir /ihome/<group>/<username>/ix_dir
+    ```
 
-1.  To run Jupyter via OnDemand you multiple options of pre-installed modules that you can load and use; however if you want to use your custom environment, you need to create the environment first through one of the methods mentioned earlier and install your required packages into it.
-2.  You must make sure that you install jupyter and jupyterlab packages into your environment so that you can run Jupyter through OnDemand (you can use conda install, mamba install or pip install to install these packages like mentioned earlier in the steps of creating environments).
-3.  If you need other modules (from Lmod) to be loaded during your Jupyter on OnDemand session, you have to install a package called jupyterlmod which adds a part to Jupyter’s interface where you can specify the modules you need to load. Please note that this package can only be installed only through pip.
+You can view the logs of your Jupyter session by clicking **My Interactive Sessions**:
 
-    ![type:video](../_assets/img/web-portals/7.install_jupyterlmod.mp4)
-    ![type:video](../_assets/img/web-portals/jupyter_ondemand.mp4)
+![My Interactive Sessions](../_assets/img/web-portals/ondemand_020.png)
+
+This opens a file explorer with your session logs and scripts:
+
+![Session logs and scripts](../_assets/img/web-portals/ondemand_022.png)
+
+These logs are useful for debugging a session, and helpful to us when troubleshooting if you submit a support ticket.
+
+## Using custom virtual environments
+
+See the [Python environments](../applications/python.md) page for a complete guide to managing Python environments on
+the CRCD clusters. In short:
+
+1. To use a custom environment (rather than one of the pre-installed modules), create the environment first using one
+   of the methods in that guide and install your required packages into it.
+2. Make sure you install the `jupyter` and `jupyterlab` packages into the environment so it can run Jupyter through
+   OnDemand (via `conda install`, `mamba install`, or `pip install`).
+3. If you need Lmod modules loaded during your Jupyter on OnDemand session, install the `jupyterlmod` package, which
+   adds a panel to Jupyter's interface for selecting modules to load. This package can only be installed through `pip`.
+
+![type:video](../_assets/img/web-portals/7.install_jupyterlmod.mp4)
+
+![type:video](../_assets/img/web-portals/jupyter_ondemand.mp4)

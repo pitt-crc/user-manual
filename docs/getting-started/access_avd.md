@@ -3,9 +3,9 @@ hide:
   - toc
 ---
 
-# Access CRC Using Azure Virtual Desktop (AVD)
+# Access CRCD Using Azure Virtual Desktop (AVD)
 
-If for whatever reason you are unable to get VPN to work, you can try accessng CRC through AVD. The AVD is a 
+If for whatever reason you are unable to get VPN to work, you can try accessng CRCD through AVD. The AVD is a 
 cloud-based Windows instance with direct access to PittNet.
 
 A schematic of the process is depicted below.
@@ -17,7 +17,7 @@ A schematic of the process is depicted below.
 *   **Client** -- this is your computer or internet-connected device
 *   **Access Portal** -- one of several remote servers used to submit jobs to the high performance computing clusters or to perform
 data management operations
-*   **CRCD Ecosystem** -- the total footprint of the CRC infrastructure, including high performance computing 
+*   **CRCD Ecosystem** -- the total footprint of the CRCD infrastructure, including high performance computing 
 clusters, data storage systems, networking equipment, and software 
 *   **Azure Virtual Desktop** -- A cloud-based Windows Remote Desktop that has a direct connection to PittNet
 
@@ -119,7 +119,7 @@ for your OS. The previous link provides instructions for various types of device
     === "Full Desktop Overview of all Tools"
 
         Shown below is the Desktop of the Virtual Computing Lab, where there are active connections
-        to CRC using
+        to CRCD using
 
         * **PuTTY**
         * **WinSCP**
@@ -159,12 +159,12 @@ for your OS. The previous link provides instructions for various types of device
 
         ![MacOS-AVD-PuTTY-04](../_assets/img/avd/MacOS-AVD-PuTTY-04.png)
 
-        A successful authentication will present you with a terminal to one of the CRC login nodes.
+        A successful authentication will present you with a terminal to one of the CRCD login nodes.
 
         ![MacOS-AVD-PuTTY-05](../_assets/img/avd/MacOS-AVD-PuTTY-05.png)
 
     === "WinSCP"
-        Transfer of files from the AVD to CRC can be done using WinSCP. Go to the Windows Start Menu
+        Transfer of files from the AVD to CRCD can be done using WinSCP. Go to the Windows Start Menu
         and search for the WinSCP app.
 
         ![MacOS-AVD-WinSCP-01](../_assets/img/avd/MacOS-AVD-WinSCP-01.png)
@@ -249,7 +249,7 @@ for your OS. The previous link provides instructions for various types of device
 
         ![MacOS-AVD-MobaXterm-05](../_assets/img/avd/MacOS-AVD-MobaXterm-05.png)
 
-        A successful authentication will drop you onto the commandline on one of the CRC login nodes.
+        A successful authentication will drop you onto the commandline on one of the CRCD login nodes.
  
         ![MacOS-AVD-MobaXterm-06](../_assets/img/avd/MacOS-AVD-MobaXterm-06.png)
 
@@ -258,9 +258,9 @@ for your OS. The previous link provides instructions for various types of device
 
         ![MacOS-AVD-MobaXterm-07](../_assets/img/avd/MacOS-AVD-MobaXterm-07.png)
 
-    === "CRC Webportals"
+    === "CRCD Webportals"
 
-        From within the AVD, all CRC webportals are accessible, including
+        From within the AVD, all CRCD webportals are accessible, including
 
         * **Open OnDemand:** [https://ondemand.htc.crc.pitt.edu](https://ondemand.htc.crc.pitt.edu)
   

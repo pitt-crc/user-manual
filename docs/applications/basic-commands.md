@@ -1,7 +1,7 @@
 # Basic Slurm Commands
 
 These are some of the basic commands for viewing information from
-the [Slurm Workload Manager](../slurm/slurm-overview.md):
+the [Slurm Workload Manager](../slurm/index.md):
 
 * sinfo – Quick view of hardware allocated and free
 * sbatch <job_script> – Submit a job file
