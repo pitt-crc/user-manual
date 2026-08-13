@@ -142,39 +142,6 @@ bowtie2 -p 16 -x /path/to/bowtie2_index \
   -S alignments/${sample}.bowtie2.sam
 ```
 
-### A "commands" file (multiple parameters)
-
-When each job needs several parameters that don't map to integers, put one full
-command's arguments per line in a text file and select the line with `awk`:
-
-```
-[fangping@login1 jobs]$ cat bwa_mem.txt
--Y -R "@RG\tID:Exome_Norm\t..." -o ../results/bwa/Exome_Norm.sam ref.fasta Exome_Norm_R1.fastq.gz Exome_Norm_R2.fastq.gz
--Y -R "@RG\tID:Exome_Tumor\t..." -o ../results/bwa/Exome_Tumor.sam ref.fasta Exome_Tumor_R1.fastq.gz Exome_Tumor_R2.fastq.gz
-...  (one line per sample)
-```
-
-```bash
-#!/bin/bash
-#SBATCH --job-name=bwa_human_samples
-#SBATCH --cluster=htc
-#SBATCH --partition=htc
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=60g
-#SBATCH --time=3-00:00:00
-#SBATCH --array=1-10
-#SBATCH --output=bwa-%A_%a.out
-
-module purge
-module load bwa/0.7.17
-mkdir -p ../results/bwa
-
-args=$(awk -v line=$SLURM_ARRAY_TASK_ID 'NR==line' bwa_mem.txt)
-echo "bwa mem -t 8 $args"
-bash -c "bwa mem -t 8 $args"
-```
-
 For fuller, maintained bioinformatics workflows, see the
 [RNASeq Data Analysis](../advanced-genomics-support/RNASeq-data-analysis.md)
 notes.
