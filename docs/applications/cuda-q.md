@@ -19,9 +19,10 @@ module spider cudaq
   cudaq:
 -------------------------------------------------------------------------------
     Description:
-      NVIDIA CUDAQ, GPUs needed for best performance.
+      NVIDIA CUDAQ based on CUDA 13, GPUs needed for best performance.
 
      Versions:
+        cudaq/cu13-latest
         cudaq/0.12
         cudaq/0.14
 
