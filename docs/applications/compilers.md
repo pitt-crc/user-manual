@@ -1,6 +1,6 @@
 
 # Build Systems
-Make and CMake are available n your path when you login. Newer CMake versions and Bazel can be loaded through the module environment.
+Make and CMake are available on your path when you login. Newer CMake versions and Bazel can be loaded through the module environment.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -55,7 +55,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>11.5.0</td>
 			<td>Compiled</td>
 		</tr>
-		
 		<tr>
 			<td>GNU C++</td>
 			<td>gcc/15.1.0</td>
@@ -63,7 +62,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>11.5.0</td>
 			<td>Compiled</td>
 		</tr>
-		
 		<tr>
 			<td>GNU Fortran</td>
 			<td>gcc/15.1.0</td>
@@ -71,7 +69,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>11.5.0</td>
 			<td>Compiled</td>
 		</tr>
-
 		<tr>
 			<td>Intel C</td>
 			<td>intel-oneapi-compilers/2025.2.0</td>
@@ -79,7 +76,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>Not available</td>
 			<td>Compiled</td>
 		</tr>
-		
 		<tr>
 			<td>Intel C++</td>
 			<td>intel-oneapi-compilers/2025.2.0</td>
@@ -87,7 +83,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>11.5.0</td>
 			<td>Compiled</td>
 		</tr>
-		
 		<tr>
 			<td>Intel Fortran</td>
 			<td>intel-oneapi-compilers/2025.2.0</td>
@@ -95,64 +90,76 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>Not available</td>
 			<td>Compiled</td>
 		</tr>
-
 		<tr>
 			<td>OpenMPI C</td>
 			<td> openmpi/5.0.6</td>
 			<td>mpicc</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
 		<tr>
 			<td>OpenMPI C++</td>
 			<td> openmpi/5.0.6</td>
 			<td>mpic++</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
 		<tr>
 			<td>OpenMPI Fortran</td>
 			<td> openmpi/5.0.6</td>
 			<td>mpifort</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
-
 		<tr>
 			<td>Intel-MPI C</td>
 			<td> intel-oneapi-mpi/2021.11.0</td>
 			<td>mpiicc</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
 		<tr>
 			<td>Intel-MPI C++ </td>
 			<td> intel-oneapi-mpi/2021.11.0</td>
 			<td>mpiicpx</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
 		<tr>
-			<td>Intel-MPI Fortran</td>
-			<td>   java/24.0.1</td>
-			<td>javac </td>
-			<td>17.0.14</td>
-			<td>Compiled/Interpreted</td>
-		</tr>
-
-		<tr>
-			<td>Java</td>
+			<td>Intel MPI Fortran</td>
 			<td> intel-oneapi-mpi/2021.11.0</td>
 			<td>mpiifort</td>
 			<td>Not available</td>
-			<td>Compiled/Wrapper</td>
+			<td>Compiled Wrapper</td>
 		</tr>
-
+				<tr>
+			<td>MPICH C</td>
+			<td> mpich/4.1.2</td>
+			<td>mpicc</td>
+			<td>Not available</td>
+			<td>Compiled Wrapper</td>
+		</tr>
+		<tr>
+			<td>MPICH C++ </td>
+			<td> mpich/4.1.2</td>
+			<td>mpic++</td>
+			<td>Not available</td>
+			<td>Compiled Wrapper</td>
+		</tr>
+		<tr>
+			<td>MPICH Fortran</td>
+			<td>   mpich/4.1.2</td>
+			<td>mpifort </td>
+			<td>Not available</td>
+			<td>Compiled Wrapper</td>
+		</tr>
+		<tr>
+			<td>CUDA C</td>
+			<td>   cuda/12.9.0</td>
+			<td>nvcc </td>
+			<td>Not available</td>
+			<td>Compiled for GPU</td>
+		</tr>
 		<tr>
 			<td>Rust</td>
 			<td> rust/1.89.0</td>
@@ -160,7 +167,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>1.88.0</td>
 			<td>Compiled</td>
 		</tr>
-
 		<tr>
 			<td>Go</td>
 			<td> go/1.24.5</td>
@@ -168,7 +174,13 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>1.22.9</td>
 			<td>Compiled</td>
 		</tr>
-
+			<tr>
+			<td>Java</td>
+			<td>   java/24.0.1</td>
+			<td>javac </td>
+			<td>17.0.14</td>
+			<td>Compiled Interpreted</td>
+		</tr>
 		<tr>
 			<td>Perl</td>
 			<td> perl/5.38.0</td>
@@ -176,8 +188,6 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>5.32</td>
 			<td>Interpreted</td>
 		</tr>
-
-
 			<tr>
 			<td>Python</td>
 			<td> python/3.13.5</td>
@@ -185,32 +195,15 @@ GNU compilers and Python interpreter are available in your path when you login. 
 			<td>3.9.21</td>
 			<td>Interpreted</td>
 		</tr>
-	
 	</tbody>
 </table>
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#compTable').DataTable({
-            "paging": false,
-            "bPaginate": false,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false,
-            "searching": false,
-            "ordering": false
-        });
-    });
-</script>
 
 See the man pages man <executable> for more information about flags.
 
-*   GCC versions different than the default ire available through the Lmod Application Environment. 
+*   Any compiler or interpreter versions different than the default are available through the Lmod Application Environment. 
 *   Currently, HTC cluster does not support distributed parallel MPI jobs. Only shared memory parallel jobs are supported.
 
 ### Instruction sets
