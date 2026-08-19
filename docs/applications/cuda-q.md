@@ -111,3 +111,40 @@ q2 : ┤ x ├──────────────────────
   0.  -0.35j -0.25+0.25j]
 ```
 
+### Run as Slurm Job on the Cluster
+
+Below is an example job script named 'cudaq.slurm' executing a CUDAQ script on 2 GPU cards on the GPU cluster:
+
+```
+#!/bin/bash
+#SBATCH --job-name=job
+#SBATCH --output=cudaq.o%j
+#SBATCH --error=cudaq.e%j
+#SBATCH --job-name="cudaq"
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+#SBATCH --cluster=gpu
+#SBATCH --gres=gpu:2
+#SBATCH --account=sam
+#SBATCH --partition=a100_nvlink_multi
+##SBATCH --constraint=80g
+#SBATCH --time=0:29:00
+
+# Load Modules
+
+module load singularity/4.3.2  openmpi/4.1.7 cudaq/cu13-latest
+
+echo  $SLURM_NTASKS
+
+singularity exec --nv  $CUDAQ  mpiexec -np $SLURM_NTASKS python3 $CUDAQROOT/heisenberg_timedependent.py
+```
+
+Submit job script to run on the cluster, and show the resulting output file as follows:
+
+
+```
+[chx33@login1 ~]$ sbatch cudaq.slurm
+Submitted batch job 3494695 on cluster gpu
+[chx33@login1 ~]$ ls  heisenberg_t.png
+heisenberg_t.png
+```
