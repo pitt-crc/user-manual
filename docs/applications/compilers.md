@@ -4,7 +4,7 @@ Make and CMake are available n your path when you login. Newer CMake versions an
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
-<table class="display cell-border" id="compTable">
+<table class="display cell-border" id="buildTable">
 	<thead>
 		<tr>
 			<th>Build System</th>
