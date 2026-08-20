@@ -1,5 +1,5 @@
-
-# Build Systems
+# Software Development
+## Build Systems
 Make and CMake are available on your path when you login. Newer CMake versions and Bazel can be loaded through the module environment.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -32,7 +32,7 @@ Make and CMake are available on your path when you login. Newer CMake versions a
 
 
 
-# Compilers and Interpreters
+## Compilers and Interpreters
 GNU compilers and Python interpreter are available in your path when you login. Newer versions of GNU compilers are available as module environments.
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -198,7 +198,51 @@ GNU compilers and Python interpreter are available in your path when you login. 
 	</tbody>
 </table>
 
+## Debugger and Profilers
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
+<table class="display cell-border" id="buildTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Latest Module</th>
+			<th>Executable name</th>
+			<th>Default Version</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>GNU Debugger</td>
+			<td> Not available</td>
+			<td>gdb</td>
+			<td>14.2</td>
+		</tr>
+		<tr>
+			<td>CUDA GDB</td>
+			<td>cuda/12.9.0</td>
+			<td>cuda-gdb</td>
+			<td>Not available</td>
+		</tr>
+				<tr>
+			<td>Valgrind</td>
+			<td>valgrind/3.23.0</td>
+			<td>valgrind</td>
+			<td>3.23.0</td>
+		</tr>
+					<tr>
+			<td>Intel VTune Profiler</td>
+			<td>intel-oneapi-vtune/2025.4.0</td>
+			<td>vtune</td>
+			<td>Not available</td>
+		</tr>
+		<tr>
+			<td>NVIDIA Nsight Systems </td>
+			<td>nvidia-nsight-systems/2024.6.1</td>
+			<td>nsys, ncu</td>
+			<td>Not available</td>
+		</tr>				
+	</tbody>
+</table>
 
 
 See the man pages man <executable> for more information about flags.
