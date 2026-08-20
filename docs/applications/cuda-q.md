@@ -148,3 +148,6 @@ Submitted batch job 3494695 on cluster gpu
 [chx33@login1 ~]$ ls  heisenberg_t.png
 heisenberg_t.png
 ```
+You can open the output file "heisenberg_t.png" with any image viewer and see the following:
+
+![](../_assets/img/applications/heisenberg_t.png)
