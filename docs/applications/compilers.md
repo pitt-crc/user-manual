@@ -252,4 +252,4 @@ See the man pages man <executable> for more information about flags.
 
 ### Instruction sets
 
-The Haswell CPUs support AVX2 instructions. The GCC 8.2.0 compiler support AVX2 with the -march=core-avx2 flag. The login nodes have the same architecture as the compute nodes.
+The Haswell CPUs support AVX2 instructions. GCC compilers later than version 8.2.0 support AVX2 with the -march=core-avx2 flag. The login nodes have the same architecture as the compute nodes.
