@@ -256,7 +256,7 @@ the walltime.
 
     Code Server, VNC, and other apps through Open OnDemand.
 
-    [:octicons-arrow-right-24: Open OnDemand](../getting-started/open-ondemand.md)
+    [:octicons-arrow-right-24: Open OnDemand](../../getting-started/open-ondemand.md)
 
 -   :material-key:{ .lg .middle } __Set up SSH keys__
 
@@ -264,7 +264,7 @@ the walltime.
 
     Passwordless SSH, required for the remote tunnel.
 
-    [:octicons-arrow-right-24: Passwordless SSH](../getting-started/passwordless-ssh.md)
+    [:octicons-arrow-right-24: Passwordless SSH](../../getting-started/passwordless-ssh.md)
 
 -   :material-console:{ .lg .middle } __Interactive sessions__
 
@@ -272,6 +272,6 @@ the walltime.
 
     Other ways to get a shell on a compute node.
 
-    [:octicons-arrow-right-24: Interactive Jobs](interactive-jobs.md)
+    [:octicons-arrow-right-24: Interactive Jobs](../../slurm/interactive-jobs.md)
 
 </div>
