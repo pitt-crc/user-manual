@@ -248,8 +248,4 @@ GNU compilers and Python interpreter are available in your path when you login. 
 See the man pages man <executable> for more information about flags.
 
 *   Any compiler or interpreter versions different than the default are available through the Lmod Application Environment. 
-*   Currently, HTC cluster does not support distributed parallel MPI jobs. Only shared memory parallel jobs are supported.
 
-### Instruction sets
-
-The Haswell CPUs support AVX2 instructions. GCC compilers later than version 8.2.0 support AVX2 with the -march=core-avx2 flag. The login nodes have the same architecture as the compute nodes.
