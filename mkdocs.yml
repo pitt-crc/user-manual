@@ -109,6 +109,7 @@ nav:
         - MPI: hardware_profiles/mpi.md
         - GPU: hardware_profiles/gpu.md
         - Teach: hardware_profiles/teach.md
+      - Partition Name Changes: hardware_profiles/partition-migration.md
       - Access & Auxiliary Nodes:
         - Login Nodes: hardware_profiles/login.md
         - Viz: hardware_profiles/viz.md
