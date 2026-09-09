@@ -12,23 +12,97 @@ The SMP cluster is designed for workloads that run on a single server using shar
 multiple CPU cores with access to a common memory space, making the cluster well suited for multithreaded applications,
 OpenMP codes, and jobs that do not require distributed computing across multiple nodes.
 
-The cluster has two partitions. Most jobs run on the default **`smp`** partition. Jobs that need more memory than those
-nodes provide can use the **`high-mem`** partition, whose nodes offer up to 2 TB of RAM on a single node. The two
-partitions are billed at different rates (the `high-mem` nodes cost more per core but less per GB of memory) — see
-[Service Units](../slurm/service-units.md) for the exact weights.
+General-access nodes are grouped into partitions by **memory per core**, named `smp_<N>GB`, where `<N>` is roughly the
+gigabytes of RAM available to each core. Pick the tier whose memory-per-core matches your job. Memory-hungry work can use
+the higher tiers — `smp_32GB` puts up to 2 TB of RAM on a single node.
+
+Every tier bills the same for compute — **one SU per core-hour** — as long as your job stays within that tier's
+memory-per-core. Ask for more memory than a core's share and the memory part of the bill can exceed the cores; see
+[Service Units](../slurm/service-units.md) for the exact weights and worked examples.
+
+!!! warning "Partition names have changed"
+    The old `smp` and `high-mem` partitions have been replaced by the memory-per-core
+    tiers below, and some former `high-mem` nodes have moved to the [HTC](htc.md)
+    cluster. Update the `--partition` in your job scripts — see
+    [**Partition Name Changes**](partition-migration.md) for the full old-to-new mapping.
 
 ## Specifications
 
-Nodes are grouped by partition, newest hardware first.
+Nodes are grouped by partition, lowest memory-per-core first.
 
-| Partition | Nodes | --constraint    | CPU                       | Cores/Node | Mem/Node | Mem/Core | Scratch       | Network | Node Names      |
-| --------- | ----- | --------------- | ------------------------- | ---------- | -------- | -------- | ------------- | ------- | --------------- |
-| smp       | 1     | amd,turin       | AMD EPYC 9755             | 256        | 1.5 TB   | 6 GB     | 3.2 TB NVMe   | 10GbE   | smp-n266        |
-| smp       | 38    | amd,genoa       | AMD EPYC 9374F            | 64         | 768 GB   | 12 GB    | 3.2 TB NVMe   | 10GbE   | smp-n[214-251]  |
-| smp       | 55    | amd,rome        | AMD EPYC 7302             | 32         | 256 GB   | 8 GB     | 960 GB NVMe   | 10GbE   | smp-n[156-210]  |
-| high-mem  | 2     | intel,ice_lake  | Intel Xeon Platinum 8352Y | 64         | 2 TB     | 32 GB    | 10.24 TB NVMe | 10GbE   | smp-2048-n[0-1] |
-| high-mem  | 8     | intel,ice_lake  | Intel Xeon Platinum 8352Y | 64         | 1 TB     | 16 GB    | 10.24 TB NVMe | 10GbE   | smp-1024-n[1-8] |
-| high-mem  | 1     | amd,naples      | AMD EPYC 7351             | 32         | 1 TB     | 32 GB    | 1 TB NVMe     | 10GbE   | smp-1024-n0     |
+<style>
+.crc-specs-wrap {
+  overflow-x: auto;
+}
+.crc-specs {
+  border-collapse: collapse;
+  border: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  table-layout: auto;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin: 0.6em 0;
+}
+.crc-specs th,
+.crc-specs td {
+  padding: 0.3em 0.6em;
+  border: none;
+  border-bottom: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.crc-specs thead th {
+  font-weight: 700;
+  border-bottom-width: 0.1rem;
+}
+.crc-specs .num {
+  text-align: center;
+}
+.crc-specs td.cpu,
+.crc-specs th.cpu {
+  text-align: center;
+  white-space: normal;
+  min-width: 6.4rem;
+}
+</style>
+
+<div class="crc-specs-wrap" markdown="0">
+<table class="crc-specs">
+  <thead>
+    <tr>
+      <th>Partition</th><th class="num">Nodes</th><th>--constraint</th><th class="cpu">CPU</th><th>Max SIMD</th>
+      <th class="num">Cores/Node</th><th>Mem/Node</th><th>Mem/Core</th><th>Scratch</th>
+      <th>Network</th><th>Node Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>smp_6GB</td><td class="num">1</td><td>amd,turin</td><td class="cpu">AMD EPYC<br>9755</td><td>AVX-512</td>
+      <td class="num">256</td><td>1.5 TB</td><td>6 GB</td><td>3.2 TB</td><td>10GbE</td><td>smp-n266</td>
+    </tr>
+    <tr>
+      <td>smp_8GB</td><td class="num">55</td><td>amd,rome</td><td class="cpu">AMD EPYC<br>7302</td><td>AVX2</td>
+      <td class="num">32</td><td>256 GB</td><td>8 GB</td><td>960 GB</td><td>10GbE</td><td>smp-n[156-210]</td>
+    </tr>
+    <tr>
+      <td>smp_12GB</td><td class="num">38</td><td>amd,genoa</td><td class="cpu">AMD EPYC<br>9374F</td><td>AVX-512</td>
+      <td class="num">64</td><td>768 GB</td><td>12 GB</td><td>3.2 TB</td><td>10GbE</td><td>smp-n[214-251]</td>
+    </tr>
+    <tr>
+      <td rowspan="2">smp_32GB</td><td class="num">2</td><td>intel,ice_lake</td><td class="cpu">Intel Xeon<br>Platinum 8352Y</td><td>AVX-512</td>
+      <td class="num">64</td><td>2 TB</td><td>32 GB</td><td>10.2 TB</td><td>10GbE</td><td>smp-2048-n[0-1]</td>
+    </tr>
+    <tr>
+      <td class="num">1</td><td>amd,naples</td><td class="cpu">AMD EPYC<br>7351</td><td>AVX2</td>
+      <td class="num">32</td><td>1 TB</td><td>32 GB</td><td>1 TB</td><td>10GbE</td><td>smp-1024-n0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+`Mem/Core` is an approximate base-10 figure — see the note below before using it in a job request.
+
+--8<-- "memory-units.md"
 
 ## Additional Features
 
@@ -44,6 +118,12 @@ Multiple features can be requested by providing a comma-separated list (without 
 #SBATCH --constraint=amd,genoa
 ```
 
+!!! note "A tier can contain more than one CPU type"
+    Grouping is by memory-per-core, not by processor, so some tiers mix
+    architectures — `smp_32GB`, for instance, has both AMD (naples) and Intel
+    (ice_lake) nodes. If your job needs a specific architecture, pin it with a
+    `--constraint`.
+
 ## Related
 
 <div class="grid cards" markdown>
@@ -52,7 +132,7 @@ Multiple features can be requested by providing a comma-separated list (without 
 
     ---
 
-    How Service Units are calculated — the `smp` and `high-mem` partitions bill differently.
+    How Service Units are calculated — every tier bills the same per core, and differs only in memory.
 
     [:octicons-arrow-right-24: Service Units](../slurm/service-units.md)
 
