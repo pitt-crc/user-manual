@@ -5,7 +5,7 @@
 Linux uses standard POSIX permissions to control who can read, write, or execute
 a file or directory. `ls -l` shows the ownership and permissions:
 
-![File permissions](../_assets/img/getting-started/file_permissions.png)
+![File permissions](../_assets/img/getting-started/file_permissions.svg)
 
 The **execute (`x`)** permission means something different on directories than on
 files: on a directory it grants access *through* it — you need it to `cd` into
@@ -13,8 +13,9 @@ the directory, to `ls -l` its contents, or to reach anything beneath it. For
 example, changing a shared output folder to `744` (`drwxr--r--`) would stop group
 members and others from `cd`-ing into it.
 
-Change permissions with `chmod`; only the file's owner may change its permissions
-or ownership.
+Change permissions with `chmod`. Only the file's owner (or root) may change its 
+permissions. Changing the owning user requires root; you can change the 
+group with `chgrp` to any group you belong to.
 
 ## Default permissions: `umask`
 
@@ -48,7 +49,7 @@ your top level down to the files, then on the files themselves:
 ```bash
 chmod g+rx <directory>     # for each directory in the path
 chmod g+rx <file>          # read-only for the group
-chmod g+rwx <file>         # if the group should also edit it
+chmod g+rw <file>          # if the group should also edit it
 ```
 
 Setting `umask 002` or `007` makes new files group-accessible automatically.

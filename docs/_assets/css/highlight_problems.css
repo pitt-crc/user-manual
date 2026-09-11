@@ -1,0 +1,8 @@
+/* Highlight Common Problems (FAQ) in Pitt gold */
+.md-nav__link[href$="faq/"] {
+  font-weight: 700;
+  color: #003594;        /* dark blue text — legible on gold */
+  background: #FFB81C;    /* Pitt gold */
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.5rem;
+}

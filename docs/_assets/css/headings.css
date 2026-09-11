@@ -1,0 +1,30 @@
+/* Heading hierarchy for the CRCD User Manual
+   Goal: make H2 "theme" sections read as clear anchors and H3 questions
+   read as clearly subordinate, using Pitt brand colors. */
+
+/* Theme headers (H2) — clear section anchors */
+.md-typeset h2 {
+  color: #003594;                    /* Pitt blue */
+  border-bottom: 1px solid #e0e0e0;  /* light gray rule under each theme */
+  padding-bottom: 0.2rem;
+  margin-top: 2.5rem;                /* extra breathing room before a new theme */
+}
+
+/* Question headers (H3) — clearly subordinate, no divider.
+   Lighter and softer than the default so the blue H2 stays dominant. */
+.md-typeset h3 {
+  font-weight: 400;
+  color: #4a4a4a;
+  margin-top: 2rem;      /* separate each question from the previous answer */
+  margin-bottom: 0.4rem; /* keep the heading close to its own answer */
+}
+
+/* Solid round bullet before each question heading */
+.md-typeset h3::before {
+  content: "•";
+  color: #FFB81C;        /* Pitt gold — ties to the nav pill */
+  font-size: 2em;        /* double size */
+  line-height: 0;        /* don't let the larger glyph stretch the heading */
+  vertical-align: -0.18em; /* nudge back onto the text baseline */
+  margin-right: 0.15em;
+}
