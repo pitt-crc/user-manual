@@ -4,7 +4,7 @@ In this section we list a series of common problems that CRCD users may encounte
 
 ## Logging in and connecting
 
-### I can't log in — my session hangs or is terminated
+### I can't log in — my session hangs or is terminated { data-toc-label="Can't log in" }
 
 !!! example ""
     === "The Symptom"
@@ -118,7 +118,7 @@ In this section we list a series of common problems that CRCD users may encounte
         [Login Nodes](hardware_profiles/login.md); for the limits themselves, see the
         [Job Scheduling Policy](policies/job-scheduling-policy.md).
 
-### SSH warning: remote host identification has changed
+### SSH warning: remote host identification has changed { data-toc-label="Host key changed" }
 
 !!! example ""
     === "The Symptom"
@@ -209,7 +209,7 @@ In this section we list a series of common problems that CRCD users may encounte
         This situation happens, for example, when we need to replace an old server with a new more performant one and we 
         keep the same hostname. The new host key will not match with the one stored in your `.ssh/known_hosts` file.
 
-### I can't ssh into an allocated compute node
+### I can't ssh into an allocated compute node { data-toc-label="SSH to compute node" }
 
 !!! example ""
     === "The Symptom"
@@ -309,7 +309,7 @@ In this section we list a series of common problems that CRCD users may encounte
           use the key. The key never leaves the cluster and only grants access to your own account,
           so its scope is limited — but treat your `~/.ssh` directory accordingly.
 
-### Red Hat Insights prompt upon login
+### Red Hat Insights prompt upon login { data-toc-label="Red Hat Insights prompt" }
 
 !!! example ""
     === "The Symptom"
@@ -340,7 +340,7 @@ In this section we list a series of common problems that CRCD users may encounte
 
 ## My jobs are not running
 
-### My job is stuck in the PD (pending) state
+### My job is stuck in the PD (pending) state { data-toc-label="Job stuck pending" }
 
 !!! example ""
     === "The Symptom"
@@ -426,7 +426,7 @@ In this section we list a series of common problems that CRCD users may encounte
         For the complete list of pending reasons, the QoS walltime tiers, and the per-group
         resource caps, see [Job Limits & QoS](slurm/job-limits.md).
 
-### My interactive session never gets a compute node
+### My interactive session never gets a compute node { data-toc-label="Interactive session waiting" }
 
 !!! example ""
     === "The Symptom"
@@ -511,7 +511,7 @@ In this section we list a series of common problems that CRCD users may encounte
         For the full picture on interactive sessions, including `salloc`, `srun`, and X11
         forwarding for GUI applications, see [Interactive Jobs](slurm/interactive-jobs.md).
 
-### My OnDemand session stays queued and shows no Connect button
+### My OnDemand session stays queued and shows no Connect button { data-toc-label="OnDemand stays queued" }
 
 !!! example ""
     === "The Symptom"
@@ -588,7 +588,7 @@ In this section we list a series of common problems that CRCD users may encounte
 
 ## I cannot access data
 
-### Permission denied when I try to read or write my data
+### Permission denied when I try to read or write my data { data-toc-label="Permission denied" }
 
 !!! example ""
     === "The Symptom"
@@ -706,7 +706,7 @@ In this section we list a series of common problems that CRCD users may encounte
         group can usually already read your home directory, while nobody outside the group can reach
         it at all.
 
-### I need access to data owned by another group
+### I need access to data owned by another group { data-toc-label="Cross-group access" }
 
 `/ix` and `/ix1` locations are accessible only to the allocation owner and the users they sponsor,
 so you cannot grant a collaborator outside your group access yourself — plain Unix permissions
@@ -731,7 +731,7 @@ with `chmod`; see [File Permissions](data-management/file-permissions.md).
 
 ## Accessing web portals
 
-### Open OnDemand: website under heavy load error
+### Open OnDemand: website under heavy load error { data-toc-label="Website under heavy load" }
 
 !!! example ""
     === "The Symptom"
@@ -749,21 +749,21 @@ with `chmod`; see [File Permissions](data-management/file-permissions.md).
 
 ## Accounts and eligibility
 
-### I'm graduating soon. Can I continue to use CRCD to complete my papers?
+### I'm graduating soon. Can I continue to use CRCD to complete my papers? { data-toc-label="Graduating soon" }
 
 Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
 
-### Can I provide my collaborators, who are outside of Pitt, access to my CRCD allocation?
+### Can I provide my collaborators, who are outside of Pitt, access to my CRCD allocation? { data-toc-label="External collaborators" }
 
 Yes. Please see the section on [Sponsored Accounts](getting-started/sponsored_account.md).
 
-### I'm an Emeritus Faculty, can I still use CRCD?
+### I'm an Emeritus Faculty, can I still use CRCD? { data-toc-label="Emeritus faculty" }
 
 Yes. In the eyes of CRCD, a Pitt Emeritus Faculty gets the same benefits as an active faculty.
 
 ## Software and environments
 
-### I loaded python but where's conda?
+### I loaded python but where's conda? { data-toc-label="Where's conda?" }
 
 !!! example ""
     === "The Symptom"
