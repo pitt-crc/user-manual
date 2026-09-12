@@ -1,17 +1,20 @@
 # Requesting Resources
 
 The CRCD uses the Keystone platform for managing access to HPC resources.
-Keystone allows users submit allocation requests for their research teams and
+Keystone allows PIs to submit Resource Allocation renewals for their research teams and
 track the status of those requests. All CRCD users have access to the Keystone
-interface, however only team owners and administrators have permission to
-modify team details and submit resource requests.
+interface; however, only team owners and administrators have permission to
+modify team details and submit Resource Allocation renewals.
 
 !!! note "Before you begin"
 
     Keystone is only accessible by existing CRCD users who are connected to the
-    [Pitt VPN](https://services.pitt.edu/TDClient/33/Portal/KB/ArticleDet?ID=311).
+    [Pitt VPN](https://services.pitt.edu/TDClient/33/Portal/KB/Article/3426/Global-Protect-VPN-PittNet-VPN-Client-Installation-Guide-Pitt-Digital).
 
-    If you do not already have a CRCD account, you can request one from the CRCD help desk.
+    If you are new to CRCD and do not have a Resource Allocation, you can get started
+    with a [One-time Startup Allocation](https://services.pitt.edu/TDClient/33/Portal/Requests/Service/281/CRC-One-time-Startup-Allocation/Request).
+    PIs and their delegates can request additional CRCD accounts for team members using our 
+    [ticketing system](https://services.pitt.edu/TDClient/33/Portal/Requests/Service/284/CRC-Help-Request/Request).
 
 ## Step 1: Log In
 
@@ -30,7 +33,8 @@ To submit a new resource request, select the team for which you want to submit a
 
     Most tasks in Keystone are handled at the team level.
     Users should take care to select the proper team when submitting new allocation requests.
-    You can navigate back to this page at any time to select a different team.
+    You can navigate back to this page at any time to select a different team by clicking on 
+    the Keystone logo in the banner.
 
 ![The team selection screen](../_assets/img/keystone/select-team.png)
 
@@ -100,7 +104,7 @@ row to remove it.
 ### 4.3 Supporting Grants and Publications
 
 The next two steps record the funding that supports your project and any publications that
-have resulted from it.
+have resulted from prior usage of CRCD resources (see [Citing CRCD](../acknowledge-crc.md)). 
 The CRCD uses these records to report on the research its infrastructure enables, which in
 turn justifies continued investment in that infrastructure.
 
@@ -113,7 +117,7 @@ Selected records are listed below the search field and you can attach more than 
 
     Each step requires either at least one attached record or the checkbox indicating that
     none apply.
-    New projects frequently have no publications yet, in which case tick the checkbox and
+    New projects frequently have no publications that cited CRCD yet, in which case tick the checkbox and
     continue.
 
 !!! tip "Acknowledging CRCD"
