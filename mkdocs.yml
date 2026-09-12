@@ -101,6 +101,7 @@ nav:
           - Discovering Software: getting-started/step3/getting-started-step3-software.md
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
+  - keystone/requesting.md
   - Hardware Profiles:
       - hardware_profiles/index.md
       - Compute Clusters:
