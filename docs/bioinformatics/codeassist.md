@@ -5,48 +5,32 @@ hide:
 
 # Code Assist
 
-!!! abstract "In this step"
-    Choose an access portal and log in. Next: [Step 3 — run jobs](../step3/index.md).
-
-Once you've connected to the PittNet VPN (see [Step 1](../getting-started-step1-account.md)),
-you can reach the CRCD computing and storage resources through several portals. The
-most common entry points are below; if you're unsure, start with Terminal SSH — it's
-the most flexible and supports every workflow.
+TODO. description of the LLM server.
 
 <div class="grid cards" markdown>
 
--   :material-console:{ .lg .middle } __Terminal SSH to Login Node__
+-   :material-console:{ .lg .middle } __Posit Assistant in RStudio Server__
 
     ---
 
-    Command-line access for scripting and for submitting and monitoring jobs —
-    the most flexible option.
+    To set up Posit Assistant in RStudio.
 
     [:octicons-arrow-right-24: Connect via SSH](../terminal.md)
 
--   :material-web:{ .lg .middle } __Open OnDemand Web Portal__
+-   :material-web:{ .lg .middle } __Jupyter AI in JupyterLab__
 
     ---
 
-    Browser-based access to files, interactive apps, and notebooks — the simplest
-    on-ramp.
+    To set up Jupyter AI in JupyterLab.
 
     [:octicons-arrow-right-24: Open OnDemand](../open-ondemand.md)
 
--   :material-monitor:{ .lg .middle } __Linux Desktop Visualization Node__
+-   :material-monitor:{ .lg .middle } __Code Server__
 
     ---
 
-    A full graphical Linux desktop for GUI applications and visualization.
+    To connect to code assistant in Code Server
 
     [:octicons-arrow-right-24: Launch a desktop](../viz.md)
-
--   :material-school:{ .lg .middle } __JupyterHub Web Portal on Teach Cluster__
-
-    ---
-
-    Notebooks on the Teach cluster, for courses and teaching.
-
-    [:octicons-arrow-right-24: Teach cluster](../jupyter-teach.md)
 
 </div>
