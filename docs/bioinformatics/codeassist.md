@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-# Step 2- Login to Access Portals
+# Code Assist
 
 !!! abstract "In this step"
     Choose an access portal and log in. Next: [Step 3 — run jobs](../step3/index.md).
