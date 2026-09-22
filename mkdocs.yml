@@ -54,6 +54,7 @@ plugins:
         slurm/pbs-slurm.md: applications/basic-commands.md
         policies/slurm-limits.md: slurm/job-limits.md
         data-management/file-transfer-methods/globus-microsoft-onedrive.md: data-management/file-transfer-methods/globus-onedrive.md
+        bioinformatics/ollama.md: applications/ai-ml/ollama.md
   - search
 markdown_extensions:
   - abbr
@@ -148,6 +149,10 @@ nav:
       - applications/software-list.md
       - Coding:
           - VS Code: applications/coding/vscode.md
+      - AI & Machine Learning:
+          - Inference Servers: applications/ai-ml/inference-server.md
+          - Using the vllm Module: applications/ai-ml/vllm-module.md
+          - Ollama: applications/ai-ml/ollama.md
       - applications/application-environment.md
       - applications/basic-commands.md
       - applications/crc-wrappers.md
@@ -183,7 +188,6 @@ nav:
       - bioinformatics/alphafold3.md
       - bioinformatics/fMRI.md
       - bioinformatics/EHR.md
-      - bioinformatics/ollama.md
       - bioinformatics/bioimage.md
       - bioinformatics/virtualgl.md
       - bioinformatics/copilot.md
@@ -205,12 +209,12 @@ not_in_nav: |
   snippets/jupyter-teach.md
   snippets/ondemand-rstudio-gpu.md
   snippets/jupyter-hub.md
-  snippets/jupyter-hub.md
   snippets/jupyter-ondemand.md
   snippets/open-ondemand.md
   snippets/psych.md
   snippets/terminal.md
   snippets/viz.md
+  snippets/inference-discovery.md
 
 
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.

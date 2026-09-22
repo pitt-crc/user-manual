@@ -43,11 +43,11 @@ You can connect to the ollama server running on a GPU node through R or Python c
 
 logon ondemand.htc.crc.pitt.edu, click RStudio server 2022.
 
-![](../_assets/img/bioinformatics/rstudio_ollama.png)
+![](../../_assets/img/bioinformatics/rstudio_ollama.png)
 
 You can use rollama to connect to ollama server running on the gpu node.
 
-![](../_assets/img/bioinformatics/rollama.png)
+![](../../_assets/img/bioinformatics/rollama.png)
 
 Note that the ollama models will be downloaded to ~/.ollama. Your home directory has 75 GB quota.
 
@@ -100,11 +100,11 @@ gpu-n57             48362
 ```
 logon ondemand.htc.crc.pitt.edu, click Jupyter.
 
-![](../_assets/img/bioinformatics/jupyter_ollama.png)
+![](../../_assets/img/bioinformatics/jupyter_ollama.png)
 
 You can use python ollama inside the conda environment to connect to ollama server running on the gpu node.
 
-![](../_assets/img/bioinformatics/python_ollama.png)
+![](../../_assets/img/bioinformatics/python_ollama.png)
 
 
 ### Pulling new models
