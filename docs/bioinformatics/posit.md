@@ -1,4 +1,6 @@
+## Posit Assistant
 
+Login on ondemand.htc.crc.pitt.edu, start RStudio Server 2026, and select R version 4.6.0.
 
 
 ![](../_assets/img/bioinformatics/posit1.png)
