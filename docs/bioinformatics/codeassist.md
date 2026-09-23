@@ -31,6 +31,5 @@ TODO. description of the LLM server.
 
     To connect to code assistant in Code Server
 
-    [:octicons-arrow-right-24: Code Assist in Code Server](codeserver.md)
 
 </div>
