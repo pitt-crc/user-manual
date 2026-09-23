@@ -1,0 +1,24 @@
+name: Build Documentation
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+concurrency:
+  group: build-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build documentation
+        uses: ./.github/actions/build-docs
+        with:
+          strict: 'true'
