@@ -123,6 +123,12 @@ To see how many SUs your group has used and has remaining, run `crc-usage`. When
 an allocation runs low or expires, submit a new
 [Resource Allocation Request](https://crc.pitt.edu/service-request-forms/compute-allocation-guidelines).
 
+!!! tip "Estimating a new allocation"
+    These billing weights tell you what a job *costs*; to turn them into a defensible
+    Service Unit request, benchmark a representative run and extrapolate to your full
+    project. See [Benchmarking for Allocations](benchmarking.md).
+```
+
 !!! note "Cost is not the same as limits"
     Billing weights determine what a job *costs*. Separately, your group has
     *limits* on how much it can use at once (max CPUs/GPUs/memory per QoS). Those
