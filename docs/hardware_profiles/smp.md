@@ -58,6 +58,10 @@ Nodes are grouped by partition, lowest memory-per-core first.
 .crc-specs .num {
   text-align: center;
 }
+.crc-specs tr.repurposed td {
+  text-decoration: line-through;
+  color: var(--md-default-fg-color--light, rgba(0, 0, 0, 0.54));
+}
 .crc-specs td.cpu,
 .crc-specs th.cpu {
   text-align: center;
@@ -76,7 +80,7 @@ Nodes are grouped by partition, lowest memory-per-core first.
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr class="repurposed">
       <td>smp_6GB</td><td class="num">1</td><td>amd,turin</td><td class="cpu">AMD EPYC<br>9755</td><td>AVX-512</td>
       <td class="num">256</td><td>1.5 TB</td><td>6 GB</td><td>3.2 TB</td><td>10GbE</td><td>smp-n266</td>
     </tr>
@@ -99,6 +103,11 @@ Nodes are grouped by partition, lowest memory-per-core first.
   </tbody>
 </table>
 </div>
+
+!!! warning "smp_6GB is being repurposed"
+    The single `smp_6GB` node (`smp-n266`) is being removed from general access and
+    will be repurposed for the CRCD Kubernetes cluster. Do not target `smp_6GB` in
+    new job scripts.
 
 `Mem/Core` is an approximate base-10 figure — see the note below before using it in a job request.
 

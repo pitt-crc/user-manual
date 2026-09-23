@@ -106,9 +106,8 @@ and memory weights apportion the host evenly across the node's cards (below).
   </thead>
   <tbody>
     <tr>
-      <td rowspan="5">smp</td><td>smp_6GB</td><td>1.0</td><td>0.1702</td><td>—</td>
+      <td rowspan="4">smp</td><td>smp_8GB</td><td>1.0</td><td>0.1275</td><td>—</td>
     </tr>
-    <tr><td>smp_8GB</td><td>1.0</td><td>0.1275</td><td>—</td></tr>
     <tr><td>smp_12GB</td><td>1.0</td><td>0.0851</td><td>—</td></tr>
     <tr><td>smp_32GB</td><td>1.0</td><td>0.0321</td><td>—</td></tr>
     <tr><td>preempt</td><td>0</td><td>0</td><td>—</td></tr>
@@ -194,6 +193,55 @@ PartitionName=htc_8GB
 
     The `preempt` partition's weights are `0`, which turns off charging there. QoS
     and association names follow the new partition scheme.
+
+## Monetary Cost
+
+SUs are the internal accounting unit; the dollar cost of an SU depends on the
+cluster. The CPU clusters (`smp`, `htc`, `mpi`) are charged on a **core-hour** basis,
+while the GPU cluster is charged on a **card-hour** basis. Each cluster is charged
+against its own separate allocation.
+
+| Cluster(s)    | Charged per   | 1 SU is roughly                                       | Cost per SU |
+| ------------- | ------------- | ----------------------------------------------------- | ----------- |
+| smp, htc, mpi | CPU core-hour | 1 hour on one CPU core, within the tier's memory share | $0.05       |
+| gpu           | GPU card-hour | 1 hour on a 1.0-weight GPU card — an L40S or A100-40GB  | $0.25       |
+
+On the GPU cluster the card-hour intuition holds when the host cores and memory you
+request stay within a card's share, so the GPU term sets the `max`. Higher-capability
+cards carry a larger GPU weight (RTX PRO 6000 and A100-80GB are `2`, H200 is `4`), and
+over-requesting host cores or memory can push the CPU or memory term above the card
+weight.
+
+The **One-Time Startup Allocation** provides 50,000 SUs on all the clusters. Because
+each cluster is charged separately, that is a distinct 50,000-SU grant on every
+cluster — equivalent to:
+
+| Cluster(s)    | Resource-hours    | Dollar value |
+| ------------- | ----------------- | ------------ |
+| smp, htc, mpi | 50,000 core-hours | $2,500       |
+| gpu           | 50,000 card-hours | $12,500      |
+
+!!! tip "Purchasing additional SUs"
+    Beyond the no-cost startup allocation, researchers have the option to **purchase
+    SUs**. Purchased SUs run under a higher-priority **QOS**, so they are scheduled
+    ahead of the baseline no-cost tier and jobs charged against them start sooner when
+    a cluster is busy.
+
+### Other services
+
+| Service               | Base unit                | Rate            |
+| --------------------- | ------------------------ | --------------- |
+| Virtual machine (VM)  | 1 core + 6 GB RAM        | $22.70 / year   |
+| In-depth consultation | 1 hour (4-hour minimum)  | $58 / hour      |
+
+**Virtual machines.** A researcher can request a persistent VM. The base unit is 1
+core and 6 GB of RAM for $22.70 per year, and cores and memory scale together as a
+bundle: the cost is the base unit times the larger of the two dimensions, i.e.
+`max(cores, RAM_GB ÷ 6)`. For example, 4 cores costs 4 × $22.70 = $90.80 / year; and 1
+core with 24 GB of RAM also scales by 4 (24 ÷ 6), so it likewise costs $90.80 / year.
+
+**In-depth consultation.** Available at $58 / hour with a 4-hour minimum (a minimum
+engagement of $232).
 
 ## Checking a job's cost { #checking-a-jobs-cost }
 
