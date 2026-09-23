@@ -42,6 +42,8 @@ extra:
 extra_css:
   - _assets/css/pitt_colors.css
   - _assets/css/stretched_link.css
+  - _assets/css/highlight_problems.css
+  - _assets/css/headings.css
   - _assets/css/highlight_getting-started.css
 plugins:
   - mkdocstrings
@@ -68,6 +70,7 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.mark
+  - pymdownx.keys
   - pymdownx.tilde
   - pymdownx.superfences
   - pymdownx.details
@@ -78,7 +81,7 @@ markdown_extensions:
       auto_append:
         - includes/abbreviations.md
   - toc:
-      toc_depth: 0
+      toc_depth: "2-3"      # was 0
       permalink: true
   - tables
 nav:
@@ -197,7 +200,7 @@ nav:
       - policies/resource-descriptions-for-writing-proposals.md
   - Citing CRCD: acknowledge-crc.md
   - Glossary: glossary.md
-  - Frequently Asked Questions: faq.md
+  - Common Problems: faq.md
 
 not_in_nav: |
   getting-started/access_avd.md
