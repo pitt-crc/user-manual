@@ -89,7 +89,9 @@ In this section we list a series of common problems that CRCD users may encounte
     === "What's Going On?"
         Login nodes are a shared entry point, not a place to compute. To keep them responsive,
         per-user limits are enforced with cgroups: currently **1 core and 8 GB of memory per user**,
-        applied across *all* of your processes on that login node. When the node's resources are
+        applied across *all* of your processes on that login node. There are two thresholds: 5 GB is 
+        the soft limit, and 8 GB is the hard limit. In general, once a user's memory usage hits 
+        the 5 GB soft limit, symptoms will start to appear. When the node's resources are
         exhausted, you may be unable to log in until usage drops.
 
         That last part is the whole explanation. Logging in is itself work: SSH has to start a shell
