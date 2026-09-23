@@ -101,6 +101,7 @@ nav:
           - Discovering Software: getting-started/step3/getting-started-step3-software.md
           - Requesting Resources: getting-started/step3/getting-started-step3-resources.md
           - Managing Jobs: getting-started/step3/getting-started-step3-manage-jobs.md
+  - keystone/requesting.md
   - Hardware Profiles:
       - hardware_profiles/index.md
       - Compute Clusters:
@@ -128,6 +129,7 @@ nav:
       - Interactive Jobs: slurm/interactive-jobs.md
       - Batch Jobs: slurm/batch-jobs.md
       - Service Units: slurm/service-units.md
+      - Benchmarking for Allocations: slurm/benchmarking.md
       - Job Limits & QoS: slurm/job-limits.md
       - Preemptible Partitions: slurm/preempt.md
       - Job Arrays: slurm/job-arrays.md
