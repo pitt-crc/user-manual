@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build:
-    name: Build HTML
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build and publish
+      - name: Build HTML
         run: mkdocs build
 
       - name: Upload docs to artifact storage
