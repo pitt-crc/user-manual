@@ -74,7 +74,8 @@ In this section we list a series of common problems that CRCD users may encounte
 
         Be deliberate — `pkill` matching too broadly can kill your own shell.
 
-        **4. If you cannot get in at all,** [open a help ticket](https://crc.pitt.edu/tickets) and ask
+        **4. If you cannot get in at all,** 
+        [open a help ticket](https://services.pitt.edu/TDClient/33/Portal/Requests/TicketRequests/NewForm?ID=yXkHi62rHa8_&RequestorType=Service) and ask
         us to kill your processes on the login node. Say which cluster and login node you were using
         (for example "login3 on HTC"). This is a routine request and quick to action.
 
