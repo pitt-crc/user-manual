@@ -1,0 +1,8 @@
+/* Emphasize the Getting Started entry point */
+.md-nav__link[href$="getting-started/"] {
+  font-weight: 700;
+  color: #fff;
+  background: var(--md-primary-fg-color);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.5rem;
+}
