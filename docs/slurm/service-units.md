@@ -18,48 +18,143 @@ billing rate from the *maximum* of the weighted resources — not the sum — an
 total charge is that rate multiplied by the job's walltime:
 
 ```
-total SUs  ≈  max(cores × compute_weight,  GB × memory_weight,  GPUs × compute_weight)  ×  hours
+total SUs  ≈  max( cores × compute_weight,  memory_GiB × memory_weight,  GPUs × compute_weight )  ×  hours
 ```
 
-!!! example "Two quick examples (SMP and GPU)"
-    **CPU job** — 4 cores and 16 GB on `smp` for 2 hours (weights `0.8`/core,
-    `0.102`/GB): the cores dominate, `max(4 × 0.8, 16 × 0.102) = 3.2` per hour,
-    so ≈ **6.4 SUs**.
+On the SMP and HTC clusters every general-access tier uses a compute weight of
+`1.0`, so a CPU job costs **one SU per core-hour as long as it stays within its
+partition's memory-per-core**. Only when a job requests *more* memory than a core's
+share does the memory term take over and raise the bill — which is usually a sign a
+higher-memory tier is the better fit.
 
-    **Memory-heavy job** — 1 core but 64 GB on `smp` for 2 hours: now *memory*
-    dominates, `max(1 × 0.8, 64 × 0.102) = 6.5` per hour, so ≈ **13 SUs**. This is
-    why a low-core, high-memory job can cost more than the core count suggests.
+!!! example "Three quick examples"
+    **CPU job, within the tier** — 4 cores on `smp_8GB` for 2 hours, using the
+    tier's default memory (~8 GB/core). Cores and memory are balanced:
+    `max(4 × 1.0, ~31 GiB × 0.1275) ≈ 4` per hour, so ≈ **8 SUs** — exactly the
+    core-hours.
 
-    **GPU job** — 1 `a100` card for 3 hours (weight `8`/GPU, memory weight `0`):
-    `max(1 × 8, …) = 8` per hour, so ≈ **24 SUs**.
+    **Memory-heavy job** — 1 core but `--mem=64G` (64 GiB) on `smp_8GB` for 2 hours:
+    now *memory* dominates, `max(1 × 1.0, 64 × 0.1275) = 8.16` per hour, so
+    ≈ **16 SUs**. Using far more memory than a core's share costs about what the
+    equivalent cores would.
+
+    **GPU job** — 1 `a100` card with a balanced share of the host (16 cores,
+    ~125 GiB) for 3 hours: `max(16 × 0.0625, 125 × 0.00795, 1 × 1.0) = 1` per hour,
+    so ≈ **3 SUs**. A whole 4-GPU `a100` node bills 4 per hour; an 8-card `h200` node
+    bills 32. Taking a card's GPU but hogging a whole node's cores or memory raises
+    the bill toward the whole-node cost — see the GPU note below.
 
 For the exact charge on a *finished* job, use `crc-seff` or `crc-job-stats`
 (see [Checking a job's cost](#checking-a-jobs-cost)) rather than estimating.
 
-!!! tip "Zero-cost `preempt` partitions"
+--8<-- "../hardware_profiles/memory-units.md"
+
+!!! note "GPU billing is per card, but host CPU and memory still count"
+    On the GPU cluster each partition's **GPU weight** is the primary charge — 1 per
+    card for L40S and A100-40GB, 2 for RTX PRO 6000 and A100-80GB, 4 for H200. The CPU
+    and memory weights split the node's host cores and memory evenly across its cards,
+    so a job that takes one card with its fair share of cores and memory bills exactly
+    the card weight. Because billing is `MAX`, a job that grabs one card but a whole
+    node's worth of cores or memory is billed for what it denies others — up to the
+    whole node. Request cores/memory in proportion to the cards you use and you pay the
+    card weight.
     Every cluster's `preempt` partition has billing weights of `0` — jobs there
     cost no SUs, but are preemptible. See
     [**Preemptible Partitions**](preempt.md).
 
 ## TRES billing weights
 
-| Cluster | Partition | Compute weight (per CPU/GPU) | Memory weight (per GB) |
-| ------- | --------- | ---------------------------- | ---------------------- |
-| SMP | smp | 0.8 | 0.102 |
-| | high-mem | 1.0 | 0.0477 |
-| | preempt | 0 | 0 |
-| MPI | ndr | 1 | 0.093 |
-| | mpi | 1 | 0.093 |
-| | preempt | 0 | 0 |
-| | preempt_ndr | 0 | 0 |
-| GPU | a100 | 8 | 0 |
-| | a100_multi | 8 | 0 |
-| | a100_nvlink | 8 | 0 |
-| | a100_nvlink_multi | 8 | 0 |
-| | l40s | 8 | 0 |
-| | preempt | 0 | 0 |
-| HTC | htc | 1 | 0.128 |
-| | preempt | 0 | 0 |
+Partitions on SMP and HTC are named by memory-per-core (`smp_8GB`, `htc_16GB`, …);
+the number is the approximate GB of RAM per core. The memory weight is applied per
+**GiB**. On the GPU cluster the per-card weight is the primary charge, and the CPU
+and memory weights apportion the host evenly across the node's cards (below).
+
+<style>
+.crc-specs-wrap {
+  overflow-x: auto;
+}
+.crc-specs {
+  border-collapse: collapse;
+  border: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  table-layout: auto;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin: 0.6em 0;
+}
+.crc-specs th,
+.crc-specs td {
+  padding: 0.3em 0.6em;
+  border: none;
+  border-bottom: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.crc-specs thead th {
+  font-weight: 700;
+  border-bottom-width: 0.1rem;
+}
+</style>
+
+<div class="crc-specs-wrap" markdown="0">
+<table class="crc-specs">
+  <thead>
+    <tr>
+      <th>Cluster</th><th>Partition</th><th>CPU weight</th>
+      <th>Memory weight (per GiB)</th><th>GPU weight (per card)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">smp</td><td>smp_8GB</td><td>1.0</td><td>0.1275</td><td>—</td>
+    </tr>
+    <tr><td>smp_12GB</td><td>1.0</td><td>0.0851</td><td>—</td></tr>
+    <tr><td>smp_32GB</td><td>1.0</td><td>0.0321</td><td>—</td></tr>
+    <tr><td>preempt</td><td>0</td><td>0</td><td>—</td></tr>
+    <tr>
+      <td rowspan="4">htc</td><td>htc_8GB</td><td>1.0</td><td>0.1275</td><td>—</td>
+    </tr>
+    <tr><td>htc_12GB</td><td>1.0</td><td>0.0851</td><td>—</td></tr>
+    <tr><td>htc_16GB</td><td>1.0</td><td>0.0636</td><td>—</td></tr>
+    <tr><td>preempt</td><td>0</td><td>0</td><td>—</td></tr>
+    <tr>
+      <td rowspan="4">mpi</td><td>ndr</td><td>1.0</td><td>0.0851</td><td>—</td>
+    </tr>
+    <tr><td>mpi</td><td>1.0</td><td>0.0956</td><td>—</td></tr>
+    <tr><td>preempt</td><td>0</td><td>0</td><td>—</td></tr>
+    <tr><td>preempt_ndr</td><td>0</td><td>0</td><td>—</td></tr>
+    <tr>
+      <td rowspan="8">gpu</td><td>a100</td><td>0.0625</td><td>0.00795</td><td>1.0</td>
+    </tr>
+    <tr><td>a100_multi</td><td>0.0625</td><td>0.00795</td><td>1.0</td></tr>
+    <tr><td>a100_nvlink</td><td>0.0625</td><td>0.00803</td><td>1.0</td></tr>
+    <tr><td>a100_nvlink_80g</td><td>0.125</td><td>0.01607</td><td>2.0</td></tr>
+    <tr><td>l40s</td><td>0.0625</td><td>0.00795</td><td>1.0</td></tr>
+    <tr><td>rtx6k</td><td>0.125</td><td>0.01059</td><td>2.0</td></tr>
+    <tr><td>h200</td><td>0.25</td><td>0.01058</td><td>4.0</td></tr>
+    <tr><td>preempt</td><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+</div>
+
+!!! note "Why the memory weight isn't simply 1 ÷ the tier number"
+    A tier name such as `smp_8GB` is an approximate **base-10** GB figure, for
+    readability. The billing weight is applied per **GiB** (base-2) — Slurm's native
+    unit — and is set to 1 ÷ (the tier's actual GiB per core). A job that uses
+    exactly its tier's memory-per-core is therefore billed the same on memory as on
+    cores. The two numbers differ by about 2.4% (the GB/GiB gap), which is why
+    `smp_8GB` uses `0.1275` (= 1 ÷ 7.84 GiB) rather than `0.125`. The same tier
+    bills identically on SMP and HTC.
+
+!!! note "MPI billing spans nodes"
+    MPI jobs use at least two nodes, and each node is billed on the greater of its
+    cores or its memory (the `MAX_TRES` rule). Each MPI partition's memory weight is
+    set to 1 ÷ its node's memory-per-core (`mpi` = 1 ÷ 10.46 GiB, `ndr` = 1 ÷ 11.75
+    GiB), so a fully used node bills exactly its core count. If you request fewer
+    cores but more memory per rank — for example half the cores at double the default
+    memory — the memory term sets the bill, so you pay for the node footprint you
+    actually hold, up to the whole node. You are billed this way on every node your
+    job spans.
 
 ### Seeing the weights for a partition
 
@@ -67,39 +162,86 @@ The weights live in the cluster configuration. To read them directly (including
 investment hardware), use `scontrol -M <cluster> show partition`:
 
 ```
-[gnowmik@login1 ~]$ scontrol -M htc show partition
-PartitionName=htc
+[gnowmik@login1 ~]$ scontrol -M htc show partition htc_8GB
+PartitionName=htc_8GB
    ...
-   TRES=cpu=5888,mem=68927200M,node=72,billing=8615
-   TRESBillingWeights=CPU=1.0,Mem=0.128G
+   TRES=cpu=1152,mem=9280800M,node=18,billing=1156
+   TRESBillingWeights=CPU=1.0,Mem=0.1275G
 ```
 
 ??? note "Full `scontrol show partition` output"
     ```
-    [gnowmik@login1 ~]$ scontrol -M htc show partition
-    PartitionName=htc
-       AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,htc-htc-s,htc-htc-n,htc-htc-l,htc-htc-ll,htc-htc-s-invest,htc-htc-n-invest,htc-htc-l-invest,htc-htc-ll-invest,htc-htc-crunyan-s,htc-htc-crunyan-n,htc-htc-crunyan-l,htc-htc-crunyan-ll
-       AllocNodes=ALL Default=YES QoS=N/A
+    [gnowmik@login1 ~]$ scontrol -M htc show partition htc_8GB
+    PartitionName=htc_8GB
+       AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,...
+       AllocNodes=ALL Default=NO QoS=N/A
        DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
        MaxNodes=1 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
-       Nodes=htc-1024-n[0-3],htc-n[24-91]
+       Nodes=htc-n[32-49]
        PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
        OverTimeLimit=NONE PreemptMode=CANCEL
-       State=UP TotalCPUs=5888 TotalNodes=72 SelectTypeParameters=NONE
+       State=UP TotalCPUs=1152 TotalNodes=18 SelectTypeParameters=NONE
        JobDefaults=(null)
-       DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
-       TRES=cpu=5888,mem=68927200M,node=72,billing=8615
-       TRESBillingWeights=CPU=1.0,Mem=0.128G
-    
+       DefMemPerCPU=8000 MaxMemPerNode=UNLIMITED
+       TRES=cpu=1152,mem=9280800M,node=18,billing=1156
+       TRESBillingWeights=CPU=1.0,Mem=0.1275G
+
     PartitionName=preempt
-       AllowGroups=ALL AllowAccounts=ALL AllowQos=htc-preempt-s,htc-preempt-n,htc-preempt-l,htc-preempt-ll
        ...
-       TRES=cpu=6144,mem=72007200M,node=74
        TRESBillingWeights=CPU=0,Mem=0.0G
     ```
 
-    Notice how the TRESBillingWeights for the [**`preempt`**](preempt.md) are set to 0, to turn off charging 
-    on that partition.
+    The `preempt` partition's weights are `0`, which turns off charging there. QoS
+    and association names follow the new partition scheme.
+
+## Monetary Cost
+
+SUs are the internal accounting unit; the dollar cost of an SU depends on the
+cluster. The CPU clusters (`smp`, `htc`, `mpi`) are charged on a **core-hour** basis,
+while the GPU cluster is charged on a **card-hour** basis. Each cluster is charged
+against its own separate allocation.
+
+| Cluster(s)    | Charged per   | 1 SU is roughly                                       | Cost per SU |
+| ------------- | ------------- | ----------------------------------------------------- | ----------- |
+| smp, htc, mpi | CPU core-hour | 1 hour on one CPU core, within the tier's memory share | $0.05       |
+| gpu           | GPU card-hour | 1 hour on a 1.0-weight GPU card — an L40S or A100-40GB  | $0.25       |
+
+On the GPU cluster the card-hour intuition holds when the host cores and memory you
+request stay within a card's share, so the GPU term sets the `max`. Higher-capability
+cards carry a larger GPU weight (RTX PRO 6000 and A100-80GB are `2`, H200 is `4`), and
+over-requesting host cores or memory can push the CPU or memory term above the card
+weight.
+
+The **One-Time Startup Allocation** provides 50,000 SUs on all the clusters. Because
+each cluster is charged separately, that is a distinct 50,000-SU grant on every
+cluster — equivalent to:
+
+| Cluster(s)    | Resource-hours    | Dollar value |
+| ------------- | ----------------- | ------------ |
+| smp, htc, mpi | 50,000 core-hours | $2,500       |
+| gpu           | 50,000 card-hours | $12,500      |
+
+!!! tip "Purchasing additional SUs"
+    Beyond the no-cost startup allocation, researchers have the option to **purchase
+    SUs**. Purchased SUs run under a higher-priority **QOS**, so they are scheduled
+    ahead of the baseline no-cost tier and jobs charged against them start sooner when
+    a cluster is busy.
+
+### Other services
+
+| Service               | Base unit                | Rate            |
+| --------------------- | ------------------------ | --------------- |
+| Virtual machine (VM)  | 1 core + 6 GB RAM        | $22.70 / year   |
+| In-depth consultation | 1 hour (4-hour minimum)  | $58 / hour      |
+
+**Virtual machines.** A researcher can request a persistent VM. The base unit is 1
+core and 6 GB of RAM for $22.70 per year, and cores and memory scale together as a
+bundle: the cost is the base unit times the larger of the two dimensions, i.e.
+`max(cores, RAM_GB ÷ 6)`. For example, 4 cores costs 4 × $22.70 = $90.80 / year; and 1
+core with 24 GB of RAM also scales by 4 (24 ÷ 6), so it likewise costs $90.80 / year.
+
+**In-depth consultation.** Available at $58 / hour with a 4-hour minimum (a minimum
+engagement of $232).
 
 ## Checking a job's cost { #checking-a-jobs-cost }
 
