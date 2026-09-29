@@ -1,4 +1,1 @@
-mkdocstrings
-mkdocs-material
-mkdocs-video
-mkdocs-redirects
+zensical==0.0.64

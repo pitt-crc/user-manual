@@ -13,7 +13,14 @@ pip install -r requirements.txt
 To generate a live preview locally, use the `serve` command:
 
 ```bash
-mkdocs serve
+zensical serve
 ```
 
-A new version of the documentation is built and pushed to production every time the main branch is updated.
+To build the site into `site/`:
+
+```bash
+zensical build
+```
+
+The site is configured in `zensical.toml`. A new version of the documentation is
+built and pushed to production every time the main branch is updated.
