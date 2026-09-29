@@ -19,7 +19,7 @@ nav = [
             { "Running Python (OnDemand)" = "getting-started/quickstart-python-ondemand.md" },
             { "Running R (OnDemand)" = "getting-started/quickstart-r-ondemand.md" },
         ] },
-        "getting-started/getting-started-step1-account.md",
+        { "Step 1- Getting an Account" = "getting-started/getting-started-step1-account.md"},
         { "Step 2- Login to Access Portals" = [
             "getting-started/step2/index.md",
             { "Terminal SSH" = "getting-started/terminal.md" },

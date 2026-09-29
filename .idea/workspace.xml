@@ -4,12 +4,132 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2350fe6-a375-4f4c-8d8c-9700e9b01568" name="Changes" comment="Renames job steps for clarity">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/_assets/css/pitt_colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_assets/css/pitt_colors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/data-management/file-transfer-methods/globus-microsoft-onedrive.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="c2350fe6-a375-4f4c-8d8c-9700e9b01568" name="Changes" comment="Drops rendered copy of site">
+      <change beforePath="$PROJECT_DIR$/site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/acknowledge-crc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/acknowledge-crc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/ATACSeq-data-analysis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/ATACSeq-data-analysis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/ChipSeq-data-analysis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/ChipSeq-data-analysis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/RNASeq-data-analysis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/RNASeq-data-analysis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/clcbio-genomics-server/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/clcbio-genomics-server/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/cromwell-and-encode/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/cromwell-and-encode/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/genome-browser/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/genome-browser/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/single-cell-rnaseq/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/single-cell-rnaseq/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/advanced-genomics-support/variant-calling/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/advanced-genomics-support/variant-calling/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/application-environment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/application-environment/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/basic-commands/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/basic-commands/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/coding/vscode/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/coding/vscode/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/compilers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/compilers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/crc-wrappers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/crc-wrappers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/cuda-q/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/cuda-q/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/ansys/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/ansys/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/comsol/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/comsol/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/lumerical/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/lumerical/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/mathematica/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/mathematica/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/matlab/matlab-remote-job-submission/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/matlab/matlab-remote-job-submission/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/matlab/matlab/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/matlab/matlab/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/licensed-software/vasp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/licensed-software/vasp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/ondemand-rstudio-gpu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/ondemand-rstudio-gpu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/python/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/python/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/r+rstudio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/r+rstudio/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/singularity/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/singularity/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/applications/software-list/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/applications/software-list/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/EHR/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/EHR/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/Methylation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/Methylation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/alphafold3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/alphafold3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/bioimage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/bioimage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/bioinformaticsworkshops/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/bioinformaticsworkshops/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/codeassist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/codeassist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/copilot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/copilot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/fMRI/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/fMRI/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/jupyterai/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/jupyterai/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/nf-core-genomics-pipelines/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/nf-core-genomics-pipelines/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/ollama/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/ollama/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/posit/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/posit/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/spatialtranscriptomics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/spatialtranscriptomics/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/bioinformatics/virtualgl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/bioinformatics/virtualgl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/code-optimization/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/code-optimization/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-permissions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-permissions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-systems/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-systems/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-transfer-methods/filezilla/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-transfer-methods/filezilla/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-transfer-methods/globus-onedrive/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-transfer-methods/globus-onedrive/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-transfer-methods/globus/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-transfer-methods/globus/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-transfer-methods/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-transfer-methods/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/file-transfer-methods/microsoft-onedrive/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/file-transfer-methods/microsoft-onedrive/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/data-management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/data-management/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/faq/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/faq/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/access_avd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/access_avd/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/access_hipaa/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/access_hipaa/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/access_sre/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/access_sre/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/getting-started-step1-account/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/getting-started-step1-account/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/jupyter-hub/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/jupyter-hub/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/jupyter-teach/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/jupyter-teach/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/open-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/open-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/passwordless-ssh/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/passwordless-ssh/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/quickstart-python-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/quickstart-python-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/quickstart-r-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/quickstart-r-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/quickstart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/quickstart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/sponsored_account/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/sponsored_account/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/step2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/step2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-manage-jobs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-manage-jobs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-resources/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-resources/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-software/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/step3/getting-started-step3-software/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/step3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/step3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/terminal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/terminal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/upmc_avd/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/upmc_avd/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/getting-started/viz/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/getting-started/viz/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/glossary/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/glossary/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/gpu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/gpu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/htc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/htc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/login/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/mpi/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/mpi/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/smp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/smp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/storage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/storage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/teach/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/teach/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/hardware_profiles/viz/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/hardware_profiles/viz/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/keystone/requesting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/keystone/requesting/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/policies/hardware-investing-policy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/policies/hardware-investing-policy/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/policies/job-scheduling-policy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/policies/job-scheduling-policy/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/policies/resource-descriptions-for-writing-proposals/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/policies/resource-descriptions-for-writing-proposals/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/site/search.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/batch-jobs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/batch-jobs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/benchmarking/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/benchmarking/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/interactive-jobs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/interactive-jobs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/job-arrays/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/job-arrays/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/job-limits/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/job-limits/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/preempt/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/preempt/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/scratch-storage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/scratch-storage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/service-units/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/service-units/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/slurm/vscode/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/slurm/vscode/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/benchmarking/mpi-scaling-table/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/benchmarking/mpi-scaling-table/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/includes/abbreviations/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/includes/abbreviations/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/jupyter-hub/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/jupyter-hub/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/jupyter-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/jupyter-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/jupyter-teach/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/jupyter-teach/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/ondemand-rstudio-gpu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/ondemand-rstudio-gpu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/open-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/open-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/psych/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/psych/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/terminal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/terminal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/snippets/viz/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/snippets/viz/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/tips/persist-sessions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/tips/persist-sessions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/hugen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/hugen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/jupyter-hub/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/jupyter-hub/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/jupyter-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/jupyter-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/jupyter-teach/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/jupyter-teach/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/jupyterhub-venv/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/jupyterhub-venv/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/ondemand-apps/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/ondemand-apps/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/ondemand-apps/jupyter/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/ondemand-apps/jupyter/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/ondemand-apps/matlab/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/ondemand-apps/matlab/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/ondemand-apps/rstudio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/ondemand-apps/rstudio/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/open-ondemand-apps/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/open-ondemand-apps/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/open-ondemand/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/open-ondemand/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/psych/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/psych/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/terminal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/terminal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/web-portals/viz/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/site/web-portals/viz/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zensical.toml" beforeDir="false" afterPath="$PROJECT_DIR$/zensical.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +216,7 @@
       <workItem from="1790173060094" duration="2643000" />
       <workItem from="1790184278676" duration="1134000" />
       <workItem from="1790189521004" duration="750000" />
-      <workItem from="1790706878927" duration="620000" />
+      <workItem from="1790706878927" duration="946000" />
     </task>
     <task id="LOCAL-00001" summary="Updates hardware profiles for all clusters">
       <option name="closed" value="true" />
@@ -146,7 +266,23 @@
       <option name="project" value="LOCAL" />
       <updated>1790175112875</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Migrates to zensical">
+      <option name="closed" value="true" />
+      <created>1790707580923</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1790707580923</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Drops rendered copy of site">
+      <option name="closed" value="true" />
+      <created>1790707598016</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1790707598016</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +295,8 @@
     <MESSAGE value="Adds CI workflows for branch protection policies" />
     <MESSAGE value="Consolidates CI logic to single workflow" />
     <MESSAGE value="Renames job steps for clarity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renames job steps for clarity" />
+    <MESSAGE value="Migrates to zensical" />
+    <MESSAGE value="Drops rendered copy of site" />
+    <option name="LAST_COMMIT_MESSAGE" value="Drops rendered copy of site" />
   </component>
 </project>
