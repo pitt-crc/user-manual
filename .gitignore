@@ -2,4 +2,5 @@
 .idea
 
 # Compiled documentation artifacts
+.cache
 site
