@@ -1,0 +1,5700 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://crc-pages.pitt.edu/user-manual/advanced-genomics-support/RNASeq-data-analysis/">
+      
+      
+        <link rel="prev" href="../../bioinformatics/bioinformaticsworkshops/">
+      
+      
+        <link rel="next" href="../variant-calling/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../_assets/img/pitt-logo-nav_white.png">
+      <meta name="generator" content="zensical-0.0.64">
+    
+    
+      
+        <title>RNASeq data analysis - CRCD User Manual</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.40d3fdbb.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2013h-2V7h2m0%2010h-2v-2h2M12%202A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_assets/css/pitt_colors.css">
+    
+      <link rel="stylesheet" href="../../_assets/css/stretched_link.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-M9R3HZF36E"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-M9R3HZF36E",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-M9R3HZF36E",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        <a href="#__skip" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://crc.pitt.edu" title="CRCD User Manual" class="md-header__button md-logo" aria-label="CRCD User Manual" data-md-component="logo">
+      
+  <img src="../../_assets/img/pitt_shield_white.png" alt="CRCD User Manual">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CRCD User Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RNASeq data analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/pitt-crc/user-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://crc.pitt.edu" title="CRCD User Manual" class="md-nav__button md-logo" aria-label="CRCD User Manual" data-md-component="logo">
+      
+  <img src="../../_assets/img/pitt_shield_white.png" alt="CRCD User Manual">
+
+    </a>
+    CRCD User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pitt-crc/user-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://crc.pitt.edu" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Back to crc.pitt.edu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  User Manual Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting Started
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting Started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick Starts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Quick Starts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Your First Job
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-python-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running Python (OnDemand)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-r-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running R (OnDemand)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/getting-started-step1-account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started step1 account
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/step2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Step 2- Login to Access Portals
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Step 2- Login to Access Portals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Terminal SSH
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/open-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Open OnDemand Web-portal
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Linux Desktop Visualization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/jupyter-teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  JupyterHub on Teach Cluster
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/step3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Step 3- CRCD Ecosystem
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Step 3- CRCD Ecosystem
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Discovering Software
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Requesting Resources
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-manage-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Managing Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../keystone/requesting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Requesting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hardware_profiles/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hardware Profiles
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Hardware Profiles
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compute Clusters
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Compute Clusters
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/smp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SMP
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/htc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  HTC
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/mpi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MPI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GPU
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Teach
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Access & Auxiliary Nodes
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Access & Auxiliary Nodes
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Login Nodes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Viz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Storage Tiers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Login to Access
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Login to Access
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Terminal
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/open-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Open ondemand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter ondemand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Viz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter hub
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter teach
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyterhub-venv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyterhub venv
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/psych/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Psych
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/hugen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hugen
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../slurm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running Jobs with Slurm
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Running Jobs with Slurm
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/interactive-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interactive Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/batch-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Batch Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/service-units/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Service Units
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/benchmarking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Benchmarking for Allocations
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/job-limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job Limits & QoS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/preempt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Preemptible Partitions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/job-arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job Arrays
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/scratch-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Scratch Space
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VS Code
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../data-management/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Management
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Data Management
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File systems
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File Permissions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../data-management/file-transfer-methods/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File Transfer to CRCD
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  File Transfer to CRCD
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Globus
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/globus-onedrive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OneDrive (via Globus)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/microsoft-onedrive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OneDrive (command line)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/filezilla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FileZilla
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Applications
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Applications
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/software-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Software list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coding
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Coding
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/coding/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VS Code
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/application-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Application environment
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/basic-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Basic commands
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/crc-wrappers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Crc wrappers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/compilers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compilers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/cuda-q/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cuda q
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/r+rstudio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  R+rstudio
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/ondemand-rstudio-gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ondemand rstudio gpu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/singularity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Singularity
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_12" id="__nav_9_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Licensed Software
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_12_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_12">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Licensed Software
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/ansys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ansys
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Comsol
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/lumerical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Lumerical
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/mathematica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Mathematica
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Vasp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_12_6" id="__nav_9_12_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MATLAB
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_12_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_12_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  MATLAB
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/matlab/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matlab
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/matlab/matlab-remote-job-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matlab remote job submission
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioinformatics Support
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Bioinformatics Support
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/bioinformaticsworkshops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioinformaticsworkshops
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  NGS Data Analysis
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_10_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  NGS Data Analysis
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RNASeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variant-calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Variant calling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../single-cell-rnaseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Single cell rnaseq
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/spatialtranscriptomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spatialtranscriptomics
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChipSeq-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ChipSeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ATACSeq-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ATACSeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/Methylation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Methylation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cromwell-and-encode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cromwell and encode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genome-browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Genome browser
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clcbio-genomics-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Clcbio genomics server
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/nf-core-genomics-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Nf core genomics pipelines
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/alphafold3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Alphafold3
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/fMRI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  fMRI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/EHR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  EHR
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/ollama/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ollama
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/bioimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioimage
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/virtualgl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Virtualgl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Copilot
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Code Optimization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tips & Tricks
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_12">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tips & Tricks
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/persist-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Persist sessions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Policies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_13">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Policies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/job-scheduling-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job scheduling policy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/hardware-investing-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hardware investing policy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/resource-descriptions-for-writing-proposals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Resource descriptions for writing proposals
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acknowledge-crc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Citing CRCD
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frequently Asked Questions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="rnaseq-data-analysis">RNASeq Data Analysis<a class="headerlink" href="#rnaseq-data-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="introduction-to-rna-sequencing">Introduction to RNA sequencing<a class="headerlink" href="#introduction-to-rna-sequencing" title="Permanent link">&para;</a></h2>
+<p>High-throughput sequencing of mRNA (RNA-Seq) has become the standard methods for measuring and comparing the levels of 
+gene expression in a wide variety of species and conditions. The RNA-seq method typically consists of identification of 
+suitable biological samples (and replicates), isolation of total RNA, enrichment of non-ribosomal RNAs, conversion of 
+RNA to cDNA, construction of a fragment library, sequencing on a high-throughput sequencing platform, generation of 
+single or paired-end reads of 30–300 base pairs in length, alignment or assembly of these reads, and downstream 
+analysis.</p>
+<p>RNA-seq experiments must be analyzed with accurate, efficient software that is carefully designed to handle the very 
+large sequencing volumes generated by most experiments. The data analysis pipelines can be conceptually divided into six 
+steps.</p>
+<p>Step 1: Evaluate and manipulate Raw data</p>
+<p>Step 2: Map to reference, assess results</p>
+<p>Step 3: Assemble transcripts</p>
+<p>Step 4: Quantify transcripts</p>
+<p>Step 5: Test for differential expression</p>
+<p>Step 6: Visualize and perform other downstream analysis</p>
+<p>I provided several RNA-seq pipelines with examples scripts using the recent software tools. All software have been 
+installed on <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster. If you need personalized consultation for RNASeq data analysis workflow and selection of 
+better pipelines, please contact Dr. Fangping Mu at <a href="mailto:fangping@pitt.edu">fangping@pitt.edu</a>.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/RNASeq_overview.png" /></p>
+<p>Computational analysis for differential gene expression (DGE) begins with raw RNA sequencing (RNA-seq) reads in FASTQ 
+format and can follow a number of paths. Three popular workflows (A, B and C, represented by the solid lines) are given
+as examples, and some of the more common alternative tools (represented by the dashed lines) are indicated. 
+In workflow A, aligners such as TopHat, STAR or HISAT2 use a reference genome to map reads to genomic locations, and 
+then quantification tools, such as HTSeq and featureCounts, assign reads to features. After normalization (usually 
+using methods embedded in the quantification or expression modelling tools, such as trimmed mean of M-values (TMM)) 
+gene expression is modelled using tools such as edgeR, DESeq2 and limma+voom, and a list of differentially expressed 
+genes or transcripts is generated for further visualization and interpretation. In workflow B, newer, alignment-free 
+tools, such as Kallisto and Salmon, assemble a transcriptome and quantify abundance in one step. The output from these 
+tools is usually converted to count estimates (using tximport (TXI)) and run through the same normalization and 
+modelling used in workflow A, to output a list of differentially expressed genes or transcripts. Alternatively, 
+workflow C begins by aligning the reads (typically performed with TopHat, although STAR and HISAT can also be used), 
+followed by the use of CuffLinks to process raw reads and the CuffDiff2 package to output transcript abundance 
+estimates and a list of differentially expressed genes or transcripts. Other tools in common use include StringTie, 
+which assembles a transcriptome model from TopHat (or similar tools) before the results are passed through to RSEM 
+or MMSEQ to estimate transcript abundance, and then to Ballgown157 to identify differentially expressed genes or 
+transcripts, and SOAPdenovo-trans, which simultaneously aligns and assembles reads for analysis via the path of choice. 
+Stark, R., Grzelak, M. &amp; Hadfield, J. RNA sequencing: the teenage years. Nat. Rev. Genet. (2019). 
+doi:10.1038/s41576-019-0150-2</p>
+<h2 id="setting-up">Setting up<a class="headerlink" href="#setting-up" title="Permanent link">&para;</a></h2>
+<p>Since you are going to be working on our remote cluster, <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr>, we first need to log in. Macs have a utility application 
+called “Terminal” for performing tasks on the command line (shell), both locally and on remote machines. With Windows, 
+You can also use Putty to log in to remote machines from Windows computers.</p>
+<p>Type in the following command with your username to login:</p>
+<p><div class="highlight"><pre><span></span><code>ssh username@htc.crc.pitt.edu
+</code></pre></div>
+You will receive a prompt for your password, and you should type in your associated password; note that the cursor 
+will not move as you type in your password.</p>
+<p>A warning might pop up the first time you try to connect to a remote machine, type “Yes” or “Y”.</p>
+<p>Once logged in, you should see the command prompt:
+<div class="highlight"><pre><span></span><code>[fangping@login0b ~]$
+</code></pre></div></p>
+<h2 id="reference-genome">Reference Genome<a class="headerlink" href="#reference-genome" title="Permanent link">&para;</a></h2>
+<p>Reference genome - The nucleotide sequence of the chromosomes of a species. Genes are the functional units of a 
+reference genome and gene annotations describe the structure of transcripts expressed from those gene loci.</p>
+<p>Obtain a reference genome from <a href="https://www.ensembl.org/info/data/ftp/index.html">Ensembl</a>, 
+<a href="https://hgdownload.cse.ucsc.edu/downloads.html">UCSC</a>, 
+NCBI or <a href="https://support.illumina.com/sequencing/sequencing_software/igenome.html">iGenomes</a>.</p>
+<p>Ensembl Homo_sapiens GRCh38 reference genome and various indices have been installed at 
+<code>/bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38</code></p>
+<p>I will show you how to download the human GRCh38 version of the genome from Ensembl.</p>
+<p>The complete data from which these files were obtained can be found at: 
+<a href="ftp://ftp.ensembl.org/pub/release-86/fasta/homo_sapiens/dna/&quot;&gt;ftp://ftp.ensembl.org/pub/release-100/fasta/homo_sapiens/dna/">ftp://ftp.ensembl.org/pub/release-100/fasta/homo_sapiens/dna/</a>. 
+You can find various Homo sapiens genome assembly. Which one should I use? The options available can be a bit 
+overwhelming. 'dna' - unmasked genomic DNA sequences. 'dna_rm' - masked genomic DNA. Interspersed repeats and low 
+complexity regions are detected with the RepeatMasker tool and masked by replacing repeats with 'N's. 
+'dna_sm' - soft-masked genomic DNA. All repeats and low complexity regions have been replaced with lowercase 
+versions of their nucleic baseFor NGS data pipelines, you can choose "Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz" 
+or "Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz" from Ensembl. The files with "sm" in the name are "soft masked" 
+which means instead of the repeat regions being given Ns, they are converted to lower-case. These are OK to use because
+most major aligners recognize lower-case letters as valid bases. Primary assembly contains all toplevel sequence regions
+excluding haplotypes and patches. This file is best used for performing sequence similarity searches where patch and 
+haplotype sequences would confuse analysis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DO NOT use 'dna_rm' files as your reference genome.</p>
+</div>
+<p>File names with Toplevel contains all sequence regions flagged as toplevel in an Ensembl schema. 
+This includes chromosomes, regions not assembled into chromosomes and N padded haplotype/patch regions. 
+DO NOT use these files as your reference genome.</p>
+<p>You could use wget to download the Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz file, then unzip/untar.</p>
+<div class="highlight"><pre><span></span><code>cd /bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl # you cannot write to this folder, go to your group's bgfs folder
+mkdir GRCh38
+cd GRCh38
+wget ftp://ftp.ensembl.org/pub/release-100/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+</code></pre></div>
+<p>Instead of the above, you might consider getting reference genomes and associated annotations from 
+UCSC <a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/">http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/</a></p>
+<div class="highlight"><pre><span></span><code>wget &lt;a href="https://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz" title="https://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz"&gt;https://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz&lt;/a&gt;
+gunzip hg38.fa.gz
+</code></pre></div>
+<h3 id="if-i-cannot-find-primary-assembly-for-my-species-how-should-i-proceed">If I cannot find primary assembly for my species, how should I proceed?<a class="headerlink" href="#if-i-cannot-find-primary-assembly-for-my-species-how-should-i-proceed" title="Permanent link">&para;</a></h3>
+<p>For example, ensembl pig genome assembly 
+(<a href="ftp://ftp.ensembl.org/pub/release-92/fasta/sus_scrofa/dna/">ftp://ftp.ensembl.org/pub/release-92/fasta/sus_scrofa/dna/</a> ) 
+does not have the primary assembly. For this case, you need to build your own reference genome from chromosomes.</p>
+<p>Download "Sus_scrofa.Sscrofa11.1.dna.chromosome.*.fa.gz" from emsembl ftp site. Replace * with 1-18, MT, X, Y and 
+non-chromosomal. Unzip all files and concatenate them to generate the primary assembly.</p>
+<div class="highlight"><pre><span></span><code>cat Sus_scrofa.Sscrofa11.1.dna.chromosome.*.fa &gt; Sscrofa11.fasta
+</code></pre></div>
+<h2 id="annotation">Annotation<a class="headerlink" href="#annotation" title="Permanent link">&para;</a></h2>
+<p>Gene annotations - Descriptions of gene/transcript models for a genome. A transcript model consists of the coordinates 
+of the exons of a transcript on a reference genome. Additional information such as the strand the transcript is 
+generated from, gene name, coding portion of the transcript, alternate transcript start sites, and other information 
+may be provided. GTF (.gtf) file is a common file format referred to as Gene Transfer Format used to store gene and 
+transcript annotation information.</p>
+<p>To obtain known gene/transcript annotations, you can use Ensembl 
+(<a href="http://useast.ensembl.org/info/data/ftp/index.html" title="http://useast.ensembl.org/info/data/ftp/index.html">https://useast.ensembl.org/info/data/ftp/index.html</a>) 
+or UCSC.</p>
+<h3 id="use-ensembl-ftp-site">Use ENSEMBL FTP SITE<a class="headerlink" href="#use-ensembl-ftp-site" title="Permanent link">&para;</a></h3>
+<p>Use the following commands to download Ensembl release 100 Homo sapiens GRCh38 gene annotation.</p>
+<div class="highlight"><pre><span></span><code>wget &lt;a href="ftp://ftp.ensembl.org/pub/release-100/gtf/homo_sapiens/Homo_sapiens.GRCh38.100.gtf.gz" title="ftp://ftp.ensembl.org/pub/release-100/gtf/homo_sapiens/Homo_sapiens.GRCh38.100.gtf.gz"&gt;ftp://ftp.ensembl.org/pub/release-100/gtf/homo_sapiens/Homo_sapiens.GRCh38.100.gtf.gz&lt;/a&gt;
+gunzip Homo_sapiens.GRCh38.100.gtf.gz
+</code></pre></div>
+<h3 id="use-ucsc-table-browser">Use UCSC TABLE BROWSER<a class="headerlink" href="#use-ucsc-table-browser" title="Permanent link">&para;</a></h3>
+<p>Based on UCSC annotations or several other possible annotation sources collected by UCSC. You might choose this option 
+if you want to have a lot of flexibility in the annotations you obtain.</p>
+<ul>
+    <li>Open the following in your browser: <a href="https://genome.ucsc.edu/" title="https://genome.ucsc.edu/">https://genome.ucsc.edu/</a></li>
+    <li>Select 'Tools' and then 'Table Browser' at the top of the page.</li>
+    <li>Select 'Mammal', 'Human', and 'Dec. 2013 (GRCh38/hg38)' from the first row of drop down menus.</li>
+    <li>Select 'Genes and Gene Predictions' and 'GENCODE v24' from the second row of drop down menus.</li>
+    <li>Select ‘knownGene’ from the third row of drop down menus. Select ‘genome’ from the fourth row.</li>
+    <li>Select 'GTF - gene transfer format' for output format and enter 'hg38_UCSC_Genes.gtf' for output file.</li>
+    <li>Hit the 'get output' button and save the file. Make note of its location.</li>
+</ul>
+
+<h3 id="important-note-on-chromosome-naming-conventions">Important note on chromosome naming conventions<a class="headerlink" href="#important-note-on-chromosome-naming-conventions" title="Permanent link">&para;</a></h3>
+<p>In order for your RNA-seq analysis to work, the chromosome names in your .gtf file must match those in your reference 
+genome (i.e. your reference genome fasta file). Unfortunately, Ensembl, NCBI, and UCSC can not agree on how to name the 
+chromosomes in many species, so this problem may come up often. You can avoid this by getting a complete reference 
+genome and gene annotation package from the same source (e.g., Ensembl) to maintain consistency.</p>
+<h3 id="important-note-on-reference-genome-builds">Important note on reference genome builds<a class="headerlink" href="#important-note-on-reference-genome-builds" title="Permanent link">&para;</a></h3>
+<p>Your annotations must correspond to the same reference genome build as your reference genome fasta file. e.g., both 
+correspond to UCSC human build 'hg38', NCBI human build 'GRCh38', etc. Even if both your reference genome and 
+annotations are from UCSC or Ensembl they could still correspond to different versions of that genome. This would 
+cause problems in any RNA-seq pipeline.</p>
+<p>There are several commons sources to obtain the reference genome, each with minor (but important differences). The 
+following summarizes some of the commonly selected options and notes and distinguishing features (e.g. use of ‘chr’ 
+in chromosome names, naming style for unplaced contigs, inclusion of alternative haplotype sequences, use and nature 
+of “decoy” sequences, use of lowercase to indicate repeat elements in the genome, etc.).</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name (link)</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/">1000 Genomes reference</a></td>
+            <td>Used in this course. The 1000g reference names chromosomes as follows (chr1, chr2, .., chr22, chrX, chrY, chrM). This reference includes “decoy” sequences (mostly low complexity sequences) that have been added to the standard genome build sequence. This reduces misalignment of reads that would otherwise get placed somewhere they don’t belong. The developer of the BWA aligner documents use of this version of the reference genome. This reference includes the alternative contigs.</td>
+        </tr>
+        <tr>
+            <td><a href="ftp://ftp.ensembl.org/pub/release-100/fasta/homo_sapiens/dna/">Ensembl reference</a></td>
+            <td>Ensembl names the chromosomes as follows (1, 2, .., 22, X, Y, MT). The names of some unplaced contigs also differ. This reference does NOT have the decoy sequences. This reference includes the alternative contigs.</td>
+        </tr>
+        <tr>
+            <td><a href="https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/">UCSC reference</a></td>
+            <td>The UCSC reference names chromosomes as follows (chr1, chr2, .., chr22, chrX, chrY, chrM). This reference does NOT have the decoy sequences. This reference includes the alternative contigs.</td>
+        </tr>
+        <tr>
+            <td><a href="ftp://ftp.ncbi.nih.gov/genomes/Homo_sapiens">NCBI reference</a></td>
+            <td>NCBI names the chromosomes as follows (chr1, chr2, .., chr22, chrX, chrY, chrMT). This reference does NOT include the decoy sequences. This reference includes the alternative contigs. The major annotation centers such as UCSC and Ensembl start with raw files from NCBI (<a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/">Various Human Assemblies</a>). Most other people do not use these NCBI files directly but rather get a version of the files from UCSC, Ensembl, etc.</td>
+        </tr>
+        <tr>
+            <td><a href="https://gdc.cancer.gov/about-data/data-harmonization-and-generation/gdc-reference-files">Genomic Data Commons (GDC) reference</a></td>
+            <td>The GDC reference names chromosomes as follows (chr1, chr2, .., chr22, chrX, chrY, chrM). The GDC created their own version of the reference for harmonized analysis of the TCGA and other large cancer sequencing projects. This reference includes “decoy” sequences. This reference does NOT include the alternative contigs. Unique to this reference is the inclusion of several virus sequences for viruses with known or suspected roles in cancer (e.g. HPV, EBV, etc.).</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h2>
+<p>Within your ‘ref’ directory, there are two files ‘Homo_sapiens.GRCh38.dna.primary_assembly.fa’ and 
+‘Homo_sapiens.GRCh38.100.gtf’.</p>
+<p>All aligners require the reference sequence to be indexed -- this is a process that creates additional files that 
+describe the reference file, such as where each chromosome is located in the file. Knowing this information speeds 
+up alignment.</p>
+<p>In this step, user supplied the reference genome sequences (FASTA file) and annotations (GTF file), from which aligner 
+generate genome indexes that are utilized in the mapping step. The genome indexes are saved to disk and need only be 
+generated once for each genome/annotation combination.</p>
+<p>At each aligner’s website, a limited collection of genome indexes is available. For example, 
+STAR (<a href="http://labshare.cshl.edu/shares/gingeraslab/www-data/dobin/STAR/STARgenomes/" title="http://labshare.cshl.edu/shares/gingeraslab/www-data/dobin/STAR/STARgenomes/">http://labshare.cshl.edu/shares/gingeraslab/www-data/dobin/STAR/STARgeno...</a>), 
+HISAT2 (<a href="https://ccb.jhu.edu/software/hisat2/index.shtml" title="https://ccb.jhu.edu/software/hisat2/index.shtml">https://ccb.jhu.edu/software/hisat2/index.shtml</a>), 
+however, it is strongly recommended that users generate their own genome indexes with most up-to-date assemblies and 
+annotations.</p>
+<p>Consult aligner manual to generate genome indexes. Provided is an example to generate HISAT2 indexes for 
+Homo_sapiens.GRCh38.86 genome and annotation.</p>
+<p>Extract splice sites and exons from GRCh38.86 annotation file. Run the following command on <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> login node.</p>
+<div class="highlight"><pre><span></span><code>Phantom-Macbook-Pro:~ fangping$ ssh fangping@htc.crc.pitt.edu
+fangping@htc.crc.pitt.edu's password:
+Last login: Mon Jul 13 15:49:23 2020 from 10.25.0.128
+[fangping@login0b ~]$ cd /bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38 # go to your refs folder
+[fangping@login0b GRCh38]$ module load hisat2/2.2.0
+[fangping@login0b GRCh38]$ extract_splice_sites.py Homo_sapiens.GRCh38.100.gtf &gt; grch38.ss
+[fangping@login0b GRCh38]$ extract_exons.py Homo_sapiens.GRCh38.100.gtf &gt; grch38.exon
+</code></pre></div>
+<p>Type ls, you can find two new files grch38.ss and grch38.ss</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b GRCh38]$ ls grch38.*
+grch38.exon  grch38.ss
+</code></pre></div>
+<p>To build HISAT2 index, you need to submit the following slurm job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#
+#SBATCH --job-name=hisat2_index
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+
+#SBATCH --cpus-per-task=16 # Request that ncpus be allocated per process.
+#SBATCH --mem=230g # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --output=hisat2_build.out
+
+module load hisat2/2.2.0
+
+hisat2-build -p 16 --ss grch38.ss --exon grch38.exon Homo_sapiens.GRCh38.dna.primary_assembly.fa grch38_tran
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WARNING: In order to index the entire human genome, HISAT2 requires at least 160GB of <abbr title="Random Access Memory — a job's fast working memory">RAM</abbr>, and several hours.</p>
+</div>
+<p>To create or edit files we will need to use a text editor. When working remotely, we need a text editor that functions 
+from the command line interface. Within these editors, since you cannot ‘point-and-click’, you must navigate the 
+interface using the arrow keys and shortcuts.</p>
+<p>While there are simpler editors available for use (i.e. nano), most computational scientists tend to favor editors 
+that have greater functionality. Some popular editors include Emacs, Vim, or a graphical editor such as Gedit. These 
+are editors which are generally available for use on high-performance compute clusters. You can use nano to generate 
+slurm job script.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b GRCh38]$ nano hisat2_build.sbatch
+</code></pre></div>
+<p>Copy the above job script, and paste to the screen (Command + v). Ctrl + o to write to the file, and then Ctrl + x to 
+exit.</p>
+<p>To submit the job to the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b GRCh38]$ sbatch hisat2_build.sbatch
+Submitted batch job 1058651
+</code></pre></div>
+<p>This job can take several hours. When the job is finished, you should find eight files named grch38_tran.1.ht2 to 
+grch38_tran.8.ht2 with the ref directory. These are the HISAT2 index files.</p>
+<p>STAR is a splice-aware aligner that will produce gapped alignments to handle reads that span exon-intron junctions. 
+Thus, it is only appropriate when an annotated reference genome is available. To build STAR index, submit the following 
+slurm job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#
+#SBATCH --job-name=STAR_index
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+
+#SBATCH --cpus-per-task=16 # Request that ncpus be allocated per process.
+#SBATCH --mem=230g # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --output=star_index.out
+
+module load star/2.7.5a
+
+mkdir -p grch38_star_index_2.7.5a
+
+STAR --runMode genomeGenerate --runThreadN 16 \
+  --genomeDir ./grch38_star_index_2.7.5a/ \
+  --genomeFastaFiles Homo_sapiens.GRCh38.dna.primary_assembly.fa \
+  --sjdbGTFfile Homo_sapiens.GRCh38.100.gtf
+</code></pre></div>
+<h2 id="rna-seq-data">RNA-seq Data<a class="headerlink" href="#rna-seq-data" title="Permanent link">&para;</a></h2>
+<p>The test data consists of 6 RNA-seq samples from the following paper.</p>
+<p>Pulikkan JA, Hegde M, Ahmad HM, Belaghzal H et al. CBFβ-SMMHC Inhibition Triggers Apoptosis by Disrupting MYC Chromatin 
+Dynamics in Acute Myeloid Leukemia. Cell 2018 Jun 28;174(1):172-186.e21. 
+PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/29958106" title="Link to PubMed record">29958106</a></p>
+<p>In the experiment, ME-1 cells were treated with DMSO/ AI-10-49 (1uM) for six hours, followed by RNA isolation. RNA 
+libraries were sequenced using 90bp paired end reads on an Illumina HiSeqTM 2000.Three independent experiments were 
+conducted for DMSO as well as AI-10-49 treatments. For more description of the experiment see the PubMed entry 
+29958106 and for raw data see the GEO entry GSE101788.</p>
+<p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE101788">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE101788</a></p>
+<p>Click the above link and click “SRA Run Selector” at the bottom. Click "Accession List" to download SRR_Acc_List.txt 
+and "Metadata" to download SraRunTable.txt</p>
+<p>You can download the FASTQ files from the Sequence Read Archive, the identifiers would be SRA run IDs, e.g. SRR5861494. 
+You should have two files for a paired-end experiment for each ID, SRR5861494_1.fastq.gz and SRR5861494_2.fastq.gz, 
+which give the first and second read for the paired-end fragments.</p>
+<div class="highlight"><pre><span></span><code>cd /bgfs/genomics/fangping/RNASeq # go to a folder
+mkdir fastqs
+</code></pre></div>
+<p>Choose a method from this <a href="/managingdata">managing and moving data</a> and transfer the SRR_Acc_List.txt and 
+SraRunTable.txt from your computer to the new folder.</p>
+<p>To extract fastq files from the GEO data, use NCBI's program toolkit. It's already installed on <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster and can be 
+loaded with module load sra-toolkit/2.10.8. Default configuration of sra-toolkit will use your home directory ~/ncbi 
+as your download/cache area for downloaded files and references. Your home directory has 75GB quota.</p>
+<p>You should run the configuration tool to set up your download/cache are.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b fastqs]$ module load sra-toolkit/2.10.8
+[fangping@login0b fastqs]$ vdb-config -i # run this command once
+</code></pre></div>
+<p>The fastq-dump command produces two compressed fastq files for each dataset, for the forward and reverese reads. 
+Within your fastqs folder, generate a text file fastq_dump.sbatch with the following contents. Then submit the job to 
+the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>sbatch fastq_dump.sbatch
+
+[fangping@login0b fastqs]$ cat fastq_dump.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=fastq_dump
+#SBATCH -N 1
+#SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=fastq_dump-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module load sra-toolkit/2.10.8
+
+names=($(cat SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+prefetch ${names[${SLURM_ARRAY_TASK_ID}]}
+
+vdb-validate ${names[${SLURM_ARRAY_TASK_ID}]}
+
+fastq-dump --split-e --origfmt --gzip ${names[${SLURM_ARRAY_TASK_ID}]}
+</code></pre></div>
+<p>Check fastq-dump options at <a href="https://ncbi.github.io/sra-tools/fastq-dump.html. ">https://ncbi.github.io/sra-tools/fastq-dump.html. </a> 
+You can also run "fastq-dump -h" to check options. --split-e 3-way splitting for mate-pairs. For each spot, if there 
+are two biological reads satisfying filter conditions, the first is placed in the <code>*_1.fastq</code> file, and the second is 
+placed in the <code>*_2.fastq</code> file. If there is only one biological read satisfying the filter conditions, it is placed in 
+the <code>*.fastq</code> file.All other reads in the spot are ignored. <code>--origfmt</code> Defline contains only original sequence name. 
+<code>--gzip</code> Compress output using gzip.</p>
+<p>This job uses job array to submit and manage collections of similar jobs quickly and easily. 
+Refer to <a href="/multiplejobs">this documentation</a>.</p>
+<h3 id="your-own-data">Your own data<a class="headerlink" href="#your-own-data" title="Permanent link">&para;</a></h3>
+<p>If you received your own data, contact the data provider to understand whether the data is paired-end or single-end 
+sequencing reads, strand-specific or non-strand-specific RNAseq. Common preprocessing tasks are listed below.</p>
+<p>Unzip fastq.gz to fastq files.</p>
+<div class="highlight"><pre><span></span><code>gunzip filename.fastq.gz
+</code></pre></div>
+<p>Merge multilanes fastq files.</p>
+<div class="highlight"><pre><span></span><code>cat 1_S1_L001_R1_001.fastq 1_S1_L002_R1_001.fastq 1_S1_L003_R1_001.fastq 1_S1_L004_R1_001.fastq &gt; 1_R1.fastq
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>zcat 1_L001_R1_001.fastq.gz 1_L002_R1_001.fastq.gz 1_L003_R1_001.fastq.gz 1_L004_R1_001.fastq.gz | gzip &gt; 1_R1.fastq.gz
+</code></pre></div>
+<p>Convert fastq file to fastq.gz file.</p>
+<div class="highlight"><pre><span></span><code>gzip 1_R1.fastq
+</code></pre></div>
+<p>If you have many samples to merge, job arrays are recommended. For example, the following batch job merge 10 four lanes 
+samples.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#
+#SBATCH --job-name=cat
+#SBATCH -N 1
+#SBATCH --cpus-per-task=1 # Request that ncpus be allocated per process.
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=cat-%A_%a.out
+#SBATCH --array=1-10 # job array index
+
+zcat ${SLURM_ARRAY_TASK_ID}_L001_R1_001.fastq.gz ${SLURM_ARRAY_TASK_ID}_L002_R1_001.fastq.gz ${SLURM_ARRAY_TASK_ID}_L003_R1_001.fastq.gz ${SLURM_ARRAY_TASK_ID}_L004_R1_001.fastq.gz | gzip &gt; ${SLURM_ARRAY_TASK_ID}_R1.fastq.gz
+</code></pre></div>
+<h2 id="prealignment-qc">PreAlignment QC<a class="headerlink" href="#prealignment-qc" title="Permanent link">&para;</a></h2>
+<p>To get a sense of your data quality before alignment, 
+<a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> provides a simple way to do some quality control 
+checks on raw sequence data coming from high throughput sequencing pipelines. 
+<a href="http://www.youtube.com/watch?v=bz93ReOv87Y">Video tutorial of FastQC</a></p>
+<p>Under your RNASeq folder, there is a single folder fastqs. Let's create two folder jobs and results.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b RNASeq]$ mkdir jobs
+[fangping@login0b RNASeq]$ mkdir results
+[fangping@login0b RNASeq]$ ls
+fastqs  jobs  results
+</code></pre></div>
+<p>You can write your jobs scripts in jobs folder:</p>
+<div class="highlight"><pre><span></span><code>cd jobs 
+</code></pre></div>
+<p>Submit the following batch job to run FastQC on your fastq files</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 1.fastqc.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=fastqc
+#SBATCH -c 1
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=fastqc-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load fastqc/0.11.9
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/fastqc
+
+fastqc -o ../results/fastqc ../fastqs/${names[${SLURM_ARRAY_TASK_ID}]}_1.fastq.gz
+fastqc -o ../results/fastqc ../fastqs/${names[${SLURM_ARRAY_TASK_ID}]}_2.fastq.gz
+
+[fangping@login0b jobs]$ sbatch 1.fastqc.sbatch # submit the job
+</code></pre></div>
+<p>You can download the *_fastqc.html files within ../results/fastqc to view the FastQC report. You can also use the
+interactive desktop on open ondemand to view the html files.</p>
+<h2 id="trimming-adaptor">Trimming Adaptor<a class="headerlink" href="#trimming-adaptor" title="Permanent link">&para;</a></h2>
+<p>FastQC gave you warning when overrepresented sequences were in first 200,000 sequences. The overrepresented 
+sequences can provide you the information which adaptors are used.</p>
+<p>Here is the documentation of Illumina Adaptor 
+Sequences: <a href="https://support.illumina.com/bulletins/2016/12/what-sequences-do-i-use-for-adapter-trimming.html" title="What sequences do I use for adaptor trimming?">What 
+sequences do I use for adaptor trimming?</a></p>
+<p>Some third-party tools require the adapter sequence for trimming be specified separately. The recommended sequences to 
+use for each Illumina kit are as follows.</p>
+<p>TruSeq LT and TruSeq HT-based kits:</p>
+<p>Read 1: AGATCGGAAGAGCACACGTCTGAACTCCAGTCA</p>
+<p>Read 2: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT</p>
+<p>ScriptSeq and TruSeq DNA Methylation:</p>
+<p>Read 1: AGATCGGAAGAGCACACGTCTGAAC</p>
+<p>Read 2: AGATCGGAAGAGCGTCGTGTAGGGA</p>
+<p>TruSeq Small RNA:</p>
+<p>TGGAATTCTCGGGTGCCAAGG</p>
+<p>TruSeq Ribo Profile:</p>
+<p>AGATCGGAAGAGCACACGTCT</p>
+<p>AmpliSeq, Nextera, Nextera DNA Flex, Nextera DNA, Nextera XT, Nextera Enrichment, Nextera Rapid Capture Enrichment, 
+TruSight Enrichment, TruSight Rapid Capture Enrichment, TruSight HLA:</p>
+<p>CTGTCTCTTATACACATCT</p>
+<p>Nextera Mate Pair:</p>
+<p>CTGTCTCTTATACACATCT+AGATGTGTATAAGAGACAG</p>
+<p>Here is a 
+<a href="http://tucf-genomics.tufts.edu/documents/protocols/TUCF_Understanding_Illumina_TruSeq_Adapters.pdf">documentation to De-Mystify Illumina TruSeq DNA Adapters</a></p>
+<p>Trim Galore! is a wrapper script to automate quality and adapter trimming as well as quality control. Trim Galore! will
+analyse the first 1 million sequences of the first specified file and attempt to find the first 12 or 13bp of the 
+following standard adapters:</p>
+<p>Illumina: AGATCGGAAGAGC</p>
+<p>Small RNA: TGGAATTCTCGG</p>
+<p>Nextera: CTGTCTCTTATA</p>
+<p>If no adapter can be detected within the first 1 million sequences Trim Galore defaults to --illumina. The 
+auto-detection behaviour can be overruled by specifying an adapter sequence manually or by 
+using --illumina, --nextera or --small_rna.</p>
+<p>You can use the following job arrays to trim adaptors from the 6 samples. The sample names are listed in 
+file ../fastqs/SRR_Acc_List.txt.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 2.trim.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=trim
+#SBATCH -c 1
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=trim-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module load trimgalore/0.6.5
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/trim_galore
+
+trim_galore --paired \
+  --output_dir ../results/trim_galore \
+  ../fastqs/${names[${SLURM_ARRAY_TASK_ID}]}_1.fastq.gz \
+  ../fastqs/${names[${SLURM_ARRAY_TASK_ID}]}_2.fastq.gz
+</code></pre></div>
+<p>When the job is completed, check the naming patterns of trim_galore results in ../results/trim_galore folder.</p>
+<p>Cutadapt is tool specifically designed to remove adapters from NGS data. To see the full list of help and options, 
+read this <a href="http://cutadapt.readthedocs.io/en/stable/guide.html">document</a></p>
+<p>For paired-end data containing Illumina TruSeq adapters, the command line looks as follows:</p>
+<div class="highlight"><pre><span></span><code>cutadapt \
+            -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCA -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT \
+            -o trimmed.1.fastq.gz -p trimmed.2.fastq.gz \
+            reads.1.fastq.gz reads.2.fastq.gz
+</code></pre></div>
+<p>To run on <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster, submit the following job.</p>
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+#
+#SBATCH --job-name=cutadapt
+#SBATCH -n 1
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=cutadapt.out
+
+module load cutadapt/1.18
+
+cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCA -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT -o SRR1039508_1.trimmed.fastq.gz -p SRR1039508_2.trimmed.fastq.gz SRR1039508_1.fastq.gz SRR1039508_2.fastq.gz
+</code></pre></div>
+<p>The output of this step will be trimmed FASTQ files for each data set.</p>
+<h3 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">&para;</a></h3>
+<p><a href="http://www.ecseq.com/support/ngs/trimming-adapter-sequences-is-it-necessary" title="http://www.ecseq.com/support/ngs/trimming-adapter-sequences-is-it-necessary">http://www.ecseq.com/support/ngs/trimming-adapter-sequences-is-it-necessary</a></p>
+<p>Adapter contamination will lead to NGS alignment errors and an increased number of unaligned reads, since the 
+adapter sequences are synthetic and do not occur in the genomic sequence. There are applications 
+(e.g. small RNA sequencing) where adapter trimming is highly necessary. With a fragment size of around 24 
+nucleotides, one will definitely sequence into the 3' adapter. But there are also applications 
+(transcriptome sequencing, whole genome sequencing, etc.) where adapter contamination can be expected to be so 
+small (due to an appropriate size selection) that one could consider to skip the adapter removal and thereby 
+save time and efforts.</p>
+<h2 id="alignment">Alignment<a class="headerlink" href="#alignment" title="Permanent link">&para;</a></h2>
+<p>Alignment is the process of taking the short reads from the FASTQ and places them in the correct location in the 
+genome. However, there exist a variety of aligners that will accomplish this goal. Two major types of aligners are 
+non-splice aware aligner (e.g., BWA, Bowtie, etc) and splice aware aligner (e.g., STAR, HISAT2, etc). To align human 
+RNA-seq data to human genome, splice aware aligner is required. All the aligners are capable of taking advantage 
+of multi-threading: splitting up the work of alignment across multiple cores.</p>
+<h3 id="hisat2-alignment">HISAT2 alignment<a class="headerlink" href="#hisat2-alignment" title="Permanent link">&para;</a></h3>
+<p>HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads 
+(whole-genome, transcriptome, and exome sequencing data) against the general human population 
+(as well as against a single reference genome). HISAT2 uses a graph-based alignment and has succeeded HISAT and 
+TOPHAT2. The output of this step will be a SAM/BAM file for each data set.</p>
+<p>You can perform alignments with HISAT2 to the genome and transcriptome. Refer to HISAT2 manual for a more detailed 
+explanation: <a href="https://ccb.jhu.edu/software/hisat2/manual.shtml" title="https://ccb.jhu.edu/software/hisat2/manual.shtml">https://ccb.jhu.edu/software/hisat2/manual.shtml</a></p>
+<p>First, begin by making the appropriate reference genome directory. You can build your own reference genome. For this 
+tutorial, you will generate a soft link to an existing GRCh38 reference genome that I have built.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b RNASeq]$ cd results/
+[fangping@login0b results]$ mkdir reference_genome
+[fangping@login0b results]$ ln -s /bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38 GRCh38
+</code></pre></div>
+<p>Submit the following job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster to align the RNA-seq data to the human genome. The job script 3.hisat2.sbatch 
+is under the <code>jobs</code> folder.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.hisat2.sbatch
+
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J hisat2_human_samples
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=hisat2-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load hisat2/2.2.0
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/hisat2
+
+hisat2 -p 4 --dta \
+  -x ../results/reference_genome/GRCh38/grch38_tran \
+  -1 ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+  -2 ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz \
+  -S ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.sam
+</code></pre></div>
+<p>Options specified as follows:</p>
+<ul>
+    <li>'-p 4' tells HISAT2 to use 4 CPUs for bowtie alignments.</li>
+    <li>'--rna-strandedness RF' specifies strandedness of RNAseq library. You can specify RF if the TruSeq strand-specific library was used to make the sequences. See here for options. <a href="https://github.com/griffithlab/rnaseq_tutorial/blob/master/manuscript/supplementary_tables/supplementary_table_5.md" title="https://github.com/griffithlab/rnaseq_tutorial/blob/master/manuscript/supplementary_tables/supplementary_table_5.md">https://github.com/griffithlab/rnaseq_tutorial/blob/master/manuscript/su...</a></li>
+    <li>'--dta' Reports alignments tailored for transcript assemblers.</li>
+    <li>'-x /path/to/hisat2/index' The HISAT2 index filename prefix (minus the trailing .X.ht2) built earlier including splice sites and exons.</li>
+    <li>'-1 /path/to/read1.fastq.gz' The read 1 FASTQ file, optionally gzip(.gz) or bzip2(.bz2) compressed.</li>
+    <li>'-2 /path/to/read2.fastq.gz' The read 2 FASTQ file, optionally gzip(.gz) or bzip2(.bz2) compressed.</li>
+    <li>'-S /path/to/output.sam' The output SAM format text file of alignments.</li>
+</ul>
+
+<p>HISAT2 generates a summary of the alignments, which is in file hisat2.out (specified as #SBATCH --output=hisat2.out). 
+Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.</p>
+<h3 id="star-alignment">STAR alignment<a class="headerlink" href="#star-alignment" title="Permanent link">&para;</a></h3>
+<p>To use STAR to map reads to the genome, create a directory mkdir STAR_alignment and submit the following jobs.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.star.sbatch
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J star_human_samples
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=star-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load star/2.7.5a
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/star
+
+STAR --genomeDir ../results/reference_genome/GRCh38/grch38_star_index_2.7.5a/ \
+ --runThreadN 4 \
+ --readFilesIn ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+ ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz \
+ --readFilesCommand zcat \
+ --outFileNamePrefix ../results/star/${names[${SLURM_ARRAY_TASK_ID}]}
+
+# change output file name
+mv ../results/star/${names[${SLURM_ARRAY_TASK_ID}]}Aligned.out.sam ../results/star/${names[${SLURM_ARRAY_TASK_ID}]}.sam
+</code></pre></div>
+<p>Note: If you are aligning several experiments in a row, add the option "--genomeLoad LoadAndKeep" and STAR will load 
+the genome index into shared memory so that it can use it for the next time you run the program.</p>
+<p>Note: old versions of STAR do not allow running multiple STAR jobs from the same work directory. STAR will generate 
+a temporary folder (_STARtmp/), and multiple jobs running from the same work directory will overwrite each other’s 
+temporary files. You can see the following fatal error from the job output: "EXITING because of FATAL ERROR: number of 
+bytes expected from the BAM bin does not agree with the actual size on disk: 253154045 0 48". Under this situation, 
+each sample has to be run in a different directory.</p>
+<h2 id="sam-to-bam-conversion">SAM to BAM Conversion<a class="headerlink" href="#sam-to-bam-conversion" title="Permanent link">&para;</a></h2>
+<p>This step is to convert HISAT2 sam files to bam files and sort by aligned position. Submit the following batch job.</p>
+<p><div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 4.samtools.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=samtools
+#SBATCH -c 4
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=samtools-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load gcc/8.2.0 samtools/1.10
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+samtools sort -@ 4 \
+ -o ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam \
+ ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.sam
+
+# generate bam index
+
+samtools index ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam
+
+# remove the big sam files to save space
+
+rm ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.sam
+</code></pre></div>
+You can now remove these .sam files to save storage space.</p>
+<h2 id="post-alignment-quality-check">Post-Alignment Quality check<a class="headerlink" href="#post-alignment-quality-check" title="Permanent link">&para;</a></h2>
+<p>You can use FastQC to perform basic QC of your BAM file. This will give you output very similar to when you ran FastQC 
+on your fastq files.</p>
+<p>Some tools, such as IGV, require bam file to be indexed. We can use samtools index for this purpose.</p>
+<h3 id="rseqc">RSeQC<a class="headerlink" href="#rseqc" title="Permanent link">&para;</a></h3>
+<p>RSeQC package provides a number of useful modules that can comprehensively evaluate high throughput sequence
+data especially RNA-seq data.</p>
+<p>infer_experiment.py can "guess" how RNA-seq sequencing were configured, particularly how reads were stranded for 
+strand-specific RNA-seq data, through comparing the “strandness of reads” with the “strandness of transcripts”.</p>
+<p>Once logged in the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster, you should see the command prompt:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b ~]$
+</code></pre></div>
+<p>Note the @login0b, and you are on the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> login node.</p>
+<p>To get a computation node to run interactive session, you type the following command on the command prompt 
+<code>srun -c 1 --pty bash</code> to start an interactive session. You can adjust parameters to request more resources. The string 
+of characters before the command prompt will change when you are on a computation node.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b hisat2]$ srun -c 1 --pty bash
+srun: job 1052589 queued and waiting for resources
+srun: job 1052589 has been allocated resources
+[fangping@n432 hisat2]$ module load rseqc/2.6.6
+[fangping@n432 hisat2]$ infer_experiment.py -r ../reference_genome/GRCh38/grch38.100.bed12 -i SRR5861494.bam -s 400000
+Reading reference gene model ../reference_genome/GRCh38/grch38.100.bed12 ... Done
+Loading SAM/BAM file ...  Total 400000 usable reads were sampled
+
+This is PairEnd Data
+Fraction of reads failed to determine: 0.1164
+Fraction of reads explained by "1++,1--,2+-,2-+": 0.4468
+Fraction of reads explained by "1+-,1-+,2++,2--": 0.4367
+[fangping@n432 hisat2]$ exit
+exit
+[fangping@login0b hisat2]$
+</code></pre></div>
+<p>The following is an example of reverse strand-specific RNASeq paired end data. The first read aligns to the strand 
+opposite the original RNA transcript, and the second read aligns to the same strand as the original RNA transcript. 
+The strand-specific information is required for the next steps of RNASeq data analysis. The following example is 
+cufflinks <code>fr_firststrand</code> library type or "stranded = reverse" option in HTSeq or "-s 2" in featureCounts.</p>
+<div class="highlight"><pre><span></span><code>This is PairEnd Data
+Fraction of reads failed to determine: 0.0282
+Fraction of reads explained by "1++,1--,2+-,2-+": 0.0039
+Fraction of reads explained by "1+-,1-+,2++,2--": 0.9679
+</code></pre></div>
+<p>The <code>/bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38/grch38.100.bed12</code> is generated from 
+Homo_sapiens.GRCh38.100.gtf 
+using <a href="https://github.com/ExpressionAnalysis/ea-utils/blob/master/clipper/gtf2bed">this script</a>. 
+A copy is located at <code>/bgfs/genomics/refs/rnaseq_refs/gtf2bed.pl</code></p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b ~]$ cd /bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38
+[fangping@login0b GRCh38]$ ../../../gtf2bed.pl Homo_sapiens.GRCh38.100.gtf &gt; grch38.100.bed12
+</code></pre></div>
+<h2 id="assemble-and-quantify-expressed-genes-and-transcripts">Assemble and quantify expressed genes and transcripts.<a class="headerlink" href="#assemble-and-quantify-expressed-genes-and-transcripts" title="Permanent link">&para;</a></h2>
+<p>StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts. Refer to the 
+<a href="https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual">Stringtie manual for a more detailed explanation</a></p>
+<p>Stringtie assemble and quantify expressed genes and transcripts in three steps. Refer to HISAT2 and Stringtie 
+publication (pubmed: 27560171) for the explanation of the three steps. “The alignments are passed to StringTie for 
+transcript assembly. StringTie assembles the genes for each data set separately, estimating the expression levels of 
+each gene and each isoform as it assembles them. After assembling each sample, the full set of assemblies is passed 
+to StringTie's merge function, which merges together all the gene structures found in any of the samples. This step is
+required because transcripts in some of the samples might be only partially covered by reads, and as a consequence 
+only partial versions of them will be assembled in the initial StringTie run. The merge step creates a set of 
+transcripts that is consistent across all samples, so that the transcripts can be compared in subsequent steps. The 
+merged transcripts are then fed back to StringTie one more time so that it can re-estimate the transcript abundances 
+using the merged structures. The re-estimation uses the same algorithm as the original assembly, but reads may need to 
+be re-allocated for transcripts whose structures were altered by the merging step.”</p>
+<p>Submit the following job to assemble transcripts for each sample.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 6.stringtie.1.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=stringtie_1
+#SBATCH -c 4
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=stringtie_1-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load stringtie/2.1.3b
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/stringtie
+
+stringtie -p 4 \
+  -G ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+  -o ../results/stringtie/${names[${SLURM_ARRAY_TASK_ID}]}.gtf \
+  -l ${names[${SLURM_ARRAY_TASK_ID}]} \
+  ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam
+</code></pre></div>
+<p><strong>Generate a text file named mergelist.txt with the following contents.</strong></p>
+<div class="highlight"><pre><span></span><code>../results/stringtie/SRR5861494.gtf
+../results/stringtie/SRR5861495.gtf
+../results/stringtie/SRR5861496.gtf
+../results/stringtie/SRR5861497.gtf
+../results/stringtie/SRR5861498.gtf
+../results/stringtie/SRR5861499.gtf
+</code></pre></div>
+<p><strong>Submit the following job to merge transcripts from all samples.</strong></p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 6.stringtie.2.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=stringtie_2
+#SBATCH -c 4
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=stringtie_merge.out
+
+module purge
+module load stringtie/2.1.3b
+
+stringtie --merge -p 4 \
+  -G ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+  -o ../results/stringtie/stringtie_merged.gtf \
+  mergelist.txt
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the third step, submit the following job to estimate transcript abundances and create table counts for post 
+analysis.</p>
+</div>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 6.stringtie.3.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=stringtie_3
+#SBATCH -c 4
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=stringtie_3-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load stringtie/2.1.3b
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/stringtie/ballgown
+
+stringtie -e -B -p 4 \
+  -G ../results/stringtie/stringtie_merged.gtf \
+  -o ../results/stringtie/ballgown/${names[${SLURM_ARRAY_TASK_ID}]}/${names[${SLURM_ARRAY_TASK_ID}]}.gtf \
+  -A ../results/stringtie/ballgown/${names[${SLURM_ARRAY_TASK_ID}]}/gene_abundances.tsv \
+  ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam
+</code></pre></div>
+<p>Extra options with the above commands are specified below:</p>
+<ul>
+    <li>'-p 4' tells Stringtie to use 4 CPUs. Stringtie jobs are not computational intensive. Requesting fewer CPUs and walltime can allow the job to be run through <a href="https://core.sam.pitt.edu/HTCCluster#Backfill">backfill</a></li>
+    <li>'-G ' reference annotation to use for guiding the assembly process (GTF/GFF3)</li>
+    <li>'-e' only estimate the abundance of given reference transcripts (requires -G)</li>
+    <li>'-B' enable output of Ballgown table files which will be created in the same directory as the output GTF (requires -G, -o recommended)</li>
+    <li>'-o' output path/file name for the assembled transcripts GTF (default: stdout)</li>
+    <li>'-A' output path/file name for gene abundance estimates</li>
+</ul>
+
+<p>The primary output of StringTie is a Gene Transfer Format (GTF) file that contains details of the transcripts that 
+StringTie assembles from RNA-Seq data. Transcript abundance is reported in FPKM and TPM. FPKM: Fragments per 
+kilobase of transcript per million read pairs. This is the number of pairs of reads aligning to this feature, 
+normalized by the total number of fragments sequenced (in millions) and the length of the transcript (in kilobases). 
+TPM: Transcripts per million. This is the number of transcripts from this particular gene normalized first by gene
+length, and then by sequencing depth (in millions) in the sample.</p>
+<p>If StringTie is run with the -A <gene_abund.tab> option, it returns a file containing gene abundances. 
+For details on the Stringtie output files refer to 
+<a href="https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#output">the Stringtie manual</a>.</p>
+<p>We can use these files to perform various comparisons of expression estimation tools 
+(e.g. stringtie, kallisto, raw counts) and metrics (e.g. FPKM vs TPM).</p>
+<h3 id="counting-reads-from-stringtie-outputs">Counting reads from stringtie outputs<a class="headerlink" href="#counting-reads-from-stringtie-outputs" title="Permanent link">&para;</a></h3>
+<p>A Python script (prepDE.py) from StringTie is provided to extract the read count information directly from the files 
+generated by StringTie (run with the -e parameter). <a href="https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#deseq" title="https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#deseq">https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual#deseq</a></p>
+<p>Use the following scripts to extract the read count information from the ballgown directory.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ srun -c 1 --pty bash
+srun: job 1053698 queued and waiting for resources
+srun: job 1053698 has been allocated resources
+[fangping@n435 jobs]$ module load stringtie/2.1.3b
+[fangping@n435 jobs]$ prepDE.py -i ../results/stringtie/ballgown -g ../results/stringtie/gene_count_matrix.csv -t ../results/stringtie/transcript_count_matrix.csv
+[fangping@n435 jobs]$ exit
+exit
+[fangping@login0b jobs]$
+</code></pre></div>
+<p>Two files gene_count_matrix.csv and transcript_count_matrix.csv are generated from the StringTie output files.</p>
+<h2 id="counting-reads-in-features">Counting reads in features<a class="headerlink" href="#counting-reads-in-features" title="Permanent link">&para;</a></h2>
+<p>Differential analysis tools, such as edgeR, work on a table of integer read counts, with rows corresponding to genes 
+and columns to independent libraries. The counts represent the total number of reads aligning to each gene 
+(or other genomic locus). htseq-count is a tool that work on alignments to produce raw counts instead of FPKM/TPM 
+values for differential expression analysis. Refer to the HTSeq documentation for a more detailed explanation: 
+<a href="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html" title="http://www-huber.embl.de/users/anders/HTSeq/doc/count.html">http://www-huber.embl.de/users/anders/HTSeq/doc/count.html</a></p>
+<p>Run htseq-count and calculate gene-level counts. Submit the following job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 5.htseq.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=htseq
+#SBATCH -c 1
+#SBATCH --mem=16g
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=htseq-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load htseq/0.11.2
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/htseq
+
+htseq-count --format bam \
+  --order pos \
+  --stranded=no \
+  --mode intersection-strict \
+  --minaqual 1 \
+  --type exon \
+  --idattr gene_id \
+  ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam \
+  ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+  &gt; ../results/htseq/${names[${SLURM_ARRAY_TASK_ID}]}_gene.tsv
+</code></pre></div>
+<p>Extra options specified below:</p>
+<ul>
+    <li>'--format' specify the input file format one of BAM or SAM. Since we have BAM format files, select 'bam' for this option.</li>
+    <li>'--order' provide the expected sort order of the input file. Previously we generated position sorted BAM files so use 'pos'.</li>
+    <li>'--mode' determines how to deal with reads that overlap more than one feature. We believe the 'intersection-strict' mode is best.</li>
+    <li>'--stranded' specifies whether data is stranded or not. The TruSeq strand-specific RNA libraries suggest the 'reverse' option for this parameter.</li>
+    <li>'--minaqual' will skip all reads with alignment quality lower than the given minimum value</li>
+    <li>'--type' specifies the feature type (3rd column in GFF file) to be used. (default, suitable for RNA-Seq and Ensembl GTF files: exon)</li>
+    <li>'--idattr' The feature ID used to identity the counts in the output table. The default, suitable for RNA-SEq and Ensembl GTF files, is gene_id.</li>
+</ul>
+
+<p>The Subread package comprises a suite of software programs for processing next-gen sequencing read data. featureCounts 
+is a software program developed for counting reads to genomic features such as genes, exons, promoters and genomic 
+bins. Using featureCounts to count reads to genes, submit the following job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 5.featurecounts.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=featurecounts
+#SBATCH -c 4
+#SBATCH -t 1-00:00 # Runtime in D-HH:MM
+#SBATCH --output=featurecounts-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load subread/2.0.1
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/featurecounts
+
+featureCounts -T 4 -s 0 \
+   -t exon \
+   -g gene_id \
+   -a ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+   -o ../results/featurecounts/${names[${SLURM_ARRAY_TASK_ID}]}_gene.tsv \
+   ../results/hisat2/${names[${SLURM_ARRAY_TASK_ID}]}.bam
+</code></pre></div>
+<p><strong>Comments about normalization:</strong></p>
+<p>The most common application of RNA-seq is to estimate gene and transcript expression. This application is primarily 
+based on the number of reads that map to each transcript sequence. The simplest approach to quantification is to 
+aggregate raw counts of mapped reads using programs such as HTSeq-count. This gene-level (rather than transcript-level) 
+quantification approach utilizes a gene transfer format (GTF) file containing the genome coordinates of exons and genes,
+and often discard multireads. Raw read counts alone are not sufficient to compare expression levels among samples, as 
+these values are affected by factors such as transcript length, total number of reads, and sequencing biases. The 
+measure RPKM (reads per kilobase of exon model per million reads) is a within-sample normalization method that will 
+remove the feature-length and library-size effects. This measure and its subsequent derivatives FPKM (fragments per 
+kilobase of exon model per million mapped reads), a within-sample normalized transcript expression measure analogous 
+to RPKs, and TPM (transcripts per million) are the most frequently reported RNA-seq gene expression values. Correcting 
+for gene length is not necessary when comparing changes in gene expression within the same gene across samples, but it 
+is necessary for correctly ranking gene expression levels within the sample to account for the fact that longer genes 
+accumulate more reads. The within-sample and between-sample comparisons are confusing.</p>
+<p>Differential expression analysis requires that gene expression values should be compared among samples. 
+RPKM, FPKM, and TPM normalize away the most important factor for comparing samples, which is sequencing depth, 
+whether directly or by accounting for the number of transcripts, which can differ significantly between samples. 
+These approaches rely on normalizing methods that are based on total or effective counts, and tend to perform poorly 
+when samples have heterogeneous transcript distributions, that is, when highly and differentially expressed features 
+can skew the count distribution. Normalization methods that take this into account are TMM, DESeq, PoissonSeq and 
+UpperQuartile, which ignore highly variable and/or highly expressed features.</p>
+<h2 id="rsem">RSEM<a class="headerlink" href="#rsem" title="Permanent link">&para;</a></h2>
+<p>RSEM is a software package for estimating gene and isoform expression levels from single-end or paired-end RNA-Seq 
+data. The software works with transcriptome sequences and does not require a reference genome. It can either perform 
+the read alignment step prior to quantification, or take an alignment (bam) file as input, so long as the alignment 
+settings are appropriate for RSEM. Currently, RSEM can perform the alignment step with three different aligners: 
+bowtie, bowtie2, or STAR. It uses the Expectation Maximization (EM) algorithm to estimate abundances at the isoform 
+and gene levels.</p>
+<p>If an annotated reference genome is available, RSEM can use a gtf file representation of those annotations to 
+extract the transcript sequences for which quantification will be performed, and build the relevant genome and 
+transcriptome indices. If this is done and the alignment step is implemented within RSEM, the option is available to 
+also write the read alignments in genomic coordinates, permitting visualization of expression data in a browser such 
+as IGV. If no reference genome is available, one must supply RSEM a fasta file of transcript sequences. In addition, 
+one can supply information that groups transcripts by gene, such that gene-level expression estimates.</p>
+<p>The example workflows below are demonstrated as sbatch scripts for using with the SLURM job scheduling engine.</p>
+<p>STAR is a splice-aware aligner that will produce gapped alignments to handle reads that span exon-intron junctions. 
+Thus, it is only appropriate when an annotated reference genome is available. STAR performs two-pass iterative mapping 
+that identifies novel splice sites, and uses the updated splicing information to generate transcriptome 
+(as well as genomic) alignments. Use rsem-prepare-reference to prepare transcript references for RSEM:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.rsem.star.index.sbatch
+#!/bin/bash
+
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J rsemindex_star
+#SBATCH --cpus-per-task=6 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --output=rsemindex_star.out
+
+module purge
+module load gcc/8.2.0 rsem/1.3.1
+module load star/2.7.5a
+
+mkdir -p ../results/reference_genome/rsem
+
+rsem-prepare-reference -p 6 --star \
+  --gtf ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+  ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
+  ../results/reference_genome/rsem/rsem_star_2.7.5a_index
+</code></pre></div>
+<p>If one does not have a reference genome, bowtie and bowtie2 are the other available aligner options. Note that, if one
+has an annotated genome and prefers mapping directly to the transcript sequences, one can also use these aligners. 
+For RSEM to work properly when estimating expression from alignments to transcript sequences, those alignments must 
+be ungapped. Bowtie is an ungapped aligner. While bowtie2 default behavior is to do gapped alignments, RSEM implements 
+specific command line arguments such that it is run in an ungapped fashion. It has been shown that using bowtie2 this 
+way is slightly more sensitive than bowtie, so we recommend its use over bowtie unless there are project-specific 
+reasons for using the former. Use rsem-prepare-reference to prepare transcript references for RSEM:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.rsem.bowtie2.index.sbatch
+#!/bin/bash
+
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J rsemindex_bowtie2
+#SBATCH --cpus-per-task=6 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --output=rsemindex_bowtie2.out
+
+module purge
+module load gcc/8.2.0 rsem/1.3.1
+module load bowtie2/2.4.1
+
+module load python/bioconda-3.7-2019.03 # bowtie2 2.4.1 needs python3
+
+mkdir -p ../results/reference_genome/rsem
+
+rsem-prepare-reference -p 6 --bowtie2 \
+  --gtf ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf \
+  ../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
+  ../results/reference_genome/rsem/rsem_bowtie2_index
+</code></pre></div>
+<h3 id="estimate-expression-from-star-alignments">Estimate expression from STAR alignments<a class="headerlink" href="#estimate-expression-from-star-alignments" title="Permanent link">&para;</a></h3>
+<p>One quantifies abundances of the transcripts in the RNA-seq dataset with the RSEM "rsem-calculate-expression" function. 
+Submit the following jobs to the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.rsem.star.expression.sbatch
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J rsem_star_expression
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=rsem-star-expression-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load star/2.7.5a
+module load gcc/8.2.0 rsem/1.3.1
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/rsem
+
+rsem-calculate-expression --paired-end --star \
+    --star-gzipped-read-file \
+    -p 4 \
+    ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+    ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz \
+    ../results/reference_genome/rsem/rsem_star_2.7.5a_index \
+    ../results/rsem/${names[${SLURM_ARRAY_TASK_ID}]}_rsem_star
+</code></pre></div>
+<h3 id="align-reads-with-bowtie2-and-estimate-expression">Align reads with bowtie2 and estimate expression<a class="headerlink" href="#align-reads-with-bowtie2-and-estimate-expression" title="Permanent link">&para;</a></h3>
+<p>Submit the following jobs to the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.rsem.bowtie2.expression.sbatch
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J rsem_bowtie2_expression
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=rsem-bowtie2-expression-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load gcc/8.2.0 rsem/1.3.1
+
+module load bowtie2/2.4.1
+
+module load python/bioconda-3.7-2019.03 # bowtie2 2.4.1 needs python3
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/rsem
+
+rsem-calculate-expression --bowtie2 \
+    --num-threads 4 \
+    --paired-end \
+    ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+    ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz \
+    ../results/reference_genome/rsem/rsem_bowtie2_index \
+    ../results/rsem/${names[${SLURM_ARRAY_TASK_ID}]}_rsem_bowtie2
+</code></pre></div>
+<p>The results of a RSEM run are written out in files that have the prefix indicated in the "rsem-calculate-expression" 
+command.</p>
+<p>The main outputs of interest are the files containing the quantification results at the gene and isoform levels. The 
+names of these files for each dataset are of the form:</p>
+<p>dataset_prefix.isoforms.results</p>
+<p>dataset_prefix.genes.results</p>
+<p>These are tab-delimited files and contain expression estimates for each isoform ("transcript_id") or gene ("gene_id") 
+as "expected_count", and also as TPM (Transcripts Per Million) and FPKM (Fragments Per Kilobase of transcript per 
+Million mapped reads) numbers.</p>
+<h2 id="pseudo-alignment-approach">Pseudo-alignment approach<a class="headerlink" href="#pseudo-alignment-approach" title="Permanent link">&para;</a></h2>
+<p>Two alternative approaches are available for reference-based RNASeq analysis. Traditionally, an annotated genome is 
+available and reads are mapped to the genome with a gapped mapper. Next (novel) transcript discovery and quantification 
+can proceed with or without an annotation file. Novel transcripts are then functionally annotated.</p>
+<p>In recent years, pseudo-alignment approaches, such as Salmon and kallisto, are proposed. If no novel transcript 
+discovery is needed, reads can be mapped to the reference transcriptome using an ungapped aligner. Transcript 
+identification and quantification can occur simultaneously. Transcript identification and quantification become 
+important challenges for alternatively expressed genes.</p>
+<h3 id="using-salmon-for-transcript-expression-abundance-estimation-from-rna-seq-data">Using Salmon for transcript expression abundance estimation from RNA-seq data<a class="headerlink" href="#using-salmon-for-transcript-expression-abundance-estimation-from-rna-seq-data" title="Permanent link">&para;</a></h3>
+<h4 id="obtain-transcript-sequences-in-fasta-format">Obtain transcript sequences in fasta format<a class="headerlink" href="#obtain-transcript-sequences-in-fasta-format" title="Permanent link">&para;</a></h4>
+<p>Note that we already have fasta sequences for the reference genome sequence. However, Kallisto works directly on target
+cDNA/transcript sequences. Remember also that we have transcript models for genes. These transcript models were 
+downloaded from Ensembl in GTF format. This GTF contains a description of the coordinates of exons that make up each 
+transcript, but it does not contain the transcript sequences themselves. So currently we do not have transcript 
+sequences needed by Kallisto. There are many places we could obtain these transcript sequences. For example, we could 
+download them directly in Fasta format from the 
+<a href="http://www.ensembl.org/info/data/ftp/index.html">Ensembl FTP site</a>.</p>
+<div class="highlight"><pre><span></span><code>https://www.ensembl.org/info/data/ftp/index.html
+
+[fangping@login0b ~]$ cd /bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38
+[fangping@login0b GRCh38]$ wget ftp://ftp.ensembl.org/pub/release-100/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
+[fangping@login0b GRCh38]$ gunzip Homo_sapiens.GRCh38.cdna.all.fa.gz
+</code></pre></div>
+<h4 id="build-a-salmon-transcriptome-index">Build a salmon transcriptome index<a class="headerlink" href="#build-a-salmon-transcriptome-index" title="Permanent link">&para;</a></h4>
+<p>The mapping-based mode of Salmon runs in two phases; indexing and quantification. The indexing step is independent of 
+the reads, and only need to be run one for a particular set of reference transcripts. The quantification step, 
+obviously, is specific to the set of RNA-seq reads and is thus run more frequently.</p>
+<p><a href="https://github.com/COMBINE-lab/salmon">https://github.com/COMBINE-lab/salmon</a></p>
+<p>Specifically, there are 3 possible ways in which the salmon index can be created:</p>
+<p>cDNA-only index : salmon_index - <a href="https://combine-lab.github.io/salmon/getting_started/">https://combine-lab.github.io/salmon/getting_started/</a>. 
+This method will result in the smallest index and require the least resources to build, but will be the most prone to
+possible spurious alignments.</p>
+<p>SA mashmap index: salmon_partial_sa_index - (regions of genome that have high sequence similarity to the transcriptome) 
+Details can be found in this README and using this script. While running mashmap can require considerable resources, 
+the resulting decoy files are fairly small. This will result in an index bigger than the cDNA-only index, but still 
+much smaller than the full genome index below. It will confer many, though not all, of the benefits of using the 
+entire genome as a decoy sequence.</p>
+<p>SAF genome index: salmon_sa_index - (the full genome is used as decoy) - The tutorial for creating such an index can be 
+found here. This will result in the largest index, but likely does the best job in avoiding spurious alignments to 
+annotated transcripts.</p>
+<p>To build an cDNA-only index for the transcriptome, submit the following job to <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b GRCh38]$ mkdir salmon_1.1.0
+[fangping@login0b GRCh38]$ cd salmon_1.1.0/
+[fangping@login0b salmon_1.1.0]$ cat salmon_index.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=salmon_index
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --output=salmon_index.out
+
+module load salmon/1.1.0
+
+salmon index -t ../Homo_sapiens.GRCh38.cdna.all.fa -i grch38_index
+</code></pre></div>
+<p>To build SAF genome salmon_sa_index - (the full genome is used as decoy), run the following script to generate 
+<code>GRCh38.gentrome.fa.gz</code> and <code>GRCh38.decoys.txt</code></p>
+<div class="highlight"><pre><span></span><code>grep "^&gt;" Homo_sapiens.GRCh38.dna.primary_assembly.fa | cut -d " " -f 1 &gt; GRCh38.decoys.txt
+sed -i 's/&gt;//g' GRCh38.decoys.txt
+cat Homo_sapiens.GRCh38.cdna.all.fa Homo_sapiens.GRCh38.dna.primary_assembly.fa | gzip &gt; GRCh38.gentrome.fa.gz
+</code></pre></div>
+<p>Then submit the following job to the <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b salmon_1.1.0]$ cat salmon_sa_index.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=salmon_sa_index
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+
+#SBATCH --cpus-per-task=6 # Request that ncpus be allocated per process.
+#SBATCH --output=salmon_sa_index.out
+
+module load salmon/1.1.0
+
+salmon index -p 6 --gencode -t ../GRCh38.gentrome.fa.gz \
+  -d ../GRCh38.decoys.txt -i grch38_sa_index
+</code></pre></div>
+<h4 id="quantifying-in-mapping-based-mode">Quantifying in mapping-based mode<a class="headerlink" href="#quantifying-in-mapping-based-mode" title="Permanent link">&para;</a></h4>
+<p>Then, you can quantify any set of reads (say, paired-end reads in files reads1.fq and reads2.fq) directly against this 
+index using the Salmon quant command. Submit the following job array to run salmon quant:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.salmon.sbatch
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J salmon_human_samples
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=salmon-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load salmon/1.1.0
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/salmon
+
+salmon quant --threads 4 \
+  -i ../results/reference_genome/GRCh38/salmon_1.1.0/grch38_sa_index \
+  -l A \
+  -1 ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+  -2 ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz \
+  --validateMappings -o ../results/salmon/${names[${SLURM_ARRAY_TASK_ID}]}
+</code></pre></div>
+<h3 id="using-kallisto-for-transcript-expression-abundance-estimation-from-rna-seq-data">Using Kallisto for transcript expression abundance estimation from RNA-seq data<a class="headerlink" href="#using-kallisto-for-transcript-expression-abundance-estimation-from-rna-seq-data" title="Permanent link">&para;</a></h3>
+<p>For more information on Kallisto, refer to the <a href="https://pachterlab.github.io/kallisto/about.html">Kallisto Project page</a> 
+and the <a href="https://pachterlab.github.io/kallisto/manual.html">Kallisto Manual page</a>.</p>
+<h3 id="build-a-kallisto-transcriptome-index">Build a Kallisto transcriptome index<a class="headerlink" href="#build-a-kallisto-transcriptome-index" title="Permanent link">&para;</a></h3>
+<p>Remember that Kallisto does not perform alignment or use a reference genome sequence. Instead, it performs 
+pseudo-alignment to determine the compatibility of reads with targets (transcript sequences in this case). However, 
+similar to alignment algorithms like HISAT2 or STAR, Kallisto requires an index to assess this compatibility 
+efficiently and quickly. First process the transcriptome fasta file downloaded to build a transcriptome index that 
+kallisto needs with the kallisto "index" function; we name the index file "grch38_index":</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b GRCh38]$ mkdir kallisto
+[fangping@login0b GRCh38]$ cd kallisto
+[fangping@login0b kallisto]$ cat kallisto_index.sbatch
+#!/bin/bash
+#
+#SBATCH --job-name=kallisto_index
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --output=kallisto_index.out
+
+module load kallisto/0.46.1
+
+kallisto index -i grch38_index ../Homo_sapiens.GRCh38.cdna.all.fa
+</code></pre></div>
+<p>Generate transcript abundance estimates for all samples using Kallisto.</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b jobs]$ cat 3.kallisto.sbatch
+#!/bin/bash
+#
+#SBATCH -N 1 # Ensure that all cores are on one machine
+#SBATCH -t 3-00:00 # Runtime in D-HH:MM
+#SBATCH -J kallisto_human_samples
+#SBATCH --cpus-per-task=4 # Request that ncpus be allocated per process.
+#SBATCH --mem=60g # Memory pool for all cores (see also --mem-per-cpu)
+
+#SBATCH --output=kallisto-%A_%a.out
+#SBATCH --array=0-5 # job array index
+
+module purge
+module load kallisto/0.46.1
+
+names=($(cat ../fastqs/SRR_Acc_List.txt))
+
+echo ${names[${SLURM_ARRAY_TASK_ID}]}
+
+mkdir -p ../results/kallisto
+
+kallisto quant --threads 4 \
+ -i ../results/reference_genome/GRCh38/kallisto/grch38_index \
+ -o ../results/kallisto/${names[${SLURM_ARRAY_TASK_ID}]} \
+ ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_1_val_1.fq.gz \
+ ../results/trim_galore/${names[${SLURM_ARRAY_TASK_ID}]}_2_val_2.fq.gz
+</code></pre></div>
+<p>The main output of the kallisto quantification are the abundance estimates in the "abundance.tsv" file. For each
+transcript ("target_id"), abundance is reported in “estimated counts” (est_counts) and in Transcripts Per Million (tpm).</p>
+<h2 id="nf-core-rnaseq-nextflow-pipeline">nf-core RNASeq nextflow pipeline<a class="headerlink" href="#nf-core-rnaseq-nextflow-pipeline" title="Permanent link">&para;</a></h2>
+<p>nf-core is a community effort to collect a curated set of NGS analysis pipelines built using Nextflow. We have 
+installed some pipelines on <abbr title="High-Throughput Computing — many independent single-node jobs">HTC</abbr> cluster.</p>
+<p>Check the nf-core RNASeq-1.3 pipeline to analyze RNA sequencing data.</p>
+<h2 id="differential-expression">Differential Expression<a class="headerlink" href="#differential-expression" title="Permanent link">&para;</a></h2>
+<p>Various bioconductor packages have been developed for differential analysis.</p>
+<p>Bioconductor package tximport can be used to import and summarize transcript-level abundance estimates for transcript- 
+and gene-level analysis with Bioconductor packages, such as edgeR, DESeq2, and limma-voom.</p>
+<p>DESeq2 and edgeR are two popular Bioconductor packages for analyzing differential expression, which take as input a 
+matrix of read counts mapped to particular genomic features (e.g., genes). Make use of the raw counts you generate 
+above using htseq-count or using prepDE.py on StringTie outputs.</p>
+<p>You can use RStudio Server on Open Ondemand for this task. Point your web browser to ondemand.htc.crc.pitt.edu, logon 
+using your Pitt Credentials. Then Click Interactive Apps -&gt; RStudio Server, choose R 4.0.0. The following code 
+blocks are R codes. You can run these codes through pasting them to the R console.</p>
+<h3 id="differential-expression-using-deseq2">Differential expression using DESeq2<a class="headerlink" href="#differential-expression-using-deseq2" title="Permanent link">&para;</a></h3>
+<p>The goal of RNA-seq is often to perform differential expression testing to determine which genes or transcripts are 
+expressed at different levels between conditions. These findings can offer biological insight into the processes 
+affected by the condition(s) of interest.</p>
+<p>In the above examples, output quantifications can be at either transcript-level or gene-level.</p>
+<p><a href="http://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html">tximport</a> imports 
+transcript-level estimates from various external software and optionally summarizes abundances, counts,
+and transcript lengths to the gene-level (default) or outputs transcript-level matrices.</p>
+<p>Supported software (i.e. the type argument):
+- salmon 
+- sailfish 
+- alevin 
+- kallisto 
+- rsem 
+- stringtie</p>
+<p>Transcripts need to be associated with gene IDs for gene-level summarization. For Salmon, Sailfish, and kallisto the 
+files only provide the transcript ID. We first make a <code>data.frame</code> called <code>tx2gene</code> with two columns: 1) 
+transcript ID and 2) gene ID. The column names do not matter but this column order must be used. The transcript ID 
+must be the same one used in the abundance files.</p>
+<div class="highlight"><pre><span></span><code>library(GenomicFeatures)
+
+txdb &lt;- makeTxDbFromGFF(file="/bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38/Homo_sapiens.GRCh38.100.gtf")
+
+keytypes(txdb)
+columns(txdb)
+
+k &lt;- keys(txdb, keytype = "TXNAME")
+tx2gene &lt;- select(txdb, k, "GENEID", "TXNAME")
+head(tx2gene)
+write.csv(tx2gene,file="tx2gene.csv",row.names = FALSE,quote=FALSE)
+
+tx2gene &lt;- read.delim("/bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38/tx2gene.csv",sep=",")
+</code></pre></div>
+<p>The pseudo-counts generated by Salmon are represented as normalized TPM (transcripts per million) counts and map to 
+transcripts. These need to be converted into non-normalized count estimates for performing DESeq2 analysis. To use 
+DESeq2 we also need to collapse our abundance estimates from the transcript level to the gene-level. We will be using 
+the R Bioconductor package tximport to do all of the above and get set up for DESeq2.</p>
+<p>The first thing we need to do is create a variable that contains the paths to each of our <code>quant.sf</code> files. Then we will 
+add names to our quant files which will allow us to easily discriminate between samples in the final output matrix.</p>
+<div class="highlight"><pre><span></span><code>## List all directories containing data  
+samples &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/salmon", full.names = F)
+
+## Obtain a vector of all filenames including the path
+files &lt;- file.path("/bgfs/genomics/fangping/RNASeq/results/salmon",samples, "quant.sf")
+names(files) &lt;- samples
+
+library(tximport)
+tx2gene &lt;- read.delim("/bgfs/genomics/refs/rnaseq_refs/Homo_sapiens/Ensembl/GRCh38/tx2gene.csv",sep=",")
+txi &lt;- tximport(files,type="salmon",tx2gene = tx2gene,ignoreTxVersion = TRUE)
+attributes(txi)
+# Look at the counts
+head(txi$counts)
+</code></pre></div>
+<p>kallisto abundance.h5 files can be imported by setting type to "kallisto".</p>
+<div class="highlight"><pre><span></span><code>samples &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/kallisto", full.names = F)
+files &lt;- file.path("/bgfs/genomics/fangping/RNASeq/results/kallisto", samples, "abundance.h5")
+names(files) &lt;- samples
+txi.kallisto &lt;- tximport(files, type = "kallisto", txOut = TRUE)
+head(txi.kallisto$counts)
+</code></pre></div>
+<p>StringTie t_data.ctab files giving the coverage and abundances for transcripts can be imported by setting type to 
+stringtie.</p>
+<div class="highlight"><pre><span></span><code>samples &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/stringtie/ballgown", full.names = F)
+files &lt;- file.path("/bgfs/genomics/fangping/RNASeq/results/stringtie/ballgown", samples, "t_data.ctab")
+txi.stringtie &lt;- tximport(files, type = "stringtie", tx2gene = tx2gene)
+head(txi.stringtie$counts)
+</code></pre></div>
+<p>RSEM sample.genes.results files can be imported by setting type to "rsem", and txIn and txOut to FALSE.</p>
+<div class="highlight"><pre><span></span><code>samples &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/rsem", full.names = F,pattern="*_rsem_star.genes.results")
+samples &lt;- gsub("_rsem_star.genes.results","",samples)
+
+files &lt;- file.path("/bgfs/genomics/fangping/RNASeq/results/rsem", paste0(samples, "_rsem_star.genes.results"))
+names(files) &lt;- samples
+txi.rsem &lt;- tximport(files, type = "rsem", txIn = FALSE, txOut = FALSE)
+head(txi.rsem$counts)
+</code></pre></div>
+<p>RSEM sample.isoforms.results files can be imported by setting type to "rsem", and txIn and txOut to TRUE.</p>
+<p>Create a metadata table. You can also generate this table in a csv file and use read.csv to read the file.</p>
+<div class="highlight"><pre><span></span><code>sampletype &lt;- factor(c(rep("control",3), rep("treatment", 3)))
+meta &lt;- data.frame(sampletype, row.names = colnames(txi$counts))
+&gt; meta
+           sampletype
+SRR5861494    control
+SRR5861495    control
+SRR5861496    control
+SRR5861497  treatment
+SRR5861498  treatment
+SRR5861499  treatment
+</code></pre></div>
+<p>Create DESeqDataSet object</p>
+<p>Build a DESeqDataSet from txi, providing also the sample information and a design formula. The DESeqDataSetFromTximport
+function will take the txi$counts values and use the round function to round them to nearest integer as documented 
+here. The design indicates how to model the samples, here, that we want to measure the difference in expression between
+pre-lesion and adjacent normal tissue in a paired-sample design</p>
+<div class="highlight"><pre><span></span><code>library(DESeq2)
+
+dds = DESeqDataSetFromTximport(txi, colData = meta, ~ sampletype)
+</code></pre></div>
+<h3 id="htseq-count-input">htseq-count input<a class="headerlink" href="#htseq-count-input" title="Permanent link">&para;</a></h3>
+<p>You can use the function DESeqDataSetFromHTSeqCount if you have used htseq-count from the HTSeq python package.</p>
+<div class="highlight"><pre><span></span><code>filename &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/htseq", full.names = F)
+samplename &lt;- gsub("_gene.tsv","",filename)
+sampleCondition &lt;- factor(c(rep("control",3), rep("treatment", 3)))
+
+sampleTable &lt;- data.frame(sampleName = samplename,
+                          fileName = filename,
+                          condition = sampleCondition)
+&gt; sampleTable
+  sampleName            fileName condition
+1 SRR5861494 SRR5861494_gene.tsv   control
+2 SRR5861495 SRR5861495_gene.tsv   control
+3 SRR5861496 SRR5861496_gene.tsv   control
+4 SRR5861497 SRR5861497_gene.tsv treatment
+5 SRR5861498 SRR5861498_gene.tsv treatment
+6 SRR5861499 SRR5861499_gene.tsv treatment
+</code></pre></div>
+<p>Then we build the DESeqDataSet using the following function:</p>
+<div class="highlight"><pre><span></span><code>library("DESeq2")
+ddsHTSeq &lt;- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable,directory = "/bgfs/genomics/fangping/RNASeq/results/htseq",design= ~ condition)
+ddsHTSeq
+</code></pre></div>
+<p>featureCounts input</p>
+<p>DESeq2 does not provide a function to load featureCounts data. We can write one based on DESeqDataSetFromHTSeqCount.</p>
+<p>featureCounts output format:</p>
+<div class="highlight"><pre><span></span><code>[fangping@login0b featurecounts]$ head SRR5861494_gene.tsv
+# Program:featureCounts v2.0.1; Command:"featureCounts" "-T" "4" "-s" "0" "-t" "exon" "-g" "gene_id" "-a" "../results/reference_genome/GRCh38/Homo_sapiens.GRCh38.100.gtf" "-o" "../results/featurecounts/SRR5861494_gene.tsv" "../results/hisat2/SRR5861494.bam"
+Geneid    Chr    Start    End    Strand    Length    ../results/hisat2/SRR5861494.bam
+ENSG00000223972    1;1;1;1;1;1;1;1;1    11869;12010;12179;12613;12613;12975;13221;13221;13453    12227;12057;12227;12721;12697;13052;13374;14409;13670    +;+;+;+;+;+;+;+;+    1735    0
+ENSG00000227232    1;1;1;1;1;1;1;1;1;1;1    14404;15005;15796;16607;16858;17233;17606;17915;18268;24738;29534    14501;15038;15947;16765;17055;17368;17742;18061;18366;24891;29570    -;-;-;-;-;-;-;-;-;-;-    1351    54
+ENSG00000278267    1    17369    17436    -    68    6
+ENSG00000243485    1;1;1;1;1    29554;30267;30564;30976;30976    30039;30667;30667;31109;31097    +;+;+;+;+    1021    0
+ENSG00000284332    1    30366    30503    +    138    0
+ENSG00000237613    1;1;1;1;1    34554;35245;35277;35721;35721    35174;35481;35481;36073;36081    -;-;-;-;-    1219    0
+ENSG00000268020    1    52473    53312    +    840    0
+ENSG00000240361    1;1;1;1    57598;58700;62916;62949    57653;58856;64116;63887    +;+;+;+    1414    0
+</code></pre></div>
+<p>Write a new function to read DESeq DataSet from featureCounts results.</p>
+<div class="highlight"><pre><span></span><code>DESeqDataSetFromFeatureCounts &lt;- function (sampleTable, directory = ".", design, ignoreRank = FALSE, ...)
+{
+    if (missing(design))
+        stop("design is missing")
+    l &lt;- lapply(as.character(sampleTable[, 2]), function(fn) read.table(file.path(directory, fn), skip=2))
+    if (!all(sapply(l, function(a) all(a$V1 == l[[1]]$V1))))
+        stop("Gene IDs (first column) differ between files.")
+    tbl &lt;- sapply(l, function(a) a$V7)
+    colnames(tbl) &lt;- sampleTable[, 1]
+    rownames(tbl) &lt;- l[[1]]$V1
+    rownames(sampleTable) &lt;- sampleTable[, 1]
+    dds &lt;- DESeqDataSetFromMatrix(countData = tbl, colData = sampleTable[,
+        -(1:2), drop = FALSE], design = design, ignoreRank, ...)
+    return(dds)
+}
+</code></pre></div>
+<p>We skip two header lines, and read Geneid (V1) and counts (V7).</p>
+<div class="highlight"><pre><span></span><code>filename &lt;- list.files(path = "/bgfs/genomics/fangping/RNASeq/results/featurecounts", full.names = F,pattern="*_gene.tsv$")
+samplename &lt;- gsub("_gene.tsv","",filename)
+sampleCondition &lt;- factor(c(rep("control",3), rep("treatment", 3)))
+
+sampleTable &lt;- data.frame(sampleName = samplename,
+                          fileName = filename,
+                          condition = sampleCondition)
+
+library("DESeq2")
+ddsFC &lt;- DESeqDataSetFromFeatureCounts(sampleTable = sampleTable,directory = "/bgfs/genomics/fangping/RNASeq/results/featurecounts",design= ~ condition)
+ddsFC
+
+counts(ddsFC)
+</code></pre></div>
+<p>Differential expression analysis</p>
+<p>Run DESeq2 analysis using DESeq, which performs (1) estimation of size factors, (2) estimation of dispersion, then (3) 
+Negative Binomial GLM fitting and Wald statistics. The results tables (log2 fold changes and p-values) can be generated 
+using the results function.</p>
+<div class="highlight"><pre><span></span><code>dds = DESeq(dds)
+</code></pre></div>
+<p>We set the adjusted p-value cutoff (FDR) to be 0.05, hence we change the default significance cutoff used for 
+optimizing the independent filtering alpha from 0.1 to 0.05</p>
+<div class="highlight"><pre><span></span><code>res &lt;- results(dds, alpha = 0.05)
+
+summary(res)
+
+&gt; summary(res)
+
+out of 19488 with nonzero total read count
+adjusted p-value &lt; 0.05
+LFC &gt; 0 (up)       : 3752, 19%
+LFC &lt; 0 (down)     : 3779, 19%
+outliers [1]       : 9, 0.046%
+low counts [2]     : 5428, 28%
+(mean count &lt; 2)
+[1] see 'cooksCutoff' argument of ?results
+[2] see 'independentFiltering' argument of ?results
+</code></pre></div>
+<p>Check <a href="https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">DESeq2 vignettes</a> 
+for further analysis and data visualization.</p>
+<p>You can use biomaRt package to convert Ensembl IDs to gene names.</p>
+<h3 id="differential-expression-using-edger">Differential expression using edgeR<a class="headerlink" href="#differential-expression-using-edger" title="Permanent link">&para;</a></h3>
+<p>An example of creating a DGEList for use with edgeR from txi.</p>
+<div class="highlight"><pre><span></span><code>library(edgeR)
+
+cts &lt;- txi$counts
+normMat &lt;- txi$length
+
+# Obtaining per-observation scaling factors for length, adjusted to avoid
+# changing the magnitude of the counts.
+normMat &lt;- normMat/exp(rowMeans(log(normMat)))
+normCts &lt;- cts/normMat
+
+# Computing effective library sizes from scaled counts, to account for
+# composition biases between samples.
+eff.lib &lt;- calcNormFactors(normCts) * colSums(normCts)
+
+# Combining effective library sizes with the length factors, and calculating
+# offsets for a log-link GLM.
+normMat &lt;- sweep(normMat, 2, eff.lib, "*")
+normMat &lt;- log(normMat)
+
+group &lt;- c(rep("control",3),rep("treatment",3))
+
+# Creating a DGEList object for use in edgeR.
+y &lt;- DGEList(cts,group=group)
+y &lt;- scaleOffset(y, normMat)
+# filtering
+keep &lt;- filterByExpr(y)
+
+## Warning in filterByExpr.DGEList(y): All samples appear to belong to the same
+## group.
+
+y &lt;- y[keep, ]
+# y is now ready for estimate dispersion functions see edgeR User's Guide
+</code></pre></div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+                Thanks for your feedback! Help us improve this page by creating an issue in
+  our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+RNASeq%20data%20analysis+-+/advanced-genomics-support/RNASeq-data-analysis/" target="_blank" rel="noopener">Github Repository</a>.
+
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../bioinformatics/bioinformaticsworkshops/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bioinformaticsworkshops">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Bioinformaticsworkshops
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../variant-calling/" class="md-footer__link md-footer__link--next" aria-label="Next: Variant calling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Variant calling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; University of Pittsburgh. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy","content.tooltips","search.suggest","navigation.top","navigation.indexes","content.code.annotate","navigation.footer"],"redirect":"../../redirect.json","search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c04ba553.min.js"></script>
+      
+    
+  </body>
+</html>

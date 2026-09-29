@@ -1,0 +1,4753 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://crc-pages.pitt.edu/user-manual/advanced-genomics-support/ChipSeq-data-analysis/">
+      
+      
+        <link rel="prev" href="../../bioinformatics/spatialtranscriptomics/">
+      
+      
+        <link rel="next" href="../ATACSeq-data-analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../_assets/img/pitt-logo-nav_white.png">
+      <meta name="generator" content="zensical-0.0.64">
+    
+    
+      
+        <title>ChipSeq data analysis - CRCD User Manual</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.40d3fdbb.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2013h-2V7h2m0%2010h-2v-2h2M12%202A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_assets/css/pitt_colors.css">
+    
+      <link rel="stylesheet" href="../../_assets/css/stretched_link.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-M9R3HZF36E"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-M9R3HZF36E",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-M9R3HZF36E",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        <a href="#__skip" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://crc.pitt.edu" title="CRCD User Manual" class="md-header__button md-logo" aria-label="CRCD User Manual" data-md-component="logo">
+      
+  <img src="../../_assets/img/pitt_shield_white.png" alt="CRCD User Manual">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CRCD User Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChipSeq data analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/pitt-crc/user-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://crc.pitt.edu" title="CRCD User Manual" class="md-nav__button md-logo" aria-label="CRCD User Manual" data-md-component="logo">
+      
+  <img src="../../_assets/img/pitt_shield_white.png" alt="CRCD User Manual">
+
+    </a>
+    CRCD User Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pitt-crc/user-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://crc.pitt.edu" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Back to crc.pitt.edu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  User Manual Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting Started
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting Started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick Starts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Quick Starts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Your First Job
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-python-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running Python (OnDemand)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart-r-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running R (OnDemand)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/getting-started-step1-account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started step1 account
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/step2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Step 2- Login to Access Portals
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Step 2- Login to Access Portals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Terminal SSH
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/open-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Open OnDemand Web-portal
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Linux Desktop Visualization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/jupyter-teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  JupyterHub on Teach Cluster
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/step3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Step 3- CRCD Ecosystem
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Step 3- CRCD Ecosystem
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Discovering Software
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Requesting Resources
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/step3/getting-started-step3-manage-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Managing Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../keystone/requesting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Requesting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hardware_profiles/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hardware Profiles
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Hardware Profiles
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compute Clusters
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Compute Clusters
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/smp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SMP
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/htc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  HTC
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/mpi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MPI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GPU
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Teach
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Access & Auxiliary Nodes
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Access & Auxiliary Nodes
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Login Nodes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Viz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware_profiles/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Storage Tiers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Login to Access
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Login to Access
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Terminal
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/open-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Open ondemand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-ondemand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter ondemand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/viz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Viz
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-hub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter hub
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyter-teach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyter teach
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/jupyterhub-venv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jupyterhub venv
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/psych/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Psych
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web-portals/hugen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hugen
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../slurm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running Jobs with Slurm
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Running Jobs with Slurm
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/interactive-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Interactive Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/batch-jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Batch Jobs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/service-units/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Service Units
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/benchmarking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Benchmarking for Allocations
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/job-limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job Limits & QoS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/preempt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Preemptible Partitions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/job-arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job Arrays
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/scratch-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Scratch Space
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VS Code
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../data-management/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Management
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Data Management
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File systems
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File Permissions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../data-management/file-transfer-methods/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  File Transfer to CRCD
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  File Transfer to CRCD
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Globus
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/globus-onedrive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OneDrive (via Globus)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/microsoft-onedrive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OneDrive (command line)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-management/file-transfer-methods/filezilla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FileZilla
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Applications
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Applications
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/software-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Software list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coding
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Coding
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/coding/vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VS Code
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/application-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Application environment
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/basic-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Basic commands
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/crc-wrappers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Crc wrappers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/compilers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Compilers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/cuda-q/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cuda q
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/r+rstudio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  R+rstudio
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/ondemand-rstudio-gpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ondemand rstudio gpu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/singularity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Singularity
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_12" id="__nav_9_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Licensed Software
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_12_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_12">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Licensed Software
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/ansys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ansys
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/comsol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Comsol
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/lumerical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Lumerical
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/mathematica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Mathematica
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/vasp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Vasp
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_12_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_12_6" id="__nav_9_12_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  MATLAB
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_12_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9_12_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  MATLAB
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/matlab/matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matlab
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/licensed-software/matlab/matlab-remote-job-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Matlab remote job submission
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioinformatics Support
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Bioinformatics Support
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/bioinformaticsworkshops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioinformaticsworkshops
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  NGS Data Analysis
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_10_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  NGS Data Analysis
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RNASeq-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RNASeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variant-calling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Variant calling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../single-cell-rnaseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Single cell rnaseq
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/spatialtranscriptomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spatialtranscriptomics
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ChipSeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ATACSeq-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  ATACSeq data analysis
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/Methylation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Methylation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cromwell-and-encode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cromwell and encode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../genome-browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Genome browser
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clcbio-genomics-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Clcbio genomics server
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/nf-core-genomics-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Nf core genomics pipelines
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/alphafold3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Alphafold3
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/fMRI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  fMRI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/EHR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  EHR
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/ollama/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ollama
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/bioimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bioimage
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/virtualgl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Virtualgl
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Copilot
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Code Optimization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tips & Tricks
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_12">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tips & Tricks
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tips/persist-sessions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Persist sessions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Policies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_13">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Policies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/job-scheduling-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Job scheduling policy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/hardware-investing-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hardware investing policy
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policies/resource-descriptions-for-writing-proposals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Resource descriptions for writing proposals
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acknowledge-crc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Citing CRCD
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frequently Asked Questions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="chip-seq-data-analysis">ChIP-Seq Data Analysis<a class="headerlink" href="#chip-seq-data-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="introduction-to-chip-seq">Introduction to ChIP-seq<a class="headerlink" href="#introduction-to-chip-seq" title="Permanent link">&para;</a></h2>
+<p>Chromatin immunoprecipitation (ChIP) experiments are performed to identify DNA bound to specific (chromatin) proteins 
+of interest. The first step involves isolating the chromatin and immunoprecipitating (IP) fragments with an antibody 
+against the protein of interest. In ChIP-seq, the immunoprecipitated DNA fragments are then sequenced, followed by 
+identification of enriched regions of DNA or peaks. These peak calls can then be used to make biological inferences by 
+determining the associated genomic features and/or over-represented sequence motifs.</p>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Goal: Chromatin immunoprecipitation (ChIP) experiments are performed to identify DNA that binds specific (chromatin) proteins of interest.</p>
+</li>
+<li>
+<p>Sequencing Workflow Steps:</p>
+</li>
+</ul>
+<p>a. Crosslinked a known protein to strand of DNA in vivo</p>
+<p>b. Shear the single DNA stretch into many small segments</p>
+<p>c. Select the bound DNA-Protein complex using antibody and isolate only the DNA (Immunoprecipiating).</p>
+<p>d. Amplify the DNA with PCR and sequence the DNA segment</p>
+<h3 id="data-analysis-pipeline-steps">Data Analysis Pipeline Steps<a class="headerlink" href="#data-analysis-pipeline-steps" title="Permanent link">&para;</a></h3>
+<p>a. Sequence Reads</p>
+<p>b. Quality Control (Evaluate the quality of the sequencing data) -&gt; Fastqc</p>
+<p>c. Alignment to Genome &amp; Result Output to SAM -&gt; Bowtie2</p>
+<p>d. SAM to BAM conversion -&gt; Samtools</p>
+<p>e. Sorting BAM by Genomic Coordinates and filtering only uniquely mapped reads -&gt; Sambamba</p>
+<p>f. Peak Calling (Identify <strong>areas</strong> in the genome that have been enriched with <strong>aligned reads</strong> as a consequence 
+of performing a ChIP-Seq experiment) -&gt; MACS</p>
+<p>g. Downstream Analysis (annotation of the peaks)</p>
+<p>i. Distance from TSS</p>
+<p>ii. Genomic Context</p>
+<p>iii. Motif Discovery</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_02.png" /></p>
+<h2 id="pipeline-explained-and-examples">Pipeline Explained and examples<a class="headerlink" href="#pipeline-explained-and-examples" title="Permanent link">&para;</a></h2>
+<p>Before we start:
+- Create a directory called chipseq on your cluster</li>
+- In the chipseq directory, create 6 directories that are logs, meta, raw_data, reference_data, results and scripts. In the results directory, create 2 directories that are bowtie and fastqc.</p>
+<p>This directory structure helps us better organize all the files we need
+<div class="highlight"><pre><span></span><code>$ mkdir chipseq
+
+$ cd chipseq
+
+$ mkdir logs meta raw_data reference_data results scripts
+
+$ mkdir results/bowtie results/fastqc
+</code></pre></div></p>
+<p>Here is the resulting visualization of the directory tree</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_03.png" /></p>
+<p><strong>Quality Control</strong>:</p>
+<p>This step was mainly to evaluate the quality of the sequenced reads. Most often, when you retrieve your high-throughput 
+sequencing data from the company, you will find it packed in the FASTQ format. What is the FASTQ format then? 
+Essentially, it is a text-based format that stores the actual DNA sequence from the sequencing machine, and most 
+importantly, the quality score that correspondent to each base call. Opening a fastq file, you should see four lines. 
+Line 1 begins with a ‘@’ is an optional description/title. Line 2 is the raw sequence. Line 3, which starts with 
+a ‘+’, is an additional description field. Line 4 encodes the quality value, which is consisted of a list of symbols 
+and numbers.</p>
+<p>The scoring system consists of symbols, characters and numbers, and the correspondent quality score is seen in the 
+diagram below. To interpret the score, consider this log equation: <code>Q=-10*log10(P)</code>, where P is the probability that 
+the corresponding base call is erroneous.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_04.png" /></p>
+<p>Here is the little chart to save the calculation:</p>
+<p>As a quick example, if the score is 30, that means 1 in 1000 chance that the base was called incorrectly, therefore 
+yielding an accuracy value of 99.9%.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_05.png" /></p>
+<p>We will use the software FastQC to assess the quality of our data. Some of the advantage of using FastQC includes the 
+versatile import from BAM, SAM, or FastQ files, alert of areas where may have problems, and visual aids to quickly
+assess the data.</p>
+<p>Run FastQC:</p>
+<p>Before we start, orient yourself to the directory where the import files are ready to go. For this example, I am using</p>
+<p><code>/zfs1/fmu/chipseq_practice/raw_data</code></p>
+<p>Check the contents in the directory typing <code>ls –l</code></p>
+<p>Next, make sure to load the FastQC. The good news is that the software is already available on the cluster. 
+Just type in <code>module load fastqc/[version number]</code>, you will know it is load if no error message is prompted. 
+You can also check all the modules that are currently loaded via $ module list. In some scenario when you are unable 
+to load the software directly, it could simply be a misspelling or a case sensitivity issue. In that case, type 
+<code>module spider</code> to either do a generic search of all the modules available through clusters or 
+<code>module spider [module name]</code> for an oriented search regardless of the case sensitivity.</p>
+<p>Start an interactive session for the computationally intensive task:</p>
+<p><code>srun -n6 -t02:00:00 --pty --mem 8G bash</code> (6 cpus, 8G <abbr title="Random Access Memory — a job's fast working memory">RAM</abbr>, 2 hours)</p>
+<p>-Serial: wildcard exampleàSelecting all the fastq file in the directory (*.fastq) and run in serial</p>
+<p><code>fastqc *.fastq</code></p>
+<p>-Parallel: Specify the fastqc multithreading parameter –t to allow many fastq files to run at once </p>
+<p><code>fastqc –t 6 *.fastq</code> (Specify for 6 threads)</p>
+<p>-Result: The .html file contain the final reports generated by fastqc and there are multiple ways we can transfer the 
+file to the local computer for the viewing purpose.</p>
+<p>1) Rsync: In your <strong>local computer</strong>, open the shell and type in </p>
+<p><code>rsync -aP jug40@htc.crc.pitt.edu:/path/to/copy &lt;your pitt ID&gt;@htc.crc.pitt.edu:/path/to/copy&lt;/a&gt; /local/path/</code></p>
+<p>2) Filezilla Transfer:</p>
+<p>host: <code>sftp://htc.crc.pitt.edu</code></p>
+<p>username: pitt ID </p>
+<p>password: your password</p>
+<p>port: don’t need</p>
+<p>3) Globus</p>
+<p><strong>Alignment to Genome and filtering of reads</strong></p>
+<p>Now we have assessed the quality of the sequencing data, we are ready to align the reads to the reference genome. 
+Bowtie2 is fast and accurate aligner that we introduce for this purpose. By default, it performs a global end-to-end 
+read alignment, and by changing the settings, it also supports the local alignment mode. An example between two 
+different alignment modes can be seen below. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_06.png" /></p>
+<p>Before we start the hands-on practice, there is a consideration that we are to keep in mind for the use of bowtie2 in 
+the ChIP-Seq analysis. For percentage of uniquely mapped reads, 70% or higher is considered good, whereas 50% or lower 
+is concerning. The percentages are not consistent across many organisms, and thus this rule needs to be more flexible 
+in order to accommodate diverse organisms.</p>
+<p>o Creating Bowtie2 index:</p>
+<p>A genome index is required for the Bowtie2 alignment. By indexing the genome, we have organized it in a manner that
+now allows for efficient search and retrieval of matches of the query to the genome.</p>
+<div class="highlight"><pre><span></span><code>$ module load gcc/8.2.0 bowtie2/2.3.4.2 # load bowtie module
+
+$ bowtie2-build &lt;path_to_reference_genome.fa&gt; &lt;prefix_to_name_indexes&gt; #no blank but just a dash between bowtie2 and build
+</code></pre></div>
+<p>o Aligning reads to the genome—SAM output:</p>
+<p>§ -p: number of processors / cores</p>
+<p>§ -q: reads are in FASTQ format</p>
+<p>§ --local: local alignment feature to perform soft-clipping (deletion --local convert the aligning mode back to default—global end-to-end)</p>
+<p>§ -x: /path/to/genome_indices_directory</p>
+<p>§ -U: /path/to/FASTQ_file</p>
+<p>§ -S: /path/to/output/SAM_file </p>
+<p>$ bowtie2 -p 2 -q <u>--local</u> -x <path> -U <path> -S <path></p>
+<p>$ less <fileaname>.sam </p>
+<p>less is a command that allows you to view what is in the file, and it is not restricted to just the sam format. Most 
+of the file extension are compatible with the less command.</p>
+<p>SAM format -&gt; Sequence Alignment Map format Quick Intro：</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_07.png" /></p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_08.png" /></p>
+<p>o Filtering reads</p>
+<p>§ Changing file format from SAM to BAM—samtools </p>
+<p>v BAM format is more compatible with the mainstream analytical tools than is the SAM. Therefore, we will use samtools 
+to convert the file formats. </p>
+<p><code>module load gcc/8.2.0 samtools/1.9</code></p>
+<p>-h: include header in output</p>
+<p>-S: input is in SAM format</p>
+<p>-b: output BAM format</p>
+<p>-o: /path/to/output/file</p>
+<p>$ samtools view –h –S –b –o <output_filename.bam> <input_filename.sam></p>
+<p>§ Sorting BAM files by <strong>genomic coordinates</strong>—sambamba </p>
+<p><code>module load sambamba/0.6.8</code></p>
+<p>-t: number of threads/cores</p>
+<p>-o: /path/to/output/file</p>
+<p><code>sambamba sort –t 2 –o &lt;output_filename.bam&gt;&lt;input_filename.bam&gt;</code></p>
+<p>§ Filtering uniquely mapping reads—sambamba </p>
+<p>We will use sambamba view command to filter the BAM to keep only the uniquely mapping reads</p>
+<p>-t: number of threads/cores</p>
+<p>-h: print SAM header before reads</p>
+<p>-f: format of output file (default is SAM)</p>
+<p>-F: set custom filter – the filter we need is what removes duplicates, multimappers and unmapped reads</p>
+<p>$ sambamba view –h –t 2 –f bam –F <span style="color:red">“[XS]==null and not unmapped and not duplicate” <input_filename.bam> <strong>&gt;</strong> <output_filename.bam></p>
+<p>v The filter given are ‘not mapped’, ‘not duplicate’, and ‘[XS] ==null’, which are connected by ‘and’ operator. </p>
+<p>v ‘[XS]’ is a <strong>tag</strong> generated by Bowtie2 that gives an alignment score for the second-best alignment, and it is present only if the read is aligned and more than one alignment was found for the read. Setting it equal to ‘null’, makes sure only the best read is considered.</p>
+<p>· <strong>Peak Calling</strong></p>
+<p>This step identifies areas in the genome that have been enriched with aligned reads as a result of performing ChIP-sequencing experiment. </p>
+<p>(Enrichment = Immunoprecipitation reads/background reads (mock IP or untagged IP))</p>
+<p>MACS Steps and Parameters:</p>
+<p>1) Removing redundancy: ridding duplicate tags and keeping only single read at each location.</p>
+<p>2) Modelling the shift size</p>
+<p>3) Scaling libraries</p>
+<p>4) Effective genome length</p>
+<p>5) Peak detection</p>
+<p>6) Estimation of false discovery rate</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_09.png" /></p>
+<p>$ module load python/anaconda2.7-5.2.0 gcc/8.2.0 macs/2.1.1.20160309</p>
+<p>Directing error to a log file with the ‘2&gt;’ function:</p>
+<p><code>macs2 callpeak –t &lt;input_filename.bam&gt; -c &lt;input_filename.bam&gt; -f BAM –g &lt;the value&gt; -n &lt;prefix for output&gt; -B --outdir &lt;foldername&gt; 2&gt; &lt;filename.log&gt;</code></p>
+<p>There should be 6 MACS2 files output associated with each sample:</p>
+<p>1) <span style="color:#567482">_peaks.narrowPeak<span style="color:#606C71">: BED6+4 format file which contains the peak locations together with peak summit, pvalue and qvalue</p>
+<p>2) <span style="color:#567482">_peaks.xls<span style="color:#606C71">: a tabular file which contains information about called peaks. Additional information includes pileup and fold enrichment</p>
+<p>3) <span style="color:#567482">_summits.bed<span style="color:#606C71">: peak summits locations for every peak. To find the motifs at the binding sites, this file is recommended</p>
+<p>4) <span style="color:#567482">_model.R<span style="color:#606C71">: an R script which you can use to produce a PDF image about the model based on your data and cross-correlation plot</p>
+<p>5) _control_lambda.bdg: bedGraph format for input sample</p>
+<p>6) _treat_pileup.bdg: bedGraph format for treatment sample</p>
+<p>-Count peaks called in each sample: $ wc –l *.narrowPeak </p>
+<p>-Run R script to generate two pdf images. The first plot illustrates <strong>the distance between the modes from which the shift size was determined. </strong>The second plot<strong> is the cross-correlation plot. </strong>It is a graphical representation of the Pearson correlation of positive- and negative- strand tag densities, shifting the strands relative to each other by increasing distance**.   **</p>
+<p>$ module load gcc/8.2.0 r/3.5.2 </p>
+<p>$ Rscript <filename>_model.r</p>
+<p><strong>ChIP-seq Quality Assessment -&gt; ChIPQC &amp; Phantompeakqualtools</strong></p>
+<p><span style="color:black; font-family:courier new">o <u>Cross-correlation Quality Metrics</u>: </p>
+<p>§ Normalized strand cross-correlation coefficient (NSC)</p>
+<p>v <u>Max CC values/Min CC values </u></p>
+<p>v Better enrichment: higher NSC (better signal : noise)</p>
+<p>v Low signal-to-noise: NSC value &lt;1.1</p>
+<p>v Minimum possible NSC value: 1 (no enrichment)</p>
+<p>§ Relative strand cross-correlation coefficient (RSC)</p>
+<p>v <u>(Max CC – Min CC)/(Phantom CC – Min CC)</u></p>
+<p>v High enrichment: RSC &gt; 1</p>
+<p>v Low signal-to-noise: RSC values &lt; 0.8</p>
+<p>v Minimum possible RSC value: 0 (no enrichment)</p>
+<p>§ SSD</p>
+<p>v Indicate evidence of enrichment</p>
+<p>v A measure of pileup across the genome and is computed by looking at the <strong>standard deviation of signal pileup along the genome normalized to the total number of reads</strong>.</p>
+<p>v Higher SSD is more indicative of better enrichment à it is dependent on the signal pile-up in the whole genome wide </p>
+<p>§ Fraction of reads in peaks (FRiP):</p>
+<p>v Reports the percentage of reads <strong>overlapping</strong> within called peaks. Or in another way to understand it, what proportion of the library consists of fragments from binding sites vs. background reads à How “enriched” the sample is OR the success of the immunoprecipitation. </p>
+<p>v Value varies depending on the protein of interest. As an example, a good quality TF with successful enrichment would exhibit a FRiP around 5% or higher; and the Polll would exhibit a FRiP of 30% or higher. </p>
+<p>§ Relative Enrichment of Genomic Intervals (REGI):</p>
+<p>v Show where reads map in terms of various genomic features à makes note of how these regions might compare to what we expect for enrichment</p>
+<p>§ Reads overlapping in Blacklisted Regions (RiBL):</p>
+<p>v Acts as a guide for the level of background signal in a ChIP or input, and to basically try to detect blacklisted regions (regions that will confound peak callers and fragment length estimation) and eliminate them. The value is strongly correlated with SSD in input samples and the read length cross coverage score in both input and ChIP samples. </p>
+<p>v If the blacklisted regions have been filtered prior to ChIPQC, you will not need to evaluate this metric.</p>
+<p>o Strand cross-correlation: high-quality ChIP-seq produces significant clustering of enriched DNA sequence tags at 
+locations bound by the protein of interest, that present as a bimodal enrichment of reads on the forward and reverse 
+strands (peaks). </p>
+<p>o <strong>Cross-correlation Metric</strong> calculates how many bases to shift the peak in order to get the maximum correlation 
+between the two peaks, which corresponds to the predominant fragment length. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_10.png" /></p>
+<p>§ Cross-Correlation Plot (CCP): Cross-correlation values as y-axis against the shift value x-axis.</p>
+<p>§ Two peaks are produced in the CCP: a peak of enrichment corresponding to the predominant <strong>fragment length</strong> 
+(highest correlation value) and a peak corresponding to the <strong>read length</strong> (“phantom” peak)</p>
+<p>§ Compute metrics for assessing signal-to-noise ratios in a ChIP-seq experiment</p>
+<p><strong>Example</strong></p>
+<p>§ Strong Signal: predominant peak at the true peak shift as shown in the red dashed line, with a small bump at the 
+blue vertical line representing the read length. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_11.png" /></p>
+<p>§ Weak Signal: Strongest peak is the blue line (read length) and the true peaks were overshadowed by the read length.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_12.png" /></p>
+<p>§ No signal: Predominant peak is the blue line (read length) and there are no other significant peaks in the profile. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_13.png" /></p>
+<p>o Running ChIPQC:</p>
+<p>§ Create a sample sheet: </p>
+<p>1) Contains metadata info for our dataset. Each row represents a peak set (every ChIP sample), and several columns of required information, which allows us to load the associate data much easier.</p>
+<p><strong>SampleID</strong>: Identifier string for sample</p>
+<p><strong>Tissue, Factor, Condition</strong>: Identifier strings for up to three different factors (You will need to have all 
+columns listed. If you don’t have information, then set values to NA)</p>
+<p><strong>Replicate</strong>: Replicate number of sample</p>
+<p><strong>bamReads</strong>: file path for BAM file containing aligned reads for ChIP sample</p>
+<p><strong>ControlID</strong>: an identifier string for the control sample</p>
+<p><strong>bamControl</strong>: file path for bam file containing aligned reads for control sample</p>
+<p><strong>Peaks</strong>: path for file containing peaks for sample</p>
+<p><strong>PeakCaller</strong>: Identifier string for peak caller used. Possible values include “raw”, “bed”, “narrow”, “macs”</p>
+<p>2) Make sure the bam files containing all the unique reads are indexed with samtools.</p>
+<p>· For <strong>file</strong> In /zfs1/fmu/chipseq_practice/results/sambamba/</p>
+<p>*unique.bam; </p>
+<p>do samtools index $file; done</p>
+<p>3) Open R environment in bash by loading r/3.5.1 and typing R in the command line<span style="color:#606C71">: </p>
+<p>· &gt; library(ChIPQC) #Enable library</p>
+<p>· &gt; samples &lt;- read.csv(‘path/to/samplesheet.csv’) #load sample data</p>
+<p>· &gt; chipObj &lt;- ChIPQC(samples, annotation= “<span style="color:red">hg19” )</p>
+<p>· &gt; save(chipObj, file= “path/to/chipObj.RData”) #save chipObj to file</p>
+<p>· &gt; ChIPQCreport(chipObj<span style="color:black; font-family:ms mincho">，reportName = “<name>”, reportFolder = “path/to/ChIPQCreport”) #create chipqc report</p>
+<p>4) Interpret the ChIPQC report (the html file in the bundle): </p>
+<p>· <u>QC summary Table</u>:</p>
+<p>o Contains different metrics (SSD, RIP and RiBL)</p>
+<p>o Statistics related to the strand cross-correlation</p>
+<p>· <u>Mapping, Filtering and Duplication rate</u>:</p>
+<p>o Table of mapping quality and duplication rate and distribution of reads in known genomic features</p>
+<p>· <u>Blacklisting plot:</u></p>
+<p><span style="color:black; font-family:courier new">o Showing the effect of blacklisting on the reads in the data</p>
+<p>· <u>Heatmap:</u></p>
+<p><span style="color:black; font-family:courier new">o Uses genomic annotation to show where reads map in terms of genomic features.</p>
+<p>· <u>ChIP signal Distribution and Structure:</u></p>
+<p><span style="color:black; font-family:courier new">o Looks at the inherent peakiness of the samples.</p>
+<p><span style="color:black; font-family:courier new">o <strong>Coverage Histogram:</strong> The x-axis represents the read pileup 
+height at a basepair position, and the y-axis represents how many positions have this pileup height (on a log scale). 
+A ChIP sample with good enrichment should have a reasonable “tail”, that is more positions 
+(higher values on the y-axis) having higher sequencing depth. Low enrichment samples, consisting of mostly background 
+reads, will have lower genome wide pile-up.</p>
+<h2 id="peak-profile-and-chip-enrichment">Peak profile and ChIP Enrichment:<a class="headerlink" href="#peak-profile-and-chip-enrichment" title="Permanent link">&para;</a></h2>
+<p>Based on the metric computed using the supplied peaks.</p>
+<p><strong>Average peak profile plot</strong>: centered on the summits (point of pileup) for each peak, while the shape of these 
+profile vary depending on what type of mark is being studied. It is noteworthy that similar marks usually have a 
+distinctive profile in successful ChIPs.</p>
+<p><strong>Reads in peaks summary</strong>: ChIP samples with good enrichment will have a higher proportion of their reads overlapping 
+called peaks.</p>
+<p><strong>Sample Clustering Plot</strong>: Correlation heatmap is used to see how different replicates are clustered together, 
+provided that darker the color, higher the correlation. </p>
+<p>· Handling replicates and Combining Peak Calls à Bedtools</p>
+<p><span style="color:black; font-family:courier new">o Just like any high-throughput experiment, a single assay is almost certainly subject to a substantial amount of variability. That is why it is highly recommended to set up the experimental design with a minimum of 2-3 biological replicates. Ideally, these replicates measuring the same underlying biology should have high consistency, but that is not always the case. Therefore, we require some metrics to evaluate consistency between replicates. Two methods are well used to deal with the replicates.</p>
+<p>§ Take overlapping peak calls across replicates and assess the differences in binding regions</p>
+<p>§ Employ statistical testing to evaluate the reproducibility between replicates</p>
+<p><span style="color:black; font-family:courier new">o With the first method, we use a tool called Bedtools to determine what peaks are in common between the two replicates for each factor. </p>
+<p>§ Bedtools use genome coordinate information to perform simple arithmetic to obtain all sorts of information.</p>
+<p>§ Bedtools work with Bed files, and other file formats with genome coordinate information such as BAM. </p>
+<p>§ #load modules </p>
+<p>$ module load gcc/8.2.0 bedtools/2.27.1</p>
+<p>§ # find overlapping peaks between two replicates</p>
+<h1 id="-wo-command-writes-the-original-file-1-and-file-2-entries-plus-the-number-of-base-pairs-of-overlap-between-two-features">-wo command writes the original file 1 and file 2 entries plus the number of base pairs of overlap between two features.<a class="headerlink" href="#-wo-command-writes-the-original-file-1-and-file-2-entries-plus-the-number-of-base-pairs-of-overlap-between-two-features" title="Permanent link">&para;</a></h1>
+<p>$ bedtools intersect –a <path/to/1\<sup>st\</sup>_replicate_file.bam> -b <path/to/2\<sup>nd\</sup>_replicate_file.bam> -bed -wo &gt; <path/to/output.bed></p>
+<p><span style="color:black; font-family:courier new">o With the second method involving sophisticated statistics, we implement a tool called IDR to assess the concordance of peak calls between replicates.</p>
+<p>§ IDR compares a pair of ranked lists of regions/peaks between replicates and assigns values that reflect its reproducibility. IDR stands for Irreproducible Discovery Rate. E.g. 0.05 IDR means that peak has a 5% chance of being an irreproducible discovery. </p>
+<p>§ IDR has three main components</p>
+<p>1) <u>A correspondence curve</u>: a graphical representation of matched peaks as you go down the ranked list.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_14.png" /></p>
+<p>2) <u>An inference procedure</u>: summarizes the proportion of reproducible and irreproducible signals. </p>
+<p>3) <u>Irreproducible Discovery Rate</u>: a derived significance value from the inference procedure and can be used to control the level of irreproducibility rate when selecting signals.</p>
+<p>§ IDR pipeline has three main steps :</p>
+<p>1) <u>Evaluate Peak consistency between true replicates (mainly focused)</u>: to determine consistency between replicates </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_15.png" /></p>
+<p>2) <u>Evaluate peak consistency between pooled pseudo-replicates</u>: merge the reads from the replicates and randomly split them into two psudo-replicates. The idea is that if the original replicates are highly concordant, then the pseudo-replicates resulted from shuffling and splitting should have similar number of peaks, suggesting a set of truly good replicates</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_16.png" /></p>
+<p>3) <u>Evaluate self-consistency for each individual</u>: this step creates pseudo-replicates for each replicate by randomly splitting the reads and running them through the pipeline. If the IDR on the self-replicates for Replicate 1 results in a peak count similar to self-replicate for Replicate 2, these are truly good replicates.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_17.png" /></p>
+<p>§ We will, however, be focusing on the first step, which is to assess the concordance of the true replicates. </p>
+<p><span style="color:black; font-family:courier new">o There are a few criteria upon running the IDR. </p>
+<p>§ To run IDR, recommendation is to run the full dataset. </p>
+<p>§ We also need to run MACS2 less stringently to allow a larger set of peaks to be identified for each replicate</p>
+<p>§ In addition, the resulting narrowPeak files have to be sorted by the <u>–log10(p-value)</u> column.</p>
+<p><span style="color:black; font-family:courier new">o # Call Peaks using a liberal p-value cutoff</p>
+<p>$macs2 callpeak –t <treat_filename.bam> -c <input_control_filename.bam> -f BAM –g hs -n <prefix for output> -B --outdir <foldername> 2&gt; <filename.log></p>
+<p><span style="color:black; font-family:courier new">o # sort peak by –log10(p-value)</p>
+<p><span style="color:black; font-family:courier new">o $ sort –k8,8nr NAME_OF_INPUT_peaks.narrowPeak &gt; NAME_OF_OUTPUT_peaks.narrowPeak</p>
+<p>IDR</p>
+<p><code>module load gcc/8.2.0 python/anaconda3.6-5.2.0 idr/2.0.3</code></p>
+<p><code>mkdir IDR</code> creates new directory called IDR in the results directory</p>
+<p><code>idr --samples Rep1_sorted_peak.narrowPeak Rep2_sorted_peak.narrowPeak --input-file-type narrowPeak --rank p.value --output-file Name_of_file --plot --log-output-file Name_of_file.log</code></p>
+<p>o The Output file format is similar to the input file type with 
+some additional fields. First 10 columns are a standard narrowPeak file and are pertaining to the merged peaks across 
+the two replicates. </p>
+<p>Column 5 contains the scaled IDR value. Min(int(log2(-125IDR), 1000)) for example means that peaks with an IDR of 0 
+have score of 1000, peaks with an IDR of 0.05 have a score of </p>
+<p>int(-125log2(0.05)) = 540 and IDR of 1.0 has a score of 0.</p>
+<p>Columns 11 and 12 correspond to the local and global IDR value respectively. </p>
+<p>Ø Global IDR is the value used to calculate the scaled IDR number in column 5. It is analogous to a multiple hypothesis 
+correction on a p-value to compute an FDR.</p>
+<p>Ø Local IDR is akin to the posterior probability of a peak belonging to the unreproducible noise component. 
+Read <a href="https://projecteuclid.org/euclid.aoas/1318514284">Paper</a> for more details.</p>
+<p>Column 13 – 16 correspond to Replicate 1 peak data and 17 – 20 correspond to Replicate 2 peak data. </p>
+<p>count common peaks for each transcription factor</p>
+<p><code>wc –l *-idr</code> </p>
+<p>use ‘awk’ command to filter how many shared regions have an IDR&lt;0.5 (high reproducibility)</p>
+<p><code>awk ‘{if($5 &gt;= 540) print $0}’ Nanog-idr | wc –l</code></p>
+<p>o Output plots：</p>
+<p>§ There is a single image file(.png), which contains four plots. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_18.png" /></p>
+<p>§ <strong>Upper Left</strong>: Replicate 1 peak ranks versus Replicate 2 peak ranks –peaks that do not pass the specified IDR 
+threshold are colored red. </p>
+<p>§ <strong>Upper Right</strong>: Replicate 1 log10 peak scores versus Replicate 2 log10 peak scores –peaks that do not pass the 
+specified IDR threshold are colored red</p>
+<p>§ <strong>Bottom Row</strong>: Peak rank versus IDR scores are plotted in black. The overlayed boxplots display the distribution 
+of idr values in each 5% quantile. The IDR values are thresholded at the optimization precision –1e-6 by default </p>
+<h2 id="visualization-and-exploration-of-chip-seq-data">Visualization and exploration of ChIP-seq data<a class="headerlink" href="#visualization-and-exploration-of-chip-seq-data" title="Permanent link">&para;</a></h2>
+<p>For this step, we will generate the bigwig files. From there, the bigwig files will be used for visualizing the 
+enrichment patterns at particular locations in the genome and evaluating regions of differential enrichment.
+The bigWig format is an indexed binary format useful for dense, continuous data that can be displayed in a genome 
+browser (i.e. IGV) as a graph/track, but is also used in the ‘deeptools’ as the input for the visualizations. It 
+is converted from the BAM format.</p>
+<p>Open interactive session with 6 cores </p>
+<p>Load modules 
+<div class="highlight"><pre><span></span><code>$ srun -n6 -t02:00:00 --pty --mem 8G bash
+
+$ module load gcc/8.2.0 python/anaconda2.7-5.2.0 deeptools/3.1.2 samtools/1.9
+</code></pre></div></p>
+<p>In case you haven’t indexed the bam files containing all the unique reads, use samtools to do that.</p>
+<p><code>for **file** in /zfs1/fmu/chipseq_practice/results/sambamba/*unique.bam; do samtools index $file; done</code></p>
+<p>To create bigwig files there are two tools that can be used: ‘bamCoverage’ and ‘bamCompare’. The first take in a 
+single BAM file and return a bigWig file. The latter allows to normalize two files to each other and return a single 
+bigWig file. </p>
+<p>create a bigwig file for Nanog replicate 2 using bamCoverage command. </p>
+<p>See Parameters below </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_19.png" /></p>
+<div class="highlight"><pre><span></span><code>$ bamCoverage –b /path/to/filename.bam \
+
+–o &lt;output_file_name.bw&gt; \
+
+--binSize 20 \
+
+--normalizeTo1x 130000000 \
+
+--smoothLength 60 \
+
+--extendReads 150 \
+
+--centerReads \ 
+
+-p 6 2&gt; &lt;name_of_file.log&gt;
+</code></pre></div>
+<p>With the bigwig files, you can use them to look at enrichment patterns in your data at specified regions. 
+“Computematrix” accepts the multiple bigWig files and multiple regions files in BED format to create a count matrix, 
+which is the intermediate file before plotting the data. You can either use the command to target scaled regions or 
+values around a reference point. Computematrix will calculate scores based on the read density values in the 
+bigWig files.</p>
+<div class="highlight"><pre><span></span><code>reference-point \
+
+-b 1000 –a 1000 \
+
+-R &lt;filename.bed&gt; \
+
+-S &lt;filename_of_**all**_replicates.bw&gt; \
+
+-- skipZeros \
+
+-o &lt;output_filename.gz&gt; \
+
+-- outFileSortedRegions &lt;output_filename.bed&gt;
+</code></pre></div>
+<p>The genome regions in BED format can be obtained from the 
+<a href="http://rohsdb.cmb.usc.edu/GBshape/cgi-bin/hgTables">UCSC table browser</a>. </p>
+<p>Using the matrix, we can create a profile plot, which essentially is a density plot that evaluates read density across 
+all transcription start sites.</p>
+<p>profile plot:</p>
+<div class="highlight"><pre><span></span><code>$plotProfile –m &lt;matrix_filename.gz&gt; \
+
+-out &lt;output_img_filename.png&gt; \
+
+--perGroup \
+
+--colors green purple \
+
+--plotTitle “” --samplesLabel “Rep1” “Rep2” \
+
+-T “&lt;name of the title&gt;”
+
+-z “”
+</code></pre></div>
+<p>heatmap: create profile plot and heat maps in single plot</p>
+<div class="highlight"><pre><span></span><code>$plotHeatmap –m &lt;matrix_filename.gz&gt; \
+
+-out &lt; output_img_filename.png&gt; \
+
+-- colorMap RdBu \
+
+-- zMin 2 -- zMax 2
+</code></pre></div>
+<p>To gain a more complex picture of biological processes in a cell, you can also compare different datasets obtained by 
+Chip-seq. In our case, we have peak calls from two different transcription factors: Nanog and Pou5f1. To look at the 
+differences in binding between the two, we will use <code>bedtools</code>. </p>
+<p>Before using <code>bedtools</code> to obtain overlap, we need to combine information from the replicates of each transcription 
+factors by using concatenation (<code>cat</code>)</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_20.png" /></p>
+<p><code>cat &lt;Rep1_Peak.narrowPeak&gt; &lt;Rep2_Peak.narrowPeak&gt; &gt; &lt;Peaks_Combined.narrowPeak&gt;</code></p>
+<p>Sort the peak file before merging the peaks. We use “sort” command to sort lines of text in a file. Remember to specify 
+where sort keys start and where they end. For an example, <code>-k1,1</code> means first sort on the first column, and the </p>
+<p><code>-k2, 2n</code> is to specify sort next on the second column and this column is numeric (n)</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_21.png" /></p>
+<p><code>sort –k1,1 –k2,2n &lt;Peaks_Combined.narrowPeak&gt; | bedtools merge –i -&gt; &lt;Peaks_Merged.bed&gt;</code></p>
+<p>After merging the peaks, the next we are doing is to look for differences in enrichment between different transcription 
+factors. The strategy here is to use bedtools intersect and specify modifier –v, which allows us to acquire unique 
+peaks that are only present in one sample. </p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_22.png" /></p>
+<p><code>bedtools intersect –a &lt;Factor1_merged.bed&gt; -b &lt;factor2_merged.bed&gt; -v &gt; &lt;Factor1_only_peaks.bed&gt;</code></p>
+<p>we can count unique peaks </p>
+<p><code>wc –l &lt;Factor1_only_peaks.bed&gt;</code></p>
+<p>we can visualize read density with commands from deepTools</p>
+<div class="highlight"><pre><span></span><code>computeMatrix scale-regions -R &lt;Factor1_only_peaks.bed&gt; -S &lt;All_factor1_replicates.bw&gt; &lt;All_factor2_replicates.bw&gt; -- skipZeros –p 6 –a 500 –b 500 –o &lt;output_filename.gz&gt;`
+
+plotProfile –m &lt;output_filename.gz&gt; -out &lt;img_output_filename.png&gt; -- perGroup --plotTitle “” -- samplesLabel “Factor1-replicate1” “Factor1-replicate2” “Factor2-replicate1” “Factor2-replicate2” –T “Title” –z “” -- startLabel “” -- endLabel “” – colors red red darkblue darkblue`
+</code></pre></div>
+<h2 id="qualitative-assessment-with-igv">Qualitative Assessment with IGV<a class="headerlink" href="#qualitative-assessment-with-igv" title="Permanent link">&para;</a></h2>
+<p>o Visualize the alignment using a genome browser – Integrated Genomics Viewer (IGV). IGV allows the exploration of 
+large, integrated genomic datasets. It supports wide variety of datatypes, including array-based and next-generation 
+sequence data, and genomic annotations, which facilitates invaluable comparisons. The first step of using the IGV to 
+annotate our data is to transfer the bigWig and BED files from the cluster to the local computer where the IGV is 
+installed. To do that, go back to the previous instructions on how to commute files from remote device to local 
+computer using Rsync or Filezilla.</p>
+<p>o In the IGV, we will load Human genome (hg19) and then load our bigWig files and BED files. Remember to “Autoscale” 
+each track before looking at specific genes. To do that, right click on the left-hand side. There should be many 
+option available to you. Check Autoscale if it is not checked.</p>
+<p>Motif Discovery, Annotation and Functional Enrichment:</p>
+<p>o Since we have identified the binding site, which is the enriched region between our control and the transcription 
+factor, we will proceed to the downstream analyses including determining the binding motifs for the protein of interest 
+and identifying which genes are associated with the binding sites and exploring the possibility of associated 
+enrichment of processes, pathways, or networks.</p>
+<p>o To start, we will run an interactive session and proceed to extract the first three columns of the IDR peak calls. 
+To do that, we will run the command below.</p>
+<p><code>cut –f 1,2,3 Nanog-idr-merged.bed &gt; Nanog-idr-merged-great.bed</code></p>
+<p>Then we use bedtools and specifically the function ‘getfasta’ to retrieve the sequences from a reference fasta file for 
+coordinates defined in the BED file.</p>
+<p><code>bedtools getfasta –fi &lt;Ref_Fasta.fa&gt; -bed Nanog-idr-merged-great.bed –fo Nanog-idr-merged-dreme.fasta</code></p>
+<p>Next, we transfer the file form the cluster to the local machine using Rsync or Filezilla</p>
+<p>o Functional Enrichment Analysis: We will then use <a href="http://bejerano.stanford.edu/great/public/html/index.php">GREAT</a> to 
+perform the functional enrichment analysis. Basically, GREAT will take the list of enriched regions, associate with the 
+nearby genes, and then analyzes the gene annotations to assign biological meaning to the data. In GREAT, choose the 
+Nanog-idr-merged-great.bed file and check the whole genome for background regions. Click Submit. GREAT provides the 
+output in HTML format organized by sections. Next, expand the “job description” section and select 
+“View all genomic region-gene association.” Note that each associated gene is listed with location from the 
+transcriptions start sites as shown below. You have the option to download the genes associated with the binding 
+sites, or you can view all the binding sites on a custom track in the UCSC Genome Browser.</p>
+<p><img alt="" src="../../_assets/img/advanced-genomics-support/chipseq_23.png" /></p>
+<p>If you scroll down, there will be many more sections available. The “Region-Gene Association Graphs” display the 
+summary of the number of genes associated with each binding site and the binding site locations relative to the 
+transcription start sites of the associated genes. Below that is the “Global Controls” section, where you can select 
+the annotation information to display. Keep the default settings and scroll down to view the information displayed. 
+In the next section, you can explore the “GO Biological Process terms” associated with binding sites. You can click 
+on any of the term, and it will display a summary information about binding sites for you Transcription factor 
+associated with this GO term.</p>
+<p>o Motif Discovery: To identify over-represented motifs, we will use DREME, a motif discovery algorithm designed 
+to find short, core DNA-binding motifs (4 to 8 nts) of eukaryotic transcription factors and is optimized to handle 
+large ChIP-seq datasets. DREME only looks for short motifs, and as a drawback, it is very likely to miss wider motifs. 
+Visit <a href="http://meme-suite.org/tools/dreme">DREME</a> and select the “Nanog-idr-merged-dreme.fasta” as the input. Enter 
+your email so you will get a notification when the job is done. Also, you can write a job description to identify the 
+task. The job will take some times to run. when it is done, you will receive a HTMl output on the website, which 
+provides a list of Discovered Motifs displayed in sequence logos (in both forward and reverse complement i.e. RC) 
+along with an E-value for the significance of the result. </p>
+<p>o Motif aligning to the known motifs: Using <strong>Tomtom</strong> (also a part of the meme suite), you can search whether the 
+identified motifs resemble the binding motifs of known transcription factors in the databases. Tomtom returns the 
+potential matches and provides a statistical measure of motif-motif similarity.</p>
+<p>o Click on the Submit/Download button for the motif of your selection in the DREME output</p>
+<p>o Select Tomtom as the program and click submit in the dialog box</p>
+<p>o Tomtom allows you to select the database you wish to search against. Keep the default, but remember you are able to 
+change the options at your own wishes given different circumstances.</p>
+<p>o Enter your email address and job description and start the search.</p>
+<p>o Wait for Tomtom to email the results if you have your email address filled out.</p>
+<p>o The next tool is also a part of the MEME Suite, the MEME-ChIP, and the good news is it is designed specifically for 
+ChiP-seq analysis. MEME-ChIP performs DREME and Tomtom analysis in addition to using tools to assess which motifs are 
+most centrally enriched (motifs should be centered in the peaks) and to combine related motifs into similar clusters. 
+It is capable of identify longer motifs (&lt;30bp).</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+                Thanks for your feedback! Help us improve this page by creating an issue in
+  our <a href="https://github.com/pitt-crc/user-manual/issues/new/?title=[Feedback]+ChipSeq%20data%20analysis+-+/advanced-genomics-support/ChipSeq-data-analysis/" target="_blank" rel="noopener">Github Repository</a>.
+
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../bioinformatics/spatialtranscriptomics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spatialtranscriptomics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Spatialtranscriptomics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ATACSeq-data-analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: ATACSeq data analysis">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                ATACSeq data analysis
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; University of Pittsburgh. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy","content.tooltips","search.suggest","navigation.top","navigation.indexes","content.code.annotate","navigation.footer"],"redirect":"../../redirect.json","search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c04ba553.min.js"></script>
+      
+    
+  </body>
+</html>

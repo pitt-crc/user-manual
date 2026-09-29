@@ -1,0 +1,86 @@
+{
+	"version": "2.8.4",
+	"showSampleNames": false,
+	"reference": {
+		"id": "hg38",
+		"name": "Human (GRCh38/hg38)",
+		"fastaURL": "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg38/hg38.fa",
+		"indexURL": "https://s3.amazonaws.com/igv.broadinstitute.org/genomes/seq/hg38/hg38.fa.fai",
+		"cytobandURL": "https://s3.amazonaws.com/igv.org.genomes/hg38/annotations/cytoBandIdeo.txt.gz",
+		"aliasURL": "https://s3.amazonaws.com/igv.org.genomes/hg38/hg38_alias.tab"
+	},
+	"locus": "chr12:6,533,516-6,539,549",
+	"gtexSelections": {
+		"chr12:6,533,516-6,539,549": {
+			"gene": "GAPDH",
+			"snp": null
+		}
+	},
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_TGFb1_R1.bigWig",
+			"name": "scCTRL_TGFb1_R1.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 4
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_TGFb1_R2.bigWig",
+			"name": "scCTRL_TGFb1_R2.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 5
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_TGFb1_R3.bigWig",
+			"name": "scCTRL_TGFb1_R3.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 6
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_vehicle_R1.bigWig",
+			"name": "scCTRL_vehicle_R1.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 7
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_vehicle_R2.bigWig",
+			"name": "scCTRL_vehicle_R2.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 8
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/bigwig/scCTRL_vehicle_R3.bigWig",
+			"name": "scCTRL_vehicle_R3.bigWig",
+			"format": "bigwig",
+			"type": "wig",
+			"order": 9
+		},
+		{
+			"url": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/scCTRL_TGFb1_R1.markdup.sorted.bam",
+			"name": "scCTRL_TGFb1_R1.markdup.sorted.bam",
+			"indexURL": "data/bgfs/genomics/fangping/nf-core-rnaseq/results/star/scCTRL_TGFb1_R1.markdup.sorted.bam.bai",
+			"format": "bam",
+			"type": "alignment",
+			"alleleFreqThreshold": 0.2,
+			"order": 10
+		},
+		{
+			"name": "Refseq Genes",
+			"format": "refgene",
+			"url": "https://s3.amazonaws.com/igv.org.genomes/hg38/ncbiRefGene.txt.gz",
+			"indexed": false,
+			"visibilityWindow": -1,
+			"removable": false,
+			"order": 1000000,
+			"type": "annotation"
+		}
+	]
+}

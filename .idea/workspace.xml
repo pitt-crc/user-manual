@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2350fe6-a375-4f4c-8d8c-9700e9b01568" name="Changes" comment="Renames job steps for clarity">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_assets/css/pitt_colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_assets/css/pitt_colors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/data-management/file-transfer-methods/globus-microsoft-onedrive.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;djperrefort&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pitt-crc/user-manual.git&quot;,
+    &quot;accountId&quot;: &quot;3919bd46-d311-43cb-8f14-899ab79e76a5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="37vozoe1D54UvPcrj8e3NyHTSuq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "zensical",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/djperrefort/Github/pitt-crc/user-manual/.github/workflows",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
+      <recent name="$PROJECT_DIR$/docs/_assets/img/keystone" />
+      <recent name="$PROJECT_DIR$/docs/keystone" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/.github/actions/build-docs" />
+      <recent name="$PROJECT_DIR$/.github/actions" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.30387.173" />
+        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2350fe6-a375-4f4c-8d8c-9700e9b01568" name="Changes" comment="" />
+      <created>1767793170318</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1767793170318</updated>
+      <workItem from="1767793171477" duration="3850000" />
+      <workItem from="1772814595527" duration="30000" />
+      <workItem from="1773435604624" duration="7000" />
+      <workItem from="1789143676738" duration="3087000" />
+      <workItem from="1790173060094" duration="2643000" />
+      <workItem from="1790184278676" duration="1134000" />
+      <workItem from="1790189521004" duration="750000" />
+      <workItem from="1790706878927" duration="620000" />
+    </task>
+    <task id="LOCAL-00001" summary="Updates hardware profiles for all clusters">
+      <option name="closed" value="true" />
+      <created>1767796854964</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1767796854964</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Adds initial draft of keystone instructions">
+      <option name="closed" value="true" />
+      <created>1789145816044</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789145816044</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updates keystone instructions">
+      <option name="closed" value="true" />
+      <created>1789146177849</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789146177849</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adds CI workflows for branch protection policies">
+      <option name="closed" value="true" />
+      <created>1790174358272</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1790174358272</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Consolidates CI logic to single workflow">
+      <option name="closed" value="true" />
+      <created>1790174940211</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1790174940211</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Renames job steps for clarity">
+      <option name="closed" value="true" />
+      <created>1790175112875</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1790175112875</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updates hardware profiles for all clusters" />
+    <MESSAGE value="Adds initial draft of keystone instructions" />
+    <MESSAGE value="Updates keystone instructions" />
+    <MESSAGE value="Adds CI workflows for branch protection policies" />
+    <MESSAGE value="Consolidates CI logic to single workflow" />
+    <MESSAGE value="Renames job steps for clarity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renames job steps for clarity" />
+  </component>
+</project>
