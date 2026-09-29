@@ -4,11 +4,6 @@ site_url = "https://crc-pages.pitt.edu/user-manual/"
 repo_url = "https://github.com/pitt-crc/user-manual"
 copyright = "Copyright &copy; University of Pittsburgh. All rights reserved."
 
-extra_css = [
-    "_assets/css/pitt_colors.css",
-    "_assets/css/stretched_link.css",
-]
-
 nav = [
     { "Back to crc.pitt.edu" = "https://crc.pitt.edu" },
     { "User Manual Home" = "index.md" },
@@ -153,7 +148,7 @@ nav = [
 # ------------------------------------------------------------------------------
 
 [project.theme]
-logo = "_assets/img/pitt_shield_white.png"
+logo = "_assets/img/pitt_shield_blue.png"
 favicon = "_assets/img/pitt-logo-nav_white.png"
 font.text = "Roboto"
 font.code = "Roboto Mono"
