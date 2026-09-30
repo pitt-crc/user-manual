@@ -13,7 +13,7 @@ the server down again.
   If none is visible, loading the module fails immediately with a
   clear error rather than starting anything.
 - If you're serving a gated or private HuggingFace model (most Llama
-  models, some others), you'll need a HuggingFace token — see
+  models, some others), you'll need a [HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens) — see
   `VLLM_HF_TOKEN` below.
 
 ## Quick start
@@ -69,6 +69,18 @@ module load vllm/0.29.0
 All the environment variables below work the same way: set them, then
 load the module. The module reads them once, at load time — changing
 them afterward has no effect until you unload and reload.
+
+!!! failure "Did not work"
+    The Llama 3.1 model requires accepting the license agreement. If you have not 
+    done this previously, login to Hugging Face and accept the terms. There's an 
+    approval process that may take some time.
+
+    === "Submit License Agreement"
+        ![Gated Repos](../../_assets/img/applications/llama_3.1-8B_Lic_1.png)
+
+    === "Wait for Approval"
+        ![Gated Repos](../../_assets/img/applications/llama_3.1-8B_Lic_2.png)
+
 
 ## Using a model that's already on disk (no internet access)
 

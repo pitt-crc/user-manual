@@ -103,7 +103,7 @@ The annotated versions below show what each template does, so you can adapt them
     For interactive work, the commands below can be executed on the terminal commandline:
 
     ```bash
-    srun -M gpu -p l40s -n16 --gres=gpu:1 -t 2:00:00 --pty bash
+    srun -M gpu -p l40s -n16 --gres=gpu:1 -t 8:00:00 --pty bash
     export VLLM_MODEL="meta-llama/Llama-3.1-8B-Instruct"
     export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
     module load vllm/0.29.0
