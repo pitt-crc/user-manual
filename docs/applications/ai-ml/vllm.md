@@ -1,8 +1,12 @@
 # Using the vllm module
 
-Loading this module starts a private vLLM inference server for you and
+Loading this module starts a vLLM inference server of your own and
 gives you a URL to talk to it. Unloading it (or ending your job) shuts
 the server down again.
+
+For choosing a GPU, reaching your server from elsewhere on the
+cluster, and connecting clients, see
+[Inference Servers on the GPU Cluster](inference-server.md).
 
 ## Before you start
 
@@ -19,7 +23,7 @@ the server down again.
 ## Quick start
 
 ```bash
-srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t21:00:00 --pty bash
+srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t02:00:00 --pty bash
 module load vllm/0.29.0
 ```
 
@@ -27,9 +31,15 @@ With nothing else set, this loads a small default model just to
 confirm everything works, and prints something like:
 
 ```
-vLLM (container) starting on gpu042:41317 (model: facebook/opt-125m)
-Base URL: http://gpu042:41317  |  run 'vllm-status' to check readiness, 'vllm-stop' to end it early.
+vLLM (container) starting on gpu-n74:41317 (model: facebook/opt-125m)
+Base URL: http://gpu-n74:41317  |  run 'vllm-status' to check readiness, 'vllm-stop' to end it early.
 ```
+
+A GPU job bills for its full walltime whether or not it's answering
+requests, so ask for what you actually need and stop the server when
+you're done. The default model here is tiny — for a plumbing test a
+smaller partition such as `l40s` or `a100` will also queue faster than
+`rtx6k`.
 
 !!! failure "Did not work"
     If this is your first time using vLLM, you may encounter the error below:
@@ -55,7 +65,17 @@ Base URL: http://gpu042:41317  |  run 'vllm-status' to check readiness, 'vllm-st
     vLLM (container) starting on gpu-n78:52071 (model: facebook/opt-125m)
     Base URL: http://gpu-n78:52071  |  run 'vllm-status' to check readiness, 'vllm-stop' to end it early.
     [kimwong@gpu-n78.crc.pitt.edu ~]$
-    ```    
+    ```
+
+    The container binds `~/.cache/huggingface` on every launch, whether
+    or not you've set `VLLM_DOWNLOAD_DIR`, so the directory has to
+    exist even when your models live somewhere else.
+
+!!! warning "Avoid preemptible partitions"
+
+    A preempted job takes your endpoint down mid-request. Run servers
+    on regular partitions. See
+    [Preemptible Partitions](../../slurm/preempt.md).
 
 ## Loading a real model
 
@@ -112,6 +132,54 @@ one-time step someone with network access needs to do — ask your
 cluster admin if you're not sure how models get staged for offline use
 at your site.
 
+## Keeping your server private
+
+The server is yours alone in the sense that it runs in your job and
+bills against your allocation — but it is **not** private by default.
+Ports are open within the CRCD environment, so any user on any cluster
+who finds the host and port can send requests that you pay for.
+
+Close it with an API key, set before loading the module:
+
+```bash
+export VLLM_API_KEY=abc123
+module load vllm/0.29.0
+```
+
+Requests without the key are then refused:
+
+```console
+[kimwong@login2 ~]$ curl http://gpu-n74:60545/v1/models
+{"error":"Unauthorized"}
+[kimwong@login2 ~]$ curl -s -H "Authorization: Bearer abc123" http://gpu-n74:60545/v1/models
+{"object":"list","data":[{"id":"meta-llama/Llama-3.1-8B-Instruct", ...
+```
+
+!!! warning "Don't pass the key as a command-line flag"
+
+    vLLM also accepts `--api-key` through `VLLM_EXTRA_ARGS`, and it
+    enforces the key identically — but the key then sits in the
+    process's command line, where anyone able to list processes on that
+    node can read it:
+
+    ```console
+    [kimwong@gpu-n79 ~]$ ps -eo pid,user,args | grep -- '--api-key'
+    1850563 kimwong  /usr/bin/python3 /usr/local/bin/vllm serve meta-llama/Llama-3.1-8B-Instruct --port 52615 --host 0.0.0.0 --download-dir /vast/crcd/kimwong/vllm --api-key gopitt
+    ```
+
+    `VLLM_API_KEY` keeps it out of the process table. Use that.
+
+!!! tip "Rejected requests show up in the log"
+
+    vLLM records the source address and status of every request, so
+    `$VLLM_LOGFILE` tells you whether anyone else has been probing your
+    endpoint:
+
+    ```
+    INFO:     10.201.0.25:49632 - "GET /v1/models HTTP/1.1" 401 Unauthorized
+    INFO:     10.201.0.25:38664 - "GET /v1/models HTTP/1.1" 200 OK
+    ```
+
 ## Environment variables
 
 ### Commonly used
@@ -119,9 +187,20 @@ at your site.
 | Variable | What it does | Default |
 |---|---|---|
 | `VLLM_MODEL` | HuggingFace model id, or a local path (starting with `/`) to a pre-downloaded model — see above | `facebook/opt-125m` |
-| `VLLM_HF_TOKEN` | Your HuggingFace token, for gated/private models. Not needed if you've already run `huggingface-cli login` in this shell. | none |
-| `VLLM_DOWNLOAD_DIR` | Where model weights *and* vLLM's own cache (compiled kernels, autotune results, etc.) get stored, if you don't want them under `~/.cache/` — handy if your home directory has limited space | HF/vLLM's default caches under `$HOME` |
+| `VLLM_HF_TOKEN` | Your HuggingFace token, for gated/private models. Not needed if you've already run `huggingface-cli login` in this shell. Treat it like a password, and redact it before pasting a log into a ticket. | none |
+| `VLLM_API_KEY` | API key the server will require on every request — see "Keeping your server private" above | none (server is open) |
+| `VLLM_DOWNLOAD_DIR` | Where model weights *and* vLLM's compiled-kernel cache get stored. Your home directory has a 75 GB quota, which one large model will exhaust, so point this at your group's `/vast` or `/ix1` space. | HF/vLLM's default caches under `$HOME` |
 | `VLLM_EXTRA_ARGS` | Extra flags passed straight to vLLM, e.g. `"--max-model-len 8192 --gpu-memory-utilization 0.9"` | none |
+
+`VLLM_DOWNLOAD_DIR` covers both halves: it becomes vLLM's
+`--download-dir` for weights, and the module points
+`VLLM_CACHE_ROOT` at a `vllm-cache/` subdirectory inside it for
+compiled kernels and autotune results.
+
+Anything in `VLLM_EXTRA_ARGS` is appended to a command line that
+already carries `--host`, `--port` and `--download-dir`, so there's no
+need to set those yourself — and overriding `--port` will confuse the
+status and stop helpers.
 
 ### Occasionally useful
 
@@ -142,10 +221,23 @@ for what each one does.
 
 The module sets these in your shell:
 
-- `$VLLM_BASE_URL` — full URL to your server, e.g. `http://gpu042:41317`
+- `$VLLM_BASE_URL` — full URL to your server, e.g. `http://gpu-n74:41317`
 - `$VLLM_HOST`, `$VLLM_SERVER_PORT` — the same, split apart
-- `$VLLM_LOGFILE` — path to the server's log
+- `$VLLM_LOGFILE` — path to the server's log, under
+  `~/.vllm/<jobid>/`, so logs from different jobs don't collide
 - `$VLLM_PID` — the server's process ID
+
+`$VLLM_PID` is worth knowing about for batch jobs: the server runs in
+the background, so a batch script that loads the module and then ends
+would let SLURM close the job and take the server with it. Block on the
+PID to hold the allocation open:
+
+```bash
+while kill -0 "$VLLM_PID" 2>/dev/null; do sleep 60; done
+```
+
+See [Inference Servers](inference-server.md) for a complete batch
+example.
 
 ## Checking readiness
 
@@ -155,9 +247,17 @@ Big models can take a few minutes to load. Run:
 vllm-status
 ```
 
-This tells you whether the server is still starting up, up and
-serving, or has crashed — along with the last lines of its log either
-way.
+It reports whether the server is still starting up, up and serving, or
+has crashed, and prints the last 15 lines of the log either way:
+
+```
+[kimwong@gpu-n74.crc.pitt.edu ~]$ vllm-status
+vLLM is UP on gpu-n74:34249
+--- last 15 lines of /xhome/crc/kimwong/.vllm/4242266/vllm_1791296929_2671854.log ---
+...
+(APIServer pid=2671882) INFO:     Application startup complete.
+(APIServer pid=2671882) INFO:     127.0.0.1:33490 - "GET /health HTTP/1.1" 200 OK
+```
 
 ## Talking to the server
 
@@ -175,7 +275,8 @@ curl "$VLLM_BASE_URL/v1/chat/completions" \
 ```
 
 Use the model id you actually set in `VLLM_MODEL` — vLLM registers the
-model under that name.
+model under that name. If you set `VLLM_API_KEY`, add
+`-H "Authorization: Bearer <your key>"` to both.
 
 ## Shutting it down
 
@@ -189,6 +290,11 @@ If you end your SLURM session without doing either, SLURM cleans the
 server up automatically when the job exits — you won't leave anything
 running behind.
 
+If you run `vllm-stop` and then unload, the unload prints
+`No pidfile found; nothing to stop.` before saying the server stopped.
+That pair looks contradictory but is harmless — the server was already
+stopped by `vllm-stop`.
+
 ## Troubleshooting
 
 - **"must be run inside a SLURM allocation"** — you're on a login
@@ -199,6 +305,13 @@ running behind.
   the module again.
 - **Nothing happening for a while** — check `vllm-status`; large
   models can genuinely take several minutes to load, this is normal.
+- **`mount source ~/.cache/huggingface doesn't exist`** — create the
+  directory with `mkdir -p ~/.cache/huggingface` and load again. It is
+  bound on every launch, even if `VLLM_DOWNLOAD_DIR` points your
+  models elsewhere.
+- **`{"error":"Unauthorized"}`** — the server has an API key set and
+  your request didn't carry it. Send
+  `Authorization: Bearer <your key>`.
 - **"VLLM_MODEL looks like a local path but no such directory exists"**
   — either the path is wrong, or it exists but isn't visible from the
   compute node you landed on (e.g. it's on storage only mounted on

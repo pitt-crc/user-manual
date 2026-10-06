@@ -151,8 +151,10 @@ nav:
           - VS Code: applications/coding/vscode.md
       - AI & Machine Learning:
           - Inference Servers: applications/ai-ml/inference-server.md
-          - Using the vllm Module: applications/ai-ml/vllm-module.md
+          - vLLM: applications/ai-ml/vllm.md
+          - llama.cpp: applications/ai-ml/llamacpp.md
           - Ollama: applications/ai-ml/ollama.md
+          - Claude Code: applications/ai-ml/claude-code.md
       - applications/application-environment.md
       - applications/basic-commands.md
       - applications/crc-wrappers.md
