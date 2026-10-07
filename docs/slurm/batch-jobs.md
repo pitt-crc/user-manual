@@ -17,24 +17,30 @@ These are the arguments you'll use most often. See the [Slurm `sbatch` documenta
 for the complete list. The Slurm directives following the syntax `#SBATCH <argument>=<value>`, where `<argument>` is one
 of the defined parameters below and `<value>` is the desired resource setting in the appropriate format.
 
-| Argument | Description | Format / example |
-| -------- | ----------- | ---------------- |
-| `--job-name` | Name shown in `squeue`. | Something descriptive; defaults to the Job ID |
-| `--cluster` | Cluster to run on. | `smp`, `mpi`, `gpu`, `htc` |
-| `--partition` | Partition within the cluster. | See [Hardware Profiles](../hardware_profiles/index.md) |
-| `--constraint` | Target a specific hardware type | See [Hardware Profiles](../hardware_profiles/index.md) for options| 
-| `--nodes` | Number of nodes. | Usually `1`; MPI needs ≥ 2. Default `1` |
-| `--ntasks-per-node` | Tasks (processes) launched per node. | Default `1` |
-| `--cpus-per-task` | CPUs per task, for multithreading. | e.g. `16` |
-| `--mem` | Memory per node. | e.g. `16G` (or MB, e.g. `16000`) |
-| `--gres` | Generic resources; on GPU jobs, the card count. | `gpu:1`. **Required** on the GPU cluster |
-| `--time` | Maximum walltime. | `days-HH:MM:SS` |
-| `--qos` | Quality of Service (caps walltime, affects priority). | Default `normal`; see below |
-| `--output` | File for standard output. | e.g. `myjob_%j.out` (`%j` = Job ID) |
-| `--error` | File for standard error (if separate from output). | full path or filename |
-| `--account` | Charge a specific allocation. | Resource Allocation name (see [FAQ](#faq)) |
-| `--mail-user` | Email address for notifications. | `PittID@pitt.edu` |
-| `--mail-type` | When to notify. | `END`, `FAIL` (comma-separated) |
+<style>
+/* Keep sbatch directive names (col 1) and their short flags (col 2) on one line. */
+.md-typeset table:not([class]) td:first-child,
+.md-typeset table:not([class]) td:nth-child(2) { white-space: nowrap; }
+</style>
+
+| Argument | Short form | Description | Format / example |
+| -------- | ---------- | ----------- | ---------------- |
+| `--job-name` | `-J` | Name shown in `squeue`. | Something descriptive; defaults to the Job ID |
+| `--cluster` | `-M` | Cluster to run on. | `smp`, `mpi`, `gpu`, `htc` |
+| `--partition` | `-p` | Partition within the cluster. | See [Hardware Profiles](../hardware_profiles/index.md) |
+| `--constraint` | `-C` | Target a specific hardware type | See [Hardware Profiles](../hardware_profiles/index.md) for options| 
+| `--nodes` | `-N` | Number of nodes. | Usually `1`; MPI needs ≥ 2. Default `1` |
+| `--ntasks-per-node` | — | Tasks (processes) launched per node. | Default `1` |
+| `--cpus-per-task` | `-c` | CPUs per task, for multithreading. | e.g. `16` |
+| `--mem` | — | Memory per node. | e.g. `16G` (or MB, e.g. `16000`) |
+| `--gres` | — | Generic resources; on GPU jobs, the card count. | `gpu:1`. **Required** on the GPU cluster |
+| `--time` | `-t` | Maximum walltime. | `days-HH:MM:SS` |
+| `--qos` | `-q` | Quality of Service (caps walltime, affects priority). | Default `normal`; see below |
+| `--output` | `-o` | File for standard output. | e.g. `myjob_%j.out` (`%j` = Job ID) |
+| `--error` | `-e` | File for standard error (if separate from output). | full path or filename |
+| `--account` | `-A` | Charge a specific allocation. | Resource Allocation name (see [FAQ](#faq)) |
+| `--mail-user` | — | Email address for notifications. | `PittID@pitt.edu` |
+| `--mail-type` | — | When to notify. | `END`, `FAIL` (comma-separated) |
 
 !!! info "QoS levels and limits live in one place"
     Rather than list QoS walltimes and limits here (they change), see the
