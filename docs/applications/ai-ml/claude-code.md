@@ -5,8 +5,8 @@ runs in your terminal: it reads and edits files, runs commands, and works throug
 just answering questions. The `claude-code` module points it at a model **you are hosting on a CRCD
 GPU** instead of at Anthropic's API, so your prompts and your code stay on the cluster.
 
-The module does the whole setup for you. It loads a backend — [vLLM](vllm-module.md) or
-[llama.cpp](llamacpp-module.md) — starts the server, injects the flags that tool calling needs, and
+The module does the whole setup for you. It loads a backend — [vLLM](vllm.md) or
+[llama.cpp](llamacpp.md) — starts the server, injects the flags that tool calling needs, and
 points Claude Code at the result.
 
 !!! important "Load `claude-code` first, not the backend"
@@ -306,7 +306,7 @@ with the output of `claude-code-info` and the backend's log file.
 
     Every `VLLM_*` variable, including offline models and extra arguments.
 
-    [vLLM](vllm-module.md)
+    [vLLM](vllm.md)
 
 -   :material-file-code: **The llama.cpp backend**
 
@@ -314,7 +314,7 @@ with the output of `claude-code-info` and the backend's log file.
 
     Quantized GGUF models, context size, and concurrency.
 
-    [llama.cpp](llamacpp-module.md)
+    [llama.cpp](llamacpp.md)
 
 -   :material-cash: **What a session costs**
 

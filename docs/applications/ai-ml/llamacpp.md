@@ -134,7 +134,7 @@ optional in the request body, since the server has only one loaded.
     your host and port can send requests that bill against your
     allocation, and any web page can call the endpoint from a browser.
     Keep these jobs short, cancel them when you finish, and use
-    [vllm](vllm-module.md) with `--api-key` for anything long-lived or
+    [vllm](vllm.md) with `--api-key` for anything long-lived or
     sensitive.
 
 ## Chat in your browser

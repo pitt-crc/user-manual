@@ -113,7 +113,7 @@ The annotated versions below show what each template does, so you can adapt them
 
     The module leaves `$VLLM_BASE_URL`, `$VLLM_HOST`, `$VLLM_SERVER_PORT`, `$VLLM_LOGFILE`, and
     `$VLLM_PID` in your shell, and gives you `vllm-status` and `vllm-stop`. Full reference:
-    [Using the vllm module](vllm-module.md).
+    [Using the vllm module](vllm.md).
 
     For a long-lived server you want a batch job instead, which needs two things the interactive
     path gets for free — a way for clients to discover the port, and something to stop the script
@@ -219,7 +219,7 @@ The annotated versions below show what each template does, so you can adapt them
     !!! note "A newer module exists but does not start a server"
 
         `module spider ollama` reports an `ollama/0.32.5` module. Unlike the
-        [vllm](vllm-module.md) and [llama.cpp](llamacpp-module.md) modules, it only adds the
+        [vllm](vllm.md) and [llama.cpp](llamacpp.md) modules, it only adds the
         `ollama` binary to your `PATH`. The templates above are the verified route.
 
 === "llama.cpp"
@@ -243,7 +243,7 @@ The annotated versions below show what each template does, so you can adapt them
 
     `LLAMACPP_MODEL` takes any Hugging Face GGUF repo in `repo:tag` form, where the tag selects the
     quantization — use the form shown on the model's Hugging Face page. Full reference:
-    [Using the llamacpp module](llamacpp-module.md).
+    [Using the llamacpp module](llamacpp.md).
 
     Once `llamacpp-status` reports `READY`, the endpoint works from anywhere on the cluster. Note
     that `model` is optional in the request body, since the server has only one loaded:
@@ -873,7 +873,7 @@ and include the job ID and the job's output file.
 
     Every `VLLM_*` variable, `vllm-status`, and `vllm-stop`.
 
-    [Using the vllm module](vllm-module.md)
+    [Using the vllm module](vllm.md)
 
 -   :material-console: **Ollama specifics**
 

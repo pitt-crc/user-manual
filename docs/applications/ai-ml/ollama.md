@@ -11,7 +11,7 @@ elsewhere on the cluster, service-unit costs, and the other access routes, see
 
     All ports are open within the CRCD environment, so any user who finds your server's host and
     port can send requests that bill against your allocation. Keep these jobs short, cancel them
-    when you are done, and use [vLLM](vllm-module.md) with an API key for anything long-lived.
+    when you are done, and use [vLLM](vllm.md) with an API key for anything long-lived.
 
 ## Before you start
 
@@ -62,7 +62,7 @@ cp /software/rhel9/manual/install/ollama/ollama-0.11.10_l40s.slurm ~/my_ollama.s
     The install directory also holds a `0.19.0` image with its own templates, and
     `module spider ollama` reports an `ollama/0.32.5` module. That module only adds the `ollama`
     binary to your `PATH` — it does not start a server, unlike the
-    [vllm](vllm-module.md) and llamacpp modules. The `0.11.10` templates above are the ones
+    [vllm](vllm.md) and llamacpp modules. The `0.11.10` templates above are the ones
     verified for this page; check with CRCD before moving to a newer version. Note also that
     `ollama-0.11.10_a100_80gb.slurm` requests the `a100_nvlink` partition despite its name.
 
@@ -248,7 +248,7 @@ with the job ID and the job's output file.
 
     vLLM serves many clients at once and supports an API key.
 
-    [Using the vllm module](vllm-module.md)
+    [Using the vllm module](vllm.md)
 
 -   :material-expansion-card-variant: **Pick a GPU**
 
