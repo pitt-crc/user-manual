@@ -109,7 +109,7 @@ module load claude-code
 ```bash
 # llama.cpp backend
 export CLAUDECODE_BACKEND="llamacpp"
-export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+export LLAMACPP_MODEL="bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR=/vast/<group>/$USER/llamacpp
 
 module load claude-code
@@ -184,7 +184,7 @@ work but seem unreliable after setting the parser correctly.
 
         ```bash
         export CLAUDECODE_BACKEND="llamacpp"
-        export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+        export LLAMACPP_MODEL="bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
         module load claude-code
         ```
 
