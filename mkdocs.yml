@@ -204,6 +204,8 @@ nav:
       - policies/job-scheduling-policy.md
       - policies/hardware-investing-policy.md
       - policies/resource-descriptions-for-writing-proposals.md
+  - Investor Partitions:
+      - investor/cpace.md
   - Citing CRCD: acknowledge-crc.md
   - Glossary: glossary.md
   - Common Problems: faq.md
