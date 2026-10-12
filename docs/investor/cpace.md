@@ -40,7 +40,14 @@ or wait for other users' jobs to finish.
 
     Add `--account=cpace` (or `-A cpace`) to every `cpace` job, as all the examples below do.
     Don't change your default account to `cpace`: that would also change which account is
-    charged for your jobs on SMP, HTC, MPI, and the other GPU partitions.
+    charged for your jobs on the other GPU partitions.
+
+    Default accounts are set **per cluster**, so check the GPU one specifically. The `Def Acct`
+    column shows your GPU default:
+
+    ```
+    sacctmgr show user $USER withassoc where cluster=gpu format=Cluster,User,DefaultAccount,Account
+    ```
 
 ## The hardware
 
@@ -88,8 +95,9 @@ When you submit a job to `cpace`, this is what happens:
 
 1. Slurm checks whether gpu-n91 has enough free GPUs, cores, and memory for your request.
 2. If community `preempt` jobs are holding the resources you need, Slurm stops just enough of
-   them to fit your job. Those jobs are either requeued or cancelled, depending on how they were
-   submitted. Either way, they leave the node at once, because CPACE preemption has no grace period.
+   them to fit your job. There is no grace period: those jobs are killed immediately and lose any
+   work in progress. Batch jobs are normally put back in the queue, but they start over from the
+   beginning; interactive sessions simply end. Either way, the node is freed for you at once.
 3. Your job starts as soon as the node finishes cleaning up after the preempted jobs, which
    normally takes no more than a minute or two.
 
