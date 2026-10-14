@@ -14,7 +14,7 @@ You need an interactive or batch SLURM job with a GPU attached. This
 will not work on a login node.
 
 ```bash
-srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t02:00:00 --pty bash
+srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t02:00:00 --pty bash
 
 module load llamacpp/0.5.0
 ```
@@ -134,7 +134,7 @@ optional in the request body, since the server has only one loaded.
     your host and port can send requests that bill against your
     allocation, and any web page can call the endpoint from a browser.
     Keep these jobs short, cancel them when you finish, and use
-    [vllm](vllm.md) with `--api-key` for anything long-lived or
+    [vllm](vllm-module.md) with `--api-key` for anything long-lived or
     sensitive.
 
 ## Chat in your browser
@@ -148,13 +148,13 @@ keeping the **trailing slash**:
 https://ondemand.htc.crc.pitt.edu/rnode/gpu-n79.crc.pitt.edu/27508/
 ```
 
-![llama.cpp's chat interface through the OnDemand proxy](../../_assets/img/applications/llamacpp_gui_3.png)
+![llama.cpp's chat interface through the OnDemand proxy](../../_assets/img/applications/llamacpp_gui_2.png)
 
 You must be logged in to OnDemand in the same browser. The model
 selector shows what the server has loaded, and each message is
 annotated with token counts and throughput.
 
-![A conversation in llama.cpp's chat interface](../../_assets/img/applications/llamacpp_gui_2.png)
+![A conversation in llama.cpp's chat interface](../../_assets/img/applications/llamacpp_gui_3.png)
 
 !!! warning "Keep the trailing slash"
 

@@ -23,12 +23,12 @@ cluster, and connecting clients, see
 ## Quick start
 
 ```bash
-srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t02:00:00 --pty bash
+srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t02:00:00 --pty bash
 module load vllm/0.29.0
 ```
 
-With nothing else set, this loads a small default model just to
-confirm everything works, and prints something like:
+With nothing else set, this loads a small default model,
+`facebook/opt-125m`, and prints something like:
 
 ```
 vLLM (container) starting on gpu-n74:41317 (model: facebook/opt-125m)
@@ -76,6 +76,21 @@ smaller partition such as `l40s` or `a100` will also queue faster than
     A preempted job takes your endpoint down mid-request. Run servers
     on regular partitions. See
     [Preemptible Partitions](../../slurm/preempt.md).
+
+!!! warning "The default model can't chat"
+
+    `facebook/opt-125m` is a base model with no chat template. It answers
+    `/v1/models` and `/v1/completions`, which is enough to confirm the
+    server is up, but any request to `/v1/chat/completions` — which is what
+    chat interfaces and most client libraries send — fails:
+
+    ```
+    400 As of transformers v4.44, default chat template is no longer allowed,
+    so you must provide a chat template if the tokenizer does not define one.
+    ```
+
+    For a quick test that can chat, set a small instruct model such as
+    `Qwen/Qwen2.5-0.5B-Instruct`.
 
 ## Loading a real model
 
@@ -259,6 +274,12 @@ vLLM is UP on gpu-n74:34249
 (APIServer pid=2671882) INFO:     127.0.0.1:33490 - "GET /health HTTP/1.1" 200 OK
 ```
 
+While the server is starting, those lines often begin with a run of
+warnings such as `Unknown vLLM environment variable detected:
+VLLM_MODEL`. They're harmless: the module's own `VLLM_*` settings reach
+vLLM, which flags any name it doesn't recognize. Run `vllm-status` again
+in a few seconds to see real progress.
+
 ## Talking to the server
 
 Once it's up, it's a normal OpenAI-compatible endpoint:
@@ -325,6 +346,11 @@ stopped by `vllm-stop`.
   relevant if you're using an HF repo id with network access, not a
   local path) — the model is gated. Set `VLLM_HF_TOKEN`, or request
   access to the model on HuggingFace first.
+- **`Free memory on device cuda:0 (7.04/94.97 GiB) on startup is less than desired GPU memory
+  utilization`** — the GPU you were given was already in use before vLLM started. Run `nvidia-smi`:
+  if the process holding the memory isn't yours, end this job, start a new one (you will usually
+  land on a different GPU), and report the node and the `nvidia-smi` output to CRCD. Lowering
+  `--gpu-memory-utilization` would only squeeze your server into what's left.
 - **Out of memory** — try a smaller model, or lower memory usage with
   `export VLLM_EXTRA_ARGS="--gpu-memory-utilization 0.85"` (or lower)
   before loading.
