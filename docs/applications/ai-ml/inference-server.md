@@ -8,10 +8,22 @@ you like — a notebook, an R session, a batch of analysis scripts, or your lapt
 Most of the servers documented here expose an **OpenAI-compatible API**, so any client library
 that talks to OpenAI can talk to your server by changing the base URL.
 
-!!! danger "Never run a server on a login node"
+!!! danger "Never run a server on a login node, or from an SSH session to a compute node"
 
     Login nodes are shared by everyone and have no GPUs. A server process started there will be
     killed. Always request a GPU through Slurm first, as shown below.
+
+    The same goes for SSH-ing into a compute node where you have a job. A process started from that
+    SSH shell runs outside your job: it isn't confined to your GPUs, so it can take a GPU Slurm has
+    allocated to someone else, and it keeps running after your job ends. For a second shell inside
+    a running job, attach to the job instead:
+
+    ```bash
+    srun --jobid=<jobid> --overlap --pty bash
+    ```
+
+    The `vllm`, `sglang`, `llamacpp` and `ollama` modules refuse to start outside a Slurm job, which
+    protects you from both mistakes.
 
 The workflow is the same regardless of which framework or access method you choose:
 
@@ -27,6 +39,24 @@ You need an allocation on the `gpu` cluster. If jobs sit in `PD` state with reas
 `AssocGrpBillingMinutes`, you have no service units to draw from — request an allocation with a
 [Service Request Form](https://crc.pitt.edu/service-request-forms).
 
+!!! warning "Interactive sessions: ask for `-n1 -c16`, not `-n16`"
+
+    `-n16` requests sixteen *tasks* of one CPU each. An interactive shell runs as just one of those
+    tasks, so it — and any server you start from it — is pinned to a single core, while the other
+    fifteen sit allocated, billed and unused. `-n1 -c16` requests one task with sixteen CPUs, which
+    is what a server needs:
+
+    ```bash
+    srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
+    nproc        # should print 16
+    ```
+
+    In a `-n16` session, `nproc` prints `1` and `scontrol show job` reports `CPUs/Task=1` — the
+    job is billed for sixteen cores and your shell can use one. A model running entirely on the GPU
+    may tolerate that, but anything CPU-bound in the same session — tokenizing a dataset, data
+    preparation, a client loop — runs on a single core. Batch scripts are unaffected: the templates
+    here use `--ntasks-per-node=1 --cpus-per-task`.
+
 Model weights are large and your home directory has a 75 GB quota, so send downloads elsewhere
 before you start. The variable to set depends on the framework:
 
@@ -34,7 +64,7 @@ before you start. The variable to set depends on the framework:
 | --------- | -------------- | ------ |
 | vLLM | `VLLM_DOWNLOAD_DIR` | Weights, plus the compiled-kernel cache in a `vllm-cache/` subdirectory |
 | llama.cpp | `LLAMACPP_DOWNLOAD_DIR` | Downloaded GGUF files |
-| Ollama | — | Models go to `~/.ollama/models`; see the [Ollama](ollama.md) page |
+| Ollama | `OLLAMA_MODELS` | Pulled models. Without it they go to job scratch and are deleted with the job |
 
 ```bash
 export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
@@ -81,6 +111,19 @@ pinning a specific card or host CPU, are on the [GPU cluster](../../hardware_pro
 
 ## Step 2. Launch the server
 
+Four servers are available as modules. All of them start when you load the module, all speak an
+OpenAI-compatible API, and none requires an API key by default.
+
+| Server | Choose it when | Models | API key |
+| --- | --- | --- | --- |
+| [vLLM](vllm-module.md) | You want high throughput, many concurrent clients, or an API key | Hugging Face safetensors | `VLLM_API_KEY` |
+| [SGLang](sglang-module.md) | As for vLLM; worth comparing on your workload | Hugging Face safetensors | `--api-key`, visible in the process table |
+| [llama.cpp](llamacpp-module.md) | You want a quantized model on a smaller card, or a chat page in your browser | GGUF | `--api-key`, visible in the process table |
+| [Ollama](ollama.md) | You want the simplest way to pull and run community models by name | Ollama library, GGUF | not supported |
+
+If you only want to chat with a model rather than call it from code, skip ahead:
+[Open WebUI](open-webui.md) and [Chat UI](chat-ui.md) start a server and a chat interface together.
+
 Ready-to-run templates are installed on the cluster. Copy a template to your own space and edit it:
 
 ```bash
@@ -102,7 +145,7 @@ The annotated versions below show what each template does, so you can adapt them
     For interactive work, the commands below can be executed on the terminal commandline:
 
     ```bash
-    srun -M gpu -p l40s -n16 --gres=gpu:1 -t 8:00:00 --pty bash
+    srun -M gpu -p l40s -n1 -c16 --gres=gpu:1 -t 8:00:00 --pty bash
     mkdir -p ~/.cache/huggingface        # first time only; always bound, even with VLLM_DOWNLOAD_DIR set
     export VLLM_MODEL="meta-llama/Llama-3.1-8B-Instruct"
     export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
@@ -113,7 +156,7 @@ The annotated versions below show what each template does, so you can adapt them
 
     The module leaves `$VLLM_BASE_URL`, `$VLLM_HOST`, `$VLLM_SERVER_PORT`, `$VLLM_LOGFILE`, and
     `$VLLM_PID` in your shell, and gives you `vllm-status` and `vllm-stop`. Full reference:
-    [Using the vllm module](vllm.md).
+    [Using the vllm module](vllm-module.md).
 
     For a long-lived server you want a batch job instead, which needs two things the interactive
     path gets for free — a way for clients to discover the port, and something to stop the script
@@ -191,36 +234,46 @@ The annotated versions below show what each template does, so you can adapt them
         `VLLM_MODEL` needs that innermost directory, not the top of the cache. A missing
         `config.json` warning in the log is the symptom of pointing one level too high.
 
+=== "SGLang"
+
+    An alternative to vLLM for Hugging Face safetensors models, with the same OpenAI-compatible API.
+    It suits the same workloads; which is faster depends on the model and request pattern.
+
+    **Loading the `sglang` module starts a server**, the same way the `vllm` module does:
+
+    ```bash
+    srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
+    export SGLANG_MODEL="Qwen/Qwen2.5-7B-Instruct"
+    export SGLANG_DOWNLOAD_DIR="/vast/<group>/$USER/sglang-cache"
+    module load sglang/0.5.21
+    sglang-status                    # READY, STARTING or DOWN
+    ```
+
+    Every start captures CUDA graphs — about 25 seconds for a 7B model — and the first also
+    downloads the weights; a persistent `SGLANG_DOWNLOAD_DIR` saves the download for later jobs.
+    Full reference: [Using the sglang module](sglang-module.md).
+
 === "Ollama"
 
     Simplest option for interactive experimentation and for pulling community models by name.
     Lower throughput than vLLM under concurrent load, and no authentication.
 
-    Ollama is installed as a Singularity image with ready-to-submit batch templates, one per
-    partition:
+    **Loading the `ollama` module starts a server**, the same way the `vllm` and `llamacpp` modules
+    do, and gives you the usual `ollama` command to drive it:
 
     ```bash
-    sbatch /software/rhel9/manual/install/ollama/ollama-0.11.10_l40s.slurm
+    srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
+    export OLLAMA_MODELS="/vast/<group>/$USER/ollama-models"
+    module load ollama/0.40.3
+    ollama pull qwen3:8b
+    ollama run qwen3:8b
     ```
 
-    | Template | Partition | GPU |
-    | -------- | --------- | --- |
-    | `ollama-0.11.10_l40s.slurm` | `l40s` | 1 × L40S, 48 GB |
-    | `ollama-0.11.10_a100_80gb.slurm` | `a100_nvlink` | 1 × A100, 80 GB |
+    Set `OLLAMA_MODELS` — without it, models go to job scratch and download again every job.
 
-    Each picks a free port, publishes it to the job's `Comment` field, and runs the server in the
-    foreground for the job's four-hour walltime. Copy one to your own space to change the walltime
-    or partition.
-
-    Models download to `~/.ollama/models`, against your 75 GB home quota. Pull them from your
-    client rather than from a separate session, and see the [Ollama](ollama.md) page for the R and
-    Python clients, model management, and the quota.
-
-    !!! note "A newer module exists but does not start a server"
-
-        `module spider ollama` reports an `ollama/0.32.5` module. Unlike the
-        [vllm](vllm.md) and [llama.cpp](llamacpp.md) modules, it only adds the
-        `ollama` binary to your `PATH`. The templates above are the verified route.
+    The module sets the CPU thread count from your allocation — `qwen3:8b` runs at about 215
+    tokens per second on an RTX PRO 6000. For batch jobs, `OLLAMA_PRELOAD` and the exit codes of
+    `ollama-status` let a script wait until its models are ready; see the [Ollama](ollama.md) page.
 
 === "llama.cpp"
 
@@ -234,7 +287,7 @@ The annotated versions below show what each template does, so you can adapt them
     For interactive work:
 
     ```bash
-    srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t 8:00:00 --pty bash
+    srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 8:00:00 --pty bash
     export LLAMACPP_MODEL="ggml-org/gemma-3-4b-it-qat-GGUF:Q4_0"
     module load llamacpp/0.5.0
     llamacpp-status                  # READY, STARTING or DOWN
@@ -243,7 +296,7 @@ The annotated versions below show what each template does, so you can adapt them
 
     `LLAMACPP_MODEL` takes any Hugging Face GGUF repo in `repo:tag` form, where the tag selects the
     quantization — use the form shown on the model's Hugging Face page. Full reference:
-    [Using the llamacpp module](llamacpp.md).
+    [Using the llamacpp module](llamacpp-module.md).
 
     Once `llamacpp-status` reports `READY`, the endpoint works from anywhere on the cluster. Note
     that `model` is optional in the request body, since the server has only one loaded:
@@ -664,12 +717,12 @@ tunneling. Choose the tab matching where your client runs.
     https://ondemand.htc.crc.pitt.edu/rnode/gpu-n79.crc.pitt.edu/27508/
     ```
 
-    ![llama.cpp's chat interface through the OnDemand proxy](../../_assets/img/applications/llamacpp_gui_3.png)
+    ![llama.cpp's chat interface through the OnDemand proxy](../../_assets/img/applications/llamacpp_gui_2.png)
 
     The model selector shows what the server has loaded, and each message is annotated with token
     counts and throughput:
 
-    ![A conversation in llama.cpp's chat interface](../../_assets/img/applications/llamacpp_gui_2.png)
+    ![A conversation in llama.cpp's chat interface](../../_assets/img/applications/llamacpp_gui_3.png)
 
     !!! warning "Keep the trailing slash"
 
@@ -682,7 +735,8 @@ tunneling. Choose the tab matching where your client runs.
 
 === "Your laptop (SSH tunnel)"
 
-    Compute nodes aren't reachable from off-cluster, so forward the port through a login node.
+    CRCD's clusters are firewalled: a browser or client on your own laptop cannot reach a compute
+    node directly, even on the VPN. Forward the port through a login node instead.
 
     **Run this on your laptop, not on a login node.** It opens a listening port on whichever
     machine you type it on, so running it on the cluster would only forward a port the cluster can
@@ -744,9 +798,42 @@ tunneling. Choose the tab matching where your client runs.
     point it at `http://localhost:8000/v1` with the key `EMPTY`, or your real key if the server has
     one.
 
+    !!! tip "Use a different local port for each application"
+
+        Your browser keeps cached pages, logins and background scripts per local port. Reusing
+        `localhost:8080` for a different server can show you the previous server's interface, or an
+        error mentioning `<!doctype`. Use a fresh local port for each one, and check what holds a
+        port with `lsof -i :8080`.
+
     You'll need to be on Wireless-PittNet or the University VPN for the `ssh` to connect at all.
     Stop the tunnel with `Ctrl+C` when you're done; it dies with the server job in any case. See
     [SSH Connection Using a Terminal](../../web-portals/terminal.md).
+
+=== "Open WebUI or Chat UI"
+
+    Two modules give you a chat interface in your browser, with your conversations saved between
+    jobs. Like Claude Code, each one starts its backend for you — load the interface module, not
+    `vllm` or `llamacpp` first:
+
+    ```bash
+    export OPENWEBUI_BACKEND="vllm"
+    export VLLM_MODEL="Qwen/Qwen2.5-7B-Instruct"
+    module load open-webui
+    open-webui-status                # wait for both lines to say READY
+    ```
+
+    Then reach the printed URL from your laptop with an SSH tunnel, and log in with the credentials
+    the module created.
+
+    | | [Open WebUI](open-webui.md) | [Chat UI](chat-ui.md) |
+    | --- | --- | --- |
+    | Style | ChatGPT-like | HuggingChat-like |
+    | Document upload, web search | yes | no |
+    | Agent tools (memory, notes, knowledge bases) | yes, with a tool-calling model | no |
+    | Login | email and password | username and password |
+
+    Both logins protect the interface only. The backend behind it is an ordinary server with no real
+    API key, reachable by anyone who finds its address.
 
 === "Claude Code"
 
@@ -760,7 +847,7 @@ tunneling. Choose the tab matching where your client runs.
     ```bash
     export CLAUDECODE_BACKEND="vllm"
     export CLAUDECODE_VLLM_TOOL_PARSER="hermes"
-    export VLLM_MODEL="Qwen/Qwen2.5-Coder-32B-Instruct"
+    export VLLM_MODEL="Qwen/Qwen2.5-32B-Instruct"
     module load claude-code
     claude
     ```
@@ -843,6 +930,8 @@ could query.
 | Empty `Comment` from `squeue` | Job hasn't reached the `scontrol update` line | Wait a moment and rerun; check the output file for errors |
 | `must be run inside a SLURM allocation` | Loaded the `vllm` module on a login node | Start an interactive session or submit a batch job first |
 | `No GPU is visible to this job` | Allocation has no GPU attached | Add `--gres=gpu:1`; an HTC or SMP session cannot host the server |
+| `Free memory on device ... is less than desired GPU memory utilization` | The GPU was already in use when your server started | Check `nvidia-smi`. If the process isn't yours, start a new job and report the node and the `nvidia-smi` output to CRCD |
+| Very slow responses while `nvidia-smi` shows the GPU near idle | The session is pinned to one core — usually an interactive `-n16` | Check `nproc`; request `-n1 -c16` instead |
 | `mount source ...\.cache/huggingface doesn't exist` | First-ever use. The module binds `~/.cache/huggingface` on every launch, whether or not `VLLM_DOWNLOAD_DIR` is set | `mkdir -p ~/.cache/huggingface`, then load the module again. The templates do this for you |
 | `VLLM_MODEL looks like a local path but no such directory exists` | Wrong path, or storage not mounted on the node you landed on | Confirm the path is readable from inside a job, not just from a login node |
 | Server serves `facebook/opt-125m` | `VLLM_MODEL` unset, or set after the module load | Export it first, then `module unload vllm && module load vllm/0.29.0` |
@@ -873,7 +962,7 @@ and include the job ID and the job's output file.
 
     Every `VLLM_*` variable, `vllm-status`, and `vllm-stop`.
 
-    [Using the vllm module](vllm.md)
+    [Using the vllm module](vllm-module.md)
 
 -   :material-console: **Ollama specifics**
 

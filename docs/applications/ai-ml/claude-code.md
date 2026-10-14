@@ -1,12 +1,12 @@
-# Claude Code on CRCD
+# Claude Code
 
 [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) is an agentic coding tool that
 runs in your terminal: it reads and edits files, runs commands, and works through tasks rather than
 just answering questions. The `claude-code` module points it at a model **you are hosting on a CRCD
 GPU** instead of at Anthropic's API, so your prompts and your code stay on the cluster.
 
-The module does the whole setup for you. It loads a backend — [vLLM](vllm.md) or
-[llama.cpp](llamacpp.md) — starts the server, injects the flags that tool calling needs, and
+The module does the whole setup for you. It loads a backend — [vLLM](vllm-module.md) or
+[llama.cpp](llamacpp-module.md) — starts the server, injects the flags that tool calling needs, and
 points Claude Code at the result.
 
 !!! important "Load `claude-code` first, not the backend"
@@ -23,7 +23,7 @@ You need an interactive allocation with a GPU. Claude Code is a terminal interfa
 interactive workflow — a batch job has nothing to attach to.
 
 ```bash
-srun -M gpu -p rtx6k -n16 --gres=gpu:1 -t 2:00:00 --pty bash
+srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
 ```
 
 Bear the cost in mind: the GPU bills for the full walltime whether you are typing or thinking.
@@ -76,8 +76,9 @@ changes it later. No login prompt appears, because the module sets `CLAUDE_CODE_
 
 ![Claude Code running against a model hosted on a CRCD GPU](../../_assets/img/applications/claude-code-term.png)
 
-The default model is a tiny placeholder, useful only for confirming the plumbing works. For real
-work, set the backend's model variable as well — see below.
+The default vLLM model, `facebook/opt-125m`, is only a placeholder: it has no chat template, so
+expect `claude`'s first message to fail, as chat interfaces do with it. It shows the module and
+backend start correctly; for anything more, set the backend's model variable as well — see below.
 
 !!! warning "`CLAUDECODE_VLLM_TOOL_PARSER` is required with the vLLM backend"
 
@@ -99,7 +100,7 @@ what that looks like in practice.
 ```bash
 # vLLM backend
 export CLAUDECODE_BACKEND="vllm"
-export VLLM_MODEL="Qwen/Qwen2.5-Coder-32B-Instruct"
+export VLLM_MODEL="Qwen/Qwen2.5-32B-Instruct"
 export CLAUDECODE_VLLM_TOOL_PARSER="hermes"
 export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
 
@@ -109,7 +110,7 @@ module load claude-code
 ```bash
 # llama.cpp backend
 export CLAUDECODE_BACKEND="llamacpp"
-export LLAMACPP_MODEL="bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR=/vast/<group>/$USER/llamacpp
 
 module load claude-code
@@ -124,7 +125,7 @@ quantized GGUF on something smaller.
 
 | Model family | `CLAUDECODE_VLLM_TOOL_PARSER` |
 | --- | --- |
-| Hermes-series (Nous Hermes 2 Pro / 3), Qwen2 / 2.5 | `hermes` |
+| Hermes-series (Nous Hermes 2 Pro / 3), Qwen2 / 2.5, Qwen3 | `hermes` — **except Qwen2.5-Coder**, which has no working parser |
 | Llama 3.1 / 3.3 | `llama3_json` |
 | Llama 4 | `llama4_pythonic` |
 | Mistral / Mistral-Nemo | `mistral` |
@@ -172,10 +173,11 @@ work but seem unreliable after setting the parser correctly.
 
     What to do about it:
 
-    1. **Try a different model.** This is the most likely fix. A *coder*-tuned model is not
-       automatically a good agent — tool-calling reliability is trained separately from code
-       quality. `Qwen/Qwen2.5-32B-Instruct` or a Hermes-series model are worth comparing against
-       the Coder variant.
+    1. **Use a different model.** This is the fix. The module's author reports that Qwen2.5-*Coder*
+       has no working vLLM tool-call parser — `hermes` fails on it silently, as it did here.
+       `Qwen/Qwen2.5-32B-Instruct` or Qwen3 with `hermes` are the suggested alternatives. A
+       *coder*-tuned model is not automatically a good agent: tool-calling reliability is trained
+       separately from code quality.
     2. **Add a matching `--chat-template`** through `VLLM_EXTRA_ARGS`, from vLLM's `examples/`
        directory. If the template does not wrap tool calls the way the parser expects, this is
        where the mismatch lives.
@@ -184,7 +186,7 @@ work but seem unreliable after setting the parser correctly.
 
         ```bash
         export CLAUDECODE_BACKEND="llamacpp"
-        export LLAMACPP_MODEL="bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+        export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
         module load claude-code
         ```
 
@@ -306,7 +308,7 @@ with the output of `claude-code-info` and the backend's log file.
 
     Every `VLLM_*` variable, including offline models and extra arguments.
 
-    [vLLM](vllm.md)
+    [vLLM](vllm-module.md)
 
 -   :material-file-code: **The llama.cpp backend**
 
@@ -314,7 +316,7 @@ with the output of `claude-code-info` and the backend's log file.
 
     Quantized GGUF models, context size, and concurrency.
 
-    [llama.cpp](llamacpp.md)
+    [llama.cpp](llamacpp-module.md)
 
 -   :material-cash: **What a session costs**
 
