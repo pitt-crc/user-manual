@@ -209,6 +209,16 @@ nav:
       - policies/job-scheduling-policy.md
       - policies/hardware-investing-policy.md
       - policies/resource-descriptions-for-writing-proposals.md
+  - Investor Partitions:
+      - investor/cpace.md
+      - investor/eschneider.md
+      - investor/isenocak.md
+      - investor/jmendoza-arenas.md
+      - investor/lchong.md
+      - investor/osiris.md
+      - investor/pliu.md
+      - investor/seyoungkim.md
+      - investor/vcooper.md
   - Citing CRCD: acknowledge-crc.md
   - Glossary: glossary.md
   - Common Problems: faq.md
