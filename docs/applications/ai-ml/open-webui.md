@@ -17,7 +17,7 @@ the backend, starts it, and connects the interface to it.
 
     ```console
     [kimwong@login2 ~]$ curl http://gpu-n76:26204/v1/models
-    {"models":[{"name":"bartowski/Qwen2.5-7B-Instruct-GGUF:Q4_K_M", ...
+    {"models":[{"name":"bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M", ...
     ```
 
     The backend's address is printed when the module loads. Stop the job when you are done. See
@@ -29,7 +29,7 @@ the backend, starts it, and connects the interface to it.
 srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
 
 export OPENWEBUI_BACKEND="vllm"                    # or "llamacpp" -- default is vllm
-export VLLM_MODEL="Qwen/Qwen2.5-0.5B-Instruct"     # set one: the vLLM default can't chat
+export VLLM_MODEL="unsloth/Llama-3.2-1B-Instruct"     # set one: the vLLM default can't chat
 module load open-webui
 ```
 
@@ -48,7 +48,7 @@ Wait until both lines of the status report say `READY`:
 ```console
 [kimwong@gpu-n76 ~]$ open-webui-status
 Open WebUI: READY    - http://gpu-n76.crc.pitt.edu:38805
-Backend:    READY    - vllm at http://gpu-n76:42807 (models: Qwen/Qwen2.5-7B-Instruct, ...)
+Backend:    READY    - vllm at http://gpu-n76:42807 (models: unsloth/Llama-3.1-8B-Instruct, ...)
 Login:      kimwong@crc.pitt.edu  (password in /xhome/crc/kimwong/.open-webui/admin-credentials)
 ```
 
@@ -128,12 +128,12 @@ The model is chosen by the backend module, using its own variables. Set them bef
 ```bash
 # vLLM backend
 export OPENWEBUI_BACKEND="vllm"
-export VLLM_MODEL="Qwen/Qwen2.5-7B-Instruct"
+export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
 export VLLM_DOWNLOAD_DIR="/vast/<group>/$USER/vllm"
 
 # or llama.cpp backend
 export OPENWEBUI_BACKEND="llamacpp"
-export LLAMACPP_MODEL="bartowski/Qwen2.5-7B-Instruct-GGUF:Q4_K_M"
+export LLAMACPP_MODEL="bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR="/vast/<group>/$USER/llamacpp"
 
 module load open-webui
@@ -208,14 +208,13 @@ these hold:
    vLLM:
 
     ```bash
-    export VLLM_EXTRA_ARGS="--enable-auto-tool-choice --tool-call-parser hermes"
+    export VLLM_EXTRA_ARGS="--enable-auto-tool-choice --tool-call-parser llama3_json"
     ```
 
-    `hermes` suits Qwen2.5-Instruct and Qwen3; use `llama3_json` for Llama 3.1. **Not
-    Qwen2.5-*Coder*** — it has no working vLLM parser, and `hermes` fails silently on it. The full
+    `llama3_json` suits Llama 3.1 and 3.3 (use `hermes` for Nous Hermes models). The full
     parser table is on the [Claude Code](claude-code.md) page.
 
-2. **The model's chat template accepts several tool calls in one turn.** Llama 3.1-style and Mistral
+2. **The model's chat template accepts several tool calls in one turn.** Llama 3.1-style
    models don't, and fail with *"This model only supports single tool-calls at once!"* as soon as
    the model calls two tools at once.
 

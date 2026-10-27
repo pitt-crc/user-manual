@@ -48,7 +48,7 @@ confirm everything works. To pick your own, set `SGLANG_MODEL` **before** loadin
 the repo id from the model's Hugging Face page:
 
 ```bash
-export SGLANG_MODEL="Qwen/Qwen2.5-7B-Instruct"
+export SGLANG_MODEL="unsloth/Llama-3.1-8B-Instruct"
 module load sglang/0.5.21
 ```
 
@@ -65,7 +65,7 @@ sglang-status
 
 ```
 READY - http://gpu-n80:35910
-  Model: Qwen/Qwen2.5-7B-Instruct
+  Model: unsloth/Llama-3.1-8B-Instruct
 ```
 
 - `READY` — you're good to go, and the `Model:` line is the name to use in requests
@@ -84,8 +84,8 @@ of it capturing CUDA graphs. That capture happens on every start.
 !!! note "SGLang takes most of the GPU, whatever the model's size"
 
     SGLang reserves most of the card's memory at startup for its KV cache. Serving
-    `Qwen/Qwen2.5-7B-Instruct`, whose weights are about 15 GB, `nvidia-smi` reports
-    **86,915 MiB** in use on a 96 GB RTX PRO 6000. That is expected, not a leak. To leave room for
+    `unsloth/Llama-3.1-8B-Instruct`, whose weights are about 16 GB, `nvidia-smi` reports
+    roughly **87,000 MiB** in use on a 96 GB RTX PRO 6000. That is expected, not a leak. To leave room for
     another process on the same GPU, lower `--mem-fraction-static` — see "Common tweaks" below.
 
     While the server is starting, `sglang-status` may show a line ending
@@ -99,7 +99,7 @@ The module sets `$SGLANG_BASE_URL` for you:
 ```bash
 curl "$SGLANG_BASE_URL/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -d '{"model": "Qwen/Qwen2.5-7B-Instruct",
+  -d '{"model": "unsloth/Llama-3.1-8B-Instruct",
        "messages": [{"role": "user", "content": "Hello!"}]}'
 ```
 
@@ -118,7 +118,7 @@ module load sglang/0.5.21
 
 After the first run it holds two subdirectories, `huggingface/` for downloaded weights and
 `sglang/` for SGLang's own cache. On later starts the weights load straight from it — for
-`Qwen/Qwen2.5-7B-Instruct`, 14.3 GB in 1.3 seconds, with no download. CUDA graph capture still
+`unsloth/Llama-3.1-8B-Instruct`, a few seconds with no download. CUDA graph capture still
 happens on every start. Avoid your home directory, which has a 75 GB quota.
 
 To confirm a start reused the cache, check its log:
@@ -146,7 +146,7 @@ Point `SGLANG_MODEL` at the model's directory — the one containing `config.jso
 cache snapshot directory works too:
 
 ```bash
-export SGLANG_MODEL="/vast/<group>/$USER/models/Qwen2.5-7B-Instruct"
+export SGLANG_MODEL="/vast/<group>/$USER/models/Llama-3.1-8B-Instruct"
 module load sglang/0.5.21
 ```
 
@@ -159,7 +159,7 @@ GPUs — sixteen per card:
 
 ```bash
 srun -M gpu -p h200 -n1 -c32 --gres=gpu:2 -t 2:00:00 --pty bash
-export SGLANG_MODEL="Qwen/Qwen2.5-72B-Instruct"
+export SGLANG_MODEL="meta-llama/Llama-3.3-70B-Instruct"
 module load sglang/0.5.21
 ```
 

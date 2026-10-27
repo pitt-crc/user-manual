@@ -243,7 +243,7 @@ The annotated versions below show what each template does, so you can adapt them
 
     ```bash
     srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
-    export SGLANG_MODEL="Qwen/Qwen2.5-7B-Instruct"
+    export SGLANG_MODEL="unsloth/Llama-3.1-8B-Instruct"
     export SGLANG_DOWNLOAD_DIR="/vast/<group>/$USER/sglang-cache"
     module load sglang/0.5.21
     sglang-status                    # READY, STARTING or DOWN
@@ -265,14 +265,13 @@ The annotated versions below show what each template does, so you can adapt them
     srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
     export OLLAMA_MODELS="/vast/<group>/$USER/ollama-models"
     module load ollama/0.40.3
-    ollama pull qwen3:8b
-    ollama run qwen3:8b
+    ollama pull llama3.1:8b
+    ollama run llama3.1:8b
     ```
 
     Set `OLLAMA_MODELS` — without it, models go to job scratch and download again every job.
 
-    The module sets the CPU thread count from your allocation — `qwen3:8b` runs at about 215
-    tokens per second on an RTX PRO 6000. For batch jobs, `OLLAMA_PRELOAD` and the exit codes of
+    The module sets the CPU thread count from your allocation — `llama3.1:8b` fits entirely on one GPU. For batch jobs, `OLLAMA_PRELOAD` and the exit codes of
     `ollama-status` let a script wait until its models are ready; see the [Ollama](ollama.md) page.
 
 === "llama.cpp"
@@ -817,7 +816,7 @@ tunneling. Choose the tab matching where your client runs.
 
     ```bash
     export OPENWEBUI_BACKEND="vllm"
-    export VLLM_MODEL="Qwen/Qwen2.5-7B-Instruct"
+    export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
     module load open-webui
     open-webui-status                # wait for both lines to say READY
     ```
@@ -846,8 +845,8 @@ tunneling. Choose the tab matching where your client runs.
 
     ```bash
     export CLAUDECODE_BACKEND="vllm"
-    export CLAUDECODE_VLLM_TOOL_PARSER="hermes"
-    export VLLM_MODEL="Qwen/Qwen2.5-32B-Instruct"
+    export CLAUDECODE_VLLM_TOOL_PARSER="llama3_json"
+    export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
     module load claude-code
     claude
     ```

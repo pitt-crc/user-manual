@@ -90,7 +90,7 @@ smaller partition such as `l40s` or `a100` will also queue faster than
     ```
 
     For a quick test that can chat, set a small instruct model such as
-    `Qwen/Qwen2.5-0.5B-Instruct`.
+    `unsloth/Llama-3.2-1B-Instruct`.
 
 ## Loading a real model
 

@@ -15,7 +15,7 @@ on the cluster, service-unit costs, and the other access routes, see
     single `curl` from a login node, with no credentials, removed a model from a running server:
 
     ```bash
-    curl -X DELETE "http://gpu-n76:28324/api/delete" -d '{"model":"qwen3:0.6b"}'
+    curl -X DELETE "http://gpu-n76:28324/api/delete" -d '{"model":"llama3.2:1b"}'
     ```
 
     Keep these jobs short, stop the server when you are done, and use [vLLM](vllm-module.md) with
@@ -45,8 +45,8 @@ Note `-n1 -c16`, not `-n16`; see [CPU cores](#cpu-cores) below.
 Then use Ollama the way you would on your own machine:
 
 ```bash
-ollama pull qwen3:8b
-ollama run qwen3:8b
+ollama pull llama3.1:8b
+ollama run llama3.1:8b
 ollama list      # models you have downloaded
 ollama ps        # models in GPU memory right now
 ```
@@ -64,8 +64,7 @@ The module loads its own container runtime, so there is nothing else to load fir
 ## CPU cores
 
 The module sets the server's CPU thread count from your allocation, and reports it in the banner
-and in `ollama-status`. With a model fully on the GPU, `qwen3:8b` generates about **215 tokens per
-second** on an RTX PRO 6000.
+and in `ollama-status`. With a model fully on the GPU, a model such as `llama3.1:8b` generates tokens at full speed.
 
 **Request cores with `-n1 -c16`.** `-n16` asks for sixteen tasks of one CPU each, and an interactive
 shell runs as just one of them — so the server you start from it can use a single core while the
@@ -87,8 +86,8 @@ pulled in one job are there in the next:
 ```console
 [kimwong@gpu-n76 ~]$ ollama list
 NAME                                                      ID              SIZE      MODIFIED
-hf.co/bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M    46b772a6e281    19 GB     19 minutes ago
-qwen3:8b                                                  500a1f067a9f    5.2 GB    37 minutes ago
+hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M    46b772a6e281    4.9 GB    19 minutes ago
+llama3.1:8b                                                 46e0c10c039e    4.9 GB    37 minutes ago
 ```
 
 Avoid your home directory, which has a 75 GB quota. Several of your jobs can share one
@@ -99,8 +98,8 @@ Avoid your home directory, which has a 75 GB quota. Several of your jobs can sha
 Ollama can pull GGUF models straight from Hugging Face:
 
 ```bash
-ollama pull hf.co/bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M
-ollama run hf.co/bartowski/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M
+ollama pull hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M
+ollama run hf.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M
 ```
 
 ## Checking on the server
@@ -114,10 +113,10 @@ READY - http://gpu-n76:28324
   Version:        0.40.3
   GPU:            1 x NVIDIA RTX PRO 6000 Blackwell Server Edition
   Models on disk: 4  (ollama list)
-  Loaded now:     qwen3:8b  (ollama ps shows the GPU/CPU split)
+  Loaded now:     llama3.1:8b (ollama ps shows the GPU/CPU split)
   CPU threads:    16 per model
   Preload:
-    qwen3:8b                                 ready
+    llama3.1:8b                              ready
     nomic-embed-text                         pulled  loads on first request ("nomic-embed-text" does not support generate)
 ```
 
@@ -140,15 +139,14 @@ their first request. That does not hold up `READY`.
 
 ```
 NAME        ID              SIZE     PROCESSOR    CONTEXT    RUNNER      UNTIL
-qwen3:8b    500a1f067a9f    11 GB    100% GPU     40960      llamacpp    4 minutes from now
+llama3.1:8b   46e0c10c039e    8.5 GB   100% GPU     40960      llamacpp    4 minutes from now
 ```
 
 `100% GPU` is what you want. Anything mentioning CPU means the model doesn't fit and will be much
 slower: use a smaller model or quantization, a shorter context, or more GPUs.
 
 Expect a model to occupy noticeably more GPU memory than its download size, because the context
-window's cache sits alongside the weights. Here `qwen3:8b` is 5.2 GB on disk and 11 GB loaded; the
-19 GB Qwen2.5-Coder model takes 28 GB.
+window's cache sits alongside the weights. A model that is 4.9 GB on disk, such as `llama3.1:8b`, occupies noticeably more once loaded.
 
 ## Batch jobs
 
@@ -165,7 +163,7 @@ the GPU in the background, and the exit codes above tell the script when it can 
 #SBATCH -t 2:00:00
 
 export OLLAMA_MODELS="/vast/<group>/$USER/ollama-models"
-export OLLAMA_PRELOAD="qwen3:8b nomic-embed-text"
+export OLLAMA_PRELOAD="llama3.1:8b nomic-embed-text"
 module load ollama/0.40.3
 
 # wait until ready (exit 0); stop if something failed (exit 1)
@@ -194,7 +192,7 @@ Both APIs work from anywhere in the CRCD environment. Ollama's own API:
 
 ```bash
 curl "$OLLAMA_BASE_URL/api/chat" -d '{
-  "model": "qwen3:8b",
+  "model": "llama3.1:8b",
   "messages": [{"role": "user", "content": "Hello!"}],
   "stream": false
 }'
@@ -206,7 +204,7 @@ The OpenAI-compatible API — most OpenAI client libraries work by pointing `bas
 ```bash
 curl "$OLLAMA_BASE_URL/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -d '{"model": "qwen3:8b",
+  -d '{"model": "llama3.1:8b",
        "messages": [{"role": "user", "content": "Hello!"}]}'
 ```
 
@@ -217,18 +215,19 @@ curl "$OLLAMA_BASE_URL/v1/chat/completions" \
 
 ### Reasoning models think out loud
 
-Models such as `qwen3` reason before answering. `ollama run` prints this as a `Thinking...` block,
+Reasoning models such as `gpt-oss:20b` think before answering. `ollama run` prints this as a `Thinking...` block,
 and the APIs return it in a separate field — `thinking` from `/api/chat`, `reasoning` from
 `/v1/chat/completions` — alongside the answer in `content`. Client code can ignore the extra field.
 
-The reasoning can be long — one simple factual question produced 1,425 tokens of deliberation before
-the answer. That looks like slowness but isn't. If you don't need it, switch it off:
+The reasoning can be long, which looks like slowness but isn't. `gpt-oss` cannot switch thinking off
+completely, but you can lower the effort to `low`:
 
 ```bash
-ollama run qwen3:8b "Hello" --think=false
+ollama run gpt-oss:20b "Hello" --think=low
 ```
 
-For Ollama's own API, the module's documentation gives `"think": false` in the request.
+For Ollama's own API, put `"think": "low"` in the request. `llama3.1:8b` does not reason, so it
+needs neither.
 
 ## Connecting from Jupyter
 
