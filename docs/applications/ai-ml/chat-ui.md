@@ -22,7 +22,7 @@ adds document upload, web search, and agent tools.
 srun -M gpu -p rtx6k -n1 -c16 --gres=gpu:1 -t 2:00:00 --pty bash
 
 export CHATUI_BACKEND="vllm"                        # or "llamacpp" -- default is vllm
-export VLLM_MODEL="Qwen/Qwen2.5-0.5B-Instruct"      # small, and able to chat
+export VLLM_MODEL="unsloth/Llama-3.2-1B-Instruct"      # small, and able to chat
 module load chat-ui
 ```
 
@@ -40,7 +40,7 @@ until both lines of the status report say `READY`:
 ```console
 [kimwong@gpu-n76 ~]$ chat-ui-status
 chat-ui:    READY    - http://gpu-n76.crc.pitt.edu:39417
-Backend:    READY    - vllm at http://gpu-n76:54667 (models: Qwen/Qwen2.5-0.5B-Instruct, ...)
+Backend:    READY    - vllm at http://gpu-n76:54667 (models: unsloth/Llama-3.2-1B-Instruct, ...)
 Login:      kimwong  (password in /xhome/crc/kimwong/.chat-ui/login-credentials)
 ```
 
@@ -56,7 +56,7 @@ Login:      kimwong  (password in /xhome/crc/kimwong/.chat-ui/login-credentials)
     provide a chat template if the tokenizer does not define one.
     ```
 
-    Any *instruct* or *chat* model works. `Qwen/Qwen2.5-0.5B-Instruct` is small enough to load in
+    Any *instruct* or *chat* model works. `unsloth/Llama-3.2-1B-Instruct` is small enough to load in
     seconds.
 
 Note `-n1 -c16`, not `-n16`: `-n16` gives an interactive shell, and everything started from it, a
@@ -123,7 +123,7 @@ routing, which doesn't apply here — your backend serves one model. Choose **St
 ![Chat UI's welcome screen](../../_assets/img/applications/chatui_2.png)
 
 Then chat as you would anywhere else — here with the vLLM backend serving
-`Qwen/Qwen2.5-7B-Instruct`:
+`unsloth/Llama-3.1-8B-Instruct`:
 
 ![A conversation in Chat UI with the vLLM backend](../../_assets/img/applications/chatui_4.png)
 
@@ -134,12 +134,12 @@ The model is chosen by the backend module, using its own variables. Set them bef
 ```bash
 # vLLM backend
 export CHATUI_BACKEND="vllm"
-export VLLM_MODEL="Qwen/Qwen2.5-7B-Instruct"
+export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
 export VLLM_DOWNLOAD_DIR="/vast/<group>/$USER/vllm"
 
 # or llama.cpp backend
 export CHATUI_BACKEND="llamacpp"
-export LLAMACPP_MODEL="bartowski/Qwen2.5-7B-Instruct-GGUF:Q4_K_M"
+export LLAMACPP_MODEL="bartowski/Meta-Llama-3.1-8B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR="/vast/<group>/$USER/llamacpp"
 
 module load chat-ui
@@ -204,7 +204,7 @@ value containing spaces or JSON with single quotes:
 cat > ~/.chat-ui/chat-ui.env <<'EOF'
 PUBLIC_APP_NAME="My Cluster Chat"
 LLM_SUMMARIZATION=false
-MODELS='[{"id":"Qwen/Qwen2.5-7B-Instruct","name":"Qwen 2.5 7B","parameters":{"temperature":0.7}}]'
+MODELS='[{"id":"unsloth/Llama-3.1-8B-Instruct","name":"Llama 3.1 8B","parameters":{"temperature":0.7}}]'
 EOF
 ```
 

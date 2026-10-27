@@ -100,8 +100,8 @@ what that looks like in practice.
 ```bash
 # vLLM backend
 export CLAUDECODE_BACKEND="vllm"
-export VLLM_MODEL="Qwen/Qwen2.5-32B-Instruct"
-export CLAUDECODE_VLLM_TOOL_PARSER="hermes"
+export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
+export CLAUDECODE_VLLM_TOOL_PARSER="llama3_json"
 export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
 
 module load claude-code
@@ -110,7 +110,7 @@ module load claude-code
 ```bash
 # llama.cpp backend
 export CLAUDECODE_BACKEND="llamacpp"
-export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+export LLAMACPP_MODEL="bartowski/Llama-3.3-70B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR=/vast/<group>/$USER/llamacpp
 
 module load claude-code
@@ -118,28 +118,28 @@ module load claude-code
 
 Every variable from the backend's own page still applies, because `claude-code` loads that module
 rather than replacing it. Use [Step 1 of Inference Servers](inference-server.md) to check your model
-fits the card you requested — a 32B model in 16-bit needs about 68 GB, so one RTX PRO 6000 or a
-quantized GGUF on something smaller.
+fits the card you requested — an 8B model in 16-bit needs about 16 GB, while a 70B model needs
+about 140 GB in 16-bit but only about 42 GB as a `Q4_K_M` GGUF, which fits one RTX PRO 6000.
 
 ### Tool-call parsers by model family
 
 | Model family | `CLAUDECODE_VLLM_TOOL_PARSER` |
 | --- | --- |
-| Hermes-series (Nous Hermes 2 Pro / 3), Qwen2 / 2.5, Qwen3 | `hermes` — **except Qwen2.5-Coder**, which has no working parser |
-| Llama 3.1 / 3.3 | `llama3_json` |
+| Hermes-series (Nous Hermes 2 Pro / 3) | `hermes` |
+| Llama 3.1 / 3.3 (including NVIDIA Nemotron models built on them) | `llama3_json` |
 | Llama 4 | `llama4_pythonic` |
-| Mistral / Mistral-Nemo | `mistral` |
 | IBM Granite | `granite` |
-| InternLM2 | `internlm` |
+| OpenAI gpt-oss | `openai` |
 | anything else | check the [vLLM tool-calling documentation](https://docs.vllm.ai/en/latest/features/tool_calling/) |
 
-Some families — `llama3_json`, `mistral`, `granite` — also work better with a matching
+Some families — `llama3_json`, `granite` — also work better with a matching
 `--chat-template` from vLLM's `examples/` directory. Add it through `VLLM_EXTRA_ARGS` if tool calls
 work but seem unreliable after setting the parser correctly.
 
 !!! failure "Did not work: the tool call printed instead of running"
 
-    With `Qwen/Qwen2.5-Coder-32B-Instruct` and `CLAUDECODE_VLLM_TOOL_PARSER="hermes"`, the model
+    With a coder-tuned model whose family had no working vLLM tool-call parser, and
+    `CLAUDECODE_VLLM_TOOL_PARSER="hermes"` set, the model
     answered the question and then printed its tool call as plain text instead of invoking it:
 
     ```
@@ -173,9 +173,8 @@ work but seem unreliable after setting the parser correctly.
 
     What to do about it:
 
-    1. **Use a different model.** This is the fix. The module's author reports that Qwen2.5-*Coder*
-       has no working vLLM tool-call parser — `hermes` fails on it silently, as it did here.
-       `Qwen/Qwen2.5-32B-Instruct` or Qwen3 with `hermes` are the suggested alternatives. A
+    1. **Use a different model.** This is the fix. Pick a model whose family has a matching parser
+       in the table above — `unsloth/Llama-3.1-8B-Instruct` with `llama3_json`, for example. A
        *coder*-tuned model is not automatically a good agent: tool-calling reliability is trained
        separately from code quality.
     2. **Add a matching `--chat-template`** through `VLLM_EXTRA_ARGS`, from vLLM's `examples/`
@@ -186,7 +185,7 @@ work but seem unreliable after setting the parser correctly.
 
         ```bash
         export CLAUDECODE_BACKEND="llamacpp"
-        export LLAMACPP_MODEL="ggml-org/Qwen2.5-Coder-32B-Instruct-GGUF:Q4_K_M"
+        export LLAMACPP_MODEL="bartowski/Llama-3.3-70B-Instruct-GGUF:Q4_K_M"
         module load claude-code
         ```
 
