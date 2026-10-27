@@ -103,6 +103,7 @@ export CLAUDECODE_BACKEND="vllm"
 export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
 export CLAUDECODE_VLLM_TOOL_PARSER="llama3_json"
 export VLLM_DOWNLOAD_DIR=/vast/<group>/$USER/vllm
+export VLLM_EXTRA_ARGS="--chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
 
 module load claude-code
 ```
@@ -114,6 +115,17 @@ export LLAMACPP_MODEL="bartowski/Llama-3.3-70B-Instruct-GGUF:Q4_K_M"
 export LLAMACPP_DOWNLOAD_DIR=/vast/<group>/$USER/llamacpp
 
 module load claude-code
+```
+
+The `--chat-template` flag points at vLLM's tool-calling template for Llama 3.1 and 3.3. The model's
+built-in template does not render tool calls and tool results the way the `llama3_json` parser
+expects, so without this flag requests that include tools can fail with a 400 error. Download the
+template once to your group's storage; vLLM does not ship it with the container:
+
+```bash
+mkdir -p /vast/<group>/$USER/vllm-templates
+curl -fL -o /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja \
+  https://raw.githubusercontent.com/vllm-project/vllm/main/examples/tool_chat_template_llama3.1_json.jinja
 ```
 
 Every variable from the backend's own page still applies, because `claude-code` loads that module
@@ -132,9 +144,10 @@ about 140 GB in 16-bit but only about 42 GB as a `Q4_K_M` GGUF, which fits one R
 | OpenAI gpt-oss | `openai` |
 | anything else | check the [vLLM tool-calling documentation](https://docs.vllm.ai/en/latest/features/tool_calling/) |
 
-Some families — `llama3_json`, `granite` — also work better with a matching
-`--chat-template` from vLLM's `examples/` directory. Add it through `VLLM_EXTRA_ARGS` if tool calls
-work but seem unreliable after setting the parser correctly.
+Some families — `llama3_json`, `granite` — need a matching `--chat-template` from vLLM's
+`examples/` directory, passed through `VLLM_EXTRA_ARGS` as shown above. For Llama 3.1 and 3.3 that is
+`tool_chat_template_llama3.1_json.jinja`; for Granite, the `tool_chat_template_granite.jinja` file
+in the same directory.
 
 !!! failure "Did not work: the tool call printed instead of running"
 
