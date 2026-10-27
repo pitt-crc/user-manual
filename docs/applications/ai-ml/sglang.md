@@ -44,10 +44,10 @@ Base URL: http://gpu-n80:35238
 ```
 
 Set `SGLANG_MODEL` **before** loading the module, using the repo id from the model's Hugging Face
-page. A small model such as `unsloth/Llama-3.2-1B-Instruct` is enough to confirm everything works:
+page:
 
 ```bash
-export SGLANG_MODEL="unsloth/Llama-3.2-1B-Instruct"
+export SGLANG_MODEL="unsloth/Llama-3.1-8B-Instruct"
 module load sglang/0.5.21
 ```
 
