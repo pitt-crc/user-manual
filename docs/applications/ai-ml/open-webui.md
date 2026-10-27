@@ -130,7 +130,6 @@ The model is chosen by the backend module, using its own variables. Set them bef
 export OPENWEBUI_BACKEND="vllm"
 export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
 export VLLM_DOWNLOAD_DIR="/vast/<group>/$USER/vllm"
-export VLLM_EXTRA_ARGS="--chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
 
 # or llama.cpp backend
 export OPENWEBUI_BACKEND="llamacpp"
@@ -142,8 +141,7 @@ module load open-webui
 
 Always set a model. The vLLM backend's default, `facebook/opt-125m`, is a base model with no chat
 template, so every message to it fails with `400 ... default chat template is no longer allowed`.
-The `--chat-template` file is vLLM's Llama 3.1 template; download it once as shown under
-[Choosing a model](claude-code.md#choosing-a-model) on the Claude Code page. Any *instruct* or *chat* model works. Every option on the [vLLM](vllm-module.md) and [llama.cpp](llamacpp-module.md)
+Any *instruct* or *chat* model works. Every option on the [vLLM](vllm-module.md) and [llama.cpp](llamacpp-module.md)
 pages still applies, including the `~/.cache/huggingface` directory the vLLM backend needs on first
 use.
 
@@ -210,8 +208,7 @@ these hold:
    vLLM:
 
     ```bash
-    export VLLM_EXTRA_ARGS="--enable-auto-tool-choice --tool-call-parser llama3_json \
-      --chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
+    export VLLM_EXTRA_ARGS="--enable-auto-tool-choice --tool-call-parser llama3_json"
     ```
 
     `llama3_json` suits Llama 3.1 and 3.3 (use `hermes` for Nous Hermes models). The full

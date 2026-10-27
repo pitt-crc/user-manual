@@ -208,9 +208,8 @@ The annotated versions below show what each template does, so you can adapt them
     !!! note "Tool calling needs extra flags"
 
         An agent client that wants the model to call tools needs `--enable-auto-tool-choice` and a
-        `--tool-call-parser` matched to the model's family, plus a matching `--chat-template` for
-        families such as Llama. There is no safe default — the wrong parser produces garbled tool
-        calls rather than a clean error. The
+        `--tool-call-parser` matched to the model's family. There is no safe default — the wrong
+        parser produces garbled tool calls rather than a clean error. The
         [`claude-code`](claude-code.md) module injects both for you; set them yourself through
         `VLLM_EXTRA_ARGS` if you are building your own agent.
 
@@ -818,7 +817,6 @@ tunneling. Choose the tab matching where your client runs.
     ```bash
     export OPENWEBUI_BACKEND="vllm"
     export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
-    export VLLM_EXTRA_ARGS="--chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
     module load open-webui
     open-webui-status                # wait for both lines to say READY
     ```
@@ -849,7 +847,6 @@ tunneling. Choose the tab matching where your client runs.
     export CLAUDECODE_BACKEND="vllm"
     export CLAUDECODE_VLLM_TOOL_PARSER="llama3_json"
     export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
-    export VLLM_EXTRA_ARGS="--chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
     module load claude-code
     claude
     ```

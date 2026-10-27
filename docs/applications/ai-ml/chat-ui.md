@@ -136,7 +136,6 @@ The model is chosen by the backend module, using its own variables. Set them bef
 export CHATUI_BACKEND="vllm"
 export VLLM_MODEL="unsloth/Llama-3.1-8B-Instruct"
 export VLLM_DOWNLOAD_DIR="/vast/<group>/$USER/vllm"
-export VLLM_EXTRA_ARGS="--chat-template /vast/<group>/$USER/vllm-templates/tool_chat_template_llama3.1_json.jinja"
 
 # or llama.cpp backend
 export CHATUI_BACKEND="llamacpp"
@@ -145,9 +144,6 @@ export LLAMACPP_DOWNLOAD_DIR="/vast/<group>/$USER/llamacpp"
 
 module load chat-ui
 ```
-
-The `--chat-template` file is vLLM's Llama 3.1 template; download it once as shown under
-[Choosing a model](claude-code.md#choosing-a-model) on the Claude Code page.
 
 Always set a model. The vLLM backend's default, `facebook/opt-125m`, has no chat template and can't
 chat at all; see the warning in the quick start. Every option on the [vLLM](vllm-module.md) and [llama.cpp](llamacpp-module.md)
