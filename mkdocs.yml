@@ -57,6 +57,7 @@ plugins:
         slurm/pbs-slurm.md: applications/basic-commands.md
         policies/slurm-limits.md: slurm/job-limits.md
         data-management/file-transfer-methods/globus-microsoft-onedrive.md: data-management/file-transfer-methods/globus-onedrive.md
+        bioinformatics/ollama.md: applications/ai-ml/ollama.md
   - search
 markdown_extensions:
   - abbr
@@ -153,6 +154,17 @@ nav:
       - applications/software-list.md
       - Coding:
           - VS Code: applications/coding/vscode.md
+      - AI & Machine Learning:
+          - Inference Servers: applications/ai-ml/inference-server.md
+          - Model Servers:
+              - vLLM: applications/ai-ml/vllm.md
+              - SGLang: applications/ai-ml/sglang.md
+              - llama.cpp: applications/ai-ml/llamacpp.md
+              - Ollama: applications/ai-ml/ollama.md
+          - Chat & Coding Clients:
+              - Open WebUI: applications/ai-ml/open-webui.md
+              - Chat UI: applications/ai-ml/chat-ui.md
+              - Claude Code: applications/ai-ml/claude-code.md
       - applications/application-environment.md
       - applications/basic-commands.md
       - applications/crc-wrappers.md
@@ -188,7 +200,6 @@ nav:
       - bioinformatics/alphafold3.md
       - bioinformatics/fMRI.md
       - bioinformatics/EHR.md
-      - bioinformatics/ollama.md
       - bioinformatics/bioimage.md
       - bioinformatics/virtualgl.md
       - bioinformatics/copilot.md
@@ -199,6 +210,16 @@ nav:
       - policies/job-scheduling-policy.md
       - policies/hardware-investing-policy.md
       - policies/resource-descriptions-for-writing-proposals.md
+  - Investor Partitions:
+      - investor/cpace.md
+      - investor/eschneider.md
+      - investor/isenocak.md
+      - investor/jmendoza-arenas.md
+      - investor/lchong.md
+      - investor/osiris.md
+      - investor/pliu.md
+      - investor/seyoungkim.md
+      - investor/vcooper.md
   - Citing CRCD: acknowledge-crc.md
   - Glossary: glossary.md
   - Common Problems: faq.md
@@ -210,12 +231,12 @@ not_in_nav: |
   snippets/jupyter-teach.md
   snippets/ondemand-rstudio-gpu.md
   snippets/jupyter-hub.md
-  snippets/jupyter-hub.md
   snippets/jupyter-ondemand.md
   snippets/open-ondemand.md
   snippets/psych.md
   snippets/terminal.md
   snippets/viz.md
+  snippets/inference-discovery.md
 
 
 copyright: Copyright &copy; University of Pittsburgh. All rights reserved.

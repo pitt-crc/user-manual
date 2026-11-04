@@ -6,6 +6,11 @@
     with protected data, the CRCD [Secure Research Environment (SRE)](../getting-started/access_sre.md)
     may meet the requirements.
 
+!!! tip "Use /vast for AI and data-intensive jobs"
+    Running AI training or other data-intensive workloads on /ix or /ix1 will degrade the performance of the clusters 
+    for everyone. We will terminate jobs that do not follow recommended best practices and cause problems
+    for the user community.
+
 CRCD provides several storage tiers spanning the research data lifecycle — from
 fast flash for active computation to low-cost archive for cold data. Each tier
 trades performance for cost, so most groups keep data across more than one.

@@ -1,5 +1,10 @@
 # File Systems
 
+!!! tip "Use /vast for AI and data-intensive jobs"
+    Running AI training or other data-intensive workloads on /ix or /ix1 will degrade the performance of the clusters
+    for everyone. We will terminate jobs that do not follow recommended best practices and cause problems
+    for the user community.
+
 The CRCD provides several distinct file spaces, each serving a different purpose:
 
 | Path          | Purpose                          | Default Quota | Snapshots              |
