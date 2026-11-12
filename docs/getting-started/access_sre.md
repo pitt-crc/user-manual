@@ -417,7 +417,7 @@ The data transfer from Source -> Azure will be handled by GLOBUS, and you should
 Data transfer from Azure to CRCD SRE storage will begin once the first transfer succeeds. Once all transfers are complete, the 
 only copy of the data remaining exists on the Source and the CRCD SRE storage. The Azure Storage Account does not retain a copy of the data.
 
-The data will arrive in the CRCD SRE storage filesystem for the Research Project associated with the Data Use Agreement under the /ingress directory.
+The data will arrive in the CRCD SRE storage filesystem located at /projects under the /transfer/ingress sub-folder for the Research Project associated with the Data Use Agreement, e.g. /projects/999999_crc-admin/transfer/ingress.
 
 <!--- ![sre_ingress-globus.5](../_assets/img/avd/crcd-sre_ingress-globus.5.png) --->
 
