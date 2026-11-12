@@ -8,8 +8,8 @@ tags:
 
 # GPU Cluster
 
-The GPU cluster is optimized for software that had been written to take advantage the inherent parallelism in the GPU architecture. 
-The cluster supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated frameworks. inherent 
+The GPU cluster is optimized for software written to take advantage of the inherent parallelism in the GPU
+architecture. The cluster supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated frameworks.
 
 !!! note "Requesting GPUs"
     A GPU job must request the number of cards with `--gres=gpu:<N>` and target a
@@ -23,16 +23,95 @@ The cluster supports CUDA, TensorFlow, PyTorch, and other GPU-accelerated framew
 
 Nodes are grouped by partition, most capable hardware first.
 
-| Partition   | Nodes | GPU                           | VRAM   | GPU/Node | --constraint    | CPU                        | Cores/Node | Mem/Node | Scratch      | Network   | Node Names   |
-| ----------- | ----- | ------------------------------| ------ | -------- | --------------- | -------------------------- | ---------- | -------- | ------------ | --------- | ------------ |
-| rtx6k       | 9     | NVIDIA RTX PRO 6000 Blackwell | 96 GB  | 8        | rtx6k,96g,amd   | AMD EPYC 9555              | 128        | 1.5 TB   | 7.2 TB NVMe  | HDR200 IB | gpu-n[74-82] |
-| h200        | 2     | NVIDIA H200                   | 141 GB | 8        | h200,141g,intel | Intel Xeon Platinum 8592+  | 128        | 3 TB     | 7.2 TB NVMe  | HDR200 IB | gpu-n[89-90] |
-| l40s        | 19    | NVIDIA L40S                   | 48 GB  | 4        | l40s,48g,intel  | Intel Xeon Platinum 8462Y+ | 64         | 512 GB   | 7.2 TB NVMe  | 10GbE     | gpu-n[55-73] |
-| a100        | 10    | NVIDIA A100-PCIE-40GB         | 40 GB  | 4        | a100,40g,amd    | AMD EPYC 7742              | 64         | 512 GB   | 1.92 TB NVMe | HDR200 IB | gpu-n[35-44] |
-| a100        | 2     | NVIDIA A100-PCIE-40GB         | 40 GB  | 4        | a100,40g,intel  | Intel Xeon Gold 5220R      | 48         | 384 GB   | 960 GB NVMe  | 10GbE     | gpu-n[33-34] |
-| a100_multi  | 10    | NVIDIA A100-PCIE-40GB         | 40 GB  | 4        | a100,40g,amd    | AMD EPYC 7742              | 64         | 512 GB   | 1.92 TB NVMe | HDR200 IB | gpu-n[45-54] |
-| a100_nvlink | 2     | NVIDIA A100-SXM4-80GB         | 80 GB  | 8        | a100,80g,amd    | AMD EPYC 7742              | 128        | 1 TB     | 1.92 TB NVMe | HDR200 IB | gpu-n[31-32] |
-| a100_nvlink | 3     | NVIDIA A100-SXM4-40GB         | 40 GB  | 8        | a100,40g,amd    | AMD EPYC 7742              | 128        | 1 TB     | 12 TB NVMe   | HDR200 IB | gpu-n[28-30] |
+<style>
+.crc-specs-wrap {
+  overflow-x: auto;
+}
+.crc-specs {
+  border-collapse: collapse;
+  border: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  table-layout: auto;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin: 0.6em 0;
+}
+.crc-specs th,
+.crc-specs td {
+  padding: 0.3em 0.6em;
+  border: none;
+  border-bottom: 0.05rem solid var(--md-typeset-table-color, rgba(0, 0, 0, 0.12));
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.crc-specs thead th {
+  font-weight: 700;
+  border-bottom-width: 0.1rem;
+}
+.crc-specs .num {
+  text-align: center;
+}
+.crc-specs td.cpu,
+.crc-specs th.cpu {
+  text-align: center;
+  white-space: normal;
+  min-width: 6.4rem;
+}
+</style>
+
+<div class="crc-specs-wrap" markdown="0">
+<table class="crc-specs">
+  <thead>
+    <tr>
+      <th>Partition</th><th class="num">Nodes</th><th>GPU</th><th>VRAM</th><th class="num">GPU/Node</th>
+      <th>--constraint</th><th class="cpu">CPU</th><th>Max SIMD</th><th class="num">Cores/Node</th>
+      <th>Mem/Node</th><th>Scratch</th><th>Network</th><th>Node Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rtx6k</td><td class="num">9</td><td>NVIDIA RTX PRO<br>6000 Blackwell</td><td>96 GB</td><td class="num">8</td>
+      <td>rtx6k,96g,amd</td><td class="cpu">AMD EPYC<br>9555</td><td>AVX-512</td><td class="num">128</td>
+      <td>1.5 TB</td><td>7.2 TB</td><td>HDR200</td><td>gpu-n[74-82]</td>
+    </tr>
+    <tr>
+      <td>h200</td><td class="num">2</td><td>NVIDIA H200</td><td>141 GB</td><td class="num">8</td>
+      <td>h200,141g,intel</td><td class="cpu">Intel Xeon<br>Platinum 8592+</td><td>AVX-512</td><td class="num">128</td>
+      <td>3 TB</td><td>7.2 TB</td><td>HDR200</td><td>gpu-n[89-90]</td>
+    </tr>
+    <tr>
+      <td>l40s</td><td class="num">19</td><td>NVIDIA L40S</td><td>48 GB</td><td class="num">4</td>
+      <td>l40s,48g,intel</td><td class="cpu">Intel Xeon<br>Platinum 8462Y+</td><td>AVX-512</td><td class="num">64</td>
+      <td>512 GB</td><td>7.2 TB</td><td>10GbE</td><td>gpu-n[55-73]</td>
+    </tr>
+    <tr>
+      <td rowspan="2">a100</td><td class="num">10</td><td>NVIDIA A100<br>PCIE-40GB</td><td>40 GB</td><td class="num">4</td>
+      <td>a100,40g,amd</td><td class="cpu">AMD EPYC<br>7742</td><td>AVX2</td><td class="num">64</td>
+      <td>512 GB</td><td>1.9 TB</td><td>HDR200</td><td>gpu-n[35-44]</td>
+    </tr>
+    <tr>
+      <td class="num">2</td><td>NVIDIA A100<br>PCIE-40GB</td><td>40 GB</td><td class="num">4</td>
+      <td>a100,40g,intel</td><td class="cpu">Intel Xeon<br>Gold 5220R</td><td>AVX-512</td><td class="num">48</td>
+      <td>384 GB</td><td>960 GB</td><td>10GbE</td><td>gpu-n[33-34]</td>
+    </tr>
+    <tr>
+      <td>a100_multi</td><td class="num">10</td><td>NVIDIA A100<br>PCIE-40GB</td><td>40 GB</td><td class="num">4</td>
+      <td>a100,40g,amd</td><td class="cpu">AMD EPYC<br>7742</td><td>AVX2</td><td class="num">64</td>
+      <td>512 GB</td><td>1.9 TB</td><td>HDR200</td><td>gpu-n[45-54]</td>
+    </tr>
+    <tr>
+      <td>a100_nvlink_80g</td><td class="num">2</td><td>NVIDIA A100<br>SXM4-80GB</td><td>80 GB</td><td class="num">8</td>
+      <td>a100,80g,amd</td><td class="cpu">AMD EPYC<br>7742</td><td>AVX2</td><td class="num">128</td>
+      <td>1 TB</td><td>1.9 TB</td><td>HDR200</td><td>gpu-n[31-32]</td>
+    </tr>
+    <tr>
+      <td>a100_nvlink</td><td class="num">3</td><td>NVIDIA A100<br>SXM4-40GB</td><td>40 GB</td><td class="num">8</td>
+      <td>a100,40g,amd</td><td class="cpu">AMD EPYC<br>7742</td><td>AVX2</td><td class="num">128</td>
+      <td>1 TB</td><td>12 TB</td><td>HDR200</td><td>gpu-n[28-30]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ## Partition Details
 
@@ -56,12 +135,35 @@ Multiple features can be given as a comma-separated string.
 
 **a100_multi** — For multi-node GPU workflows. Jobs must request a minimum of 2 nodes with 4 GPUs on each node.
 
-**a100_nvlink** — Multi-GPU computation on an NVIDIA HGX platform with 8× A100 cards tightly coupled through an NVLink
-switch. To request a particular GPU memory size (such as the 80 GB cards), add a constraint, for example:
+**a100_nvlink** / **a100_nvlink_80g** — Multi-GPU computation on an NVIDIA HGX platform with 8× A100 cards tightly
+coupled through an NVLink switch. The 40 GB cards are in **`a100_nvlink`**; the 80 GB cards are in
+**`a100_nvlink_80g`** — select the memory size by choosing the partition (the 80 GB cards bill at a higher rate; see
+below).
+
+## How GPU jobs are billed
+
+Every node your job touches is billed on the **greatest** of three terms, per hour:
 
 ```
-#SBATCH --constraint=80g
+SUs per node ≈ max( cores × cpu_weight,  memory_GiB × memory_weight,  cards × gpu_weight )  ×  hours
 ```
+
+The **GPU weight** is the primary charge and reflects the card's capability:
+
+| GPU | GPU weight (per card) |
+| --- | --------------------- |
+| L40S, A100-40GB | 1 |
+| RTX PRO 6000, A100-80GB | 2 |
+| H200 | 4 |
+
+The CPU and memory weights simply split each node's host cores and memory evenly across its cards. So if you request a
+card together with its fair share of the host (roughly `cores ÷ cards` cores and `memory ÷ cards` memory), you're billed
+exactly the card weight. Because the bill is a `max`, a job that takes **one card but a whole node's worth of cores or
+memory** is billed for the node it effectively blocks — request host resources in proportion to the cards you use and
+you pay the card weight. A fully used node bills its card count times the card weight (for example, a whole 8-card `h200`
+node bills 32 per hour).
+
+See [Service Units](../slurm/service-units.md) for the exact weights.
 
 ## Related
 
@@ -71,7 +173,7 @@ switch. To request a particular GPU memory size (such as the 80 GB cards), add a
 
     ---
 
-    GPU jobs are billed per card; on the GPU cluster, memory is not billed separately.
+    GPU jobs are billed per card by capability; host cores and memory count only if you use more than a card's share.
 
     [:octicons-arrow-right-24: Service Units](../slurm/service-units.md)
 

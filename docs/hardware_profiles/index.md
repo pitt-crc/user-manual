@@ -25,6 +25,11 @@ group-specific investment hardware.
 | [GPU](gpu.md)     | GPU-accelerated work such as AI, machine learning, and physics-based simulation and modeling.             |
 | [Teach](teach.md) | Instructional activities, such as coursework, tutorials and workshops, and hackathons.                    |
 
+On the SMP and HTC clusters, general-access partitions are named by **memory per core** —
+`smp_8GB`, `htc_16GB`, and so on, where the number is roughly the gigabytes of RAM per core.
+Pick the tier whose memory-per-core fits your job; the same tier bills at the same rate on both
+clusters. If you are updating older job scripts, see [**Partition Name Changes**](partition-migration.md).
+
 ## Access & Auxiliary Nodes
 
 These are entry points and special-purpose servers — not job-submission targets.

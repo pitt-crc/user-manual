@@ -26,3 +26,9 @@
 *[CRCD Ecosystem]: The complement of CRCD infrastructure
 *[PI]: Principle Investigator
 *[PIs]: Principle Investigators
+*[SU]: Service Unit — roughly one core-hour of computing
+*[SUs]: Service Units — roughly one core-hour of computing each
+*[TRES]: Trackable RESources — the cores, memory, and GPU cards Slurm meters and bills
+*[GiB]: Gibibyte — 1024 MB; the base-2 unit Slurm uses for memory
+*[QoS]: Quality of Service — a Slurm policy setting walltime limits and per-group resource caps
+*[NVMe]: Non-Volatile Memory Express — fast local flash storage (node scratch)
