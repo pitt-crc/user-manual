@@ -9,9 +9,9 @@ The CRCD provides several distinct file spaces, each serving a different purpose
 
 | Path          | Purpose                          | Default Quota | Snapshots              |
 |---------------|----------------------------------|---------------|------------------------|
-| `/ihome`      | Home directories                 | 75 GB         | Daily, 8-day retention |
-| `/vast`       | High-performance project storage | 1 TB          | Daily, 8-day retention |
-| `/ix`, `/ix1` | Standard-tier project storage    | 5 TB          | 7-day retention        |
+| `/ihome`      | Home directories                 | 75 GB         | Daily, 60-day retention |
+| `/vast`       | High-performance project storage | 1 TB          | Daily, 7-day retention |
+| `/ix`, `/ix1` | Standard-tier project storage    | 5 TB          | Daily, 7-day retention        |
 
 ---
 
